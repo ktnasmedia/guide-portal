@@ -1000,7 +1000,32 @@ function linkify(str) {
   );
 }
 
-// Google Sheets CSV로 데이터 읽기 (공개 시트 — API Key 불필요)
+// CSV 전체 파싱 (멀티라인 셀 완전 처리)
+function parseCSV(text) {
+  var rows    = [];
+  var row     = [];
+  var cur     = '';
+  var inQuote = false;
+  for (var i = 0; i < text.length; i++) {
+    var ch   = text[i];
+    var next = text[i + 1];
+    if (inQuote) {
+      if (ch === '"' && next === '"') { cur += '"'; i++; }
+      else if (ch === '"') { inQuote = false; }
+      else { cur += ch; }
+    } else {
+      if (ch === '"') { inQuote = true; }
+      else if (ch === ',') { row.push(cur); cur = ''; }
+      else if (ch === '\r' && next === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; i++; }
+      else if (ch === '\n' || ch === '\r') { row.push(cur); rows.push(row); row = []; cur = ''; }
+      else { cur += ch; }
+    }
+  }
+  if (cur !== '' || row.length > 0) { row.push(cur); rows.push(row); }
+  return rows;
+}
+
+// Google Sheets CSV로 데이터 읽기 (공개 시트)
 async function sheetsLoadNotes() {
   document.getElementById('rn-loading').style.display     = 'block';
   document.getElementById('rn-error').style.display       = 'none';
@@ -1008,7 +1033,6 @@ async function sheetsLoadNotes() {
   document.getElementById('rn-refresh-btn').style.display = 'none';
 
   try {
-    // Google Sheets CSV export URL (공개 시트)
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
       '/export?format=csv&sheet=릴리즈노트';
 
@@ -1017,44 +1041,24 @@ async function sheetsLoadNotes() {
 
     const text = await res.text();
 
-    // CSV 파싱
-    const lines = text.trim().split('\n');
-    if (lines.length <= 1) {
+    // 멀티라인 셀 완전 파싱
+    const allRows = parseCSV(text);
+    if (allRows.length <= 1) {
       document.getElementById('rn-loading').style.display = 'none';
       document.getElementById('rn-list').innerHTML =
         '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
 
-    // CSV 한 줄 파싱 (쉼표 + 따옴표 처리)
-    function parseCSVLine(line) {
-      const result = [];
-      let cur = '', inQuote = false;
-      for (let i = 0; i < line.length; i++) {
-        const ch = line[i];
-        if (ch === '"') {
-          if (inQuote && line[i+1] === '"') { cur += '"'; i++; }
-          else inQuote = !inQuote;
-        } else if (ch === ',' && !inQuote) {
-          result.push(cur); cur = '';
-        } else {
-          cur += ch;
-        }
-      }
-      result.push(cur);
-      return result;
-    }
-
-    // 헤더 제외하고 데이터 파싱
-    const notes = lines.slice(1).map(function(line) {
-      const cols = parseCSVLine(line);
+    // 헤더 제외, 버전 있는 행만
+    const notes = allRows.slice(1).map(function(cols) {
       return {
         ver    : (cols[0] || '').trim(),
         subject: (cols[1] || '').trim(),
         date   : (cols[2] || '').trim(),
         body   : (cols[3] || '').trim(),
       };
-    }).filter(function(n) { return n.ver && n.ver !== '버전'; });
+    }).filter(function(n) { return n.ver && n.ver !== '버전' && n.ver !== ''; });
 
     if (notes.length === 0) {
       document.getElementById('rn-loading').style.display = 'none';
@@ -1076,7 +1080,6 @@ async function sheetsLoadNotes() {
       const isLatest = idx === 0;
       const card = document.createElement('div');
       card.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
-
       const bodyHtml = renderBody(note.body);
 
       card.innerHTML =
