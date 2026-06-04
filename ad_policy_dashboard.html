@@ -408,7 +408,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           </div>
         </div>
       </div>
-      <!-- ── 릴리즈 노트 탭: Gmail API 연동 ── -->
+      <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
       <div id="tc-updates-release-notes" style="display:none;">
 
         <!-- 헤더 바 -->
@@ -416,24 +416,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="section-accent"></div>
           <span class="section-label">넷플릭스 릴리즈 노트</span>
           <span id="rn-last-updated" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'IBM Plex Mono',monospace;"></span>
-          <button class="section-bar-btn" id="rn-refresh-btn" onclick="gmailLoadMails()" style="display:none;">↻ 새로고침</button>
+          <button class="section-bar-btn" id="rn-refresh-btn" onclick="sheetsLoadNotes()" style="display:none;">↻ 새로고침</button>
         </div>
 
-        <!-- 로그인 패널 -->
-        <div id="rn-login-panel" style="background:rgba(229,9,20,0.07);border:1px solid rgba(229,9,20,0.25);border-radius:12px;padding:24px;text-align:center;margin-bottom:16px;">
-          <div style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px;">Gmail 계정 연동 필요</div>
-          <div style="font-size:12px;color:var(--gray-low);margin-bottom:20px;">넷플릭스 릴리즈 노트 메일을 받는 Gmail 계정(<strong style="color:var(--gray-mid);">2026mbiz@gmail.com</strong>)으로 로그인하세요.<br>최초 1회만 로그인하면 이후 자동으로 불러옵니다.</div>
-          <button class="btn-red" onclick="gmailSignIn()" style="padding:10px 28px;font-size:13px;display:inline-flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 48 48" fill="none"><path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" fill="white"/></svg>
-            Google 계정으로 로그인
-          </button>
-        </div>
+
 
         <!-- 로딩 -->
-        <div id="rn-loading" style="display:none;text-align:center;padding:40px 0;">
+        <div id="rn-loading" style="text-align:center;padding:40px 0;">
           <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
             <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-            <span style="font-size:13px;color:var(--gray-low);">Gmail에서 릴리즈 노트를 불러오는 중...</span>
+            <span style="font-size:13px;color:var(--gray-low);">릴리즈 노트를 불러오는 중...</span>
           </div>
         </div>
 
@@ -441,10 +433,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div id="rn-error" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
           <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
           <div id="rn-error-msg" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
-          <button class="btn-outline" onclick="gmailLoadMails()" style="margin-top:12px;font-size:12px;">다시 시도</button>
+          <button class="btn-outline" onclick="sheetsLoadNotes()" style="margin-top:12px;font-size:12px;">다시 시도</button>
         </div>
 
-        <!-- 메일 카드 목록 -->
+        <!-- 릴리즈 노트 카드 목록 -->
         <div id="rn-list" style="display:flex;flex-direction:column;gap:10px;"></div>
 
       </div>
@@ -895,166 +887,29 @@ function closeModal(){document.getElementById('modal').classList.remove('open');
 function closeModalOutside(e){if(e.target===document.getElementById('modal'))closeModal();}
 
 // ══════════════════════════════════════════
-// Gmail API — 릴리즈 노트 자동 연동
+// Google Sheets API — 릴리즈 노트 연동 (로그인 불필요)
 // ══════════════════════════════════════════
-const GMAIL_CLIENT_ID   = '568845123652-co44ocr5rtea8be4hhdv1omes93jnu34.apps.googleusercontent.com';
-const GMAIL_LABEL_NAME  = '넷플릭스 광고 공지사항';
-const GMAIL_SCOPE       = 'https://www.googleapis.com/auth/gmail.readonly';
-const LS_GMAIL_TOKEN    = 'nasmedia_gmail_token';
-const LS_GMAIL_EXPIRY   = 'nasmedia_gmail_expiry';
-
-let gmailAccessToken = '';
-
-// 저장된 토큰 복원
-function gmailRestoreToken() {
-  const token  = localStorage.getItem(LS_GMAIL_TOKEN);
-  const expiry = localStorage.getItem(LS_GMAIL_EXPIRY);
-  if (token && expiry && Date.now() < parseInt(expiry)) {
-    gmailAccessToken = token;
-    return true;
-  }
-  localStorage.removeItem(LS_GMAIL_TOKEN);
-  localStorage.removeItem(LS_GMAIL_EXPIRY);
-  return false;
-}
-
-// Google OAuth 로그인
-function gmailSignIn() {
-  const client = google.accounts.oauth2.initTokenClient({
-    client_id: GMAIL_CLIENT_ID,
-    scope: GMAIL_SCOPE,
-    callback: function(resp) {
-      if (resp.error) {
-        showRnError('Google 로그인 실패: ' + resp.error);
-        return;
-      }
-      gmailAccessToken = resp.access_token;
-      // 만료 시간 저장 (55분 후)
-      localStorage.setItem(LS_GMAIL_TOKEN, gmailAccessToken);
-      localStorage.setItem(LS_GMAIL_EXPIRY, Date.now() + 55 * 60 * 1000);
-      document.getElementById('rn-login-panel').style.display = 'none';
-      gmailLoadMails();
-    }
-  });
-  client.requestAccessToken();
-}
-
-// 버전 번호 파싱: "넷플릭스 광고 공지사항 v17🔔" → {ver:17, verStr:"v17"}
-function parseVerFromSubject(subject) {
-  const m = subject.match(/v(\d+)/i);
-  return m ? { ver: parseInt(m[1]), verStr: 'v' + m[1] } : null;
-}
+const SHEETS_ID      = '1nXbp7KMuMa1sXIfHF7ifgd7L22jn4xVXAK5EUV0ZHa4';
+const SHEETS_API_KEY = ''; // API Key 방식 대신 공개 Sheets CSV 방식 사용
 
 // 날짜 포맷
-function fmtDate(dateStr) {
-  const d = new Date(dateStr);
-  if (isNaN(d)) return dateStr;
-  return d.toLocaleDateString('ko-KR', { year:'numeric', month:'2-digit', day:'2-digit' })
-          .replace(/\. /g,'.').replace(/\.$/,'');
+function fmtDate(str) {
+  if (!str) return '';
+  // 이미 yyyy.MM.dd 형태면 그대로
+  if (/^\d{4}\.\d{2}\.\d{2}$/.test(str)) return str;
+  const d = new Date(str);
+  if (isNaN(d)) return str;
+  return d.toLocaleDateString('ko-KR', {year:'numeric',month:'2-digit',day:'2-digit'})
+    .replace(/\. /g,'.').replace(/\.$/,'');
 }
 
-// Base64 디코딩 (UTF-8)
-function decodeBase64(str) {
-  try {
-    const bytes = Uint8Array.from(
-      atob(str.replace(/-/g,'+').replace(/_/g,'/')),
-      c => c.charCodeAt(0)
-    );
-    return new TextDecoder('utf-8').decode(bytes);
-  } catch(e) {
-    try { return decodeURIComponent(escape(atob(str.replace(/-/g,'+').replace(/_/g,'/')))); }
-    catch(e2) { return ''; }
-  }
-}
-
-// HTML 파트 재귀 탐색
-function findHtmlPart(payload) {
-  if (!payload) return null;
-  if (payload.mimeType === 'text/html' && payload.body && payload.body.data) return payload.body.data;
-  if (payload.parts) {
-    for (const p of payload.parts) {
-      const r = findHtmlPart(p);
-      if (r) return r;
-    }
-  }
-  return null;
-}
-
-// 메일 본문에서 필요한 내용만 파싱
-function extractReleaseContent(payload) {
-  const htmlData = findHtmlPart(payload);
-  if (!htmlData) return { content: '', paragraphs: [] };
-
-  const decoded = decodeBase64(htmlData);
-
-  // DOM으로 파싱
-  const tmp = document.createElement('div');
-  tmp.innerHTML = decoded;
-
-  // 불필요한 태그 제거 (style, script, head)
-  tmp.querySelectorAll('style,script,head,meta,link').forEach(el => el.remove());
-
-  // 전체 텍스트 추출
-  let fullText = tmp.innerText || tmp.textContent || '';
-
-  // 스페이서 문자 제거 (͏ ‌ 반복 패턴)
-  fullText = fullText.replace(/(?:͏\s*‌\s*)+/g, '').replace(/(?:­\s*)+/g, '');
-
-  // ── 포워딩 서명 제거 ──
-  // "From: 넷플릭스 광고팀" 이전 내용 (포워딩한 사람 서명) 제거
-  // "Subject: 넷플릭스 광고 공지사항 v**" 이후부터 시작
-  const fromIdx = fullText.indexOf('From: 넷플릭스 광고팀');
-  if (fromIdx !== -1) {
-    const subjectIdx = fullText.indexOf('Subject:', fromIdx);
-    if (subjectIdx !== -1) {
-      const newlineIdx = fullText.indexOf('\n', subjectIdx);
-      fullText = newlineIdx !== -1 ? fullText.substring(newlineIdx + 1) : fullText.substring(subjectIdx);
-    } else {
-      fullText = fullText.substring(fromIdx);
-    }
-  }
-
-  // ── 상단 고정 문구 제거 ──
-  // "넷플릭스 광고 공지 사항" 헤더 제거
-  fullText = fullText.replace(/넷플릭스\s*광고\s*공지\s*사항\s*/g, '');
-  // "RELEASE NOTE v**" 제거
-  fullText = fullText.replace(/RELEASE\s*NOTE\s*v\d+\s*/gi, '');
-  // 인삿말 + 소개 문단 제거
-  fullText = fullText.replace(
-    /안녕하세요\s*넷플릭스\s*광고팀입니다[\s\S]*?참고하실\s*수\s*있습니다\.?/g, ''
-  );
-
-  // ── 하단 고정 문구 제거 (문의사항 이하) ──
-  const cutPatterns = [
-    '문의사항이 있으실 경우',
-    '문의 사항이 있으실 경우',
-    '문의사항이 있으신 경우',
-    '문의 사항이 있으신 경우',
-    '본 메일로 회신 부탁',
-    '본 메일로 회신',
-    '궁금하신 사항은',
-    '감사합니다.\n넷플릭스',
-    '넷플릭스 광고팀 드림',
-  ];
-  for (const pat of cutPatterns) {
-    const idx = fullText.indexOf(pat);
-    if (idx !== -1) { fullText = fullText.substring(0, idx); break; }
-  }
-
-  // 연속 공백/개행 정리
-  fullText = fullText
-    .replace(/\r\n/g, '\n')
-    .replace(/[ \t]+/g, ' ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-
-  // 문단 분리 (빈 줄 기준)
-  const paragraphs = fullText
-    .split(/\n{2,}/)
-    .map(p => p.trim())
-    .filter(p => p.length > 1);
-
-  return { content: fullText, paragraphs };
+// 카드 토글
+function toggleRnCard(headerEl) {
+  const body  = headerEl.nextElementSibling;
+  const arrow = headerEl.querySelector('.rn-toggle-arrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
 }
 
 // 에러 표시
@@ -1064,131 +919,143 @@ function showRnError(msg) {
   document.getElementById('rn-error-msg').innerHTML   = msg;
 }
 
-// 메일 카드 토글
-function toggleRnCard(headerEl) {
-  const body  = headerEl.nextElementSibling;
-  const arrow = headerEl.querySelector('.rn-toggle-arrow');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
-}
+// HTML 본문 → 다크 테마 카드용으로 변환
+function renderBody(html) {
+  if (!html || html.trim() === '') {
+    return '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
+  }
 
-// Gmail API fetch 헬퍼
-async function gFetch(url) {
-  const res = await fetch(url, {
-    headers: { 'Authorization': 'Bearer ' + gmailAccessToken }
+  // 임시 DOM으로 파싱
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+
+  // 이미지 제거 (cid: 이미지 등)
+  tmp.querySelectorAll('img').forEach(function(img) {
+    const src = img.getAttribute('src') || '';
+    if (src.startsWith('cid:') || src === '') img.remove();
   });
-  if (res.status === 401) {
-    // 토큰 만료 → 재로그인 유도
-    localStorage.removeItem(LS_GMAIL_TOKEN);
-    localStorage.removeItem(LS_GMAIL_EXPIRY);
-    gmailAccessToken = '';
-    document.getElementById('rn-login-panel').style.display = 'block';
-    throw new Error('TOKEN_EXPIRED');
-  }
-  if (!res.ok) throw new Error('HTTP_' + res.status);
-  return res.json();
+
+  // 링크 스타일 적용
+  tmp.querySelectorAll('a').forEach(function(a) {
+    a.style.color = '#E50914';
+    a.style.textDecoration = 'underline';
+    a.style.wordBreak = 'break-all';
+    a.setAttribute('target', '_blank');
+  });
+
+  // 테이블 스타일 적용 (다크 테마)
+  tmp.querySelectorAll('table').forEach(function(t) {
+    t.style.width = '100%';
+    t.style.borderCollapse = 'collapse';
+    t.style.marginBottom = '12px';
+    t.style.fontSize = '12px';
+  });
+  tmp.querySelectorAll('td, th').forEach(function(cell) {
+    cell.style.padding = '8px 10px';
+    cell.style.borderBottom = '1px solid #2E2E2E';
+    cell.style.color = '#A3A3A3';
+    cell.style.verticalAlign = 'top';
+  });
+  tmp.querySelectorAll('th').forEach(function(th) {
+    th.style.color = '#E5E5E5';
+    th.style.fontWeight = '600';
+    th.style.background = '#2A2A2A';
+  });
+
+  // p, div 텍스트 색상
+  tmp.querySelectorAll('p, div, span, li').forEach(function(el) {
+    if (!el.style.color || el.style.color === 'black' || el.style.color === 'rgb(0,0,0)') {
+      el.style.color = '#A3A3A3';
+    }
+  });
+
+  // h1~h4 스타일
+  tmp.querySelectorAll('h1,h2,h3,h4').forEach(function(h) {
+    h.style.color = '#E5E5E5';
+    h.style.marginBottom = '8px';
+    h.style.fontSize = '13px';
+    h.style.fontWeight = '700';
+  });
+
+  // 배경색 제거
+  tmp.querySelectorAll('*').forEach(function(el) {
+    if (el.style.backgroundColor && el.style.backgroundColor !== 'transparent') {
+      el.style.backgroundColor = 'transparent';
+    }
+    if (el.style.background && el.style.background !== 'transparent') {
+      el.style.background = 'transparent';
+    }
+  });
+
+  return '<div style="font-size:13px;line-height:1.75;">' + tmp.innerHTML + '</div>';
 }
 
-// 메인: 메일 불러오기
-async function gmailLoadMails() {
-  if (!gmailAccessToken) {
-    if (!gmailRestoreToken()) {
-      document.getElementById('rn-login-panel').style.display = 'block';
-      return;
-    }
-  }
-  document.getElementById('rn-login-panel').style.display = 'none';
+// Google Sheets CSV로 데이터 읽기 (공개 시트 — API Key 불필요)
+async function sheetsLoadNotes() {
   document.getElementById('rn-loading').style.display     = 'block';
   document.getElementById('rn-error').style.display       = 'none';
-  document.getElementById('rn-list').innerHTML            = '';
+  document.getElementById('rn-list').innerHTML             = '';
   document.getElementById('rn-refresh-btn').style.display = 'none';
 
   try {
-    // 1) 라벨 ID 조회
-    const labelsData = await gFetch('https://gmail.googleapis.com/gmail/v1/users/me/labels');
-    const label = (labelsData.labels || []).find(l => l.name === GMAIL_LABEL_NAME);
-    if (!label) {
-      throw new Error('라벨 <strong>' + GMAIL_LABEL_NAME + '</strong> 을 찾을 수 없습니다.<br>Gmail에서 라벨명을 확인해주세요.');
-    }
+    // Google Sheets JSON API (공개 시트)
+    const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
+      '/gviz/tq?tqx=out:json&sheet=릴리즈노트';
 
-    // 2) 해당 라벨 메일 목록 조회 (최대 50개)
-    const listData = await gFetch(
-      'https://gmail.googleapis.com/gmail/v1/users/me/messages?labelIds=' + label.id + '&maxResults=50'
-    );
-    const messages = listData.messages || [];
-    if (messages.length === 0) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP_' + res.status);
+
+    const text = await res.text();
+
+    // Google의 응답에서 JSON 추출 (google.visualization.Query.setResponse({...}); 형태)
+    const jsonStr = text.replace(/^.*?google\.visualization\.Query\.setResponse\(/, '').replace(/\);?\s*$/, '');
+    const json    = JSON.parse(jsonStr);
+    const rows    = (json.table && json.table.rows) || [];
+    const cols    = (json.table && json.table.cols) || [];
+
+    if (rows.length === 0) {
       document.getElementById('rn-loading').style.display = 'none';
       document.getElementById('rn-list').innerHTML =
-        '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 수신된 릴리즈 노트 메일이 없습니다.</div>';
+        '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
 
-    // 3) 각 메일 상세 조회 (병렬)
-    const details = await Promise.all(
-      messages.map(m =>
-        gFetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/' + m.id + '?format=full')
-      )
-    );
-
-    // 4) 파싱 및 버전 정렬 (최신순)
-    const notes = details.map(msg => {
-      const headers = (msg.payload && msg.payload.headers) || [];
-      const subject = (headers.find(h => h.name === 'Subject') || {}).value || '(제목 없음)';
-      const date    = (headers.find(h => h.name === 'Date')    || {}).value || '';
-      const ver     = parseVerFromSubject(subject);
-
-      // 제목에서 "넷플릭스 광고 공지사항 v**🔔" → 그대로 사용
-      const cleanSubject = subject.replace(/🔔/g,'').trim();
-
-      // 본문 파싱
-      const { paragraphs } = extractReleaseContent(msg.payload);
-
-      return { subject: cleanSubject, date, ver, paragraphs, id: msg.id };
-    })
-    .filter(n => n.ver)
-    .sort((a, b) => b.ver.ver - a.ver.ver);
+    // 헤더 행 제외, 데이터 파싱
+    const notes = rows.map(function(row) {
+      const cells = row.c || [];
+      return {
+        ver    : cells[0] ? (cells[0].v || '') : '',
+        subject: cells[1] ? (cells[1].v || '') : '',
+        date   : cells[2] ? (cells[2].v || '') : '',
+        body   : cells[3] ? (cells[3].v || '') : '',
+      };
+    }).filter(function(n) { return n.ver && n.ver !== '버전'; });
 
     document.getElementById('rn-loading').style.display     = 'none';
     document.getElementById('rn-refresh-btn').style.display = 'inline-flex';
 
-    // 마지막 업데이트 시각
     const now = new Date();
     document.getElementById('rn-last-updated').textContent =
       '마지막 업데이트 ' + now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
 
-    // 5) 카드 렌더링
+    // 카드 렌더링
     const list = document.getElementById('rn-list');
     notes.forEach(function(note, idx) {
       const isLatest = idx === 0;
       const card = document.createElement('div');
       card.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
 
-      // 문단을 HTML로 변환
-      const bodyHtml = note.paragraphs.length > 0
-        ? note.paragraphs.map(function(p) {
-            // 줄바꿈을 <br>로 변환, URL을 링크로 변환
-            const escaped = p
-              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-              .replace(/\n/g,'<br>');
-            const linked = escaped.replace(
-              /(https?:\/\/[^\s<]+)/g,
-              '<a href="$1" target="_blank" style="color:#E50914;text-decoration:underline;word-break:break-all;">$1</a>'
-            );
-            return '<p style="margin:0 0 10px 0;line-height:1.75;color:var(--gray-mid);font-size:13px;">' + linked + '</p>';
-          }).join('')
-        : '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
+      const bodyHtml = renderBody(note.body);
 
       card.innerHTML =
-        // ── 카드 헤더 ──
         '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
           '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">' +
             (isLatest
               ? '<span class="badge badge-new" style="flex-shrink:0;">LATEST</span>'
               : '<span class="badge badge-type" style="flex-shrink:0;">이전 버전</span>') +
-            '<span style="font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;">' + note.ver.verStr + '</span>' +
-            '<span style="font-size:12px;color:var(--gray-hi);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">' +
-              note.subject +
+            '<span style="font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;">' + note.ver + '</span>' +
+            '<span style="font-size:12px;color:var(--gray-hi);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;margin-left:4px;">' +
+              note.subject.replace(/FW:/gi,'').replace(/🔔/g,'').trim() +
             '</span>' +
           '</div>' +
           '<div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">' +
@@ -1196,11 +1063,8 @@ async function gmailLoadMails() {
             '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s,color 0.2s;">›</span>' +
           '</div>' +
         '</div>' +
-        // ── 카드 본문 ──
         '<div class="rn-card-body">' +
-          '<div style="padding:4px 0 8px 0;">' +
-            bodyHtml +
-          '</div>' +
+          '<div style="padding:4px 0 8px 0;">' + bodyHtml + '</div>' +
         '</div>';
 
       list.appendChild(card);
@@ -1211,32 +1075,24 @@ async function gmailLoadMails() {
     if (firstHeader) toggleRnCard(firstHeader);
 
   } catch(err) {
-    if (err.message !== 'TOKEN_EXPIRED') {
-      showRnError(err.message.startsWith('라벨')
-        ? err.message
-        : '오류가 발생했습니다: ' + err.message + '<br><br>잠시 후 다시 시도해주세요.');
-    }
+    showRnError(
+      '릴리즈 노트를 불러오지 못했습니다.<br><br>' +
+      '<strong>확인 사항:</strong><br>' +
+      '• Google Sheets가 공개(링크 공유) 상태인지 확인<br>' +
+      '• 네트워크 연결 상태 확인<br><br>' +
+      '오류: ' + err.message
+    );
   }
 }
 
-// 릴리즈 노트 탭 진입 시 자동 로드 (저장된 토큰 있으면)
+// 릴리즈 노트 탭 진입 시 자동 로드
 function onReleaseNotesTabEnter() {
-  if (gmailRestoreToken()) {
-    document.getElementById('rn-login-panel').style.display = 'none';
-    gmailLoadMails();
-  }
-}
-
-// ── iframe 로드 완료 시 로딩 오버레이 제거 (레거시 유지) ──
-function onIframeLoad() {
-  var loading = document.getElementById('rn-iframe-loading');
-  var iframe  = document.getElementById('rn-iframe');
-  if (loading) loading.style.display = 'none';
-  if (iframe)  iframe.style.opacity  = '1';
+  sheetsLoadNotes();
 }
 
 // 초기 렌더
 navigate('updates','all');
+
 </script>
 </body>
 </html>
