@@ -919,75 +919,85 @@ function showRnError(msg) {
   document.getElementById('rn-error-msg').innerHTML   = msg;
 }
 
-// HTML 본문 → 다크 테마 카드용으로 변환
-function renderBody(html) {
-  if (!html || html.trim() === '') {
+// Sheets 텍스트 본문 → 다크 테마 카드 렌더링
+function renderBody(text) {
+  if (!text || text.trim() === '') {
     return '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
   }
 
-  // 임시 DOM으로 파싱
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
+  // 줄 단위로 분리
+  var lines = text.split('\n');
+  var html  = '';
+  var i     = 0;
 
-  // 이미지 제거 (cid: 이미지 등)
-  tmp.querySelectorAll('img').forEach(function(img) {
-    const src = img.getAttribute('src') || '';
-    if (src.startsWith('cid:') || src === '') img.remove();
-  });
+  while (i < lines.length) {
+    var line = lines[i].trim();
 
-  // 링크 스타일 적용
-  tmp.querySelectorAll('a').forEach(function(a) {
-    a.style.color = '#E50914';
-    a.style.textDecoration = 'underline';
-    a.style.wordBreak = 'break-all';
-    a.setAttribute('target', '_blank');
-  });
-
-  // 테이블 스타일 적용 (다크 테마)
-  tmp.querySelectorAll('table').forEach(function(t) {
-    t.style.width = '100%';
-    t.style.borderCollapse = 'collapse';
-    t.style.marginBottom = '12px';
-    t.style.fontSize = '12px';
-  });
-  tmp.querySelectorAll('td, th').forEach(function(cell) {
-    cell.style.padding = '8px 10px';
-    cell.style.borderBottom = '1px solid #2E2E2E';
-    cell.style.color = '#A3A3A3';
-    cell.style.verticalAlign = 'top';
-  });
-  tmp.querySelectorAll('th').forEach(function(th) {
-    th.style.color = '#E5E5E5';
-    th.style.fontWeight = '600';
-    th.style.background = '#2A2A2A';
-  });
-
-  // p, div 텍스트 색상
-  tmp.querySelectorAll('p, div, span, li').forEach(function(el) {
-    if (!el.style.color || el.style.color === 'black' || el.style.color === 'rgb(0,0,0)') {
-      el.style.color = '#A3A3A3';
+    if (line === '') {
+      i++;
+      continue;
     }
-  });
 
-  // h1~h4 스타일
-  tmp.querySelectorAll('h1,h2,h3,h4').forEach(function(h) {
-    h.style.color = '#E5E5E5';
-    h.style.marginBottom = '8px';
-    h.style.fontSize = '13px';
-    h.style.fontWeight = '700';
-  });
-
-  // 배경색 제거
-  tmp.querySelectorAll('*').forEach(function(el) {
-    if (el.style.backgroundColor && el.style.backgroundColor !== 'transparent') {
-      el.style.backgroundColor = 'transparent';
+    // 섹션 제목 판별 (짧고 뒤에 내용이 이어지는 경우)
+    // • 로 시작하지 않고, 다음 줄이 • 로 시작하거나 길이가 짧은 경우
+    var isHeader = false;
+    var nextLine = (i + 1 < lines.length) ? lines[i + 1].trim() : '';
+    if (
+      line.length <= 30 &&
+      !line.startsWith('•') &&
+      !line.startsWith('(') &&
+      !line.match(/^https?:\/\//) &&
+      (nextLine.startsWith('•') || nextLine === '' || (nextLine.length > 0 && nextLine.length <= 30))
+    ) {
+      isHeader = true;
     }
-    if (el.style.background && el.style.background !== 'transparent') {
-      el.style.background = 'transparent';
-    }
-  });
 
-  return '<div style="font-size:13px;line-height:1.75;">' + tmp.innerHTML + '</div>';
+    // 업데이트 / 리마인드 등 키워드는 항상 섹션 헤더
+    if (line === '업데이트' || line === '리마인드' || line === '안내' ||
+        line === '변경' || line === '추가' || line === '신규') {
+      isHeader = true;
+    }
+
+    if (isHeader) {
+      html += '<div style="font-size:12px;font-weight:700;color:var(--red);margin:14px 0 6px 0;letter-spacing:0.02em;">' +
+        escapeHtml(line) + '</div>';
+    } else if (line.startsWith('•')) {
+      // 불릿 아이템
+      html += '<div style="display:flex;gap:8px;padding:3px 0;font-size:13px;color:var(--gray-mid);line-height:1.65;">' +
+        '<span style="color:var(--red);flex-shrink:0;margin-top:1px;">•</span>' +
+        '<span>' + linkify(escapeHtml(line.substring(1).trim())) + '</span>' +
+        '</div>';
+    } else if (line.match(/^https?:\/\//)) {
+      // URL 단독 줄
+      html += '<div style="padding:3px 0;">' +
+        '<a href="' + line + '" target="_blank" style="font-size:12px;color:var(--red);text-decoration:underline;word-break:break-all;">' +
+        line + '</a></div>';
+    } else {
+      // 일반 텍스트
+      html += '<p style="margin:0 0 6px 0;font-size:13px;color:var(--gray-mid);line-height:1.7;">' +
+        linkify(escapeHtml(line)) + '</p>';
+    }
+
+    i++;
+  }
+
+  return '<div style="padding:2px 0;">' + html + '</div>';
+}
+
+// HTML 이스케이프
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// URL을 링크로 변환
+function linkify(str) {
+  return str.replace(/(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" style="color:var(--red);text-decoration:underline;word-break:break-all;">$1</a>'
+  );
 }
 
 // Google Sheets CSV로 데이터 읽기 (공개 시트 — API Key 불필요)
