@@ -953,50 +953,108 @@ function fmtDate(dateStr) {
           .replace(/\. /g,'.').replace(/\.$/,'');
 }
 
-// HTML → 텍스트 요약 (미리보기용)
-function htmlToText(html) {
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  return (tmp.textContent || tmp.innerText || '').replace(/\s+/g,' ').trim().substring(0, 200);
-}
-
-// Base64 디코딩 (Gmail API 응답)
+// Base64 디코딩 (UTF-8)
 function decodeBase64(str) {
   try {
-    return decodeURIComponent(escape(atob(str.replace(/-/g,'+').replace(/_/g,'/'))));
+    const bytes = Uint8Array.from(
+      atob(str.replace(/-/g,'+').replace(/_/g,'/')),
+      c => c.charCodeAt(0)
+    );
+    return new TextDecoder('utf-8').decode(bytes);
   } catch(e) {
-    return '';
+    try { return decodeURIComponent(escape(atob(str.replace(/-/g,'+').replace(/_/g,'/')))); }
+    catch(e2) { return ''; }
   }
 }
 
-// 메일 본문 추출
-function extractBody(payload) {
-  if (!payload) return '';
-  // multipart 처리
+// HTML 파트 재귀 탐색
+function findHtmlPart(payload) {
+  if (!payload) return null;
+  if (payload.mimeType === 'text/html' && payload.body && payload.body.data) return payload.body.data;
   if (payload.parts) {
-    for (const part of payload.parts) {
-      if (part.mimeType === 'text/html' && part.body && part.body.data) {
-        return decodeBase64(part.body.data);
-      }
-    }
-    for (const part of payload.parts) {
-      if (part.mimeType === 'text/plain' && part.body && part.body.data) {
-        return '<pre style="white-space:pre-wrap;font-size:12px;">' + decodeBase64(part.body.data) + '</pre>';
-      }
-    }
-    // 중첩 multipart
-    for (const part of payload.parts) {
-      const nested = extractBody(part);
-      if (nested) return nested;
+    for (const p of payload.parts) {
+      const r = findHtmlPart(p);
+      if (r) return r;
     }
   }
-  if (payload.body && payload.body.data) {
-    const decoded = decodeBase64(payload.body.data);
-    return payload.mimeType === 'text/html'
-      ? decoded
-      : '<pre style="white-space:pre-wrap;font-size:12px;">' + decoded + '</pre>';
+  return null;
+}
+
+// 메일 본문에서 필요한 내용만 파싱
+function extractReleaseContent(payload) {
+  const htmlData = findHtmlPart(payload);
+  if (!htmlData) return { content: '', paragraphs: [] };
+
+  const decoded = decodeBase64(htmlData);
+
+  // DOM으로 파싱
+  const tmp = document.createElement('div');
+  tmp.innerHTML = decoded;
+
+  // 불필요한 태그 제거 (style, script, head)
+  tmp.querySelectorAll('style,script,head,meta,link').forEach(el => el.remove());
+
+  // 전체 텍스트 추출
+  let fullText = tmp.innerText || tmp.textContent || '';
+
+  // 스페이서 문자 제거 (͏ ‌ 반복 패턴)
+  fullText = fullText.replace(/(?:͏\s*‌\s*)+/g, '').replace(/(?:­\s*)+/g, '');
+
+  // ── 포워딩 서명 제거 ──
+  // "From: 넷플릭스 광고팀" 이전 내용 (포워딩한 사람 서명) 제거
+  // "Subject: 넷플릭스 광고 공지사항 v**" 이후부터 시작
+  const fromIdx = fullText.indexOf('From: 넷플릭스 광고팀');
+  if (fromIdx !== -1) {
+    const subjectIdx = fullText.indexOf('Subject:', fromIdx);
+    if (subjectIdx !== -1) {
+      const newlineIdx = fullText.indexOf('\n', subjectIdx);
+      fullText = newlineIdx !== -1 ? fullText.substring(newlineIdx + 1) : fullText.substring(subjectIdx);
+    } else {
+      fullText = fullText.substring(fromIdx);
+    }
   }
-  return '';
+
+  // ── 상단 고정 문구 제거 ──
+  // "넷플릭스 광고 공지 사항" 헤더 제거
+  fullText = fullText.replace(/넷플릭스\s*광고\s*공지\s*사항\s*/g, '');
+  // "RELEASE NOTE v**" 제거
+  fullText = fullText.replace(/RELEASE\s*NOTE\s*v\d+\s*/gi, '');
+  // 인삿말 + 소개 문단 제거
+  fullText = fullText.replace(
+    /안녕하세요\s*넷플릭스\s*광고팀입니다[\s\S]*?참고하실\s*수\s*있습니다\.?/g, ''
+  );
+
+  // ── 하단 고정 문구 제거 (문의사항 이하) ──
+  const cutPatterns = [
+    '문의사항이 있으실 경우',
+    '문의 사항이 있으실 경우',
+    '문의사항이 있으신 경우',
+    '문의 사항이 있으신 경우',
+    '본 메일로 회신 부탁',
+    '본 메일로 회신',
+    '궁금하신 사항은',
+    '감사합니다.\n넷플릭스',
+    '넷플릭스 광고팀 드림',
+  ];
+  for (const pat of cutPatterns) {
+    const idx = fullText.indexOf(pat);
+    if (idx !== -1) { fullText = fullText.substring(0, idx); break; }
+  }
+
+  // 연속 공백/개행 정리
+  fullText = fullText
+    .replace(/\r\n/g, '\n')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+  // 문단 분리 (빈 줄 기준)
+  const paragraphs = fullText
+    .split(/\n{2,}/)
+    .map(p => p.trim())
+    .filter(p => p.length > 1);
+
+  return { content: fullText, paragraphs };
 }
 
 // 에러 표시
@@ -1079,8 +1137,14 @@ async function gmailLoadMails() {
       const subject = (headers.find(h => h.name === 'Subject') || {}).value || '(제목 없음)';
       const date    = (headers.find(h => h.name === 'Date')    || {}).value || '';
       const ver     = parseVerFromSubject(subject);
-      const body    = extractBody(msg.payload);
-      return { subject, date, ver, body, id: msg.id };
+
+      // 제목에서 "넷플릭스 광고 공지사항 v**🔔" → 그대로 사용
+      const cleanSubject = subject.replace(/🔔/g,'').trim();
+
+      // 본문 파싱
+      const { paragraphs } = extractReleaseContent(msg.payload);
+
+      return { subject: cleanSubject, date, ver, paragraphs, id: msg.id };
     })
     .filter(n => n.ver)
     .sort((a, b) => b.ver.ver - a.ver.ver);
@@ -1100,17 +1164,31 @@ async function gmailLoadMails() {
       const card = document.createElement('div');
       card.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
 
-      const previewText = htmlToText(note.body);
+      // 문단을 HTML로 변환
+      const bodyHtml = note.paragraphs.length > 0
+        ? note.paragraphs.map(function(p) {
+            // 줄바꿈을 <br>로 변환, URL을 링크로 변환
+            const escaped = p
+              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+              .replace(/\n/g,'<br>');
+            const linked = escaped.replace(
+              /(https?:\/\/[^\s<]+)/g,
+              '<a href="$1" target="_blank" style="color:#E50914;text-decoration:underline;word-break:break-all;">$1</a>'
+            );
+            return '<p style="margin:0 0 10px 0;line-height:1.75;color:var(--gray-mid);font-size:13px;">' + linked + '</p>';
+          }).join('')
+        : '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
 
       card.innerHTML =
+        // ── 카드 헤더 ──
         '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
           '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">' +
             (isLatest
               ? '<span class="badge badge-new" style="flex-shrink:0;">LATEST</span>'
               : '<span class="badge badge-type" style="flex-shrink:0;">이전 버전</span>') +
             '<span style="font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;">' + note.ver.verStr + '</span>' +
-            '<span style="font-size:12px;color:var(--gray-low);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">' +
-              note.subject.replace(/v\d+/i,'').replace(/넷플릭스 광고 공지사항/,'').replace(/[🔔\s]+/g,' ').trim() +
+            '<span style="font-size:12px;color:var(--gray-hi);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">' +
+              note.subject +
             '</span>' +
           '</div>' +
           '<div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">' +
@@ -1118,17 +1196,10 @@ async function gmailLoadMails() {
             '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s,color 0.2s;">›</span>' +
           '</div>' +
         '</div>' +
+        // ── 카드 본문 ──
         '<div class="rn-card-body">' +
-          // 미리보기 텍스트
-          (previewText
-            ? '<div style="font-size:12px;color:var(--gray-low);margin-bottom:14px;line-height:1.6;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:8px;">' + previewText + '…</div>'
-            : '') +
-          // 메일 원문 iframe 방식으로 표시
-          '<div style="background:white;border-radius:8px;overflow:hidden;max-height:500px;overflow-y:auto;">' +
-            '<iframe srcdoc="' + note.body.replace(/"/g, '&quot;').replace(/\n/g,'') + '" ' +
-              'style="width:100%;min-height:400px;border:none;" ' +
-              'onload="this.style.height=this.contentDocument.body.scrollHeight+\'px\'">' +
-            '</iframe>' +
+          '<div style="padding:4px 0 8px 0;">' +
+            bodyHtml +
           '</div>' +
         '</div>';
 
