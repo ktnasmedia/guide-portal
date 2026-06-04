@@ -998,38 +998,60 @@ async function sheetsLoadNotes() {
   document.getElementById('rn-refresh-btn').style.display = 'none';
 
   try {
-    // Google Sheets JSON API (공개 시트)
+    // Google Sheets CSV export URL (공개 시트)
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
-      '/gviz/tq?tqx=out:json&sheet=릴리즈노트';
+      '/export?format=csv&sheet=릴리즈노트';
 
     const res = await fetch(url);
     if (!res.ok) throw new Error('HTTP_' + res.status);
 
     const text = await res.text();
 
-    // Google의 응답에서 JSON 추출 (google.visualization.Query.setResponse({...}); 형태)
-    const jsonStr = text.replace(/^.*?google\.visualization\.Query\.setResponse\(/, '').replace(/\);?\s*$/, '');
-    const json    = JSON.parse(jsonStr);
-    const rows    = (json.table && json.table.rows) || [];
-    const cols    = (json.table && json.table.cols) || [];
-
-    if (rows.length === 0) {
+    // CSV 파싱
+    const lines = text.trim().split('\n');
+    if (lines.length <= 1) {
       document.getElementById('rn-loading').style.display = 'none';
       document.getElementById('rn-list').innerHTML =
         '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
 
-    // 헤더 행 제외, 데이터 파싱
-    const notes = rows.map(function(row) {
-      const cells = row.c || [];
+    // CSV 한 줄 파싱 (쉼표 + 따옴표 처리)
+    function parseCSVLine(line) {
+      const result = [];
+      let cur = '', inQuote = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (ch === '"') {
+          if (inQuote && line[i+1] === '"') { cur += '"'; i++; }
+          else inQuote = !inQuote;
+        } else if (ch === ',' && !inQuote) {
+          result.push(cur); cur = '';
+        } else {
+          cur += ch;
+        }
+      }
+      result.push(cur);
+      return result;
+    }
+
+    // 헤더 제외하고 데이터 파싱
+    const notes = lines.slice(1).map(function(line) {
+      const cols = parseCSVLine(line);
       return {
-        ver    : cells[0] ? (cells[0].v || '') : '',
-        subject: cells[1] ? (cells[1].v || '') : '',
-        date   : cells[2] ? (cells[2].v || '') : '',
-        body   : cells[3] ? (cells[3].v || '') : '',
+        ver    : (cols[0] || '').trim(),
+        subject: (cols[1] || '').trim(),
+        date   : (cols[2] || '').trim(),
+        body   : (cols[3] || '').trim(),
       };
     }).filter(function(n) { return n.ver && n.ver !== '버전'; });
+
+    if (notes.length === 0) {
+      document.getElementById('rn-loading').style.display = 'none';
+      document.getElementById('rn-list').innerHTML =
+        '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
+      return;
+    }
 
     document.getElementById('rn-loading').style.display     = 'none';
     document.getElementById('rn-refresh-btn').style.display = 'inline-flex';
