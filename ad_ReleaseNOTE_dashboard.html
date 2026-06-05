@@ -981,7 +981,7 @@ function renderBody(text) {
     if (isTitleLine[i]) {
       html += '<div style="font-size:14px;font-weight:700;color:var(--white);' +
         'margin:20px 0 2px 0;">' +
-        escapeHtml(line) + '</div>';
+        line + '</div>';
       i++;
       continue;
     }
@@ -1003,7 +1003,7 @@ function renderBody(text) {
     if (line.startsWith('•')) {
       html += '<div style="display:flex;gap:8px;padding:3px 0;font-size:13px;color:var(--gray-mid);line-height:1.65;">' +
         '<span style="color:var(--red);flex-shrink:0;margin-top:2px;">•</span>' +
-        '<span>' + linkify(escapeHtml(line.substring(1).trim())) + '</span>' +
+        '<span>' + linkify(line.substring(1).trim()) + '</span>' +
         '</div>';
       i++;
       continue;
@@ -1021,7 +1021,7 @@ function renderBody(text) {
 
     // 5) 일반 텍스트
     html += '<p style="margin:0 0 6px 0;font-size:13px;color:var(--gray-mid);line-height:1.7;">' +
-      linkify(escapeHtml(line)) + '</p>';
+      linkify(line) + '</p>';
     i++;
   }
 
