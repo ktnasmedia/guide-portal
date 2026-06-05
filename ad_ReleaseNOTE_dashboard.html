@@ -1082,23 +1082,35 @@ async function sheetsLoadNotes() {
       return;
     }
 
-    // 헤더 제외, 버전 있는 행만
-    const notes = allRows.slice(1).map(function(cols) {
+    // 헤더 제외, 버전 있는 행만 파싱
+    const allNotes = allRows.slice(1).map(function(cols) {
       return {
         ver     : (cols[0] || '').trim(),
-        subject : (cols[1] || '').trim(),
+        title   : (cols[1] || '').trim(),
         date    : (cols[2] || '').trim(),
         body    : (cols[3] || '').trim(),
         category: (cols[4] || '').trim() || '공지',
       };
     }).filter(function(n) { return n.ver && n.ver !== '버전' && n.ver !== ''; });
 
-    if (notes.length === 0) {
+    if (allNotes.length === 0) {
       document.getElementById('rn-loading').style.display = 'none';
       document.getElementById('rn-list').innerHTML =
         '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
+
+    // 버전별로 묶기
+    const versionMap = {};
+    const versionOrder = [];
+    allNotes.forEach(function(n) {
+      if (!versionMap[n.ver]) {
+        versionMap[n.ver] = { ver: n.ver, date: n.date, sections: [] };
+        versionOrder.push(n.ver);
+      }
+      versionMap[n.ver].sections.push({ title: n.title, body: n.body, category: n.category });
+    });
+    const versions = versionOrder.map(function(v) { return versionMap[v]; });
 
     document.getElementById('rn-loading').style.display     = 'none';
     document.getElementById('rn-refresh-btn').style.display = 'inline-flex';
@@ -1107,7 +1119,7 @@ async function sheetsLoadNotes() {
     document.getElementById('rn-last-updated').textContent =
       '마지막 업데이트 ' + now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
 
-    // 카테고리 필터 렌더링
+    // 카테고리 색상
     const catColors = {
       '리포트' : {bg:'rgba(59,130,246,0.15)',  color:'#60A5FA', border:'rgba(59,130,246,0.3)'},
       '정책'   : {bg:'rgba(229,9,20,0.15)',    color:'#FF6B6B', border:'rgba(229,9,20,0.3)'},
@@ -1119,71 +1131,128 @@ async function sheetsLoadNotes() {
 
     // 필터 바 생성
     const filterBar = document.getElementById('rn-filter-bar');
+    const allCats   = ['전체', '리포트', '정책', '인사이트', '상품', '가이드', '공지'];
     if (filterBar) {
-      const cats = ['전체'];
-      notes.forEach(function(n) { if (cats.indexOf(n.category) === -1) cats.push(n.category); });
-      filterBar.innerHTML = cats.map(function(cat) {
+      // 실제 데이터에 있는 카테고리만 표시
+      const usedCats = ['전체'];
+      allNotes.forEach(function(n) {
+        if (usedCats.indexOf(n.category) === -1) usedCats.push(n.category);
+      });
+      filterBar.innerHTML = usedCats.map(function(cat) {
         const isAll = cat === '전체';
-        const c = isAll ? {bg:'rgba(229,9,20,0.15)',color:'#FF6B6B',border:'rgba(229,9,20,0.3)'} : (catColors[cat] || catColors['공지']);
+        const c = isAll
+          ? {bg:'rgba(229,9,20,0.15)', color:'#FF6B6B', border:'rgba(229,9,20,0.3)'}
+          : (catColors[cat] || catColors['공지']);
         return '<button onclick="filterNotes(\'' + cat + '\')" id="rn-filter-' + cat + '" ' +
           'style="padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;' +
           'background:' + (isAll ? c.bg : 'transparent') + ';' +
-          'color:' + (isAll ? c.color : 'var(--gray-low)') + ';' +
+          'color:'      + (isAll ? c.color : 'var(--gray-low)') + ';' +
           'border:1px solid ' + (isAll ? c.border : 'var(--border)') + ';">' +
           cat + '</button>';
       }).join('');
-      window._rnNotes    = notes;
-      window._catColors  = catColors;
-      window._currentCat = '전체';
     }
 
-    // 카드 렌더링 함수
-    window.renderNoteCards = function(filteredNotes) {
+    window._versions   = versions;
+    window._allNotes   = allNotes;
+    window._catColors  = catColors;
+    window._currentCat = '전체';
+
+    // 버전 카드 렌더링 함수
+    window.renderNoteCards = function(cat) {
       const list = document.getElementById('rn-list');
       list.innerHTML = '';
-      filteredNotes.forEach(function(note, idx) {
-        const isLatest = idx === 0 && window._currentCat === '전체';
-        const card = document.createElement('div');
-        card.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
-        card.setAttribute('data-category', note.category);
-        const bodyHtml = renderBody(note.body);
-        const c = catColors[note.category] || catColors['공지'];
 
-        card.innerHTML =
-          '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
-            '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">' +
-              (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">LATEST</span>' : '') +
-              '<span style="font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;">' + note.ver + '</span>' +
-              '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;flex-shrink:0;' +
-                'background:' + c.bg + ';color:' + c.color + ';border:1px solid ' + c.border + ';">' +
-                note.category + '</span>' +
-              '<span style="font-size:12px;color:var(--gray-hi);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">' +
-                note.subject.replace(/FW:/gi,'').replace(/🔔/g,'').trim() +
-              '</span>' +
+      versions.forEach(function(ver, vIdx) {
+        // 카테고리 필터 적용
+        const filteredSections = cat === '전체'
+          ? ver.sections
+          : ver.sections.filter(function(s) { return s.category === cat; });
+        if (filteredSections.length === 0) return;
+
+        const isLatest  = vIdx === 0 && cat === '전체';
+        const verCard   = document.createElement('div');
+        verCard.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
+
+        // 버전 카드 헤더에 포함된 카테고리 뱃지 목록
+        const uniqCats = [];
+        filteredSections.forEach(function(s) {
+          if (uniqCats.indexOf(s.category) === -1) uniqCats.push(s.category);
+        });
+        const catBadges = uniqCats.map(function(c) {
+          const cc = catColors[c] || catColors['공지'];
+          return '<span style="display:inline-flex;align-items:center;padding:2px 7px;border-radius:10px;' +
+            'font-size:10px;font-weight:600;background:' + cc.bg + ';color:' + cc.color + ';' +
+            'border:1px solid ' + cc.border + ';flex-shrink:0;">' + c + '</span>';
+        }).join('');
+
+        // 섹션 목록 HTML
+        const sectionsHtml = filteredSections.map(function(sec, sIdx) {
+          const c        = catColors[sec.category] || catColors['공지'];
+          const bodyHtml = renderBody(sec.body);
+          const secId    = 'sec-' + vIdx + '-' + sIdx;
+          return '<div style="border-top:1px solid var(--border);padding:14px 20px;">' +
+            // 섹션 헤더
+            '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;" onclick="toggleSection(\'' + secId + '\')">' +
+              '<span style="display:inline-flex;align-items:center;padding:2px 7px;border-radius:10px;' +
+                'font-size:10px;font-weight:600;background:' + c.bg + ';color:' + c.color + ';' +
+                'border:1px solid ' + c.border + ';flex-shrink:0;">' + sec.category + '</span>' +
+              '<span style="font-size:13px;font-weight:600;color:var(--white);flex:1;">' +
+                escapeHtmlJS(sec.title) + '</span>' +
+              '<span id="arr-' + secId + '" style="color:var(--gray-dim);font-size:18px;transition:transform 0.2s;">›</span>' +
             '</div>' +
-            '<div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">' +
-              '<span style="font-size:11px;color:var(--gray-dim);font-family:\'IBM Plex Mono\',monospace;">' + note.date + '</span>' +
-              '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s,color 0.2s;">›</span>' +
+            // 섹션 본문
+            '<div id="' + secId + '" style="display:none;">' + bodyHtml + '</div>' +
+          '</div>';
+        }).join('');
+
+        verCard.innerHTML =
+          // 버전 카드 헤더
+          '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
+            '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap;">' +
+              (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">LATEST</span>' : '') +
+              '<span style="font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;">' + ver.ver + '</span>' +
+              catBadges +
+              '<span style="font-size:11px;color:var(--gray-low);">(' + filteredSections.length + '개 항목)</span>' +
+            '</div>' +
+            '<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">' +
+              '<span style="font-size:11px;color:var(--gray-dim);font-family:\'IBM Plex Mono\',monospace;">' + ver.date + '</span>' +
+              '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s;">›</span>' +
             '</div>' +
           '</div>' +
-          '<div class="rn-card-body">' +
-            '<div style="padding:4px 0 8px 0;">' + bodyHtml + '</div>' +
-          '</div>';
+          // 섹션 목록
+          '<div class="rn-card-body">' + sectionsHtml + '</div>';
 
-        list.appendChild(card);
+        list.appendChild(verCard);
       });
 
-      // 최신 버전 자동 펼치기
+      // 최신 버전 자동 펼치기 + 첫 섹션 펼치기
       const firstHeader = list.querySelector('.rn-card-header');
-      if (firstHeader) toggleRnCard(firstHeader);
+      if (firstHeader) {
+        toggleRnCard(firstHeader);
+        const firstSec = list.querySelector('[id^="sec-0-0"]');
+        if (firstSec) toggleSection(firstSec.id);
+      }
     };
 
-    // 카테고리 필터 함수
+    // 섹션 토글
+    window.toggleSection = function(id) {
+      const el    = document.getElementById(id);
+      const arrow = document.getElementById('arr-' + id);
+      if (!el) return;
+      const isOpen = el.style.display !== 'none';
+      el.style.display    = isOpen ? 'none' : 'block';
+      if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+    };
+
+    // HTML 이스케이프 (JS용)
+    window.escapeHtmlJS = function(str) {
+      return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    };
+
+    // 카테고리 필터
     window.filterNotes = function(cat) {
       window._currentCat = cat;
-      // 버튼 스타일 업데이트
-      const allCats = ['전체', '리포트', '정책', '인사이트', '상품', '가이드', '공지'];
-      allCats.forEach(function(c) {
+      allCats.concat(['전체']).forEach(function(c) {
         const btn = document.getElementById('rn-filter-' + c);
         if (!btn) return;
         const cc = c === '전체'
@@ -1199,14 +1268,11 @@ async function sheetsLoadNotes() {
           btn.style.border     = '1px solid var(--border)';
         }
       });
-      const filtered = cat === '전체'
-        ? window._rnNotes
-        : window._rnNotes.filter(function(n) { return n.category === cat; });
-      window.renderNoteCards(filtered);
+      window.renderNoteCards(cat);
     };
 
     // 초기 렌더
-    window.renderNoteCards(notes);
+    window.renderNoteCards('전체');
 
   } catch(err) {
     showRnError(
