@@ -943,7 +943,7 @@ function renderBody(text) {
     return '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
   }
 
-  var tagWords = ['업데이트', '리마인드', '안내', '변경', '추가', '신규', '정책 변경', '정책변경'];
+  var tagWords = ['업데이트', '리마인드'];
 
   // 줄 배열 (빈 줄 포함)
   var lines = text.split('\n');
@@ -988,9 +988,11 @@ function renderBody(text) {
 
     // 2) 태그 키워드 → 작은 뱃지
     if (tagWords.indexOf(line) !== -1) {
-      var tagColor = line === '리마인드' ? '#FB923C' : '#E50914';
-      html += '<span style="display:inline-block;background:rgba(229,9,20,0.15);color:' + tagColor + ';' +
-        'border:1px solid rgba(229,9,20,0.3);border-radius:4px;font-size:10px;font-weight:700;' +
+      var tc = line === '리마인드'
+        ? 'background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);'
+        : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);';
+      html += '<span style="display:inline-block;' + tc +
+        'border-radius:4px;font-size:10px;font-weight:700;' +
         'padding:2px 8px;margin:4px 0 8px 0;letter-spacing:0.05em;">' +
         escapeHtml(line) + '</span>';
       i++;
@@ -1207,14 +1209,13 @@ async function sheetsLoadNotes() {
             'border:1px solid ' + cc.border + ';flex-shrink:0;">' + c + '</span>';
         }).join('');
 
-        // 섹션 HTML
+        // 섹션 HTML — 표 구조 (왼쪽: 제목+카테고리 / 오른쪽: 태그+본문)
         const sectionsHtml = filteredSections.map(function(sec, sIdx) {
           const c        = catColors[sec.category] || catColors['공지'];
           const bodyHtml = renderBody(sec.body);
-          const secId    = 'sec-v' + vIdx + 's' + sIdx;
 
-          // 태그 추출
-          const tagMatch = sec.body.match(/^(업데이트|리마인드|안내|신규|추가|변경)/m);
+          // 태그 추출 (업데이트/리마인드)
+          const tagMatch = sec.body.match(/^(업데이트|리마인드)/m);
           var tagHtml = '';
           if (tagMatch) {
             const tw = tagMatch[1];
@@ -1222,23 +1223,22 @@ async function sheetsLoadNotes() {
               ? 'background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);'
               : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);';
             tagHtml = '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;' +
-              'font-size:10px;font-weight:700;flex-shrink:0;' + tc + '">' + tw + '</span>';
+              'font-size:10px;font-weight:700;flex-shrink:0;' + tc + 'margin-bottom:10px;">' + tw + '</span>';
           }
 
-          return '<div style="border-top:1px solid var(--border);">' +
-            '<div onclick="toggleSection(\'' + secId + '\')" ' +
-              'style="display:flex;align-items:center;gap:8px;padding:12px 20px;cursor:pointer;transition:background 0.15s;" ' +
-              'onmouseover="this.style.background=\'rgba(255,255,255,0.03)\'" ' +
-              'onmouseout="this.style.background=\'transparent\'">' +
-              '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;' +
-                'font-size:10px;font-weight:600;flex-shrink:0;background:' + c.bg + ';color:' + c.color + ';' +
+          return '<div style="display:grid;grid-template-columns:180px 1fr;border-top:1px solid var(--border);">' +
+            // 왼쪽: 섹션 제목 + 카테고리
+            '<div style="padding:16px 18px;border-right:1px solid var(--border);background:rgba(255,255,255,0.02);">' +
+              '<div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.5;">' +
+                escapeHtmlJS(sec.title) +
+              '</div>' +
+              '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;' +
+                'font-size:10px;font-weight:600;background:' + c.bg + ';color:' + c.color + ';' +
                 'border:1px solid ' + c.border + ';">' + sec.category + '</span>' +
-              '<span style="font-size:13px;font-weight:600;color:var(--white);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' +
-                escapeHtmlJS(sec.title) + '</span>' +
-              (tagHtml ? tagHtml : '') +
-              '<span id="arr-' + secId + '" style="color:var(--gray-dim);font-size:18px;flex-shrink:0;transition:transform 0.2s;">›</span>' +
             '</div>' +
-            '<div id="' + secId + '" style="display:none;padding:0 20px 16px 20px;">' +
+            // 오른쪽: 태그 + 본문
+            '<div style="padding:16px 18px;">' +
+              (tagHtml ? '<div>' + tagHtml + '</div>' : '') +
               bodyHtml +
             '</div>' +
           '</div>';
@@ -1259,7 +1259,7 @@ async function sheetsLoadNotes() {
               '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s;">›</span>' +
             '</div>' +
           '</div>' +
-          '<div class="rn-card-body">' + sectionsHtml + '</div>';
+          '<div class="rn-card-body" style="padding:0;">' + sectionsHtml + '</div>';
 
         list.appendChild(verCard);
       });
