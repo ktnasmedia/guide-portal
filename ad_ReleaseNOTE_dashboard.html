@@ -999,7 +999,7 @@ function renderBody(text) {
       html += '<span style="display:inline-block;' + tc +
         'border-radius:4px;font-size:10px;font-weight:700;' +
         'padding:2px 8px;margin:4px 0 8px 0;letter-spacing:0.05em;">' +
-        escapeHtml(line) + '</span>';
+        line + '</span>';
       i++;
       continue;
     }
@@ -1287,8 +1287,14 @@ async function sheetsLoadNotes() {
               '<span style="font-size:11px;color:var(--gray-dim);font-family:\'IBM Plex Mono\',monospace;">' + ver.date + '</span>' +
               '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s;">›</span>' +
             '</div>' +
-          '</div>' +
-          '<div class="rn-card-body" style="padding:0;">' + sectionsHtml + '</div>';
+          '</div>';
+
+        // 섹션 본문은 DOM으로 직접 추가 (HTML 이중 파싱 방지)
+        const bodyWrap = document.createElement('div');
+        bodyWrap.className = 'rn-card-body';
+        bodyWrap.style.padding = '0';
+        bodyWrap.innerHTML = sectionsHtml;
+        verCard.appendChild(bodyWrap);
 
         list.appendChild(verCard);
       });
