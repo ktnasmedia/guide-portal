@@ -204,6 +204,21 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .stat-card{background:var(--black-card);border:1px solid var(--border);border-radius:10px;padding:16px;}
 .stat-num{font-size:26px;font-weight:700;color:var(--white);line-height:1;margin-bottom:4px;}
 .stat-label{font-size:11px;color:var(--gray-low);}
+
+/* Release Note 문서 스타일 */
+.rn-doc{background:var(--black-card);border:1px solid var(--border);border-radius:12px;margin-bottom:14px;overflow:hidden;}
+.rn-doc-header{padding:18px 24px 14px;border-bottom:2px solid var(--red);}
+.rn-doc-ver{font-size:18px;font-weight:800;color:var(--white);margin-bottom:2px;}
+.rn-doc-date{font-size:11px;color:var(--gray-low);font-family:'IBM Plex Mono',monospace;}
+.rn-section{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--border);}
+.rn-section:last-child{border-bottom:none;}
+.rn-section-left{padding:18px 20px;border-right:1px solid var(--border);background:rgba(255,255,255,0.02);}
+.rn-section-right{padding:18px 20px;}
+.rn-section-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.5;}
+.rn-section-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:0.03em;}
+.rn-tag-update{background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);}
+.rn-tag-remind{background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);}
+.rn-tag-new{background:rgba(34,197,94,0.15);color:#4ADE80;border:1px solid rgba(34,197,94,0.3);}
 </style>
 </head>
 <body>
@@ -1157,96 +1172,81 @@ async function sheetsLoadNotes() {
     window._catColors  = catColors;
     window._currentCat = '전체';
 
-    // 버전 카드 렌더링 함수
+    // 버전 문서형 렌더링 함수
     window.renderNoteCards = function(cat) {
       const list = document.getElementById('rn-list');
       list.innerHTML = '';
 
       versions.forEach(function(ver, vIdx) {
-        // 카테고리 필터 적용
         const filteredSections = cat === '전체'
           ? ver.sections
           : ver.sections.filter(function(s) { return s.category === cat; });
         if (filteredSections.length === 0) return;
 
-        const isLatest  = vIdx === 0 && cat === '전체';
-        const verCard   = document.createElement('div');
-        verCard.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
+        const isLatest = vIdx === 0 && cat === '전체';
 
-        // 버전 카드 헤더에 포함된 카테고리 뱃지 목록
-        const uniqCats = [];
-        filteredSections.forEach(function(s) {
-          if (uniqCats.indexOf(s.category) === -1) uniqCats.push(s.category);
-        });
-        const catBadges = uniqCats.map(function(c) {
-          const cc = catColors[c] || catColors['공지'];
-          return '<span style="display:inline-flex;align-items:center;padding:2px 7px;border-radius:10px;' +
-            'font-size:10px;font-weight:600;background:' + cc.bg + ';color:' + cc.color + ';' +
-            'border:1px solid ' + cc.border + ';flex-shrink:0;">' + c + '</span>';
-        }).join('');
+        // 버전 문서 컨테이너
+        const doc = document.createElement('div');
+        doc.className = 'rn-doc';
 
-        // 섹션 목록 HTML
-        const sectionsHtml = filteredSections.map(function(sec, sIdx) {
-          const c        = catColors[sec.category] || catColors['공지'];
-          const bodyHtml = renderBody(sec.body);
-          const secId    = 'sec-' + vIdx + '-' + sIdx;
-          return '<div style="border-top:1px solid var(--border);padding:14px 20px;">' +
-            // 섹션 헤더
-            '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;cursor:pointer;" onclick="toggleSection(\'' + secId + '\')">' +
-              '<span style="display:inline-flex;align-items:center;padding:2px 7px;border-radius:10px;' +
-                'font-size:10px;font-weight:600;background:' + c.bg + ';color:' + c.color + ';' +
-                'border:1px solid ' + c.border + ';flex-shrink:0;">' + sec.category + '</span>' +
-              '<span style="font-size:13px;font-weight:600;color:var(--white);flex:1;">' +
-                escapeHtmlJS(sec.title) + '</span>' +
-              '<span id="arr-' + secId + '" style="color:var(--gray-dim);font-size:18px;transition:transform 0.2s;">›</span>' +
+        // 버전 헤더
+        const headerHtml =
+          '<div class="rn-doc-header">' +
+            '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">' +
+              (isLatest ? '<span class="badge badge-new">LATEST</span>' : '') +
             '</div>' +
-            // 섹션 본문
-            '<div id="' + secId + '" style="display:none;">' + bodyHtml + '</div>' +
+            '<div class="rn-doc-ver">RELEASE NOTE ' + ver.ver.toUpperCase() +
+              (ver.date ? ' (' + ver.date + ')' : '') + '</div>' +
+          '</div>';
+
+        // 섹션 목록
+        const sectionsHtml = filteredSections.map(function(sec) {
+          const c       = catColors[sec.category] || catColors['공지'];
+          const bodyHtml = renderBody(sec.body);
+
+          // 태그 추출 (업데이트/리마인드 등)
+          const tagMatch = sec.body.match(/^(업데이트|리마인드|안내|신규|추가|변경)/m);
+          var tagHtml = '';
+          if (tagMatch) {
+            const tagWord = tagMatch[1];
+            const tagClass = tagWord === '리마인드' ? 'rn-tag-remind' : 'rn-tag-update';
+            tagHtml = '<span class="rn-section-tag ' + tagClass + '">' + tagWord + '</span>';
+          }
+
+          return '<div class="rn-section">' +
+            // 왼쪽: 섹션 제목 + 카테고리
+            '<div class="rn-section-left">' +
+              '<div class="rn-section-title">' + escapeHtmlJS(sec.title) + '</div>' +
+              '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;' +
+                'font-size:10px;font-weight:600;background:' + c.bg + ';color:' + c.color + ';' +
+                'border:1px solid ' + c.border + ';">' + sec.category + '</span>' +
+            '</div>' +
+            // 오른쪽: 태그 + 본문
+            '<div class="rn-section-right">' +
+              (tagHtml ? '<div style="margin-bottom:10px;">' + tagHtml + '</div>' : '') +
+              bodyHtml +
+            '</div>' +
           '</div>';
         }).join('');
 
-        verCard.innerHTML =
-          // 버전 카드 헤더
-          '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
-            '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap;">' +
-              (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">LATEST</span>' : '') +
-              '<span style="font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;">' + ver.ver + '</span>' +
-              catBadges +
-              '<span style="font-size:11px;color:var(--gray-low);">(' + filteredSections.length + '개 항목)</span>' +
-            '</div>' +
-            '<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">' +
-              '<span style="font-size:11px;color:var(--gray-dim);font-family:\'IBM Plex Mono\',monospace;">' + ver.date + '</span>' +
-              '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s;">›</span>' +
-            '</div>' +
-          '</div>' +
-          // 섹션 목록
-          '<div class="rn-card-body">' + sectionsHtml + '</div>';
-
-        list.appendChild(verCard);
+        doc.innerHTML = headerHtml + sectionsHtml;
+        list.appendChild(doc);
       });
-
-      // 최신 버전 자동 펼치기 + 첫 섹션 펼치기
-      const firstHeader = list.querySelector('.rn-card-header');
-      if (firstHeader) {
-        toggleRnCard(firstHeader);
-        const firstSec = list.querySelector('[id^="sec-0-0"]');
-        if (firstSec) toggleSection(firstSec.id);
-      }
     };
 
-    // 섹션 토글
+    // 섹션 토글 (레거시 유지)
     window.toggleSection = function(id) {
       const el    = document.getElementById(id);
       const arrow = document.getElementById('arr-' + id);
       if (!el) return;
       const isOpen = el.style.display !== 'none';
-      el.style.display    = isOpen ? 'none' : 'block';
+      el.style.display = isOpen ? 'none' : 'block';
       if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
     };
 
-    // HTML 이스케이프 (JS용)
+    // HTML 이스케이프
     window.escapeHtmlJS = function(str) {
-      return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     };
 
     // 카테고리 필터
