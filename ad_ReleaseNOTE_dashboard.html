@@ -1037,23 +1037,20 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// URL을 클릭 가능한 링크로 변환 (URL 주소 숨기고 텍스트로 표시)
+// URL을 클릭 가능한 링크로 변환
 function linkify(str) {
-  // "텍스트 (URL)" 패턴 → 텍스트만 링크로 표시
-  str = str.replace(/([^(\s][^(]*?)\s*\((https?:\/\/[^)]+)\)/g, function(m, text, url) {
+  // "텍스트 (URL)" 패턴 → 텍스트에 링크 적용
+  str = str.replace(/([^(\n\r]+?)\s*\((https?:\/\/[^)\s]+)\)/g, function(m, text, url) {
     text = text.trim();
-    if (!text) return m;
-    return '<a href="' + url + '" target="_blank" ' +
-      'style="color:var(--red);text-decoration:underline;font-size:13px;">' +
-      text + ' ↗</a>';
+    if (!text) {
+      return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
+    }
+    return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">' + text + ' ↗</a>';
   });
   // 단독 URL → 링크 ↗
-  str = str.replace(/(https?:\/\/[^\s<]+)/g, function(url) {
-    var cleanUrl = url.replace(/[).,]+$/, '');
-    var suffix   = url.substring(cleanUrl.length);
-    return '<a href="' + cleanUrl + '" target="_blank" ' +
-      'style="color:var(--red);text-decoration:underline;font-size:13px;">' +
-      '링크 ↗</a>' + suffix;
+  str = str.replace(/(https?:\/\/[^\s<)\]]+)/g, function(url) {
+    var cleanUrl = url.replace(/[).,\]]+$/, '');
+    return '<a href="' + cleanUrl + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
   });
   return str;
 }
