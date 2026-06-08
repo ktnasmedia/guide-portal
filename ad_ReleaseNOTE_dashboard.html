@@ -1042,18 +1042,14 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// URL을 클릭 가능한 링크로 변환
+// URL을 클릭 가능한 링크로 변환 (마크다운 [텍스트](URL) 형식 지원)
 function linkify(str) {
-  // "텍스트 (URL)" 패턴 → 텍스트에 링크 적용
-  str = str.replace(/([^(\n\r]+?)\s*\((https?:\/\/[^)\s]+)\)/g, function(m, text, url) {
-    text = text.trim();
-    if (!text) {
-      return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
-    }
+  // [텍스트](URL) 마크다운 패턴
+  str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, function(m, text, url) {
     return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">' + text + ' ↗</a>';
   });
   // 단독 URL → 링크 ↗
-  str = str.replace(/(https?:\/\/[^\s<)\]]+)/g, function(url) {
+  str = str.replace(/(https?:\/\/[^\s<)\]"]+)/g, function(url) {
     var cleanUrl = url.replace(/[).,\]]+$/, '');
     return '<a href="' + cleanUrl + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
   });
