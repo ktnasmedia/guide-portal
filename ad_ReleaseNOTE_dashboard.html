@@ -1044,14 +1044,17 @@ function escapeHtml(str) {
 
 // URL을 클릭 가능한 링크로 변환 (마크다운 [텍스트](URL) 형식 지원)
 function linkify(str) {
-  // [텍스트](URL) 마크다운 패턴
-  str = str.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, function(m, text, url) {
+  // [텍스트](URL) 마크다운 패턴 — 텍스트 안에 괄호 포함 가능
+  str = str.replace(/\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g, function(m, text, url) {
+    url  = url.replace(/["'\s]+$/, '').trim();
+    text = text.replace(/[()]/g, '').trim(); // 텍스트에서 괄호 제거
+    if (!text) text = '링크';
     return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">' + text + ' ↗</a>';
   });
-  // 단독 URL → 링크 ↗
-  str = str.replace(/(https?:\/\/[^\s<)\]"]+)/g, function(url) {
-    var cleanUrl = url.replace(/[).,\]]+$/, '');
-    return '<a href="' + cleanUrl + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
+  // 단독 URL
+  str = str.replace(/(https?:\/\/[^\s<)\]"']+)/g, function(url) {
+    url = url.replace(/[).,\]]+$/, '');
+    return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
   });
   return str;
 }
