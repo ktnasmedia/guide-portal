@@ -1287,7 +1287,14 @@ async function sheetsLoadNotes() {
           }
 
           const bodyEl = document.createElement('div');
-          bodyEl.innerHTML = renderBody(bodyForRender);
+          // CSV에서 읽은 HTML 엔티티 디코딩
+          var decodedBody = bodyForRender
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&#39;/g, "'");
+          bodyEl.innerHTML = renderBody(decodedBody);
           rightDiv.appendChild(bodyEl);
 
           secDiv.appendChild(leftDiv);
