@@ -1044,18 +1044,29 @@ function escapeHtml(str) {
 
 // URL을 클릭 가능한 링크로 변환 (마크다운 [텍스트](URL) 형식 지원)
 function linkify(str) {
-  // [텍스트](URL) 마크다운 패턴 — 텍스트 안에 괄호 포함 가능
+  // 1단계: [텍스트](URL) 마크다운 패턴을 플레이스홀더로 교체
+  var links = [];
   str = str.replace(/\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g, function(m, text, url) {
     url  = url.replace(/["'\s]+$/, '').trim();
-    text = text.replace(/[()]/g, '').trim(); // 텍스트에서 괄호 제거
+    text = text.replace(/[()]/g, '').trim();
     if (!text) text = '링크';
-    return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">' + text + ' ↗</a>';
+    var html = '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">' + text + ' ↗</a>';
+    var placeholder = '%%LINK' + links.length + '%%';
+    links.push(html);
+    return placeholder;
   });
-  // 단독 URL
+
+  // 2단계: 남은 단독 URL 처리
   str = str.replace(/(https?:\/\/[^\s<)\]"']+)/g, function(url) {
     url = url.replace(/[).,\]]+$/, '');
     return '<a href="' + url + '" target="_blank" style="color:var(--red);text-decoration:underline;">링크 ↗</a>';
   });
+
+  // 3단계: 플레이스홀더를 실제 링크로 복원
+  links.forEach(function(html, i) {
+    str = str.replace('%%LINK' + i + '%%', html);
+  });
+
   return str;
 }
 
