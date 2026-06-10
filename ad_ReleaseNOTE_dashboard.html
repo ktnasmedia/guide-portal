@@ -136,7 +136,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-noimg svg{width:32px;height:32px;opacity:0.6;}
 .cl-noimg span{font-size:12px;}
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
-.cl-orig{display:inline-block;align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;margin-bottom:8px;}
+.cl-poster-wrap{position:relative;}
+.cl-orig{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .cl-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
 .cl-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.35;}
 .cl-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;letter-spacing:0.03em;}
@@ -1066,13 +1067,13 @@ function clRender(){
     const y = clYear(d.release_date), qq = clQuarter(d.release_date);
     const q = (y&&qq) ? ` <span style="color:var(--gray-dim);">(${y} ${qq})</span>` : '';
     const noImgHtml = `<div class="cl-noimg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/><path d="M3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/><path d="M14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/><line x1="3" y1="3" x2="21" y2="21"/></svg><span>관련 이미지 없음</span></div>`;
-    const poster = clIsEmpty(d.poster_url)
+    const posterInner = clIsEmpty(d.poster_url)
       ? noImgHtml
       : `<img class="cl-poster" src="${clEsc(d.poster_url)}" alt="${clEsc(d.title)} 포스터" loading="lazy" onerror="clImgFail(this)">`;
+    const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}</div>`;
     return `<div class="cl-card">
       ${poster}
       <div class="cl-card-body">
-        ${origBadge}
         <div class="cl-card-head"><div class="cl-title">${clEsc(d.title)}</div>${badge}</div>
         <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
