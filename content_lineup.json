@@ -1,0 +1,243 @@
+{
+  "_comment": "샘플 데이터. 실제 넷플릭스 뉴스룸(about.netflix.com/ko/newsroom) 기사 기반. _meta는 화면에 노출되지 않는 내부 관리용. release_date 등 null/빈배열은 화면에 '미정' 표시.",
+  "generated_at": "2026-06-09T00:00:00+09:00",
+  "items": [
+    {
+      "content_id": "nf-paperman",
+      "title": "페이퍼맨",
+      "title_original": "페이퍼맨",
+      "poster_url": null,
+      "cast": [
+        "조정석",
+        "박해수",
+        "수현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": "평생 누구에게도 인정받지 못하던 차명조가 완벽한 위조지폐를 만들어내며 위험한 세계에 발을 들이게 되는 예측 불가 범죄 드라마.",
+      "content_type": "시리즈",
+      "genres": [
+        "범죄",
+        "드라마"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개예정",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "cast": "netflix_newsroom",
+          "summary": "netflix_newsroom",
+          "genres": "netflix_newsroom",
+          "content_type": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-09",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/newsroom"
+      }
+    },
+    {
+      "content_id": "nf-cross-2",
+      "title": "크로스 2",
+      "title_original": "크로스 2",
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/3lKmEiHFjT19mSfTFBi3f/9da1acf2811185a5aba423b7e2ba5048/CROSS2_BTS_READING_52581.jpg",
+      "cast": [
+        "황정민",
+        "염정아",
+        "정만식",
+        "차래형",
+        "이호철",
+        "윤경호",
+        "임성재",
+        "차인표",
+        "김국희"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": "정체불명의 조직에 탈취된 문화재를 되찾기 위해 강무·미선 부부가 일생일대의 작전에 뛰어드는 오락 액션 영화. <크로스>의 속편.",
+      "content_type": "영화",
+      "genres": [
+        "액션",
+        "코미디"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개예정",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "cast": "netflix_newsroom",
+          "summary": "netflix_newsroom",
+          "genres": "netflix_newsroom",
+          "content_type": "netflix_newsroom",
+          "poster_url": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2025-11-13",
+        "needs_review": false,
+        "source_url": "https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement"
+      }
+    },
+    {
+      "content_id": "nf-the-dealer",
+      "title": "딜러",
+      "title_original": "딜러",
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/Kfjtyl0QfunXo4ionpugX/d9fa54287dede04fd1ff84d0ed344930/The_Dealer_Unit_A-06133-1.jpg",
+      "cast": [
+        "정소민",
+        "류승범",
+        "이수혁",
+        "류경수"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": "결혼 성사를 위해 모든 것을 거는 인물들의 이야기를 그린 시리즈. 제작 확정 및 캐스팅 공개 단계.",
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개예정",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "cast": "netflix_newsroom",
+          "content_type": "netflix_newsroom",
+          "poster_url": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-01-13",
+        "needs_review": false,
+        "source_url": "https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer"
+      }
+    },
+    {
+      "content_id": "nf-grand-galaxy-hotel",
+      "title": "그랜드 갤럭시 호텔",
+      "title_original": "그랜드 갤럭시 호텔",
+      "poster_url": null,
+      "cast": [
+        "이도현",
+        "신시아",
+        "이수혁",
+        "이수현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": "[환혼] 홍자매 작가와 <멜로무비> 오충환 감독이 다시 뭉친 시리즈. 제작 확정 및 캐스팅 공개 단계.",
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개예정",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "cast": "netflix_newsroom",
+          "content_type": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2025-10-13",
+        "needs_review": false,
+        "source_url": "https://about.netflix.com/ko/news/grand-galaxy-hotel-production"
+      }
+    },
+    {
+      "content_id": "nf-can-this-love-be-translated",
+      "title": "이 사랑 통역 되나요?",
+      "title_original": "이 사랑 통역 되나요?",
+      "poster_url": null,
+      "cast": [
+        "김선호",
+        "고윤정"
+      ],
+      "release_date": "2026-01-16",
+      "release_year": 2026,
+      "release_quarter": "2026 Q1",
+      "summary": "다중언어 통역사와 글로벌 톱스타가 펼치는 예측불가 로맨스 시리즈.",
+      "content_type": "시리즈",
+      "genres": [
+        "로맨스"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개중",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "cast": "netflix_newsroom",
+          "release_date": "netflix_newsroom",
+          "summary": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2025-12-18",
+        "needs_review": false,
+        "source_url": "https://about.netflix.com/ko/news/can-this-love-be-translated-premieres-jan-16"
+      }
+    },
+    {
+      "content_id": "nf-bloodhounds-2",
+      "title": "사냥개들 시즌2",
+      "title_original": "사냥개들 시즌2",
+      "poster_url": null,
+      "cast": [],
+      "release_date": "2026-04-03",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "더 강하게 돌아온 액션 시리즈 <사냥개들>의 두 번째 시즌.",
+      "content_type": "시리즈",
+      "genres": [
+        "액션"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개예정",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "release_date": "netflix_newsroom",
+          "summary": "netflix_newsroom",
+          "genres": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-03-04",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/bloodhounds-season-2-premieres-april-3"
+      }
+    },
+    {
+      "content_id": "nf-physical-asia",
+      "title": "피지컬: 아시아",
+      "title_original": "피지컬: 아시아",
+      "poster_url": null,
+      "cast": [],
+      "release_date": "2025-10-28",
+      "release_year": 2025,
+      "release_quarter": "2025 Q4",
+      "summary": "국가를 대표하는 출전자들이 펼치는 서바이벌 예능.",
+      "content_type": "예능",
+      "genres": [
+        "서바이벌"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": "공개중",
+      "_meta": {
+        "sources": {
+          "title": "netflix_newsroom",
+          "release_date": "netflix_newsroom",
+          "summary": "netflix_newsroom",
+          "content_type": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2025-09-30",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/physical-asia-premieres-october-28"
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OTT 콘텐츠 라인업 공통 스키마 (넷플릭스/티빙 공용)",
+  "description": "자동 수집(TMDB/JustWatch) + 보조 확인(나무위키)을 하나의 구조로 통합. OTT만 바꾸면 그대로 재사용.",
+  "type": "object",
+  "properties": {
+    "content_id": {
+      "type": "string",
+      "description": "고유 식별자. TMDB id 기반 권장 (예: 'tmdb-tv-12345'). 매칭/중복제거 키."
+    },
+    "title": {
+      "type": "string",
+      "description": "콘텐츠명 (한국어 우선, 없으면 원제)"
+    },
+    "title_original": {
+      "type": ["string", "null"],
+      "description": "원제"
+    },
+    "poster_url": {
+      "type": ["string", "null"],
+      "description": "대표 이미지 URL (통합 1장). 우선순위: ① 넷플릭스 뉴스룸 기사의 og:image(캐스팅 단체컷·키 비주얼) ② TMDB 포스터('https://image.tmdb.org/t/p/w500'+poster_path) ③ 둘 다 없으면 null → 화면에 '관련 이미지 없음' 표시. 개별 배우 프로필 사진은 사용하지 않음."
+    },
+    "cast": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "주요 출연자 (상위 5명 권장). 비어있으면 '미정' 렌더링."
+    },
+    "release_date": {
+      "type": ["string", "null"],
+      "description": "공개일자 YYYY-MM-DD. 미확정이면 null → '미정' 렌더링."
+    },
+    "release_year": {
+      "type": ["integer", "null"],
+      "description": "release_date에서 자동 파생"
+    },
+    "release_quarter": {
+      "type": ["string", "null"],
+      "description": "release_date에서 자동 파생 (Q1~Q4). 예: '2025 Q3'"
+    },
+    "summary": {
+      "type": ["string", "null"],
+      "description": "줄거리 간략 요약 (1~2문장). 없으면 '미정'."
+    },
+    "content_type": {
+      "type": "string",
+      "enum": ["시리즈", "예능", "다큐", "영화", "애니메이션", "미정"],
+      "description": "콘텐츠 분류"
+    },
+    "genres": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "장르 (드라마, 액션, 로맨스 등). 비어있으면 '미정'."
+    },
+    "rating": {
+      "type": ["string", "null"],
+      "description": "시청등급 (전체, 12세, 15세, 청소년관람불가 등). 없으면 '미정'."
+    },
+    "ott": {
+      "type": "string",
+      "enum": ["netflix", "tving"],
+      "description": "제공 OTT. 이 값으로 넷플릭스/티빙 라인업 분기."
+    },
+    "availability_status": {
+      "type": "string",
+      "enum": ["공개예정", "공개중", "종료", "미정"],
+      "description": "JustWatch/Watchmode 기준 가용성"
+    },
+    "_meta": {
+      "type": "object",
+      "description": "필드별 출처와 신뢰도를 분리 관리. 자동 갱신·검수의 핵심.",
+      "properties": {
+        "sources": {
+          "type": "object",
+          "description": "각 필드가 어디서 왔는지 기록. 값 종류: 'tmdb', 'justwatch', 'netflix_newsroom', 'namuwiki', 'manual'. 예: { 'cast': 'netflix_newsroom', 'release_date': 'tmdb' }"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["confirmed", "tentative", "unverified"],
+          "description": "confirmed=공식(TMDB/JustWatch/넷플릭스 뉴스룸), tentative=교차검증 일부, unverified=나무위키 등 비공식 단독 출처. 주의: 이 값은 화면에 노출되지 않는 내부 관리용. 화면의 '미정'은 값이 비어있을(null/빈배열) 때만 표시됨."
+        },
+        "last_updated": {
+          "type": "string",
+          "description": "마지막 자동 갱신 일시 (ISO 8601)"
+        },
+        "needs_review": {
+          "type": "boolean",
+          "description": "비공식 출처로만 채워진 필드가 있어 사람 검수가 권장되는지"
+        }
+      }
+    }
+  },
+  "required": ["content_id", "title", "ott", "content_type", "_meta"]
+}

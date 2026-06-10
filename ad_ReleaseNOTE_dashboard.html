@@ -114,6 +114,32 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .info-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s;}
 .info-card:hover{border-color:#3a3a3a;}
 
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
+.cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:22px;}
+.cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;}
+.cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
+.cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
+.cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
+.cl-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;display:flex;flex-direction:column;}
+.cl-card:hover{border-color:#3a3a3a;}
+.cl-poster{width:100%;aspect-ratio:2/3;max-height:300px;object-fit:cover;background:#252525;display:block;}
+.cl-noimg{width:100%;aspect-ratio:2/3;max-height:300px;background:repeating-linear-gradient(45deg,#202020,#202020 10px,#242424 10px,#242424 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5a5a5a;}
+.cl-noimg svg{width:32px;height:32px;opacity:0.6;}
+.cl-noimg span{font-size:12px;}
+.cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
+.cl-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.cl-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.35;}
+.cl-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;letter-spacing:0.03em;}
+.cl-badge-live{background:rgba(34,197,94,0.16);color:#4ade80;}
+.cl-badge-soon{background:rgba(229,9,20,0.15);color:#f87171;}
+.cl-meta{font-size:12px;color:var(--gray-mid);line-height:1.7;margin:2px 0;}
+.cl-meta b{color:var(--gray-hi);font-weight:600;}
+.cl-tbd{color:var(--gray-dim);font-style:italic;}
+.cl-sum{font-size:12px;color:var(--gray-low);line-height:1.65;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);flex-grow:1;}
+.cl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.cl-tag{font-size:10.5px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,0.05);color:var(--gray-mid);}
+.cl-src{font-size:10px;color:var(--gray-dim);margin-top:12px;}
+
 .link-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all 0.2s;}
 .link-card:hover{border-color:var(--red);background:rgba(229,9,20,0.06);}
 .link-card-special{background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);}
@@ -721,21 +747,27 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <div id="page-content" class="page">
       <div class="breadcrumb"><span class="breadcrumb-cur">콘텐츠 라인업</span></div>
       <div style="margin-bottom:24px;"><h1 class="page-title">콘텐츠 라인업</h1><p class="page-desc">Q3 2025 넷플릭스 편성 예정 주요 콘텐츠</p></div>
-      <div class="sub-tab-bar">
-        <div class="sub-tab tab-active" id="tab-content-q3" onclick="switchTab('content','q3')">Q3 2025</div>
-        <div class="sub-tab" id="tab-content-q4" onclick="switchTab('content','q4')">Q4 2025 (예정)</div>
+      <div class="section-bar" style="margin-bottom:18px;">
+        <div class="section-accent"></div>
+        <span class="section-label">자동 업데이트 · 출처 넷플릭스 뉴스룸/TMDB</span>
+        <button class="section-bar-btn" id="cl-refresh" onclick="loadContentLineup()">↻ 새로고침</button>
       </div>
-      <div id="tc-content-q3">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">Q3 2025 주요 기대작</span></div>
-        <div class="card-grid">
-          <div class="info-card"><div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;">드라마 · 7월</div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">오리지널 한국 드라마</div><div style="font-size:12px;color:var(--gray-low);">전연령 · 예상 Top 10 진입</div></div>
-          <div class="info-card"><div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;">액션 · 8월</div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">글로벌 오리지널 시리즈</div><div style="font-size:12px;color:var(--gray-low);">25~44세 남성 주요 타깃</div></div>
-          <div class="info-card"><div style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:0.08em;margin-bottom:8px;">다큐 · 9월</div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;">자연 다큐멘터리 시리즈</div><div style="font-size:12px;color:var(--gray-low);">전연령 · 가족 타깃 적합</div></div>
-        </div>
+
+      <div class="cl-filters">
+        <span class="cl-filter-label">분류</span>
+        <div class="cl-chip cl-on" data-grp="type" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="type" data-val="시리즈" onclick="clFilter(this)">시리즈</div>
+        <div class="cl-chip" data-grp="type" data-val="영화" onclick="clFilter(this)">영화</div>
+        <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
+        <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
+        <span class="cl-filter-label" style="margin-left:14px;">분기</span>
+        <div class="cl-chip cl-on" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="q" data-val="공개중" onclick="clFilter(this)">공개중</div>
+        <div class="cl-chip" data-grp="q" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
       </div>
-      <div id="tc-content-q4" style="display:none;">
-        <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;color:var(--gray-low);font-size:13px;">Q4 2025 라인업은 준비 중입니다. 업데이트 알림을 신청하세요.</div>
-      </div>
+
+      <div id="cl-status" style="color:var(--gray-low);font-size:13px;padding:20px 0;">콘텐츠 라인업을 불러오는 중...</div>
+      <div id="cl-grid" class="cl-grid"></div>
     </div>
 
   </main>
@@ -769,7 +801,7 @@ const pageTabMap = {
   subscription: ['all','calculator','process'],
   casestudy:    ['all','clients'],
   media:        ['all','nas'],
-  content:      ['q3','q4'],
+  content:      [],
 };
 
 // 사이드바 아코디언 (하위메뉴가 있는 항목)
@@ -835,6 +867,9 @@ function navigate(page, tab) {
   currentTab  = targetTab;
   document.getElementById('page-'+page).classList.add('active');
 
+  // 콘텐츠 라인업 페이지 진입 시 자동 로드
+  if (page === 'content') onContentTabEnter();
+
   // 8) 브레드크럼 갱신
   const pageNames = {updates:'업데이트',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'매체소개서',content:'콘텐츠 라인업'};
   const bc = document.querySelector('#page-'+page+' .breadcrumb');
@@ -853,6 +888,108 @@ function switchTab(page, tab) {
   if (page === 'updates' && tab === 'release-notes') {
     setTimeout(onReleaseNotesTabEnter, 80);
   }
+}
+
+// ══════ 콘텐츠 라인업 (자동 업데이트) ══════
+// JSON 로드 실패 시 사용할 내장 폴백 데이터 (로컬 file:// 미리보기용)
+const CL_FALLBACK = {"items":[
+  {"title":"페이퍼맨","content_type":"시리즈","genres":["범죄","드라마"],"cast":["조정석","박해수","수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"평생 누구에게도 인정받지 못하던 차명조가 완벽한 위조지폐를 만들어내며 위험한 세계에 발을 들이게 되는 예측 불가 범죄 드라마.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"크로스 2","content_type":"영화","genres":["액션","코미디"],"cast":["황정민","염정아","정만식","차래형","이호철","윤경호","임성재","차인표","김국희"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/3lKmEiHFjT19mSfTFBi3f/9da1acf2811185a5aba423b7e2ba5048/CROSS2_BTS_READING_52581.jpg","summary":"정체불명의 조직에 탈취된 문화재를 되찾기 위해 강무·미선 부부가 일생일대의 작전에 뛰어드는 오락 액션 영화. <크로스>의 속편.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"딜러","content_type":"시리즈","genres":[],"cast":["정소민","류승범","이수혁","류경수"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/Kfjtyl0QfunXo4ionpugX/d9fa54287dede04fd1ff84d0ed344930/The_Dealer_Unit_A-06133-1.jpg","summary":"결혼 성사를 위해 모든 것을 거는 인물들의 이야기. 제작 확정 및 캐스팅 공개 단계.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"그랜드 갤럭시 호텔","content_type":"시리즈","genres":[],"cast":["이도현","신시아","이수혁","이수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"[환혼] 홍자매 작가와 <멜로무비> 오충환 감독이 다시 뭉친 시리즈.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"이 사랑 통역 되나요?","content_type":"시리즈","genres":["로맨스"],"cast":["김선호","고윤정"],"release_date":"2026-01-16","release_quarter":"2026 Q1","rating":null,"poster_url":null,"summary":"다중언어 통역사와 글로벌 톱스타가 펼치는 예측불가 로맨스 시리즈.","availability_status":"공개중","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"사냥개들 시즌2","content_type":"시리즈","genres":["액션"],"cast":[],"release_date":"2026-04-03","release_quarter":"2026 Q2","rating":null,"poster_url":null,"summary":"더 강하게 돌아온 액션 시리즈 <사냥개들>의 두 번째 시즌.","availability_status":"공개예정","_meta":{"sources":{"release_date":"netflix_newsroom"}}},
+  {"title":"피지컬: 아시아","content_type":"예능","genres":["서바이벌"],"cast":[],"release_date":"2025-10-28","release_quarter":"2025 Q4","rating":null,"poster_url":null,"summary":"국가를 대표하는 출전자들이 펼치는 서바이벌 예능.","availability_status":"공개중","_meta":{"sources":{"release_date":"netflix_newsroom"}}}
+]};
+
+let clData = [];
+let clSel = {type:"all", q:"all"};
+
+function clIsEmpty(v){ return v===null || v===undefined || (Array.isArray(v)&&v.length===0) || v===""; }
+function clVal(v){ return clIsEmpty(v) ? '<span class="cl-tbd">미정</span>' : v; }
+function clEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// 포스터 이미지 로딩 실패 시 '관련 이미지 없음' 플레이스홀더로 교체
+function clImgFail(img){
+  const ph = document.createElement('div');
+  ph.className = 'cl-noimg';
+  ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/><path d="M3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/><path d="M14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/><line x1="3" y1="3" x2="21" y2="21"/></svg><span>관련 이미지 없음</span>';
+  if(img && img.parentNode) img.parentNode.replaceChild(ph, img);
+}
+
+async function loadContentLineup(){
+  const status = document.getElementById('cl-status');
+  if(status){ status.style.display='block'; status.textContent='콘텐츠 라인업을 불러오는 중...'; }
+  try{
+    const res = await fetch('content_lineup.json', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const json = await res.json();
+    clData = json.items || [];
+    clRender();
+  }catch(e){
+    // fetch 실패(로컬 file:// 등) → 내장 폴백 사용
+    clData = CL_FALLBACK.items;
+    clRender();
+    if(status){
+      status.style.display='block';
+      status.innerHTML='<span style="color:var(--gray-low);">※ 미리보기 모드 (내장 샘플 데이터). GitHub Pages에 올리면 content_lineup.json에서 최신 데이터를 불러옵니다.</span>';
+    }
+  }
+}
+
+function clRender(){
+  const grid = document.getElementById('cl-grid');
+  const status = document.getElementById('cl-status');
+  if(!grid) return;
+  const rows = clData.filter(d =>
+    (clSel.type==="all" || d.content_type===clSel.type) &&
+    (clSel.q==="all" || d.availability_status===clSel.q)
+  );
+  if(status && status.textContent.indexOf('미리보기')===-1) status.style.display='none';
+  if(!rows.length){
+    grid.innerHTML='<div style="grid-column:1/-1;color:var(--gray-low);font-size:13px;padding:10px 0;">해당 조건의 콘텐츠가 없습니다.</div>';
+    return;
+  }
+  grid.innerHTML = rows.map(d=>{
+    const live = d.availability_status==="공개중";
+    const badge = `<span class="cl-badge ${live?'cl-badge-live':'cl-badge-soon'}">${clEsc(d.availability_status||'미정')}</span>`;
+    const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
+    const genres = (Array.isArray(d.genres)&&d.genres.length)
+      ? d.genres.map(g=>`<span class="cl-tag">${clEsc(g)}</span>`).join("")
+      : '<span class="cl-tag cl-tbd">장르 미정</span>';
+    const q = d.release_quarter ? ` <span style="color:var(--gray-dim);">(${clEsc(d.release_quarter)})</span>` : '';
+    const noImgHtml = `<div class="cl-noimg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/><path d="M3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/><path d="M14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/><line x1="3" y1="3" x2="21" y2="21"/></svg><span>관련 이미지 없음</span></div>`;
+    const poster = clIsEmpty(d.poster_url)
+      ? noImgHtml
+      : `<img class="cl-poster" src="${clEsc(d.poster_url)}" alt="${clEsc(d.title)} 포스터" loading="lazy" onerror="clImgFail(this)">`;
+    return `<div class="cl-card">
+      ${poster}
+      <div class="cl-card-body">
+        <div class="cl-card-head"><div class="cl-title">${clEsc(d.title)}</div>${badge}</div>
+        <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
+        <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
+        <div class="cl-meta"><b>출연</b> ${cast}</div>
+        <div class="cl-sum">${clEsc(d.summary||'')||'<span class="cl-tbd">요약 미정</span>'}</div>
+        <div class="cl-tags">${genres}</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function clFilter(el){
+  const grp = el.getAttribute('data-grp');
+  document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>c.classList.remove('cl-on'));
+  el.classList.add('cl-on');
+  clSel[grp] = el.getAttribute('data-val');
+  clRender();
+}
+
+// 콘텐츠 라인업 탭 진입 시 1회 로드
+let clLoaded = false;
+function onContentTabEnter(){
+  if(clLoaded) return;
+  clLoaded = true;
+  loadContentLineup();
 }
 
 // ── 계산기 ──
