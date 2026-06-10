@@ -60,6 +60,14 @@
       "enum": ["netflix", "tving"],
       "description": "제공 OTT. 이 값으로 넷플릭스/티빙 라인업 분기."
     },
+    "is_original": {
+      "type": "boolean",
+      "description": "넷플릭스 오리지널 여부. TMDB network(213) 또는 제작사로 판별. 화면에 '오리지널' 배지로 표시."
+    },
+    "article_date": {
+      "type": ["string", "null"],
+      "description": "뉴스룸 기사 작성일(YYYY-MM-DD). 공개일 미정 작품의 정렬 기준(최신 기사순)으로 사용."
+    },
     "availability_status": {
       "type": "string",
       "enum": ["공개예정", "공개중", "종료", "미정"],
