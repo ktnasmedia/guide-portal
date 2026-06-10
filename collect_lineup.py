@@ -1,0 +1,303 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+넷플릭스 콘텐츠 라인업 자동 수집 스크립트
+- 소스: TMDB API (메타데이터·포스터)
+- 범위: 전년도 / 올해 / 내년 (실행 시점 기준 자동)
+- 대상: 넷플릭스(provider_id=8) 한국(KR) 콘텐츠 (시리즈 + 영화)
+- 출력: content_lineup.json (스키마 준수, 빈 값은 화면에서 '미정' 표시)
+- 로그: collection_log.md 에 한 줄 요약 + 변경 작품 목록 누적
+
+토큰은 코드에 직접 쓰지 않고 환경변수 TMDB_TOKEN 에서 읽음.
+로컬 실행:  TMDB_TOKEN="본인토큰" python3 collect_lineup.py
+"""
+
+import os
+import sys
+import json
+import time
+import datetime
+import urllib.request
+import urllib.parse
+import urllib.error
+
+# ── 설정 ──
+TMDB_TOKEN = os.environ.get("TMDB_TOKEN", "").strip()
+API_BASE = "https://api.themoviedb.org/3"
+IMG_BASE = "https://image.tmdb.org/t/p/w500"
+NETFLIX_PROVIDER_ID = 8
+REGION = "KR"
+ORIGIN_COUNTRY = "KR"
+LANG = "ko-KR"
+OUTPUT_JSON = "content_lineup.json"
+LOG_FILE = "collection_log.md"
+
+# 콘텐츠 분류 매핑 (TMDB 장르/타입 → 우리 분류)
+TV_GENRE_TO_TYPE = {
+    10764: "예능",  # Reality
+    10767: "예능",  # Talk
+    99: "다큐",      # Documentary
+    16: "애니메이션", # Animation
+}
+
+
+def http_get(path, params):
+    """TMDB API GET 요청. 토큰은 Bearer 헤더로."""
+    qs = urllib.parse.urlencode(params)
+    url = f"{API_BASE}{path}?{qs}"
+    req = urllib.request.Request(url)
+    req.add_header("Authorization", f"Bearer {TMDB_TOKEN}")
+    req.add_header("accept", "application/json")
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=20) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code == 429:  # rate limit
+                time.sleep(2)
+                continue
+            raise
+        except Exception:
+            if attempt < 2:
+                time.sleep(1)
+                continue
+            raise
+    return None
+
+
+def derive_quarter(date_str):
+    if not date_str:
+        return None, None
+    try:
+        d = datetime.date.fromisoformat(date_str)
+        return d.year, f"Q{(d.month - 1) // 3 + 1}"
+    except Exception:
+        return None, None
+
+
+def map_tv_type(genre_ids):
+    for gid in (genre_ids or []):
+        if gid in TV_GENRE_TO_TYPE:
+            return TV_GENRE_TO_TYPE[gid]
+    return "시리즈"
+
+
+def fetch_certification_tv(tv_id):
+    """TV 시청등급 (KR 우선)"""
+    try:
+        data = http_get(f"/tv/{tv_id}/content_ratings", {})
+        for r in (data or {}).get("results", []):
+            if r.get("iso_3166_1") == "KR" and r.get("rating"):
+                return r["rating"]
+    except Exception:
+        pass
+    return None
+
+
+def fetch_certification_movie(movie_id):
+    """영화 시청등급 (KR 우선)"""
+    try:
+        data = http_get(f"/movie/{movie_id}/release_dates", {})
+        for r in (data or {}).get("results", []):
+            if r.get("iso_3166_1") == "KR":
+                for rd in r.get("release_dates", []):
+                    if rd.get("certification"):
+                        return rd["certification"]
+    except Exception:
+        pass
+    return None
+
+
+def fetch_cast(media_type, tmdb_id):
+    """주요 출연진 상위 5명"""
+    try:
+        data = http_get(f"/{media_type}/{tmdb_id}/credits", {"language": LANG})
+        cast = [c["name"] for c in (data or {}).get("cast", [])[:5] if c.get("name")]
+        return cast
+    except Exception:
+        return []
+
+
+def fetch_genres_map(media_type):
+    """장르 ID→이름 매핑 (한국어)"""
+    try:
+        data = http_get(f"/genre/{media_type}/list", {"language": LANG})
+        return {g["id"]: g["name"] for g in (data or {}).get("genres", [])}
+    except Exception:
+        return {}
+
+
+def discover(media_type, year, genre_map):
+    """특정 연도의 넷플릭스 KR 콘텐츠 목록 수집 (페이지네이션)"""
+    items = []
+    date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
+    page = 1
+    while page <= 10:  # 안전 상한
+        params = {
+            "language": LANG,
+            "watch_region": REGION,
+            "with_watch_providers": NETFLIX_PROVIDER_ID,
+            "with_origin_country": ORIGIN_COUNTRY,
+            "sort_by": f"{date_field}.desc",
+            "page": page,
+            f"{date_field}.gte": f"{year}-01-01",
+            f"{date_field}.lte": f"{year}-12-31",
+        }
+        data = http_get(f"/discover/{media_type}", params)
+        if not data:
+            break
+        results = data.get("results", [])
+        if not results:
+            break
+        for it in results:
+            items.append(normalize(media_type, it, genre_map))
+        if page >= data.get("total_pages", 1):
+            break
+        page += 1
+        time.sleep(0.2)
+    return items
+
+
+def normalize(media_type, raw, genre_map):
+    """TMDB 응답 → 우리 스키마로 변환"""
+    tmdb_id = raw.get("id")
+    title = raw.get("name") or raw.get("title") or ""
+    orig = raw.get("original_name") or raw.get("original_title")
+    rd = raw.get("first_air_date") or raw.get("release_date") or None
+    if rd == "":
+        rd = None
+    year, quarter = derive_quarter(rd)
+    poster_path = raw.get("poster_path")
+    poster_url = f"{IMG_BASE}{poster_path}" if poster_path else None
+    genre_ids = raw.get("genre_ids", [])
+    genres = [genre_map.get(g) for g in genre_ids if genre_map.get(g)]
+    summary = raw.get("overview") or None
+
+    if media_type == "tv":
+        content_type = map_tv_type(genre_ids)
+        cast = fetch_cast("tv", tmdb_id)
+        rating = fetch_certification_tv(tmdb_id)
+    else:
+        content_type = "영화"
+        cast = fetch_cast("movie", tmdb_id)
+        rating = fetch_certification_movie(tmdb_id)
+
+    return {
+        "content_id": f"tmdb-{media_type}-{tmdb_id}",
+        "title": title,
+        "title_original": orig,
+        "poster_url": poster_url,
+        "cast": cast,
+        "release_date": rd,
+        "release_year": year,
+        "release_quarter": (f"{year} {quarter}" if year and quarter else None),
+        "summary": summary,
+        "content_type": content_type,
+        "genres": genres,
+        "rating": rating,
+        "ott": "netflix",
+        "availability_status": None,  # 화면에서 접속일 기준 자동판정하므로 비워둠
+        "_meta": {
+            "sources": {"_all": "tmdb"},
+            "confidence": "confirmed",
+            "last_updated": datetime.date.today().isoformat(),
+            "needs_review": False,
+        },
+    }
+
+
+def load_previous():
+    try:
+        with open(OUTPUT_JSON, encoding="utf-8") as f:
+            return {it["content_id"]: it for it in json.load(f).get("items", [])}
+    except Exception:
+        return {}
+
+
+def write_log(summary, added, updated, errors):
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    lines = [f"\n## {ts}", f"- {summary}"]
+    if added:
+        lines.append(f"- 신규 추가 ({len(added)}건): " + ", ".join(added[:30]) + ("..." if len(added) > 30 else ""))
+    if updated:
+        lines.append(f"- 정보 갱신 ({len(updated)}건): " + ", ".join(updated[:30]) + ("..." if len(updated) > 30 else ""))
+    if errors:
+        lines.append(f"- ⚠️ 경고/실패: {errors}")
+    block = "\n".join(lines) + "\n"
+    # 기존 로그 위에 누적 (최신이 위로)
+    header = "# 콘텐츠 라인업 수집 로그\n"
+    old = ""
+    try:
+        with open(LOG_FILE, encoding="utf-8") as f:
+            old = f.read()
+            if old.startswith(header):
+                old = old[len(header):]
+    except Exception:
+        pass
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        f.write(header + block + old)
+
+
+def main():
+    if not TMDB_TOKEN:
+        print("ERROR: 환경변수 TMDB_TOKEN 이 설정되지 않았습니다.", file=sys.stderr)
+        print('실행 예: TMDB_TOKEN="본인토큰" python3 collect_lineup.py', file=sys.stderr)
+        sys.exit(1)
+
+    this_year = datetime.date.today().year
+    years = [this_year - 1, this_year, this_year + 1]
+    prev = load_previous()
+    errors = 0
+
+    tv_genres = fetch_genres_map("tv")
+    movie_genres = fetch_genres_map("movie")
+
+    all_items = []
+    for y in years:
+        try:
+            all_items += discover("tv", y, tv_genres)
+            all_items += discover("movie", y, movie_genres)
+        except Exception as e:
+            errors += 1
+            print(f"WARN: {y}년 수집 중 오류: {e}", file=sys.stderr)
+
+    # content_id 기준 중복 제거 (뒤에 온 것 우선)
+    dedup = {}
+    for it in all_items:
+        dedup[it["content_id"]] = it
+    items = list(dedup.values())
+
+    # 신규/갱신 판별
+    added, updated = [], []
+    for cid, it in dedup.items():
+        if cid not in prev:
+            added.append(it["title"])
+        else:
+            old = prev[cid]
+            if (old.get("release_date") != it.get("release_date")
+                    or old.get("cast") != it.get("cast")
+                    or old.get("poster_url") != it.get("poster_url")):
+                updated.append(it["title"])
+
+    # 정렬: 공개일 최신순 (없으면 뒤로)
+    def sort_key(it):
+        rd = it.get("release_date")
+        return (0, rd) if rd else (1, "")
+    items.sort(key=lambda it: (sort_key(it)[0], sort_key(it)[1]), reverse=False)
+
+    out = {
+        "generated_at": datetime.datetime.now().isoformat(),
+        "source": "TMDB",
+        "range_years": years,
+        "items": items,
+    }
+    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+
+    summary = f"TMDB 수집 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 오류 {errors}"
+    write_log(summary, added, updated, errors)
+    print(summary)
+
+
+if __name__ == "__main__":
+    main()
