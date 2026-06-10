@@ -135,7 +135,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-dl-ic{font-size:13px;}
 .cl-dl-hint{font-size:12px;color:var(--gray-low);}
 .cl-notice{display:none;font-size:12.5px;color:var(--gray-hi);background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:8px;padding:10px 14px;margin-bottom:14px;line-height:1.5;}
-.cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;}
+.cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;min-width:38px;}
+.cl-filter-sub{font-size:10.5px;font-weight:500;color:var(--gray-dim);margin:0 2px 0 4px;}
+.cl-filter-divider{width:1px;height:18px;background:var(--border);margin:0 8px;flex-shrink:0;}
 .cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
 .cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
@@ -157,7 +159,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-meta{font-size:12px;color:var(--gray-mid);line-height:1.7;margin:2px 0;}
 .cl-meta b{color:var(--gray-hi);font-weight:600;}
 .cl-tbd{color:var(--gray-dim);font-style:italic;}
-.cl-sum{font-size:12px;color:var(--gray-low);line-height:1.65;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);flex-grow:1;}
+.cl-sum{font-size:12px;color:var(--gray-low);line-height:1.65;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+.cl-sum.cl-sum-open{-webkit-line-clamp:unset;}
+.cl-sum-wrap{flex-grow:1;}
+.cl-sum-more{margin-top:6px;font-size:11px;font-weight:600;color:var(--red);background:none;border:none;padding:0;cursor:pointer;}
+.cl-sum-more:hover{text-decoration:underline;}
 .cl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
 .cl-tag{font-size:10.5px;padding:2px 8px;border-radius:6px;background:rgba(255,255,255,0.05);color:var(--gray-mid);}
 .cl-src{font-size:10px;color:var(--gray-dim);margin-top:12px;}
@@ -726,11 +732,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
 
       <div class="cl-filters">
-        <span class="cl-filter-label">연도</span>
+        <span class="cl-filter-label">기간</span>
+        <span class="cl-filter-sub">연도</span>
         <div id="cl-year-buttons" class="cl-chip-inline"></div>
-      </div>
-      <div class="cl-filters">
-        <span class="cl-filter-label">분기</span>
+        <span class="cl-filter-divider"></span>
+        <span class="cl-filter-sub">분기</span>
         <div class="cl-chip" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
         <div class="cl-chip" data-grp="q" data-val="Q1" onclick="clFilter(this)">Q1</div>
         <div class="cl-chip" data-grp="q" data-val="Q2" onclick="clFilter(this)">Q2</div>
@@ -738,19 +744,19 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="q" data-val="Q4" onclick="clFilter(this)">Q4</div>
       </div>
       <div class="cl-filters">
-        <span class="cl-filter-label">공개여부</span>
-        <div class="cl-chip cl-on" data-grp="status" data-val="all" onclick="clFilter(this)">전체</div>
-        <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
-        <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
-        <div class="cl-chip" data-grp="status" data-val="미정" onclick="clFilter(this)">미정</div>
-      </div>
-      <div class="cl-filters">
-        <span class="cl-filter-label">분류</span>
+        <span class="cl-filter-label">유형</span>
+        <span class="cl-filter-sub">분류</span>
         <div class="cl-chip cl-on" data-grp="type" data-val="all" onclick="clFilter(this)">전체</div>
         <div class="cl-chip" data-grp="type" data-val="시리즈" onclick="clFilter(this)">시리즈</div>
         <div class="cl-chip" data-grp="type" data-val="영화" onclick="clFilter(this)">영화</div>
         <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
         <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
+        <span class="cl-filter-divider"></span>
+        <span class="cl-filter-sub">공개</span>
+        <div class="cl-chip cl-on" data-grp="status" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
+        <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
+        <div class="cl-chip" data-grp="status" data-val="미정" onclick="clFilter(this)">미정</div>
       </div>
 
       <div class="cl-download-bar">
@@ -1105,11 +1111,37 @@ function clRender(){
         <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
         <div class="cl-meta"><b>출연</b> ${cast}</div>
-        <div class="cl-sum">${clEsc(d.summary||'')||'<span class="cl-tbd">요약 미정</span>'}</div>
+        <div class="cl-sum-wrap">
+          <div class="cl-sum">${clEsc(d.summary||'')||'<span class="cl-tbd">요약 미정</span>'}</div>
+          <button class="cl-sum-more" onclick="clToggleSum(this)" style="display:none;">더보기</button>
+        </div>
         <div class="cl-tags">${genres}</div>
       </div>
     </div>`;
   }).join("");
+  clMarkClampedSummaries();
+}
+
+// 줄거리가 4줄 넘어 잘린 카드에만 '더보기' 버튼 표시
+function clMarkClampedSummaries(){
+  document.querySelectorAll('.cl-sum').forEach(sum=>{
+    const btn = sum.parentElement.querySelector('.cl-sum-more');
+    if(!btn) return;
+    // 실제 내용 높이가 보이는 높이보다 크면 잘린 것
+    if(sum.scrollHeight > sum.clientHeight + 2){
+      btn.style.display = 'inline-block';
+    } else {
+      btn.style.display = 'none';
+    }
+  });
+}
+
+// 더보기/접기 토글
+function clToggleSum(btn){
+  const sum = btn.parentElement.querySelector('.cl-sum');
+  if(!sum) return;
+  const open = sum.classList.toggle('cl-sum-open');
+  btn.textContent = open ? '접기' : '더보기';
 }
 
 // 검색: 입력 시 필터를 전체로 풀고(검색은 전체에서) 결과 갱신
