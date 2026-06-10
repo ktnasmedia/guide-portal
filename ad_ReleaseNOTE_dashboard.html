@@ -133,6 +133,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;letter-spacing:0.03em;}
 .cl-badge-live{background:rgba(34,197,94,0.16);color:#4ade80;}
 .cl-badge-soon{background:rgba(229,9,20,0.15);color:#f87171;}
+.cl-badge-tbd{background:rgba(160,160,160,0.15);color:#a0a0a0;}
 .cl-meta{font-size:12px;color:var(--gray-mid);line-height:1.7;margin:2px 0;}
 .cl-meta b{color:var(--gray-hi);font-weight:600;}
 .cl-tbd{color:var(--gray-dim);font-style:italic;}
@@ -774,6 +775,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="q" data-val="Q3" onclick="clFilter(this)">Q3</div>
         <div class="cl-chip" data-grp="q" data-val="Q4" onclick="clFilter(this)">Q4</div>
       </div>
+      <div class="cl-filters">
+        <span class="cl-filter-label">공개여부</span>
+        <div class="cl-chip cl-on" data-grp="status" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
+        <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
+        <div class="cl-chip" data-grp="status" data-val="미정" onclick="clFilter(this)">미정</div>
+      </div>
 
       <div id="cl-status" style="color:var(--gray-low);font-size:13px;padding:20px 0;">콘텐츠 라인업을 불러오는 중...</div>
       <div id="cl-grid" class="cl-grid"></div>
@@ -912,17 +920,18 @@ const CL_FALLBACK = {"items":[
 ]};
 
 let clData = [];
-let clSel = {type:"all", year:"all", q:"all"};
+let clSel = {type:"all", year:"all", q:"all", status:"all"};
 
 function clIsEmpty(v){ return v===null || v===undefined || (Array.isArray(v)&&v.length===0) || v===""; }
 function clVal(v){ return clIsEmpty(v) ? '<span class="cl-tbd">미정</span>' : v; }
 function clEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-// 접속일(오늘) 기준 공개 상태 자동판정: 공개일이 과거면 공개중, 미래면 공개예정, 미정이면 공개예정
-function clComputeStatus(rd){
-  if(clIsEmpty(rd)) return "공개예정";
+// 접속일(오늘) 기준 공개 상태 판정: 공개일 없으면 '미정', 과거면 '공개중', 미래면 '공개예정'
+// (카드 배지와 공개여부 필터가 모두 이 함수를 사용 — 기준 일치)
+function clFilterStatus(rd){
+  if(clIsEmpty(rd)) return "미정";
   const d = new Date(rd);
-  if(isNaN(d)) return "공개예정";
+  if(isNaN(d)) return "미정";
   return d <= new Date() ? "공개중" : "공개예정";
 }
 // 공개일에서 연도/분기 파생
@@ -973,7 +982,7 @@ function clRender(){
   const status = document.getElementById('cl-status');
   if(!grid) return;
 
-  // 필터: 분류 / 연도 / 분기 (연도·분기는 공개일에서 파생)
+  // 필터: 분류 / 연도 / 분기 / 공개여부 (연도·분기·공개여부는 공개일에서 파생)
   let rows = clData.filter(d => {
     if(clSel.type!=="all" && d.content_type!==clSel.type) return false;
     if(clSel.year!=="all"){
@@ -983,6 +992,9 @@ function clRender(){
     if(clSel.q!=="all"){
       const q = clQuarter(d.release_date);
       if(q !== clSel.q) return false;
+    }
+    if(clSel.status!=="all"){
+      if(clFilterStatus(d.release_date) !== clSel.status) return false;
     }
     return true;
   });
@@ -1009,9 +1021,9 @@ function clRender(){
     return;
   }
   grid.innerHTML = rows.map(d=>{
-    const st = clComputeStatus(d.release_date);   // 접속일 기준 자동판정
-    const live = st==="공개중";
-    const badge = `<span class="cl-badge ${live?'cl-badge-live':'cl-badge-soon'}">${st}</span>`;
+    const st = clFilterStatus(d.release_date);   // 접속일 기준 자동판정 (공개중/공개예정/미정)
+    const badgeClass = st==="공개중" ? "cl-badge-live" : (st==="공개예정" ? "cl-badge-soon" : "cl-badge-tbd");
+    const badge = `<span class="cl-badge ${badgeClass}">${st}</span>`;
     const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
     const genres = (Array.isArray(d.genres)&&d.genres.length)
       ? d.genres.map(g=>`<span class="cl-tag">${clEsc(g)}</span>`).join("")
