@@ -1,0 +1,22 @@
+name: 뉴스룸 접근 테스트
+
+# 수동 실행 전용 (일회성 확인용)
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v5
+
+      - name: Python 설정
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: 뉴스룸 접근 테스트 실행
+        run: python3 test_newsroom_access.py
