@@ -117,6 +117,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
 .cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;}
 .cl-chip-inline{display:flex;flex-wrap:wrap;gap:8px;}
+.cl-search-wrap{position:relative;display:flex;align-items:center;margin-bottom:18px;}
+.cl-search-icon{position:absolute;left:14px;font-size:18px;color:var(--gray-low);pointer-events:none;}
+.cl-search-input{width:100%;box-sizing:border-box;padding:11px 40px 11px 40px;background:#1a1a1a;border:1px solid #333;border-radius:10px;color:var(--white);font-size:14px;outline:none;transition:border-color 0.15s;}
+.cl-search-input:focus{border-color:var(--red);}
+.cl-search-input::placeholder{color:var(--gray-low);}
+.cl-search-clear{position:absolute;right:10px;width:24px;height:24px;border:none;background:#333;color:var(--gray-hi);border-radius:50%;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;}
+.cl-search-clear:hover{background:#444;}
 .cl-notice{display:none;font-size:12.5px;color:var(--gray-hi);background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:8px;padding:10px 14px;margin-bottom:14px;line-height:1.5;}
 .cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;}
 .cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
@@ -757,6 +764,12 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <button class="section-bar-btn" id="cl-refresh" onclick="loadContentLineup()">↻ 새로고침</button>
       </div>
 
+      <div class="cl-search-wrap">
+        <span class="cl-search-icon">⌕</span>
+        <input type="text" id="cl-search" class="cl-search-input" placeholder="작품명·출연진 검색" oninput="clSearch(this.value)" autocomplete="off">
+        <button class="cl-search-clear" id="cl-search-clear" onclick="clSearchClear()" style="display:none;">✕</button>
+      </div>
+
       <div class="cl-filters">
         <span class="cl-filter-label">연도</span>
         <div id="cl-year-buttons" class="cl-chip-inline"></div>
@@ -927,6 +940,8 @@ const _today = new Date();
 const _curYear = String(_today.getFullYear());
 const _curQ = 'Q' + (Math.floor(_today.getMonth()/3) + 1);
 let clSel = {type:"all", year:_curYear, q:_curQ, status:"all"};
+let clSearchQuery = "";
+let clSearchRaw = "";
 
 function clIsEmpty(v){ return v===null || v===undefined || (Array.isArray(v)&&v.length===0) || v===""; }
 function clVal(v){ return clIsEmpty(v) ? '<span class="cl-tbd">미정</span>' : v; }
@@ -988,8 +1003,13 @@ function clRender(){
   const status = document.getElementById('cl-status');
   if(!grid) return;
 
-  // 필터: 분류 / 연도 / 분기 / 공개여부 (연도·분기·공개여부는 공개일에서 파생)
+  // 필터: 검색어 / 분류 / 연도 / 분기 / 공개여부
   let rows = clData.filter(d => {
+    if(clSearchQuery){
+      const title = (d.title||"").replace(/\s+/g, "").toLowerCase();
+      const castStr = (Array.isArray(d.cast) ? d.cast.join("") : "").replace(/\s+/g, "").toLowerCase();
+      if(title.indexOf(clSearchQuery)===-1 && castStr.indexOf(clSearchQuery)===-1) return false;
+    }
     if(clSel.type!=="all" && d.content_type!==clSel.type) return false;
     if(clSel.year!=="all"){
       const y = clYear(d.release_date);
@@ -1023,7 +1043,8 @@ function clRender(){
 
   if(status && status.textContent.indexOf('미리보기')===-1) status.style.display='none';
   if(!rows.length){
-    grid.innerHTML='<div style="grid-column:1/-1;color:var(--gray-low);font-size:13px;padding:10px 0;">해당 조건의 콘텐츠가 없습니다.</div>';
+    const msg = clSearchQuery ? `'${clEsc(clSearchRaw)}' 검색 결과가 없습니다.` : '해당 조건의 콘텐츠가 없습니다.';
+    grid.innerHTML='<div style="grid-column:1/-1;color:var(--gray-low);font-size:13px;padding:10px 0;">'+msg+'</div>';
     return;
   }
   grid.innerHTML = rows.map(d=>{
@@ -1054,6 +1075,32 @@ function clRender(){
       </div>
     </div>`;
   }).join("");
+}
+
+// 검색: 입력 시 필터를 전체로 풀고(검색은 전체에서) 결과 갱신
+function clSearch(q){
+  clSearchRaw = (q || "").trim();
+  clSearchQuery = (q || "").replace(/\s+/g, "").toLowerCase();
+  const clearBtn = document.getElementById('cl-search-clear');
+  if(clearBtn) clearBtn.style.display = clSearchQuery ? 'flex' : 'none';
+  // 검색어가 있으면 모든 필터를 전체로 해제 (전체에서 검색)
+  if(clSearchQuery){
+    clResetGroup("year");
+    clResetGroup("q");
+    clResetGroup("status");
+    clResetGroup("type");
+  }
+  clRender();
+}
+
+function clSearchClear(){
+  clSearchQuery = "";
+  clSearchRaw = "";
+  const input = document.getElementById('cl-search');
+  if(input) input.value = "";
+  const clearBtn = document.getElementById('cl-search-clear');
+  if(clearBtn) clearBtn.style.display = 'none';
+  clRender();
 }
 
 // 특정 필터 그룹을 '전체(all)'로 되돌리고 버튼 표시도 갱신
