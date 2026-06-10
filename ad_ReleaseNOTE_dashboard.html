@@ -115,15 +115,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .info-card:hover{border-color:#3a3a3a;}
 
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
-.cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:22px;}
+.cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;}
+.cl-chip-inline{display:flex;flex-wrap:wrap;gap:8px;}
 .cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;}
 .cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
 .cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
 .cl-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;display:flex;flex-direction:column;}
 .cl-card:hover{border-color:#3a3a3a;}
-.cl-poster{width:100%;aspect-ratio:2/3;max-height:300px;object-fit:cover;background:#252525;display:block;}
-.cl-noimg{width:100%;aspect-ratio:2/3;max-height:300px;background:repeating-linear-gradient(45deg,#202020,#202020 10px,#242424 10px,#242424 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5a5a5a;}
+.cl-poster{width:100%;aspect-ratio:16/9;max-height:200px;object-fit:cover;background:#252525;display:block;}
+.cl-noimg{width:100%;aspect-ratio:16/9;max-height:200px;background:repeating-linear-gradient(45deg,#202020,#202020 10px,#242424 10px,#242424 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5a5a5a;}
 .cl-noimg svg{width:32px;height:32px;opacity:0.6;}
 .cl-noimg span{font-size:12px;}
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
@@ -746,7 +747,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <!-- ══════ PAGE: 콘텐츠 라인업 ══════ -->
     <div id="page-content" class="page">
       <div class="breadcrumb"><span class="breadcrumb-cur">콘텐츠 라인업</span></div>
-      <div style="margin-bottom:24px;"><h1 class="page-title">콘텐츠 라인업</h1><p class="page-desc">Q3 2025 넷플릭스 편성 예정 주요 콘텐츠</p></div>
+      <div style="margin-bottom:24px;"><h1 class="page-title">콘텐츠 라인업</h1><p class="page-desc">넷플릭스 콘텐츠 라인업</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">자동 업데이트 · 출처 넷플릭스 뉴스룸/TMDB</span>
@@ -760,10 +761,18 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="type" data-val="영화" onclick="clFilter(this)">영화</div>
         <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
         <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
-        <span class="cl-filter-label" style="margin-left:14px;">분기</span>
+      </div>
+      <div class="cl-filters">
+        <span class="cl-filter-label">연도</span>
+        <div id="cl-year-buttons" class="cl-chip-inline"></div>
+      </div>
+      <div class="cl-filters">
+        <span class="cl-filter-label">분기</span>
         <div class="cl-chip cl-on" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
-        <div class="cl-chip" data-grp="q" data-val="공개중" onclick="clFilter(this)">공개중</div>
-        <div class="cl-chip" data-grp="q" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
+        <div class="cl-chip" data-grp="q" data-val="Q1" onclick="clFilter(this)">Q1</div>
+        <div class="cl-chip" data-grp="q" data-val="Q2" onclick="clFilter(this)">Q2</div>
+        <div class="cl-chip" data-grp="q" data-val="Q3" onclick="clFilter(this)">Q3</div>
+        <div class="cl-chip" data-grp="q" data-val="Q4" onclick="clFilter(this)">Q4</div>
       </div>
 
       <div id="cl-status" style="color:var(--gray-low);font-size:13px;padding:20px 0;">콘텐츠 라인업을 불러오는 중...</div>
@@ -903,11 +912,22 @@ const CL_FALLBACK = {"items":[
 ]};
 
 let clData = [];
-let clSel = {type:"all", q:"all"};
+let clSel = {type:"all", year:"all", q:"all"};
 
 function clIsEmpty(v){ return v===null || v===undefined || (Array.isArray(v)&&v.length===0) || v===""; }
 function clVal(v){ return clIsEmpty(v) ? '<span class="cl-tbd">미정</span>' : v; }
 function clEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// 접속일(오늘) 기준 공개 상태 자동판정: 공개일이 과거면 공개중, 미래면 공개예정, 미정이면 공개예정
+function clComputeStatus(rd){
+  if(clIsEmpty(rd)) return "공개예정";
+  const d = new Date(rd);
+  if(isNaN(d)) return "공개예정";
+  return d <= new Date() ? "공개중" : "공개예정";
+}
+// 공개일에서 연도/분기 파생
+function clYear(rd){ if(clIsEmpty(rd)) return null; const d=new Date(rd); return isNaN(d)?null:d.getFullYear(); }
+function clQuarter(rd){ if(clIsEmpty(rd)) return null; const d=new Date(rd); return isNaN(d)?null:('Q'+(Math.floor(d.getMonth()/3)+1)); }
 
 // 포스터 이미지 로딩 실패 시 '관련 이미지 없음' 플레이스홀더로 교체
 function clImgFail(img){
@@ -915,6 +935,17 @@ function clImgFail(img){
   ph.className = 'cl-noimg';
   ph.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/><path d="M3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/><path d="M14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/><line x1="3" y1="3" x2="21" y2="21"/></svg><span>관련 이미지 없음</span>';
   if(img && img.parentNode) img.parentNode.replaceChild(ph, img);
+}
+
+// 연도 버튼 자동 생성 (전체 / 전년도 / 올해 / 내년)
+function clBuildYearButtons(){
+  const wrap = document.getElementById('cl-year-buttons');
+  if(!wrap) return;
+  const y = new Date().getFullYear();
+  const years = [{v:'all',label:'전체'},{v:String(y-1),label:String(y-1)},{v:String(y),label:String(y)},{v:String(y+1),label:String(y+1)}];
+  wrap.innerHTML = years.map((it,i)=>
+    `<div class="cl-chip ${i===0?'cl-on':''}" data-grp="year" data-val="${it.v}" onclick="clFilter(this)">${it.label}</div>`
+  ).join("");
 }
 
 async function loadContentLineup(){
@@ -941,23 +972,52 @@ function clRender(){
   const grid = document.getElementById('cl-grid');
   const status = document.getElementById('cl-status');
   if(!grid) return;
-  const rows = clData.filter(d =>
-    (clSel.type==="all" || d.content_type===clSel.type) &&
-    (clSel.q==="all" || d.availability_status===clSel.q)
-  );
+
+  // 필터: 분류 / 연도 / 분기 (연도·분기는 공개일에서 파생)
+  let rows = clData.filter(d => {
+    if(clSel.type!=="all" && d.content_type!==clSel.type) return false;
+    if(clSel.year!=="all"){
+      const y = clYear(d.release_date);
+      if(String(y) !== clSel.year) return false;
+    }
+    if(clSel.q!=="all"){
+      const q = clQuarter(d.release_date);
+      if(q !== clSel.q) return false;
+    }
+    return true;
+  });
+
+  // 정렬: 공개예정(임박순) → 공개중(최근순) → 미정(맨뒤)
+  const now = new Date();
+  rows = rows.slice().sort((a,b)=>{
+    const ra=a.release_date, rb=b.release_date;
+    const ea=clIsEmpty(ra), eb=clIsEmpty(rb);
+    if(ea&&eb) return 0;
+    if(ea) return 1;      // a 미정 → 뒤로
+    if(eb) return -1;     // b 미정 → 뒤로
+    const da=new Date(ra), db=new Date(rb);
+    const fa=da>now, fb=db>now;   // 미래(공개예정) 여부
+    if(fa&&fb) return da-db;       // 둘 다 예정 → 임박순(가까운 미래 먼저)
+    if(fa&&!fb) return -1;         // a만 예정 → 앞으로
+    if(!fa&&fb) return 1;          // b만 예정 → 앞으로
+    return db-da;                  // 둘 다 공개중 → 최근순(최근 먼저)
+  });
+
   if(status && status.textContent.indexOf('미리보기')===-1) status.style.display='none';
   if(!rows.length){
     grid.innerHTML='<div style="grid-column:1/-1;color:var(--gray-low);font-size:13px;padding:10px 0;">해당 조건의 콘텐츠가 없습니다.</div>';
     return;
   }
   grid.innerHTML = rows.map(d=>{
-    const live = d.availability_status==="공개중";
-    const badge = `<span class="cl-badge ${live?'cl-badge-live':'cl-badge-soon'}">${clEsc(d.availability_status||'미정')}</span>`;
+    const st = clComputeStatus(d.release_date);   // 접속일 기준 자동판정
+    const live = st==="공개중";
+    const badge = `<span class="cl-badge ${live?'cl-badge-live':'cl-badge-soon'}">${st}</span>`;
     const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
     const genres = (Array.isArray(d.genres)&&d.genres.length)
       ? d.genres.map(g=>`<span class="cl-tag">${clEsc(g)}</span>`).join("")
       : '<span class="cl-tag cl-tbd">장르 미정</span>';
-    const q = d.release_quarter ? ` <span style="color:var(--gray-dim);">(${clEsc(d.release_quarter)})</span>` : '';
+    const y = clYear(d.release_date), qq = clQuarter(d.release_date);
+    const q = (y&&qq) ? ` <span style="color:var(--gray-dim);">(${y} ${qq})</span>` : '';
     const noImgHtml = `<div class="cl-noimg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 8h.01M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6z"/><path d="M3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/><path d="M14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/><line x1="3" y1="3" x2="21" y2="21"/></svg><span>관련 이미지 없음</span></div>`;
     const poster = clIsEmpty(d.poster_url)
       ? noImgHtml
@@ -989,6 +1049,7 @@ let clLoaded = false;
 function onContentTabEnter(){
   if(clLoaded) return;
   clLoaded = true;
+  clBuildYearButtons();
   loadContentLineup();
 }
 
