@@ -1025,12 +1025,19 @@ function clRender(){
     return true;
   });
 
-  // 정렬: 공개예정(임박순) → 공개중(최근순) → 미정(맨뒤)
+  // 정렬: 공개예정(임박순) → 공개중(최근순) → 미정(기사 최신순, 맨뒤)
   const now = new Date();
   rows = rows.slice().sort((a,b)=>{
     const ra=a.release_date, rb=b.release_date;
     const ea=clIsEmpty(ra), eb=clIsEmpty(rb);
-    if(ea&&eb) return 0;
+    if(ea&&eb){
+      // 둘 다 미정 → 기사 작성일 최신순 (article_date 없으면 뒤로)
+      const aa=a.article_date, ab=b.article_date;
+      if(clIsEmpty(aa)&&clIsEmpty(ab)) return 0;
+      if(clIsEmpty(aa)) return 1;
+      if(clIsEmpty(ab)) return -1;
+      return new Date(ab) - new Date(aa);  // 최신 기사 먼저
+    }
     if(ea) return 1;      // a 미정 → 뒤로
     if(eb) return -1;     // b 미정 → 뒤로
     const da=new Date(ra), db=new Date(rb);

@@ -25,7 +25,8 @@ import urllib.error
 TMDB_TOKEN = os.environ.get("TMDB_TOKEN", "").strip()
 API_BASE = "https://api.themoviedb.org/3"
 IMG_BASE = "https://image.tmdb.org/t/p/w500"
-NETFLIX_PROVIDER_ID = 8
+NETFLIX_PROVIDER_ID = 8     # 넷플릭스 watch provider (볼 수 있음)
+NETFLIX_NETWORK_ID = 213    # 넷플릭스 network (오리지널 제작/배급)
 REGION = "KR"
 ORIGIN_COUNTRY = "KR"
 LANG = "ko-KR"
@@ -127,22 +128,14 @@ def fetch_genres_map(media_type):
         return {}
 
 
-def discover(media_type, year, genre_map):
-    """특정 연도의 넷플릭스 KR 콘텐츠 목록 수집 (페이지네이션)"""
-    items = []
+def _discover_pages(media_type, base_params, genre_map):
+    """주어진 조건으로 페이지네이션하며 수집 (id→normalized item)"""
+    out = {}
     date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
     page = 1
-    while page <= 10:  # 안전 상한
-        params = {
-            "language": LANG,
-            "watch_region": REGION,
-            "with_watch_providers": NETFLIX_PROVIDER_ID,
-            "with_origin_country": ORIGIN_COUNTRY,
-            "sort_by": f"{date_field}.desc",
-            "page": page,
-            f"{date_field}.gte": f"{year}-01-01",
-            f"{date_field}.lte": f"{year}-12-31",
-        }
+    while page <= 10:
+        params = dict(base_params)
+        params["page"] = page
         data = http_get(f"/discover/{media_type}", params)
         if not data:
             break
@@ -150,12 +143,59 @@ def discover(media_type, year, genre_map):
         if not results:
             break
         for it in results:
-            items.append(normalize(media_type, it, genre_map))
+            out[it["id"]] = normalize(media_type, it, genre_map)
         if page >= data.get("total_pages", 1):
             break
         page += 1
         time.sleep(0.2)
-    return items
+    return out
+
+
+def discover(media_type, year, genre_map):
+    """특정 연도의 넷플릭스 KR 콘텐츠 수집.
+    TV: provider(볼 수 있음) + network(넷플릭스 제작) OR 합집합 → 신작 누락 방지
+    영화: network 개념이 없으므로 provider만 사용
+    """
+    date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
+    common = {
+        "language": LANG,
+        "sort_by": f"{date_field}.desc",
+        f"{date_field}.gte": f"{year}-01-01",
+        f"{date_field}.lte": f"{year}-12-31",
+    }
+    merged = {}
+
+    # provider 조건 (넷플릭스에서 볼 수 있는 작품)
+    prov_params = dict(common)
+    prov_params.update({"watch_region": REGION, "with_watch_providers": NETFLIX_PROVIDER_ID,
+                        "with_origin_country": ORIGIN_COUNTRY})
+    merged.update(_discover_pages(media_type, prov_params, genre_map))
+
+    # network 조건 (넷플릭스가 만든 오리지널) — TV만 적용
+    if media_type == "tv":
+        net_params = dict(common)
+        net_params.update({"with_networks": NETFLIX_NETWORK_ID, "with_origin_country": ORIGIN_COUNTRY})
+        merged.update(_discover_pages(media_type, net_params, genre_map))
+
+    return list(merged.values())
+
+
+def fetch_is_original(media_type, tmdb_id):
+    """넷플릭스 오리지널 여부 판별.
+    TV: networks에 넷플릭스(213) 포함 여부
+    영화: production_companies에 넷플릭스 계열 포함 여부
+    """
+    try:
+        d = http_get(f"/{media_type}/{tmdb_id}", {"language": LANG})
+        if media_type == "tv":
+            net_ids = [n.get("id") for n in d.get("networks", [])]
+            return NETFLIX_NETWORK_ID in net_ids
+        else:
+            # 영화: 제작사명에 Netflix 포함 여부로 판단
+            companies = [c.get("name", "") for c in d.get("production_companies", [])]
+            return any("Netflix" in c for c in companies)
+    except Exception:
+        return False
 
 
 def normalize(media_type, raw, genre_map):
@@ -182,6 +222,8 @@ def normalize(media_type, raw, genre_map):
         cast = fetch_cast("movie", tmdb_id)
         rating = fetch_certification_movie(tmdb_id)
 
+    is_orig = fetch_is_original(media_type, tmdb_id)
+
     return {
         "content_id": f"tmdb-{media_type}-{tmdb_id}",
         "title": title,
@@ -196,6 +238,7 @@ def normalize(media_type, raw, genre_map):
         "genres": genres,
         "rating": rating,
         "ott": "netflix",
+        "is_original": is_orig,
         "availability_status": None,  # 화면에서 접속일 기준 자동판정하므로 비워둠
         "_meta": {
             "sources": {"_all": "tmdb"},
@@ -267,6 +310,15 @@ def newsroom_parse(url, html_text):
     work = wm.group(1).strip() if wm else None
     if not work:
         return None
+    # 기사 작성일 추출: 'YYYY년 M월 D일' 패턴 (정렬용)
+    article_date = None
+    dm = re.search(r"(\d{4})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일", html_text)
+    if dm:
+        try:
+            y, mo, da = int(dm.group(1)), int(dm.group(2)), int(dm.group(3))
+            article_date = f"{y:04d}-{mo:02d}-{da:02d}"
+        except Exception:
+            article_date = None
     # 공개일: 제목에 'M월 D일 공개' 있으면 연도 추정해서 채움 (없으면 미정)
     rd = None
     return {
@@ -283,6 +335,8 @@ def newsroom_parse(url, html_text):
         "genres": [],
         "rating": None,
         "ott": "netflix",
+        "is_original": True,
+        "article_date": article_date,
         "availability_status": None,
         "_meta": {
             "sources": {"_all": "netflix_newsroom"},
@@ -322,6 +376,87 @@ def newsroom_collect(existing_titles):
             print(f"WARN: 수집 실패 {url}: {e}", file=sys.stderr)
             errors += 1
     return items, errors
+
+
+MANUAL_OVERRIDES_FILE = "manual_overrides.json"
+# 보정 가능한 필드 (이 필드만 덮어씀)
+OVERRIDE_FIELDS = ["release_date", "content_type", "genres", "cast", "rating", "summary", "poster_url", "is_original"]
+
+
+def apply_manual_overrides(items):
+    """수동 보정 파일을 자동 수집 결과에 적용 (수동값 최우선).
+    - 제목이 일치하는 작품은 지정 필드만 덮어씀
+    - 자동 수집에 없는 작품은 새로 추가
+    반환: (보정 적용된 items, 보정된 제목 목록)
+    """
+    try:
+        with open(MANUAL_OVERRIDES_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        overrides = data.get("overrides", [])
+    except FileNotFoundError:
+        return items, []
+    except Exception as e:
+        print(f"WARN: 보정 파일 읽기 실패: {e}", file=sys.stderr)
+        return items, []
+
+    by_title = {}
+    for it in items:
+        by_title.setdefault(it.get("title"), it)
+
+    touched = []
+    for ov in overrides:
+        title = ov.get("title")
+        if not title:
+            continue
+        target = by_title.get(title)
+        if target is None:
+            # 자동 수집에 없는 작품 → 새로 추가
+            rd = ov.get("release_date")
+            year, quarter = derive_quarter(rd) if rd else (None, None)
+            new_item = {
+                "content_id": "manual-" + title,
+                "title": title,
+                "title_original": ov.get("title_original"),
+                "poster_url": ov.get("poster_url"),
+                "cast": ov.get("cast", []),
+                "release_date": rd,
+                "release_year": year,
+                "release_quarter": (f"{year} {quarter}" if year and quarter else None),
+                "summary": ov.get("summary"),
+                "content_type": ov.get("content_type", "미정"),
+                "genres": ov.get("genres", []),
+                "rating": ov.get("rating"),
+                "ott": ov.get("ott", "netflix"),
+                "is_original": ov.get("is_original", True),
+                "availability_status": None,
+                "_meta": {
+                    "sources": {"_all": "manual"},
+                    "confidence": "confirmed",
+                    "last_updated": datetime.date.today().isoformat(),
+                    "needs_review": False,
+                    "manual_override": True,
+                },
+            }
+            items.append(new_item)
+            by_title[title] = new_item
+            touched.append(title)
+        else:
+            # 기존 작품 → 지정 필드만 덮어씀
+            changed = False
+            for field in OVERRIDE_FIELDS:
+                if field in ov:
+                    target[field] = ov[field]
+                    target.setdefault("_meta", {}).setdefault("sources", {})[field] = "manual"
+                    changed = True
+            # 공개일 보정 시 연도/분기 재계산
+            if "release_date" in ov:
+                y, q = derive_quarter(ov["release_date"]) if ov["release_date"] else (None, None)
+                target["release_year"] = y
+                target["release_quarter"] = (f"{y} {q}" if y and q else None)
+            if changed:
+                target.setdefault("_meta", {})["manual_override"] = True
+                touched.append(title)
+    return items, touched
 
 
 def write_log(summary, added, updated, errors):
@@ -385,6 +520,11 @@ def main():
         dedup[it["content_id"]] = it
     items = list(dedup.values())
 
+    # 수동 보정 적용 (수동값 최우선, 자동 수집이 덮어쓰지 못함)
+    items, overridden = apply_manual_overrides(items)
+    # 보정으로 새 작품이 추가됐을 수 있으니 dedup 갱신
+    dedup = {it["content_id"]: it for it in items}
+
     # 신규/갱신 판별
     added, updated = [], []
     for cid, it in dedup.items():
@@ -412,7 +552,7 @@ def main():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
-    summary = f"TMDB {len(all_items)-len(nr_items)}건 + 뉴스룸 {len(nr_items)}건 = 총 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 오류 {errors}"
+    summary = f"TMDB {len(all_items)-len(nr_items)}건 + 뉴스룸 {len(nr_items)}건 = 총 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 수동보정 {len(overridden)} · 오류 {errors}"
     write_log(summary, added, updated, errors)
     print(summary)
 
