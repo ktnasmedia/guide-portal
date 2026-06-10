@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T08:02:30.153085",
+  "generated_at": "2026-06-10T08:14:07.316119",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -32,6 +32,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -65,6 +66,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -99,6 +101,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -132,6 +135,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -165,6 +169,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -198,6 +203,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -226,6 +232,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -259,6 +266,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -288,6 +296,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -317,6 +326,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -350,6 +360,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -383,6 +394,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -416,6 +428,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -450,6 +463,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -481,6 +495,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -508,6 +523,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -541,6 +557,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -574,6 +591,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -608,6 +626,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -636,6 +655,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -669,6 +689,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -698,6 +719,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -724,6 +746,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -757,6 +780,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -786,6 +810,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -818,6 +843,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -851,6 +877,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -877,6 +904,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -908,6 +936,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -935,6 +964,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -969,6 +999,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1003,6 +1034,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1036,6 +1068,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1069,6 +1102,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1096,6 +1130,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1122,6 +1157,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1152,6 +1188,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1185,6 +1222,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1219,6 +1257,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1249,6 +1288,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1277,6 +1317,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1304,6 +1345,7 @@
       ],
       "rating": "7",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1336,6 +1378,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1372,6 +1415,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1402,6 +1446,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1435,6 +1480,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1468,6 +1514,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1498,6 +1545,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1527,6 +1575,7 @@
       ],
       "rating": null,
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1562,6 +1611,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1594,6 +1644,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1623,6 +1674,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1655,6 +1707,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1681,6 +1734,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1714,6 +1768,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1746,6 +1801,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1779,6 +1835,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1813,6 +1870,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1843,6 +1901,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1875,6 +1934,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1907,6 +1967,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1942,6 +2003,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -1977,6 +2039,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2012,6 +2075,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2046,6 +2110,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2079,6 +2144,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2112,6 +2178,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2138,6 +2205,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2164,6 +2232,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2197,6 +2266,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2230,6 +2300,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2260,6 +2331,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2289,6 +2361,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2321,6 +2394,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2352,6 +2426,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2385,6 +2460,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2418,6 +2494,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2451,6 +2528,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2485,6 +2563,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2520,6 +2599,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2547,6 +2627,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2580,6 +2661,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2614,6 +2696,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2643,6 +2726,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2675,6 +2759,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2709,6 +2794,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2738,6 +2824,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2767,6 +2854,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2795,6 +2883,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2827,6 +2916,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2861,6 +2951,7 @@
       ],
       "rating": null,
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2885,6 +2976,7 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2919,6 +3011,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2953,6 +3046,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -2979,6 +3073,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3006,6 +3101,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3039,6 +3135,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3072,6 +3169,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3105,6 +3203,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3131,6 +3230,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3164,6 +3264,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3198,6 +3299,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3225,6 +3327,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3259,6 +3362,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3293,6 +3397,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3326,6 +3431,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3358,6 +3464,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3391,6 +3498,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3423,6 +3531,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3447,6 +3556,7 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3481,6 +3591,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3512,6 +3623,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3544,6 +3656,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3577,6 +3690,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3609,6 +3723,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3641,6 +3756,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3675,6 +3791,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3709,6 +3826,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3742,6 +3860,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3768,6 +3887,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3803,6 +3923,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3834,6 +3955,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3868,6 +3990,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3898,6 +4021,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3932,6 +4056,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3961,6 +4086,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -3993,6 +4119,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4026,6 +4153,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4059,6 +4187,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4088,6 +4217,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4119,6 +4249,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4151,6 +4282,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4183,6 +4315,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4214,6 +4347,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4247,6 +4381,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4280,6 +4415,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4306,6 +4442,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4332,6 +4469,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4359,6 +4497,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4392,6 +4531,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4426,6 +4566,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4456,6 +4597,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4484,6 +4626,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4512,6 +4655,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4545,6 +4689,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4571,6 +4716,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4604,6 +4750,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4633,6 +4780,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4659,6 +4807,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4691,6 +4840,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4721,6 +4871,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4755,6 +4906,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4787,6 +4939,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4815,6 +4968,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4847,6 +5001,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4879,6 +5034,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4911,6 +5067,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4944,6 +5101,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -4977,6 +5135,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5011,6 +5170,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5042,6 +5202,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5070,6 +5231,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5102,6 +5264,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5131,6 +5294,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5166,6 +5330,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5193,6 +5358,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5223,6 +5389,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5256,6 +5423,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5289,6 +5457,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5315,6 +5484,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5345,6 +5515,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5379,6 +5550,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5405,6 +5577,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5438,6 +5611,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5469,6 +5643,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5503,6 +5678,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5537,6 +5713,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5570,6 +5747,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5604,6 +5782,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5638,6 +5817,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5664,6 +5844,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5697,6 +5878,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5726,6 +5908,40 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tv-312586",
+      "title": "데스게임",
+      "title_original": "데스게임",
+      "poster_url": "https://image.tmdb.org/t/p/w500/kF73lR2oQNoCJAhTxos3BNLgOfS.jpg",
+      "cast": [
+        "장동민",
+        "홍진호",
+        "유리사",
+        "박성웅",
+        "가을"
+      ],
+      "release_date": "2026-01-28",
+      "release_year": 2026,
+      "release_quarter": "2026 Q1",
+      "summary": "1:1 뇌지컬 끝장 매치.\n\n천만 원이 걸린 일대일 두뇌 게임에 나선 셀럽들. 획득한 상금을 챙겨서 물러날 것인지, 아니면 탈락의 위험을 안고 새로운 도전자와 대결을 벌일 것인지 선택해야 한다.",
+      "content_type": "예능",
+      "genres": [
+        "Reality"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5758,6 +5974,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5789,6 +6006,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5821,6 +6039,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5849,6 +6068,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5882,6 +6102,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5916,6 +6137,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5948,6 +6170,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -5980,6 +6203,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6014,6 +6238,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6046,6 +6271,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6078,6 +6304,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6111,6 +6338,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6137,6 +6365,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6169,6 +6398,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6202,6 +6432,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6236,6 +6467,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6268,6 +6500,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6297,6 +6530,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6332,6 +6566,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6364,6 +6599,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6394,6 +6630,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6427,6 +6664,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6457,6 +6695,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6488,6 +6727,7 @@
       ],
       "rating": "ALL",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6520,6 +6760,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6550,6 +6791,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6583,6 +6825,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6616,6 +6859,7 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6650,6 +6894,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6685,6 +6930,36 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tv-324014",
+      "title": "이욱정 PD의 부처님 밥상",
+      "title_original": "이욱정 PD의 부처님 밥상",
+      "poster_url": "https://image.tmdb.org/t/p/w500/f0unYARKwtIvIx4FZXRlNOm2LBJ.jpg",
+      "cast": [
+        "이욱정"
+      ],
+      "release_date": "2026-05-24",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "인도에서 한국까지, 사찰음식의 원형을 추적하는 다큐멘터리 시리즈. 서로 다른 문화와 환경을 아우르며 수행자들의 식사에 담긴 생명과 자비의 정신을 탐구한다.",
+      "content_type": "다큐",
+      "genres": [
+        "다큐멘터리"
+      ],
+      "rating": "ALL",
+      "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6717,6 +6992,7 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6750,6 +7026,37 @@
       ],
       "rating": "19",
       "ott": "netflix",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tv-325001",
+      "title": "연애실험실",
+      "title_original": "연애실험실",
+      "poster_url": null,
+      "cast": [
+        "이주헌",
+        "Charles Enter"
+      ],
+      "release_date": "2026-06-17",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "기존의 정형화된 연애 리얼리티의 틀을 깨는 혁신적인 연애 실험 예능. 낯선 남녀들이 '침대 소개팅', '고립 연애' 등 극단적이고 통제된 환경 속에서 돌발적인 실험 공간에 던져진다. 예측 불가능한 상황 속에서 출연자들이 보이는 날것 그대로의 본능적인 감정과 현실적인 관계 변화를 다이내믹하게 담아낸다.",
+      "content_type": "예능",
+      "genres": [
+        "Reality"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6784,6 +7091,7 @@
       ],
       "rating": "15",
       "ott": "netflix",
+      "is_original": false,
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6792,6 +7100,118 @@
         "confidence": "confirmed",
         "last_updated": "2026-06-10",
         "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tv-286360",
+      "title": "맨 끝줄 소년",
+      "title_original": "맨 끝줄 소년",
+      "poster_url": "https://image.tmdb.org/t/p/w500/xSSp3JHoZFxc69aeFtc9JTgVMeu.jpg",
+      "cast": [
+        "최민식",
+        "최현욱",
+        "허준호",
+        "김윤진",
+        "진경"
+      ],
+      "release_date": "2026-06-26",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "실패한 작가이자 국문학과 교수인 허문오. 그가 강의실 맨 끝줄 소년 이강의 천재성을 발견하고 비밀스러운 수업을 시작한다. 하지만 문오가 이강의 글에 집착하면서 수업은 예상치 못한 방향으로 치닫는다.",
+      "content_type": "시리즈",
+      "genres": [
+        "서스펜스",
+        "드라마"
+      ],
+      "rating": "15세 이상",
+      "ott": "netflix",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb",
+          "release_date": "manual",
+          "content_type": "manual",
+          "genres": "manual",
+          "cast": "manual",
+          "rating": "manual"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false,
+        "manual_override": true
+      }
+    },
+    {
+      "content_id": "tmdb-tv-253960",
+      "title": "가스인간",
+      "title_original": "ガス人間",
+      "poster_url": "https://image.tmdb.org/t/p/w500/sCyaMdzj1I9d0j8Ns0SjOM1FV7a.jpg",
+      "cast": [
+        "오구리 슌",
+        "아오이 유우",
+        "히로세 스즈",
+        "하야시 겐토",
+        "UTA"
+      ],
+      "release_date": "2026-07-02",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "TV 생방송 중에 사람이 부풀어 폭사하는 전대미문의 사건이 일어난다. 그 뒤로, 가스 형태로 변하는 미스터리한 존재 가스인간이 아무에게도 정체를 들키지 않고, 전국을 공포 속으로 몰아넣는다. 1964년 영화 \"가스인간 제1호\" 리메이크",
+      "content_type": "시리즈",
+      "genres": [
+        "Sci-Fi & Fantasy",
+        "범죄"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tv-279323",
+      "title": "동궁",
+      "title_original": "동궁",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uwymRnTOdSLlUwXVw0IvFlfGLgu.jpg",
+      "cast": [
+        "남주혁",
+        "노윤서",
+        "조승우"
+      ],
+      "release_date": "2026-07-17",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "영혼의 세계를 넘나드는 구천과 귀신의 소리를 듣는 궁녀 생강. 왕의 부름을 받은 둘이 동궁에 깃든 저주를 파헤친다. 깊고 은밀한 비밀에 다가서는 미스터리 오컬트 사극.",
+      "content_type": "시리즈",
+      "genres": [
+        "미스터리",
+        "사극",
+        "호러"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb",
+          "release_date": "manual",
+          "content_type": "manual",
+          "genres": "manual",
+          "cast": "manual"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": false,
+        "manual_override": true
       }
     },
     {
@@ -6812,6 +7232,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-06-08",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6840,6 +7262,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-11-13",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6870,6 +7294,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-01-13",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6900,6 +7326,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-10-13",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6925,6 +7353,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-12-05",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6950,6 +7380,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-02-23",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -6980,6 +7412,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-02-11",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7009,6 +7443,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-01-08",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7039,6 +7475,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-04-16",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7067,6 +7505,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-09-12",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7095,6 +7535,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-07-28",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7120,6 +7562,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-07-09",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7148,6 +7592,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-05-14",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7177,6 +7623,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-04-29",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7206,6 +7654,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-03-26",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7234,6 +7684,8 @@
       "genres": [],
       "rating": null,
       "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-02-10",
       "availability_status": null,
       "_meta": {
         "sources": {
@@ -7243,35 +7695,6 @@
         "last_updated": "2026-06-10",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/show-business-wt-production"
-      }
-    },
-    {
-      "content_id": "newsroom-east-palace-wt-production",
-      "title": "동궁",
-      "title_original": null,
-      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/7nQQc6JsHprIgwadgSSiSy/4ae62546c2d1381df8c67beab04ab37b/EastPalace_RD_A00014RRR.jpg",
-      "cast": [
-        "남주혁",
-        "노윤서",
-        "조승우"
-      ],
-      "release_date": null,
-      "release_year": null,
-      "release_quarter": null,
-      "summary": null,
-      "content_type": "시리즈",
-      "genres": [],
-      "rating": null,
-      "ott": "netflix",
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "netflix_newsroom"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-06-10",
-        "needs_review": true,
-        "source_url": "https://about.netflix.com/ko/news/east-palace-wt-production"
       }
     }
   ]
