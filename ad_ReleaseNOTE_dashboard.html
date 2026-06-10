@@ -117,6 +117,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
 .cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;}
 .cl-chip-inline{display:flex;flex-wrap:wrap;gap:8px;}
+.cl-notice{display:none;font-size:12.5px;color:var(--gray-hi);background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:8px;padding:10px 14px;margin-bottom:14px;line-height:1.5;}
 .cl-filter-label{font-size:11px;font-weight:700;letter-spacing:0.06em;color:var(--gray-low);text-transform:uppercase;margin-right:2px;}
 .cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
 .cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
@@ -128,6 +129,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-noimg svg{width:32px;height:32px;opacity:0.6;}
 .cl-noimg span{font-size:12px;}
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
+.cl-orig{display:inline-block;align-self:flex-start;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;margin-bottom:8px;}
 .cl-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
 .cl-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.35;}
 .cl-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;letter-spacing:0.03em;}
@@ -751,25 +753,17 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div style="margin-bottom:24px;"><h1 class="page-title">콘텐츠 라인업</h1><p class="page-desc">넷플릭스 콘텐츠 라인업</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
-        <span class="section-label">자동 업데이트 · 출처 넷플릭스 뉴스룸/TMDB</span>
+        <span class="section-label">실시간 자동업데이트 (업데이트 주기 : 일)</span>
         <button class="section-bar-btn" id="cl-refresh" onclick="loadContentLineup()">↻ 새로고침</button>
       </div>
 
-      <div class="cl-filters">
-        <span class="cl-filter-label">분류</span>
-        <div class="cl-chip cl-on" data-grp="type" data-val="all" onclick="clFilter(this)">전체</div>
-        <div class="cl-chip" data-grp="type" data-val="시리즈" onclick="clFilter(this)">시리즈</div>
-        <div class="cl-chip" data-grp="type" data-val="영화" onclick="clFilter(this)">영화</div>
-        <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
-        <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
-      </div>
       <div class="cl-filters">
         <span class="cl-filter-label">연도</span>
         <div id="cl-year-buttons" class="cl-chip-inline"></div>
       </div>
       <div class="cl-filters">
         <span class="cl-filter-label">분기</span>
-        <div class="cl-chip cl-on" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
         <div class="cl-chip" data-grp="q" data-val="Q1" onclick="clFilter(this)">Q1</div>
         <div class="cl-chip" data-grp="q" data-val="Q2" onclick="clFilter(this)">Q2</div>
         <div class="cl-chip" data-grp="q" data-val="Q3" onclick="clFilter(this)">Q3</div>
@@ -781,6 +775,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
         <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
         <div class="cl-chip" data-grp="status" data-val="미정" onclick="clFilter(this)">미정</div>
+      </div>
+      <div class="cl-filters">
+        <span class="cl-filter-label">분류</span>
+        <div class="cl-chip cl-on" data-grp="type" data-val="all" onclick="clFilter(this)">전체</div>
+        <div class="cl-chip" data-grp="type" data-val="시리즈" onclick="clFilter(this)">시리즈</div>
+        <div class="cl-chip" data-grp="type" data-val="영화" onclick="clFilter(this)">영화</div>
+        <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
+        <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
       </div>
 
       <div id="cl-status" style="color:var(--gray-low);font-size:13px;padding:20px 0;">콘텐츠 라인업을 불러오는 중...</div>
@@ -910,17 +912,21 @@ function switchTab(page, tab) {
 // ══════ 콘텐츠 라인업 (자동 업데이트) ══════
 // JSON 로드 실패 시 사용할 내장 폴백 데이터 (로컬 file:// 미리보기용)
 const CL_FALLBACK = {"items":[
-  {"title":"페이퍼맨","content_type":"시리즈","genres":["범죄","드라마"],"cast":["조정석","박해수","수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"평생 누구에게도 인정받지 못하던 차명조가 완벽한 위조지폐를 만들어내며 위험한 세계에 발을 들이게 되는 예측 불가 범죄 드라마.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
-  {"title":"크로스 2","content_type":"영화","genres":["액션","코미디"],"cast":["황정민","염정아","정만식","차래형","이호철","윤경호","임성재","차인표","김국희"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/3lKmEiHFjT19mSfTFBi3f/9da1acf2811185a5aba423b7e2ba5048/CROSS2_BTS_READING_52581.jpg","summary":"정체불명의 조직에 탈취된 문화재를 되찾기 위해 강무·미선 부부가 일생일대의 작전에 뛰어드는 오락 액션 영화. <크로스>의 속편.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
-  {"title":"딜러","content_type":"시리즈","genres":[],"cast":["정소민","류승범","이수혁","류경수"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/Kfjtyl0QfunXo4ionpugX/d9fa54287dede04fd1ff84d0ed344930/The_Dealer_Unit_A-06133-1.jpg","summary":"결혼 성사를 위해 모든 것을 거는 인물들의 이야기. 제작 확정 및 캐스팅 공개 단계.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
-  {"title":"그랜드 갤럭시 호텔","content_type":"시리즈","genres":[],"cast":["이도현","신시아","이수혁","이수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"[환혼] 홍자매 작가와 <멜로무비> 오충환 감독이 다시 뭉친 시리즈.","availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
-  {"title":"이 사랑 통역 되나요?","content_type":"시리즈","genres":["로맨스"],"cast":["김선호","고윤정"],"release_date":"2026-01-16","release_quarter":"2026 Q1","rating":null,"poster_url":null,"summary":"다중언어 통역사와 글로벌 톱스타가 펼치는 예측불가 로맨스 시리즈.","availability_status":"공개중","_meta":{"sources":{"cast":"netflix_newsroom"}}},
-  {"title":"사냥개들 시즌2","content_type":"시리즈","genres":["액션"],"cast":[],"release_date":"2026-04-03","release_quarter":"2026 Q2","rating":null,"poster_url":null,"summary":"더 강하게 돌아온 액션 시리즈 <사냥개들>의 두 번째 시즌.","availability_status":"공개예정","_meta":{"sources":{"release_date":"netflix_newsroom"}}},
-  {"title":"피지컬: 아시아","content_type":"예능","genres":["서바이벌"],"cast":[],"release_date":"2025-10-28","release_quarter":"2025 Q4","rating":null,"poster_url":null,"summary":"국가를 대표하는 출전자들이 펼치는 서바이벌 예능.","availability_status":"공개중","_meta":{"sources":{"release_date":"netflix_newsroom"}}}
+  {"title":"페이퍼맨","content_type":"시리즈","genres":["범죄","드라마"],"cast":["조정석","박해수","수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"평생 누구에게도 인정받지 못하던 차명조가 완벽한 위조지폐를 만들어내며 위험한 세계에 발을 들이게 되는 예측 불가 범죄 드라마.","is_original":true,"availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"크로스 2","content_type":"영화","genres":["액션","코미디"],"cast":["황정민","염정아","정만식","차래형","이호철","윤경호","임성재","차인표","김국희"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/3lKmEiHFjT19mSfTFBi3f/9da1acf2811185a5aba423b7e2ba5048/CROSS2_BTS_READING_52581.jpg","summary":"정체불명의 조직에 탈취된 문화재를 되찾기 위해 강무·미선 부부가 일생일대의 작전에 뛰어드는 오락 액션 영화. <크로스>의 속편.","is_original":true,"availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"딜러","content_type":"시리즈","genres":[],"cast":["정소민","류승범","이수혁","류경수"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":"https://images.ctfassets.net/4cd45et68cgf/Kfjtyl0QfunXo4ionpugX/d9fa54287dede04fd1ff84d0ed344930/The_Dealer_Unit_A-06133-1.jpg","summary":"결혼 성사를 위해 모든 것을 거는 인물들의 이야기. 제작 확정 및 캐스팅 공개 단계.","is_original":true,"availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"그랜드 갤럭시 호텔","content_type":"시리즈","genres":[],"cast":["이도현","신시아","이수혁","이수현"],"release_date":null,"release_quarter":null,"rating":null,"poster_url":null,"summary":"[환혼] 홍자매 작가와 <멜로무비> 오충환 감독이 다시 뭉친 시리즈.","is_original":true,"availability_status":"공개예정","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"이 사랑 통역 되나요?","content_type":"시리즈","genres":["로맨스"],"cast":["김선호","고윤정"],"release_date":"2026-01-16","release_quarter":"2026 Q1","rating":null,"poster_url":null,"summary":"다중언어 통역사와 글로벌 톱스타가 펼치는 예측불가 로맨스 시리즈.","is_original":true,"availability_status":"공개중","_meta":{"sources":{"cast":"netflix_newsroom"}}},
+  {"title":"사냥개들 시즌2","content_type":"시리즈","genres":["액션"],"cast":[],"release_date":"2026-04-03","release_quarter":"2026 Q2","rating":null,"poster_url":null,"summary":"더 강하게 돌아온 액션 시리즈 <사냥개들>의 두 번째 시즌.","is_original":true,"availability_status":"공개예정","_meta":{"sources":{"release_date":"netflix_newsroom"}}},
+  {"title":"피지컬: 아시아","content_type":"예능","genres":["서바이벌"],"cast":[],"release_date":"2025-10-28","release_quarter":"2025 Q4","rating":null,"poster_url":null,"summary":"국가를 대표하는 출전자들이 펼치는 서바이벌 예능.","is_original":true,"availability_status":"공개중","_meta":{"sources":{"release_date":"netflix_newsroom"}}}
 ]};
 
 let clData = [];
-let clSel = {type:"all", year:"all", q:"all", status:"all"};
+// 디폴트 선택값: 분류=전체, 연도=올해, 분기=현재분기, 공개여부=전체 (접속일 기준 자동)
+const _today = new Date();
+const _curYear = String(_today.getFullYear());
+const _curQ = 'Q' + (Math.floor(_today.getMonth()/3) + 1);
+let clSel = {type:"all", year:_curYear, q:_curQ, status:"all"};
 
 function clIsEmpty(v){ return v===null || v===undefined || (Array.isArray(v)&&v.length===0) || v===""; }
 function clVal(v){ return clIsEmpty(v) ? '<span class="cl-tbd">미정</span>' : v; }
@@ -946,14 +952,14 @@ function clImgFail(img){
   if(img && img.parentNode) img.parentNode.replaceChild(ph, img);
 }
 
-// 연도 버튼 자동 생성 (전체 / 전년도 / 올해 / 내년)
+// 연도 버튼 자동 생성 (전체 / 전년도 / 올해 / 내년), 디폴트=올해
 function clBuildYearButtons(){
   const wrap = document.getElementById('cl-year-buttons');
   if(!wrap) return;
   const y = new Date().getFullYear();
   const years = [{v:'all',label:'전체'},{v:String(y-1),label:String(y-1)},{v:String(y),label:String(y)},{v:String(y+1),label:String(y+1)}];
-  wrap.innerHTML = years.map((it,i)=>
-    `<div class="cl-chip ${i===0?'cl-on':''}" data-grp="year" data-val="${it.v}" onclick="clFilter(this)">${it.label}</div>`
+  wrap.innerHTML = years.map(it=>
+    `<div class="cl-chip ${it.v===clSel.year?'cl-on':''}" data-grp="year" data-val="${it.v}" onclick="clFilter(this)">${it.label}</div>`
   ).join("");
 }
 
@@ -1024,6 +1030,7 @@ function clRender(){
     const st = clFilterStatus(d.release_date);   // 접속일 기준 자동판정 (공개중/공개예정/미정)
     const badgeClass = st==="공개중" ? "cl-badge-live" : (st==="공개예정" ? "cl-badge-soon" : "cl-badge-tbd");
     const badge = `<span class="cl-badge ${badgeClass}">${st}</span>`;
+    const origBadge = d.is_original ? `<span class="cl-orig">N 오리지널</span>` : '';
     const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
     const genres = (Array.isArray(d.genres)&&d.genres.length)
       ? d.genres.map(g=>`<span class="cl-tag">${clEsc(g)}</span>`).join("")
@@ -1037,6 +1044,7 @@ function clRender(){
     return `<div class="cl-card">
       ${poster}
       <div class="cl-card-body">
+        ${origBadge}
         <div class="cl-card-head"><div class="cl-title">${clEsc(d.title)}</div>${badge}</div>
         <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
@@ -1048,20 +1056,67 @@ function clRender(){
   }).join("");
 }
 
+// 특정 필터 그룹을 '전체(all)'로 되돌리고 버튼 표시도 갱신
+function clResetGroup(grp){
+  clSel[grp] = "all";
+  document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>{
+    c.classList.toggle('cl-on', c.getAttribute('data-val') === "all");
+  });
+}
+
 function clFilter(el){
   const grp = el.getAttribute('data-grp');
+  const val = el.getAttribute('data-val');
   document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>c.classList.remove('cl-on'));
   el.classList.add('cl-on');
-  clSel[grp] = el.getAttribute('data-val');
+  clSel[grp] = val;
+
+  // 공개여부 '미정'은 공개일이 없는 작품 → 연도·분기 필터와 양립 불가.
+  // 사용자가 미정을 누르면 연도·분기를 자동으로 '전체'로 풀고 이유를 안내.
+  if(grp === "status" && val === "미정" && (clSel.year !== "all" || clSel.q !== "all")){
+    clResetGroup("year");
+    clResetGroup("q");
+    clShowNotice("‘미정’은 공개일이 정해지지 않은 작품이라, 연도·분기 필터를 자동으로 해제했어요.");
+  } else if(grp === "year" && val !== "all" && clSel.status === "미정"){
+    // 반대 상황: 미정 상태에서 연도를 고르면 공개여부를 전체로 풀어줌
+    clResetGroup("status");
+  } else if(grp === "q" && val !== "all" && clSel.status === "미정"){
+    clResetGroup("status");
+  }
   clRender();
 }
 
+// 필터 안내 메시지 잠깐 표시 (몇 초 후 자동 사라짐)
+let clNoticeTimer = null;
+function clShowNotice(msg){
+  let box = document.getElementById('cl-notice');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'cl-notice';
+    box.className = 'cl-notice';
+    const grid = document.getElementById('cl-grid');
+    if(grid && grid.parentNode) grid.parentNode.insertBefore(box, grid);
+  }
+  box.textContent = msg;
+  box.style.display = 'block';
+  if(clNoticeTimer) clearTimeout(clNoticeTimer);
+  clNoticeTimer = setTimeout(()=>{ box.style.display = 'none'; }, 5000);
+}
+
 // 콘텐츠 라인업 탭 진입 시 1회 로드
+// 분기 버튼 디폴트 선택을 현재 분기로 설정
+function clSetDefaultQuarter(){
+  document.querySelectorAll('.cl-chip[data-grp="q"]').forEach(b=>{
+    b.classList.toggle('cl-on', b.getAttribute('data-val') === clSel.q);
+  });
+}
+
 let clLoaded = false;
 function onContentTabEnter(){
   if(clLoaded) return;
   clLoaded = true;
   clBuildYearButtons();
+  clSetDefaultQuarter();
   loadContentLineup();
 }
 
