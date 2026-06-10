@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T05:06:57.182022",
+  "generated_at": "2026-06-10T05:33:55.089127",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -6792,6 +6792,232 @@
         "confidence": "confirmed",
         "last_updated": "2026-06-10",
         "needs_review": false
+      }
+    },
+    {
+      "content_id": "newsroom-paper-man-wt-announcement",
+      "title": "페이퍼맨",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/3fZqDkYure0MuWNresh7Gv/6e8c4db0cf8418a93851f99deee4144f/kr_Paper_Man_1x1.png",
+      "cast": [
+        "조정석",
+        "박해수",
+        "수현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/paper-man-wt-announcement"
+      }
+    },
+    {
+      "content_id": "newsroom-mission-cross-2-sequel-announcement",
+      "title": "크로스 2",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/3lKmEiHFjT19mSfTFBi3f/9da1acf2811185a5aba423b7e2ba5048/CROSS2_BTS_READING_52581.jpg",
+      "cast": [
+        "황정민",
+        "염정아"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "영화",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement"
+      }
+    },
+    {
+      "content_id": "newsroom-netflix-confirms-production-of-the-dealer",
+      "title": "딜러",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/Kfjtyl0QfunXo4ionpugX/d9fa54287dede04fd1ff84d0ed344930/The_Dealer_Unit_A-06133-1.jpg",
+      "cast": [
+        "정소민",
+        "류승범",
+        "이수혁",
+        "류경수"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer"
+      }
+    },
+    {
+      "content_id": "newsroom-grand-galaxy-hotel-production",
+      "title": "그랜드 갤럭시 호텔",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/7DO5H4Zs8e3TDngmhNzt0R/6176e7107a81fd0146f04bce453f54d3/still_01.jpeg",
+      "cast": [
+        "이도현",
+        "신시아",
+        "이수혁",
+        "이수현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/grand-galaxy-hotel-production"
+      }
+    },
+    {
+      "content_id": "newsroom-tygo-cast-announcement",
+      "title": "타이고",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4wVSZFXTAkMXt51r0wjhe3/8ea1a98b3be0870adc891a91575b2f96/TYGO_Table_Read.png",
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "영화",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/tygo-cast-announcement"
+      }
+    },
+    {
+      "content_id": "newsroom-messily-ever-after-wt-production",
+      "title": "별짓",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4psNZJvcj4Juze48gOJIya/1245b6158e6d38bc27e481e752a18fbb/Crazy_Love_Unit_R_A010-1.jpg",
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "영화",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/messily-ever-after-wt-production"
+      }
+    },
+    {
+      "content_id": "newsroom-love-o-clock-production",
+      "title": "24분의 1 로맨스",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/79adwmfKgebYa0ADVkQEvF/0764fe0a8bb3101d5d0422f9516ce4a3/still_01.jpg",
+      "cast": [
+        "신혜선",
+        "나인우",
+        "윤균상",
+        "이주우"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/love-o-clock-production"
+      }
+    },
+    {
+      "content_id": "newsroom-beauty-in-the-beast-wt-production",
+      "title": "뷰티 인 더 비스트",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/2xVjZYH4B2SexI98GLXLBr/af63c79a9f75406d251d43e914200405/BIB_Reading_102273_4.jpg",
+      "cast": [
+        "김민주",
+        "로몬",
+        "문상민"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-10",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production"
       }
     }
   ]
