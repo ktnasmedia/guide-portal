@@ -46,6 +46,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* Sidebar */
 .sidebar{width:242px;flex-shrink:0;background:var(--black-soft);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;}
 .sidebar-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-dim);padding:20px 18px 8px;}
+.nav-hidden{display:none !important;}
 
 /* nav-item: 대분류 */
 .nav-item{cursor:pointer;transition:all 0.18s ease;}
@@ -300,20 +301,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 <aside class="sidebar">
   <div class="sidebar-section-label">Navigation</div>
 
-  <!-- 업데이트 -->
+  <!-- 공지사항 -->
   <div id="nav-updates" class="nav-item active">
     <div class="nav-row" onclick="navigate('updates','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M8 1.5L10 6H14.5L11 9L12.5 13.5L8 11L3.5 13.5L5 9L1.5 6H6L8 1.5Z" stroke="#737373" stroke-width="1.3"/></svg>
-      <span class="nav-label">업데이트</span>
-      <span class="nav-badge">3</span>
-    </div>
-    <div id="sub-updates" class="sub-menu expanded">
-      <div class="nav-sub-item" onclick="navigate('updates','release-notes')"><span class="nav-sub-dot"></span>넷플릭스 릴리즈 노트</div>
+      <span class="nav-label">공지사항</span>
     </div>
   </div>
 
   <!-- 광고 정책 -->
-  <div id="nav-policy" class="nav-item">
+  <div id="nav-policy" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('policy','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#737373" stroke-width="1.3"/><path d="M5 6H11M5 9H9" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
       <span class="nav-label">광고 정책</span>
@@ -327,7 +324,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 광고 상품 -->
-  <div id="nav-products" class="nav-item">
+  <div id="nav-products" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('products','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/></svg>
       <span class="nav-label">광고 상품</span>
@@ -342,7 +339,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 광고 타기팅 -->
-  <div id="nav-targeting" class="nav-item">
+  <div id="nav-targeting" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('targeting','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="#737373" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="#737373" stroke-width="1.3"/><circle cx="8" cy="8" r="1" fill="#737373"/></svg>
       <span class="nav-label">광고 타기팅</span>
@@ -356,7 +353,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 청약 방법 -->
-  <div id="nav-subscription" class="nav-item">
+  <div id="nav-subscription" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('subscription','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#737373" stroke-width="1.3"/><path d="M2 6.5H14M6 3V6.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
       <span class="nav-label">청약 방법</span>
@@ -369,7 +366,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 케이스스터디 -->
-  <div id="nav-casestudy" class="nav-item">
+  <div id="nav-casestudy" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('casestudy','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M2 12L6 8L9 11L12 7L14 9" stroke="#737373" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="12" height="12" rx="2" stroke="#737373" stroke-width="1.3"/></svg>
       <span class="nav-label">케이스스터디</span>
@@ -381,7 +378,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 매체소개서 -->
-  <div id="nav-media" class="nav-item">
+  <div id="nav-media" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('media','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M3 4H10M3 8H13M3 12H8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
       <span class="nav-label">매체소개서</span>
@@ -412,62 +409,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 업데이트 ══════ -->
     <div id="page-updates" class="page active">
-      <div class="breadcrumb"><span class="breadcrumb-cur">업데이트</span></div>
-      <!-- 탭 바 -->
-      <div class="sub-tab-bar">
-        <div class="sub-tab tab-active" id="tab-updates-all" onclick="switchTab('updates','all')">전체</div>
-        <div class="sub-tab" id="tab-updates-release-notes" onclick="switchTab('updates','release-notes')">넷플릭스 릴리즈 노트</div>
-      </div>
-      <!-- 탭 콘텐츠 -->
-      <div id="tc-updates-all">
-        <div style="margin-bottom:28px;">
-          <div class="section-bar"><div class="section-accent"></div><span class="section-label">중요 업데이트</span><button class="section-bar-btn" onclick="openModal('allUpdates')">전체 보기 →</button></div>
-          <div class="card-grid">
-            <div class="update-card" onclick="openModal('release1')">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;"><span class="badge badge-new">NEW</span><span style="font-size:10.5px;color:var(--gray-dim);font-family:'IBM Plex Mono',monospace;">2025.06.01</span></div>
-              <div class="card-title">넷플릭스 릴리즈 노트 v2.4 업데이트 안내</div>
-              <div class="card-desc">광고 상품 스펙 변경 및 타기팅 옵션 확대 내용이 포함되어 있습니다.</div>
-              <div style="display:flex;align-items:center;justify-content:space-between;"><span class="card-meta" style="color:var(--red);">릴리즈 노트</span><button class="btn-red" onclick="event.stopPropagation();openModal('release1')">상세 보기</button></div>
-            </div>
-            <div class="update-card" onclick="openModal('release2')">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;"><span class="badge badge-pause">⏸ 일시정지</span><span style="font-size:10.5px;color:var(--gray-dim);font-family:'IBM Plex Mono',monospace;">2025.05.28</span></div>
-              <div class="card-title">이미지광고 상품 운영 일시정지 공지</div>
-              <div class="card-desc">시스템 점검으로 인해 이미지광고 집행이 임시 중단됩니다.</div>
-              <div style="display:flex;align-items:center;justify-content:space-between;"><span class="card-meta" style="color:#FB923C;">광고 상품</span><button class="btn-red" onclick="event.stopPropagation();openModal('release2')">상세 보기</button></div>
-            </div>
-            <div class="update-card" onclick="openModal('release3')">
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;"><span class="badge badge-hot">✓ 정책 개정</span><span style="font-size:10.5px;color:var(--gray-dim);font-family:'IBM Plex Mono',monospace;">2025.05.20</span></div>
-              <div class="card-title">제한 업종 심사 기준 개정 안내 (Q2 2025)</div>
-              <div class="card-desc">주류·의료·금융 업종 광고 심사 기준이 강화됩니다.</div>
-              <div style="display:flex;align-items:center;justify-content:space-between;"><span class="card-meta" style="color:#4ADE80;">광고 정책</span><button class="btn-red" onclick="event.stopPropagation();openModal('release3')">상세 보기</button></div>
-            </div>
-          </div>
-        </div>
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">업데이트 히스토리</span></div>
-        <div class="info-card">
-          <div style="display:flex;flex-direction:column;gap:0;">
-            <div style="display:grid;grid-template-columns:140px 80px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--border);align-items:center;">
-              <span style="font-size:11px;color:var(--gray-low);font-family:'IBM Plex Mono',monospace;">2025.06.01</span><span class="badge badge-new">NEW</span><span style="font-size:13px;color:var(--gray-hi);">넷플릭스 릴리즈 노트 v2.4 배포</span>
-            </div>
-            <div style="display:grid;grid-template-columns:140px 80px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--border);align-items:center;">
-              <span style="font-size:11px;color:var(--gray-low);font-family:'IBM Plex Mono',monospace;">2025.05.28</span><span class="badge badge-pause">일시정지</span><span style="font-size:13px;color:var(--gray-hi);">이미지광고 운영 일시정지</span>
-            </div>
-            <div style="display:grid;grid-template-columns:140px 80px 1fr;gap:16px;padding:13px 0;border-bottom:1px solid var(--border);align-items:center;">
-              <span style="font-size:11px;color:var(--gray-low);font-family:'IBM Plex Mono',monospace;">2025.05.20</span><span class="badge badge-hot">정책 개정</span><span style="font-size:13px;color:var(--gray-hi);">제한 업종 심사 기준 개정 (Q2 2025)</span>
-            </div>
-            <div style="display:grid;grid-template-columns:140px 80px 1fr;gap:16px;padding:13px 0;align-items:center;">
-              <span style="font-size:11px;color:var(--gray-low);font-family:'IBM Plex Mono',monospace;">2025.04.10</span><span class="badge badge-type">스펙 변경</span><span style="font-size:13px;color:var(--gray-hi);">영상광고 소재 용량 기준 상향 조정</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="breadcrumb"><span class="breadcrumb-cur">공지사항</span></div>
       <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
-      <div id="tc-updates-release-notes" style="display:none;">
+      <div id="tc-updates-release-notes">
 
         <!-- 헤더 바 -->
         <div class="section-bar" style="margin-bottom:14px;">
           <div class="section-accent"></div>
-          <span class="section-label">넷플릭스 릴리즈 노트</span>
+          <span class="section-label">넷플릭스 업데이트</span>
           <span id="rn-last-updated" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'IBM Plex Mono',monospace;"></span>
           <button class="section-bar-btn" id="rn-refresh-btn" onclick="sheetsLoadNotes()" style="display:none;">↻ 새로고침</button>
         </div>
@@ -827,7 +776,7 @@ let currentTab  = 'all';
 
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
-  updates:      ['all','release-notes'],
+  updates:      [],
   policy:       ['all','basic','limited','banned'],
   products:     ['all','video','image','sts','qr'],
   targeting:    ['all','basic','premium','dsp'],
@@ -902,9 +851,11 @@ function navigate(page, tab) {
 
   // 콘텐츠 라인업 페이지 진입 시 자동 로드
   if (page === 'content') onContentTabEnter();
+  // 공지사항 페이지 진입 시 릴리즈 노트(넷플릭스 업데이트) 자동 로드
+  if (page === 'updates') setTimeout(onReleaseNotesTabEnter, 80);
 
   // 8) 브레드크럼 갱신
-  const pageNames = {updates:'업데이트',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'매체소개서',content:'콘텐츠 라인업'};
+  const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'매체소개서',content:'콘텐츠 라인업'};
   const bc = document.querySelector('#page-'+page+' .breadcrumb');
   if (bc) {
     if (tab && tab !== tabs[0]) {
@@ -1698,7 +1649,7 @@ function onReleaseNotesTabEnter() {
 }
 
 // 초기 렌더
-navigate('updates','all');
+navigate('updates','');
 
 </script>
 </body>
