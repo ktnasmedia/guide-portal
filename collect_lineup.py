@@ -214,6 +214,116 @@ def load_previous():
         return {}
 
 
+# ── 넷플릭스 뉴스룸 수집 (제목 기반 경량 파싱) ──
+import re
+
+NEWSROOM_URL = "https://about.netflix.com/ko/newsroom"
+# 캐스팅·신작 소식으로 간주할 키워드
+NEWSROOM_KEYWORDS = ["제작 확정", "공개 확정", "캐스팅", "라인업", "공개일", "제작 발표"]
+
+
+def newsroom_fetch_html():
+    req = urllib.request.Request(NEWSROOM_URL)
+    req.add_header("User-Agent", "Mozilla/5.0 (compatible; LineupBot/1.0)")
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return r.read().decode("utf-8", errors="ignore")
+
+
+def newsroom_classify_type(title):
+    if "예능" in title:
+        return "예능"
+    if "영화" in title:
+        return "영화"
+    if "다큐" in title:
+        return "다큐"
+    if "시리즈" in title:
+        return "시리즈"
+    return "미정"
+
+
+def newsroom_extract_cast(title):
+    """제목에서 'A-B-C' 또는 'AXB' 형태의 출연진 패턴 추출 (있을 때만)"""
+    # 예: '정소민-류승범-이수혁-류경수 캐스팅'
+    m = re.search(r"([가-힣]{2,4}(?:[-X×][가-힣]{2,4}){1,6})", title)
+    if not m:
+        return []
+    raw = m.group(1)
+    names = re.split(r"[-X×]", raw)
+    # 2~4글자 한글 이름만
+    return [n for n in names if 2 <= len(n) <= 4]
+
+
+def newsroom_collect(existing_titles):
+    """뉴스룸에서 캐스팅·신작 기사를 수집. TMDB에 이미 있는 제목은 건너뜀."""
+    items = []
+    try:
+        html = newsroom_fetch_html()
+    except Exception as e:
+        print(f"WARN: 뉴스룸 접근 실패: {e}", file=sys.stderr)
+        return items, 1
+
+    # 기사 링크 패턴: [제목](URL) 형태가 아니라 raw HTML이므로 a 태그 파싱
+    # <a href="https://about.netflix.com/ko/news/SLUG">제목 →</a>
+    pattern = re.compile(
+        r'href="(https://about\.netflix\.com/ko/news/[^"]+)"[^>]*>\s*([^<]*?<[^>]*>[^<]*?|[^<]+?)\s*(?:→)?\s*</a>',
+        re.DOTALL,
+    )
+    seen = set()
+    for m in re.finditer(r'href="(https://about\.netflix\.com/ko/news/[^"]+)"', html):
+        url = m.group(1)
+        if url in seen:
+            continue
+        seen.add(url)
+        # 링크 뒤 텍스트(제목)를 근처에서 추출
+        idx = m.end()
+        tail = html[idx:idx + 400]
+        tm = re.search(r'>\s*([^<>]{6,200}?)\s*(?:→)?\s*<', tail)
+        title_text = tm.group(1).strip() if tm else ""
+        if not title_text:
+            continue
+        # 작품명: <...> 꺾쇠 안 우선
+        wm = re.search(r"<([^<>]{1,40})>", title_text)
+        work = wm.group(1).strip() if wm else None
+        if not work:
+            continue
+        # 캐스팅·신작 키워드가 있는 기사만
+        if not any(k in title_text for k in NEWSROOM_KEYWORDS):
+            continue
+        # TMDB에 이미 있으면 건너뜀 (중복 방지)
+        if work in existing_titles:
+            continue
+        # 공개일 추출 (제목에 'M월 D일 공개' 패턴)
+        rd = None
+        dm = re.search(r"(\d{1,2})월\s*(\d{1,2})일\s*공개", title_text)
+        if dm:
+            # 연도 미상 → 비워둠 (정확도 우선, 미정 처리)
+            pass
+        items.append({
+            "content_id": "newsroom-" + url.rstrip("/").split("/")[-1],
+            "title": work,
+            "title_original": None,
+            "poster_url": None,
+            "cast": newsroom_extract_cast(title_text),
+            "release_date": rd,
+            "release_year": None,
+            "release_quarter": None,
+            "summary": None,
+            "content_type": newsroom_classify_type(title_text),
+            "genres": [],
+            "rating": None,
+            "ott": "netflix",
+            "availability_status": None,
+            "_meta": {
+                "sources": {"_all": "netflix_newsroom"},
+                "confidence": "confirmed",
+                "last_updated": datetime.date.today().isoformat(),
+                "needs_review": True,
+                "source_url": url,
+            },
+        })
+    return items, 0
+
+
 def write_log(summary, added, updated, errors):
     ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     lines = [f"\n## {ts}", f"- {summary}"]
@@ -261,6 +371,14 @@ def main():
             errors += 1
             print(f"WARN: {y}년 수집 중 오류: {e}", file=sys.stderr)
 
+    # TMDB에서 모은 제목 집합 (뉴스룸 중복 제거용)
+    tmdb_titles = {it["title"] for it in all_items}
+
+    # 넷플릭스 뉴스룸 수집 (TMDB에 없는 신작·미정 작품 보강)
+    nr_items, nr_err = newsroom_collect(tmdb_titles)
+    errors += nr_err
+    all_items += nr_items
+
     # content_id 기준 중복 제거 (뒤에 온 것 우선)
     dedup = {}
     for it in all_items:
@@ -294,7 +412,7 @@ def main():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
 
-    summary = f"TMDB 수집 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 오류 {errors}"
+    summary = f"TMDB {len(all_items)-len(nr_items)}건 + 뉴스룸 {len(nr_items)}건 = 총 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 오류 {errors}"
     write_log(summary, added, updated, errors)
     print(summary)
 
