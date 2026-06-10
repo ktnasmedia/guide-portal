@@ -214,17 +214,20 @@ def load_previous():
         return {}
 
 
-# ── 넷플릭스 뉴스룸 수집 (제목 기반 경량 파싱) ──
+# ── 넷플릭스 뉴스룸 수집 (상세 페이지 URL 목록 기반) ──
 import re
+import html as htmllib
 
-NEWSROOM_URL = "https://about.netflix.com/ko/newsroom"
-# 캐스팅·신작 소식으로 간주할 키워드
-NEWSROOM_KEYWORDS = ["제작 확정", "공개 확정", "캐스팅", "라인업", "공개일", "제작 발표"]
+NEWSROOM_URLS_FILE = "newsroom_urls.txt"
 
 
-def newsroom_fetch_html():
-    req = urllib.request.Request(NEWSROOM_URL)
-    req.add_header("User-Agent", "Mozilla/5.0 (compatible; LineupBot/1.0)")
+def newsroom_fetch_detail(url):
+    """뉴스룸 상세 페이지 HTML 가져오기"""
+    req = urllib.request.Request(url)
+    req.add_header("User-Agent",
+                   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                   "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36")
+    req.add_header("Accept-Language", "ko-KR,ko;q=0.9")
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read().decode("utf-8", errors="ignore")
 
@@ -242,86 +245,83 @@ def newsroom_classify_type(title):
 
 
 def newsroom_extract_cast(title):
-    """제목에서 'A-B-C' 또는 'AXB' 형태의 출연진 패턴 추출 (있을 때만)"""
-    # 예: '정소민-류승범-이수혁-류경수 캐스팅'
+    """제목에서 'A-B-C' 또는 'AXB' 형태 출연진 추출"""
     m = re.search(r"([가-힣]{2,4}(?:[-X×][가-힣]{2,4}){1,6})", title)
     if not m:
         return []
-    raw = m.group(1)
-    names = re.split(r"[-X×]", raw)
-    # 2~4글자 한글 이름만
-    return [n for n in names if 2 <= len(n) <= 4]
+    return [n for n in re.split(r"[-X×]", m.group(1)) if 2 <= len(n) <= 4]
+
+
+def newsroom_parse(url, html_text):
+    """상세 페이지 HTML에서 작품 정보 추출 (검증된 패턴)"""
+    # og:title (넷플릭스는 name 속성 사용, property도 대비)
+    tm = re.search(r'<meta[^>]*(?:name|property)=["\']og:title["\'][^>]*content=["\']([^"\']*)["\']', html_text, re.I)
+    title_raw = htmllib.unescape(tm.group(1)) if tm else ""
+    if not title_raw:
+        return None
+    # og:image (포스터/키비주얼)
+    im = re.search(r'<meta[^>]*(?:name|property)=["\']og:image["\'][^>]*content=["\']([^"\']*)["\']', html_text, re.I)
+    poster = im.group(1) if im else None
+    # 작품명: <...> 꺾쇠 안
+    wm = re.search(r"<([^<>]{1,40})>", title_raw)
+    work = wm.group(1).strip() if wm else None
+    if not work:
+        return None
+    # 공개일: 제목에 'M월 D일 공개' 있으면 연도 추정해서 채움 (없으면 미정)
+    rd = None
+    return {
+        "content_id": "newsroom-" + url.rstrip("/").split("/")[-1],
+        "title": work,
+        "title_original": None,
+        "poster_url": poster,
+        "cast": newsroom_extract_cast(title_raw),
+        "release_date": rd,
+        "release_year": None,
+        "release_quarter": None,
+        "summary": None,
+        "content_type": newsroom_classify_type(title_raw),
+        "genres": [],
+        "rating": None,
+        "ott": "netflix",
+        "availability_status": None,
+        "_meta": {
+            "sources": {"_all": "netflix_newsroom"},
+            "confidence": "confirmed",
+            "last_updated": datetime.date.today().isoformat(),
+            "needs_review": True,
+            "source_url": url,
+        },
+    }
 
 
 def newsroom_collect(existing_titles):
-    """뉴스룸에서 캐스팅·신작 기사를 수집. TMDB에 이미 있는 제목은 건너뜀."""
+    """newsroom_urls.txt의 상세 페이지들을 수집. TMDB에 있는 제목은 건너뜀."""
     items = []
+    errors = 0
     try:
-        html = newsroom_fetch_html()
-    except Exception as e:
-        print(f"WARN: 뉴스룸 접근 실패: {e}", file=sys.stderr)
-        return items, 1
+        with open(NEWSROOM_URLS_FILE, encoding="utf-8") as f:
+            urls = [ln.strip() for ln in f if ln.strip() and not ln.strip().startswith("#")]
+    except FileNotFoundError:
+        print(f"INFO: {NEWSROOM_URLS_FILE} 없음 - 뉴스룸 수집 건너뜀", file=sys.stderr)
+        return items, 0
 
-    # 기사 링크 패턴: [제목](URL) 형태가 아니라 raw HTML이므로 a 태그 파싱
-    # <a href="https://about.netflix.com/ko/news/SLUG">제목 →</a>
-    pattern = re.compile(
-        r'href="(https://about\.netflix\.com/ko/news/[^"]+)"[^>]*>\s*([^<]*?<[^>]*>[^<]*?|[^<]+?)\s*(?:→)?\s*</a>',
-        re.DOTALL,
-    )
-    seen = set()
-    for m in re.finditer(r'href="(https://about\.netflix\.com/ko/news/[^"]+)"', html):
-        url = m.group(1)
-        if url in seen:
-            continue
-        seen.add(url)
-        # 링크 뒤 텍스트(제목)를 근처에서 추출
-        idx = m.end()
-        tail = html[idx:idx + 400]
-        tm = re.search(r'>\s*([^<>]{6,200}?)\s*(?:→)?\s*<', tail)
-        title_text = tm.group(1).strip() if tm else ""
-        if not title_text:
-            continue
-        # 작품명: <...> 꺾쇠 안 우선
-        wm = re.search(r"<([^<>]{1,40})>", title_text)
-        work = wm.group(1).strip() if wm else None
-        if not work:
-            continue
-        # 캐스팅·신작 키워드가 있는 기사만
-        if not any(k in title_text for k in NEWSROOM_KEYWORDS):
-            continue
-        # TMDB에 이미 있으면 건너뜀 (중복 방지)
-        if work in existing_titles:
-            continue
-        # 공개일 추출 (제목에 'M월 D일 공개' 패턴)
-        rd = None
-        dm = re.search(r"(\d{1,2})월\s*(\d{1,2})일\s*공개", title_text)
-        if dm:
-            # 연도 미상 → 비워둠 (정확도 우선, 미정 처리)
-            pass
-        items.append({
-            "content_id": "newsroom-" + url.rstrip("/").split("/")[-1],
-            "title": work,
-            "title_original": None,
-            "poster_url": None,
-            "cast": newsroom_extract_cast(title_text),
-            "release_date": rd,
-            "release_year": None,
-            "release_quarter": None,
-            "summary": None,
-            "content_type": newsroom_classify_type(title_text),
-            "genres": [],
-            "rating": None,
-            "ott": "netflix",
-            "availability_status": None,
-            "_meta": {
-                "sources": {"_all": "netflix_newsroom"},
-                "confidence": "confirmed",
-                "last_updated": datetime.date.today().isoformat(),
-                "needs_review": True,
-                "source_url": url,
-            },
-        })
-    return items, 0
+    for url in urls:
+        try:
+            html_text = newsroom_fetch_detail(url)
+            parsed = newsroom_parse(url, html_text)
+            if not parsed:
+                print(f"WARN: 파싱 실패 {url}", file=sys.stderr)
+                errors += 1
+                continue
+            # TMDB에 이미 있으면 건너뜀 (중복 방지)
+            if parsed["title"] in existing_titles:
+                continue
+            items.append(parsed)
+            time.sleep(0.3)
+        except Exception as e:
+            print(f"WARN: 수집 실패 {url}: {e}", file=sys.stderr)
+            errors += 1
+    return items, errors
 
 
 def write_log(summary, added, updated, errors):

@@ -1,0 +1,14 @@
+# 넷플릭스 뉴스룸 상세 페이지 URL 목록
+# - 한 줄에 하나씩 캐스팅·제작확정 기사 URL을 넣으세요.
+# - TMDB에 이미 있는 작품은 자동으로 건너뜁니다(중복 방지).
+# - #으로 시작하는 줄은 주석으로 무시됩니다.
+# - 신작 캐스팅 소식이 뜨면 그 기사 URL을 여기에 한 줄 추가만 하면 됩니다.
+
+https://about.netflix.com/ko/news/paper-man-wt-announcement
+https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement
+https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer
+https://about.netflix.com/ko/news/grand-galaxy-hotel-production
+https://about.netflix.com/ko/news/tygo-cast-announcement
+https://about.netflix.com/ko/news/messily-ever-after-wt-production
+https://about.netflix.com/ko/news/love-o-clock-production
+https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production
