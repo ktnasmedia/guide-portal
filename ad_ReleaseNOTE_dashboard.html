@@ -1495,7 +1495,7 @@ async function lib_load(){
   list.innerHTML = '';
   try{
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
-      '/export?format=csv&sheet=자료실';
+      '/export?format=csv&gid=332763189';
     const res = await fetch(url);
     if(!res.ok) throw new Error('HTTP_' + res.status);
     const text = await res.text();
@@ -1587,7 +1587,7 @@ async function sheetsLoadNotes() {
 
   try {
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
-      '/export?format=csv&sheet=릴리즈노트';
+      '/export?format=csv&gid=984705062';
 
     const res = await fetch(url);
     if (!res.ok) throw new Error('HTTP_' + res.status);
