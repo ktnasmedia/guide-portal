@@ -386,7 +386,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 케이스스터디 -->
-  <div id="nav-casestudy" class="nav-item">
+  <div id="nav-casestudy" class="nav-item nav-hidden">
     <div class="nav-row" onclick="navigate('casestudy','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M2 12L6 8L9 11L12 7L14 9" stroke="#737373" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="12" height="12" rx="2" stroke="#737373" stroke-width="1.3"/></svg>
       <span class="nav-label">케이스스터디</span>
@@ -397,15 +397,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
-  <!-- 매체소개서 -->
+  <!-- 자료실 -->
   <div id="nav-media" class="nav-item">
     <div class="nav-row" onclick="navigate('media','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M3 4H10M3 8H13M3 12H8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
       <span class="nav-label">자료실</span>
-      <svg id="arrow-media" class="nav-arrow" width="13" height="13" fill="none" viewBox="0 0 14 14"><path d="M4 5.5L7 8.5L10 5.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
-    </div>
-    <div id="sub-media" class="sub-menu collapsed">
-      <div class="nav-sub-item" onclick="navigate('media','nas')"><span class="nav-sub-dot"></span>나스 작성 자료</div>
     </div>
   </div>
 
@@ -806,12 +802,12 @@ const pageTabMap = {
   targeting:    ['all','basic','premium','dsp'],
   subscription: ['all','calculator','process'],
   casestudy:    ['all','clients'],
-  media:        ['all','nas'],
+  media:        [],
   content:      [],
 };
 
 // 사이드바 아코디언 (하위메뉴가 있는 항목)
-const hasSubMenu = ['policy','products','targeting','subscription','casestudy','media'];
+const hasSubMenu = ['policy','products','targeting','subscription','casestudy'];
 
 // ── navigate: 대분류 클릭 or 하위탭 클릭 ──
 function navigate(page, tab) {
@@ -1268,7 +1264,7 @@ const modalData = {
   v23:{title:'릴리즈 노트 v2.3',subtitle:'2025.03.15 배포',body:'QR 코드 트래킹 파라미터 구조 개편 및 UTM 필드 신규 추가.',actions:[{label:'닫기',p:true}]},
   sts_price:{title:'STS 단가 확인',subtitle:'영업 담당자 연결 필요',body:'STS 단가표는 보안 자료로 관리됩니다. 담당 영업 매니저 또는 광고솔루션팀을 통해 확인 가능합니다.',actions:[{label:'문의하기',p:true},{label:'닫기',p:false}]},
   casestudy_dl:{title:'케이스스터디 자료 요청',subtitle:'보안 문서 — 열람 신청 필요',body:'열람 신청 후 1영업일 내 담당자가 안내드립니다.',actions:[{label:'열람 신청',p:true},{label:'닫기',p:false}]},
-  mediakit:{title:'매체소개서',subtitle:'나스 작성 자료',body:'넷플릭스 광고 플랫폼 소개 자료(나스 양식)입니다.<br><br>• 플랫폼 오디언스 데이터<br>• 광고 상품 라인업 개요<br>• 단가 기준 및 최소 집행 조건',actions:[{label:'자료 미리보기',p:true},{label:'다운로드 요청',p:false}]},
+  mediakit:{title:'자료실',subtitle:'',body:'자료실에서 자료를 확인하세요.',actions:[]},
   case_food:{title:'식품·음료 케이스',subtitle:'신제품 런칭 캠페인',body:'Pre-roll 30초 집행 + QR 코드 연동을 통해 온라인 구매 전환율을 2.8배 향상시킨 사례입니다.',actions:[{label:'상세 보기',p:true},{label:'닫기',p:false}]},
   case_auto:{title:'자동차 케이스',subtitle:'신차 출시 인지도 캠페인',body:'24시간 Page Takeover 집행을 통해 신차 브랜드 인지도가 4.1배 상승한 사례입니다.',actions:[{label:'상세 보기',p:true},{label:'닫기',p:false}]},
   case_fashion:{title:'패션 케이스',subtitle:'시즌 컬렉션 캠페인',body:'프리미엄 타기팅 × 영상광고 조합으로 CTR 3.5%를 달성한 사례입니다.',actions:[{label:'상세 보기',p:true},{label:'닫기',p:false}]},
