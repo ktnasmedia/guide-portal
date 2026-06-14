@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T21:54:29.346166",
+  "generated_at": "2026-06-14T22:02:47.497435",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -39,7 +39,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -73,7 +73,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -108,7 +108,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -142,7 +142,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -176,7 +176,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -210,7 +210,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -239,7 +239,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -273,7 +273,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -303,7 +303,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -333,7 +333,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -367,7 +367,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -401,7 +401,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -435,7 +435,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -470,7 +470,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -502,7 +502,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -530,7 +530,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -564,7 +564,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -598,7 +598,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -633,7 +633,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -662,7 +662,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -696,7 +696,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -726,7 +726,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -753,7 +753,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -787,7 +787,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -817,7 +817,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -850,7 +850,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -884,7 +884,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -911,7 +911,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -943,7 +943,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -971,7 +971,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1006,7 +1006,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1041,7 +1041,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1075,7 +1075,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1109,7 +1109,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1137,7 +1137,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1164,7 +1164,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1195,7 +1195,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1229,7 +1229,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1264,7 +1264,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1295,7 +1295,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1324,7 +1324,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1352,7 +1352,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1385,7 +1385,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1422,7 +1422,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1453,7 +1453,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1487,7 +1487,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1521,7 +1521,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1552,7 +1552,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1582,7 +1582,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1618,7 +1618,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1651,7 +1651,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1681,7 +1681,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1714,7 +1714,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1741,7 +1741,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1775,7 +1775,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1808,7 +1808,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1842,7 +1842,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1877,7 +1877,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1908,7 +1908,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1941,7 +1941,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -1974,7 +1974,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2010,7 +2010,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2046,7 +2046,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2082,7 +2082,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2117,7 +2117,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2151,7 +2151,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2185,7 +2185,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2212,7 +2212,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2239,7 +2239,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2273,7 +2273,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2307,7 +2307,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2338,7 +2338,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2368,7 +2368,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2401,7 +2401,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2433,7 +2433,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2467,7 +2467,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2501,7 +2501,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2535,7 +2535,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2570,7 +2570,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2606,7 +2606,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2634,7 +2634,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2668,7 +2668,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2703,7 +2703,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2733,7 +2733,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2766,7 +2766,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2801,7 +2801,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2831,7 +2831,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2861,7 +2861,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2890,7 +2890,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2923,7 +2923,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2958,7 +2958,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -2983,7 +2983,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3018,7 +3018,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3053,7 +3053,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3080,7 +3080,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3108,7 +3108,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3142,7 +3142,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3176,7 +3176,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3210,7 +3210,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3237,7 +3237,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3271,7 +3271,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3306,7 +3306,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3334,7 +3334,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3369,7 +3369,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3404,7 +3404,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3438,7 +3438,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3471,7 +3471,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3505,7 +3505,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3538,7 +3538,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3563,7 +3563,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3598,7 +3598,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3630,7 +3630,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3663,7 +3663,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3697,7 +3697,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3730,7 +3730,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3763,7 +3763,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3798,7 +3798,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3833,7 +3833,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3867,7 +3867,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3894,7 +3894,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3930,7 +3930,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3962,7 +3962,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -3997,7 +3997,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4028,7 +4028,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4063,7 +4063,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4093,7 +4093,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4126,7 +4126,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4160,7 +4160,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4194,7 +4194,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4224,7 +4224,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4256,7 +4256,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4289,7 +4289,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4322,7 +4322,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4354,7 +4354,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4388,7 +4388,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4422,7 +4422,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4431,7 +4431,12 @@
       "title": "피지컬: 아시아",
       "title_original": "피지컬: 아시아",
       "poster_url": "https://image.tmdb.org/t/p/w500/7GbXnv3kvmATU0p6E5gC1AiNqtc.jpg",
-      "cast": [],
+      "cast": [
+        "윤성빈",
+        "아모띠",
+        "김동현",
+        "장은실"
+      ],
       "release_date": "2025-10-28",
       "release_year": 2025,
       "release_quarter": "2025 Q4",
@@ -4449,7 +4454,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4476,7 +4481,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4504,7 +4509,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4538,7 +4543,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4573,7 +4578,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4604,7 +4609,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4633,7 +4638,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4662,7 +4667,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4696,7 +4701,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4723,7 +4728,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4757,7 +4762,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4787,7 +4792,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4814,7 +4819,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4847,7 +4852,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4878,7 +4883,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4913,7 +4918,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4946,7 +4951,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -4975,7 +4980,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5008,7 +5013,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5041,7 +5046,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5074,7 +5079,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5108,7 +5113,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5142,7 +5147,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5177,7 +5182,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5209,7 +5214,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5238,7 +5243,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5271,7 +5276,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5301,7 +5306,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5337,7 +5342,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5365,7 +5370,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5396,7 +5401,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5430,7 +5435,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5464,7 +5469,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5491,7 +5496,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5522,7 +5527,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5557,7 +5562,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5584,7 +5589,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5618,7 +5623,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5650,7 +5655,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5685,7 +5690,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5720,7 +5725,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5755,7 +5760,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5789,7 +5794,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5824,7 +5829,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5859,7 +5864,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5886,7 +5891,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5920,7 +5925,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5950,7 +5955,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -5983,7 +5988,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6016,7 +6021,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6048,7 +6053,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6081,7 +6086,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6110,7 +6115,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6144,7 +6149,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6179,7 +6184,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6212,7 +6217,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6245,7 +6250,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6280,7 +6285,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6313,7 +6318,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6346,7 +6351,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6380,7 +6385,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6407,7 +6412,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6440,7 +6445,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6474,7 +6479,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6509,7 +6514,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6542,7 +6547,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6572,7 +6577,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6608,7 +6613,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6630,7 +6635,8 @@
       "summary": "시대의 아이콘 BTS가 돌아온다. 다시 라이브 무대에 올라, 전설적인 히트곡을 들려주고 신곡도 최초 공개한다.\r 《BTS 컴백 라이브: ARIRANG》이 2026년 3월 21일 한국 시간 오후 8시(태평양 표준시 오전 4시 / 동부 표준시 오전 7시), 넷플릭스에서 단독으로 생중계된다.\r 서울의 역사적인 장소 광화문에서 라이브로 제공되는 이 뜻깊은 공연은 오랫동안 기다려온 BTS의 새 앨범 《ARIRANG》의 발매를 기념한다. RM, 진, 슈가, 제이홉, 지민, 뷔, 정국까지, BTS 멤버 전원이 다시 모여 역대급 컴백을 알리는 글로벌 무대에 오른다.",
       "content_type": "영화",
       "genres": [
-        "음악"
+        "음악",
+        "다큐멘터리"
       ],
       "rating": "12",
       "ott": "netflix",
@@ -6641,7 +6647,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6672,7 +6678,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6706,7 +6712,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6737,7 +6743,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6769,7 +6775,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6802,7 +6808,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6833,7 +6839,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6867,7 +6873,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6901,7 +6907,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6936,7 +6942,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -6972,7 +6978,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7005,7 +7011,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7034,7 +7040,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7067,7 +7073,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7101,7 +7107,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7131,7 +7137,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7166,7 +7172,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7205,7 +7211,7 @@
           "rating": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false,
         "manual_override": true
       }
@@ -7240,7 +7246,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false
       }
     },
@@ -7277,7 +7283,7 @@
           "cast": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": false,
         "manual_override": true
       }
@@ -7308,7 +7314,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/paper-man-wt-announcement"
       }
@@ -7338,7 +7344,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement"
       }
@@ -7370,7 +7376,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer"
       }
@@ -7402,7 +7408,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/grand-galaxy-hotel-production"
       }
@@ -7429,7 +7435,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/tygo-cast-announcement"
       }
@@ -7456,7 +7462,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/messily-ever-after-wt-production"
       }
@@ -7488,7 +7494,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/love-o-clock-production"
       }
@@ -7519,7 +7525,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production"
       }
@@ -7551,7 +7557,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/the-facade-of-love-start-of-production"
       }
@@ -7581,7 +7587,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production"
       }
@@ -7611,7 +7617,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/take-charge-of-my-heart-production"
       }
@@ -7638,7 +7644,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/solo-leveling-announcement"
       }
@@ -7668,7 +7674,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/korean-romcom-series-lovestuck-in-production"
       }
@@ -7699,7 +7705,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/korean-mystery-horror-series-perfect-job-in-production"
       }
@@ -7730,7 +7736,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/scandals-wt-production"
       }
@@ -7760,7 +7766,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-13",
+        "last_updated": "2026-06-14",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/show-business-wt-production"
       }
