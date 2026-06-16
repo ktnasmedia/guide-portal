@@ -27,6 +27,14 @@ API_BASE = "https://api.themoviedb.org/3"
 IMG_BASE = "https://image.tmdb.org/t/p/w500"
 NETFLIX_PROVIDER_ID = 8     # 넷플릭스 watch provider (볼 수 있음)
 NETFLIX_NETWORK_ID = 213    # 넷플릭스 network (오리지널 제작/배급)
+
+# OTT별 설정 (provider=볼 수 있음, network=오리지널 판별). 확장 시 여기 추가.
+OTT_CONFIG = {
+    "netflix": {"name": "넷플릭스", "provider_id": 8,    "network_id": 213,  "original_company": "Netflix"},
+    "tving":   {"name": "티빙",     "provider_id": 1883, "network_id": 3897, "original_company": "TVING"},
+}
+# 수집할 OTT 목록 (순서대로). 우선 넷플릭스+티빙.
+ACTIVE_OTTS = ["netflix", "tving"]
 REGION = "KR"
 ORIGIN_COUNTRY = "KR"
 LANG = "ko-KR"
@@ -128,7 +136,7 @@ def fetch_genres_map(media_type):
         return {}
 
 
-def _discover_pages(media_type, base_params, genre_map):
+def _discover_pages(media_type, base_params, genre_map, ott="netflix"):
     """주어진 조건으로 페이지네이션하며 수집 (id→normalized item)"""
     out = {}
     date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
@@ -143,7 +151,7 @@ def _discover_pages(media_type, base_params, genre_map):
         if not results:
             break
         for it in results:
-            out[it["id"]] = normalize(media_type, it, genre_map)
+            out[it["id"]] = normalize(media_type, it, genre_map, ott)
         if page >= data.get("total_pages", 1):
             break
         page += 1
@@ -151,11 +159,14 @@ def _discover_pages(media_type, base_params, genre_map):
     return out
 
 
-def discover(media_type, year, genre_map):
-    """특정 연도의 넷플릭스 KR 콘텐츠 수집.
-    TV: provider(볼 수 있음) + network(넷플릭스 제작) OR 합집합 → 신작 누락 방지
+def discover(media_type, year, genre_map, ott="netflix"):
+    """특정 연도의 OTT KR 콘텐츠 수집.
+    TV: provider(볼 수 있음) + network(제작) 합집합 → 신작 누락 방지
     영화: network 개념이 없으므로 provider만 사용
     """
+    cfg = OTT_CONFIG[ott]
+    provider_id = cfg["provider_id"]
+    network_id = cfg["network_id"]
     date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
     common = {
         "language": LANG,
@@ -165,40 +176,42 @@ def discover(media_type, year, genre_map):
     }
     merged = {}
 
-    # provider 조건 (넷플릭스에서 볼 수 있는 작품)
+    # provider 조건 (해당 OTT에서 볼 수 있는 작품)
     prov_params = dict(common)
-    prov_params.update({"watch_region": REGION, "with_watch_providers": NETFLIX_PROVIDER_ID,
+    prov_params.update({"watch_region": REGION, "with_watch_providers": provider_id,
                         "with_origin_country": ORIGIN_COUNTRY})
-    merged.update(_discover_pages(media_type, prov_params, genre_map))
+    merged.update(_discover_pages(media_type, prov_params, genre_map, ott))
 
-    # network 조건 (넷플릭스가 만든 오리지널) — TV만 적용
+    # network 조건 (해당 OTT가 만든 오리지널) — TV만 적용
     if media_type == "tv":
         net_params = dict(common)
-        net_params.update({"with_networks": NETFLIX_NETWORK_ID, "with_origin_country": ORIGIN_COUNTRY})
-        merged.update(_discover_pages(media_type, net_params, genre_map))
+        net_params.update({"with_networks": network_id, "with_origin_country": ORIGIN_COUNTRY})
+        merged.update(_discover_pages(media_type, net_params, genre_map, ott))
 
     return list(merged.values())
 
 
-def fetch_is_original(media_type, tmdb_id):
-    """넷플릭스 오리지널 여부 판별.
-    TV: networks에 넷플릭스(213) 포함 여부
-    영화: production_companies에 넷플릭스 계열 포함 여부
+def fetch_is_original(media_type, tmdb_id, ott="netflix"):
+    """OTT 오리지널 여부 판별.
+    TV: networks에 해당 OTT network 포함 여부
+    영화: production_companies에 해당 OTT 계열 포함 여부
     """
+    cfg = OTT_CONFIG[ott]
+    network_id = cfg["network_id"]
+    company_kw = cfg["original_company"]
     try:
         d = http_get(f"/{media_type}/{tmdb_id}", {"language": LANG})
         if media_type == "tv":
             net_ids = [n.get("id") for n in d.get("networks", [])]
-            return NETFLIX_NETWORK_ID in net_ids
+            return network_id in net_ids
         else:
-            # 영화: 제작사명에 Netflix 포함 여부로 판단
             companies = [c.get("name", "") for c in d.get("production_companies", [])]
-            return any("Netflix" in c for c in companies)
+            return any(company_kw in c for c in companies)
     except Exception:
         return False
 
 
-def normalize(media_type, raw, genre_map):
+def normalize(media_type, raw, genre_map, ott="netflix"):
     """TMDB 응답 → 우리 스키마로 변환"""
     tmdb_id = raw.get("id")
     title = raw.get("name") or raw.get("title") or ""
@@ -222,10 +235,10 @@ def normalize(media_type, raw, genre_map):
         cast = fetch_cast("movie", tmdb_id)
         rating = fetch_certification_movie(tmdb_id)
 
-    is_orig = fetch_is_original(media_type, tmdb_id)
+    is_orig = fetch_is_original(media_type, tmdb_id, ott)
 
     return {
-        "content_id": f"tmdb-{media_type}-{tmdb_id}",
+        "content_id": f"tmdb-{ott}-{media_type}-{tmdb_id}",
         "title": title,
         "title_original": orig,
         "poster_url": poster_url,
@@ -237,7 +250,7 @@ def normalize(media_type, raw, genre_map):
         "content_type": content_type,
         "genres": genres,
         "rating": rating,
-        "ott": "netflix",
+        "ott": ott,
         "is_original": is_orig,
         "availability_status": None,  # 화면에서 접속일 기준 자동판정하므로 비워둠
         "_meta": {
@@ -554,13 +567,14 @@ def main():
     movie_genres = fetch_genres_map("movie")
 
     all_items = []
-    for y in years:
-        try:
-            all_items += discover("tv", y, tv_genres)
-            all_items += discover("movie", y, movie_genres)
-        except Exception as e:
-            errors += 1
-            print(f"WARN: {y}년 수집 중 오류: {e}", file=sys.stderr)
+    for ott in ACTIVE_OTTS:
+        for y in years:
+            try:
+                all_items += discover("tv", y, tv_genres, ott)
+                all_items += discover("movie", y, movie_genres, ott)
+            except Exception as e:
+                errors += 1
+                print(f"WARN: {OTT_CONFIG[ott]['name']} {y}년 수집 중 오류: {e}", file=sys.stderr)
 
     # TMDB에서 모은 제목 집합 (뉴스룸 중복 제거용)
     tmdb_titles = {it["title"] for it in all_items}
