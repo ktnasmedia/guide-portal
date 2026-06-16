@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T01:19:31.934094",
+  "generated_at": "2026-06-16T01:26:44.805998",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -7596,6 +7596,190 @@
         "last_updated": "2026-06-16",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/show-business-wt-production"
+      }
+    },
+    {
+      "content_id": "newsroom-the-facade-of-love-start-of-production",
+      "title": "러브 어페어",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4cj3wcgClWiJbMTKDimLcE/5dafe0ceb4b035c9489d6c2196c1b3b3/á__á__á__á___á__á__á__á__á__á___á__á__á__á__á__.jpg",
+      "cast": [
+        "이동욱",
+        "전소니",
+        "정유미",
+        "이종원"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2026-04-16",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/the-facade-of-love-start-of-production"
+      }
+    },
+    {
+      "content_id": "newsroom-crime-thriller-series-road-wt-now-in-production",
+      "title": "로드",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4svreqbLm6ALM9FgDJMrxW/8ee7e1d07774cf8ecc821fccff33ad77/á__á__á__á__á__á_µá__á__á__á_º_2025-09-12_á__á__á__á__á___11.17.37.png",
+      "cast": [
+        "손석구",
+        "나가야마"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-09-12",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production"
+      }
+    },
+    {
+      "content_id": "newsroom-take-charge-of-my-heart-production",
+      "title": "나를 충전해줘",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/2aXnCMW1QFCsLo3xMUHtuE/2ff79cc6b162af35044cce940d062e6b/Take_Charge_of_My_Heart_reading_A250718468_background-F.jpg",
+      "cast": [
+        "김영광",
+        "채수빈"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-07-28",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/take-charge-of-my-heart-production"
+      }
+    },
+    {
+      "content_id": "newsroom-korean-romcom-series-lovestuck-in-production",
+      "title": "이런 엿 같은 사랑",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/QOygWmQjdRxjQqKzBxkbv/4edd5856dcc1953a68ea9bf51216b449/LoveStuck_BTS_100_A3571.jpg",
+      "cast": [
+        "정해인",
+        "하영"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-05-14",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/korean-romcom-series-lovestuck-in-production"
+      }
+    },
+    {
+      "content_id": "newsroom-korean-mystery-horror-series-perfect-job-in-production",
+      "title": "꿀알바",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/2uYmXCgn2pBbJxL9u8h5Tq/31978544f8b13264d70220469181eb94/PerfectJob_Unit_100_250409-105.jpg",
+      "cast": [
+        "이재욱",
+        "고민시",
+        "김민하"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-04-29",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/korean-mystery-horror-series-perfect-job-in-production"
+      }
+    },
+    {
+      "content_id": "newsroom-scandals-wt-production",
+      "title": "스캔들(가제)",
+      "title_original": null,
+      "poster_url": "https://images.ctfassets.net/4cd45et68cgf/54ftygmKHVIlaNbHzi5IkE/130fdfe0ff5f01e0c0a308da10a6740d/IMG_8870.png",
+      "cast": [
+        "손예진",
+        "지창욱",
+        "나나"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": true,
+      "article_date": "2025-03-26",
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "netflix_newsroom"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": true,
+        "source_url": "https://about.netflix.com/ko/news/scandals-wt-production"
       }
     }
   ]
