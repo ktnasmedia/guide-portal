@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T04:34:45.220618",
+  "generated_at": "2026-06-16T23:17:33.005309",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -1312,6 +1312,33 @@
       ],
       "rating": "12",
       "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-16",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-tving-tv-284922",
+      "title": "잘생긴 트롯",
+      "title_original": "잘생긴 트롯",
+      "poster_url": "https://image.tmdb.org/t/p/w500/s8vFLJaouvxCQ3EhfWERWHtZtys.jpg",
+      "cast": [
+        "한정완"
+      ],
+      "release_date": "2025-02-21",
+      "release_year": 2025,
+      "release_quarter": "2025 Q1",
+      "summary": "연예계 대표 12명의 남자 스타들이 트롯에 진정성을 가지고 도전하는 신(新) 음악 예능이다. 예상치 못했던 12명의 스타들이 트롯이라는 장르에 도전하는 모습을 통해 기존 트롯 예능과는 다른 차별화된 포맷과 새로운 그림으로 시청자들을 찾아올 예정이다. 오는 21일 첫 방송을 앞두고 벌써부터 뜨거운 관심이 쏟아지고 있는 가운데 놓쳐서는 안 될 관전 포인트를 짚어본다.",
+      "content_type": "시리즈",
+      "genres": [],
+      "rating": null,
+      "ott": "tving",
       "is_original": false,
       "availability_status": null,
       "_meta": {
@@ -14137,39 +14164,6 @@
       }
     },
     {
-      "content_id": "tmdb-tving-tv-307060",
-      "title": "스파이크 워",
-      "title_original": "스파이크 워",
-      "poster_url": "https://image.tmdb.org/t/p/w500/wSPT8DbG1ooFMJD0lDRzZYOVBLC.jpg",
-      "cast": [
-        "이수근",
-        "붐",
-        "김세진",
-        "신진식",
-        "Kim Yo-han"
-      ],
-      "release_date": "2025-11-30",
-      "release_year": 2025,
-      "release_quarter": "2025 Q4",
-      "summary": "대한민국 최초 연예인 배구단을 창단하라!",
-      "content_type": "예능",
-      "genres": [
-        "Reality"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-06-16",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tmdb-tving-tv-303474",
       "title": "극한84",
       "title_original": "극한84",
@@ -14516,7 +14510,7 @@
         "김은경",
         "권희송",
         "윤여원",
-        "Lee Kyeong-chae",
+        "이경채",
         "박태하"
       ],
       "release_date": "2025-12-04",
@@ -19268,7 +19262,8 @@
         "김무열",
         "이성민",
         "진기주",
-        "피오"
+        "피오",
+        "김종수"
       ],
       "release_date": "2026-06-05",
       "release_year": 2026,
@@ -19297,7 +19292,7 @@
       "content_id": "tmdb-netflix-tv-325001",
       "title": "연애실험실",
       "title_original": "연애실험실",
-      "poster_url": null,
+      "poster_url": "https://image.tmdb.org/t/p/w500/2rfdldWqk1PpdrBfik5Ar0Wp8rH.jpg",
       "cast": [
         "이주헌",
         "찰스엔터"
