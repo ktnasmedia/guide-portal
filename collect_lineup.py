@@ -320,9 +320,25 @@ def newsroom_extract_cast_from_casting(html_text):
         n = n.strip()
         # 마지막에 붙은 조사 제거 (이하늬의 → 이하늬). 이름 끝글자와 안 겹치는 의/을/를만
         n = re.sub(r"(의|을|를)$", "", n) if len(n) >= 3 else n
-        if 2 <= len(n) <= 4:
+        if 2 <= len(n) <= 4 and not _is_non_name(n):
             out.append(n)
     return out
+
+
+# 이름이 아닌 흔한 단어(동사·명사 어미 등) — 출연진 추출 시 제외
+_NON_NAME_WORDS = {
+    "확정하고", "공개했다", "공개하고", "확정했다", "제작확정", "캐스팅을",
+    "출연진은", "라인업을", "라인업", "공개", "확정", "제작", "공개한",
+    "발표했다", "발표하고", "공개되며", "공개되어", "그리고", "비롯해",
+    "물론", "특별", "함께한", "맡았다", "맡은", "역의",
+}
+def _is_non_name(word):
+    if word in _NON_NAME_WORDS:
+        return True
+    # '~하고/~했다/~하며/~되며' 등 동사형 어미로 끝나면 이름 아님
+    if re.search(r"(하고|했다|하며|되며|되어|한다|졌다|진다)$", word):
+        return True
+    return False
 
 
 def newsroom_parse(url, html_text):
@@ -349,10 +365,14 @@ def newsroom_parse(url, html_text):
             article_date = f"{y:04d}-{mo:02d}-{da:02d}"
         except Exception:
             article_date = None
+    # 출연진 추출용: HTML 정리(태그 제거 → 엔티티 변환 → 특수공백 정규화)
+    clean_text = re.sub(r"<[^>]+>", " ", html_text)      # 태그 제거
+    clean_text = htmllib.unescape(clean_text)             # &nbsp; 등 엔티티 변환
+    clean_text = clean_text.replace("\u00a0", " ").replace("\u2009", " ").replace("\u200b", "")  # 특수공백 정규화
     # 출연진: 본문 '출연:' 블록 → '…의 캐스팅' 문장 → 제목 순으로 시도
-    cast = newsroom_extract_cast_from_body(html_text)
+    cast = newsroom_extract_cast_from_body(clean_text)
     if not cast:
-        cast = newsroom_extract_cast_from_casting(html_text)
+        cast = newsroom_extract_cast_from_casting(clean_text)
     if not cast:
         cast = newsroom_extract_cast(title_raw)
     # 공개일: 제목에 'M월 D일 공개' 있으면 연도 추정해서 채움 (없으면 미정)
