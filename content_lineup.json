@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T01:26:44.805998",
+  "generated_at": "2026-06-16T01:49:07.441040",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -7387,7 +7387,6 @@
       "title_original": null,
       "poster_url": "https://images.ctfassets.net/4cd45et68cgf/7DO5H4Zs8e3TDngmhNzt0R/6176e7107a81fd0146f04bce453f54d3/still_01.jpeg",
       "cast": [
-        "확정하고",
         "이도현",
         "신시아",
         "이수혁",
@@ -7451,7 +7450,6 @@
       "title_original": null,
       "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4psNZJvcj4Juze48gOJIya/1245b6158e6d38bc27e481e752a18fbb/Crazy_Love_Unit_R_A010-1.jpg",
       "cast": [
-        "확정하고",
         "김민하",
         "노상현"
       ],
@@ -7543,7 +7541,9 @@
       "title": "나 혼자만 레벨업",
       "title_original": null,
       "poster_url": "https://images.ctfassets.net/4cd45et68cgf/4RrSNMKqXnuuofX1WK5FQL/2328005ebfe2a27abe3a8d553ec728de/á__á__á__á__á__á__á__á___á__á__á__á__á__á_µá___á__á__á__á__á__á__á__á__á__.jpg",
-      "cast": [],
+      "cast": [
+        "변우석"
+      ],
       "release_date": null,
       "release_year": null,
       "release_quarter": null,
@@ -7557,12 +7557,15 @@
       "availability_status": null,
       "_meta": {
         "sources": {
-          "_all": "netflix_newsroom"
+          "_all": "netflix_newsroom",
+          "content_type": "manual",
+          "cast": "manual"
         },
         "confidence": "confirmed",
         "last_updated": "2026-06-16",
         "needs_review": true,
-        "source_url": "https://about.netflix.com/ko/news/solo-leveling-announcement"
+        "source_url": "https://about.netflix.com/ko/news/solo-leveling-announcement",
+        "manual_override": true
       }
     },
     {
