@@ -5,6 +5,7 @@
 # - 신작 캐스팅 소식이 뜨면 그 기사 URL을 여기에 한 줄 추가만 하면 됩니다.
 
 https://about.netflix.com/ko/news/paper-man-wt-announcement
+https://about.netflix.com/ko/news/east-palace-wt-production
 https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement
 https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer
 https://about.netflix.com/ko/news/grand-galaxy-hotel-production
@@ -12,12 +13,5 @@ https://about.netflix.com/ko/news/tygo-cast-announcement
 https://about.netflix.com/ko/news/messily-ever-after-wt-production
 https://about.netflix.com/ko/news/love-o-clock-production
 https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production
-https://about.netflix.com/ko/news/the-facade-of-love-start-of-production
-https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production
-https://about.netflix.com/ko/news/take-charge-of-my-heart-production
 https://about.netflix.com/ko/news/solo-leveling-announcement
-https://about.netflix.com/ko/news/korean-romcom-series-lovestuck-in-production
-https://about.netflix.com/ko/news/korean-mystery-horror-series-perfect-job-in-production
-https://about.netflix.com/ko/news/scandals-wt-production
 https://about.netflix.com/ko/news/show-business-wt-production
-https://about.netflix.com/ko/news/east-palace-wt-production

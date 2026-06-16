@@ -288,11 +288,41 @@ def newsroom_classify_type(title):
 
 
 def newsroom_extract_cast(title):
-    """제목에서 'A-B-C' 또는 'AXB' 형태 출연진 추출"""
-    m = re.search(r"([가-힣]{2,4}(?:[-X×][가-힣]{2,4}){1,6})", title)
+    """제목에서 'A-B-C', 'A X B', 'A × B' 형태 출연진 추출 (구분자 양옆 공백 허용)"""
+    m = re.search(r"([가-힣]{2,4}(?:\s*[-X×]\s*[가-힣]{2,4}){1,6})", title)
     if not m:
         return []
-    return [n for n in re.split(r"[-X×]", m.group(1)) if 2 <= len(n) <= 4]
+    parts = re.split(r"\s*[-X×]\s*", m.group(1))
+    return [n.strip() for n in parts if 2 <= len(n.strip()) <= 4]
+
+
+def newsroom_extract_cast_from_body(html_text):
+    """본문 작품정보 블록의 '출연: 변우석' 또는 '출연: A, B, C' 형태에서 출연진 추출"""
+    m = re.search(r"출\s*연\s*[:：]\s*([^\n<]{2,80})", html_text)
+    if not m:
+        return []
+    raw = m.group(1)
+    # 다음 항목(제작/제공/연출 등) 전까지만
+    raw = re.split(r"제\s*작|제\s*공|연\s*출|각\s*본", raw)[0]
+    names = re.split(r"[,，·X×/]| 외 ", raw)
+    return [n.strip() for n in names if 2 <= len(n.strip()) <= 5]
+
+
+def newsroom_extract_cast_from_casting(html_text):
+    """본문 '송혜교, 공유, ...의 캐스팅' 문장에서 출연진 추출 (쉼표 나열형)"""
+    # 'A, B, C(, D...)의 캐스팅' 패턴 — 마지막 이름 뒤 '의/을/를' 조사 분리
+    m = re.search(r"([가-힣]{2,4}(?:\s*,\s*[가-힣]{2,4}){1,8})\s*(?:의|을|를)?\s*캐스팅", html_text)
+    if not m:
+        return []
+    names = re.split(r"\s*,\s*", m.group(1))
+    out = []
+    for n in names:
+        n = n.strip()
+        # 마지막에 붙은 조사 제거 (이하늬의 → 이하늬). 이름 끝글자와 안 겹치는 의/을/를만
+        n = re.sub(r"(의|을|를)$", "", n) if len(n) >= 3 else n
+        if 2 <= len(n) <= 4:
+            out.append(n)
+    return out
 
 
 def newsroom_parse(url, html_text):
@@ -319,6 +349,12 @@ def newsroom_parse(url, html_text):
             article_date = f"{y:04d}-{mo:02d}-{da:02d}"
         except Exception:
             article_date = None
+    # 출연진: 본문 '출연:' 블록 → '…의 캐스팅' 문장 → 제목 순으로 시도
+    cast = newsroom_extract_cast_from_body(html_text)
+    if not cast:
+        cast = newsroom_extract_cast_from_casting(html_text)
+    if not cast:
+        cast = newsroom_extract_cast(title_raw)
     # 공개일: 제목에 'M월 D일 공개' 있으면 연도 추정해서 채움 (없으면 미정)
     rd = None
     return {
@@ -326,7 +362,7 @@ def newsroom_parse(url, html_text):
         "title": work,
         "title_original": None,
         "poster_url": poster,
-        "cast": newsroom_extract_cast(title_raw),
+        "cast": cast,
         "release_date": rd,
         "release_year": None,
         "release_quarter": None,
