@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-17T02:32:39.199359",
+  "generated_at": "2026-06-17T23:09:58.522362",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -5277,6 +5277,38 @@
       }
     },
     {
+      "content_id": "tmdb-netflix-movie-1154212",
+      "title": "어쩌면 해피엔딩",
+      "title_original": "어쩌면 해피엔딩",
+      "poster_url": "https://image.tmdb.org/t/p/w500/89S4CqiUoRcrl9WETEDJwiAG5SA.jpg",
+      "cast": [
+        "신주협",
+        "Kang Hye-in",
+        "유준상"
+      ],
+      "release_date": "2025-10-02",
+      "release_year": 2025,
+      "release_quarter": "2025 Q4",
+      "summary": "인간을 돕기 위해 만들어진 헬퍼봇 ‘올리버’와 ‘클레어’. 홀로 외로이 지내던 두 로봇은 우연한 기회에 함께 여행을 떠나고, 함께하는 시간이 익숙해질수록 ‘사랑’이라는 새로운 감정을 느끼기 시작한다.",
+      "content_type": "영화",
+      "genres": [
+        "SF",
+        "로맨스"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-17",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tmdb-tving-tv-300432",
       "title": "비형전: 도깨비의 주인",
       "title_original": "비형전: 도깨비의 주인",
@@ -8740,8 +8772,7 @@
         "지수",
         "서인국",
         "공민정",
-        "조한철",
-        "서강준"
+        "조한철"
       ],
       "release_date": "2026-03-06",
       "release_year": 2026,
