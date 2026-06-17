@@ -10,7 +10,7 @@
 - `content_schema.json` : 데이터 형식 정의 (참고용 문서)
 - `collection_log.md` : 실행 이력 (한 줄 요약 + 변경 작품 목록 누적)
 - `.github/workflows/lineup_collect.yml` : 자동 실행 설정
-- `ad_ReleaseNOTE_dashboard.html` : 포탈 화면
+- `ad_guideportal_dashboard.html` : 포탈 화면
 
 ## 수집 범위
 - 대상 OTT: 넷플릭스 (TMDB provider_id = 8)
