@@ -15,6 +15,7 @@
 import os
 import sys
 import json
+import csv
 import time
 import datetime
 import urllib.request
@@ -28,13 +29,14 @@ IMG_BASE = "https://image.tmdb.org/t/p/w500"
 NETFLIX_PROVIDER_ID = 8     # 넷플릭스 watch provider (볼 수 있음)
 NETFLIX_NETWORK_ID = 213    # 넷플릭스 network (오리지널 제작/배급)
 
-# OTT별 설정 (provider=볼 수 있음, network=오리지널 판별). 확장 시 여기 추가.
+# OTT별 설정. mode: "both"=provider+network 합집합, "network"=오리지널(network)만
 OTT_CONFIG = {
-    "netflix": {"name": "넷플릭스", "provider_id": 8,    "network_id": 213,  "original_company": "Netflix"},
-    "tving":   {"name": "티빙",     "provider_id": 1883, "network_id": 3897, "original_company": "TVING"},
+    "netflix": {"name": "넷플릭스", "provider_id": 8,    "network_id": 213,  "original_company": "Netflix", "mode": "both"},
+    "tving":   {"name": "티빙",     "provider_id": 1883, "network_id": 3897, "original_company": "TVING",   "mode": "network"},
+    "wavve":   {"name": "웨이브",    "provider_id": 356,  "network_id": 3357, "original_company": "wavve",   "mode": "network"},
 }
-# 수집할 OTT 목록 (순서대로). 우선 넷플릭스+티빙.
-ACTIVE_OTTS = ["netflix", "tving"]
+# 수집할 OTT 목록 (순서대로).
+ACTIVE_OTTS = ["netflix", "tving", "wavve"]
 REGION = "KR"
 ORIGIN_COUNTRY = "KR"
 LANG = "ko-KR"
@@ -167,6 +169,7 @@ def discover(media_type, year, genre_map, ott="netflix"):
     cfg = OTT_CONFIG[ott]
     provider_id = cfg["provider_id"]
     network_id = cfg["network_id"]
+    mode = cfg.get("mode", "both")
     date_field = "first_air_date" if media_type == "tv" else "primary_release_date"
     common = {
         "language": LANG,
@@ -176,11 +179,12 @@ def discover(media_type, year, genre_map, ott="netflix"):
     }
     merged = {}
 
-    # provider 조건 (해당 OTT에서 볼 수 있는 작품)
-    prov_params = dict(common)
-    prov_params.update({"watch_region": REGION, "with_watch_providers": provider_id,
-                        "with_origin_country": ORIGIN_COUNTRY})
-    merged.update(_discover_pages(media_type, prov_params, genre_map, ott))
+    # provider 조건 (해당 OTT에서 볼 수 있는 작품) — mode가 "both"일 때만
+    if mode == "both":
+        prov_params = dict(common)
+        prov_params.update({"watch_region": REGION, "with_watch_providers": provider_id,
+                            "with_origin_country": ORIGIN_COUNTRY})
+        merged.update(_discover_pages(media_type, prov_params, genre_map, ott))
 
     # network 조건 (해당 OTT가 만든 오리지널) — TV만 적용
     if media_type == "tv":
@@ -621,6 +625,31 @@ def main():
     }
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+
+    # 티빙·웨이브 작품 목록을 CSV로 별도 저장 (구글 시트로 가져와 확인용)
+    # → TMDB가 뭘 수집했는지 보고, 빠진 작품만 수동 시트에 추가하는 용도
+    try:
+        tw_items = [it for it in items if it.get("ott") in ("tving", "wavve")]
+        # 공개일 최신순 정렬
+        tw_items.sort(key=lambda it: it.get("release_date") or "", reverse=True)
+        ott_name = {"tving": "티빙", "wavve": "웨이브"}
+        with open("tving_wavve_list.csv", "w", encoding="utf-8-sig", newline="") as cf:
+            w = csv.writer(cf)
+            w.writerow(["OTT", "오리지널", "제목", "유형", "공개일", "출연진", "장르", "content_id"])
+            for it in tw_items:
+                w.writerow([
+                    ott_name.get(it.get("ott"), it.get("ott")),
+                    "오리지널" if it.get("is_original") else "",
+                    it.get("title", ""),
+                    it.get("content_type", ""),
+                    it.get("release_date", "") or "",
+                    ", ".join(it.get("cast", []) or []),
+                    ", ".join(it.get("genres", []) or []),
+                    it.get("content_id", ""),
+                ])
+        print(f"  → tving_wavve_list.csv 생성: 티빙·웨이브 {len(tw_items)}건")
+    except Exception as e:
+        print(f"  WARN: 티빙·웨이브 CSV 생성 실패: {e}", file=sys.stderr)
 
     summary = f"TMDB {len(all_items)-len(nr_items)}건 + 뉴스룸 {len(nr_items)}건 = 총 {len(items)}건 (대상연도 {years}). 신규 {len(added)} · 갱신 {len(updated)} · 수동보정 {len(overridden)} · 오류 {errors}"
     write_log(summary, added, updated, errors)
