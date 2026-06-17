@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>kt nasmedia Guide Portal: Netflix Ads</title>
+<title>kt nasmedia Guide Portal: OTT</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -122,6 +122,15 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;}
 .cl-chip-inline{display:flex;flex-wrap:wrap;gap:8px;}
 .cl-search-wrap{position:relative;display:flex;align-items:center;margin-bottom:18px;}
+.cl-ott-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:14px;border-bottom:0.5px solid var(--border);flex-wrap:wrap;}
+.cl-ott-label{font-size:11px;font-weight:700;color:var(--gray-low);text-transform:uppercase;letter-spacing:0.06em;margin-right:3px;}
+.cl-ott-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.cl-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
+.cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
+.cl-src-badge{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:5px;}
+.cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
+.cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
+.cl-src-netflix{background:rgba(229,9,20,0.16);color:#ff6b6b;}
 .cl-search-icon{position:absolute;left:14px;font-size:18px;color:var(--gray-low);pointer-events:none;}
 .cl-search-input{width:100%;box-sizing:border-box;padding:11px 40px 11px 40px;background:#1a1a1a;border:1px solid #333;border-radius:10px;color:var(--white);font-size:14px;outline:none;transition:border-color 0.15s;}
 .cl-search-input:focus{border-color:var(--red);}
@@ -298,7 +307,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <div class="logo-wrap" onclick="navigate('updates','')">
       <img src="ktnas_logo.png" alt="kt nasmedia" class="logo-img">
       <div class="logo-divider"></div>
-      <div class="logo-text-sub">Guide Portal: Netflix Ads</div>
+      <div class="logo-text-sub">Guide Portal: OTT</div>
     </div>
     <div class="search-wrap nav-hidden">
       <span class="search-icon"><svg width="15" height="15" fill="none" viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.5" stroke="#737373" stroke-width="1.5"/><path d="M10 10L13.5 13.5" stroke="#737373" stroke-width="1.5" stroke-linecap="round"/></svg></span>
@@ -727,11 +736,17 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <!-- ══════ PAGE: 콘텐츠 라인업 ══════ -->
     <div id="page-content" class="page">
       <div class="breadcrumb"><span class="breadcrumb-cur">콘텐츠 라인업</span></div>
-      <div style="margin-bottom:24px;"><h1 class="page-title">넷플릭스 콘텐츠 라인업</h1><p class="page-desc">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</p></div>
+      <div style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">실시간 자동업데이트 (업데이트 주기 : 일)</span>
         <button class="section-bar-btn" id="cl-refresh" onclick="loadContentLineup()">↻ 새로고침</button>
+      </div>
+
+      <div class="cl-ott-bar">
+        <span class="cl-ott-label">OTT</span>
+        <div class="cl-ott-btn cl-ott-on" data-ottgrp="netflix" onclick="clSelectOtt(this)">넷플릭스</div>
+        <div class="cl-ott-btn" data-ottgrp="tving_wavve" onclick="clSelectOtt(this)">티빙·웨이브</div>
       </div>
 
       <div class="cl-search-wrap">
@@ -766,8 +781,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
         <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
         <div class="cl-chip" data-grp="status" data-val="미정" onclick="clFilter(this)">미정</div>
-        <span class="cl-filter-divider"></span>
-        <label class="cl-orig-switch" onclick="clToggleOriginal(event)">
+        <span class="cl-filter-divider" id="cl-orig-divider"></span>
+        <label class="cl-orig-switch" id="cl-orig-switch" onclick="clToggleOriginal(event)">
           <span class="cl-orig-track" id="cl-orig-track"><span class="cl-orig-knob"></span></span>
           <span class="cl-orig-text">N 오리지널만</span>
         </label>
@@ -926,6 +941,7 @@ const _curYear = String(_today.getFullYear());
 const _curQ = 'Q' + (Math.floor(_today.getMonth()/3) + 1);
 let clSel = {type:"all", year:_curYear, q:"all", status:"all"};
 let clOrigOnly = false;
+let clOttSel = "netflix";  // 'netflix' 또는 'tving_wavve'
 let clSearchQuery = "";
 let clSearchRaw = "";
 
@@ -1050,6 +1066,13 @@ function clDownloadExcel(scope){
 // 현재 필터·검색·정렬이 적용된 작품 목록 반환 (화면·다운로드 공용)
 function clGetFilteredRows(){
   let rows = clData.filter(d => {
+    // OTT 선택: 넷플릭스 / 티빙·웨이브
+    const dott = d.ott || 'netflix';
+    if(clOttSel === 'netflix'){
+      if(dott !== 'netflix') return false;
+    } else {  // tving_wavve
+      if(dott !== 'tving' && dott !== 'wavve') return false;
+    }
     if(clOrigOnly && !d.is_original) return false;
     if(clSearchQuery){
       const title = (d.title||"").replace(/\s+/g, "").toLowerCase();
@@ -1098,7 +1121,11 @@ function clRender(){
   const status = document.getElementById('cl-status');
   if(!grid) return;
 
-  const rows = clGetFilteredRows();
+  let rows = clGetFilteredRows();
+  // 티빙·웨이브 볼 때: 같은 제목(띄어쓰기 무시)은 카드 하나로 합치고 OTT 배지 모음
+  if(clOttSel === 'tving_wavve'){
+    rows = clMergeByTitle(rows);
+  }
 
   if(status && status.textContent.indexOf('미리보기')===-1) status.style.display='none';
   if(!rows.length){
@@ -1122,10 +1149,17 @@ function clRender(){
       ? noImgHtml
       : `<img class="cl-poster" src="${clEsc(d.poster_url)}" alt="${clEsc(d.title)} 포스터" loading="lazy" onerror="clImgFail(this)">`;
     const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}</div>`;
+    // OTT 출처 배지: 티빙·웨이브 볼 때만 표시 (_otts에 모인 OTT 모두)
+    let srcBadge = '';
+    if(clOttSel === 'tving_wavve'){
+      const otts = d._otts || [d.ott];
+      if(otts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving">티빙</span>';
+      if(otts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve">웨이브</span>';
+    }
     return `<div class="cl-card">
       ${poster}
       <div class="cl-card-body">
-        <div class="cl-card-head"><div class="cl-title">${clEsc(d.title)}</div>${badge}</div>
+        <div class="cl-card-head"><div class="cl-title">${srcBadge}${clEsc(d.title)}</div>${badge}</div>
         <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
         <div class="cl-meta"><b>출연</b> ${cast}</div>
@@ -1160,6 +1194,53 @@ function clToggleSum(btn){
   if(!sum) return;
   const open = sum.classList.toggle('cl-sum-open');
   btn.textContent = open ? '접기' : '더보기';
+}
+
+// 티빙·웨이브: 같은 제목(띄어쓰기 무시)을 한 카드로 합치고, OTT 목록을 _otts에 모음
+function clMergeByTitle(rows){
+  const map = {};
+  const order = [];
+  rows.forEach(function(d){
+    const key = (d.title||'').replace(/\s+/g,'').toLowerCase();
+    if(!map[key]){
+      // 원본을 복제해서 _otts 배열 추가 (원본 데이터 보존)
+      const copy = Object.assign({}, d);
+      copy._otts = [d.ott];
+      map[key] = copy;
+      order.push(key);
+    } else {
+      // 이미 있으면 OTT만 추가
+      if(map[key]._otts.indexOf(d.ott) === -1) map[key]._otts.push(d.ott);
+      // 포스터가 없던 카드에 포스터가 있으면 채움
+      if(clIsEmpty(map[key].poster_url) && !clIsEmpty(d.poster_url)) map[key].poster_url = d.poster_url;
+    }
+  });
+  return order.map(function(k){ return map[k]; });
+}
+
+// OTT 선택 (넷플릭스 / 티빙·웨이브)
+function clSelectOtt(el){
+  clOttSel = el.getAttribute('data-ottgrp');
+  document.querySelectorAll('.cl-ott-btn[data-ottgrp]').forEach(function(b){
+    b.classList.toggle('cl-ott-on', b === el);
+  });
+  // 'N 오리지널만' 토글은 넷플릭스 전용 → 티빙·웨이브에선 숨김
+  const sw = document.getElementById('cl-orig-switch');
+  const dv = document.getElementById('cl-orig-divider');
+  if(clOttSel === 'tving_wavve'){
+    if(sw) sw.style.display = 'none';
+    if(dv) dv.style.display = 'none';
+    // 켜져 있었다면 해제 (티빙·웨이브엔 적용 안 함)
+    if(clOrigOnly){
+      clOrigOnly = false;
+      const track = document.getElementById('cl-orig-track');
+      if(track) track.classList.remove('on');
+    }
+  } else {
+    if(sw) sw.style.display = '';
+    if(dv) dv.style.display = '';
+  }
+  clRender();
 }
 
 // N 오리지널만 보기 토글
