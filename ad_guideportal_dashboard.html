@@ -127,6 +127,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-ott-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .cl-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
+.cl-ott-btn[data-ottgrp="tving_wavve"].cl-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
 .cl-src-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;margin-right:5px;letter-spacing:0.03em;white-space:nowrap;}
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
@@ -165,6 +166,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
 .cl-poster-wrap{position:relative;}
 .cl-orig{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.cl-src-overlay{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:2;}
+.cl-src-overlay .cl-src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;margin:0;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.cl-src-overlay .cl-src-tving{background:#ff153c;color:#fff;}
+.cl-src-overlay .cl-src-wavve{background:#1351f9;color:#fff;}
 .cl-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
 .cl-title{font-size:15px;font-weight:700;color:var(--white);line-height:1.35;}
 .cl-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;white-space:nowrap;letter-spacing:0.03em;}
@@ -1212,7 +1217,6 @@ function clRender(){
     const posterInner = clIsEmpty(d.poster_url)
       ? noImgHtml
       : `<img class="cl-poster" src="${clEsc(d.poster_url)}" alt="${clEsc(d.title)} 포스터" loading="lazy" onerror="clImgFail(this)">`;
-    const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}</div>`;
     // OTT 출처 배지: 티빙·웨이브 볼 때만 표시 (_otts에 모인 OTT 모두)
     let srcBadge = '';
     if(clOttSel === 'tving_wavve'){
@@ -1220,10 +1224,12 @@ function clRender(){
       if(otts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving">티빙</span>';
       if(otts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve">웨이브</span>';
     }
+    const srcOverlay = srcBadge ? `<div class="cl-src-overlay">${srcBadge}</div>` : '';
+    const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}${srcOverlay}</div>`;
     return `<div class="cl-card">
       ${poster}
       <div class="cl-card-body">
-        <div class="cl-card-head"><div class="cl-title">${srcBadge}${clEsc(d.title)}</div>${badge}</div>
+        <div class="cl-card-head"><div class="cl-title">${clEsc(d.title)}</div>${badge}</div>
         <div class="cl-meta"><b>분류</b> ${clVal(d.content_type)} · <b>등급</b> ${clVal(d.rating)}</div>
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
         <div class="cl-meta"><b>출연</b> ${cast}</div>
