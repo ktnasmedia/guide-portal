@@ -128,6 +128,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
 .cl-ott-btn[data-ottgrp="tving_wavve"].cl-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
+.lib-media-bar{display:flex;align-items:center;gap:7px;margin-bottom:13px;padding-bottom:13px;border-bottom:0.5px solid var(--border);flex-wrap:wrap;}
+.lib-media-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.lib-media-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
+.lib-media-btn.lib-media-on{background:var(--red);border-color:var(--red);color:#fff;}
+.lib-media-btn[data-libmedia="tving_wavve"].lib-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
+.lib-media{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
+.lib-media-nf{background:rgba(229,9,20,0.16);color:#ff6b6b;}
+.lib-media-tw{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;margin-right:5px;letter-spacing:0.03em;white-space:nowrap;}
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
@@ -712,7 +720,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <!-- ══════ PAGE: 자료실 ══════ -->
     <div id="page-media" class="page">
       <div class="breadcrumb"><span class="breadcrumb-cur">자료실</span></div>
-      <div style="margin-bottom:24px;"><h1 class="page-title">자료실</h1><p class="page-desc">영업 자료를 분류별로 확인하고 열람하세요.</p></div>
+      <div style="margin-bottom:24px;"><h1 class="page-title">자료실</h1><p class="page-desc">OTT 매체별 자료를 한 곳에서 확인하세요.</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">자료 목록</span>
@@ -723,6 +731,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <span class="cl-search-icon">⌕</span>
         <input type="text" id="lib-search" class="cl-search-input" placeholder="자료명 검색" oninput="lib_search(this.value)" autocomplete="off">
         <button class="cl-search-clear" id="lib-search-clear" onclick="lib_searchClear()" style="display:none;">✕</button>
+      </div>
+
+      <div class="lib-media-bar">
+        <span class="cl-filter-label">매체</span>
+        <div class="lib-media-btn lib-media-on" data-libmedia="all" onclick="lib_filterMedia(this)">전체</div>
+        <div class="lib-media-btn" data-libmedia="netflix" onclick="lib_filterMedia(this)">넷플릭스</div>
+        <div class="lib-media-btn" data-libmedia="tving_wavve" onclick="lib_filterMedia(this)">티빙·웨이브</div>
       </div>
 
       <div class="cl-filters">
@@ -1657,6 +1672,7 @@ function parseCSV(text) {
 // ══════ 자료실 (구글 시트 '자료실' 탭 연동) ══════
 let libData = [];
 let libCat = "all";
+let libMedia = "all";
 let libSearchQ = "";
 let libSearchRaw = "";
 
@@ -1682,11 +1698,12 @@ async function lib_load(){
     // 헤더 제외. 열: A자료명 B분류 C링크 D날짜 E설명
     libData = rows.slice(1).map(function(c){
       return {
-        name: (c[0]||'').trim(),
-        cat:  (c[1]||'').trim() || '기타',
-        link: (c[2]||'').trim(),
-        date: (c[3]||'').trim(),
-        desc: (c[4]||'').trim()
+        media: (c[0]||'').trim(),        // A: 매체 (넷플릭스 / 티빙웨이브)
+        name: (c[1]||'').trim(),          // B: 자료명
+        cat:  (c[2]||'').trim() || '기타', // C: 분류
+        link: (c[3]||'').trim(),          // D: 링크
+        date: (c[4]||'').trim(),          // E: 날짜
+        desc: (c[5]||'').trim()           // F: 설명
       };
     }).filter(function(d){ return d.name && d.name !== '자료명'; });
     status.style.display='none';
@@ -1702,6 +1719,11 @@ function lib_render(){
   if(!list) return;
   let rows = libData.filter(function(d){
     if(libCat !== 'all' && d.cat !== libCat) return false;
+    if(libMedia !== 'all'){
+      const m = (d.media||'').replace(/\s+/g,'');
+      if(libMedia === 'netflix' && m !== '넷플릭스') return false;
+      if(libMedia === 'tving_wavve' && m !== '티빙웨이브') return false;
+    }
     if(libSearchQ){
       const n = d.name.replace(/\s+/g,'').toLowerCase();
       if(n.indexOf(libSearchQ) === -1) return false;
@@ -1709,12 +1731,15 @@ function lib_render(){
     return true;
   });
   if(!rows.length){
-    const msg = libSearchQ ? ("'" + clEsc(libSearchRaw) + "' 검색 결과가 없습니다.") : '해당 분류의 자료가 없습니다.';
+    const msg = libSearchQ ? ("'" + clEsc(libSearchRaw) + "' 검색 결과가 없습니다.") : '해당 조건의 자료가 없습니다.';
     list.innerHTML = '<div style="padding:20px 0;color:var(--gray-low);font-size:13px;">' + msg + '</div>';
     return;
   }
   list.innerHTML = rows.map(function(d){
     const meta = [];
+    const m = (d.media||'').replace(/\s+/g,'');
+    if(m === '넷플릭스') meta.push('<span class="lib-media lib-media-nf">넷플릭스</span>');
+    else if(m === '티빙웨이브') meta.push('<span class="lib-media lib-media-tw">티빙·웨이브</span>');
     meta.push('<span class="lib-cat">' + clEsc(d.cat) + '</span>');
     if(d.date) meta.push(clEsc(d.date));
     if(d.desc) meta.push(clEsc(d.desc));
@@ -1726,6 +1751,14 @@ function lib_render(){
       '<div class="lib-meta">' + meta.join(' · ') + '</div></div>' +
       openBtn + '</div>';
   }).join('');
+}
+
+function lib_filterMedia(el){
+  libMedia = el.getAttribute('data-libmedia');
+  document.querySelectorAll('.lib-media-btn[data-libmedia]').forEach(function(b){
+    b.classList.toggle('lib-media-on', b === el);
+  });
+  lib_render();
 }
 
 function lib_filter(el){
