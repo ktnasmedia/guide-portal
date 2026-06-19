@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T00:13:57.071790",
+  "generated_at": "2026-06-19T21:55:05.827251",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -9774,8 +9774,10 @@
       "content_id": "tmdb-wavve-tv-325128",
       "title": "스탠바이미",
       "title_original": "스탠바이미",
-      "poster_url": "https://image.tmdb.org/t/p/w500/pwyZoh4RiY2OXaAFtU2B5Y3hUwS.jpg",
-      "cast": [],
+      "poster_url": "https://image.tmdb.org/t/p/w500/dst0Vg96E7Jr6l9x3EIfBk6J93W.jpg",
+      "cast": [
+        "김승호"
+      ],
       "release_date": "2026-06-19",
       "release_year": 2026,
       "release_quarter": "2026 Q2",
