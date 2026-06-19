@@ -127,7 +127,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-ott-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .cl-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
-.cl-src-badge{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:5px;}
+.cl-src-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;margin-right:5px;letter-spacing:0.03em;white-space:nowrap;}
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
 .cl-src-netflix{background:rgba(229,9,20,0.16);color:#ff6b6b;}
@@ -988,6 +988,8 @@ async function loadContentLineup(){
     if(!res.ok) throw new Error('HTTP '+res.status);
     const json = await res.json();
     clData = json.items || [];
+    // 티빙·웨이브 수동 시트 병합 (TMDB에 없는 작품만 추가)
+    await clLoadManualTvingWavve();
     clRender();
   }catch(e){
     // fetch 실패(로컬 file:// 등) → 내장 폴백 사용
@@ -998,6 +1000,50 @@ async function loadContentLineup(){
       status.innerHTML='<span style="color:var(--gray-low);">※ 미리보기 모드 (내장 샘플 데이터). GitHub Pages에 올리면 content_lineup.json에서 최신 데이터를 불러옵니다.</span>';
     }
   }
+}
+
+// 티빙·웨이브 수동 시트 로드 → TMDB에 없는 작품만 clData에 추가
+async function clLoadManualTvingWavve(){
+  try{
+    const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID + '/export?format=csv&gid=3887785&_=' + Date.now();
+    const res = await fetch(url, {cache:'no-store'});
+    if(!res.ok) return;
+    const rows = parseCSV(await res.text());
+    if(rows.length <= 1) return;
+    // 기존 제목 집합 (띄어쓰기 무시) — 중복 제거용
+    const existing = {};
+    clData.forEach(function(d){
+      existing[(d.title||'').replace(/\s+/g,'').toLowerCase()] = true;
+    });
+    // 헤더 제외. 열: A제목 B OTT C유형 D공개일 E등급 F출연 G장르 H줄거리 I오리지널
+    rows.slice(1).forEach(function(c){
+      const title = (c[0]||'').trim();
+      if(!title || title === '제목') return;
+      const key = title.replace(/\s+/g,'').toLowerCase();
+      if(existing[key]) return;  // TMDB에 이미 있으면 건너뜀
+      const ottRaw = (c[1]||'').trim().toLowerCase();
+      const otts = ottRaw.split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean);
+      const primaryOtt = otts[0] || 'tving';
+      const rd = (c[3]||'').trim();
+      const yr = rd ? parseInt(rd.slice(0,4),10) : null;
+      clData.push({
+        content_id: 'manual-tw-' + key,
+        title: title,
+        poster_url: null,
+        cast: (c[5]||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
+        release_date: rd || null,
+        release_year: yr,
+        summary: (c[7]||'').trim() || null,
+        content_type: (c[2]||'').trim() || null,
+        genres: (c[6]||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
+        rating: (c[4]||'').trim() || null,
+        ott: primaryOtt,
+        _otts_manual: otts,           // 티빙·웨이브 둘 다인 경우 대비
+        is_original: (c[8]||'').trim().toUpperCase() === 'O'
+      });
+      existing[key] = true;
+    });
+  }catch(e){ /* 시트 못 읽어도 TMDB 데이터는 그대로 표시 */ }
 }
 
 // 엑셀 다운로드: scope='filtered'(현재 화면) 또는 'all'(전체)
@@ -1220,16 +1266,17 @@ function clMergeByTitle(rows){
   const order = [];
   rows.forEach(function(d){
     const key = (d.title||'').replace(/\s+/g,'').toLowerCase();
+    // 이 작품이 가진 OTT 목록 (수동: _otts_manual, 자동: ott 하나)
+    const dotts = (d._otts_manual && d._otts_manual.length) ? d._otts_manual : [d.ott];
     if(!map[key]){
-      // 원본을 복제해서 _otts 배열 추가 (원본 데이터 보존)
       const copy = Object.assign({}, d);
-      copy._otts = [d.ott];
+      copy._otts = dotts.slice();
       map[key] = copy;
       order.push(key);
     } else {
-      // 이미 있으면 OTT만 추가
-      if(map[key]._otts.indexOf(d.ott) === -1) map[key]._otts.push(d.ott);
-      // 포스터가 없던 카드에 포스터가 있으면 채움
+      dotts.forEach(function(o){
+        if(map[key]._otts.indexOf(o) === -1) map[key]._otts.push(o);
+      });
       if(clIsEmpty(map[key].poster_url) && !clIsEmpty(d.poster_url)) map[key].poster_url = d.poster_url;
     }
   });
