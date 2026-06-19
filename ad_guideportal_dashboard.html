@@ -1034,7 +1034,7 @@ async function clLoadManualTvingWavve(){
       clData.push({
         content_id: 'manual-tw-' + key,
         title: title,
-        poster_url: null,
+        poster_url: (c[9]||'').trim() || null,
         cast: (c[5]||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
         release_date: rd || null,
         release_year: yr,
