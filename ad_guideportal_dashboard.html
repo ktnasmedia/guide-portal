@@ -129,7 +129,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
 .cl-ott-btn[data-ottgrp="tving_wavve"].cl-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
 .lib-media-bar{display:flex;align-items:center;gap:7px;margin-bottom:13px;padding-bottom:13px;border-bottom:0.5px solid var(--border);flex-wrap:wrap;}
-.lib-media-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.lib-media-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .lib-media-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .lib-media-btn.lib-media-on{background:var(--red);border-color:var(--red);color:#fff;}
 .lib-media-btn[data-libmedia="tving_wavve"].lib-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
@@ -161,7 +161,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .calc-cal-day.past{color:#3a3a3a;cursor:default;}
 .calc-cal-day.past:hover{background:none;}
 .proc-ott-bar{display:flex;align-items:center;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
-.proc-ott-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.proc-ott-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .proc-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .proc-ott-btn.proc-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
 .proc-ott-btn[data-procott="tving"].proc-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
@@ -175,7 +175,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .proc-sub-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .proc-sub-btn.proc-sub-on{background:rgba(229,9,20,0.15);border-color:var(--red);color:#ff6b6b;}
 .rn-media-bar{display:flex;align-items:center;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
-.rn-media-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.rn-media-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .rn-media-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .rn-media-btn.rn-media-on{background:var(--red);border-color:var(--red);color:#fff;}
 .rn-media-btn[data-rnmedia="tving_wavve"].rn-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
@@ -210,7 +210,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-orig-track.on{background:var(--red);}
 .cl-orig-track.on .cl-orig-knob{left:20px;}
 .cl-orig-text{font-size:12px;color:var(--gray-mid);font-weight:500;}
-.cl-chip{padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
+.cl-chip{padding:7px 16px;font-size:13px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
 .cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
 .cl-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;display:flex;flex-direction:column;}
@@ -971,17 +971,17 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <button class="section-bar-btn" id="cl-refresh" onclick="loadContentLineup()">↻ 새로고침</button>
       </div>
 
-      <div class="cl-ott-bar">
-        <span class="cl-ott-label">OTT</span>
-        <div class="cl-ott-btn cl-ott-on" data-ottgrp="all" onclick="clSelectOtt(this)">전체</div>
-        <div class="cl-ott-btn" data-ottgrp="netflix" onclick="clSelectOtt(this)">넷플릭스</div>
-        <div class="cl-ott-btn" data-ottgrp="tving_wavve" onclick="clSelectOtt(this)">티빙·웨이브</div>
-      </div>
-
       <div class="cl-search-wrap">
         <span class="cl-search-icon">⌕</span>
         <input type="text" id="cl-search" class="cl-search-input" placeholder="작품명·출연진 검색" oninput="clSearch(this.value)" autocomplete="off">
         <button class="cl-search-clear" id="cl-search-clear" onclick="clSearchClear()" style="display:none;">✕</button>
+      </div>
+
+      <div class="cl-ott-bar">
+        <span class="cl-ott-label">매체</span>
+        <div class="cl-ott-btn cl-ott-on" data-ottgrp="all" onclick="clSelectOtt(this)">전체</div>
+        <div class="cl-ott-btn" data-ottgrp="netflix" onclick="clSelectOtt(this)">넷플릭스</div>
+        <div class="cl-ott-btn" data-ottgrp="tving_wavve" onclick="clSelectOtt(this)">티빙·웨이브</div>
       </div>
 
       <div class="cl-filters">
