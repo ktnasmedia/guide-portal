@@ -1435,11 +1435,10 @@ function clRender(){
     const st = clFilterStatus(d.release_date);   // 접속일 기준 자동판정 (공개중/공개예정/미정)
     const badgeClass = st==="공개중" ? "cl-badge-live" : (st==="공개예정" ? "cl-badge-soon" : "cl-badge-tbd");
     const badge = `<span class="cl-badge ${badgeClass}">${st}</span>`;
-    // 작품의 대표 OTT 판정 (전체 모드에서 카드마다 다를 수 있음)
+    // 작품의 대표 OTT 목록 (전체 모드에서 카드마다 다를 수 있음)
     const cardOtts = d._otts || [d.ott || 'netflix'];
-    const isNetflixCard = cardOtts.indexOf('netflix') !== -1;
-    // 오리지널 라벨: 넷플릭스 작품은 'N 오리지널', 그 외는 '오리지널'
-    const origLabel = isNetflixCard ? 'N 오리지널' : '오리지널';
+    // 오리지널 라벨: 매체 배지가 OTT를 표시하므로 '오리지널'로 통일
+    const origLabel = '오리지널';
     const origBadge = d.is_original ? `<span class="cl-orig">${origLabel}</span>` : '';
     const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
     const genres = (Array.isArray(d.genres)&&d.genres.length)
