@@ -980,6 +980,8 @@ function navigate(page, tab) {
   if (page === 'updates') setTimeout(onReleaseNotesTabEnter, 80);
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
+  // 청약 방법 - 계산기 탭 진입 시 달력 렌더
+  if (page === 'subscription' && targetTab === 'calculator') setTimeout(calcRenderCal, 80);
 
   // 8) 브레드크럼 갱신
   const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'콘텐츠 라인업'};
