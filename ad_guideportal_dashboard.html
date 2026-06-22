@@ -224,6 +224,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-orig{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .cl-src-overlay{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:2;}
 .cl-src-overlay .cl-src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;margin:0;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.cl-src-overlay .cl-src-netflix{background:#E50914;color:#fff;}
 .cl-src-overlay .cl-src-tving{background:#ff153c;color:#fff;}
 .cl-src-overlay .cl-src-wavve{background:#1351f9;color:#fff;}
 .cl-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
@@ -971,7 +972,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
       <div class="cl-ott-bar">
         <span class="cl-ott-label">OTT</span>
-        <div class="cl-ott-btn cl-ott-on" data-ottgrp="netflix" onclick="clSelectOtt(this)">넷플릭스</div>
+        <div class="cl-ott-btn cl-ott-on" data-ottgrp="all" onclick="clSelectOtt(this)">전체</div>
+        <div class="cl-ott-btn" data-ottgrp="netflix" onclick="clSelectOtt(this)">넷플릭스</div>
         <div class="cl-ott-btn" data-ottgrp="tving_wavve" onclick="clSelectOtt(this)">티빙·웨이브</div>
       </div>
 
@@ -1172,7 +1174,7 @@ const _curYear = String(_today.getFullYear());
 const _curQ = 'Q' + (Math.floor(_today.getMonth()/3) + 1);
 let clSel = {type:"all", year:_curYear, q:"all", status:"all"};
 let clOrigOnly = false;
-let clOttSel = "netflix";  // 'netflix' 또는 'tving_wavve'
+let clOttSel = "all";  // 'all', 'netflix', 'tving_wavve'
 let clSearchQuery = "";
 let clSearchRaw = "";
 
@@ -1291,8 +1293,8 @@ function clDownloadExcel(scope){
   }
   const today = new Date().toISOString().slice(0,10);
   const label = (scope === 'all') ? '전체' : '현재 목록';
-  const xlOttName = (clOttSel === 'tving_wavve') ? '티빙·웨이브' : '넷플릭스';
-  const origHeader = (clOttSel === 'tving_wavve') ? '오리지널' : '넷플릭스 오리지널';
+  const xlOttName = (clOttSel === 'tving_wavve') ? '티빙·웨이브' : (clOttSel === 'all' ? 'OTT 전체' : '넷플릭스');
+  const origHeader = (clOttSel === 'tving_wavve') ? '오리지널' : (clOttSel === 'all' ? '오리지널' : '넷플릭스 오리지널');
   const headers = ["공개여부","제목","분류","장르","공개일","분기","등급","출연",origHeader,"줄거리"];
 
   // 배열의 배열(aoa)로 구성: 1행 제목, 2행 메타, 3행 공백, 4행 헤더, 5행~ 데이터
@@ -1338,7 +1340,7 @@ function clDownloadExcel(scope){
   XLSX.utils.book_append_sheet(wb, ws, "콘텐츠 라인업");
 
   // 파일명: OTT_기간_분기_유형_공개 (전체인 항목은 생략) _ 날짜
-  const ottName = (clOttSel === 'tving_wavve') ? '티빙웨이브' : '넷플릭스';
+  const ottName = (clOttSel === 'tving_wavve') ? '티빙웨이브' : (clOttSel === 'all' ? 'OTT전체' : '넷플릭스');
   let fname;
   if(scope === 'all'){
     fname = `${ottName}_전체목록_${today}.xlsx`;
@@ -1360,13 +1362,14 @@ function clDownloadExcel(scope){
 // 현재 필터·검색·정렬이 적용된 작품 목록 반환 (화면·다운로드 공용)
 function clGetFilteredRows(){
   let rows = clData.filter(d => {
-    // OTT 선택: 넷플릭스 / 티빙·웨이브
+    // OTT 선택: 전체 / 넷플릭스 / 티빙·웨이브
     const dott = d.ott || 'netflix';
     if(clOttSel === 'netflix'){
       if(dott !== 'netflix') return false;
-    } else {  // tving_wavve
+    } else if(clOttSel === 'tving_wavve'){
       if(dott !== 'tving' && dott !== 'wavve') return false;
     }
+    // clOttSel === 'all' 이면 OTT 조건 없이 통과
     if(clOrigOnly && !d.is_original) return false;
     if(clSearchQuery){
       const title = (d.title||"").replace(/\s+/g, "").toLowerCase();
@@ -1416,8 +1419,8 @@ function clRender(){
   if(!grid) return;
 
   let rows = clGetFilteredRows();
-  // 티빙·웨이브 볼 때: 같은 제목(띄어쓰기 무시)은 카드 하나로 합치고 OTT 배지 모음
-  if(clOttSel === 'tving_wavve'){
+  // 티빙·웨이브 또는 전체 볼 때: 같은 제목(띄어쓰기 무시)은 카드 하나로 합치고 OTT 배지 모음
+  if(clOttSel === 'tving_wavve' || clOttSel === 'all'){
     rows = clMergeByTitle(rows);
   }
 
@@ -1431,7 +1434,11 @@ function clRender(){
     const st = clFilterStatus(d.release_date);   // 접속일 기준 자동판정 (공개중/공개예정/미정)
     const badgeClass = st==="공개중" ? "cl-badge-live" : (st==="공개예정" ? "cl-badge-soon" : "cl-badge-tbd");
     const badge = `<span class="cl-badge ${badgeClass}">${st}</span>`;
-    const origLabel = (clOttSel === 'tving_wavve') ? '오리지널' : 'N 오리지널';
+    // 작품의 대표 OTT 판정 (전체 모드에서 카드마다 다를 수 있음)
+    const cardOtts = d._otts || [d.ott || 'netflix'];
+    const isNetflixCard = cardOtts.indexOf('netflix') !== -1;
+    // 오리지널 라벨: 넷플릭스 작품은 'N 오리지널', 그 외는 '오리지널'
+    const origLabel = isNetflixCard ? 'N 오리지널' : '오리지널';
     const origBadge = d.is_original ? `<span class="cl-orig">${origLabel}</span>` : '';
     const cast = (Array.isArray(d.cast)&&d.cast.length) ? clEsc(d.cast.join(", ")) : '<span class="cl-tbd">미정</span>';
     const genres = (Array.isArray(d.genres)&&d.genres.length)
@@ -1443,12 +1450,12 @@ function clRender(){
     const posterInner = clIsEmpty(d.poster_url)
       ? noImgHtml
       : `<img class="cl-poster" src="${clEsc(d.poster_url)}" alt="${clEsc(d.title)} 포스터" loading="lazy" onerror="clImgFail(this)">`;
-    // OTT 출처 배지: 티빙·웨이브 볼 때만 표시 (_otts에 모인 OTT 모두)
+    // OTT 출처 배지: 전체·티빙웨이브 볼 때 표시 (넷플릭스 포함 모든 OTT)
     let srcBadge = '';
-    if(clOttSel === 'tving_wavve'){
-      const otts = d._otts || [d.ott];
-      if(otts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving">티빙</span>';
-      if(otts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve">웨이브</span>';
+    if(clOttSel === 'tving_wavve' || clOttSel === 'all'){
+      if(cardOtts.indexOf('netflix') !== -1) srcBadge += '<span class="cl-src-badge cl-src-netflix">넷플릭스</span>';
+      if(cardOtts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving">티빙</span>';
+      if(cardOtts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve">웨이브</span>';
     }
     const srcOverlay = srcBadge ? `<div class="cl-src-overlay">${srcBadge}</div>` : '';
     const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}${srcOverlay}</div>`;
@@ -1521,13 +1528,13 @@ function clSelectOtt(el){
   document.querySelectorAll('.cl-ott-btn[data-ottgrp]').forEach(function(b){
     b.classList.toggle('cl-ott-on', b === el);
   });
-  // 'N 오리지널만' 토글은 넷플릭스 전용 → 티빙·웨이브에선 숨김
+  // 'N 오리지널만' 토글은 넷플릭스 전용 → 티빙·웨이브/전체에선 숨김
   const sw = document.getElementById('cl-orig-switch');
   const dv = document.getElementById('cl-orig-divider');
-  if(clOttSel === 'tving_wavve'){
+  if(clOttSel === 'tving_wavve' || clOttSel === 'all'){
     if(sw) sw.style.display = 'none';
     if(dv) dv.style.display = 'none';
-    // 켜져 있었다면 해제 (티빙·웨이브엔 적용 안 함)
+    // 켜져 있었다면 해제
     if(clOrigOnly){
       clOrigOnly = false;
       const track = document.getElementById('cl-orig-track');
