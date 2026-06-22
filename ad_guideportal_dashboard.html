@@ -136,6 +136,35 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .lib-media{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
 .lib-media-nf{background:rgba(229,9,20,0.16);color:#ff6b6b;}
 .lib-media-tw{background:rgba(255,21,60,0.18);color:#ff5c78;}
+.calc-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.calc-media-box{background:var(--black-ele);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.calc-media-head{margin-bottom:12px;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
+.calc-media-name{font-size:14px;font-weight:700;}
+.calc-line{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;}
+.calc-label{font-size:12px;color:var(--gray-low);}
+.calc-val{font-size:13px;font-weight:600;color:#FB923C;}
+.calc-foot{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--border);font-size:11px;color:var(--gray-low);}
+.calc-box-notes{margin-top:9px;font-size:10.5px;color:var(--gray-low);line-height:1.7;background:rgba(255,255,255,0.03);border-radius:7px;padding:9px 11px;}
+.calc-cal{background:var(--black-ele);border:1px solid var(--border);border-radius:10px;padding:14px;margin:14px 0 4px;max-width:380px;}
+.calc-cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.calc-cal-title{font-size:14px;font-weight:600;color:var(--gray-hi);}
+.calc-cal-nav{background:none;border:none;color:var(--gray-mid);font-size:20px;cursor:pointer;padding:0 8px;line-height:1;}
+.calc-cal-nav:hover{color:var(--white);}
+.calc-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;}
+.calc-cal-dow{font-size:11px;color:var(--gray-low);padding:4px 0;}
+.calc-cal-day{font-size:12px;color:var(--gray-hi);padding:7px 0;border-radius:6px;cursor:pointer;}
+.calc-cal-day:hover{background:rgba(255,255,255,0.08);}
+.calc-cal-day.sun{color:#F87171;}
+.calc-cal-day.sat{color:#60A5FA;}
+.calc-cal-day.sel{background:#16A34A;color:#fff;font-weight:700;}
+.calc-cal-day.sel:hover{background:#16A34A;}
+.calc-cal-empty{padding:7px 0;}
+.calc-cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:0.5px solid var(--border);font-size:10px;color:var(--gray-low);align-items:center;}
+.calc-dot{display:inline-block;width:8px;height:8px;border-radius:2px;vertical-align:middle;margin-right:3px;}
+.calc-start-line{font-size:13px;color:var(--gray-mid);margin-bottom:14px;}
+.calc-start-val{font-weight:700;color:#4ADE80;margin-left:8px;}
+.calc-notes{font-size:11px;color:var(--gray-low);line-height:1.8;background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 14px;}
+@media(max-width:640px){.calc-media-grid{grid-template-columns:1fr;}}
 .cl-src-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;margin-right:5px;letter-spacing:0.03em;white-space:nowrap;}
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
@@ -661,18 +690,48 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div id="tc-subscription-calculator" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">청약 일자 계산기</span></div>
         <div class="info-card">
-          <div style="font-size:13px;color:var(--gray-low);margin-bottom:18px;">캠페인 시작 희망일을 입력하면 청약·소재 제출·집행 일정을 자동으로 안내합니다.</div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+          <div style="font-size:13px;color:var(--gray-low);margin-bottom:18px;">집행 시작 희망일을 입력하면 매체별 청약·소재 제출 마감일을 자동으로 계산합니다. (주말·공휴일 제외 영업일 기준)</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap;">
             <label style="font-size:13px;color:var(--gray-mid);white-space:nowrap;">집행 시작일</label>
-            <input type="date" id="calc-date" style="background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--gray-hi);font-size:13px;outline:none;cursor:pointer;" oninput="calcDates()">
-            <button class="btn-red" onclick="calcDates()">계산하기</button>
+            <input type="date" id="calc-date" style="background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--gray-hi);font-size:13px;outline:none;cursor:pointer;" oninput="calcOnInput()">
+            <span style="font-size:11px;color:var(--gray-low);">입력칸에 넣거나 아래 달력에서 선택</span>
           </div>
-          <div id="calc-result" style="display:none;">
+          <div class="calc-cal" id="calc-cal">
+            <div class="calc-cal-head">
+              <button class="calc-cal-nav" onclick="calcShiftMonth(-1)" aria-label="이전 달">‹</button>
+              <span class="calc-cal-title" id="calc-cal-title"></span>
+              <button class="calc-cal-nav" onclick="calcShiftMonth(1)" aria-label="다음 달">›</button>
+            </div>
+            <div class="calc-cal-grid" id="calc-cal-grid"></div>
+            <div class="calc-cal-legend">
+              <span><i class="calc-dot" style="background:#4ADE80;"></i>선택한 집행일</span>
+              <span style="color:#F87171;">● 일요일·공휴일</span>
+              <span style="color:#60A5FA;">● 토요일</span>
+            </div>
+          </div>
+          <div id="calc-result" style="display:none;margin-top:18px;">
             <div class="divider"></div>
-            <div style="display:flex;flex-direction:column;gap:10px;">
-              <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:center;"><span style="font-size:12px;color:var(--gray-low);">청약 마감일</span><span id="r-deadline" style="font-size:13px;font-weight:600;color:#FB923C;font-family:'Noto Sans KR',sans-serif;"></span></div>
-              <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:center;"><span style="font-size:12px;color:var(--gray-low);">소재 제출 마감일</span><span id="r-creative" style="font-size:13px;font-weight:600;color:#FB923C;font-family:'Noto Sans KR',sans-serif;"></span></div>
-              <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:center;"><span style="font-size:12px;color:var(--gray-low);">집행 시작일</span><span id="r-start" style="font-size:13px;font-weight:600;color:#4ADE80;font-family:'Noto Sans KR',sans-serif;"></span></div>
+            <div class="calc-media-grid">
+              <div class="calc-media-box">
+                <div class="calc-media-head"><span class="calc-media-name" style="color:#ff6b6b;">넷플릭스</span></div>
+                <div class="calc-line"><span class="calc-label">청약 마감</span><span class="calc-val" id="nf-sub"></span></div>
+                <div class="calc-line"><span class="calc-label">소재 제출 마감</span><span class="calc-val" id="nf-cre"></span></div>
+                <div class="calc-foot">집행 시작 3영업일 전 (청약·소재 동일)</div>
+                <div class="calc-box-notes">
+                  ※ 제한 업종·QR 광고는 5영업일 전 청약·소재 제출이 필요합니다.<br>
+                  ※ 청약 접수는 당일 오전 11:59 이내 접수 시 해당일을 영업일에 포함합니다.
+                </div>
+              </div>
+              <div class="calc-media-box">
+                <div class="calc-media-head"><span class="calc-media-name" style="color:#ff5c78;">티빙</span></div>
+                <div class="calc-line"><span class="calc-label">청약 마감</span><span class="calc-val" id="tv-sub"></span></div>
+                <div class="calc-line"><span class="calc-label">소재 제출 마감</span><span class="calc-val" id="tv-cre"></span></div>
+                <div class="calc-foot">청약 3영업일 전 · 소재 2영업일 전</div>
+              </div>
+            </div>
+            <div class="calc-start-line">집행 시작일 <span class="calc-start-val" id="calc-start"></span></div>
+            <div class="calc-notes">
+              ※ 실제 마감은 매체 사정에 따라 달라질 수 있으니 담당자에게 최종 확인하세요.
             </div>
           </div>
         </div>
@@ -939,6 +998,9 @@ function switchTab(page, tab) {
   navigate(page, tab);
   if (page === 'updates' && tab === 'release-notes') {
     setTimeout(onReleaseNotesTabEnter, 80);
+  }
+  if (page === 'subscription' && tab === 'calculator') {
+    setTimeout(calcRenderCal, 80);
   }
 }
 
@@ -1429,20 +1491,120 @@ function onContentTabEnter(){
 }
 
 // ── 계산기 ──
+// 2026년 대한민국 공휴일 (영업일 계산에서 제외). 임시공휴일 생기면 여기 추가.
+const CALC_HOLIDAYS_2026 = [
+  "2026-01-01", // 신정
+  "2026-02-16","2026-02-17","2026-02-18", // 설날 연휴
+  "2026-03-01","2026-03-02", // 삼일절(일) + 대체공휴일
+  "2026-05-05", // 어린이날
+  "2026-05-24","2026-05-25", // 부처님오신날(일) + 대체공휴일
+  "2026-06-06", // 현충일
+  "2026-08-15","2026-08-17", // 광복절(토) + 대체공휴일
+  "2026-09-24","2026-09-25","2026-09-26", // 추석 연휴
+  "2026-10-03","2026-10-05", // 개천절(토) + 대체공휴일
+  "2026-10-09", // 한글날
+  "2026-12-25"  // 성탄절
+];
+
+function calcIsHoliday(d){
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return CALC_HOLIDAYS_2026.indexOf(`${y}-${m}-${day}`) !== -1;
+}
+// 주말·공휴일 제외하고 n 영업일 전 날짜 반환
+function calcBizDaysBefore(start, n){
+  let count=0, cur=new Date(start);
+  while(count<n){
+    cur.setDate(cur.getDate()-1);
+    const dow=cur.getDay();
+    if(dow!==0 && dow!==6 && !calcIsHoliday(cur)) count++;
+  }
+  return cur;
+}
+function calcFmt(d){
+  const days=['일','월','화','수','목','금','토'];
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} (${days[d.getDay()]})`;
+}
+
 function calcDates() {
   const v = document.getElementById('calc-date').value;
   if (!v) return;
-  const start = new Date(v);
-  const addBizDays = (d,n) => {
-    let count=0, cur=new Date(d);
-    while(count<n){cur.setDate(cur.getDate()-1);if(cur.getDay()!==0&&cur.getDay()!==6)count++;}
-    return cur;
-  };
-  const fmt = d => d.toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\. /g,'.').replace(/\.$/,'');
-  document.getElementById('r-deadline').textContent = fmt(addBizDays(start,10));
-  document.getElementById('r-creative').textContent = fmt(addBizDays(start,7));
-  document.getElementById('r-start').textContent    = fmt(start);
+  const parts = v.split('-');
+  const start = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  // 넷플릭스: 청약·소재 모두 3영업일 전
+  document.getElementById('nf-sub').textContent = calcFmt(calcBizDaysBefore(start,3));
+  document.getElementById('nf-cre').textContent = calcFmt(calcBizDaysBefore(start,3));
+  // 티빙: 청약 3영업일 전, 소재 2영업일 전
+  document.getElementById('tv-sub').textContent = calcFmt(calcBizDaysBefore(start,3));
+  document.getElementById('tv-cre').textContent = calcFmt(calcBizDaysBefore(start,2));
+  document.getElementById('calc-start').textContent = calcFmt(start);
   document.getElementById('calc-result').style.display='block';
+}
+
+// ── 달력 ──
+let calcCalYear, calcCalMonth, calcSelDate = null;
+
+function calcOnInput(){
+  // 입력칸에서 날짜 넣으면 달력도 그 달로 이동 + 선택 표시
+  const v = document.getElementById('calc-date').value;
+  if(v){
+    const p = v.split('-');
+    calcSelDate = v;
+    calcCalYear = parseInt(p[0]);
+    calcCalMonth = parseInt(p[1]) - 1;
+    calcRenderCal();
+  }
+  calcDates();
+}
+
+function calcShiftMonth(delta){
+  calcCalMonth += delta;
+  if(calcCalMonth < 0){ calcCalMonth = 11; calcCalYear--; }
+  else if(calcCalMonth > 11){ calcCalMonth = 0; calcCalYear++; }
+  calcRenderCal();
+}
+
+function calcPickDay(y, m, d){
+  const mm = String(m+1).padStart(2,'0');
+  const dd = String(d).padStart(2,'0');
+  const val = `${y}-${mm}-${dd}`;
+  calcSelDate = val;
+  document.getElementById('calc-date').value = val;
+  calcRenderCal();
+  calcDates();
+}
+
+function calcRenderCal(){
+  const grid = document.getElementById('calc-cal-grid');
+  const title = document.getElementById('calc-cal-title');
+  if(!grid) return;
+  if(calcCalYear === undefined){
+    const t = new Date();
+    calcCalYear = t.getFullYear();
+    calcCalMonth = t.getMonth();
+  }
+  title.textContent = `${calcCalYear}년 ${calcCalMonth+1}월`;
+  const dows = ['일','월','화','수','목','금','토'];
+  let html = dows.map(function(d,i){
+    const c = i===0 ? 'color:#F87171;' : (i===6 ? 'color:#60A5FA;' : '');
+    return `<div class="calc-cal-dow" style="${c}">${d}</div>`;
+  }).join('');
+  const first = new Date(calcCalYear, calcCalMonth, 1).getDay();
+  const days = new Date(calcCalYear, calcCalMonth+1, 0).getDate();
+  for(let i=0;i<first;i++) html += '<div class="calc-cal-empty"></div>';
+  for(let d=1; d<=days; d++){
+    const dateObj = new Date(calcCalYear, calcCalMonth, d);
+    const dow = dateObj.getDay();
+    const mm = String(calcCalMonth+1).padStart(2,'0');
+    const dd = String(d).padStart(2,'0');
+    const val = `${calcCalYear}-${mm}-${dd}`;
+    const isHol = calcIsHoliday(dateObj);
+    let cls = 'calc-cal-day';
+    if(val === calcSelDate) cls += ' sel';
+    else if(dow===0 || isHol) cls += ' sun';
+    else if(dow===6) cls += ' sat';
+    html += `<div class="${cls}" onclick="calcPickDay(${calcCalYear},${calcCalMonth},${d})">${d}</div>`;
+  }
+  grid.innerHTML = html;
 }
 
 // ── Modal ──
