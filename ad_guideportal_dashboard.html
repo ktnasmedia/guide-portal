@@ -221,9 +221,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-noimg span{font-size:12px;}
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
 .cl-poster-wrap{position:relative;}
-.cl-orig{position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
-.cl-src-overlay{position:absolute;top:10px;right:10px;display:flex;gap:4px;z-index:2;}
-.cl-src-overlay .cl-src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;margin:0;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.cl-orig{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
+.cl-src-overlay{position:absolute;top:10px;left:10px;display:flex;gap:4px;z-index:2;}
+.cl-src-overlay .cl-src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;margin:0;box-shadow:0 1px 4px rgba(0,0,0,0.35);display:inline-flex;align-items:center;gap:3px;}
+.cl-src-ico{display:inline-flex;width:11px;height:11px;background:rgba(255,255,255,0.95);border-radius:2px;align-items:center;justify-content:center;font-size:8px;font-weight:900;flex-shrink:0;}
 .cl-src-overlay .cl-src-netflix{background:#E50914;color:#fff;}
 .cl-src-overlay .cl-src-tving{background:#ff153c;color:#fff;}
 .cl-src-overlay .cl-src-wavve{background:#1351f9;color:#fff;}
@@ -1453,9 +1454,9 @@ function clRender(){
     // OTT 출처 배지: 전체·티빙웨이브 볼 때 표시 (넷플릭스 포함 모든 OTT)
     let srcBadge = '';
     if(clOttSel === 'tving_wavve' || clOttSel === 'all'){
-      if(cardOtts.indexOf('netflix') !== -1) srcBadge += '<span class="cl-src-badge cl-src-netflix">넷플릭스</span>';
-      if(cardOtts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving">티빙</span>';
-      if(cardOtts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve">웨이브</span>';
+      if(cardOtts.indexOf('netflix') !== -1) srcBadge += '<span class="cl-src-badge cl-src-netflix"><span class="cl-src-ico" style="color:#E50914;">N</span>넷플릭스</span>';
+      if(cardOtts.indexOf('tving') !== -1) srcBadge += '<span class="cl-src-badge cl-src-tving"><span class="cl-src-ico" style="color:#ff153c;">T</span>티빙</span>';
+      if(cardOtts.indexOf('wavve') !== -1) srcBadge += '<span class="cl-src-badge cl-src-wavve"><span class="cl-src-ico" style="color:#1351f9;">W</span>웨이브</span>';
     }
     const srcOverlay = srcBadge ? `<div class="cl-src-overlay">${srcBadge}</div>` : '';
     const poster = `<div class="cl-poster-wrap">${posterInner}${origBadge}${srcOverlay}</div>`;
