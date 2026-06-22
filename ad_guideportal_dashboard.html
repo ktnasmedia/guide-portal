@@ -160,6 +160,20 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .calc-cal-day.sel:hover{background:#16A34A;}
 .calc-cal-day.past{color:#3a3a3a;cursor:default;}
 .calc-cal-day.past:hover{background:none;}
+.proc-ott-bar{display:flex;align-items:center;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
+.proc-ott-btn{font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.proc-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
+.proc-ott-btn.proc-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
+.proc-ott-btn[data-procott="tving"].proc-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
+.proc-bullets{list-style:none;padding:0;margin:6px 0 0;}
+.proc-bullets li{font-size:12px;color:var(--gray-low);line-height:1.65;padding-left:13px;position:relative;margin-bottom:6px;}
+.proc-bullets li:before{content:"•";position:absolute;left:0;color:var(--gray-mid);}
+.proc-bullets li:last-child{margin-bottom:0;}
+.proc-bullets .em{color:var(--gray-hi);}
+.proc-sub-bar{display:flex;gap:6px;margin-bottom:14px;}
+.proc-sub-btn{font-size:11.5px;font-weight:600;padding:5px 13px;border-radius:6px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-ele);cursor:pointer;transition:all 0.18s;}
+.proc-sub-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
+.proc-sub-btn.proc-sub-on{background:rgba(229,9,20,0.15);border-color:var(--red);color:#ff6b6b;}
 .calc-cal-empty{padding:7px 0;}
 .calc-cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:0.5px solid var(--border);font-size:10px;color:var(--gray-low);align-items:center;}
 .calc-dot{display:inline-block;width:8px;height:8px;border-radius:2px;vertical-align:middle;margin-right:3px;}
@@ -438,7 +452,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
     <div id="sub-subscription" class="sub-menu collapsed">
       <div class="nav-sub-item" onclick="navigate('subscription','calculator')"><span class="nav-sub-dot"></span>청약 일자 계산기</div>
-      <div class="nav-sub-item" onclick="navigate('subscription','process')"><span class="nav-sub-dot"></span>넷플릭스 광고 프로세스</div>
+      <div class="nav-sub-item" onclick="navigate('subscription','process')"><span class="nav-sub-dot"></span>청약 프로세스</div>
     </div>
   </div>
 
@@ -679,12 +693,12 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-subscription-all" onclick="switchTab('subscription','all')">전체</div>
         <div class="sub-tab" id="tab-subscription-calculator" onclick="switchTab('subscription','calculator')">청약 일자 계산기</div>
-        <div class="sub-tab" id="tab-subscription-process" onclick="switchTab('subscription','process')">넷플릭스 광고 프로세스</div>
+        <div class="sub-tab" id="tab-subscription-process" onclick="switchTab('subscription','process')">청약 프로세스</div>
       </div>
       <div id="tc-subscription-all">
         <div class="card-grid-2">
           <div class="info-card" style="cursor:pointer;" onclick="switchTab('subscription','calculator')"><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;">청약 일자 계산기</div><div style="font-size:12px;color:var(--gray-low);">캠페인 시작일 기준 청약·소재 제출 마감일 자동 산출</div></div>
-          <div class="info-card" style="cursor:pointer;" onclick="switchTab('subscription','process')"><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;">넷플릭스 광고 프로세스</div><div style="font-size:12px;color:var(--gray-low);">상품 선정부터 리포트 수령까지 단계별 안내</div></div>
+          <div class="info-card" style="cursor:pointer;" onclick="switchTab('subscription','process')"><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px;">청약 프로세스</div><div style="font-size:12px;color:var(--gray-low);">매체별 청약 절차를 단계별로 안내</div></div>
         </div>
       </div>
       <div id="tc-subscription-calculator" style="display:none;">
@@ -736,13 +750,119 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         </div>
       </div>
       <div id="tc-subscription-process" style="display:none;">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스 광고 프로세스</span></div>
-        <div class="info-card">
-          <div class="step-row" style="padding-top:0;"><div class="step-num">1</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">상품 선정 및 견적 확인</div><div style="font-size:12px;color:var(--gray-low);">광고솔루션팀과 상품 협의 후 견적서 수령</div></div></div>
-          <div class="step-row"><div class="step-num">2</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">청약 및 계약 체결</div><div style="font-size:12px;color:var(--gray-low);">청약서 작성 → 내부 결재 → 계약서 날인</div></div></div>
-          <div class="step-row"><div class="step-num">3</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">소재 제작 및 심의 제출</div><div style="font-size:12px;color:var(--gray-low);">소재 규격 확인 → 제작 → 집행일 7영업일 전 제출</div></div></div>
-          <div class="step-row"><div class="step-num">4</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">심의 통과 및 집행 확정</div><div style="font-size:12px;color:var(--gray-low);">심의 결과 통보 (3~5영업일) → 집행 확정</div></div></div>
-          <div class="step-row"><div class="step-num">5</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">집행 및 리포트 수령</div><div style="font-size:12px;color:var(--gray-low);">광고 집행 → 완료 후 성과 리포트 제공</div></div></div>
+        <div class="proc-ott-bar">
+          <span class="cl-filter-label">매체</span>
+          <div class="proc-ott-btn proc-ott-on" data-procott="netflix" onclick="procSelectOtt(this)">넷플릭스</div>
+          <div class="proc-ott-btn" data-procott="tving" onclick="procSelectOtt(this)">티빙·웨이브</div>
+        </div>
+
+        <div id="proc-netflix">
+          <div class="proc-sub-bar">
+            <div class="proc-sub-btn proc-sub-on" data-nfsub="dio" onclick="procSelectNfSub(this)">Direct IO</div>
+            <div class="proc-sub-btn" data-nfsub="pg" onclick="procSelectNfSub(this)">PG · PMP</div>
+          </div>
+
+          <div id="proc-nf-dio">
+            <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스 일반 광고 — Direct IO</span></div>
+            <div class="info-card">
+              <div class="step-row" style="padding-top:0;"><div class="step-num">1</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">광고 문의</div>
+                <ul class="proc-bullets">
+                  <li>논타겟팅(RON)인 경우 인벤토리 체크가 필요하지 않습니다.</li>
+                  <li>여러 타겟팅 조합을 사용하는 경우 인벤토리 체크가 필요하며, 오디언스가 제한될 수 있어 권장드리지 않습니다.</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">2</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">광고 신청 및 소재 제출</div>
+                <ul class="proc-bullets">
+                  <li>부킹 요청서 포맷을 준수하여 넷플릭스 담당(<span class="em">netflix@nasmedia.co.kr</span>)으로 부킹 요청 메일을 발송합니다.</li>
+                  <li>광고 부킹 및 소재 전달은 라이브 희망일자 3영업일 전까지 제출이 필요합니다. (제한된 카테고리 광고주는 5영업일 준수)</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">3</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">청약 및 소재 검수 진행</div>
+                <ul class="proc-bullets">
+                  <li>넷플릭스에서 광고 소재가 가이드라인에 부합하는지 심사합니다.</li>
+                  <li>심사 반려 시 수정 후 재제출이 필요합니다.</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">4</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">최종 부킹 완료 확인</div>
+                <ul class="proc-bullets">
+                  <li>자동 메일 발송을 통해 최종 부킹 완료 메일을 발송·수신합니다. (미수신 시 넷플릭스 담당 더블체크 필요)</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">5</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">라이브</div>
+                <ul class="proc-bullets">
+                  <li>게재 시작 및 실제 게재지면이 제공됩니다.</li>
+                  <li>경로: <span class="em">\\121.134.243.150\04.나스자료실\넷플릭스 게재 확인</span></li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">6</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">리포트</div>
+                <ul class="proc-bullets">
+                  <li>Direct IO는 주간 리포트와 랩업 리포트를 제공합니다.</li>
+                  <li>주간 리포트: 사전 지정 요일에 매주 제공되며, 공휴일인 경우 다음 영업일에 넷플릭스로부터 공유받는 폴더에 업로드됩니다.</li>
+                  <li>랩업 리포트: 캠페인 종료 후 5영업일 이내 공유 폴더에 업로드됩니다.</li>
+                  <li>개별 맞춤형(커스텀) 포맷은 지원이 어려우며, 보고서 포맷은 넷플릭스 사정에 따라 변경될 수 있습니다.</li>
+                </ul></div></div>
+            </div>
+          </div>
+
+          <div id="proc-nf-pg" style="display:none;">
+            <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스 일반 광고 — PG · PMP</span></div>
+            <div class="info-card">
+              <div class="step-row" style="padding-top:0;"><div class="step-num">1</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">광고 문의</div>
+                <ul class="proc-bullets">
+                  <li>논타겟팅(RON)인 경우 인벤토리 체크가 필요하지 않습니다.</li>
+                  <li>여러 타겟팅 조합을 사용하는 경우 인벤토리 체크가 필요하며, 오디언스가 제한될 수 있어 권장드리지 않습니다.</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">2</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">광고 신청</div>
+                <ul class="proc-bullets">
+                  <li>부킹 요청서 포맷을 준수하여 넷플릭스 담당(<span class="em">netflix@nasmedia.co.kr</span>)으로 부킹 요청 메일을 발송합니다.</li>
+                  <li>광고 부킹 및 소재 전달은 라이브 희망일자 3영업일 전까지 제출이 필요합니다. (제한된 카테고리 광고주는 5영업일 준수)</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">3</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">청약 및 소재 검수 진행</div>
+                <ul class="proc-bullets">
+                  <li>넷플릭스에서 광고 소재가 가이드라인에 부합하는지 심사합니다.</li>
+                  <li>심사 반려 시 수정 후 재제출이 필요합니다.</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">4</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">최종 부킹 완료 확인</div>
+                <ul class="proc-bullets">
+                  <li>자동 메일 발송을 통해 최종 부킹 완료 메일을 발송·수신합니다. (미수신 시 넷플릭스 담당 더블체크 필요)</li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">5</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">라이브</div>
+                <ul class="proc-bullets">
+                  <li>게재 시작 및 실제 게재지면이 제공됩니다.</li>
+                  <li>경로: <span class="em">\\121.134.243.150\04.나스자료실\넷플릭스 게재 확인</span></li>
+                </ul></div></div>
+              <div class="step-row"><div class="step-num">6</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">리포트</div>
+                <ul class="proc-bullets">
+                  <li>DSP 플랫폼에서 리포트가 자동 메일로 발송·수신됩니다.</li>
+                </ul></div></div>
+            </div>
+          </div>
+
+          <div style="font-size:11px;color:var(--gray-low);margin-top:10px;">※ 제한된 카테고리의 광고주는 인증폼 제출이 필요하며, 심사에 최소 3~7영업일이 소요됩니다. 자세한 내용은 넷플릭스 광고 정책 가이드를 확인하세요.</div>
+        </div>
+
+        <div id="proc-tving" style="display:none;">
+          <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙·웨이브 청약 프로세스</span></div>
+          <div class="info-card">
+            <div class="step-row" style="padding-top:0;"><div class="step-num">1</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">청약 요청 메일 발송</div>
+              <ul class="proc-bullets">
+                <li>티빙 광고팀(<span class="em">tving.advertising@cj.net</span>)으로 청약 요청 양식을 작성해 발송하면 영업일 3일 이내 낙찰 여부를 메일로 회신받습니다. (티빙 담당자 등 타 메일로 접수 시 처리 불가)</li>
+                <li>광고 계정이 생성되어 있지 않은 신규 건은 광고 계정 생성 요청 양식을 함께 전달합니다.</li>
+                <li>별도 예약 폼 제출 후 일정 예약이 승인된 일 독점형 상품도 동일하게 청약 요청 메일을 발송합니다.</li>
+              </ul></div></div>
+            <div class="step-row"><div class="step-num">2</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">티빙광고팀 낙찰 회신</div>
+              <ul class="proc-bullets">
+                <li>청약 확정 메일을 받으면 광고 시스템(TAS)에 접속해 캠페인을 세팅할 수 있습니다.</li>
+                <li>청약 확정 메일에는 세팅에 필요한 상품 템플릿 정보 등의 가이드가 포함됩니다.</li>
+              </ul></div></div>
+            <div class="step-row"><div class="step-num">3</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">TAS 내 주문 생성</div>
+              <ul class="proc-bullets">
+                <li>생성된 광고 계정과 안내받은 템플릿 정보를 기반으로, TAS 내 광고 주문을 직접 생성합니다.</li>
+                <li>TAS 시스템 내 캠페인 세팅 방법은 TAS 세팅 가이드에서 상세하게 확인할 수 있습니다.</li>
+              </ul></div></div>
+            <div class="step-row"><div class="step-num">4</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">검수 통과 후 캠페인 라이브</div>
+              <ul class="proc-bullets">
+                <li>등록한 주문은 2영업일 내 티빙광고팀이 검수하며, 통과된 주문은 시작일이 도래하면 광고가 라이브됩니다.</li>
+                <li>심사 가이드를 준수하지 않은 주문이나 소재는 검수 시 반려될 수 있습니다.</li>
+                <li>캠페인이 라이브되면 TAS 시스템 내에서 결과 리포트를 확인할 수 있습니다.</li>
+              </ul></div></div>
+          </div>
+          <div style="font-size:11px;color:var(--gray-low);margin-top:10px;">※ 아웃스트림 광고는 별도 청약 프로세스가 적용됩니다. 자세한 내용은 티빙 광고정보센터를 참고하세요.</div>
         </div>
       </div>
     </div>
@@ -979,8 +1099,8 @@ function navigate(page, tab) {
   if (page === 'updates') setTimeout(onReleaseNotesTabEnter, 80);
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
-  // 청약 방법 - 계산기 탭 진입 시 달력 렌더
-  if (page === 'subscription' && targetTab === 'calculator') setTimeout(calcRenderCal, 80);
+  // 청약 방법 - 계산기 탭 진입 시 공휴일 로드 후 달력 렌더
+  if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
   // 8) 브레드크럼 갱신
   const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'콘텐츠 라인업'};
@@ -1001,7 +1121,7 @@ function switchTab(page, tab) {
     setTimeout(onReleaseNotesTabEnter, 80);
   }
   if (page === 'subscription' && tab === 'calculator') {
-    setTimeout(calcRenderCal, 80);
+    setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
   }
 }
 
@@ -1493,7 +1613,8 @@ function onContentTabEnter(){
 
 // ── 계산기 ──
 // 2026년 대한민국 공휴일 (영업일 계산에서 제외). 임시공휴일 생기면 여기 추가.
-const CALC_HOLIDAYS_2026 = [
+// 내장 공휴일 폴백 (holidays.json 로드 실패 시 사용)
+const CALC_HOLIDAYS_FALLBACK = [
   "2026-01-01", // 신정
   "2026-02-16","2026-02-17","2026-02-18", // 설날 연휴
   "2026-03-01","2026-03-02", // 삼일절(일) + 대체공휴일
@@ -1506,10 +1627,24 @@ const CALC_HOLIDAYS_2026 = [
   "2026-10-09", // 한글날
   "2026-12-25"  // 성탄절
 ];
+// 실제 사용하는 공휴일 집합 (holidays.json 로드되면 교체됨)
+let CALC_HOLIDAYS = CALC_HOLIDAYS_FALLBACK.slice();
+
+// holidays.json 로드 (공공데이터포털 자동 수집 결과)
+async function calcLoadHolidays(){
+  try{
+    const res = await fetch('holidays.json?_=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) return;
+    const data = await res.json();
+    if(data && Array.isArray(data.holidays) && data.holidays.length){
+      CALC_HOLIDAYS = data.holidays.map(function(h){ return h.date; });
+    }
+  }catch(e){ /* 실패 시 내장 폴백 유지 */ }
+}
 
 function calcIsHoliday(d){
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
-  return CALC_HOLIDAYS_2026.indexOf(`${y}-${m}-${day}`) !== -1;
+  return CALC_HOLIDAYS.indexOf(`${y}-${m}-${day}`) !== -1;
 }
 // 주말·공휴일 제외하고 n 영업일 전 날짜 반환
 function calcBizDaysBefore(start, n){
@@ -1524,6 +1659,26 @@ function calcBizDaysBefore(start, n){
 function calcFmt(d){
   const days=['일','월','화','수','목','금','토'];
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} (${days[d.getDay()]})`;
+}
+
+// 넷플릭스 청약유형 전환 (Direct IO / PG·PMP)
+function procSelectNfSub(el){
+  const sub = el.getAttribute('data-nfsub');
+  document.querySelectorAll('.proc-sub-btn[data-nfsub]').forEach(function(b){
+    b.classList.toggle('proc-sub-on', b === el);
+  });
+  document.getElementById('proc-nf-dio').style.display = (sub==='dio') ? 'block' : 'none';
+  document.getElementById('proc-nf-pg').style.display = (sub==='pg') ? 'block' : 'none';
+}
+
+// 청약 프로세스 OTT 전환 (넷플릭스 / 티빙)
+function procSelectOtt(el){
+  const ott = el.getAttribute('data-procott');
+  document.querySelectorAll('.proc-ott-btn[data-procott]').forEach(function(b){
+    b.classList.toggle('proc-ott-on', b === el);
+  });
+  document.getElementById('proc-netflix').style.display = (ott==='netflix') ? 'block' : 'none';
+  document.getElementById('proc-tving').style.display = (ott==='tving') ? 'block' : 'none';
 }
 
 function calcDates() {
