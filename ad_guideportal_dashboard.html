@@ -170,6 +170,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .proc-bullets li:before{content:"•";position:absolute;left:0;color:var(--gray-mid);}
 .proc-bullets li:last-child{margin-bottom:0;}
 .proc-bullets .em{color:var(--gray-hi);}
+.proc-form-title{font-size:12px;font-weight:600;color:var(--white);margin:14px 0 8px;}
+.proc-form-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.proc-form-table tr{border-bottom:0.5px solid var(--border);}
+.proc-form-table tr:last-child{border-bottom:none;}
+.proc-form-table th{background:var(--black-ele);color:var(--gray-hi);font-size:11.5px;font-weight:600;padding:8px 12px;text-align:left;white-space:nowrap;width:90px;vertical-align:top;border-right:0.5px solid var(--border);}
+.proc-form-table td{font-size:11.5px;color:var(--gray-low);padding:8px 12px;line-height:1.5;}
+.proc-form-req{color:#ff5c78;font-weight:700;}
 .proc-sub-bar{display:flex;gap:6px;margin-bottom:14px;}
 .proc-sub-btn{font-size:11.5px;font-weight:600;padding:5px 13px;border-radius:6px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-ele);cursor:pointer;transition:all 0.18s;}
 .proc-sub-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
@@ -865,14 +872,38 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         </div>
 
         <div id="proc-tving" style="display:none;">
-          <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙·웨이브 청약 프로세스</span></div>
+          <div class="proc-sub-bar">
+            <div class="proc-sub-btn proc-sub-on" data-tvsub="normal" onclick="procSelectTvSub(this)">일반 청약</div>
+            <div class="proc-sub-btn" data-tvsub="kbo" onclick="procSelectTvSub(this)">KBO</div>
+          </div>
+
+          <div id="proc-tv-normal">
+          <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙·웨이브 일반 청약 프로세스</span></div>
           <div class="info-card">
             <div class="step-row" style="padding-top:0;"><div class="step-num">1</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">청약 요청 메일 발송</div>
               <ul class="proc-bullets">
                 <li>티빙 광고팀(<span class="em">tving.advertising@cj.net</span>)으로 청약 요청 양식을 작성해 발송하면 영업일 3일 이내 낙찰 여부를 메일로 회신받습니다. (티빙 담당자 등 타 메일로 접수 시 처리 불가)</li>
                 <li>광고 계정이 생성되어 있지 않은 신규 건은 광고 계정 생성 요청 양식을 함께 전달합니다.</li>
                 <li>별도 예약 폼 제출 후 일정 예약이 승인된 일 독점형 상품도 동일하게 청약 요청 메일을 발송합니다.</li>
-              </ul></div></div>
+              </ul>
+              <div class="proc-form-title">▸ 청약 요청 양식</div>
+              <table class="proc-form-table">
+                <tr><th>광고주</th><td>정확한 광고주 사업자등록법인명 기재 <span class="proc-form-req">必</span></td></tr>
+                <tr><th>브랜드</th><td>광고주 브랜드명 기재 <span class="proc-form-req">必</span></td></tr>
+                <tr><th>대행사</th><td>없을 경우 '없음' / 공란일 경우 청약 불가</td></tr>
+                <tr><th>미디어렙</th><td>케이티 나스미디어 기재 <span class="proc-form-req">必</span></td></tr>
+                <tr><th>청구처</th><td>티빙에서 광고비 계산서를 발행할 주체</td></tr>
+                <tr><th>기간</th><td>ex. 3/1~3/31</td></tr>
+                <tr><th>예산</th><td>ex. 50,000,000원 (VAT별도)</td></tr>
+                <tr><th>정산월</th><td>ex. 2025-03</td></tr>
+                <tr><th>청약상품</th><td>ex. 시청데모 PKG</td></tr>
+                <tr><th>스킵여부</th><td>스킵 / 논스킵</td></tr>
+                <tr><th>소재초수</th><td>ex. 15초</td></tr>
+                <tr><th>제안단가</th><td>CPM 00,000원</td></tr>
+                <tr><th>타겟팅</th><td>ex. 데모_여성</td></tr>
+                <tr><th>비고</th><td>ex. 소재 2종 롤링, 10/15 랜딩 교체 예정</td></tr>
+              </table>
+              </div></div>
             <div class="step-row"><div class="step-num">2</div><div><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;">티빙광고팀 낙찰 회신</div>
               <ul class="proc-bullets">
                 <li>청약 확정 메일을 받으면 광고 시스템(TAS)에 접속해 캠페인을 세팅할 수 있습니다.</li>
@@ -893,6 +924,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
               </ul></div></div>
           </div>
           <div style="font-size:11px;color:var(--gray-low);margin-top:10px;">※ 아웃스트림 광고는 별도 청약 프로세스가 적용됩니다. 자세한 내용은 티빙 광고정보센터를 참고하세요.</div>
+          </div><!-- /proc-tv-normal -->
+
+          <div id="proc-tv-kbo" style="display:none;">
+            <div class="section-bar"><div class="section-accent"></div><span class="section-label">KBO리그 광고 청약 프로세스</span></div>
+            <div class="info-card" style="text-align:center;padding:48px 20px;">
+              <div style="font-size:32px;margin-bottom:12px;">🚧</div>
+              <div style="font-size:14px;font-weight:600;color:var(--gray-hi);margin-bottom:6px;">KBO리그 광고 청약 프로세스는 추후 제공될 예정입니다.</div>
+              <div style="font-size:12px;color:var(--gray-low);">내용이 준비되면 단계별로 안내해 드리겠습니다.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1694,6 +1735,16 @@ function calcBizDaysBefore(start, n){
 function calcFmt(d){
   const days=['일','월','화','수','목','금','토'];
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} (${days[d.getDay()]})`;
+}
+
+// 티빙·웨이브 청약유형 전환 (일반 청약 / KBO)
+function procSelectTvSub(el){
+  const sub = el.getAttribute('data-tvsub');
+  document.querySelectorAll('.proc-sub-btn[data-tvsub]').forEach(function(b){
+    b.classList.toggle('proc-sub-on', b === el);
+  });
+  document.getElementById('proc-tv-normal').style.display = (sub==='normal') ? 'block' : 'none';
+  document.getElementById('proc-tv-kbo').style.display = (sub==='kbo') ? 'block' : 'none';
 }
 
 // 넷플릭스 청약유형 전환 (Direct IO / PG·PMP)
