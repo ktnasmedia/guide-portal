@@ -42,6 +42,37 @@ def extract_images(soup):
     return imgs
 
 
+def extract_posters(soup):
+    """
+    목록 카드에서 제목→포스터 URL 매핑.
+    카드 컨테이너: data-framer-name 에 'Single' 포함.
+    제목: data-framer-name='Title' 영역의 p, 포스터: 카드 내 framerusercontent img.
+    반환: {제목(공백제거): poster_url}
+    """
+    posters = {}
+    cards = soup.find_all(attrs={"data-framer-name": re.compile(r"Single")})
+    for c in cards:
+        # 제목
+        title = ""
+        tbox = c.find(attrs={"data-framer-name": "Title"})
+        if tbox:
+            p = tbox.find("p")
+            if p:
+                title = p.get_text(strip=True)
+        if not title:
+            continue
+        # 포스터 (카드 내 첫 framerusercontent 이미지)
+        poster = ""
+        for im in c.find_all("img"):
+            src = im.get("src", "")
+            if "framerusercontent.com/images" in src:
+                poster = src.split("?")[0]
+                break
+        if poster:
+            posters[title.replace(" ", "")] = poster
+    return posters
+
+
 def extract_headings(soup):
     heads = set()
     for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
@@ -188,6 +219,7 @@ def collect_tving_ads():
     text = soup.get_text("\n")
     heads = extract_headings(soup)
     works = parse_blocks(text, heads)
+    posters = extract_posters(soup)
 
     seen, uniq = set(), []
     for w in works:
@@ -195,6 +227,7 @@ def collect_tving_ads():
         if key in seen:
             continue
         seen.add(key)
+        w["poster"] = posters.get(key, "")   # 제목 기준 포스터 매칭
         uniq.append(w)
 
     # 줄거리·예고편 매칭 (출연진 → 제목 핵심단어)

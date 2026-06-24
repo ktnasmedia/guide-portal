@@ -338,7 +338,7 @@ def tving_ads_to_schema(works):
                 "content_id": f"tvingads-{ott}-{slug}",
                 "title": w["title"],
                 "title_original": None,
-                "poster_url": None,  # 포스터는 후속 단계에서 매칭
+                "poster_url": (w.get("poster") or None),  # 광고페이지 카드 포스터
                 "cast": cast_list,
                 "release_date": rd,
                 "release_year": year,
