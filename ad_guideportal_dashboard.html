@@ -127,11 +127,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-ott-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .cl-ott-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-ott-btn.cl-ott-on{background:var(--red);border-color:var(--red);color:#fff;}
+.cl-ott-btn[data-ottgrp="all"].cl-ott-on{background:linear-gradient(90deg,#374151,#1f2937);border-color:#374151;color:#fff;}
 .cl-ott-btn[data-ottgrp="tving_wavve"].cl-ott-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
 .lib-media-bar{display:flex;align-items:center;gap:7px;margin-bottom:13px;padding-bottom:13px;border-bottom:0.5px solid var(--border);flex-wrap:wrap;}
 .lib-media-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
 .lib-media-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .lib-media-btn.lib-media-on{background:var(--red);border-color:var(--red);color:#fff;}
+.lib-media-btn[data-libmedia="all"].lib-media-on{background:linear-gradient(90deg,#374151,#1f2937);border-color:#374151;color:#fff;}
 .lib-media-btn[data-libmedia="tving_wavve"].lib-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
 .lib-media{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
 .lib-media-nf{background:rgba(229,9,20,0.16);color:#ff6b6b;}
@@ -220,6 +222,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-chip{padding:7px 16px;font-size:13px;font-weight:500;color:var(--gray-mid);background:var(--black-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.18s;}
 .cl-chip:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
+.cl-chip[data-val="all"].cl-on, .cl-chip[data-libcat="all"].cl-on{color:#e2e8f0;background:rgba(100,116,139,0.32);border-color:#64748b;}
 .cl-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;display:flex;flex-direction:column;}
 .cl-card:hover{border-color:#3a3a3a;}
 .cl-poster{width:100%;aspect-ratio:3/4;max-height:280px;object-fit:cover;background:#252525;display:block;}
@@ -1266,10 +1269,12 @@ async function loadContentLineup(){
     clData = json.items || [];
     // 티빙·웨이브 수동 시트 병합 (TMDB에 없는 작품만 추가)
     await clLoadManualTvingWavve();
+    clUpdateOrigSwitch();
     clRender();
   }catch(e){
     // fetch 실패(로컬 file:// 등) → 내장 폴백 사용
     clData = CL_FALLBACK.items;
+    clUpdateOrigSwitch();
     clRender();
     if(status){
       status.style.display='block';
@@ -1565,18 +1570,13 @@ function clMergeByTitle(rows){
 }
 
 // OTT 선택 (넷플릭스 / 티빙·웨이브)
-function clSelectOtt(el){
-  clOttSel = el.getAttribute('data-ottgrp');
-  document.querySelectorAll('.cl-ott-btn[data-ottgrp]').forEach(function(b){
-    b.classList.toggle('cl-ott-on', b === el);
-  });
-  // 'N 오리지널만' 토글은 넷플릭스 전용 → 티빙·웨이브/전체에선 숨김
+// 'N 오리지널만' 토글 표시 여부 (넷플릭스 전용 → 전체·티빙웨이브에선 숨김)
+function clUpdateOrigSwitch(){
   const sw = document.getElementById('cl-orig-switch');
   const dv = document.getElementById('cl-orig-divider');
   if(clOttSel === 'tving_wavve' || clOttSel === 'all'){
     if(sw) sw.style.display = 'none';
     if(dv) dv.style.display = 'none';
-    // 켜져 있었다면 해제
     if(clOrigOnly){
       clOrigOnly = false;
       const track = document.getElementById('cl-orig-track');
@@ -1586,6 +1586,14 @@ function clSelectOtt(el){
     if(sw) sw.style.display = '';
     if(dv) dv.style.display = '';
   }
+}
+
+function clSelectOtt(el){
+  clOttSel = el.getAttribute('data-ottgrp');
+  document.querySelectorAll('.cl-ott-btn[data-ottgrp]').forEach(function(b){
+    b.classList.toggle('cl-ott-on', b === el);
+  });
+  clUpdateOrigSwitch();
   clRender();
 }
 
