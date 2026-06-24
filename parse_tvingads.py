@@ -165,15 +165,25 @@ def extract_synopsis(html):
 
 
 
-def main():
-    print("티빙 광고센터 콘텐츠 페이지 파싱 (목록 카드 기반)")
-    print("=" * 60)
-    try:
-        html = fetch()
-    except Exception as e:
-        print(f"ERROR: 페이지 fetch 실패: {e}")
-        sys.exit(1)
+def title_keywords(title):
+    """제목에서 숫자/짧은토큰 제외한 핵심 단어 추출"""
+    toks = re.split(r"[\s:·\-~]+", title)
+    kws = []
+    for t in toks:
+        t2 = re.sub(r"[0-9]", "", t).strip()
+        if len(t2) >= 2:
+            kws.append(t2)
+    return kws
 
+
+def collect_tving_ads():
+    """
+    티빙 광고페이지를 파싱해 작품 리스트 반환.
+    각 작품: title, media[], rating, genres[], parts, day, cast,
+             release_date, synopsis, trailer
+    실패 시 빈 리스트 반환(예외 안 던짐) — 자동수집 파이프라인 보호.
+    """
+    html = fetch()
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text("\n")
     heads = extract_headings(soup)
@@ -187,11 +197,9 @@ def main():
         seen.add(key)
         uniq.append(w)
 
-    # 줄거리·예고편 매칭 (2단계: 출연진 → 제목 핵심단어. 순서매칭은 오결합 위험으로 제외)
+    # 줄거리·예고편 매칭 (출연진 → 제목 핵심단어)
     syn_items = extract_synopsis(html)
     used = [False] * len(syn_items)
-
-    # 1단계: 출연진 키 일치
     for w in uniq:
         ck = (w.get("cast") or "").replace(" ", "")
         w["synopsis"] = ""
@@ -204,19 +212,6 @@ def main():
                 w["trailer"] = it["trailer"]
                 used[idx] = True
                 break
-
-    # 2단계: 제목의 핵심 단어가 줄거리에 등장하면 매칭
-    #  - 숫자/연도/공백 제거한 한글 핵심어(2글자 이상 토큰)를 추출해 비교
-    def title_keywords(title):
-        # 구분자로 분할 후, 숫자만/짧은 토큰 제외
-        toks = re.split(r"[\s:·\-~]+", title)
-        kws = []
-        for t in toks:
-            t2 = re.sub(r"[0-9]", "", t).strip()
-            if len(t2) >= 2:
-                kws.append(t2)
-        return kws
-
     for w in uniq:
         if w["synopsis"]:
             continue
@@ -227,12 +222,22 @@ def main():
             if used[idx]:
                 continue
             syn_nospace = it["synopsis"].replace(" ", "")
-            # 핵심어 중 하나라도 줄거리에 등장하면 매칭
             if any(kw in syn_nospace for kw in kws):
                 w["synopsis"] = it["synopsis"]
                 w["trailer"] = it["trailer"]
                 used[idx] = True
                 break
+    return uniq
+
+
+def main():
+    print("티빙 광고센터 콘텐츠 페이지 파싱 (목록 카드 기반)")
+    print("=" * 60)
+    try:
+        uniq = collect_tving_ads()
+    except Exception as e:
+        print(f"ERROR: 파싱 실패: {e}")
+        sys.exit(1)
 
     syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
     print(f"\n추출된 작품 수: {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
@@ -246,9 +251,6 @@ def main():
             print(f"     줄거리:{w['synopsis']}")
         if w.get("trailer"):
             print(f"     예고편:{w['trailer']}")
-
-    imgs = extract_images(soup)
-    print(f"\n포스터 이미지 후보: {len(imgs)}개")
 
     with open("tving_ads_parsed.json", "w", encoding="utf-8") as f:
         json.dump(uniq, f, ensure_ascii=False, indent=2)

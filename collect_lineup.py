@@ -18,6 +18,7 @@ import json
 import csv
 import time
 import datetime
+import re
 import urllib.request
 import urllib.parse
 import urllib.error
@@ -272,6 +273,136 @@ def load_previous():
             return {it["content_id"]: it for it in json.load(f).get("items", [])}
     except Exception:
         return {}
+
+
+# ── 티빙 광고페이지 수집 + 누적 보관 ──
+TVING_ADS_ACCUM = "tving_ads_accumulated.json"
+
+# 광고페이지 매체배지 → (ott, is_original)
+_BADGE_MAP = {
+    "T ONLY":     ("tving", True),
+    "T ORIGINAL": ("tving", True),
+    "T":          ("tving", False),
+    "W ORIGINAL": ("wavve", True),
+    "W":          ("wavve", False),
+}
+
+
+def _parse_ads_date(s):
+    """'26. 6. 19.' / '2026. 7. 4.' → '2026-06-19'. 실패 시 None"""
+    if not s:
+        return None
+    m = re.search(r"(\d{2,4})\.\s*(\d{1,2})\.\s*(\d{1,2})", s)
+    if not m:
+        return None
+    y, mo, d = m.groups()
+    y = int(y)
+    if y < 100:
+        y += 2000
+    return f"{y:04d}-{int(mo):02d}-{int(d):02d}"
+
+
+def tving_ads_to_schema(works):
+    """
+    광고페이지 파싱 결과(works)를 우리 스키마 아이템 리스트로 변환.
+    매체배지에 따라 ott/is_original 결정. T/W는 티빙·웨이브 양쪽 생성.
+    """
+    items = []
+    for w in works:
+        media = w.get("media", []) or []
+        # 'T'와 'W'가 둘 다 있으면 T/W (양쪽 생성). '특판'은 무시.
+        has_t = any(x in ("T", "T ONLY", "T ORIGINAL") for x in media)
+        has_w = any(x in ("W", "W ORIGINAL") for x in media)
+        # 대표 배지 텍스트
+        badge = "/".join([x for x in media if x != "특판"]) or None
+
+        targets = []  # (ott, is_original)
+        if has_t and has_w:
+            targets = [("tving", False), ("wavve", False)]
+        else:
+            for x in media:
+                if x in _BADGE_MAP:
+                    targets.append(_BADGE_MAP[x])
+                    break
+            if not targets:
+                targets = [("tving", False)]  # 기본값
+
+        rd = _parse_ads_date(w.get("release_date"))
+        year, quarter = derive_quarter(rd)
+        cast_list = [c.strip() for c in (w.get("cast") or "").split(",") if c.strip()]
+        genres = [g for g in (w.get("genres") or []) if g and g != "미정"]
+
+        for ott, is_orig in targets:
+            slug = w["title"].replace(" ", "").replace("/", "")
+            items.append({
+                "content_id": f"tvingads-{ott}-{slug}",
+                "title": w["title"],
+                "title_original": None,
+                "poster_url": None,  # 포스터는 후속 단계에서 매칭
+                "cast": cast_list,
+                "release_date": rd,
+                "release_year": year,
+                "release_quarter": (f"{year} {quarter}" if year and quarter else None),
+                "summary": w.get("synopsis") or None,
+                "content_type": (genres[0] if genres else None),
+                "genres": genres,
+                "rating": w.get("rating") or None,
+                "ott": ott,
+                "is_original": is_orig,
+                "availability_status": None,
+                "source_badge": badge,
+                "trailer_url": w.get("trailer") or None,
+                "_meta": {
+                    "sources": {"_all": "tvingads"},
+                    "confidence": "confirmed",
+                    "last_updated": datetime.date.today().isoformat(),
+                    "needs_review": False,
+                },
+            })
+    return items
+
+
+def collect_and_accumulate_tving_ads():
+    """
+    광고페이지 수집 → 스키마 변환 → 누적 파일과 병합(제목 기준 유지).
+    누적: 한번 들어온 작품은 페이지에서 빠져도 보존. 다시 들어오면 정보 갱신.
+    반환: 누적된 전체 광고페이지 아이템 리스트.
+    """
+    # 기존 누적 로드
+    try:
+        with open(TVING_ADS_ACCUM, encoding="utf-8") as f:
+            accum = {it["content_id"]: it for it in json.load(f).get("items", [])}
+    except Exception:
+        accum = {}
+
+    # 새로 수집
+    try:
+        from parse_tvingads import collect_tving_ads
+        works = collect_tving_ads()
+        new_items = tving_ads_to_schema(works)
+    except Exception as e:
+        print(f"WARN: 티빙 광고페이지 수집 실패: {e}", file=sys.stderr)
+        new_items = []
+
+    # 병합: 새 정보로 갱신, 기존에만 있는 건 유지
+    for it in new_items:
+        accum[it["content_id"]] = it  # 같은 ID면 최신 정보로 갱신
+
+    merged = list(accum.values())
+
+    # 누적 파일 저장
+    try:
+        with open(TVING_ADS_ACCUM, "w", encoding="utf-8") as f:
+            json.dump({
+                "generated_at": datetime.datetime.now().isoformat(),
+                "source": "tvingads.com/content",
+                "items": merged,
+            }, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"WARN: 광고페이지 누적 저장 실패: {e}", file=sys.stderr)
+
+    print(f"  → 티빙 광고페이지: 신규수집 {len(new_items)}건 / 누적 총 {len(merged)}건")
+    return merged
 
 
 # ── 넷플릭스 뉴스룸 수집 (상세 페이지 URL 목록 기반) ──
@@ -587,6 +718,34 @@ def main():
     nr_items, nr_err = newsroom_collect(tmdb_titles)
     errors += nr_err
     all_items += nr_items
+
+    # 티빙 광고페이지 수집 (누적 보관) — TMDB가 놓치는 티빙 신작·줄거리 보강
+    ads_items = collect_and_accumulate_tving_ads()
+    # 제목 기준으로 기존 TMDB 작품과 병합
+    #  - 같은 제목의 TMDB 작품이 있으면: 줄거리·매체배지·예고편·등급을 광고페이지로 보강,
+    #    단 포스터(poster_url)는 TMDB 것이 있으면 유지
+    #  - 없으면: 광고페이지 작품을 신규 추가
+    title_to_item = {}
+    for it in all_items:
+        title_to_item.setdefault(it["title"].replace(" ", ""), it)
+    for ad in ads_items:
+        key = ad["title"].replace(" ", "")
+        existing = title_to_item.get(key)
+        if existing and existing.get("ott") == ad.get("ott"):
+            # 같은 제목·같은 OTT → 광고페이지 정보로 보강
+            if ad.get("summary"):
+                existing["summary"] = ad["summary"]
+            if ad.get("source_badge"):
+                existing["source_badge"] = ad["source_badge"]
+            if ad.get("trailer_url"):
+                existing["trailer_url"] = ad["trailer_url"]
+            if ad.get("rating") and not existing.get("rating"):
+                existing["rating"] = ad["rating"]
+            if not existing.get("poster_url") and ad.get("poster_url"):
+                existing["poster_url"] = ad["poster_url"]
+            existing["is_original"] = ad.get("is_original", existing.get("is_original"))
+        else:
+            all_items.append(ad)
 
     # content_id 기준 중복 제거 (뒤에 온 것 우선)
     dedup = {}
