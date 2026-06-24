@@ -187,7 +187,7 @@ def main():
         seen.add(key)
         uniq.append(w)
 
-    # 줄거리·예고편 매칭 (3단계: 출연진 → 제목단서 → 순서)
+    # 줄거리·예고편 매칭 (2단계: 출연진 → 제목 핵심단어. 순서매칭은 오결합 위험으로 제외)
     syn_items = extract_synopsis(html)
     used = [False] * len(syn_items)
 
@@ -205,29 +205,34 @@ def main():
                 used[idx] = True
                 break
 
-    # 2단계: 줄거리 안에 제목이 들어있으면 매칭 (예: 콩콩팡팜, 윔블던)
+    # 2단계: 제목의 핵심 단어가 줄거리에 등장하면 매칭
+    #  - 숫자/연도/공백 제거한 한글 핵심어(2글자 이상 토큰)를 추출해 비교
+    def title_keywords(title):
+        # 구분자로 분할 후, 숫자만/짧은 토큰 제외
+        toks = re.split(r"[\s:·\-~]+", title)
+        kws = []
+        for t in toks:
+            t2 = re.sub(r"[0-9]", "", t).strip()
+            if len(t2) >= 2:
+                kws.append(t2)
+        return kws
+
     for w in uniq:
         if w["synopsis"]:
             continue
-        tkey = w["title"].replace(" ", "")
+        kws = title_keywords(w["title"])
+        if not kws:
+            continue
         for idx, it in enumerate(syn_items):
             if used[idx]:
                 continue
             syn_nospace = it["synopsis"].replace(" ", "")
-            # 제목 일부(앞 3글자 이상)가 줄거리에 등장
-            if len(tkey) >= 3 and tkey[:4] in syn_nospace:
+            # 핵심어 중 하나라도 줄거리에 등장하면 매칭
+            if any(kw in syn_nospace for kw in kws):
                 w["synopsis"] = it["synopsis"]
                 w["trailer"] = it["trailer"]
                 used[idx] = True
                 break
-
-    # 3단계: 남은 작품 ↔ 남은 줄거리를 페이지 순서대로 연결
-    remaining_works = [w for w in uniq if not w["synopsis"]]
-    remaining_syn = [(i, it) for i, it in enumerate(syn_items) if not used[i]]
-    for w, (idx, it) in zip(remaining_works, remaining_syn):
-        w["synopsis"] = it["synopsis"]
-        w["trailer"] = it["trailer"]
-        used[idx] = True
 
     syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
     print(f"\n추출된 작품 수: {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
