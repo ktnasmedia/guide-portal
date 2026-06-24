@@ -40,6 +40,7 @@ DATE_RE = re.compile(r"(20)?\d{2}\.\s*\d{1,2}\.\s*\d{1,2}\.?")
 def fetch():
     r = requests.get(URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
+    r.encoding = "utf-8"   # 한글 깨짐 방지
     return r.text
 
 
@@ -56,73 +57,95 @@ def extract_images(soup):
 
 def parse_blocks(text):
     """
-    텍스트를 줄 단위로 보고, '공개일' 다음 날짜로 작품 경계를 잡아
-    각 블록에서 제목/매체/등급/장르/출연/날짜를 추출.
+    '공개일' 다음 날짜로 작품 경계를 잡아 블록 분리.
+    헤더/네비 등 노이즈 블록은 제외.
     """
+    NOISE = ("TVING Ads", "광고정보센터", "LINE UP", "HOT", "COMING SOON",
+             "PDF Document", "더보기", "인기 콘텐츠", "DEMO RANKING",
+             "성·연령별", "광고 문의", "캠페인 시작")
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     works = []
     cur = []
     for ln in lines:
         cur.append(ln)
-        # 날짜 줄을 만나면 한 작품의 끝으로 간주
-        if DATE_RE.fullmatch(ln.replace(" ", "")) or DATE_RE.search(ln) and len(ln) <= 14:
+        is_date = bool(DATE_RE.search(ln)) and len(ln) <= 14
+        if is_date:
             block = cur[:]
             cur = []
             w = parse_one(block)
-            if w and w.get("title"):
-                works.append(w)
+            t = w.get("title", "")
+            # 노이즈 제거: 제목이 비었거나 잡음 키워드 포함
+            if not t:
+                continue
+            if any(n in t for n in NOISE):
+                continue
+            # 제목이 매체/장르 단독 토큰이면 제외
+            if t in ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양"):
+                continue
+            works.append(w)
     return works
 
 
 def parse_one(block):
-    """한 작품 블록(여러 줄)에서 필드 추출"""
+    """
+    한 작품 블록에서 필드 추출.
+    페이지 구조 순서: [매체배지...] [등급] 제목 [장르...] [부작] [요일] [출연진] '공개일' 날짜
+    """
     media = []
     rating = ""
-    title = ""
-    genres = []
-    cast = ""
-    date = ""
-    parts = 부작 = ""
+    parts = ""
     day = ""
-    # 토큰 분류
-    candidates = []
-    for ln in block:
-        b = ln.strip("* ").strip()
-        if not b:
-            continue
+    date = ""
+    # '공개일' 토큰 위치를 찾아 그 뒤 날짜, 그 직전을 출연진 후보로
+    body = [ln.strip("* |").strip() for ln in block]
+    body = [b for b in body if b]
+
+    # 날짜 추출
+    for b in body:
         if DATE_RE.search(b) and len(b) <= 14:
-            date = b
-            continue
-        if b in ("T ONLY", "T ORIGINAL", "W ORIGINAL", "T", "W", "특판"):
+            date = b.strip()
+            break
+
+    # '공개일' 인덱스
+    try:
+        gi = body.index("공개일")
+    except ValueError:
+        gi = len(body)
+
+    # 공개일 앞부분만 사용 (날짜/공개일 이후는 버림)
+    head = body[:gi]
+    # 토큰 분류
+    leftover = []
+    for b in head:
+        if b in ("T ONLY", "T ORIGINAL", "W ORIGINAL", "T", "W", "특판", "전체"):
             media.append(b)
-            continue
-        if b in RATING_TOKENS:
+        elif b in ("7", "12", "15", "19", "청불"):
             rating = b
-            continue
-        if b == "공개일":
-            continue
-        if re.match(r"^\d+부작$", b):
-            부작 = b
-            continue
-        if re.match(r"^[월화수목금토일\-, ]+$", b) and len(b) <= 8:
+        elif re.match(r"^\d+부작$", b):
+            parts = b
+        elif re.match(r"^[월화수목금토일\-, ]+$", b) and len(b) <= 8:
             day = b
-            continue
-        candidates.append(b)
-    # candidates 중 첫 번째가 보통 제목, 그 뒤 장르들, 마지막이 출연진(쉼표 포함)
-    if candidates:
-        title = candidates[0]
-        rest = candidates[1:]
-        for r in rest:
-            if "," in r or "·" in r:
-                cast = r       # 출연진 추정
-            else:
-                genres.append(r)
+        else:
+            leftover.append(b)
+
+    # leftover: [제목, 장르, 세부장르..., 출연진]
+    title = leftover[0] if leftover else ""
+    cast = ""
+    genres = []
+    if len(leftover) > 1:
+        # 마지막 항목이 쉼표/가운뎃점 많으면 출연진
+        last = leftover[-1]
+        if ("," in last) or ("·" in last):
+            cast = last
+            genres = leftover[1:-1]
+        else:
+            genres = leftover[1:]
     return {
         "title": title,
         "media": media,
         "rating": rating,
         "genres": genres,
-        "parts": 부작,
+        "parts": parts,
         "day": day,
         "cast": cast,
         "release_date": date,
@@ -143,11 +166,11 @@ def main():
 
     works = parse_blocks(text)
 
-    # 중복 제거 (제목+공개일 기준)
+    # 중복 제거 (제목 기준, 띄어쓰기 무시)
     seen = set()
     uniq = []
     for w in works:
-        key = (w["title"], w["release_date"])
+        key = w["title"].replace(" ", "")
         if key in seen:
             continue
         seen.add(key)
