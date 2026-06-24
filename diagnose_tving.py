@@ -63,13 +63,24 @@ TV_GENRES = {
 }
 
 def get_detail(tv_id):
-    """작품 상세: 장르 이름 목록 + 원산지 국가 코드 목록"""
+    """작품 상세: 장르 + 원산지 + 에피소드길이 + 제작사 (숏폼 추정 포함)"""
     data = get(f"{BASE}/tv/{tv_id}", {"language": "ko-KR"})
     if not data:
-        return [], []
+        return [], [], None, [], False
     genres = [g.get("name", "") for g in data.get("genres", [])]
     origin = data.get("origin_country", []) or []
-    return genres, origin
+    runtimes = data.get("episode_run_time", []) or []
+    runtime = runtimes[0] if runtimes else None
+    companies = [c.get("name", "") for c in data.get("production_companies", [])]
+    # 숏폼 추정: 회차 15분 이하 OR 제작사에 숏폼 키워드
+    SHORT_COMPANIES = ["shortcha", "shortime", "lezhin snack", "vigloo", "vlending", "kanta", "alwayz", "shortcha", "playlist", "와이낫미디어", "shorts"]
+    is_short = False
+    if runtime is not None and runtime <= 15:
+        is_short = True
+    comp_low = " ".join(companies).lower()
+    if any(k in comp_low for k in SHORT_COMPANIES):
+        is_short = True
+    return genres, origin, runtime, companies, is_short
 
 def get_detail_full(tv_id):
     """작품 상세: 공개일 + network 목록 (정보없음 작품 분석용)"""
@@ -219,9 +230,9 @@ def main():
     print(f"  Only 인데 Original 아님            : {len(only_not_orig):>4}건")
     print(f"  Original 인데 Only 아님            : {len(orig_not_only):>4}건")
 
-    # ── TVING Only 전체 목록 (장르·원산지 포함) ──
-    print("\n[5] Only 작품들의 장르·원산지 조회 중...")
-    only_detail = {}   # tv_id → (genres, origin)
+    # ── TVING Only 전체 목록 (장르·원산지·숏폼 포함) ──
+    print("\n[5] Only 작품들의 장르·원산지·숏폼 조회 중...")
+    only_detail = {}   # tv_id → (genres, origin, runtime, companies, is_short)
     cnt = 0
     for tv_id in only:
         only_detail[tv_id] = get_detail(tv_id)
@@ -233,24 +244,29 @@ def main():
     from collections import Counter
     genre_counter = Counter()
     origin_counter = Counter()
-    anime_ids = []   # 애니메이션 포함 작품
-    for tv_id, (genres, origin) in only_detail.items():
+    anime_ids = []
+    short_ids = []   # 숏폼 추정 작품
+    for tv_id, (genres, origin, runtime, companies, is_short) in only_detail.items():
         for g in genres:
             genre_counter[g] += 1
         for o in origin:
             origin_counter[o] += 1
         if "애니메이션" in genres:
             anime_ids.append(tv_id)
+        if is_short:
+            short_ids.append(tv_id)
 
     print("\n" + "=" * 60)
-    print(f"[A] TVING Only 전체 목록 ({len(only)}건) — 장르 · 원산지")
+    print(f"[A] TVING Only 전체 목록 ({len(only)}건) — 원산지 · 장르 · 숏폼 · 회차길이")
     print("=" * 60)
     for i, (tv_id, name) in enumerate(sorted(only.items(), key=lambda x: x[1]), 1):
-        genres, origin = only_detail.get(tv_id, ([], []))
+        genres, origin, runtime, companies, is_short = only_detail.get(tv_id, ([], [], None, [], False))
         g = ", ".join(genres) if genres else "장르정보없음"
         o = "/".join(origin) if origin else "?"
-        print(f"  {i:>3}. {name}")
-        print(f"        [{o}] {g}")
+        rt = f"{runtime}분" if runtime else "?"
+        short_mark = " [숏폼추정]" if is_short else ""
+        print(f"  {i:>3}. {name}{short_mark}")
+        print(f"        [{o}] {g} | 회차 {rt}")
 
     # ── 장르 통계 ──
     print("\n" + "=" * 60)
@@ -269,6 +285,13 @@ def main():
     for tv_id in anime_ids:
         print(f"      - {only.get(tv_id,'')}")
 
+    print(f"\n[A-4] 숏폼 추정 작품: {len(short_ids)}건 (회차 15분 이하 또는 숏폼 제작사)")
+    for tv_id in short_ids:
+        g, o, rt, comp, _ = only_detail.get(tv_id, ([], [], None, [], False))
+        rt_s = f"{rt}분" if rt else "회차길이?"
+        comp_s = ", ".join(comp[:3]) if comp else ""
+        print(f"      - {only.get(tv_id,'')} ({rt_s}) {comp_s}")
+
     # ── Original 인데 Only 아닌 작품 + 어디서 보이는지 + 공개일/network ──
     print("\n" + "=" * 60)
     print(f"[B] Original 인데 Only 아닌 작품 ({len(orig_not_only)}건) — 다른 OTT · 공개일")
@@ -279,8 +302,11 @@ def main():
         name = original.get(tv_id, "")
         provs = orig_prov.get(tv_id, set())
         air, networks = get_detail_full(tv_id)
+        # 숏폼 추정 (회차 길이 + 제작사)
+        _, _, runtime, companies, is_short = get_detail(tv_id)
         net = ", ".join(networks) if networks else "?"
-        # 판정: provider 정보없음인데 공개일이 과거면 → TMDB 누락(이미 공개됨)
+        rt = f"{runtime}분" if runtime else "?"
+        short_mark = " [숏폼추정]" if is_short else ""
         note = ""
         if not provs:
             if air and air <= today_str:
@@ -289,8 +315,8 @@ def main():
                 note = "  ← 공개 예정작"
             else:
                 note = "  ← 공개일 미상"
-        print(f"  {i:>3}. {name}")
-        print(f"        공개일: {air or '미정'} | 제작/방영사: {net}")
+        print(f"  {i:>3}. {name}{short_mark}")
+        print(f"        공개일: {air or '미정'} | 회차: {rt} | 제작/방영사: {net}")
         print(f"        시청가능: {prov_label(provs)}{note}")
 
     print("\n완료. [A] Only 전체 목록과 [B] 35건의 공개일·OTT 여부를 보고 결정하세요.")
