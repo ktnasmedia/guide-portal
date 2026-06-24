@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-티빙 광고센터 콘텐츠 페이지 파싱 테스트 (일회성)
+티빙 광고센터 콘텐츠 페이지 파싱 (모달 기반 + 매체/등급 폴백)
 대상: https://www.tvingads.com/content
-  - "신작 및 주목할 콘텐츠" (HOT)
-  - "향후 3개월 오픈 예정 콘텐츠" (COMING SOON)
 
-목적: 각 작품의 제목·매체구분(T ONLY/T ORIGINAL/W 등)·등급·장르·부작·요일·출연진·공개일을
-      자동으로 추출할 수 있는지 테스트. 결과는 콘솔 + tving_ads_parsed.json 으로 저장.
+방식:
+  1) 모달(상세 팝업, data-framer-name='Badge + Info+ Strategy')에서
+     제목·줄거리·장르·출연진·요일·공개일 + (있으면) 매체·등급 추출.
+  2) 매체/등급이 모달에 없으면, 목록 카드 영역(data-framer-name='Single - lg' 등)
+     에서 같은 제목을 찾아 매체/등급을 보완(폴백).
+  → 모달의 깔끔한 정보 + 목록의 매체/등급을 제목 기준으로 합침.
 
-사용법 (GitHub Actions):
-  pip install requests beautifulsoup4
-  python parse_tvingads.py
-
-주의:
-  - Framer 사이트라 구조가 바뀌면 파싱이 깨질 수 있음(테스트 목적).
-  - 포스터 이미지 URL도 함께 추출 시도.
+출력: 콘솔 + tving_ads_parsed.json
+사용법(GitHub Actions): pip install requests beautifulsoup4 && python parse_tvingads.py
 """
 import json
 import re
@@ -30,193 +27,117 @@ HEADERS = {
     "Accept-Language": "ko-KR,ko;q=0.9",
 }
 
-# 매체 구분 토큰 (배지)
-MEDIA_TOKENS = ["T ONLY", "T ORIGINAL", "W ORIGINAL", "T", "W", "특판", "전체"]
-# 등급 토큰
-RATING_TOKENS = ["전체", "7", "12", "15", "19", "청불"]
-DATE_RE = re.compile(r"(20)?\d{2}\.\s*\d{1,2}\.\s*\d{1,2}\.?")
+DATE_RE = re.compile(r"\d{2,4}\.\s*\d{1,2}\.\s*\d{1,2}\.?|\d{4}년\s*\d{1,2}월\s*\d{1,2}일")
+MEDIA_TOKENS = ("T ONLY", "T ORIGINAL", "W ORIGINAL", "W", "T", "특판", "전체")
+RATING_TOKENS = ("전체", "7", "12", "15", "19", "청불")
+DAY_RE = re.compile(r"^[월화수목금토일\-~, ]+$")
 
 
 def fetch():
     r = requests.get(URL, headers=HEADERS, timeout=20)
     r.raise_for_status()
-    r.encoding = "utf-8"   # 한글 깨짐 방지
+    r.encoding = "utf-8"
     return r.text
 
 
 def extract_images(soup):
-    """본문 이미지 URL 목록 (포스터 추정)"""
     imgs = []
     for im in soup.find_all("img"):
         src = im.get("src", "")
         if "framerusercontent.com/images" in src:
-            # width=480&height=693 형태의 포스터 비율만
             imgs.append(src.split("?")[0])
     return imgs
 
 
-def extract_headings(soup):
-    """제목으로 쓰인 헤더 텍스트 집합 (예정작 제목이 h2/h3로 들어감)"""
-    heads = set()
-    for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
-        t = tag.get_text(strip=True)
-        if t and len(t) <= 40:
-            heads.add(t)
-    return heads
+def norm(s):
+    return (s or "").replace(" ", "").lower()
 
 
-def extract_synopsis(soup):
-    """
-    모달(상세 팝업)에서 제목→줄거리 매핑 추출.
-    모달 컨테이너: data-framer-name='Badge + Info+ Strategy'
-      - 제목: h4
-      - 줄거리: p.framer-styles-preset-1r0dbpx (data-styles-preset='zNPjUVKu5')
-    """
-    syn = {}
-    modals = soup.find_all(attrs={"data-framer-name": "Badge + Info+ Strategy"})
-    for m in modals:
-        h4 = m.find("h4")
-        if not h4:
+def parse_modal(modal):
+    """모달 컨테이너 1개에서 작품 정보 추출"""
+    h4 = modal.find("h4")
+    title = h4.get_text(strip=True) if h4 else ""
+    if not title:
+        return None
+
+    texts = []
+    for p in modal.find_all("p"):
+        t = p.get_text(strip=True)
+        preset = p.get("data-styles-preset", "")
+        if t:
+            texts.append((t, preset))
+
+    synopsis = ""
+    genres, media = [], []
+    cast = day = date = rating = parts = ""
+
+    for t, preset in texts:
+        if t == title:
             continue
-        title = h4.get_text(strip=True)
-        # 줄거리 p 찾기 (해당 스타일 프리셋)
-        desc = ""
-        for p in m.find_all("p"):
-            preset = p.get("data-styles-preset", "")
-            if preset == "zNPjUVKu5":
-                desc = p.get_text(strip=True)
-                break
-        if title and desc:
-            syn[title.replace(" ", "")] = desc
-    return syn
+        if preset == "zNPjUVKu5":
+            synopsis = t
+            continue
+        if DATE_RE.search(t) and len(t) <= 16:
+            date = t
+            continue
+        if t in MEDIA_TOKENS:
+            media.append(t)
+            continue
+        if t in RATING_TOKENS and not rating:
+            rating = t
+            continue
+        if re.match(r"^\d+부작$", t):
+            parts = t
+            continue
+        if DAY_RE.match(t) and len(t) <= 8:
+            day = t
+            continue
+        if ("," in t) or ("·" in t):
+            cast = t
+            continue
+        if len(t) <= 12 and t not in ("공개일", "|"):
+            genres.append(t)
 
-def parse_blocks(text, heads=None):
-    """
-    '공개일' 다음 날짜로 작품 경계를 잡아 블록 분리.
-    헤더/네비 등 노이즈 블록은 제외.
-    """
-    heads = heads or set()
-    NOISE = ("TVING Ads", "광고정보센터", "LINE UP", "HOT", "COMING SOON",
-             "PDF Document", "더보기", "인기 콘텐츠", "DEMO RANKING",
-             "성·연령별", "광고 문의", "캠페인 시작", "콘텐츠 라인업",
-             "지금 주목해야", "향후 3개월", "오픈 예정")
-    lines = [l.strip() for l in text.split("\n") if l.strip()]
-    works = []
-    cur = []
-    prev_go = False   # 직전 줄이 '공개일' 이었는지
-    for ln in lines:
-        is_date = bool(DATE_RE.search(ln)) and len(ln) <= 14
-        # 직전이 '공개일'인데 현재 줄이 날짜가 아니면 → 공개일 미정 작품의 끝
-        flush_undated = prev_go and not is_date
-        if flush_undated and cur:
-            block = cur[:]
-            cur = []
-            w = parse_one(block, heads)
-            t = w.get("title", "")
-            if t and not any(n in t for n in NOISE) and t not in ("드라마","예능","전체","특판","더보기","스포츠","교양","다큐멘터리"):
-                works.append(w)
-        cur.append(ln)
-        prev_go = (ln == "공개일")
-        if is_date:
-            block = cur[:]
-            cur = []
-            w = parse_one(block, heads)
-            t = w.get("title", "")
-            # 노이즈 제거: 제목이 비었거나 잡음 키워드 포함
-            if not t:
-                continue
-            if any(n in t for n in NOISE):
-                continue
-            # 제목이 매체/장르 단독 토큰이면 제외
-            if t in ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양", "다큐멘터리"):
-                continue
-            works.append(w)
-    # 마지막 남은 블록 처리 (공개일 미정으로 끝나는 경우)
-    if cur:
-        w = parse_one(cur, heads)
-        t = w.get("title", "")
-        if t and not any(n in t for n in NOISE) and t not in ("드라마","예능","전체","특판","더보기","스포츠","교양","다큐멘터리"):
-            works.append(w)
-    return works
-
-
-def parse_one(block, heads=None):
-    """
-    한 작품 블록에서 필드 추출.
-    신작: [매체][등급] 제목 [장르...] [부작][요일][출연진] '공개일' 날짜
-    예정작: [매체][등급][장르...][부작] 제목(헤더) [요일][출연진] '공개일' 날짜
-    """
-    heads = heads or set()
-    media = []
-    rating = ""
-    parts = ""
-    day = ""
-    date = ""
-    body = [ln.strip("* |").strip() for ln in block]
-    body = [b for b in body if b]
-
-    # 날짜 추출
-    for b in body:
-        if DATE_RE.search(b) and len(b) <= 14:
-            date = b.strip()
-            break
-
-    # '공개일' 인덱스
-    try:
-        gi = body.index("공개일")
-    except ValueError:
-        gi = len(body)
-
-    head = body[:gi]
-    leftover = []
-    for b in head:
-        if b in ("T ONLY", "T ORIGINAL", "W ORIGINAL", "T", "W", "특판", "전체"):
-            media.append(b)
-        elif b in ("7", "12", "15", "19", "청불"):
-            rating = b
-        elif re.match(r"^\d+부작$", b):
-            parts = b
-        elif re.match(r"^[월화수목금토일\-, ]+$", b) and len(b) <= 8:
-            day = b
-        else:
-            leftover.append(b)
-
-    title = ""
-    cast = ""
-    genres = []
-
-    # 1) 헤더 제목 집합에 속하는 항목이 있으면 그것을 제목으로 (예정작 대응)
-    head_match = [b for b in leftover if b in heads]
-    if head_match:
-        title = head_match[0]
-        rest = [b for b in leftover if b != title]
-    elif leftover:
-        # 2) 신작: 첫 항목이 제목
-        title = leftover[0]
-        rest = leftover[1:]
-    else:
-        rest = []
-
-    # rest에서 출연진(쉼표/가운뎃점)·장르 분리
-    for r in rest:
-        if ("," in r) or ("·" in r):
-            cast = r
-        else:
-            genres.append(r)
     return {
-        "title": title,
-        "media": media,
-        "rating": rating,
-        "genres": genres,
-        "parts": parts,
-        "day": day,
-        "cast": cast,
-        "release_date": date,
+        "title": title, "media": media, "rating": rating,
+        "genres": genres, "parts": parts, "day": day,
+        "cast": cast, "release_date": date, "synopsis": synopsis,
     }
 
 
+def extract_card_media(soup):
+    """
+    목록 카드 영역에서 제목→(매체, 등급) 추출 (폴백용).
+    카드 컨테이너는 data-framer-name 이 'Single - lg'(또는 유사)로 시작.
+    카드 내 제목은 p 태그(framer-styles-preset-1h4d2v7 계열).
+    """
+    card_info = {}
+    # 카드: 'Single' 들어가는 컨테이너
+    cards = soup.find_all(attrs={"data-framer-name": re.compile(r"Single")})
+    for c in cards:
+        # 제목: Title 영역의 p
+        title = ""
+        title_box = c.find(attrs={"data-framer-name": "Title"})
+        if title_box:
+            p = title_box.find("p")
+            if p:
+                title = p.get_text(strip=True)
+        if not title:
+            continue
+        # 매체/등급: 카드 내 모든 strong/p 훑기
+        media, rating = [], ""
+        for p in c.find_all(["p", "strong"]):
+            t = p.get_text(strip=True)
+            if t in MEDIA_TOKENS and t not in media:
+                media.append(t)
+            elif t in RATING_TOKENS and not rating:
+                rating = t
+        card_info[norm(title)] = {"media": media, "rating": rating}
+    return card_info
+
+
 def main():
-    print("티빙 광고센터 콘텐츠 페이지 파싱 테스트")
+    print("티빙 광고센터 콘텐츠 페이지 파싱 (모달 기반 + 폴백)")
     print("=" * 60)
     try:
         html = fetch()
@@ -225,46 +146,46 @@ def main():
         sys.exit(1)
 
     soup = BeautifulSoup(html, "html.parser")
-    text = soup.get_text("\n")
-    heads = extract_headings(soup)
-    works = parse_blocks(text, heads)
+    modals = soup.find_all(attrs={"data-framer-name": "Badge + Info+ Strategy"})
+    card_info = extract_card_media(soup)
+    print(f"[진단] 모달 발견: {len(modals)}개 / 목록카드(매체·등급): {len(card_info)}개\n")
 
-    # 줄거리 매핑 (모달에서 추출)
-    syn = extract_synopsis(soup)
-
-    # 중복 제거 (제목 기준, 띄어쓰기 무시) + 줄거리 매칭
+    works = []
     seen = set()
-    uniq = []
-    for w in works:
-        key = w["title"].replace(" ", "")
+    for m in modals:
+        w = parse_modal(m)
+        if not w:
+            continue
+        key = norm(w["title"])
         if key in seen:
             continue
         seen.add(key)
-        w["synopsis"] = syn.get(key, "")   # 줄거리 붙이기
-        uniq.append(w)
+        # 매체/등급 폴백: 모달에 없으면 목록 카드에서 보완
+        ci = card_info.get(key, {})
+        if not w["media"] and ci.get("media"):
+            w["media"] = ci["media"]
+        if not w["rating"] and ci.get("rating"):
+            w["rating"] = ci["rating"]
+        works.append(w)
 
-    syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
-    print(f"\n추출된 작품 수(중복 제거): {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
-    for i, w in enumerate(uniq, 1):
+    syn_cnt = sum(1 for w in works if w.get("synopsis"))
+    print(f"추출된 작품 수: {len(works)}건 / 줄거리 확보: {syn_cnt}건\n")
+    for i, w in enumerate(works, 1):
         media = "/".join(w["media"]) if w["media"] else "-"
         g = ", ".join(w["genres"]) if w["genres"] else "-"
         print(f"{i:>2}. {w['title']}")
-        print(f"     매체:{media} | 등급:{w['rating'] or '-'} | 장르:{g} | {w['parts'] or ''} {w['day'] or ''}")
+        print(f"     매체:{media} | 등급:{w['rating'] or '-'} | 장르:{g} | {w['parts']} {w['day']}")
         print(f"     출연:{w['cast'] or '-'} | 공개일:{w['release_date'] or '-'}")
         if w.get("synopsis"):
             print(f"     줄거리:{w['synopsis']}")
 
-    # 이미지 URL 목록
     imgs = extract_images(soup)
-    print(f"\n포스터 이미지 후보: {len(imgs)}개 (처음 5개)")
-    for u in imgs[:5]:
-        print(f"   {u}")
+    print(f"\n포스터 이미지 후보: {len(imgs)}개")
 
-    # JSON 저장
     with open("tving_ads_parsed.json", "w", encoding="utf-8") as f:
-        json.dump(uniq, f, ensure_ascii=False, indent=2)
+        json.dump(works, f, ensure_ascii=False, indent=2)
     print("\ntving_ads_parsed.json 저장 완료")
-    print("※ 결과가 깨끗하면 자동수집에 활용 가능. 패턴 오류 있으면 파싱 규칙 보정 필요.")
+    print("※ 모달 0개면 페이지가 모달을 HTML에 안 담는 것 → 다른 방법 필요.")
 
 
 if __name__ == "__main__":
