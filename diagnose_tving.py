@@ -71,6 +71,15 @@ def get_detail(tv_id):
     origin = data.get("origin_country", []) or []
     return genres, origin
 
+def get_detail_full(tv_id):
+    """작품 상세: 공개일 + network 목록 (정보없음 작품 분석용)"""
+    data = get(f"{BASE}/tv/{tv_id}", {"language": "ko-KR"})
+    if not data:
+        return "", []
+    air = data.get("first_air_date", "") or ""
+    networks = [n.get("name", "") for n in data.get("networks", [])]
+    return air, networks
+
 # ── 티빙 network ID (자체 제작/오리지널) ──
 NETWORK_TVING = 3897
 
@@ -260,17 +269,31 @@ def main():
     for tv_id in anime_ids:
         print(f"      - {only.get(tv_id,'')}")
 
-    # ── Original 인데 Only 아닌 작품 + 어디서 보이는지 ──
+    # ── Original 인데 Only 아닌 작품 + 어디서 보이는지 + 공개일/network ──
     print("\n" + "=" * 60)
-    print(f"[B] Original 인데 Only 아닌 작품 ({len(orig_not_only)}건) — 다른 OTT 확인")
+    print(f"[B] Original 인데 Only 아닌 작품 ({len(orig_not_only)}건) — 다른 OTT · 공개일")
     print("=" * 60)
+    import datetime as _dt
+    today_str = _dt.date.today().isoformat()
     for i, tv_id in enumerate(sorted(orig_not_only, key=lambda x: original.get(x, "")), 1):
         name = original.get(tv_id, "")
         provs = orig_prov.get(tv_id, set())
+        air, networks = get_detail_full(tv_id)
+        net = ", ".join(networks) if networks else "?"
+        # 판정: provider 정보없음인데 공개일이 과거면 → TMDB 누락(이미 공개됨)
+        note = ""
+        if not provs:
+            if air and air <= today_str:
+                note = "  ← 이미 공개됨(TMDB provider 누락 추정)"
+            elif air and air > today_str:
+                note = "  ← 공개 예정작"
+            else:
+                note = "  ← 공개일 미상"
         print(f"  {i:>3}. {name}")
-        print(f"        시청가능: {prov_label(provs)}")
+        print(f"        공개일: {air or '미정'} | 제작/방영사: {net}")
+        print(f"        시청가능: {prov_label(provs)}{note}")
 
-    print("\n완료. [A] Only 전체 목록과 [B] 35건의 다른 OTT 여부를 보고 결정하세요.")
+    print("\n완료. [A] Only 전체 목록과 [B] 35건의 공개일·OTT 여부를 보고 결정하세요.")
 
 
 if __name__ == "__main__":
