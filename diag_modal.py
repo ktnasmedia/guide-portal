@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-모달/줄거리 데이터가 페이지 HTML(또는 연결된 JSON)에 있는지 진단.
-'오직 웃음으로' 같은 줄거리 텍스트가 어디에 들어있는지 추적.
+script[11] 데이터 구조 진단 + 결과를 파일로 저장(diag_result.txt).
+제목↔줄거리 연결 방식 파악용.
 """
 import re
 import requests
@@ -11,41 +11,43 @@ URL = "https://www.tvingads.com/content"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 
-PROBE = "오직 웃음으로"   # 코미디숏리그 줄거리 일부
+out = []
+def w(s=""):
+    print(s)
+    out.append(str(s))
 
 r = requests.get(URL, headers=H, timeout=20)
 r.encoding = "utf-8"
 html = r.text
-print(f"HTML 길이: {len(html):,}자")
-
-# 1) 줄거리 텍스트가 원본 HTML에 있나?
-idx = html.find(PROBE)
-print(f"\n[1] '{PROBE}' 위치: {idx}")
-if idx >= 0:
-    print("  → 원본 HTML에 줄거리 있음! 주변 200자:")
-    print("  " + html[max(0,idx-100):idx+100].replace("\n", " "))
-else:
-    print("  → 원본 HTML에 줄거리 없음 (JS 렌더링 추정)")
-
-# 2) script 태그 안 데이터 JSON 탐색
 scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
-print(f"\n[2] script 태그 수: {len(scripts)}")
-for i, s in enumerate(scripts):
-    if PROBE in s:
-        print(f"  → script[{i}]에 줄거리 있음! (길이 {len(s)})")
-    # Framer 데이터 단서
-    if "data" in s.lower() and ("synopsis" in s.lower() or "strategy" in s.lower() or "줄거리" in s):
-        print(f"  → script[{i}]에 데이터 구조 단서 있음")
+data = scripts[11]
+w(f"script[11] 길이: {len(data):,}")
 
-# 3) __framer 또는 application/json 타입 데이터
-for m in re.finditer(r'<script[^>]*type="application/json"[^>]*>(.*?)</script>', html, re.DOTALL):
-    print(f"\n[3] application/json script 발견 (길이 {len(m.group(1))})")
-    if PROBE in m.group(1):
-        print("  → 여기에 줄거리 있음!")
+PROBES = ["오직 웃음으로", "베테랑 메이저팀"]
+for pr in PROBES:
+    i = data.find(pr)
+    if i >= 0:
+        w(f"\n=== '{pr}' 주변 600자 ===")
+        w(data[max(0,i-400):i+200])
 
-# 4) 외부 JSON 데이터 URL 단서 (framerusercontent .json)
-jsons = re.findall(r'https://[^"\']+\.json', html)
-jsons = list(set(jsons))
-print(f"\n[4] 페이지가 참조하는 .json URL: {len(jsons)}개")
-for j in jsons[:20]:
-    print(f"   {j}")
+w("\n\n=== 긴 한글 문장(줄거리 후보) 목록 ===")
+candidates = re.findall(r'"([^"]{30,250})"', data)
+seen = set()
+n = 0
+for c in candidates:
+    if len(re.findall(r'[가-힣]', c)) < 15:
+        continue
+    if c in seen:
+        continue
+    seen.add(c)
+    n += 1
+    w(f"  {n}. {c}")
+w(f"\n총 줄거리 후보: {len(seen)}개")
+
+# 제목 후보(짧은 한글, 작품명) 주변에 ID가 어떻게 붙는지도 일부 출력
+w("\n\n=== 데이터 일부 원본(앞 3000자) ===")
+w(data[:3000])
+
+with open("diag_result.txt", "w", encoding="utf-8") as f:
+    f.write("\n".join(out))
+print("\ndiag_result.txt 저장 완료")
