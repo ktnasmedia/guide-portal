@@ -129,6 +129,30 @@ def parse_blocks(text, heads):
     return works
 
 
+def extract_synopsis(html):
+    """
+    script[11] 데이터에서 줄거리·예고편 추출.
+    패턴: "출연진"...,"p00ID",{...},"줄거리",{...},"예고편URL"
+    반환: {출연진(공백제거): {synopsis, trailer}}
+    """
+    scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
+    if len(scripts) < 12:
+        return {}
+    data = scripts[11]
+    result = {}
+    pat = re.compile(r'"(p\d{6,})",\{[^}]*\},"([^"]{20,400})"(?:,\{[^}]*\},"(https?://[^"]+)")?')
+    for m in pat.finditer(data):
+        syn = m.group(2)
+        trailer = m.group(3) or ""
+        start = m.start()
+        before = data[max(0, start - 500):start]
+        casts = re.findall(r'"([가-힣A-Za-z0-9]+(?:,\s*[가-힣A-Za-z0-9]+)+)"', before)
+        if casts:
+            cast_key = casts[-1].replace(" ", "")
+            result[cast_key] = {"synopsis": syn, "trailer": trailer}
+    return result
+
+
 def main():
     print("티빙 광고센터 콘텐츠 페이지 파싱 (목록 카드 기반)")
     print("=" * 60)
@@ -151,13 +175,24 @@ def main():
         seen.add(key)
         uniq.append(w)
 
-    print(f"\n추출된 작품 수: {len(uniq)}건\n")
+    # 줄거리·예고편 매칭 (출연진 기준)
+    syn_map = extract_synopsis(html)
+    for w in uniq:
+        ck = (w.get("cast") or "").replace(" ", "")
+        info = syn_map.get(ck)
+        w["synopsis"] = info["synopsis"] if info else ""
+        w["trailer"] = info["trailer"] if info else ""
+
+    syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
+    print(f"\n추출된 작품 수: {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
     for i, w in enumerate(uniq, 1):
         media = "/".join(w["media"]) if w["media"] else "-"
         g = ", ".join(w["genres"]) if w["genres"] else "-"
         print(f"{i:>2}. {w['title']}")
         print(f"     매체:{media} | 등급:{w['rating'] or '-'} | 장르:{g} | {w['parts']} {w['day']}")
         print(f"     출연:{w['cast'] or '-'} | 공개일:{w['release_date'] or '-'}")
+        if w.get("synopsis"):
+            print(f"     줄거리:{w['synopsis']}")
 
     imgs = extract_images(soup)
     print(f"\n포스터 이미지 후보: {len(imgs)}개")
