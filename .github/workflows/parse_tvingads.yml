@@ -1,0 +1,28 @@
+name: 티빙 광고페이지 파싱 테스트 (수동)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 파이썬 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 라이브러리 설치
+        run: pip install requests beautifulsoup4
+
+      - name: 파싱 실행 (결과는 로그에서 확인)
+        run: python parse_tvingads.py
+
+      - name: 결과 JSON 업로드 (아티팩트)
+        uses: actions/upload-artifact@v4
+        with:
+          name: tving-ads-parsed
+          path: tving_ads_parsed.json
