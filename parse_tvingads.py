@@ -55,14 +55,26 @@ def extract_images(soup):
     return imgs
 
 
-def parse_blocks(text):
+def extract_headings(soup):
+    """제목으로 쓰인 헤더 텍스트 집합 (예정작 제목이 h2/h3로 들어감)"""
+    heads = set()
+    for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
+        t = tag.get_text(strip=True)
+        if t and len(t) <= 40:
+            heads.add(t)
+    return heads
+
+
+def parse_blocks(text, heads=None):
     """
     '공개일' 다음 날짜로 작품 경계를 잡아 블록 분리.
     헤더/네비 등 노이즈 블록은 제외.
     """
+    heads = heads or set()
     NOISE = ("TVING Ads", "광고정보센터", "LINE UP", "HOT", "COMING SOON",
              "PDF Document", "더보기", "인기 콘텐츠", "DEMO RANKING",
-             "성·연령별", "광고 문의", "캠페인 시작")
+             "성·연령별", "광고 문의", "캠페인 시작", "콘텐츠 라인업",
+             "지금 주목해야", "향후 3개월", "오픈 예정")
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     works = []
     cur = []
@@ -72,7 +84,7 @@ def parse_blocks(text):
         if is_date:
             block = cur[:]
             cur = []
-            w = parse_one(block)
+            w = parse_one(block, heads)
             t = w.get("title", "")
             # 노이즈 제거: 제목이 비었거나 잡음 키워드 포함
             if not t:
@@ -80,23 +92,24 @@ def parse_blocks(text):
             if any(n in t for n in NOISE):
                 continue
             # 제목이 매체/장르 단독 토큰이면 제외
-            if t in ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양"):
+            if t in ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양", "다큐멘터리"):
                 continue
             works.append(w)
     return works
 
 
-def parse_one(block):
+def parse_one(block, heads=None):
     """
     한 작품 블록에서 필드 추출.
-    페이지 구조 순서: [매체배지...] [등급] 제목 [장르...] [부작] [요일] [출연진] '공개일' 날짜
+    신작: [매체][등급] 제목 [장르...] [부작][요일][출연진] '공개일' 날짜
+    예정작: [매체][등급][장르...][부작] 제목(헤더) [요일][출연진] '공개일' 날짜
     """
+    heads = heads or set()
     media = []
     rating = ""
     parts = ""
     day = ""
     date = ""
-    # '공개일' 토큰 위치를 찾아 그 뒤 날짜, 그 직전을 출연진 후보로
     body = [ln.strip("* |").strip() for ln in block]
     body = [b for b in body if b]
 
@@ -112,9 +125,7 @@ def parse_one(block):
     except ValueError:
         gi = len(body)
 
-    # 공개일 앞부분만 사용 (날짜/공개일 이후는 버림)
     head = body[:gi]
-    # 토큰 분류
     leftover = []
     for b in head:
         if b in ("T ONLY", "T ORIGINAL", "W ORIGINAL", "T", "W", "특판", "전체"):
@@ -128,18 +139,28 @@ def parse_one(block):
         else:
             leftover.append(b)
 
-    # leftover: [제목, 장르, 세부장르..., 출연진]
-    title = leftover[0] if leftover else ""
+    title = ""
     cast = ""
     genres = []
-    if len(leftover) > 1:
-        # 마지막 항목이 쉼표/가운뎃점 많으면 출연진
-        last = leftover[-1]
-        if ("," in last) or ("·" in last):
-            cast = last
-            genres = leftover[1:-1]
+
+    # 1) 헤더 제목 집합에 속하는 항목이 있으면 그것을 제목으로 (예정작 대응)
+    head_match = [b for b in leftover if b in heads]
+    if head_match:
+        title = head_match[0]
+        rest = [b for b in leftover if b != title]
+    elif leftover:
+        # 2) 신작: 첫 항목이 제목
+        title = leftover[0]
+        rest = leftover[1:]
+    else:
+        rest = []
+
+    # rest에서 출연진(쉼표/가운뎃점)·장르 분리
+    for r in rest:
+        if ("," in r) or ("·" in r):
+            cast = r
         else:
-            genres = leftover[1:]
+            genres.append(r)
     return {
         "title": title,
         "media": media,
@@ -163,8 +184,8 @@ def main():
 
     soup = BeautifulSoup(html, "html.parser")
     text = soup.get_text("\n")
-
-    works = parse_blocks(text)
+    heads = extract_headings(soup)
+    works = parse_blocks(text, heads)
 
     # 중복 제거 (제목 기준, 띄어쓰기 무시)
     seen = set()
