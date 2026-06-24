@@ -55,15 +55,30 @@ def extract_images(soup):
     return imgs
 
 
-def extract_headings(soup):
-    """제목으로 쓰인 헤더 텍스트 집합 (예정작 제목이 h2/h3로 들어감)"""
-    heads = set()
-    for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
-        t = tag.get_text(strip=True)
-        if t and len(t) <= 40:
-            heads.add(t)
-    return heads
-
+def extract_synopsis(soup):
+    """
+    모달(상세 팝업)에서 제목→줄거리 매핑 추출.
+    모달 컨테이너: data-framer-name='Badge + Info+ Strategy'
+      - 제목: h4
+      - 줄거리: p.framer-styles-preset-1r0dbpx (data-styles-preset='zNPjUVKu5')
+    """
+    syn = {}
+    modals = soup.find_all(attrs={"data-framer-name": "Badge + Info+ Strategy"})
+    for m in modals:
+        h4 = m.find("h4")
+        if not h4:
+            continue
+        title = h4.get_text(strip=True)
+        # 줄거리 p 찾기 (해당 스타일 프리셋)
+        desc = ""
+        for p in m.find_all("p"):
+            preset = p.get("data-styles-preset", "")
+            if preset == "zNPjUVKu5":
+                desc = p.get_text(strip=True)
+                break
+        if title and desc:
+            syn[title.replace(" ", "")] = desc
+    return syn
 
 def parse_blocks(text, heads=None):
     """
@@ -204,7 +219,10 @@ def main():
     heads = extract_headings(soup)
     works = parse_blocks(text, heads)
 
-    # 중복 제거 (제목 기준, 띄어쓰기 무시)
+    # 줄거리 매핑 (모달에서 추출)
+    syn = extract_synopsis(soup)
+
+    # 중복 제거 (제목 기준, 띄어쓰기 무시) + 줄거리 매칭
     seen = set()
     uniq = []
     for w in works:
@@ -212,15 +230,19 @@ def main():
         if key in seen:
             continue
         seen.add(key)
+        w["synopsis"] = syn.get(key, "")   # 줄거리 붙이기
         uniq.append(w)
 
-    print(f"\n추출된 작품 수(중복 제거): {len(uniq)}건\n")
+    syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
+    print(f"\n추출된 작품 수(중복 제거): {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
     for i, w in enumerate(uniq, 1):
         media = "/".join(w["media"]) if w["media"] else "-"
         g = ", ".join(w["genres"]) if w["genres"] else "-"
         print(f"{i:>2}. {w['title']}")
         print(f"     매체:{media} | 등급:{w['rating'] or '-'} | 장르:{g} | {w['parts'] or ''} {w['day'] or ''}")
         print(f"     출연:{w['cast'] or '-'} | 공개일:{w['release_date'] or '-'}")
+        if w.get("synopsis"):
+            print(f"     줄거리:{w['synopsis']}")
 
     # 이미지 URL 목록
     imgs = extract_images(soup)
