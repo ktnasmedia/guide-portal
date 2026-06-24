@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T11:13:46.094830",
+  "generated_at": "2026-06-24T22:50:26.214876",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -10561,7 +10561,7 @@
       "content_id": "tmdb-netflix-tv-253960",
       "title": "가스인간",
       "title_original": "ガス人間",
-      "poster_url": "https://image.tmdb.org/t/p/w500/sCyaMdzj1I9d0j8Ns0SjOM1FV7a.jpg",
+      "poster_url": "https://image.tmdb.org/t/p/w500/1ZAWbZfg2PfMCGuVE3kSRU4QEej.jpg",
       "cast": [
         "오구리 슌",
         "아오이 유우",
@@ -10794,41 +10794,6 @@
       "_meta": {
         "sources": {
           "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-06-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tmdb-netflix-tv-293610",
-      "title": "닥터X: 하얀 마피아의 시대",
-      "title_original": "닥터X: 하얀 마피아의 시대",
-      "poster_url": "https://image.tmdb.org/t/p/w500/tBro7Gty0LlWdSOFYumr9PpQcq3.jpg",
-      "cast": [
-        "김지원",
-        "이정은",
-        "손현주",
-        "김우석",
-        "이성욱"
-      ],
-      "release_date": "2026-10-09",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "'닥터X' 계수정이 오로지 천재적인 수술 실력으로 부조리한 현실에 맞서 통쾌함을 선사하는 메디컬 느와르",
-      "content_type": "시리즈",
-      "genres": [
-        "미스터리",
-        "드라마",
-        "범죄"
-      ],
-      "rating": null,
-      "ott": "netflix",
-      "is_original": true,
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "tmdb"
         },
         "confidence": "confirmed",
         "last_updated": "2026-06-24",
