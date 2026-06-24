@@ -1514,7 +1514,7 @@ function clRender(){
         <div class="cl-meta"><b>공개일</b> ${clIsEmpty(d.release_date)?'<span class="cl-tbd">미정</span>':clEsc(d.release_date)}${q}</div>
         <div class="cl-meta"><b>출연</b> ${cast}</div>
         <div class="cl-sum-wrap">
-          <div class="cl-sum">${clEsc(d.summary||'')||'<span class="cl-tbd">상세 정보 준비 중</span>'}</div>
+          <div class="cl-sum">${clEsc(d.summary||'')||'<span class="cl-tbd">업데이트 예정</span>'}</div>
           <button class="cl-sum-more" onclick="clToggleSum(this)" style="display:none;">더보기</button>
         </div>
         <div class="cl-tags">${genres}</div>

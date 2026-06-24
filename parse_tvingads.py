@@ -44,15 +44,23 @@ def extract_images(soup):
 
 def extract_posters(soup):
     """
-    목록 카드에서 제목→포스터 URL 매핑.
-    카드 컨테이너: data-framer-name 에 'Single' 포함.
-    제목: data-framer-name='Title' 영역의 p, 포스터: 카드 내 framerusercontent img.
+    제목→포스터 URL 매핑.
+    (A) 신작 카드: data-framer-name='Single...' 안의 Title + img
+    (B) 예정작: data-framer-name='Badge + Info+ Strategy'(제목 h4)의
+        공통 부모에서 framerusercontent 이미지 탐색
     반환: {제목(공백제거): poster_url}
     """
     posters = {}
-    cards = soup.find_all(attrs={"data-framer-name": re.compile(r"Single")})
-    for c in cards:
-        # 제목
+
+    def first_poster(node):
+        for im in node.find_all("img"):
+            src = im.get("src", "")
+            if "framerusercontent.com/images" in src:
+                return src.split("?")[0]
+        return ""
+
+    # (A) 신작 카드
+    for c in soup.find_all(attrs={"data-framer-name": re.compile(r"Single")}):
         title = ""
         tbox = c.find(attrs={"data-framer-name": "Title"})
         if tbox:
@@ -61,15 +69,34 @@ def extract_posters(soup):
                 title = p.get_text(strip=True)
         if not title:
             continue
-        # 포스터 (카드 내 첫 framerusercontent 이미지)
+        poster = first_poster(c)
+        if poster:
+            posters.setdefault(title.replace(" ", ""), poster)
+
+    # (B) 예정작 모달
+    for m in soup.find_all(attrs={"data-framer-name": "Badge + Info+ Strategy"}):
+        h4 = m.find("h4")
+        if not h4:
+            continue
+        title = h4.get_text(strip=True)
+        if not title:
+            continue
+        key = title.replace(" ", "")
+        if key in posters:
+            continue
+        # 모달의 부모(카드)로 올라가며 이미지 탐색
+        node = m
         poster = ""
-        for im in c.find_all("img"):
-            src = im.get("src", "")
-            if "framerusercontent.com/images" in src:
-                poster = src.split("?")[0]
+        for _ in range(3):
+            node = node.parent
+            if node is None:
+                break
+            poster = first_poster(node)
+            if poster:
                 break
         if poster:
-            posters[title.replace(" ", "")] = poster
+            posters[key] = poster
+
     return posters
 
 
