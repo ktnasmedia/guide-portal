@@ -43,6 +43,17 @@ PROV_APPLE   = 350
 # 티빙 Only 판별 시 "다른 OTT" 목록 (여기 중 하나라도 있으면 독점 아님)
 OTHER_PROVIDERS = {PROV_NETFLIX, PROV_WAVVE, PROV_DISNEY, PROV_COUPANG, PROV_WATCHA, PROV_APPLE}
 
+# provider ID → 이름 (로그 출력용)
+PROV_NAMES = {
+    PROV_TVING: "티빙", PROV_NETFLIX: "넷플릭스", PROV_WAVVE: "웨이브",
+    PROV_DISNEY: "디즈니+", PROV_COUPANG: "쿠팡플레이", PROV_WATCHA: "왓챠",
+    PROV_APPLE: "애플TV+",
+}
+def prov_label(ids):
+    if not ids:
+        return "(어디에도 없음/정보없음)"
+    return ", ".join(PROV_NAMES.get(i, f"ID{i}") for i in sorted(ids))
+
 # ── 티빙 network ID (자체 제작/오리지널) ──
 NETWORK_TVING = 3897
 
@@ -147,9 +158,11 @@ def main():
     # 3) TVING Only = 티빙 provider에 있으나 타 OTT provider엔 없는 작품
     print("\n[3] TVING Only 판별 중 (각 작품의 provider 교차 확인)...")
     only = {}
+    prov_cache = {}   # tv_id → provider 집합 (재사용)
     checked = 0
     for tv_id, name in tving_all.items():
         provs = get_providers(tv_id)
+        prov_cache[tv_id] = provs
         checked += 1
         if checked % 20 == 0:
             print(f"    ...{checked}/{len(tving_all)} 확인")
@@ -158,6 +171,17 @@ def main():
             only[tv_id] = name
     print(f"    → TVING Only(독점) 작품 수: {len(only)}건")
 
+    # 4) Original 인데 Only에 안 잡힌 작품의 provider 조회 (다른 OTT 확인용)
+    print("\n[4] Original 중 Only에 없는 작품의 provider 조회 중...")
+    only_not_orig = set(only) - set(original)
+    orig_not_only = set(original) - set(only)
+    orig_prov = {}
+    for tv_id in orig_not_only:
+        if tv_id in prov_cache:
+            orig_prov[tv_id] = prov_cache[tv_id]
+        else:
+            orig_prov[tv_id] = get_providers(tv_id)
+
     # ── 결과 요약 ──
     print("\n" + "=" * 60)
     print("결과 요약")
@@ -165,28 +189,28 @@ def main():
     print(f"  TVING Original (network 3897)      : {len(original):>4}건")
     print(f"  티빙 시청가능 전체 (provider 1883) : {len(tving_all):>4}건")
     print(f"  TVING Only (티빙 독점)             : {len(only):>4}건")
+    print(f"  Original ∩ Only (둘 다 해당)       : {len(set(original)&set(only)):>4}건")
+    print(f"  Only 인데 Original 아님            : {len(only_not_orig):>4}건")
+    print(f"  Original 인데 Only 아님            : {len(orig_not_only):>4}건")
 
-    # Original 중 Only에도 포함되는 교집합
-    inter = set(original) & set(only)
-    print(f"  Original ∩ Only (둘 다 해당)       : {len(inter):>4}건")
-    only_not_original = set(only) - set(original)
-    print(f"  Only 인데 Original 아님            : {len(only_not_original):>4}건")
+    # ── TVING Only 전체 목록 ──
+    print("\n" + "=" * 60)
+    print(f"[A] TVING Only 전체 목록 ({len(only)}건)")
+    print("=" * 60)
+    for i, (tv_id, name) in enumerate(sorted(only.items(), key=lambda x: x[1]), 1):
+        print(f"  {i:>3}. {name}")
 
-    def preview(d, n=15):
-        names = list(d.values())
-        for nm in names[:n]:
-            print(f"      - {nm}")
-        if len(names) > n:
-            print(f"      ... 외 {len(names)-n}건")
+    # ── Original 인데 Only 아닌 작품 + 어디서 보이는지 ──
+    print("\n" + "=" * 60)
+    print(f"[B] Original 인데 Only 아닌 작품 ({len(orig_not_only)}건) — 다른 OTT 확인")
+    print("=" * 60)
+    for i, tv_id in enumerate(sorted(orig_not_only, key=lambda x: original.get(x, "")), 1):
+        name = original.get(tv_id, "")
+        provs = orig_prov.get(tv_id, set())
+        print(f"  {i:>3}. {name}")
+        print(f"        시청가능: {prov_label(provs)}")
 
-    print("\n[Original 목록 미리보기]")
-    preview(original)
-    print("\n[Only 목록 미리보기]")
-    preview(only)
-    print("\n[Only 인데 Original 아닌 작품 미리보기] (사올렸거나 독점계약 추정)")
-    preview({k: only[k] for k in only_not_original})
-
-    print("\n완료. 위 숫자/목록을 보고 수집 범위(Original만 vs Only 포함)를 결정하세요.")
+    print("\n완료. [A] Only 전체 목록과 [B] 35건의 다른 OTT 여부를 보고 결정하세요.")
 
 
 if __name__ == "__main__":
