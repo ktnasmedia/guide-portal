@@ -55,6 +55,16 @@ def extract_images(soup):
     return imgs
 
 
+def extract_headings(soup):
+    """제목으로 쓰인 헤더 텍스트 집합 (예정작 제목이 h2/h3로 들어감)"""
+    heads = set()
+    for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
+        t = tag.get_text(strip=True)
+        if t and len(t) <= 40:
+            heads.add(t)
+    return heads
+
+
 def extract_synopsis(soup):
     """
     모달(상세 팝업)에서 제목→줄거리 매핑 추출.
