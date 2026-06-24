@@ -78,9 +78,20 @@ def parse_blocks(text, heads=None):
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     works = []
     cur = []
+    prev_go = False   # 직전 줄이 '공개일' 이었는지
     for ln in lines:
-        cur.append(ln)
         is_date = bool(DATE_RE.search(ln)) and len(ln) <= 14
+        # 직전이 '공개일'인데 현재 줄이 날짜가 아니면 → 공개일 미정 작품의 끝
+        flush_undated = prev_go and not is_date
+        if flush_undated and cur:
+            block = cur[:]
+            cur = []
+            w = parse_one(block, heads)
+            t = w.get("title", "")
+            if t and not any(n in t for n in NOISE) and t not in ("드라마","예능","전체","특판","더보기","스포츠","교양","다큐멘터리"):
+                works.append(w)
+        cur.append(ln)
+        prev_go = (ln == "공개일")
         if is_date:
             block = cur[:]
             cur = []
@@ -94,6 +105,12 @@ def parse_blocks(text, heads=None):
             # 제목이 매체/장르 단독 토큰이면 제외
             if t in ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양", "다큐멘터리"):
                 continue
+            works.append(w)
+    # 마지막 남은 블록 처리 (공개일 미정으로 끝나는 경우)
+    if cur:
+        w = parse_one(cur, heads)
+        t = w.get("title", "")
+        if t and not any(n in t for n in NOISE) and t not in ("드라마","예능","전체","특판","더보기","스포츠","교양","다큐멘터리"):
             works.append(w)
     return works
 
