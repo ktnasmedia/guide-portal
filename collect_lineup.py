@@ -380,7 +380,10 @@ def collect_and_accumulate_tving_ads():
         from parse_tvingads import collect_tving_ads
         works = collect_tving_ads()
         poster_cnt = sum(1 for w in works if w.get("poster"))
+        no_poster = [w["title"] for w in works if not w.get("poster")]
         print(f"  → [진단] 광고페이지 작품 {len(works)}건 중 포스터 매칭 {poster_cnt}건")
+        if no_poster:
+            print(f"  → [진단] 포스터 없는 작품: {', '.join(no_poster)}")
         new_items = tving_ads_to_schema(works)
     except Exception as e:
         print(f"WARN: 티빙 광고페이지 수집 실패: {e}", file=sys.stderr)
