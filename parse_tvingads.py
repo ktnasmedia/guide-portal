@@ -129,28 +129,40 @@ def parse_blocks(text, heads):
     return works
 
 
+def decode_unicode(s):
+    """\\u003C 같은 인코딩 디코딩"""
+    if not s:
+        return s
+    try:
+        return s.encode().decode("unicode_escape").encode("latin-1").decode("utf-8")
+    except Exception:
+        # 부분 치환 폴백
+        return s.replace("\\u003C", "<").replace("\\u003E", ">").replace("\\u0026", "&")
+
+
 def extract_synopsis(html):
     """
-    script[11] 데이터에서 줄거리·예고편 추출.
-    패턴: "출연진"...,"p00ID",{...},"줄거리",{...},"예고편URL"
-    반환: {출연진(공백제거): {synopsis, trailer}}
+    script[11] 데이터에서 줄거리·예고편을 '등장 순서대로' 추출.
+    패턴: "p00ID",{...},"줄거리",{...},"예고편URL"
+    각 항목 앞 500자에서 출연진 후보도 같이 확보.
+    반환: 리스트 [{cast_key, synopsis, trailer}] (페이지 등장 순)
     """
     scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
     if len(scripts) < 12:
-        return {}
+        return []
     data = scripts[11]
-    result = {}
+    items = []
     pat = re.compile(r'"(p\d{6,})",\{[^}]*\},"([^"]{20,400})"(?:,\{[^}]*\},"(https?://[^"]+)")?')
     for m in pat.finditer(data):
-        syn = m.group(2)
+        syn = decode_unicode(m.group(2))
         trailer = m.group(3) or ""
         start = m.start()
         before = data[max(0, start - 500):start]
         casts = re.findall(r'"([가-힣A-Za-z0-9]+(?:,\s*[가-힣A-Za-z0-9]+)+)"', before)
-        if casts:
-            cast_key = casts[-1].replace(" ", "")
-            result[cast_key] = {"synopsis": syn, "trailer": trailer}
-    return result
+        cast_key = casts[-1].replace(" ", "") if casts else ""
+        items.append({"cast_key": cast_key, "synopsis": syn, "trailer": trailer})
+    return items
+
 
 
 def main():
@@ -175,13 +187,47 @@ def main():
         seen.add(key)
         uniq.append(w)
 
-    # 줄거리·예고편 매칭 (출연진 기준)
-    syn_map = extract_synopsis(html)
+    # 줄거리·예고편 매칭 (3단계: 출연진 → 제목단서 → 순서)
+    syn_items = extract_synopsis(html)
+    used = [False] * len(syn_items)
+
+    # 1단계: 출연진 키 일치
     for w in uniq:
         ck = (w.get("cast") or "").replace(" ", "")
-        info = syn_map.get(ck)
-        w["synopsis"] = info["synopsis"] if info else ""
-        w["trailer"] = info["trailer"] if info else ""
+        w["synopsis"] = ""
+        w["trailer"] = ""
+        if not ck:
+            continue
+        for idx, it in enumerate(syn_items):
+            if not used[idx] and it["cast_key"] and it["cast_key"] == ck:
+                w["synopsis"] = it["synopsis"]
+                w["trailer"] = it["trailer"]
+                used[idx] = True
+                break
+
+    # 2단계: 줄거리 안에 제목이 들어있으면 매칭 (예: 콩콩팡팜, 윔블던)
+    for w in uniq:
+        if w["synopsis"]:
+            continue
+        tkey = w["title"].replace(" ", "")
+        for idx, it in enumerate(syn_items):
+            if used[idx]:
+                continue
+            syn_nospace = it["synopsis"].replace(" ", "")
+            # 제목 일부(앞 3글자 이상)가 줄거리에 등장
+            if len(tkey) >= 3 and tkey[:4] in syn_nospace:
+                w["synopsis"] = it["synopsis"]
+                w["trailer"] = it["trailer"]
+                used[idx] = True
+                break
+
+    # 3단계: 남은 작품 ↔ 남은 줄거리를 페이지 순서대로 연결
+    remaining_works = [w for w in uniq if not w["synopsis"]]
+    remaining_syn = [(i, it) for i, it in enumerate(syn_items) if not used[i]]
+    for w, (idx, it) in zip(remaining_works, remaining_syn):
+        w["synopsis"] = it["synopsis"]
+        w["trailer"] = it["trailer"]
+        used[idx] = True
 
     syn_cnt = sum(1 for w in uniq if w.get("synopsis"))
     print(f"\n추출된 작품 수: {len(uniq)}건 / 줄거리 확보: {syn_cnt}건\n")
@@ -193,6 +239,8 @@ def main():
         print(f"     출연:{w['cast'] or '-'} | 공개일:{w['release_date'] or '-'}")
         if w.get("synopsis"):
             print(f"     줄거리:{w['synopsis']}")
+        if w.get("trailer"):
+            print(f"     예고편:{w['trailer']}")
 
     imgs = extract_images(soup)
     print(f"\n포스터 이미지 후보: {len(imgs)}개")
