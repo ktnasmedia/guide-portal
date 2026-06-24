@@ -177,6 +177,47 @@ def get_providers(tv_id):
     return ids
 
 
+def diagnose_titles(titles):
+    """특정 제목들을 TMDB에서 검색해 존재·provider·network·공개일 확인"""
+    print("\n" + "=" * 60)
+    print("[C] 빠진 작품 개별 진단 (왜 Only에 안 잡혔는지)")
+    print("=" * 60)
+    for q in titles:
+        print(f"\n● '{q}'")
+        data = get(f"{BASE}/search/tv", {"query": q, "language": "ko-KR"})
+        results = (data or {}).get("results", [])
+        if not results:
+            # 영화로도 검색
+            mdata = get(f"{BASE}/search/movie", {"query": q, "language": "ko-KR"})
+            mres = (mdata or {}).get("results", [])
+            if mres:
+                print(f"    TV로는 없음. 영화로 검색됨: {mres[0].get('title','')} (TMDB는 movie로 등록)")
+            else:
+                print("    ✗ TMDB에 검색 결과 없음 (작품 미등록 또는 제목 상이)")
+            continue
+        # 가장 유사한 첫 결과
+        top = results[0]
+        tv_id = top["id"]
+        name = top.get("name", "")
+        air = top.get("first_air_date", "") or "미정"
+        # network
+        detail = get(f"{BASE}/tv/{tv_id}", {"language": "ko-KR"})
+        networks = [n.get("name","") for n in (detail or {}).get("networks", [])] if detail else []
+        # provider
+        provs = get_providers(tv_id)
+        has_tving_net = any("tving" in n.lower() for n in networks)
+        print(f"    ✓ TMDB 존재: '{name}' (id={tv_id}) | 공개일: {air}")
+        print(f"      network(제작/방영): {', '.join(networks) if networks else '없음'}{'  ← 티빙 network 있음' if has_tving_net else ''}")
+        print(f"      provider(시청처): {prov_label(provs)}")
+        # 왜 Only에 안 잡혔는지 판정
+        if PROV_TVING not in provs:
+            print(f"      → Only 누락 원인: TMDB provider에 티빙 없음 (provider 데이터 누락)")
+        elif provs & OTHER_PROVIDERS:
+            print(f"      → Only 제외 원인: 티빙 외 다른 OTT에도 있음")
+        if results and len(results) > 1:
+            print(f"      (검색 결과 {len(results)}건 중 첫 번째 기준)")
+
+
 def main():
     print("=" * 60)
     print(f"티빙 콘텐츠 수집 범위 비교  (연도: {YEARS}, 지역: {REGION})")
@@ -320,6 +361,13 @@ def main():
         print(f"        시청가능: {prov_label(provs)}{note}")
 
     print("\n완료. [A] Only 전체 목록과 [B] 35건의 공개일·OTT 여부를 보고 결정하세요.")
+
+    # [C] 누락 의심 작품 개별 진단
+    MISSING_CHECK = [
+        "스크릿 레스토랑 파이터", "콩콩팜팜", "내일도 출근",
+        "도깨비 10주년 여행", "샤먼: 미신전", "도굴왕",
+    ]
+    diagnose_titles(MISSING_CHECK)
 
 
 if __name__ == "__main__":
