@@ -54,6 +54,23 @@ def prov_label(ids):
         return "(어디에도 없음/정보없음)"
     return ", ".join(PROV_NAMES.get(i, f"ID{i}") for i in sorted(ids))
 
+# TMDB TV 장르 ID → 한글 이름
+TV_GENRES = {
+    10759: "액션&어드벤처", 16: "애니메이션", 35: "코미디", 80: "범죄",
+    99: "다큐멘터리", 18: "드라마", 10751: "가족", 10762: "키즈",
+    9648: "미스터리", 10763: "뉴스", 10764: "리얼리티", 10765: "SF&판타지",
+    10766: "연속극", 10767: "토크", 10768: "전쟁&정치", 37: "서부",
+}
+
+def get_detail(tv_id):
+    """작품 상세: 장르 이름 목록 + 원산지 국가 코드 목록"""
+    data = get(f"{BASE}/tv/{tv_id}", {"language": "ko-KR"})
+    if not data:
+        return [], []
+    genres = [g.get("name", "") for g in data.get("genres", [])]
+    origin = data.get("origin_country", []) or []
+    return genres, origin
+
 # ── 티빙 network ID (자체 제작/오리지널) ──
 NETWORK_TVING = 3897
 
@@ -193,12 +210,55 @@ def main():
     print(f"  Only 인데 Original 아님            : {len(only_not_orig):>4}건")
     print(f"  Original 인데 Only 아님            : {len(orig_not_only):>4}건")
 
-    # ── TVING Only 전체 목록 ──
+    # ── TVING Only 전체 목록 (장르·원산지 포함) ──
+    print("\n[5] Only 작품들의 장르·원산지 조회 중...")
+    only_detail = {}   # tv_id → (genres, origin)
+    cnt = 0
+    for tv_id in only:
+        only_detail[tv_id] = get_detail(tv_id)
+        cnt += 1
+        if cnt % 20 == 0:
+            print(f"    ...{cnt}/{len(only)} 확인")
+
+    # 장르별 집계
+    from collections import Counter
+    genre_counter = Counter()
+    origin_counter = Counter()
+    anime_ids = []   # 애니메이션 포함 작품
+    for tv_id, (genres, origin) in only_detail.items():
+        for g in genres:
+            genre_counter[g] += 1
+        for o in origin:
+            origin_counter[o] += 1
+        if "애니메이션" in genres:
+            anime_ids.append(tv_id)
+
     print("\n" + "=" * 60)
-    print(f"[A] TVING Only 전체 목록 ({len(only)}건)")
+    print(f"[A] TVING Only 전체 목록 ({len(only)}건) — 장르 · 원산지")
     print("=" * 60)
     for i, (tv_id, name) in enumerate(sorted(only.items(), key=lambda x: x[1]), 1):
+        genres, origin = only_detail.get(tv_id, ([], []))
+        g = ", ".join(genres) if genres else "장르정보없음"
+        o = "/".join(origin) if origin else "?"
         print(f"  {i:>3}. {name}")
+        print(f"        [{o}] {g}")
+
+    # ── 장르 통계 ──
+    print("\n" + "=" * 60)
+    print("[A-1] Only 장르별 작품 수 (한 작품이 여러 장르일 수 있음)")
+    print("=" * 60)
+    for g, c in genre_counter.most_common():
+        print(f"  {g:<14}: {c:>3}건")
+
+    print("\n[A-2] Only 원산지 국가별 작품 수")
+    print("=" * 60)
+    KOR = {"KR": "한국", "JP": "일본", "CN": "중국", "US": "미국"}
+    for o, c in origin_counter.most_common():
+        print(f"  {KOR.get(o, o):<6}: {c:>3}건")
+
+    print(f"\n[A-3] 애니메이션 장르 포함 작품: {len(anime_ids)}건")
+    for tv_id in anime_ids:
+        print(f"      - {only.get(tv_id,'')}")
 
     # ── Original 인데 Only 아닌 작품 + 어디서 보이는지 ──
     print("\n" + "=" * 60)
