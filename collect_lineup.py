@@ -380,10 +380,7 @@ def collect_and_accumulate_tving_ads():
         from parse_tvingads import collect_tving_ads
         works = collect_tving_ads()
         poster_cnt = sum(1 for w in works if w.get("poster"))
-        no_poster = [w["title"] for w in works if not w.get("poster")]
-        print(f"  → [진단] 광고페이지 작품 {len(works)}건 중 포스터 매칭 {poster_cnt}건")
-        if no_poster:
-            print(f"  → [진단] 포스터 없는 작품: {', '.join(no_poster)}")
+        print(f"  → 티빙 광고페이지: 작품 {len(works)}건 / 포스터 {poster_cnt}건 매칭")
         new_items = tving_ads_to_schema(works)
     except Exception as e:
         print(f"WARN: 티빙 광고페이지 수집 실패: {e}", file=sys.stderr)
@@ -757,16 +754,6 @@ def main():
     for it in all_items:
         dedup[it["content_id"]] = it
     items = list(dedup.values())
-
-    # [진단] 공개일 미정 작품 추적 (우주떡집 등)
-    _ads_titles = [a["title"] for a in ads_items]
-    _final_titles = set(it["title"] for it in items)
-    _missing = [t for t in _ads_titles if t not in _final_titles]
-    if _missing:
-        print(f"  → [진단] 광고페이지엔 있으나 최종 누락: {', '.join(set(_missing))}", file=sys.stderr)
-    _nodate = [it["title"] for it in items if not it.get("release_date")]
-    if _nodate:
-        print(f"  → [진단] 공개일 미정 작품(최종 포함됨): {', '.join(_nodate)}", file=sys.stderr)
 
     # 수동 보정 적용 (수동값 최우선, 자동 수집이 덮어쓰지 못함)
     items, overridden = apply_manual_overrides(items)
