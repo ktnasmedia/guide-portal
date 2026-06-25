@@ -60,9 +60,17 @@ def extract_posters(html):
     ):
         url = m.group(1)
         after = data[m.end():m.end() + 300]
-        tm = re.search(r'"([가-힣][^"]{1,40})"', after)
+        # 포스터 뒤 가장 가까운 '한글이 포함된' 문자열을 제목으로 (숫자로 시작해도 OK)
+        tm = None
+        for cand in re.finditer(r'"([^"]{2,40})"', after):
+            txt = cand.group(1)
+            # 한글이 1글자 이상 포함되고, 날짜/URL/타입토큰이 아닌 것
+            if re.search(r"[가-힣]", txt) and not txt.startswith("http") \
+               and "framerusercontent" not in txt:
+                tm = txt
+                break
         if tm:
-            key = tm.group(1).replace(" ", "")
+            key = tm.replace(" ", "")
             posters.setdefault(key, url)
     return posters
 

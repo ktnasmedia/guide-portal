@@ -758,6 +758,16 @@ def main():
         dedup[it["content_id"]] = it
     items = list(dedup.values())
 
+    # [진단] 공개일 미정 작품 추적 (우주떡집 등)
+    _ads_titles = [a["title"] for a in ads_items]
+    _final_titles = set(it["title"] for it in items)
+    _missing = [t for t in _ads_titles if t not in _final_titles]
+    if _missing:
+        print(f"  → [진단] 광고페이지엔 있으나 최종 누락: {', '.join(set(_missing))}", file=sys.stderr)
+    _nodate = [it["title"] for it in items if not it.get("release_date")]
+    if _nodate:
+        print(f"  → [진단] 공개일 미정 작품(최종 포함됨): {', '.join(_nodate)}", file=sys.stderr)
+
     # 수동 보정 적용 (수동값 최우선, 자동 수집이 덮어쓰지 못함)
     items, overridden = apply_manual_overrides(items)
     # 보정으로 새 작품이 추가됐을 수 있으니 dedup 갱신
