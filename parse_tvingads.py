@@ -42,61 +42,28 @@ def extract_images(soup):
     return imgs
 
 
-def extract_posters(soup):
+def extract_posters(html):
     """
-    제목→포스터 URL 매핑.
-    (A) 신작 카드: data-framer-name='Single...' 안의 Title + img
-    (B) 예정작: data-framer-name='Badge + Info+ Strategy'(제목 h4)의
-        공통 부모에서 framerusercontent 이미지 탐색
+    script[11] 데이터에서 제목→포스터 URL 매핑.
+    데이터 구조: "포스터URL"(+srcSet 중복) ... "제목" ... 출연진 ... 줄거리
+    포스터 URL 뒤 가장 가까운 한글 제목으로 매칭. 카드 HTML 구조 비의존.
     반환: {제목(공백제거): poster_url}
     """
+    scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
+    if len(scripts) < 12:
+        return {}
+    data = scripts[11]
     posters = {}
-
-    def first_poster(node):
-        for im in node.find_all("img"):
-            src = im.get("src", "")
-            if "framerusercontent.com/images" in src:
-                return src.split("?")[0]
-        return ""
-
-    # (A) 신작 카드
-    for c in soup.find_all(attrs={"data-framer-name": re.compile(r"Single")}):
-        title = ""
-        tbox = c.find(attrs={"data-framer-name": "Title"})
-        if tbox:
-            p = tbox.find("p")
-            if p:
-                title = p.get_text(strip=True)
-        if not title:
-            continue
-        poster = first_poster(c)
-        if poster:
-            posters.setdefault(title.replace(" ", ""), poster)
-
-    # (B) 예정작 모달
-    for m in soup.find_all(attrs={"data-framer-name": "Badge + Info+ Strategy"}):
-        h4 = m.find("h4")
-        if not h4:
-            continue
-        title = h4.get_text(strip=True)
-        if not title:
-            continue
-        key = title.replace(" ", "")
-        if key in posters:
-            continue
-        # 모달의 부모(카드)로 올라가며 이미지 탐색
-        node = m
-        poster = ""
-        for _ in range(3):
-            node = node.parent
-            if node is None:
-                break
-            poster = first_poster(node)
-            if poster:
-                break
-        if poster:
-            posters[key] = poster
-
+    for m in re.finditer(
+        r'"(https://framerusercontent\.com/images/[A-Za-z0-9]+\.(?:webp|jpg|png))\?[^"]*"',
+        data,
+    ):
+        url = m.group(1)
+        after = data[m.end():m.end() + 300]
+        tm = re.search(r'"([가-힣][^"]{1,40})"', after)
+        if tm:
+            key = tm.group(1).replace(" ", "")
+            posters.setdefault(key, url)
     return posters
 
 
@@ -246,7 +213,7 @@ def collect_tving_ads():
     text = soup.get_text("\n")
     heads = extract_headings(soup)
     works = parse_blocks(text, heads)
-    posters = extract_posters(soup)
+    posters = extract_posters(html)
 
     seen, uniq = set(), []
     for w in works:
