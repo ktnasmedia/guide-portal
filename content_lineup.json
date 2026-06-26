@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T23:02:48.890719",
+  "generated_at": "2026-06-26T21:58:23.612030",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -38,7 +38,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -73,7 +73,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -109,7 +109,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -143,7 +143,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -178,7 +178,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -212,7 +212,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -246,7 +246,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -279,7 +279,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -312,7 +312,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -339,7 +339,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -366,7 +366,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -396,7 +396,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -430,7 +430,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -459,7 +459,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -494,7 +494,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -528,7 +528,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -558,7 +558,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -588,7 +588,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -622,7 +622,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -656,7 +656,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -689,7 +689,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -723,7 +723,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -758,7 +758,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -790,7 +790,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -818,7 +818,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -852,7 +852,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -886,7 +886,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -911,7 +911,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -939,7 +939,36 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1574724",
+      "title": "멀쩡한 사람",
+      "title_original": "멀쩡한 사람",
+      "poster_url": "https://image.tmdb.org/t/p/w500/orQcBmhzqig7Z5qBb8k5IjRcHWt.jpg",
+      "cast": [
+        "이유라"
+      ],
+      "release_date": "2025-02-20",
+      "release_year": 2025,
+      "release_quarter": "2025 Q1",
+      "summary": "휴일 아침, 한 청소부가 혼자 일을 하러 나온다. 청소부는 건물 뒤편 쓰레기장에서 쓰러진 청년과 정체불명의 백수를 마주친다. 세 사람은 서로의 이름도 모른 채, 백수가 잃어버린 쓰레기봉투를 함께 찾기 시작한다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -974,7 +1003,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1003,7 +1032,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1037,7 +1066,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1067,7 +1096,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1094,7 +1123,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1128,7 +1157,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1161,7 +1190,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1191,7 +1220,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1224,7 +1253,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1258,7 +1287,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1285,7 +1314,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1312,7 +1341,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1344,7 +1373,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1372,7 +1401,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1407,7 +1436,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1442,7 +1471,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1476,7 +1505,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1510,7 +1539,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1544,7 +1573,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1577,7 +1606,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1604,7 +1633,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1632,7 +1661,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1659,7 +1688,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1693,7 +1722,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1724,7 +1753,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1758,7 +1787,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1793,7 +1822,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1824,7 +1853,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1855,7 +1884,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1884,7 +1913,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1912,7 +1941,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1945,7 +1974,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -1982,7 +2011,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2013,7 +2042,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2047,7 +2076,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2081,7 +2110,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2110,7 +2139,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2139,7 +2168,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2170,7 +2199,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2197,7 +2226,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2227,7 +2256,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2252,7 +2281,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2288,7 +2317,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2315,7 +2344,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2348,7 +2377,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2378,7 +2407,38 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1456032",
+      "title": "God Complex",
+      "title_original": "God Complex",
+      "poster_url": "https://image.tmdb.org/t/p/w500/AdfqF7y96cghlu7dovtvBeqmy9R.jpg",
+      "cast": [
+        "남경우",
+        "권다함",
+        "진성찬"
+      ],
+      "release_date": "2025-05-05",
+      "release_year": 2025,
+      "release_quarter": "2025 Q2",
+      "summary": "국가 경제 위기로 인해, 일정 연령이 지나면 국가에서 안락사 약을 제공해주는 세상 속에서 지만의 집으로 국가 공무원들이 찾아온다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2411,7 +2471,36 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1456028",
+      "title": "움벨트",
+      "title_original": "움벨트",
+      "poster_url": "https://image.tmdb.org/t/p/w500/eGWkGFQXxRHL8P7SFzBHVxHRwhk.jpg",
+      "cast": [
+        "엄서윤"
+      ],
+      "release_date": "2025-05-06",
+      "release_year": 2025,
+      "release_quarter": "2025 Q2",
+      "summary": "테라리움 작가 유나는 전시를 준비하며 거대한 작업에 몰두한다. 작업 과정에서 식물학자 솔의 연구실을 찾은 유나는 그가 만든 키메라 식물에 강하게 이끌리고, 솔의 식물을 테라리움에 심자 잊고 있던 어린 시절의 기억과 마주하게 된다. 유나는 자신을 옭아매던 애착의 흔적을 깨닫고 작품을 완성하기 위해 특별한 식물을 의뢰한다.",
+      "content_type": "영화",
+      "genres": [
+        "SF"
+      ],
+      "rating": "ALL",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2438,7 +2527,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2465,7 +2554,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2499,7 +2588,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2534,7 +2623,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2567,7 +2656,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2601,7 +2690,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2636,7 +2725,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2667,7 +2756,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2698,7 +2787,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2731,7 +2820,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2764,7 +2853,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2797,7 +2886,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2830,7 +2919,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2866,7 +2955,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2902,7 +2991,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2936,7 +3025,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -2972,7 +3061,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3007,7 +3096,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3041,7 +3130,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3075,7 +3164,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3108,7 +3197,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3141,7 +3230,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3168,7 +3257,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3195,7 +3284,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3229,7 +3318,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3263,7 +3352,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3294,7 +3383,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3329,7 +3418,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3359,7 +3448,72 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1490298",
+      "title": "두 번의 장례",
+      "title_original": "두 번의 장례",
+      "poster_url": "https://image.tmdb.org/t/p/w500/rz6EFk6ZhOoZux38SH9E29Y82XD.jpg",
+      "cast": [
+        "임지호",
+        "김금순",
+        "김학선"
+      ],
+      "release_date": "2025-06-28",
+      "release_year": 2025,
+      "release_quarter": "2025 Q2",
+      "summary": "장례식장에서 서로 다른 두 가족의 관이 뒤바뀌었다. 각자의 사정을 지닌 두 가족은 예상치 못하게 하루 동안 장례식장에서 엮인다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1496957",
+      "title": "쓰삐디!",
+      "title_original": "쓰삐디!",
+      "poster_url": "https://image.tmdb.org/t/p/w500/kSfF3mFAEIOjUAsyMKReh7bSnWo.jpg",
+      "cast": [
+        "김규나",
+        "임승민",
+        "홍성춘",
+        "이경훈",
+        "반혜영"
+      ],
+      "release_date": "2025-07-05",
+      "release_year": 2025,
+      "release_quarter": "2025 Q3",
+      "summary": "1989년 서울. 아홉 살 정민이는 속독 신동이 되고 싶다. 60초만에 책 한권을 독파하는 동현오빠처럼!",
+      "content_type": "영화",
+      "genres": [
+        "드라마",
+        "코미디"
+      ],
+      "rating": "ALL",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3392,7 +3546,38 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1496884",
+      "title": "시지프스의 공전주기",
+      "title_original": "시지프스의 공전주기",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uBmIO5Rr2ujoQePIrZgOQRB9azq.jpg",
+      "cast": [
+        "손정은",
+        "장요훈"
+      ],
+      "release_date": "2025-07-06",
+      "release_year": 2025,
+      "release_quarter": "2025 Q3",
+      "summary": "내 사랑은 진짜다,라고 믿어 의심치 않는 사랑 예찬론자 지은. 어느 날 남자친구의 얼굴에서 작은 점을 하나 발견한다. 그리고 무슨 영문인지 점은 계속해서 커져만 가고 지은은 점점 신경 쓰이기 시작한다. 이 문제로 심란해하던 지은의 앞에, 새로운 남자가 나타난다.",
+      "content_type": "영화",
+      "genres": [
+        "로맨스",
+        "코미디"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3417,7 +3602,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3449,7 +3634,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3483,7 +3668,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3518,7 +3703,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3552,7 +3737,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3586,7 +3771,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3621,7 +3806,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3657,7 +3842,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3685,7 +3870,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3719,7 +3904,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3754,7 +3939,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3787,7 +3972,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3817,7 +4002,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3850,7 +4035,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3885,7 +4070,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3915,7 +4100,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3949,7 +4134,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -3981,7 +4166,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4011,7 +4196,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4040,7 +4225,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4073,7 +4258,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4108,7 +4293,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4133,7 +4318,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4168,7 +4353,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4198,7 +4383,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4230,7 +4415,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4265,7 +4450,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4292,7 +4477,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4320,7 +4505,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4354,7 +4539,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4386,7 +4571,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4420,7 +4605,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4454,7 +4639,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4487,7 +4672,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4521,7 +4706,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4548,7 +4733,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4582,7 +4767,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4617,7 +4802,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4651,7 +4836,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4679,7 +4864,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4714,7 +4899,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4749,7 +4934,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4783,7 +4968,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4816,7 +5001,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4849,7 +5034,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4883,7 +5068,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4916,7 +5101,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4941,7 +5126,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -4976,7 +5161,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5008,7 +5193,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5041,7 +5226,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5075,7 +5260,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5108,7 +5293,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5141,7 +5326,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5176,7 +5361,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5209,7 +5394,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5244,7 +5429,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5278,7 +5463,38 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1556366",
+      "title": "강이와 두기",
+      "title_original": "강이와 두기",
+      "poster_url": "https://image.tmdb.org/t/p/w500/7VSqNYRwSMiwOqdBYLwWO75uNd3.jpg",
+      "cast": [
+        "조윤우",
+        "노상현",
+        "지준형"
+      ],
+      "release_date": "2025-09-28",
+      "release_year": 2025,
+      "release_quarter": "2025 Q3",
+      "summary": "할머니의 장례를 치르는 마지막 밤, 어린 강이는 묫자리로 파놓은 구덩이에 빠지고 그곳에서 거대한 뱀과 마주한다.​",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5312,7 +5528,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5339,7 +5555,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5375,7 +5591,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5407,7 +5623,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5441,7 +5657,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5475,7 +5691,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5507,7 +5723,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5542,7 +5758,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5576,7 +5792,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5607,7 +5823,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5642,7 +5858,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5672,7 +5888,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5705,7 +5921,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5739,7 +5955,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5773,7 +5989,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5803,7 +6019,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5835,7 +6051,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5868,7 +6084,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5901,7 +6117,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5933,7 +6149,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -5967,7 +6183,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6001,7 +6217,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6033,7 +6249,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6067,7 +6283,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6097,7 +6313,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6127,7 +6343,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6154,7 +6370,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6182,7 +6398,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6216,7 +6432,36 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1661092",
+      "title": "노이즈 캔슬링",
+      "title_original": "노이즈 캔슬링",
+      "poster_url": "https://image.tmdb.org/t/p/w500/tjvmG0IYcr7dmLmtG2mf8ia8m4s.jpg",
+      "cast": [
+        "안상진"
+      ],
+      "release_date": "2025-11-01",
+      "release_year": 2025,
+      "release_quarter": "2025 Q4",
+      "summary": "현실의 소음을 피해 나 홀로 디스코 세상을 즐기던 고등학생 준성. 어느 날 헤드셋을 낀 채 춤을 추는 여학생 마리와 마주하지만 주변 소리를 차단한 준성은 그의 소리 없는 입모양만 볼 뿐이다. 그녀는 뭐라고 했을까?",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": null,
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6249,7 +6494,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6284,7 +6529,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6317,7 +6562,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6348,7 +6593,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6377,7 +6622,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6406,7 +6651,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6440,7 +6685,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6467,7 +6712,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6501,7 +6746,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6535,7 +6780,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6565,7 +6810,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6594,7 +6839,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6624,7 +6869,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6651,7 +6896,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6684,7 +6929,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6715,7 +6960,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6750,7 +6995,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6783,7 +7028,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6816,7 +7061,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6845,7 +7090,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6876,7 +7121,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6909,7 +7154,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6942,7 +7187,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -6975,7 +7220,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7009,7 +7254,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7043,7 +7288,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7078,7 +7323,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7111,7 +7356,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7142,7 +7387,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7174,7 +7419,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7204,7 +7449,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7233,7 +7478,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7267,7 +7512,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7300,7 +7545,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7333,7 +7578,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7363,7 +7608,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7396,7 +7641,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7432,7 +7677,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7460,7 +7705,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7493,7 +7738,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7524,7 +7769,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7558,7 +7803,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7592,7 +7837,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7624,7 +7869,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7651,7 +7896,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7682,7 +7927,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7717,7 +7962,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7744,7 +7989,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7778,7 +8023,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7810,7 +8055,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7842,7 +8087,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7877,7 +8122,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7912,7 +8157,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7947,7 +8192,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -7981,7 +8226,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8016,7 +8261,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8051,7 +8296,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8084,7 +8329,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8111,7 +8356,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8145,7 +8390,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8175,7 +8420,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8208,7 +8453,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8241,7 +8486,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8275,7 +8520,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8307,7 +8552,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8340,7 +8585,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8373,7 +8618,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8402,7 +8647,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8436,7 +8681,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8471,7 +8716,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8504,7 +8749,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8537,7 +8782,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8570,7 +8815,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8605,7 +8850,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8638,7 +8883,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8671,7 +8916,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8704,7 +8949,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8738,7 +8983,38 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691979",
+      "title": "팟럭",
+      "title_original": "팟럭",
+      "poster_url": "https://image.tmdb.org/t/p/w500/2oILbakGd6UVIRxgcUem55pFNUc.jpg",
+      "cast": [
+        "손예원",
+        "이노아",
+        "김현정"
+      ],
+      "release_date": "2026-02-20",
+      "release_year": 2026,
+      "release_quarter": "2026 Q1",
+      "summary": "초등학교 학생 엄마이자 중산층 혜민은 아들의 학교생활을 위해 같은 반의 학부모회장이 주최하는 팟럭 모임에 참여하고, 거기서 취향을 속여가며 상류층인 척 연기한다. 그러던 어느 날, 자신의 볼품없는 집에서 팟럭 모임을 해야 하는 상황이 오고 만다.",
+      "content_type": "영화",
+      "genres": [
+        "코미디"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8765,7 +9041,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8795,7 +9071,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8828,7 +9104,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8862,7 +9138,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8896,7 +9172,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8929,7 +9205,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8959,7 +9235,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -8995,7 +9271,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9028,7 +9304,66 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1640192",
+      "title": "하프웨이",
+      "title_original": "하프웨이",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mLYXJoiAClgudSDzjRqaIv1GTlQ.jpg",
+      "cast": [],
+      "release_date": "2026-03-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q1",
+      "summary": "분리된 몸을 가지고 살아오던 반쪽인간 바니는 온전한 한 사람이 되고자 자신의 반쪽을 찾아 나선다. 이를 위해 둘 중 하나는 반드시 죽어야 한다는 비밀을 품은 채로.",
+      "content_type": "영화",
+      "genres": [
+        "애니메이션",
+        "드라마",
+        "판타지"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1640175",
+      "title": "To you(; 너에게)",
+      "title_original": "To you(; 너에게)",
+      "poster_url": "https://image.tmdb.org/t/p/w500/aNcBxYSCZUjkSKR6rCcY5YZmUEM.jpg",
+      "cast": [
+        "김도이",
+        "성승하"
+      ],
+      "release_date": "2026-03-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q1",
+      "summary": "혜진은 자신이 좋아하는 아이돌 산호에게 편지를 전해주기 위해 그의 팬싸인회에 가고자 불법적으로 티켓팔찌를 양도하는 작업을 한다. 그럼에도 인기 아이돌 산호의 팬싸인회 티켓을 구하기가 쉽지 않은데... 혜진은 과연 꿈에 그리던 산호를 만날 수 있을까.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9062,7 +9397,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9093,7 +9428,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9127,7 +9462,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9160,7 +9495,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9190,7 +9525,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9240,7 +9575,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9271,7 +9606,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9303,7 +9638,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9336,7 +9671,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9369,7 +9704,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9405,7 +9740,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9438,7 +9773,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9472,7 +9807,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9505,7 +9840,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9536,7 +9871,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9570,7 +9905,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9604,7 +9939,66 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1688522",
+      "title": "메트로 입수 마키나",
+      "title_original": "메트로 입수 마키나",
+      "poster_url": "https://image.tmdb.org/t/p/w500/eIUYGBvbS7kFwWBLoE2NUQHvxO0.jpg",
+      "cast": [
+        "황효식",
+        "송지현"
+      ],
+      "release_date": "2026-04-24",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "우연히 목격한 다리에서 투신하는 여자를 사진으로 찍어 공모전에 출품했던 정수는, 몇 달이 지나 주최 측으로부터 여자의 초상권을 얻어오라는 연락을 받는다. 공모전 당선이 절박한 정수는 당시에 자신의 신고로 구조되었던 여자를 만나 초상권 동의를 받으려고 한다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1650443",
+      "title": "터치, 툭",
+      "title_original": "터치, 툭",
+      "poster_url": "https://image.tmdb.org/t/p/w500/pKOflyBq79dLNQjOaemrZbkSHZl.jpg",
+      "cast": [
+        "안해인"
+      ],
+      "release_date": "2026-05-01",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "학교를 그만두고 운전면허학원에서 일하는 재은은 면허를 따러 온 고등학생 동혁과 친해지고 싶다. 그리고 동혁에겐 집단 상담을 받는 전 여자친구 소희가 있다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9637,7 +10031,100 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1661062",
+      "title": "서를 담고",
+      "title_original": "서를 담고",
+      "poster_url": "https://image.tmdb.org/t/p/w500/acjv3OHoKoshu2LLW0lHAhPvRYr.jpg",
+      "cast": [
+        "이아흰"
+      ],
+      "release_date": "2026-05-02",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "무기력한 피리 연주자 수현은 내림굿 반주를 하다가 실수를 하고, 굿은 중단되고 만다. 연주를 포기하고 떠나려는 순간, 수현은 치열하게 연습했고 또 괴로워했던 과거의 자신을 마주한다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마",
+        "스릴러"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1650454",
+      "title": "이 밤이 지나면",
+      "title_original": "이 밤이 지나면",
+      "poster_url": "https://image.tmdb.org/t/p/w500/tuge1X8JE24hoyUTGAmOBPAIpbK.jpg",
+      "cast": [
+        "황재필",
+        "방태원",
+        "황기석",
+        "진성찬"
+      ],
+      "release_date": "2026-05-02",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "지방의 외주 환경미화원 지원은 해고 통보를 받은 뒤, 복직을 위해 동료들을 찾아다니지만 번번이 외면당한다. 그러던 중 동료 준서의 비밀을 알게 되고, 자신을 밀어내던 작업반장에게 사과를 요구하러 간다. 그날 밤, 지원은 우발적인 사고에 휘말린다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1650453",
+      "title": "스크램블",
+      "title_original": "스크램블",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mc0msRfMdv7XAb4SbkfsoHRWTAF.jpg",
+      "cast": [
+        "전범석",
+        "문인수",
+        "홍경희"
+      ],
+      "release_date": "2026-05-02",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "아마추어 격투기 선수 송하는 시합 중 기절하며 그날의 경기 내용을 망각해 버린다. 어느 날 송하에게 22년 전 자신을 버렸던 아버지의 고독사 소식이 전해진다. 아버지에 대한 기억도, 감정도 불분명한 채, 그는 단절되었던 과거의 흔적을 따라나서기 시작한다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9672,7 +10159,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9706,7 +10193,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9742,7 +10229,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9778,7 +10265,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9811,7 +10298,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9838,7 +10325,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9873,7 +10360,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9908,7 +10395,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9942,7 +10429,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -9976,7 +10463,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10005,7 +10492,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10038,7 +10525,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10066,7 +10553,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10094,7 +10581,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10129,7 +10616,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10164,7 +10651,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10198,7 +10685,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10232,7 +10719,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10262,7 +10749,305 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1697666",
+      "title": "quasi ( )",
+      "title_original": "quasi ( )",
+      "poster_url": "https://image.tmdb.org/t/p/w500/3AgLiSkTTdSS9EIcKMERIgFHR8l.jpg",
+      "cast": [
+        "김승비"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "잦은 실수로 벼랑 끝에 몰린 무명 래퍼 정미가 친구 재얼에게 마지막 무대를 제안받고 그 무대에 만신창이가 된 채로 도착한다. 정미는 왜 만신창이가 된 채 늦게 나타났을까.",
+      "content_type": "영화",
+      "genres": [
+        "스릴러"
+      ],
+      "rating": "19",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1695568",
+      "title": "부력",
+      "title_original": "부력",
+      "poster_url": "https://image.tmdb.org/t/p/w500/fY2Tly1zkPubTGQRSTP8BSpLC3b.jpg",
+      "cast": [
+        "이지우"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "학교에서 열린 신체검사 이후 자신이 싫었던 소녀는 반짝이는 물을 따라간 끝에 자신과 만난다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691987",
+      "title": "아모가",
+      "title_original": "아모가",
+      "poster_url": "https://image.tmdb.org/t/p/w500/gaayygQdOhMcv9xewgvynNdlRb5.jpg",
+      "cast": [
+        "박리나"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "고등학교 시절 촉망받던 체조선수였으나 교내 비리에 연루되며 몰락한 장선. 현재는 고향에 남아 택배기사로 일하고 있다. 어느 날 수상한 택배를 배달하게 된 장선은 그날 밤 택배를 받은 모든 사람이 그 물건을 이용해 자살했다는 사실을 알게 된다. 연쇄 자살 사건의 주범으로 몰린 장선은 점점 죽음의 저주에 잠식되어 간다.",
+      "content_type": "영화",
+      "genres": [
+        "애니메이션"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691978",
+      "title": "캣 하우스",
+      "title_original": "캣 하우스",
+      "poster_url": "https://image.tmdb.org/t/p/w500/oJDzh1i2afd4kbChxpbAMmUEPIP.jpg",
+      "cast": [
+        "황세온"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "미나는 어릴 적 옆집에 살던 동생 세희가 어른이 되어 상경했다는 연락을 받고 집들이를 하러 간다. 대화 중 세희는 과거에 자기가 키우던 고양이를 미나가 죽였다고 몰아붙인다.",
+      "content_type": "영화",
+      "genres": [
+        "공포"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691977",
+      "title": "선희이모",
+      "title_original": "선희이모",
+      "poster_url": "https://image.tmdb.org/t/p/w500/2mdpYp6CKsWKAKyuROoGlm04eAV.jpg",
+      "cast": [
+        "정호정",
+        "위은경"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "애견 미용사 선희는 주인이 찾으러 오지 않는 강아지를 임시로 맡아주고 있다. 그러던 중 선희의 집에 어릴 적 키웠던 조카 서연이 10여 년 만에 찾아오고 내일 뉴질랜드로 떠난다고 말한다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691975",
+      "title": "손끝에 여름",
+      "title_original": "손끝에 여름",
+      "poster_url": "https://image.tmdb.org/t/p/w500/vobi2UrDop6P42ZhpGM7942BADB.jpg",
+      "cast": [
+        "이유현"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "교내 바둑대회를 앞둔 도진은, 친한 친구 세경과의 바둑 대결을 앞두고 유달리 긴장한다. 긴장되는 것은 세경도 마찬가지.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "ALL",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691970",
+      "title": "마법소녀 김철수",
+      "title_original": "마법소녀 김철수",
+      "poster_url": "https://image.tmdb.org/t/p/w500/AfXIalnsQsuBNPlY6OVWje8GFzc.jpg",
+      "cast": [
+        "이민구",
+        "이선민"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "미소녀 애니메이션 캐릭터 지니의 목소리 연기를 하는 김철수. 김철수는 남자다. 지니를 성애적으로 사랑하는 애니메이션 투자/제작자 김현. 김현은 남자다. 김현은 철수에게 지니의 목소리로 해야 하는 사적인 더빙과 전화 데이트를 강요한다. 2D 애니메이션 캐릭터 지니를 사이에 두고 쫓고 쫓기는 이성애자 두 남자의 애정 추격전!",
+      "content_type": "영화",
+      "genres": [
+        "코미디"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691969",
+      "title": "하늘에 별따기",
+      "title_original": "하늘에 별따기",
+      "poster_url": "https://image.tmdb.org/t/p/w500/xvow1eQEK9MkHNW1Ndj4v8KPKaS.jpg",
+      "cast": [
+        "한누리",
+        "문상훈",
+        "김시은",
+        "하성국",
+        "이승은"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "영화를 만드는 우주와 시를 쓰는 희찬. 그들이 살 만한 집을 구하는 일은 좀처럼 쉽지 않다. 그러던 중 마음에 쏙 드는 집이 나타나는데. 과연 우주와 희찬은 그 집을 쟁취할 수 있을까?!",
+      "content_type": "영화",
+      "genres": [
+        "코미디"
+      ],
+      "rating": "ALL",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1688525",
+      "title": "배우는 엄마",
+      "title_original": "배우는 엄마",
+      "poster_url": "https://image.tmdb.org/t/p/w500/mRL9l2m57jkEwIwKfysYdrpzm4e.jpg",
+      "cast": [
+        "이명하",
+        "김이룬",
+        "양말복"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "연주는 아역배우인 딸 리아의 매니저로 촬영 현장을 따라다닌다. 오늘따라 리아 엄마 역을 맡은 배우가 펑크 나자, 연주는 갑자기 대타로 연기를 하게 된다. 하지만 연주에게는 카메라 공포증이 있다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1688519",
+      "title": "재현의 학습",
+      "title_original": "재현의 학습",
+      "poster_url": "https://image.tmdb.org/t/p/w500/ba0lToc3vXyvRp30ydmDGFqq5uD.jpg",
+      "cast": [
+        "홍성배"
+      ],
+      "release_date": "2026-06-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "고등학교 신입생 재현은 야구부 선발 테스트를 보기 위해 선생님의 상담실을 찾아온다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "12",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10291,7 +11076,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10325,7 +11110,37 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tmdb-netflix-movie-1691988",
+      "title": "이별시대사랑",
+      "title_original": "이별시대사랑",
+      "poster_url": "https://image.tmdb.org/t/p/w500/uC4EpBLjpJYfPGIStifhpGWNrMw.jpg",
+      "cast": [
+        "정미형",
+        "임진효"
+      ],
+      "release_date": "2026-06-20",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "서로를 물어 죽일까 봐 키스하지 못하는 제인과 죽기 전 마음껏 키스하고 싶은 준은 도시에 사는 것에 지쳐 자살할 곳을 찾는 뱀파이어 연인이다. 이들을 연기하는 윤희와 원재 역시 함께 살던 집을 더 좁은 곳으로 옮겨야 한다. 시나리오 속 마땅히 죽을 곳을 찾지 못하는 연인의 상황이 이들은 자신들의 상황처럼 느껴진다.",
+      "content_type": "영화",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10360,7 +11175,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10393,7 +11208,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10426,7 +11241,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10462,7 +11277,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10492,7 +11307,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10527,7 +11342,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       },
       "source_badge": "W"
@@ -10563,7 +11378,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10582,7 +11397,7 @@
       "release_date": "2026-06-26",
       "release_year": 2026,
       "release_quarter": "2026 Q2",
-      "summary": "실패한 작가이자 국문학과 교수인 허문오. 그가 강의실 맨 끝줄 소년 이강의 천재성을 발견하고 비밀스러운 수업을 시작한다. 하지만 문오가 이강의 글에 집착하면서 수업은 예상치 못한 방향으로 치닫는다.",
+      "summary": "실패한 작가이자 국문학과 교수인 허문오. 강의실 맨 끝줄 소년 이강의 천재성을 발견하고 문학 수업을 제안한다. 하지만 이강이 쓴 예측 불가한 이야기에 빠져들면서 수업은 뜻밖의 방향으로 치닫는다.",
       "content_type": "시리즈",
       "genres": [
         "서스펜스",
@@ -10602,7 +11417,7 @@
           "rating": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false,
         "manual_override": true
       }
@@ -10633,7 +11448,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10667,7 +11482,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10703,7 +11518,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10738,7 +11553,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10771,7 +11586,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10804,7 +11619,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10841,7 +11656,7 @@
           "cast": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false,
         "manual_override": true
       }
@@ -10876,7 +11691,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     },
@@ -10906,7 +11721,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/paper-man-wt-announcement"
       }
@@ -10936,7 +11751,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement"
       }
@@ -10968,7 +11783,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer"
       }
@@ -11000,7 +11815,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/grand-galaxy-hotel-production"
       }
@@ -11031,7 +11846,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/tygo-cast-announcement"
       }
@@ -11061,7 +11876,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/messily-ever-after-wt-production"
       }
@@ -11093,7 +11908,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/love-o-clock-production"
       }
@@ -11123,7 +11938,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production"
       }
@@ -11154,7 +11969,7 @@
           "cast": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/solo-leveling-announcement",
         "manual_override": true
@@ -11188,7 +12003,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/show-business-wt-production"
       }
@@ -11220,7 +12035,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/the-facade-of-love-start-of-production"
       }
@@ -11250,7 +12065,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production"
       }
@@ -11280,7 +12095,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/take-charge-of-my-heart-production"
       }
@@ -11310,7 +12125,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/korean-romcom-series-lovestuck-in-production"
       }
@@ -11341,7 +12156,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/korean-mystery-horror-series-perfect-job-in-production"
       }
@@ -11372,7 +12187,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/scandals-wt-production"
       }
@@ -11405,7 +12220,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/first-doctor-wt-production-announcement"
       }
@@ -11441,7 +12256,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-06-25",
+        "last_updated": "2026-06-26",
         "needs_review": false
       }
     }
