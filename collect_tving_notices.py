@@ -58,7 +58,7 @@ def parse_list(html_text):
     # /notices/notice-숫자 링크를 가진 a 태그를 모두 찾는다
     # href="...notices/notice-067" 형태와 그 안의 텍스트(구분 제목 게시일)를 함께 추출
     pattern = re.compile(
-        r'href=["\'](?:https?://[^"\']*)?/notices/(notice-\d+)["\'][^>]*>(.*?)</a>',
+        r'href=["\'](?:\.?/|https?://[^"\']*?/)?notices/(notice-\d+)["\'][^>]*>(.*?)</a>',
         re.DOTALL
     )
     for m in pattern.finditer(html_text):
