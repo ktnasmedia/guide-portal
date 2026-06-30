@@ -2036,7 +2036,7 @@ function renderBody(text) {
     return '<p style="color:var(--gray-low);font-size:13px;">내용을 불러올 수 없습니다.</p>';
   }
 
-  var tagWords = ['업데이트', '리마인드'];
+  var tagWords = ['업데이트', '리마인드', '신규상품'];
 
   // 줄 배열 (빈 줄 포함)
   var lines = text.split('\n');
@@ -2083,7 +2083,9 @@ function renderBody(text) {
     if (tagWords.indexOf(line) !== -1) {
       var tc = line === '리마인드'
         ? 'background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);'
-        : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);';
+        : (line === '신규상품'
+          ? 'background:rgba(74,222,128,0.15);color:#4ADE80;border:1px solid rgba(74,222,128,0.3);'
+          : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);');
       html += '<span style="display:inline-block;' + tc +
         'border-radius:4px;font-size:10px;font-weight:700;' +
         'padding:2px 8px;margin:4px 0 8px 0;letter-spacing:0.05em;">' +
@@ -2483,9 +2485,9 @@ async function sheetsLoadNotes() {
         filteredSections.forEach(function(sec) {
           const c = catColors[sec.category] || catColors['기타'];
 
-          const tagMatch = sec.body.match(/^(업데이트|리마인드)/m);
+          const tagMatch = sec.body.match(/^(업데이트|리마인드|신규상품)/m);
           var bodyForRender = tagMatch
-            ? sec.body.replace(/^(업데이트|리마인드)\n?/m, '').trim()
+            ? sec.body.replace(/^(업데이트|리마인드|신규상품)\n?/m, '').trim()
             : sec.body;
           var tagWord = tagMatch ? tagMatch[1] : '';
           var cleanTitle = sec.title.replace(/https?:\/\/[^\s]*/g, '').replace(/\s+/g,' ').trim();
@@ -2514,7 +2516,9 @@ async function sheetsLoadNotes() {
           if (tagWord) {
             const tc = tagWord === '리마인드'
               ? 'background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);'
-              : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);';
+              : (tagWord === '신규상품'
+                ? 'background:rgba(74,222,128,0.15);color:#4ADE80;border:1px solid rgba(74,222,128,0.3);'
+                : 'background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);');
             const tagWrap = document.createElement('div');
             tagWrap.style.marginBottom = '6px';
             const tagEl = document.createElement('span');
