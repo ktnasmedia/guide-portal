@@ -530,13 +530,37 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
         </div>
 
-        <!-- 티빙·웨이브 준비 중 안내 -->
-        <div id="rn-tving-soon" style="display:none;">
-          <div class="info-card" style="text-align:center;padding:48px 20px;">
-            <div style="font-size:32px;margin-bottom:12px;">🚧</div>
-            <div style="font-size:14px;font-weight:600;color:var(--gray-hi);margin-bottom:6px;">티빙·웨이브 공지사항은 추후 제공될 예정입니다.</div>
-            <div style="font-size:12px;color:var(--gray-low);">현재는 넷플릭스 공지사항만 확인하실 수 있습니다.</div>
+        <!-- 티빙·웨이브 공지사항 (목록형) -->
+        <div id="rn-tving-wrap" style="display:none;">
+          <div class="section-bar" style="margin-bottom:14px;">
+            <div class="section-accent"></div>
+            <span class="section-label">티빙·웨이브 공지사항</span>
+            <span id="rn-tving-updated" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
           </div>
+
+          <!-- 로딩 -->
+          <div id="rn-tving-loading" style="text-align:center;padding:40px 0;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
+              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+              <span style="font-size:13px;color:var(--gray-low);">공지사항을 불러오는 중...</span>
+            </div>
+          </div>
+
+          <!-- 에러 -->
+          <div id="rn-tving-error" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
+            <div id="rn-tving-error-msg" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
+          </div>
+
+          <!-- 카테고리 필터 + 검색 -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div id="rn-tving-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+            <input id="rn-tving-search" type="text" placeholder="제목 검색" oninput="rnTvingRender()"
+              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
+          </div>
+
+          <!-- 목록 -->
+          <div id="rn-tving-list"></div>
         </div>
 
         <!-- 넷플릭스 공지사항 (기존) -->
@@ -567,8 +591,12 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <button class="btn-outline" onclick="sheetsLoadNotes()" style="margin-top:12px;font-size:12px;">다시 시도</button>
         </div>
 
-        <!-- 카테고리 필터 바 -->
-        <div id="rn-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;"></div>
+        <!-- 카테고리 필터 바 + 검색 -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <div id="rn-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+          <input id="rn-search" type="text" placeholder="제목·내용 검색" oninput="rnNetflixSearch()"
+            style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
+        </div>
 
         <!-- 릴리즈 노트 카드 목록 -->
         <div id="rn-list" style="display:flex;flex-direction:column;gap:10px;"></div>
@@ -2311,14 +2339,141 @@ function rnSelectMedia(el){
     b.classList.toggle('rn-media-on', b === el);
   });
   const nf = document.getElementById('rn-netflix-wrap');
-  const tv = document.getElementById('rn-tving-soon');
+  const tv = document.getElementById('rn-tving-wrap');
   if(m === 'tving_wavve'){
     if(nf) nf.style.display = 'none';
     if(tv) tv.style.display = 'block';
+    rnTvingLoad();
   } else {
     if(nf) nf.style.display = 'block';
     if(tv) tv.style.display = 'none';
   }
+}
+
+// ── 티빙·웨이브 공지사항 (JSON 목록형) ──
+var rnTvingData   = [];      // 전체 공지
+var rnTvingCat    = '전체';  // 현재 카테고리 필터
+var rnTvingLoaded = false;   // 1회 로드 플래그
+var rnTvingOpen   = {};      // notice_id → 펼침 여부
+
+async function rnTvingLoad(force){
+  if(rnTvingLoaded && !force) { rnTvingRender(); return; }
+  var loading = document.getElementById('rn-tving-loading');
+  var errEl   = document.getElementById('rn-tving-error');
+  if(loading) loading.style.display = 'block';
+  if(errEl)   errEl.style.display = 'none';
+  try{
+    var res = await fetch('tving_notices.json?_=' + Date.now());
+    if(!res.ok) throw new Error('HTTP_' + res.status);
+    var data = await res.json();
+    rnTvingData = (data && data.notices) ? data.notices : [];
+    rnTvingLoaded = true;
+    if(loading) loading.style.display = 'none';
+    var upd = document.getElementById('rn-tving-updated');
+    if(upd && data.updated_at) upd.textContent = '마지막 업데이트 ' + data.updated_at;
+    rnTvingBuildFilter();
+    rnTvingRender();
+  }catch(e){
+    if(loading) loading.style.display = 'none';
+    if(errEl){
+      errEl.style.display = 'block';
+      var msg = document.getElementById('rn-tving-error-msg');
+      if(msg) msg.textContent = '공지 데이터를 불러오지 못했습니다. (' + e.message + ')';
+    }
+  }
+}
+
+function rnTvingBuildFilter(){
+  var cats = ['전체'];
+  rnTvingData.forEach(function(n){
+    var c = (n.category || '기타').trim();
+    if(cats.indexOf(c) === -1) cats.push(c);
+  });
+  var bar = document.getElementById('rn-tving-filter-bar');
+  if(!bar) return;
+  bar.innerHTML = '';
+  cats.forEach(function(c){
+    var b = document.createElement('div');
+    b.className = 'rn-media-btn' + (c === rnTvingCat ? ' rn-media-on' : '');
+    b.textContent = c;
+    b.style.cursor = 'pointer';
+    b.onclick = function(){ rnTvingCat = c; rnTvingBuildFilter(); rnTvingRender(); };
+    bar.appendChild(b);
+  });
+}
+
+function rnTvingCatColor(cat){
+  var map = {
+    '공지':   '#cbd5e1',
+    '솔루션': '#4ADE80',
+    '시스템': '#60A5FA',
+    '콘텐츠': '#FCD34D',
+    '프로모션':'#FB923C',
+    '기타':   '#cbd5e1'
+  };
+  return map[cat] || '#cbd5e1';
+}
+
+function rnTvingRender(){
+  var list = document.getElementById('rn-tving-list');
+  if(!list) return;
+  var kw = (document.getElementById('rn-tving-search') || {}).value || '';
+  kw = kw.trim().toLowerCase();
+  var rows = rnTvingData.filter(function(n){
+    if(rnTvingCat !== '전체' && (n.category || '기타') !== rnTvingCat) return false;
+    if(kw){
+      var hay = ((n.title || '') + ' ' + (n.body || '')).toLowerCase();
+      if(hay.indexOf(kw) === -1) return false;
+    }
+    return true;
+  });
+  if(rows.length === 0){
+    list.innerHTML = '<div style="padding:32px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지사항이 없습니다.</div>';
+    return;
+  }
+  // 헤더 행 + 목록
+  var html = '<div style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:11px;color:var(--gray-dim);font-weight:600;">'
+    + '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
+  rows.forEach(function(n){
+    var color = rnTvingCatColor(n.category);
+    var open  = !!rnTvingOpen[n.notice_id];
+    var safeTitle = clEsc(n.title || '');
+    var dateDisp  = rnTvingFmtDate(n.date);
+    html += '<div style="border-bottom:1px solid var(--border);">'
+      + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:14px;cursor:pointer;align-items:center;">'
+      +   '<div><span style="display:inline-flex;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(148,163,184,0.12);color:' + color + ';border:1px solid ' + color + '33;">' + clEsc(n.category||'기타') + '</span></div>'
+      +   '<div style="font-size:13px;color:var(--white);line-height:1.5;">' + safeTitle + '</div>'
+      +   '<div style="text-align:right;font-size:12px;color:var(--gray-low);">' + dateDisp + '</div>'
+      + '</div>';
+    if(open){
+      html += '<div style="padding:4px 14px 18px 14px;font-size:13px;color:var(--gray-mid);line-height:1.75;white-space:pre-wrap;border-top:1px dashed var(--border);">'
+        + rnTvingBody(n.body || '')
+        + '<div style="margin-top:12px;"><a href="' + (n.url||'#') + '" target="_blank" rel="noopener" style="font-size:12px;color:#ff6b6b;text-decoration:none;">원문 보기 ↗</a></div>'
+        + '</div>';
+    }
+    html += '</div>';
+  });
+  list.innerHTML = html;
+}
+
+function rnTvingToggle(id){
+  rnTvingOpen[id] = !rnTvingOpen[id];
+  rnTvingRender();
+}
+
+function rnTvingFmtDate(d){
+  // '2026-06-11' → '26. 6. 11.'
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || '');
+  if(!m) return clEsc(d || '');
+  return m[1].slice(2) + '. ' + parseInt(m[2],10) + '. ' + parseInt(m[3],10) + '.';
+}
+
+function rnTvingBody(text){
+  // 줄바꿈 유지하며 안전하게 출력, [텍스트](url) 링크만 변환
+  var esc = clEsc(text);
+  esc = esc.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener" style="color:#ff6b6b;text-decoration:none;">$1</a>');
+  return esc;
 }
 
 async function sheetsLoadNotes() {
@@ -2437,10 +2592,19 @@ async function sheetsLoadNotes() {
       const list = document.getElementById('rn-list');
       list.innerHTML = '';
 
+      const kw = ((document.getElementById('rn-search') || {}).value || '').trim().toLowerCase();
+
       versions.forEach(function(ver, vIdx) {
-        const filteredSections = cat === '전체'
+        let filteredSections = cat === '전체'
           ? ver.sections
           : ver.sections.filter(function(s) { return s.category === cat; });
+        // 검색어: 제목·본문·태그에서 찾기
+        if (kw) {
+          filteredSections = filteredSections.filter(function(s) {
+            const hay = ((s.title||'') + ' ' + (s.body||'') + ' ' + (s.tag||'')).toLowerCase();
+            return hay.indexOf(kw) !== -1;
+          });
+        }
         if (filteredSections.length === 0) return;
 
         const isLatest = vIdx === 0 && cat === '전체';
@@ -2591,6 +2755,11 @@ async function sheetsLoadNotes() {
         }
       });
       window.renderNoteCards(cat);
+    };
+
+    // 검색 입력 시: 현재 카테고리 유지하며 재렌더
+    window.rnNetflixSearch = function() {
+      window.renderNoteCards(window._currentCat || '전체');
     };
 
     // 초기 렌더
