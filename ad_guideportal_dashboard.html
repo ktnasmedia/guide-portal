@@ -555,7 +555,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <!-- 카테고리 필터 + 검색 -->
           <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
             <div id="rn-tving-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-            <input id="rn-tving-search" type="text" placeholder="제목 검색" oninput="rnTvingRender()"
+            <input id="rn-tving-search" type="text" placeholder="제목·내용 검색" oninput="rnTvingRender()"
               style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
           </div>
 
@@ -571,7 +571,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="section-accent"></div>
           <span class="section-label">넷플릭스 업데이트</span>
           <span id="rn-last-updated" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
-          <button class="section-bar-btn" id="rn-refresh-btn" onclick="sheetsLoadNotes()" style="display:none;">↻ 새로고침</button>
         </div>
 
 
@@ -592,7 +591,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         </div>
 
         <!-- 카테고리 필터 바 + 검색 -->
-        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
           <div id="rn-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
           <input id="rn-search" type="text" placeholder="제목·내용 검색" oninput="rnNetflixSearch()"
             style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
@@ -2469,8 +2468,12 @@ function rnTvingFmtDate(d){
 }
 
 function rnTvingBody(text){
-  // 줄바꿈 유지하며 안전하게 출력, [텍스트](url) 링크만 변환
+  // 줄바꿈 유지하며 안전하게 출력, 이미지 마커·링크 마커 변환
   var esc = clEsc(text);
+  // 이미지 마커: [[IMG:주소]] → <img>
+  esc = esc.replace(/\[\[IMG:(https?:\/\/[^\]]+)\]\]/g,
+    '<img src="$1" style="max-width:100%;border-radius:8px;margin:8px 0;display:block;" loading="lazy" alt="">');
+  // 링크 마커: [텍스트](url) → <a>
   esc = esc.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
     '<a href="$2" target="_blank" rel="noopener" style="color:#ff6b6b;text-decoration:none;">$1</a>');
   return esc;
@@ -2480,7 +2483,6 @@ async function sheetsLoadNotes() {
   document.getElementById('rn-loading').style.display     = 'block';
   document.getElementById('rn-error').style.display       = 'none';
   document.getElementById('rn-list').innerHTML             = '';
-  document.getElementById('rn-refresh-btn').style.display = 'none';
 
   try {
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
@@ -2542,7 +2544,6 @@ async function sheetsLoadNotes() {
     const versions = versionOrder.map(function(v) { return versionMap[v]; });
 
     document.getElementById('rn-loading').style.display     = 'none';
-    document.getElementById('rn-refresh-btn').style.display = 'inline-flex';
 
     const now = new Date();
     document.getElementById('rn-last-updated').textContent =
@@ -2574,7 +2575,7 @@ async function sheetsLoadNotes() {
           ? {bg:'rgba(229,9,20,0.15)', color:'#FF6B6B', border:'rgba(229,9,20,0.3)'}
           : (catColors[cat] || catColors['기타']);
         return '<button onclick="filterNotes(\'' + cat + '\')" id="rn-filter-' + cat + '" ' +
-          'style="padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;' +
+          'style="padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;' +
           'background:' + (isAll ? c.bg : 'transparent') + ';' +
           'color:'      + (isAll ? c.color : 'var(--gray-low)') + ';' +
           'border:1px solid ' + (isAll ? c.border : 'var(--border)') + ';">' +

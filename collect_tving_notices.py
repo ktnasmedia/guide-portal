@@ -140,6 +140,28 @@ def parse_detail(html_text):
 
     # 3) 블록 태그 변환
     x = body_area
+    # 이미지: <img src="..."> → [[IMG:주소]] 마커로 보존
+    x = re.sub(
+        r'<img[^>]*\bsrc=["\']([^"\']+)["\'][^>]*>',
+        lambda m: "\n[[IMG:" + m.group(1) + "]]\n",
+        x, flags=re.I
+    )
+    # 링크: <a href="...">텍스트</a> → [텍스트](주소) 마커로 보존
+    def _link(m):
+        href = m.group(1).strip()
+        txt = strip_tags(m.group(2)).strip()
+        if not href or href.startswith("mailto:") or href.startswith("#"):
+            return txt
+        # 상대경로 → 절대경로
+        if href.startswith("./"):
+            href = BASE + "/" + href[2:]
+        elif href.startswith("/"):
+            href = BASE + href
+        if not txt:
+            txt = href
+        return "[" + txt + "](" + href + ")"
+    x = re.sub(r'<a\s[^>]*\bhref=["\']([^"\']+)["\'][^>]*>(.*?)</a>', _link, x, flags=re.I | re.S)
+
     x = re.sub(r"<li[^>]*>", "\n• ", x, flags=re.I)
     x = re.sub(r"</li>", "", x, flags=re.I)
     x = re.sub(r"</(p|div|h[1-6]|tr)>", "\n", x, flags=re.I)
