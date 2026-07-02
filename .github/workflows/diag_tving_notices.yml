@@ -17,4 +17,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: 진단 실행
-        run: python3 diag_tving_notices.py
+        run: |
+          python3 diag_tving_notices.py
+          echo "========== 본문 진단 =========="
+          python3 diag_tving_body.py
