@@ -109,14 +109,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .card-grid-1{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:28px;}
 
 .update-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;position:relative;overflow:hidden;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);}
-.update-card:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:0 12px 32px rgba(229,9,20,0.15);}
+.update-card:hover{border-color:#6a6a6a;}
 .update-card::after{content:'';position:absolute;top:0;right:0;width:90px;height:90px;background:radial-gradient(circle at top right,rgba(229,9,20,0.07),transparent 70%);border-radius:0 12px 0 0;pointer-events:none;}
 
 .prod-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);}
-.prod-card:hover{transform:translateY(-3px);border-color:#4a4a4a;box-shadow:0 12px 32px rgba(0,0,0,0.4);}
+.prod-card:hover{border-color:#6a6a6a;}
 
 .info-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s;}
-.info-card:hover{border-color:#3a3a3a;}
+.info-card:hover{border-color:#6a6a6a;}
 
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
 .cl-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px;}
@@ -137,7 +137,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .lib-media-btn[data-libmedia="tving_wavve"].lib-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
 .lib-media{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
 .lib-media-nf{background:rgba(229,9,20,0.16);color:#ff6b6b;}
-.lib-media-tw{background:rgba(255,21,60,0.18);color:#ff5c78;}
+.lib-media-tw{background:rgba(255,255,255,0.08);}
+.lib-media-tw .m-tv{color:#ff6b6b;}
+.lib-media-tw .m-wv{color:#60a5fa;}
 .calc-media-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
 .calc-media-box{background:var(--black-ele);border:1px solid var(--border);border-radius:10px;padding:16px;}
 .calc-media-head{margin-bottom:12px;padding-bottom:10px;border-bottom:0.5px solid var(--border);}
@@ -224,7 +226,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-chip.cl-on{color:var(--white);background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.45);}
 .cl-chip[data-val="all"].cl-on, .cl-chip[data-libcat="all"].cl-on{color:#e2e8f0;background:rgba(100,116,139,0.32);border-color:#64748b;}
 .cl-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;display:flex;flex-direction:column;}
-.cl-card:hover{border-color:#3a3a3a;}
+.cl-card:hover{border-color:#6a6a6a;}
 .cl-poster{width:100%;aspect-ratio:3/4;max-height:340px;object-fit:cover;background:#252525;display:block;}
 .cl-noimg{width:100%;aspect-ratio:3/4;max-height:340px;background:#1e1e1e;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px;padding:18px;text-align:center;}
 .cl-noimg-film{width:30px;height:30px;color:#4a4a4a;flex-shrink:0;}
@@ -285,8 +287,12 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tag-ban{background:rgba(229,9,20,0.12);color:#FF6B6B;border:1px solid rgba(229,9,20,0.25);}
 
 /* Badges */
-.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:20px;font-size:10.5px;font-weight:600;letter-spacing:0.02em;}
-.badge-new{background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.3);}
+/* ── 배지 표준 (앞으로 모든 배지는 이 클래스 사용, 색만 인라인으로 지정) ── */
+/* 카테고리·구분 배지: 옅은 배경 + 같은 계열 글자. 배경/글자색은 style="background:...;color:..."로 */
+.cat-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:500;flex-shrink:0;}
+/* 상태 배지(NEW 등): 알약형 강조. 색은 .badge-new 등 modifier로 */
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.04em;flex-shrink:0;}
+.badge-new{background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.35);}
 .badge-pause{background:rgba(234,88,12,0.15);color:#FB923C;border:1px solid rgba(234,88,12,0.3);}
 .badge-hot{background:rgba(22,163,74,0.13);color:#4ADE80;border:1px solid rgba(22,163,74,0.25);}
 .badge-prem{background:rgba(168,85,247,0.13);color:#C084FC;border:1px solid rgba(168,85,247,0.25);}
@@ -321,7 +327,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
 /* Release note cards */
 .rn-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
-.rn-card:hover{border-color:#3a3a3a;}
+.rn-card:hover{border-color:#6a6a6a;}
 .rn-card.rn-latest{border-color:rgba(229,9,20,0.4);}
 .rn-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;gap:12px;user-select:none;}
 .rn-toggle-arrow{color:var(--gray-dim);transition:transform 0.25s ease,color 0.2s;flex-shrink:0;font-size:20px;line-height:1;margin-top:-1px;}
@@ -534,7 +540,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div id="rn-tving-wrap" style="display:none;">
           <div class="section-bar" style="margin-bottom:14px;">
             <div class="section-accent"></div>
-            <span class="section-label">티빙·웨이브 공지사항</span>
+            <span class="section-label">티빙·웨이브 업데이트</span>
             <span id="rn-tving-updated" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
           </div>
 
@@ -2353,7 +2359,7 @@ function lib_render(){
     const meta = [];
     const m = (d.media||'').replace(/\s+/g,'');
     if(m === '넷플릭스') meta.push('<span class="lib-media lib-media-nf">넷플릭스</span>');
-    else if(m === '티빙웨이브') meta.push('<span class="lib-media lib-media-tw">티빙·웨이브</span>');
+    else if(m === '티빙웨이브') meta.push('<span class="lib-media lib-media-tw"><span class="m-tv">티빙</span><span class="m-wv">·웨이브</span></span>');
     meta.push('<span class="lib-cat">' + clEsc(d.cat) + '</span>');
     if(d.date) meta.push(clEsc(d.date));
     if(d.desc) meta.push(clEsc(d.desc));
@@ -2520,11 +2526,11 @@ function rnTvingRender(){
     var safeTitle = clEsc(n.title || '');
     var dateDisp  = rnFmtDateDot(n.date);
     var newBadge = rnTvingIsNew(n.date)
-      ? '<span style="display:inline-flex;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.3);margin-left:6px;vertical-align:middle;">NEW</span>'
+      ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>'
       : '';
     html += '<div style="border-bottom:1px solid var(--border);">'
       + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:14px;cursor:pointer;align-items:center;">'
-      +   '<div><span style="display:inline-flex;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;background:rgba(148,163,184,0.12);color:' + color + ';border:1px solid ' + color + '33;">' + clEsc(n.category||'기타') + '</span></div>'
+      +   '<div><span class="cat-badge" style="background:' + color + '22;color:' + color + ';">' + clEsc(n.category||'기타') + '</span></div>'
       +   '<div style="font-size:13px;color:var(--white);line-height:1.5;">' + safeTitle + newBadge + '</div>'
       +   '<div style="text-align:right;font-size:12px;color:var(--gray-low);">' + dateDisp + '</div>'
       + '</div>';
@@ -2816,9 +2822,7 @@ async function sheetsLoadNotes() {
         });
         const catBadges = uniqCats.map(function(c) {
           const cc = catColors[c] || catColors['기타'];
-          return '<span style="display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;' +
-            'font-size:10px;font-weight:600;background:' + cc.bg + ';color:' + cc.color + ';' +
-            'border:1px solid ' + cc.border + ';flex-shrink:0;">' + c + '</span>';
+          return '<span class="cat-badge" style="background:' + cc.bg + ';color:' + cc.color + ';">' + c + '</span>';
         }).join('');
 
         // 섹션 HTML — 표 구조 (왼쪽: 제목+카테고리 / 오른쪽: 태그+본문)
@@ -2828,7 +2832,7 @@ async function sheetsLoadNotes() {
           '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
             '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap;">' +
               (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">NEW</span>' : '') +
-              '<span style="font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;">' +
+              '<span style="font-size:13px;font-weight:500;color:var(--white);flex-shrink:0;">' +
                 escapeHtmlJS(cardTitle) + '</span>' +
               catBadges +
             '</div>' +
