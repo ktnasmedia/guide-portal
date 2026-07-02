@@ -2518,7 +2518,7 @@ function rnTvingRender(){
     var color = rnTvingCatColor(n.category);
     var open  = !!rnTvingOpen[n.notice_id];
     var safeTitle = clEsc(n.title || '');
-    var dateDisp  = rnTvingFmtDate(n.date);
+    var dateDisp  = rnFmtDateDot(n.date);
     var newBadge = rnTvingIsNew(n.date)
       ? '<span style="display:inline-flex;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.3);margin-left:6px;vertical-align:middle;">NEW</span>'
       : '';
@@ -2611,6 +2611,16 @@ function rnTvingFmtDate(d){
   var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || '');
   if(!m) return clEsc(d || '');
   return m[1].slice(2) + '. ' + parseInt(m[2],10) + '. ' + parseInt(m[3],10) + '.';
+}
+
+// 다양한 날짜 표기를 넷플릭스 형식('YYYY.MM.DD')으로 통일
+function rnFmtDateDot(d){
+  d = (d || '').trim();
+  var m = /(\d{4})\s*[.\-/]\s*(\d{1,2})\s*[.\-/]\s*(\d{1,2})/.exec(d);
+  if(!m) return clEsc(d);
+  var mm = ('0' + parseInt(m[2],10)).slice(-2);
+  var dd = ('0' + parseInt(m[3],10)).slice(-2);
+  return m[1] + '.' + mm + '.' + dd;
 }
 
 // 게시일이 최근 14일 이내면 NEW
@@ -2823,7 +2833,7 @@ async function sheetsLoadNotes() {
               catBadges +
             '</div>' +
             '<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">' +
-              '<span style="font-size:11px;color:var(--gray-dim);font-family:\'Noto Sans KR\',sans-serif;">' + ver.date + '</span>' +
+              '<span style="font-size:12px;color:var(--gray-low);font-family:\'Noto Sans KR\',sans-serif;">' + rnFmtDateDot(ver.date) + '</span>' +
               '<span class="rn-toggle-arrow" style="color:var(--gray-dim);font-size:20px;transition:transform 0.25s;">›</span>' +
             '</div>' +
           '</div>';
