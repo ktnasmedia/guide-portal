@@ -235,6 +235,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-np-ico{font-size:11px;}
 .cl-card-body{padding:18px 20px;display:flex;flex-direction:column;flex-grow:1;}
 .cl-poster-wrap{position:relative;}
+.cl-poster-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:42%;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.45) 35%,rgba(0,0,0,0.15) 65%,rgba(0,0,0,0) 100%);}
 .cl-orig{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:0.04em;color:#fff;background:var(--red);padding:3px 8px;border-radius:5px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.35);}
 .cl-src-overlay{position:absolute;top:10px;left:10px;display:flex;gap:4px;z-index:2;}
 .cl-src-overlay .cl-src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;margin:0;box-shadow:0 1px 4px rgba(0,0,0,0.35);display:inline-flex;align-items:center;gap:3px;}
