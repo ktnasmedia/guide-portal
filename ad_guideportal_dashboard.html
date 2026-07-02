@@ -2483,9 +2483,13 @@ function rnTvingBody(text){
   // 이미지 마커: [[IMG:주소]] → <img>
   esc = esc.replace(/\[\[IMG:(https?:\/\/[^\]]+)\]\]/g,
     '<img src="$1" style="max-width:100%;border-radius:8px;margin:8px 0;display:block;" loading="lazy" alt="">');
-  // 링크 마커: [텍스트](url) → <a>
-  esc = esc.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener" style="color:#ff6b6b;text-decoration:none;">$1</a>');
+  // 겹대괄호 링크 정리: [[텍스트]](url) → [텍스트](url) (기존 수집분 대응)
+  esc = esc.replace(/\[\[([^\]]+)\]\]\((https?:\/\/[^\s)]+)\)/g, '[$1]($2)');
+  // 링크 마커: [텍스트](url) → <a> (텍스트 내 화살표 정리)
+  esc = esc.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(_m, t, u){
+    t = t.replace(/[↗↘→]/g, '').trim();
+    return '<a href="' + u + '" target="_blank" rel="noopener" style="color:#ff6b6b;text-decoration:none;">' + t + '</a>';
+  });
   return esc.trim();
 }
 

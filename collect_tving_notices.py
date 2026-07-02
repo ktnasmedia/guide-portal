@@ -152,11 +152,17 @@ def parse_detail(html_text):
         txt = strip_tags(m.group(2)).strip()
         if not href or href.startswith("mailto:") or href.startswith("#"):
             return txt
+        # 상위경로 네비게이션(../ 등)은 본문과 무관 → 완전 제거
+        if href.startswith(".."):
+            return ""
         # 상대경로 → 절대경로
         if href.startswith("./"):
             href = BASE + "/" + href[2:]
         elif href.startswith("/"):
             href = BASE + href
+        # 링크 텍스트 정리: 대괄호·화살표 등 마커 충돌 문자 제거
+        txt = txt.replace("[", "").replace("]", "")
+        txt = txt.replace("↗", "").replace("↘", "").replace("→", "").strip()
         if not txt:
             txt = href
         return "[" + txt + "](" + href + ")"
@@ -194,6 +200,11 @@ def parse_detail(html_text):
             continue
         # 저작권 줄 제거
         if ln.startswith("©"):
+            continue
+        # 목록 보기 / 상위경로 네비게이션 잔여 제거
+        if ln in ("목록 보기", "[목록 보기]", "목록보기"):
+            continue
+        if re.match(r"^\[?목록\s*보기\]?", ln) and len(ln) < 30:
             continue
         cleaned.append(ln)
     body = "\n".join(cleaned).strip()
