@@ -22,8 +22,8 @@ import html
 import urllib.request
 import urllib.error
 
-LIST_URL = "https://tving.framer.website/notices"
-BASE = "https://tving.framer.website"
+LIST_URL = "https://www.tvingads.com/notices"
+BASE = "https://www.tvingads.com"
 OUT_FILE = "tving_notices.json"
 
 CATEGORIES = ["공지", "솔루션", "시스템", "콘텐츠", "프로모션", "기타"]
@@ -55,14 +55,16 @@ def parse_list(html_text):
     반환: [{notice_id, url, category, title, date}]
     """
     items = {}
-    # /notices/notice-숫자 링크를 가진 a 태그를 모두 찾는다
-    # href="...notices/notice-067" 형태와 그 안의 텍스트(구분 제목 게시일)를 함께 추출
+    # /notices/<slug> 링크를 모두 찾는다. slug 는 notice-067 또는 이름 형식(kbosponsorship-2607update 등)
     pattern = re.compile(
-        r'href=["\'](?:\.?/|https?://[^"\']*?/)?notices/(notice-\d+)["\'][^>]*>(.*?)</a>',
+        r'href=["\'](?:\.?/|https?://[^"\']*?/)?notices/([A-Za-z0-9][A-Za-z0-9\-_]*)["\'][^>]*>(.*?)</a>',
         re.DOTALL
     )
     for m in pattern.finditer(html_text):
-        notice_id = m.group(1)
+        slug = m.group(1)
+        # 목록 페이지 자기 자신(/notices)이나 빈 slug 제외
+        if not slug or slug == 'notices':
+            continue
         inner = strip_tags(m.group(2))
         if not inner:
             continue
@@ -82,10 +84,10 @@ def parse_list(html_text):
             title = rest[:dm.start()].strip()
         else:
             title = rest.strip()
-        if notice_id not in items:
-            items[notice_id] = {
-                "notice_id": notice_id,
-                "url": BASE + "/notices/" + notice_id,
+        if slug not in items:
+            items[slug] = {
+                "notice_id": slug,
+                "url": BASE + "/notices/" + slug,
                 "category": cat or "기타",
                 "title": title,
                 "date": normalize_date(date),
@@ -105,32 +107,56 @@ def normalize_date(d):
 def parse_detail(html_text):
     """
     개별 공지 페이지에서 본문 추출.
-    구조: # 제목  /  **구분**  /  날짜  /  본문...
-    본문은 제목(h1) 이후 ~ 푸터('Advertise with Intelligence') 이전까지.
+    1) script/style/head/noscript 등 코드 영역을 먼저 통째로 제거
+    2) 마지막 h1(제목) 이후 ~ 푸터/네비 이전까지를 본문으로
+    3) 블록 태그를 줄바꿈·불릿으로 변환 후 태그 제거
+    4) 구분/날짜/네비게이션 잔여 줄 정리
     """
-    # 푸터 이전까지 자르기
-    cut = html_text.find("Advertise with Intelligence")
+    # 1) 코드/메타 영역 통째 제거
+    b = html_text
+    b = re.sub(r"<head[^>]*>.*?</head>", " ", b, flags=re.I | re.S)
+    b = re.sub(r"<script[^>]*>.*?</script>", " ", b, flags=re.I | re.S)
+    b = re.sub(r"<style[^>]*>.*?</style>", " ", b, flags=re.I | re.S)
+    b = re.sub(r"<noscript[^>]*>.*?</noscript>", " ", b, flags=re.I | re.S)
+    b = re.sub(r"<svg[^>]*>.*?</svg>", " ", b, flags=re.I | re.S)
+
+    # 푸터 이후 제거
+    cut = b.find("Advertise with Intelligence")
     if cut != -1:
-        html_text = html_text[:cut]
+        b = b[:cut]
+    # 하단 CTA 영역 제거
+    cut2 = b.find("캠페인 시작을 위한 첫 걸음")
+    if cut2 != -1:
+        b = b[:cut2]
 
-    # h1(제목) 위치 찾기 — 그 이후가 본문 영역
-    h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html_text, re.DOTALL)
-    title = strip_tags(h1.group(1)) if h1 else ""
+    # 2) 제목(h1) 추출 후 그 이후를 본문 영역으로
+    h1s = list(re.finditer(r"<h1[^>]*>(.*?)</h1>", b, re.DOTALL))
+    title = ""
+    if h1s:
+        title = strip_tags(h1s[-1].group(1))
+        body_area = b[h1s[-1].end():]
+    else:
+        body_area = b
 
-    body_area = html_text[h1.end():] if h1 else html_text
+    # 3) 블록 태그 변환
+    x = body_area
+    x = re.sub(r"<li[^>]*>", "\n• ", x, flags=re.I)
+    x = re.sub(r"</li>", "", x, flags=re.I)
+    x = re.sub(r"</(p|div|h[1-6]|tr)>", "\n", x, flags=re.I)
+    x = re.sub(r"<br\s*/?>", "\n", x, flags=re.I)
+    x = re.sub(r"</td>", " ", x, flags=re.I)
+    x = strip_tags(x)
 
-    # 블록 요소를 줄바꿈으로, 리스트는 불릿으로 변환
-    b = body_area
-    b = re.sub(r"<li[^>]*>", "\n• ", b, flags=re.I)
-    b = re.sub(r"</li>", "", b, flags=re.I)
-    b = re.sub(r"</(p|div|h[1-6]|tr)>", "\n", b, flags=re.I)
-    b = re.sub(r"<br\s*/?>", "\n", b, flags=re.I)
-    b = re.sub(r"</td>", " ", b, flags=re.I)
-    # 링크는 텍스트만 (href는 버림 — 필요시 추후 보존 가능)
-    b = strip_tags(b)
-
-    # 본문 앞쪽의 구분/날짜 줄 제거 (제목 다음에 오는 짧은 메타)
-    lines = [ln.strip() for ln in b.split("\n")]
+    # 4) 잔여 줄 정리 (구분/날짜/네비게이션/헤더 텍스트 제거)
+    NAV_NOISE = {
+        "광고정보센터", "TVING Ads", "콘텐츠", "광고 솔루션", "인사이트",
+        "이용 방법 보기", "광고 시작하기", "이용 방법", "공지사항", "공지 사항",
+        "광고 문의", "솔루션 소개서", "뉴스레터", "광고 문의하기", "뒤로가기",
+        "Why TVING", "TVING NEWS", "콘텐츠 라인업", "일반 광고", "KBO리그 광고",
+        "TVING Labs", "TVING Special", "마케팅 트렌드", "성공 사례", "개인정보처리방침",
+        "전체", "TVING 광고 솔루션 운영, 정책, 시스템 변경 사항을 안내합니다.",
+    }
+    lines = [ln.strip() for ln in x.split("\n")]
     cleaned = []
     for ln in lines:
         if ln == "":
@@ -138,12 +164,14 @@ def parse_detail(html_text):
                 continue
             cleaned.append("")
             continue
-        # 구분 단독 줄 / 날짜 단독 줄 / '뒤로가기' 제거
         if ln in CATEGORIES:
+            continue
+        if ln in NAV_NOISE:
             continue
         if re.match(r"^\d{2}\.\s*\d{1,2}\.\s*\d{1,2}\.?$", ln):
             continue
-        if ln in ("뒤로가기",):
+        # 저작권 줄 제거
+        if ln.startswith("©"):
             continue
         cleaned.append(ln)
     body = "\n".join(cleaned).strip()
