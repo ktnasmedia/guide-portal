@@ -261,7 +261,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-trailer:hover{background:rgba(255,77,106,0.12);border-color:#ff4d6a;}
 .cl-trailer-ico{font-size:10px;}
 .lib-list{display:flex;flex-direction:column;gap:10px;}
-.lib-card{display:flex;align-items:center;gap:14px;background:var(--black-card);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;}
+.lib-card{display:flex;align-items:center;gap:14px;background:var(--black-card);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;transition:border-color 0.2s;}
+.lib-card:hover{border-color:#6a6a6a;}
 .lib-ic{width:42px;height:42px;border-radius:8px;background:#2a1416;color:var(--red);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
 .lib-info{flex:1;min-width:0;}
 .lib-name{font-size:13.5px;font-weight:600;color:var(--white);margin-bottom:4px;}
@@ -328,7 +329,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* Release note cards */
 .rn-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
 .rn-card:hover{border-color:#6a6a6a;}
-.rn-card.rn-latest{border-color:rgba(229,9,20,0.4);}
 .rn-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;gap:12px;user-select:none;}
 .rn-toggle-arrow{color:var(--gray-dim);transition:transform 0.25s ease,color 0.2s;flex-shrink:0;font-size:20px;line-height:1;margin-top:-1px;}
 .rn-toggle-arrow.rotated{transform:rotate(180deg);}
