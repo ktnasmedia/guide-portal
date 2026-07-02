@@ -519,7 +519,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 업데이트 ══════ -->
     <div id="page-updates" class="page active">
-      <div class="breadcrumb"><span class="breadcrumb-cur">공지사항</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지사항</h1><p class="page-desc">매체별 최신 공지와 업데이트를 확인하세요.</p></div>
       <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
       <div id="tc-updates-release-notes">
 
@@ -607,7 +607,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-link" onclick="navigate('policy','')">광고 정책</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-policy-all" onclick="switchTab('policy','all')">전체</div>
         <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본 업종</div>
@@ -660,7 +660,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 광고 상품 ══════ -->
     <div id="page-products" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-link" onclick="navigate('products','')">광고 상품</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-products">광고 상품</h1><p class="page-desc" id="ph-desc-products">매체별 광고 상품을 확인하세요.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-products-all" onclick="switchTab('products','all')">전체</div>
         <div class="sub-tab" id="tab-products-video" onclick="switchTab('products','video')">영상광고</div>
@@ -729,7 +729,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 광고 타기팅 ══════ -->
     <div id="page-targeting" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-link" onclick="navigate('targeting','')">광고 타기팅</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-targeting">광고 타기팅</h1><p class="page-desc" id="ph-desc-targeting">매체별 타기팅 옵션을 안내합니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-targeting-all" onclick="switchTab('targeting','all')">전체</div>
         <div class="sub-tab" id="tab-targeting-basic" onclick="switchTab('targeting','basic')">기본 타기팅</div>
@@ -760,7 +760,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 청약 방법 ══════ -->
     <div id="page-subscription" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-link" onclick="navigate('subscription','')">청약 방법</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-subscription">청약 방법</h1><p class="page-desc" id="ph-desc-subscription">청약 절차와 마감일을 확인하세요.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-subscription-all" onclick="switchTab('subscription','all')">전체</div>
         <div class="sub-tab" id="tab-subscription-calculator" onclick="switchTab('subscription','calculator')">청약 일자 계산기</div>
@@ -976,7 +976,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 케이스스터디 ══════ -->
     <div id="page-casestudy" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-link" onclick="navigate('casestudy','')">케이스스터디</span></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-casestudy">케이스스터디</h1><p class="page-desc" id="ph-desc-casestudy">광고 집행 사례를 확인하세요.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab tab-active" id="tab-casestudy-all" onclick="switchTab('casestudy','all')">전체</div>
         <div class="sub-tab" id="tab-casestudy-clients" onclick="switchTab('casestudy','clients')">업종별 주요 클라이언트</div>
@@ -1004,8 +1004,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 자료실 ══════ -->
     <div id="page-media" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-cur">자료실</span></div>
-      <div style="margin-bottom:24px;"><h1 class="page-title">자료실</h1><p class="page-desc">OTT 매체별 자료를 한 곳에서 확인하세요.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">자료실</h1><p class="page-desc">OTT 매체별 자료를 한 곳에서 확인하세요.</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">자료 목록</span>
@@ -1041,8 +1040,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 콘텐츠 라인업 ══════ -->
     <div id="page-content" class="page">
-      <div class="breadcrumb"><span class="breadcrumb-cur">콘텐츠 라인업</span></div>
-      <div style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</p></div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">실시간 자동업데이트 (업데이트 주기 : 일)</span>
@@ -1219,14 +1217,14 @@ function navigate(page, tab) {
   // 청약 방법 - 계산기 탭 진입 시 공휴일 로드 후 달력 렌더
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
-  // 8) 브레드크럼 갱신
-  const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'콘텐츠 라인업'};
-  const bc = document.querySelector('#page-'+page+' .breadcrumb');
-  if (bc) {
-    if (tab && tab !== tabs[0]) {
-      bc.innerHTML = `<span class="breadcrumb-link" onclick="navigate('${page}','')">${pageNames[page]}</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-cur">${activeTabEl ? activeTabEl.textContent : tab}</span>`;
+  // 8) 페이지 헤더(제목) 갱신 — 하위 탭이 있으면 "페이지 · 하위탭"으로, 설명은 페이지 고정
+  const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'OTT 콘텐츠 라인업'};
+  const titleEl = document.getElementById('ph-title-' + page);
+  if (titleEl) {
+    if (tab && tab !== tabs[0] && activeTabEl) {
+      titleEl.textContent = pageNames[page] + ' · ' + activeTabEl.textContent;
     } else {
-      bc.innerHTML = `<span class="breadcrumb-cur">${pageNames[page]}</span>`;
+      titleEl.textContent = pageNames[page];
     }
   }
 }
@@ -2392,10 +2390,14 @@ function rnTvingBuildFilter(){
   if(!bar) return;
   bar.innerHTML = '';
   cats.forEach(function(c){
-    var b = document.createElement('div');
-    b.className = 'rn-media-btn' + (c === rnTvingCat ? ' rn-media-on' : '');
+    var isSel = (c === rnTvingCat);
+    var b = document.createElement('button');
+    // 넷플릭스 필터와 동일한 스타일: 선택 시 빨강, 미선택은 투명+회색
+    b.style.cssText = 'padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;'
+      + (isSel
+          ? 'background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.3);'
+          : 'background:transparent;color:var(--gray-low);border:1px solid var(--border);');
     b.textContent = c;
-    b.style.cursor = 'pointer';
     b.onclick = function(){ rnTvingCat = c; rnTvingBuildFilter(); rnTvingRender(); };
     bar.appendChild(b);
   });
@@ -2456,7 +2458,13 @@ function rnTvingRender(){
 }
 
 function rnTvingToggle(id){
-  rnTvingOpen[id] = !rnTvingOpen[id];
+  // 아코디언: 이미 열린 걸 다시 누르면 닫고, 아니면 그것만 열기
+  if(rnTvingOpen[id]){
+    rnTvingOpen = {};
+  } else {
+    rnTvingOpen = {};
+    rnTvingOpen[id] = true;
+  }
   rnTvingRender();
 }
 
@@ -2470,13 +2478,15 @@ function rnTvingFmtDate(d){
 function rnTvingBody(text){
   // 줄바꿈 유지하며 안전하게 출력, 이미지 마커·링크 마커 변환
   var esc = clEsc(text);
+  // 네비게이션 잔여 제거: [목록 보기](../notices), [../](../) 등 상대경로 링크
+  esc = esc.replace(/\[[^\]]*\]\(\.\.[^)]*\)/g, '');
   // 이미지 마커: [[IMG:주소]] → <img>
   esc = esc.replace(/\[\[IMG:(https?:\/\/[^\]]+)\]\]/g,
     '<img src="$1" style="max-width:100%;border-radius:8px;margin:8px 0;display:block;" loading="lazy" alt="">');
   // 링크 마커: [텍스트](url) → <a>
   esc = esc.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
     '<a href="$2" target="_blank" rel="noopener" style="color:#ff6b6b;text-decoration:none;">$1</a>');
-  return esc;
+  return esc.trim();
 }
 
 async function sheetsLoadNotes() {
