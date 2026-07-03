@@ -17,4 +17,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: 진단 실행
-        run: python3 diag_tving_poster.py
+        run: python3 diag_poster_match.py
