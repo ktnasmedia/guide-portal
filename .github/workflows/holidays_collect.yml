@@ -1,0 +1,30 @@
+name: 공휴일 자동 수집
+on:
+  schedule:
+    - cron: "30 18 * * *"   # 매일 03:30 KST (UTC 18:30)
+  workflow_dispatch: {}
+jobs:
+  collect-holidays:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: 공휴일 수집
+        env:
+          HOLIDAY_API_KEY: ${{ secrets.HOLIDAY_API_KEY }}
+        run: python3 collect_holidays.py
+      - name: 변경사항 커밋
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add holidays.json
+          if git diff --staged --quiet; then
+            echo "변경 없음"
+          else
+            git commit -m "공휴일 자동 수집 갱신 ($(date +'%Y-%m-%d'))"
+            git push
+          fi
