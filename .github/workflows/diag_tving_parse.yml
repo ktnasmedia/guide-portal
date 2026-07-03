@@ -1,0 +1,22 @@
+name: 티빙 파싱 진단
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v5
+      - name: Python 설정
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: 패키지 설치
+        run: pip install requests beautifulsoup4
+      - name: 진단 실행
+        run: python3 diag_release_date.py
