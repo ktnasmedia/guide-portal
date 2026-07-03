@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T01:34:23.980124",
+  "generated_at": "2026-07-03T02:19:48.093313",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -817,7 +817,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-02",
+        "last_updated": "2026-07-03",
         "needs_review": false
       }
     },
@@ -964,6 +964,72 @@
       "is_original": true,
       "availability_status": null,
       "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-대탈출:더스토리시즌2(가제)",
+      "title": "대탈출 : 더 스토리 시즌2 (가제)",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "추리 #서스펜스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-100일의거짓말",
+      "title": "100일의 거짓말",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "김유정",
+        "박진영",
+        "김현주",
+        "이무생",
+        "진선규"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #첩보 #로맨스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T",
       "trailer_url": null,
       "_meta": {
         "sources": {
