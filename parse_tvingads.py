@@ -177,14 +177,35 @@ def parse_blocks(text, heads):
         return True
 
     lines = [l.strip() for l in text.split("\n") if l.strip()]
+    # 티빙 데이터는 각 작품이 '공개일'(레이블)로 끝나는 구조.
+    # '공개일' 뒤에 공개일 값(날짜/미정/N월)이 따라오면 그 값까지 한 블록에 포함하고 끊는다.
+    def is_release_value(ln):
+        s = ln.strip("* |").strip()
+        if DATE_RE.search(ln) and len(ln) <= 16:
+            return True
+        if s in ("미정", "미공개", "-"):
+            return True
+        if re.fullmatch(r"\d{1,2}월(\s*(초|중순|말))?", s):
+            return True
+        return False
+
     works, cur = [], []
-    for ln in lines:
+    i = 0
+    n = len(lines)
+    while i < n:
+        ln = lines[i]
         cur.append(ln)
-        if bool(DATE_RE.search(ln)) and len(ln) <= 16:
+        label = ln.strip("* |").strip()
+        if label == "공개일":
+            # '공개일' 다음 줄이 공개일 값이면 함께 포함
+            if i + 1 < n and is_release_value(lines[i + 1]):
+                cur.append(lines[i + 1])
+                i += 1
             w = parse_one(cur[:], heads)
             if valid(w):
                 works.append(w)
             cur = []
+        i += 1
     if cur:
         w = parse_one(cur, heads)
         if valid(w):
