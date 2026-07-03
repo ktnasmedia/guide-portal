@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-티빙 광고센터 콘텐츠 페이지 파싱 (목록 카드 기반 — 20건 안정 버전)
+티빙 광고센터 콘텐츠 페이지 파싱 (목록 카드 기반)
 대상: https://www.tvingads.com/content
   - 신작 및 주목할 콘텐츠 + 향후 3개월 오픈 예정 콘텐츠
 추출: 제목·매체구분·등급·장르·부작·요일·출연진·공개일·포스터
-※ 줄거리는 JS 모달에 있어 여기선 제외(별도 보완).
-출력: 콘솔 + tving_ads_parsed.json
 """
 import json
 import re
@@ -45,9 +43,7 @@ def extract_images(soup):
 def extract_posters(html):
     """
     Framer 데이터 script에서 제목→포스터 URL 매핑.
-    데이터 구조: "포스터URL"(+srcSet 중복) ... "제목" ... 출연진 ... 줄거리
-    포스터 URL 뒤 가장 가까운 한글 제목으로 매칭. 카드 HTML 구조 비의존.
-    포스터가 든 script 위치가 페이지 개편으로 바뀔 수 있어, 인덱스를 고정하지 않고
+    포스터가 든 script 위치가 개편으로 바뀔 수 있어 인덱스를 고정하지 않고
     포스터 URL이 가장 많은 script 를 자동으로 찾는다.
     반환: {제목(공백제거): poster_url}
     """
@@ -57,7 +53,6 @@ def extract_posters(html):
     poster_url_re = re.compile(
         r'https://framerusercontent\.com/images/[A-Za-z0-9]+\.(?:webp|jpg|png)'
     )
-    # 포스터 URL이 가장 많이 든 script 선택
     best_idx, best_cnt = -1, 0
     for i, s in enumerate(scripts):
         c = len(poster_url_re.findall(s))
@@ -72,27 +67,22 @@ def extract_posters(html):
         data,
     ):
         url = m.group(1)
-        # srcSet 중복 URL·토큰이 끼어 제목이 멀어질 수 있어 범위를 넓게(600자)
         after = data[m.end():m.end() + 600]
-        # 포스터 뒤 문자열 토큰들을 순서대로 수집 (JSON 구조 문자열은 제외)
         cands = []
         for cand in re.finditer(r'"([^"]{1,50})"', after):
             txt = cand.group(1)
             if txt.startswith("http") or "framerusercontent" in txt:
                 continue
-            # JSON 구조 조각(콜론·중괄호·대괄호·type/value 키 등) 제외 — 실제 값만
             if re.search(r'[:{}\[\]]', txt):
                 continue
             if txt in ("type", "value", "src", "srcSet"):
                 continue
             cands.append(txt)
-            if len(cands) >= 6:  # 제목은 앞쪽에 있으니 앞 몇 개만 보면 충분
+            if len(cands) >= 6:
                 break
-        # 제목 구성: 한글 포함 토큰을 찾되, 바로 앞이 숫자/연도 토큰이면 이어붙임
         tm = None
         for i, txt in enumerate(cands):
             if re.search(r"[가-힣]", txt):
-                # 앞 토큰이 순수 숫자(연도 등)면 제목의 일부일 수 있어 병합
                 if i > 0 and re.fullmatch(r"\d{2,4}", cands[i - 1].strip()):
                     tm = cands[i - 1].strip() + " " + txt
                 else:
@@ -177,8 +167,10 @@ def parse_blocks(text, heads):
         return True
 
     lines = [l.strip() for l in text.split("\n") if l.strip()]
-    # 티빙 데이터는 각 작품이 '공개일'(레이블)로 끝나는 구조.
-    # '공개일' 뒤에 공개일 값(날짜/미정/N월)이 따라오면 그 값까지 한 블록에 포함하고 끊는다.
+    # 두 섹션 구조가 달라 경계 방식을 둘 다 적용:
+    #  (1) '공개일' 레이블로 끝나는 작품(오픈 예정 섹션) — 뒤 공개일 값까지 포함
+    #  (2) 정확한 날짜로 끝나는 작품(신작·주목 섹션)
+    # 둘 중 하나라도 걸리면 블록을 끊는다.
     def is_release_value(ln):
         s = ln.strip("* |").strip()
         if DATE_RE.search(ln) and len(ln) <= 16:
@@ -196,11 +188,15 @@ def parse_blocks(text, heads):
         ln = lines[i]
         cur.append(ln)
         label = ln.strip("* |").strip()
+        cut = False
         if label == "공개일":
-            # '공개일' 다음 줄이 공개일 값이면 함께 포함
             if i + 1 < n and is_release_value(lines[i + 1]):
                 cur.append(lines[i + 1])
                 i += 1
+            cut = True
+        elif DATE_RE.search(ln) and len(ln) <= 16:
+            cut = True
+        if cut:
             w = parse_one(cur[:], heads)
             if valid(w):
                 works.append(w)
@@ -220,16 +216,12 @@ def decode_unicode(s):
     try:
         return s.encode().decode("unicode_escape").encode("latin-1").decode("utf-8")
     except Exception:
-        # 부분 치환 폴백
         return s.replace("\\u003C", "<").replace("\\u003E", ">").replace("\\u0026", "&")
 
 
 def extract_synopsis(html):
     """
     script[11] 데이터에서 줄거리·예고편을 '등장 순서대로' 추출.
-    패턴: "p00ID",{...},"줄거리",{...},"예고편URL"
-    각 항목 앞 500자에서 출연진 후보도 같이 확보.
-    반환: 리스트 [{cast_key, synopsis, trailer}] (페이지 등장 순)
     """
     scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
     if len(scripts) < 12:
@@ -248,7 +240,6 @@ def extract_synopsis(html):
     return items
 
 
-
 def title_keywords(title):
     """제목에서 숫자/짧은토큰 제외한 핵심 단어 추출"""
     toks = re.split(r"[\s:·\-~]+", title)
@@ -263,8 +254,6 @@ def title_keywords(title):
 def collect_tving_ads():
     """
     티빙 광고페이지를 파싱해 작품 리스트 반환.
-    각 작품: title, media[], rating, genres[], parts, day, cast,
-             release_date, synopsis, trailer
     실패 시 빈 리스트 반환(예외 안 던짐) — 자동수집 파이프라인 보호.
     """
     html = fetch()
@@ -280,10 +269,9 @@ def collect_tving_ads():
         if key in seen:
             continue
         seen.add(key)
-        w["poster"] = posters.get(key, "")   # 제목 기준 포스터 매칭
+        w["poster"] = posters.get(key, "")
         uniq.append(w)
 
-    # 줄거리·예고편 매칭 (출연진 → 제목 핵심단어)
     syn_items = extract_synopsis(html)
     used = [False] * len(syn_items)
     for w in uniq:
