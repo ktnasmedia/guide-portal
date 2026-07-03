@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T02:19:48.095609",
+  "generated_at": "2026-07-03T02:54:16.968542",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -9502,36 +9502,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-2026신한SOL뱅크KBO리그",
-      "title": "2026 신한 SOL뱅크 KBO 리그",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/UQGa261UGTG8KAy5szDJ8XKhtU.jpg",
-      "cast": [],
-      "release_date": "2026-03-28",
-      "release_year": 2026,
-      "release_quarter": "2026 Q1",
-      "summary": null,
-      "content_type": "스포츠",
-      "genres": [
-        "스포츠",
-        "야구"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "전체/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-신작및주목할콘텐츠",
       "title": "신작 및 주목할 콘텐츠",
       "title_original": null,
@@ -10167,40 +10137,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-취사병전설이되다",
-      "title": "취사병 전설이 되다",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/mLjRrNiQelf5ZY9zoTTEW520OI.webp",
-      "cast": [
-        "박지훈",
-        "윤경호",
-        "이상이"
-      ],
-      "release_date": "2026-05-11",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "코미디 #웹툰원작"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-킬잇",
       "title": "킬잇",
       "title_original": null,
@@ -10333,144 +10269,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-언더커버셰프",
-      "title": "언더커버 셰프",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
-      "cast": [
-        "김풍",
-        "샘킴",
-        "정지선",
-        "권성준"
-      ],
-      "release_date": "2026-05-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-언더커버셰프",
-      "title": "언더커버 셰프",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
-      "cast": [
-        "김풍",
-        "샘킴",
-        "정지선",
-        "권성준"
-      ],
-      "release_date": "2026-05-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-오십프로",
-      "title": "오십프로",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
-      "cast": [
-        "신하균",
-        "오정세",
-        "허성태"
-      ],
-      "release_date": "2026-05-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "액션"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-오십프로",
-      "title": "오십프로",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
-      "cast": [
-        "신하균",
-        "오정세",
-        "허성태"
-      ],
-      "release_date": "2026-05-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "액션"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tmdb-netflix-tv-324014",
       "title": "이욱정 PD의 부처님 밥상",
       "title_original": "이욱정 PD의 부처님 밥상",
@@ -10582,41 +10380,6 @@
       "_meta": {
         "sources": {
           "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-신입사원강회장",
-      "title": "신입사원 강회장",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/OJmojPRRoMcdL96z05RKA8S6fOc.webp",
-      "cast": [
-        "이준영",
-        "손현주",
-        "이주명",
-        "전혜진"
-      ],
-      "release_date": "2026-05-30",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "오피스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
         },
         "confidence": "confirmed",
         "last_updated": "2026-07-03",
@@ -11145,40 +10908,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-콩콩팜팜",
-      "title": "콩콩팜팜",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
-      "cast": [
-        "이광수",
-        "김우빈",
-        "도경수"
-      ],
-      "release_date": "2026-06-19",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tmdb-netflix-movie-1691988",
       "title": "이별시대사랑",
       "title_original": "이별시대사랑",
@@ -11202,143 +10931,6 @@
       "_meta": {
         "sources": {
           "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-스트릿레스토랑파이터",
-      "title": "스트릿 레스토랑 파이터",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
-      "cast": [
-        "이연복",
-        "에드워드권",
-        "정호영",
-        "홍석천"
-      ],
-      "release_date": "2026-06-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-내일도출근",
-      "title": "내일도 출근",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
-      "cast": [
-        "서인국",
-        "박지현"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-내일도출근",
-      "title": "내일도 출근",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
-      "cast": [
-        "서인국",
-        "박지현"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-코미디숏리그",
-      "title": "코미디숏리그",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/1wZeSJ2hxs3EeuUaR6kYOcmfwA.webp",
-      "cast": [
-        "이용진",
-        "남호연",
-        "황제성",
-        "곽범",
-        "이창호"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "코미디"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
         },
         "confidence": "confirmed",
         "last_updated": "2026-07-03",
@@ -11449,36 +11041,6 @@
         "last_updated": "2026-07-03",
         "needs_review": false,
         "manual_override": true
-      }
-    },
-    {
-      "content_id": "tvingads-tving-2026윔블던챔피언십",
-      "title": "2026 윔블던 챔피언십",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/suCj8NRmUJHfIMdvNSKJfjdi40o.webp",
-      "cast": [],
-      "release_date": "2026-06-29",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "스포츠",
-      "genres": [
-        "스포츠",
-        "테니스"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "전체/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-03",
-        "needs_review": false
       }
     },
     {
@@ -12357,6 +11919,444 @@
         "last_updated": "2026-07-03",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/first-doctor-wt-production-announcement"
+      }
+    },
+    {
+      "content_id": "tvingads-tving-취사병전설이되다",
+      "title": "취사병 전설이 되다",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/mLjRrNiQelf5ZY9zoTTEW520OI.webp",
+      "cast": [
+        "박지훈",
+        "윤경호",
+        "이상이"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "코미디 #웹툰원작"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-신입사원강회장",
+      "title": "신입사원 강회장",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/OJmojPRRoMcdL96z05RKA8S6fOc.webp",
+      "cast": [
+        "이준영",
+        "손현주",
+        "이주명",
+        "전혜진"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "오피스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-오십프로",
+      "title": "오십프로",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
+      "cast": [
+        "신하균",
+        "오정세",
+        "허성태"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "액션"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-오십프로",
+      "title": "오십프로",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
+      "cast": [
+        "신하균",
+        "오정세",
+        "허성태"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "액션"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-언더커버셰프",
+      "title": "언더커버 셰프",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
+      "cast": [
+        "김풍",
+        "샘킴",
+        "정지선",
+        "권성준"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-언더커버셰프",
+      "title": "언더커버 셰프",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
+      "cast": [
+        "김풍",
+        "샘킴",
+        "정지선",
+        "권성준"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-콩콩팜팜",
+      "title": "콩콩팜팜",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
+      "cast": [
+        "이광수",
+        "김우빈",
+        "도경수"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-스트릿레스토랑파이터",
+      "title": "스트릿 레스토랑 파이터",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
+      "cast": [
+        "이연복",
+        "에드워드권",
+        "정호영",
+        "홍석천"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "서바이벌"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-내일도출근",
+      "title": "내일도 출근",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
+      "cast": [
+        "서인국",
+        "박지현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-내일도출근",
+      "title": "내일도 출근",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
+      "cast": [
+        "서인국",
+        "박지현"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-코미디숏리그",
+      "title": "코미디숏리그",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/1wZeSJ2hxs3EeuUaR6kYOcmfwA.webp",
+      "cast": [
+        "이용진",
+        "남호연",
+        "황제성",
+        "곽범",
+        "이창호"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "코미디"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-2026신한SOL뱅크KBO리그",
+      "title": "2026 신한 SOL뱅크 KBO 리그",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/UQGa261UGTG8KAy5szDJ8XKhtU.jpg",
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "스포츠",
+      "genres": [
+        "스포츠",
+        "야구"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "전체/T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-2026윔블던챔피언십",
+      "title": "2026 윔블던 챔피언십",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/suCj8NRmUJHfIMdvNSKJfjdi40o.webp",
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "스포츠",
+      "genres": [
+        "스포츠",
+        "테니스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "전체/T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-03",
+        "needs_review": false
       }
     },
     {
