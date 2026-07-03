@@ -44,15 +44,28 @@ def extract_images(soup):
 
 def extract_posters(html):
     """
-    script[11] 데이터에서 제목→포스터 URL 매핑.
+    Framer 데이터 script에서 제목→포스터 URL 매핑.
     데이터 구조: "포스터URL"(+srcSet 중복) ... "제목" ... 출연진 ... 줄거리
     포스터 URL 뒤 가장 가까운 한글 제목으로 매칭. 카드 HTML 구조 비의존.
+    포스터가 든 script 위치가 페이지 개편으로 바뀔 수 있어, 인덱스를 고정하지 않고
+    포스터 URL이 가장 많은 script 를 자동으로 찾는다.
     반환: {제목(공백제거): poster_url}
     """
     scripts = re.findall(r"<script[^>]*>(.*?)</script>", html, re.DOTALL)
-    if len(scripts) < 12:
+    if not scripts:
         return {}
-    data = scripts[11]
+    poster_url_re = re.compile(
+        r'https://framerusercontent\.com/images/[A-Za-z0-9]+\.(?:webp|jpg|png)'
+    )
+    # 포스터 URL이 가장 많이 든 script 선택
+    best_idx, best_cnt = -1, 0
+    for i, s in enumerate(scripts):
+        c = len(poster_url_re.findall(s))
+        if c > best_cnt:
+            best_cnt, best_idx = c, i
+    if best_idx < 0:
+        return {}
+    data = scripts[best_idx]
     posters = {}
     for m in re.finditer(
         r'"(https://framerusercontent\.com/images/[A-Za-z0-9]+\.(?:webp|jpg|png))\?[^"]*"',
