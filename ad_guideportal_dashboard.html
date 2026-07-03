@@ -1330,6 +1330,8 @@ async function loadContentLineup(){
     clData = (json.items || []).filter(clIsValidContent);
     // 티빙·웨이브 수동 시트 병합 (TMDB에 없는 작품만 추가)
     await clLoadManualTvingWavve();
+    // TMDB가 티빙·웨이브 독점작을 넷플릭스로 잘못 준 경우 제거 (독점작은 해당 매체 외 시청 불가)
+    clData = clRemoveNetflixDupOfExclusive(clData);
     clUpdateOrigSwitch();
     clRender();
   }catch(e){
@@ -1689,6 +1691,28 @@ function clToggleSum(btn){
 }
 
 // 티빙·웨이브: 같은 제목(띄어쓰기 무시)을 한 카드로 합치고, OTT 목록을 _otts에 모음
+// TMDB가 티빙·웨이브 독점작을 넷플릭스 제공작으로 잘못 분류한 경우,
+// 그 넷플릭스 항목을 제거한다. (독점작은 해당 매체 외에서 볼 수 없으므로)
+// 판별: source_badge에 'ONLY'가 있고 티빙/웨이브 출처인 작품 = 독점작.
+// 안전장치: 제목이 '정확히' 같은 넷플릭스 항목만 제거(유사 제목 오작동 방지),
+//           ORIGINAL(동시공개) 등 ONLY가 아닌 작품은 건드리지 않음.
+function clRemoveNetflixDupOfExclusive(rows){
+  const norm = function(t){ return (t||'').replace(/\s+/g,'').toLowerCase(); };
+  const isExclusive = function(d){
+    const sb = (d.source_badge || '').toUpperCase();
+    const isOnly = sb.indexOf('ONLY') !== -1;
+    const isTvSrc = String(d.content_id||'').indexOf('tvingads-') === 0;
+    return isOnly && (isTvSrc || d.ott === 'tving' || d.ott === 'wavve');
+  };
+  const exclusiveTitles = new Set();
+  rows.forEach(function(d){ if(isExclusive(d)) exclusiveTitles.add(norm(d.title)); });
+  if(exclusiveTitles.size === 0) return rows;
+  return rows.filter(function(d){
+    if(d.ott === 'netflix' && exclusiveTitles.has(norm(d.title))) return false;
+    return true;
+  });
+}
+
 function clMergeByTitle(rows){
   const map = {};
   const order = [];
