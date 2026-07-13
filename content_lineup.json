@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T19:01:30.611030",
+  "generated_at": "2026-07-13T19:19:52.587062",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -11,7 +11,7 @@
       "content_id": "tvingads-tving-냉장고를부탁해since2014",
       "title": "냉장고를 부탁해 since 2014",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-냉장고를부탁해since2014_9b86bac9.webp",
+      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
       "cast": [
         "김성주",
         "안정환",
@@ -46,7 +46,7 @@
       "content_id": "tvingads-wavve-냉장고를부탁해since2014",
       "title": "냉장고를 부탁해 since 2014",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-냉장고를부탁해since2014_9b86bac9.webp",
+      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
       "cast": [
         "김성주",
         "안정환",
@@ -109,7 +109,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -143,7 +143,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -178,7 +178,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -212,7 +212,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -246,7 +246,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -279,7 +279,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -312,7 +312,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -339,7 +339,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -366,7 +366,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -396,7 +396,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -430,7 +430,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -459,7 +459,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -470,10 +470,10 @@
       "poster_url": "https://image.tmdb.org/t/p/w500/rLrEtysTwvVZESavwufnoGIaq8j.jpg",
       "cast": [
         "황민현",
-        "박윤호",
-        "차우민",
+        "이종현",
+        "공도유",
         "신수현",
-        "홍민기"
+        "차우민"
       ],
       "release_date": "2025-01-23",
       "release_year": 2025,
@@ -494,7 +494,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -528,7 +528,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -558,7 +558,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -588,7 +588,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -622,7 +622,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -656,7 +656,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -689,7 +689,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -723,7 +723,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -758,7 +758,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -790,7 +790,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -818,7 +818,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -852,7 +852,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -886,7 +886,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -911,7 +911,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -939,7 +939,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -974,7 +974,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1003,7 +1003,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1037,7 +1037,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1067,7 +1067,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1094,7 +1094,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1129,7 +1129,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1163,7 +1163,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1196,7 +1196,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1226,7 +1226,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1259,7 +1259,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1293,7 +1293,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1320,7 +1320,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1347,7 +1347,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1379,7 +1379,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1407,7 +1407,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1442,7 +1442,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1477,7 +1477,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1511,7 +1511,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1545,7 +1545,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1579,7 +1579,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1612,7 +1612,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1639,7 +1639,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1667,7 +1667,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1700,7 +1700,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1727,7 +1727,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1761,7 +1761,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1795,7 +1795,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1826,7 +1826,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1860,7 +1860,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1895,7 +1895,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1926,7 +1926,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1959,7 +1959,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -1988,7 +1988,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2024,7 +2024,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2052,7 +2052,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2085,7 +2085,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2122,7 +2122,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2153,7 +2153,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2187,7 +2187,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2221,7 +2221,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2250,7 +2250,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2279,7 +2279,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2306,7 +2306,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2336,7 +2336,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2361,7 +2361,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2397,7 +2397,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2424,7 +2424,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2457,7 +2457,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2489,7 +2489,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2522,7 +2522,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2552,7 +2552,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2579,7 +2579,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2606,7 +2606,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2640,7 +2640,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2675,7 +2675,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2708,7 +2708,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2742,7 +2742,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2777,7 +2777,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2808,7 +2808,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2839,7 +2839,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2872,7 +2872,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2905,7 +2905,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2938,7 +2938,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -2971,7 +2971,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3007,7 +3007,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3043,7 +3043,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3077,7 +3077,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3113,7 +3113,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3148,7 +3148,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3182,7 +3182,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3216,7 +3216,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3249,7 +3249,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3282,7 +3282,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3309,7 +3309,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3336,7 +3336,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3370,7 +3370,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3404,7 +3404,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3435,7 +3435,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3470,7 +3470,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3500,7 +3500,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3534,7 +3534,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3567,7 +3567,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3599,7 +3599,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3624,7 +3624,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3656,7 +3656,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3690,7 +3690,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3725,7 +3725,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3759,7 +3759,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3793,7 +3793,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3828,7 +3828,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3864,7 +3864,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3892,7 +3892,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3926,7 +3926,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3961,7 +3961,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -3994,7 +3994,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4024,7 +4024,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4057,7 +4057,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4092,7 +4092,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4122,7 +4122,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4156,7 +4156,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4188,7 +4188,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4218,7 +4218,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4247,7 +4247,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4280,7 +4280,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4315,7 +4315,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4340,7 +4340,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4375,7 +4375,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4405,7 +4405,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4437,7 +4437,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4472,7 +4472,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4499,7 +4499,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4527,7 +4527,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4561,7 +4561,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4593,7 +4593,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4627,7 +4627,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4661,7 +4661,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4694,7 +4694,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4728,7 +4728,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4755,7 +4755,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4789,7 +4789,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4824,7 +4824,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4858,7 +4858,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4886,7 +4886,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4921,7 +4921,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4956,7 +4956,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -4990,7 +4990,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5023,7 +5023,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5056,7 +5056,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5090,7 +5090,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5123,7 +5123,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5148,7 +5148,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5183,7 +5183,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5215,7 +5215,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5248,7 +5248,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5282,7 +5282,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5315,7 +5315,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5348,7 +5348,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5383,7 +5383,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5416,7 +5416,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5451,7 +5451,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5485,7 +5485,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5517,7 +5517,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5550,7 +5550,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5577,7 +5577,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5613,7 +5613,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5645,7 +5645,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5679,7 +5679,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5713,7 +5713,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5745,7 +5745,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5780,7 +5780,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5814,7 +5814,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5845,7 +5845,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5878,7 +5878,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5913,7 +5913,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5943,7 +5943,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -5976,7 +5976,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6010,7 +6010,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6043,7 +6043,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6077,7 +6077,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6107,7 +6107,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6140,7 +6140,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6173,7 +6173,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6205,7 +6205,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6239,7 +6239,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6273,7 +6273,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6305,7 +6305,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6339,7 +6339,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6369,7 +6369,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6399,7 +6399,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6426,7 +6426,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6454,7 +6454,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6488,7 +6488,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6517,7 +6517,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6552,7 +6552,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6585,7 +6585,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6620,7 +6620,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6653,7 +6653,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6684,7 +6684,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6713,7 +6713,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6742,7 +6742,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6776,7 +6776,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6803,7 +6803,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6837,7 +6837,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6871,7 +6871,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6901,7 +6901,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6930,7 +6930,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6960,7 +6960,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -6987,7 +6987,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7014,7 +7014,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7045,7 +7045,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7077,7 +7077,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7110,7 +7110,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7145,7 +7145,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7178,7 +7178,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7205,7 +7205,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7234,7 +7234,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7265,7 +7265,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7298,7 +7298,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7331,7 +7331,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7364,7 +7364,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7398,7 +7398,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7432,7 +7432,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7467,7 +7467,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7500,7 +7500,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7531,7 +7531,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7563,7 +7563,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7593,7 +7593,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7622,7 +7622,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7656,7 +7656,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7689,7 +7689,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7722,7 +7722,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7752,7 +7752,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7785,7 +7785,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7821,7 +7821,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7849,7 +7849,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7882,7 +7882,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7913,7 +7913,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7947,7 +7947,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -7981,7 +7981,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8013,7 +8013,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8040,7 +8040,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8071,7 +8071,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8106,7 +8106,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8133,7 +8133,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8167,7 +8167,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8199,7 +8199,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8231,7 +8231,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8266,7 +8266,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8301,7 +8301,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8336,7 +8336,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8370,7 +8370,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8405,7 +8405,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8440,7 +8440,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8473,7 +8473,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8500,7 +8500,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8534,7 +8534,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8564,7 +8564,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8597,7 +8597,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8630,7 +8630,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8664,7 +8664,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8696,7 +8696,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8729,7 +8729,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8762,7 +8762,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8791,7 +8791,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8825,7 +8825,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8860,7 +8860,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8893,7 +8893,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8926,7 +8926,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8959,7 +8959,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -8994,7 +8994,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9027,7 +9027,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9060,7 +9060,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9093,7 +9093,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9127,38 +9127,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tmdb-netflix-movie-1691979",
-      "title": "팟럭",
-      "title_original": "팟럭",
-      "poster_url": "https://image.tmdb.org/t/p/w500/2oILbakGd6UVIRxgcUem55pFNUc.jpg",
-      "cast": [
-        "손예원",
-        "이노아",
-        "김현정"
-      ],
-      "release_date": "2026-02-20",
-      "release_year": 2026,
-      "release_quarter": "2026 Q1",
-      "summary": "초등학교 학생 엄마이자 중산층 혜민은 아들의 학교생활을 위해 같은 반의 학부모회장이 주최하는 팟럭 모임에 참여하고, 거기서 취향을 속여가며 상류층인 척 연기한다. 그러던 어느 날, 자신의 볼품없는 집에서 팟럭 모임을 해야 하는 상황이 오고 만다.",
-      "content_type": "영화",
-      "genres": [
-        "코미디"
-      ],
-      "rating": "15",
-      "ott": "netflix",
-      "is_original": false,
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9185,7 +9154,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9215,7 +9184,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9248,7 +9217,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9282,7 +9251,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9316,7 +9285,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9349,7 +9318,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9379,7 +9348,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9415,7 +9384,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9448,7 +9417,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9477,7 +9446,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9507,7 +9476,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9540,7 +9509,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9574,7 +9543,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9605,7 +9574,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9639,7 +9608,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9672,7 +9641,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9680,7 +9649,7 @@
       "content_id": "tvingads-tving-2026신한SOL뱅크KBO리그",
       "title": "2026 신한 SOL뱅크 KBO 리그",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-2026신한SOL뱅크KBO리그_d6d7118e.jpg",
+      "poster_url": "https://framerusercontent.com/images/UQGa261UGTG8KAy5szDJ8XKhtU.jpg",
       "cast": [],
       "release_date": "2026-03-28",
       "release_year": 2026,
@@ -9783,7 +9752,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9815,7 +9784,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9848,7 +9817,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9881,7 +9850,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9889,7 +9858,7 @@
       "content_id": "tvingads-tving-하트시그널5",
       "title": "하트시그널5",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-하트시그널5_9352fee9.webp",
+      "poster_url": "https://framerusercontent.com/images/PIGMm3Cpso5gizHmaxNZm9YAnI.webp",
       "cast": [
         "윤종신",
         "이상민",
@@ -9950,7 +9919,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -9984,7 +9953,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10017,7 +9986,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10048,7 +10017,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10082,7 +10051,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10116,38 +10085,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tmdb-netflix-movie-1688522",
-      "title": "메트로 입수 마키나",
-      "title_original": "메트로 입수 마키나",
-      "poster_url": "https://image.tmdb.org/t/p/w500/eIUYGBvbS7kFwWBLoE2NUQHvxO0.jpg",
-      "cast": [
-        "황효식",
-        "송지현"
-      ],
-      "release_date": "2026-04-24",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "우연히 목격한 다리에서 투신하는 여자를 사진으로 찍어 공모전에 출품했던 정수는, 몇 달이 지나 주최 측으로부터 여자의 초상권을 얻어오라는 연락을 받는다. 공모전 당선이 절박한 정수는 당시에 자신의 신고로 구조되었던 여자를 만나 초상권 동의를 받으려고 한다.",
-      "content_type": "영화",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "netflix",
-      "is_original": false,
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10177,7 +10115,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10210,7 +10148,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10240,7 +10178,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10272,7 +10210,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10303,7 +10241,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10338,7 +10276,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10346,7 +10284,7 @@
       "content_id": "tvingads-tving-취사병전설이되다",
       "title": "취사병 전설이 되다",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/mLjRrNiQelf5ZY9zoTTEW520OI.webp",
       "cast": [
         "박지훈",
         "윤경호",
@@ -10372,7 +10310,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10380,7 +10318,7 @@
       "content_id": "tvingads-tving-킬잇",
       "title": "킬잇",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-킬잇_60b89313.webp",
+      "poster_url": "https://framerusercontent.com/images/VlJpZUyvGc7KyXD87hcDVr0caPE.webp",
       "cast": [
         "장윤주",
         "이종원",
@@ -10444,7 +10382,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10477,7 +10415,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10504,7 +10442,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10512,7 +10450,7 @@
       "content_id": "tvingads-tving-언더커버셰프",
       "title": "언더커버 셰프",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-언더커버셰프_733aff19.webp",
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
       "cast": [
         "김풍",
         "샘킴",
@@ -10547,7 +10485,7 @@
       "content_id": "tvingads-wavve-언더커버셰프",
       "title": "언더커버 셰프",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-언더커버셰프_733aff19.webp",
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
       "cast": [
         "김풍",
         "샘킴",
@@ -10582,7 +10520,7 @@
       "content_id": "tvingads-tving-오십프로",
       "title": "오십프로",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
       "cast": [
         "신하균",
         "오정세",
@@ -10608,7 +10546,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10616,7 +10554,7 @@
       "content_id": "tvingads-wavve-오십프로",
       "title": "오십프로",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
       "cast": [
         "신하균",
         "오정세",
@@ -10642,7 +10580,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10671,7 +10609,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10704,7 +10642,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10732,7 +10670,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10760,7 +10698,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10768,7 +10706,7 @@
       "content_id": "tvingads-tving-신입사원강회장",
       "title": "신입사원 강회장",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/OJmojPRRoMcdL96z05RKA8S6fOc.webp",
       "cast": [
         "이준영",
         "손현주",
@@ -10795,7 +10733,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10825,7 +10763,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10855,7 +10793,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10888,7 +10826,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10923,7 +10861,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10957,7 +10895,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -10991,7 +10929,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11021,7 +10959,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11051,7 +10989,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11081,7 +11019,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11113,7 +11051,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11144,7 +11082,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11177,7 +11115,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11210,7 +11148,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11241,7 +11179,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11270,7 +11208,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11299,7 +11237,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11307,7 +11245,7 @@
       "content_id": "tvingads-tving-콩콩팜팜",
       "title": "콩콩팜팜",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
       "cast": [
         "이광수",
         "김우빈",
@@ -11333,7 +11271,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11364,7 +11302,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11372,7 +11310,7 @@
       "content_id": "tvingads-tving-스트릿레스토랑파이터",
       "title": "스트릿 레스토랑 파이터",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
       "cast": [
         "이연복",
         "에드워드권",
@@ -11399,7 +11337,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11407,7 +11345,7 @@
       "content_id": "tvingads-tving-내일도출근",
       "title": "내일도 출근",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-내일도출근_2d593e49.webp",
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
       "cast": [
         "서인국",
         "박지현"
@@ -11432,7 +11370,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11440,7 +11378,7 @@
       "content_id": "tvingads-wavve-내일도출근",
       "title": "내일도 출근",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-내일도출근_2d593e49.webp",
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
       "cast": [
         "서인국",
         "박지현"
@@ -11465,7 +11403,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11473,7 +11411,7 @@
       "content_id": "tvingads-tving-코미디숏리그",
       "title": "코미디숏리그",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-코미디숏리그_25506f86.webp",
+      "poster_url": "https://framerusercontent.com/images/1wZeSJ2hxs3EeuUaR6kYOcmfwA.webp",
       "cast": [
         "이용진",
         "남호연",
@@ -11501,7 +11439,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11531,7 +11469,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11566,7 +11504,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       },
       "source_badge": "W"
@@ -11602,7 +11540,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11641,7 +11579,7 @@
           "rating": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false,
         "manual_override": true
       }
@@ -11650,7 +11588,7 @@
       "content_id": "tvingads-tving-2026윔블던챔피언십",
       "title": "2026 윔블던 챔피언십",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/suCj8NRmUJHfIMdvNSKJfjdi40o.webp",
       "cast": [],
       "release_date": "2026-06-29",
       "release_year": 2026,
@@ -11672,7 +11610,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11706,7 +11644,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11739,7 +11677,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       },
       "source_badge": "W ORIGINAL"
@@ -11772,7 +11710,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11780,7 +11718,7 @@
       "content_id": "tvingads-tving-도깨비10주년여행",
       "title": "도깨비 10주년 여행",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/2Jc33vl2hp7yfDS6mBTdfBTmRws.webp",
       "cast": [
         "공유",
         "김고은",
@@ -11807,7 +11745,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11815,7 +11753,7 @@
       "content_id": "tvingads-tving-샤먼:미신전",
       "title": "샤먼 : 미신전",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/XEfp3v4jUKUaGVPpnAXf4E6ruvc.webp",
       "cast": [
         "신하균",
         "한예리"
@@ -11840,7 +11778,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11874,7 +11812,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -11915,7 +11853,7 @@
       "content_id": "tvingads-tving-그대에게드림",
       "title": "그대에게 드림",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-그대에게드림_2201079e.webp",
+      "poster_url": "https://framerusercontent.com/images/MmDfOf1ti84QxPPT4KNOlqxeRoc.webp",
       "cast": [
         "황인엽",
         "이혜리",
@@ -11979,7 +11917,7 @@
           "cast": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false,
         "manual_override": true
       }
@@ -11988,7 +11926,7 @@
       "content_id": "tvingads-tving-오싹한연애",
       "title": "오싹한 연애",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-오싹한연애_c3e0a33d.webp",
+      "poster_url": "https://framerusercontent.com/images/jWKCXBrrNFNm1BxxUXs2xik98Y.webp",
       "cast": [
         "박은빈",
         "양세종",
@@ -12014,7 +11952,42 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-우주떡집",
+      "title": "우주떡집",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/32pHJ3u75tIrUFUM65U2ih6duxg.webp",
+      "cast": [
+        "이은지",
+        "이영지",
+        "미미",
+        "안유진"
+      ],
+      "release_date": "2026-07-31",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "떡에서 요리까지! 토롱이의 계략으로 우주떡집 알바생이 된 지락이들?! 본격 강제취업 식당 노동 어드벤처!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": "https://youtu.be/PJNuA4Sg4iY?si=-h9NQYVclik_nfq0",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12022,7 +11995,7 @@
       "content_id": "tvingads-tving-최애의사원",
       "title": "최애의 사원",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-최애의사원_14169748.webp",
+      "poster_url": "https://framerusercontent.com/images/Z3fcutMEEffmJ4Mngx9MyBTcnM.webp",
       "cast": [
         "강훈",
         "김혜준",
@@ -12048,7 +12021,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12081,53 +12054,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-우주떡집",
-      "title": "우주떡집",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "나인",
-        "레난",
-        "바다",
-        "백구영",
-        "베이비주",
-        "시미즈",
-        "인규",
-        "정민준",
-        "캐스퍼",
-        "해쉬"
-      ],
-      "release_date": "2026-08-18",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티",
-        "예능",
-        "리얼리티",
-        "예능",
-        "서바이벌",
-        "스트릿 월드 파이터 : 디렉터스 워"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/T/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12135,7 +12062,7 @@
       "content_id": "tvingads-tving-스트릿월드파이터:디렉터스워",
       "title": "스트릿 월드 파이터 : 디렉터스 워",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/dbLBofJCTbKQaYP6KIOaKUv1N8I.webp",
       "cast": [
         "나인",
         "레난",
@@ -12151,7 +12078,7 @@
       "release_date": "2026-08-18",
       "release_year": 2026,
       "release_quarter": "2026 Q3",
-      "summary": null,
+      "summary": "머리로 싸우고, 몸으로 증명하는 안무가들의 작품 전쟁. 마침내 자신의 이름을 디렉터 크레딧에 올릴 안무가는 누구인가.",
       "content_type": "예능",
       "genres": [
         "예능",
@@ -12168,7 +12095,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12187,9 +12114,11 @@
       "summary": "세상과 단절한 채 살아가던 소설가 문재. 정체불명의 '들쥐'에게 자신의 모든 것을 빼앗긴 사실을 깨닫는다. 자신을 쫓던 사채업자와 예기치 않은 동맹을 맺고 잃어버린 삶을 되찾고자 몸부림친다.",
       "content_type": "시리즈",
       "genres": [
-        "미스터리"
+        "미스터리",
+        "범죄",
+        "드라마"
       ],
-      "rating": null,
+      "rating": "15",
       "ott": "netflix",
       "is_original": true,
       "availability_status": null,
@@ -12198,7 +12127,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12233,46 +12162,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-센터전쟁가왕쇼",
-      "title": "센터전쟁 가왕쇼",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "이준혁",
-        "서현우",
-        "오대환"
-      ],
-      "release_date": "2026-09-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌",
-        "예능",
-        "서바이벌",
-        "드라마",
-        "오피스 #웹툰원작",
-        "로또 1등도 출근합니다"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY/T ONLY/T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12304,7 +12194,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       },
       "source_badge": "T ORIGINAL"
@@ -12339,7 +12229,7 @@
           "_all": "tmdb"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12375,7 +12265,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     },
@@ -12405,7 +12295,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/paper-man-wt-announcement"
       }
@@ -12435,7 +12325,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement"
       }
@@ -12467,7 +12357,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/netflix-confirms-production-of-the-dealer"
       }
@@ -12499,7 +12389,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/grand-galaxy-hotel-production"
       }
@@ -12530,7 +12420,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/tygo-cast-announcement"
       }
@@ -12560,7 +12450,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/messily-ever-after-wt-production"
       }
@@ -12592,7 +12482,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/love-o-clock-production"
       }
@@ -12622,7 +12512,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production"
       }
@@ -12653,7 +12543,7 @@
           "cast": "manual"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/solo-leveling-announcement",
         "manual_override": true
@@ -12687,7 +12577,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/show-business-wt-production"
       }
@@ -12719,7 +12609,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/the-facade-of-love-start-of-production"
       }
@@ -12749,7 +12639,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production"
       }
@@ -12779,7 +12669,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/take-charge-of-my-heart-production"
       }
@@ -12810,7 +12700,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/scandals-wt-production"
       }
@@ -12843,7 +12733,7 @@
           "_all": "netflix_newsroom"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": true,
         "source_url": "https://about.netflix.com/ko/news/first-doctor-wt-production-announcement"
       }
@@ -12852,10 +12742,41 @@
       "content_id": "tvingads-tving-대탈출:더스토리시즌2(가제)",
       "title": "대탈출 : 더 스토리 시즌2 (가제)",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-대탈출_더스토리시즌2_가제__14e03ea1.webp",
+      "poster_url": "https://framerusercontent.com/images/bxI6UrZIgMNjFb2rPwJgE21ox7A.webp",
+      "cast": [],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "추리 #서스펜스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-13",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-센터전쟁가왕쇼",
+      "title": "센터전쟁 가왕쇼",
+      "title_original": null,
+      "poster_url": null,
       "cast": [
-        "© 2026 TVING Co.",
-        "Ltd. All rights reserved."
+        "전유진",
+        "박서진",
+        "홍지윤"
       ],
       "release_date": null,
       "release_year": null,
@@ -12864,320 +12785,20 @@
       "content_type": "예능",
       "genres": [
         "예능",
-        "추리 #서스펜스",
-        "예능",
-        "추리 #서스펜스",
-        "DEMO RANKING",
-        "↓",
-        "Excel 다운로드",
-        "남녀 전체",
-        "남녀 전체",
-        "여성",
-        "남성",
-        "남녀 전체",
-        "남녀 전체",
-        "여성",
-        "남성",
-        "남녀 전체",
-        "남녀 전체",
-        "여성",
-        "남성",
-        "전체 연령",
-        "전체 연령",
-        "10대",
-        "20대",
-        "30대",
-        "40대",
-        "50대",
-        "60대+",
-        "전체 연령",
-        "전체 연령",
-        "10대",
-        "20대",
-        "30대",
-        "40대",
-        "50대",
-        "60대+",
-        "전체 연령",
-        "전체 연령",
-        "10대",
-        "20대",
-        "30대",
-        "40대",
-        "50대",
-        "60대+",
-        "#",
-        "콘텐츠",
-        "장르",
-        "#",
-        "콘텐츠",
-        "장르",
-        "1",
-        "신입사원 강회장",
-        "2",
-        "도깨비 10주년 여행",
-        "3",
-        "내일도 출근!",
-        "4",
-        "콩콩팜팜",
-        "5",
-        "샤먼 : 미신전",
-        "6",
-        "스트릿 레스토랑 파이터",
-        "하트시그널 시즌5",
-        "8",
-        "언더커버셰프",
-        "9",
-        "냉장고를 부탁해 since 2014",
-        "10",
-        "나 혼자 산다",
-        "11",
-        "놀면 뭐하니?",
-        "취사병 전설이 되다",
-        "13",
-        "오십프로",
-        "14",
-        "킬잇 : 스타일 크리에이터 대전쟁",
-        "심야괴담회 시즌6",
-        "16",
-        "놀러코스터",
-        "17",
-        "니시지래적환희 : 운명처럼 너에게로",
-        "18",
-        "벌거벗은 세계사",
-        "유 퀴즈 온 더 블럭",
-        "20",
-        "이호선 상담소",
-        "21",
-        "나는 SOLO",
-        "22",
-        "전지적 참견 시점",
-        "23",
-        "탐정들의 영업비밀",
-        "24",
-        "오은영 리포트 - 결혼 지옥",
-        "25",
-        "도깨비",
-        "1",
-        "신입사원 강회장",
-        "2",
-        "도깨비 10주년 여행",
-        "3",
-        "내일도 출근!",
-        "4",
-        "콩콩팜팜",
-        "5",
-        "샤먼 : 미신전",
-        "6",
-        "스트릿 레스토랑 파이터",
-        "하트시그널 시즌5",
-        "8",
-        "언더커버셰프",
-        "9",
-        "냉장고를 부탁해 since 2014",
-        "10",
-        "나 혼자 산다",
-        "11",
-        "놀면 뭐하니?",
-        "취사병 전설이 되다",
-        "13",
-        "오십프로",
-        "14",
-        "킬잇 : 스타일 크리에이터 대전쟁",
-        "심야괴담회 시즌6",
-        "16",
-        "놀러코스터",
-        "17",
-        "니시지래적환희 : 운명처럼 너에게로",
-        "18",
-        "벌거벗은 세계사",
-        "유 퀴즈 온 더 블럭",
-        "20",
-        "이호선 상담소",
-        "21",
-        "나는 SOLO",
-        "22",
-        "전지적 참견 시점",
-        "23",
-        "탐정들의 영업비밀",
-        "24",
-        "오은영 리포트 - 결혼 지옥",
-        "25",
-        "도깨비",
-        "26",
-        "2026 윔블던 챔피언십",
-        "27",
-        "히든아이",
-        "28",
-        "무협 활극 <암하전>",
-        "29",
-        "놀라운 토요일",
-        "30",
-        "이혼숙려캠프",
-        "31",
-        "허수아비",
-        "32",
-        "콩콩팜팜 : 웃음팜팜 비하인드",
-        "33",
-        "샤먼 : 귀신전",
-        "34",
-        "톡파원 25시",
-        "35",
-        "조선의 사랑꾼",
-        "36",
-        "37",
-        "유미의 세포들 시즌3",
-        "38",
-        "은밀한 감사",
-        "39",
-        "친애하는 X",
-        "40",
-        "쯔양몇끼",
-        "41",
-        "용감한 형사들 5",
-        "42",
-        "양진미금 : 그대 곁에서",
-        "43",
-        "콩콩팡팡 (콩 심은 데 콩 나서 웃음팡 행복팡 해외탐방)",
-        "44",
-        "2026 윔블던 챔피언십 월드피드",
-        "45",
-        "판사 이한영",
-        "46",
-        "2026 윔블던 챔피언십 No.1 코트피드",
-        "47",
-        "아는 형님",
-        "48",
-        "언젠가는 슬기로울 전공의생활",
-        "49",
-        "MBC 무한도전 정주행",
-        "50",
-        "뿅뿅 지구오락실 3",
-        "26",
-        "2026 윔블던 챔피언십",
-        "27",
-        "히든아이",
-        "28",
-        "무협 활극 <암하전>",
-        "29",
-        "놀라운 토요일",
-        "30",
-        "이혼숙려캠프",
-        "31",
-        "허수아비",
-        "32",
-        "콩콩팜팜 : 웃음팜팜 비하인드",
-        "33",
-        "샤먼 : 귀신전",
-        "34",
-        "톡파원 25시",
-        "35",
-        "조선의 사랑꾼",
-        "36",
-        "37",
-        "유미의 세포들 시즌3",
-        "38",
-        "은밀한 감사",
-        "39",
-        "친애하는 X",
-        "40",
-        "쯔양몇끼",
-        "41",
-        "용감한 형사들 5",
-        "42",
-        "양진미금 : 그대 곁에서",
-        "43",
-        "콩콩팡팡 (콩 심은 데 콩 나서 웃음팡 행복팡 해외탐방)",
-        "44",
-        "2026 윔블던 챔피언십 월드피드",
-        "45",
-        "판사 이한영",
-        "46",
-        "2026 윔블던 챔피언십 No.1 코트피드",
-        "47",
-        "아는 형님",
-        "48",
-        "언젠가는 슬기로울 전공의생활",
-        "49",
-        "MBC 무한도전 정주행",
-        "50",
-        "뿅뿅 지구오락실 3",
-        "광고 문의",
-        "솔루션 소개서",
-        "뉴스레터",
-        "캠페인 시작을 위한 첫 걸음",
-        "광고 시작하기",
-        "이용 방법 보기",
-        "캠페인 시작을 위한 첫 걸음",
-        "광고 시작하기",
-        "이용 방법 보기",
-        "캠페인 시작을 위한 첫 걸음",
-        "광고 시작하기",
-        "이용 방법 보기",
-        "Advertise with Intelligence",
-        "TVING Ads",
-        "Why TVING",
-        "TVING NEWS",
-        "공지 사항",
-        "콘텐츠",
-        "콘텐츠 라인업",
-        "솔루션 소개",
-        "일반 광고",
-        "KBO리그 광고",
-        "TVING Labs",
-        "TVING Special",
-        "인사이트",
-        "마케팅 트렌드",
-        "성공 사례",
-        "개인정보처리방침",
-        "광고 문의하기",
-        "Advertise with Intelligence",
-        "TVING Ads",
-        "Why TVING",
-        "TVING NEWS",
-        "공지 사항",
-        "콘텐츠",
-        "콘텐츠 라인업",
-        "솔루션 소개",
-        "일반 광고",
-        "KBO리그 광고",
-        "TVING Labs",
-        "TVING Special",
-        "인사이트",
-        "마케팅 트렌드",
-        "성공 사례",
-        "개인정보처리방침",
-        "광고 문의하기",
-        "Advertise with Intelligence",
-        "TVING Ads",
-        "Why TVING",
-        "TVING NEWS",
-        "공지 사항",
-        "콘텐츠",
-        "콘텐츠 라인업",
-        "솔루션 소개",
-        "일반 광고",
-        "KBO리그 광고",
-        "TVING Labs",
-        "TVING Special",
-        "인사이트",
-        "마케팅 트렌드",
-        "성공 사례",
-        "개인정보처리방침",
-        "광고 문의하기"
+        "서바이벌"
       ],
-      "rating": "19",
+      "rating": null,
       "ott": "tving",
       "is_original": true,
       "availability_status": null,
-      "source_badge": "T ORIGINAL/T ORIGINAL",
+      "source_badge": "T ONLY",
       "trailer_url": null,
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-13",
         "needs_review": false
       }
     }
