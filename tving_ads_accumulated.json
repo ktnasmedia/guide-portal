@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T19:14:40.095834",
+  "generated_at": "2026-07-22T19:07:35.389704",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -235,14 +235,14 @@
       "ott": "tving",
       "is_original": false,
       "availability_status": null,
-      "source_badge": "T/W",
+      "source_badge": null,
       "trailer_url": "https://youtu.be/A8G0Z-Mc6Dc?si=TM4QSCCsrC1u4NcR",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-07",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -285,7 +285,7 @@
       "content_id": "tvingads-tving-콩콩팜팜",
       "title": "콩콩팜팜",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
+      "poster_url": null,
       "cast": [
         "이광수",
         "김우빈",
@@ -311,7 +311,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -319,7 +319,7 @@
       "content_id": "tvingads-tving-스트릿레스토랑파이터",
       "title": "스트릿 레스토랑 파이터",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
+      "poster_url": null,
       "cast": [
         "이연복",
         "에드워드권",
@@ -346,7 +346,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -379,7 +379,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -448,7 +448,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -539,16 +539,16 @@
       ],
       "rating": null,
       "ott": "tving",
-      "is_original": true,
+      "is_original": false,
       "availability_status": null,
-      "source_badge": "전체/T ONLY",
+      "source_badge": "전체",
       "trailer_url": null,
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-05",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -556,7 +556,7 @@
       "content_id": "tvingads-tving-도깨비10주년여행",
       "title": "도깨비 10주년 여행",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/2Jc33vl2hp7yfDS6mBTdfBTmRws.webp",
+      "poster_url": null,
       "cast": [
         "공유",
         "김고은",
@@ -583,7 +583,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -617,7 +617,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-19",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -625,7 +625,7 @@
       "content_id": "tvingads-tving-샤먼:미신전",
       "title": "샤먼 : 미신전",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/XEfp3v4jUKUaGVPpnAXf4E6ruvc.webp",
+      "poster_url": null,
       "cast": [
         "신하균",
         "한예리"
@@ -650,7 +650,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -817,7 +817,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -901,7 +901,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -936,7 +936,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -970,7 +970,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1000,7 +1000,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1036,7 +1036,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1062,16 +1062,16 @@
       ],
       "rating": "15",
       "ott": "tving",
-      "is_original": true,
+      "is_original": false,
       "availability_status": null,
-      "source_badge": "T ONLY",
+      "source_badge": null,
       "trailer_url": "https://youtu.be/R_6htsZ4US0?si=nCIrrBs2xIgttUFf",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-12",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1112,7 +1112,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1146,7 +1146,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1181,7 +1181,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     },
@@ -1217,7 +1217,76 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-07-21",
+        "last_updated": "2026-07-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-야구여왕2",
+      "title": "야구여왕2",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "추신수",
+        "이대형",
+        "윤석민"
+      ],
+      "release_date": "2026-07-02",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "국내를 넘어서 세계로 간다! 과연 블랙퀸즈는 모든 시련을 이겨내고 진정한 '야구여왕'으로 거듭날 수 있을까? 더 강해진 여왕들의 본격 야구 생존기!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": "https://youtu.be/Im7BcuwPrCs?si=bPHITz3PTCmteZhc",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-짐쌀라비움",
+      "title": "짐쌀라비움",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/CO7I9SUtZgLsHkODRM6Zx5KiZyI.webp",
+      "cast": [
+        "원지",
+        "가비",
+        "이시안",
+        "하리무"
+      ],
+      "release_date": "2026-08-01",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-07-22",
         "needs_review": false
       }
     }
