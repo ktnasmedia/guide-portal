@@ -545,7 +545,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           </div>
           <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
             <input id="rn-unified-search" type="text" placeholder="제목·내용 검색 (넷플릭스+티빙)" oninput="rnUnifiedPage=1; rnUnifiedRender()"
-              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:220px;font-family:'Noto Sans KR',sans-serif;">
+              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
           </div>
           <div id="rn-unified-loading" style="text-align:center;padding:40px 0;">
             <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
@@ -583,7 +583,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
             <div id="rn-tving-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
             <input id="rn-tving-search" type="text" placeholder="제목·내용 검색" oninput="rnTvingPage=1; rnTvingRender()"
-              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
+              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
           </div>
 
           <!-- 목록 -->
@@ -621,7 +621,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
           <div id="rn-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
           <input id="rn-search" type="text" placeholder="제목·내용 검색" oninput="rnNetflixSearch()"
-            style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:160px;font-family:'Noto Sans KR',sans-serif;">
+            style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
         </div>
 
         <!-- 릴리즈 노트 카드 목록 -->
@@ -2798,7 +2798,13 @@ async function rnTvingLoad(force){
 }
 
 function rnTvingBuildFilter(){
+  // 카테고리 표시 순서 (지정 순서)
+  var catOrder = ['공지', '솔루션', '프로모션', '시스템', '콘텐츠', '기타'];
+  var present = {};
+  rnTvingData.forEach(function(n){ present[(n.category || '기타').trim()] = true; });
   var cats = ['전체'];
+  catOrder.forEach(function(c){ if(present[c]) cats.push(c); });
+  // 지정 순서에 없는 카테고리가 데이터에 있으면 뒤에 추가 (누락 방지)
   rnTvingData.forEach(function(n){
     var c = (n.category || '기타').trim();
     if(cats.indexOf(c) === -1) cats.push(c);
@@ -3083,10 +3089,17 @@ async function sheetsLoadNotes() {
 
     // 필터 바 생성
     const filterBar = document.getElementById('rn-filter-bar');
-    const allCats   = ['전체', '리포트', '정책', '프로모션', '상품', '가이드(제작)', '가이드(운영)', '기타'];
+    // 카테고리 표시 순서 (지정 순서)
+    const catOrder = ['정책', '가이드(제작)', '가이드(운영)', '상품', '프로모션', '리포트', '기타'];
     if (filterBar) {
-      // 실제 데이터에 있는 카테고리만 표시
+      // 실제 데이터에 있는 카테고리만, 지정된 순서대로 표시
+      const present = {};
+      allNotes.forEach(function(n) { present[n.category] = true; });
       const usedCats = ['전체'];
+      catOrder.forEach(function(cat) {
+        if (present[cat]) usedCats.push(cat);
+      });
+      // 지정 순서에 없는 카테고리가 데이터에 있으면 뒤에 추가 (누락 방지)
       allNotes.forEach(function(n) {
         if (usedCats.indexOf(n.category) === -1) usedCats.push(n.category);
       });
