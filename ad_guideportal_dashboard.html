@@ -186,10 +186,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .proc-sub-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
 .proc-sub-btn.proc-sub-on{background:rgba(229,9,20,0.15);border-color:var(--red);color:#ff6b6b;}
 .rn-media-bar{display:flex;align-items:center;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
-.rn-media-btn{font-size:13px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-card);cursor:pointer;transition:all 0.18s;}
+.rn-media-btn.sub-tab{border-radius:0;background:transparent;border:none;border-bottom:2px solid transparent;font-weight:500;}
 .rn-media-btn:hover{color:var(--gray-hi);border-color:#3a3a3a;}
-.rn-media-btn.rn-media-on{background:var(--red);border-color:var(--red);color:#fff;}
-.rn-media-btn[data-rnmedia="tving_wavve"].rn-media-on{background:linear-gradient(90deg,#ff153c,#1351f9);border-color:#ff153c;color:#fff;}
+.rn-media-btn.rn-media-on{background:transparent;color:var(--white);border-bottom:2px solid var(--red);}
+.rn-media-btn[data-rnmedia="tving_wavve"].rn-media-on{background:transparent;border-bottom:2px solid var(--red);color:var(--white);}
 .calc-cal-empty{padding:7px 0;}
 .calc-cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:0.5px solid var(--border);font-size:10px;color:var(--gray-low);align-items:center;}
 .calc-dot{display:inline-block;width:8px;height:8px;border-radius:2px;vertical-align:middle;margin-right:3px;}
@@ -530,19 +530,22 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
       <div id="tc-updates-release-notes">
 
-        <!-- 매체 버튼 -->
-        <div class="rn-media-bar">
-          <span class="cl-filter-label">매체</span>
-          <div class="rn-media-btn rn-media-on" data-rnmedia="all" onclick="rnSelectMedia(this)">통합</div>
-          <div class="rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
-          <div class="rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
+        <!-- 매체 탭 (밑줄형, 포탈 전체 통일) -->
+        <div class="sub-tab-bar">
+          <div class="sub-tab tab-active rn-media-btn rn-media-on" data-rnmedia="all" onclick="rnSelectMedia(this)">통합</div>
+          <div class="sub-tab rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
+          <div class="sub-tab rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
         </div>
 
         <!-- 통합 공지사항 (넷플릭스 + 티빙·웨이브, 최신순) -->
         <div id="rn-unified-wrap">
           <div class="section-bar" style="margin-bottom:14px;">
             <div class="section-accent"></div>
-            <span class="section-label">전체 공지 · 최신순 · 클릭하면 해당 매체 공지로 이동</span>
+            <span class="section-label">최신순 · 클릭하면 해당 매체 공지로 이동</span>
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+            <input id="rn-unified-search" type="text" placeholder="제목·내용 검색 (넷플릭스+티빙)" oninput="rnUnifiedPage=1; rnUnifiedRender()"
+              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;color:var(--white);min-width:220px;font-family:'Noto Sans KR',sans-serif;">
           </div>
           <div id="rn-unified-loading" style="text-align:center;padding:40px 0;">
             <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
@@ -2522,7 +2525,9 @@ function lib_searchClear(){
 function rnSelectMedia(el){
   const m = el.getAttribute('data-rnmedia');
   document.querySelectorAll('.rn-media-btn[data-rnmedia]').forEach(function(b){
-    b.classList.toggle('rn-media-on', b === el);
+    var on = (b === el);
+    b.classList.toggle('rn-media-on', on);
+    b.classList.toggle('tab-active', on);
   });
   const nf = document.getElementById('rn-netflix-wrap');
   const tv = document.getElementById('rn-tving-wrap');
@@ -2586,14 +2591,14 @@ function rnUnifiedItems(){
   rnNetflixNotes.forEach(function(n){
     items.push({
       media: 'netflix', mediaLabel: '넷플릭스',
-      title: n.title, category: n.category || '기타',
+      title: n.title, category: n.category || '기타', body: n.body || '',
       ver: n.ver || '', date: rnParseFlexDate(n.date), rawDate: n.date
     });
   });
   rnTvingData.forEach(function(n){
     items.push({
       media: 'tving_wavve', mediaLabel: '티빙·웨이브',
-      title: n.title, category: n.category || '기타',
+      title: n.title, category: n.category || '기타', body: n.body || '',
       ver: '', date: rnParseFlexDate(n.date), rawDate: n.date
     });
   });
@@ -2607,13 +2612,30 @@ function rnUnifiedItems(){
   return items;
 }
 
+// 검색 필터까지 적용된 통합 목록 (렌더·클릭 이동 공용 — 인덱스 일치 보장)
+function rnUnifiedFilteredItems(){
+  var items = rnUnifiedItems();
+  var searchEl = document.getElementById('rn-unified-search');
+  var q = searchEl ? searchEl.value.trim().toLowerCase() : '';
+  if(q){
+    items = items.filter(function(it){
+      var hay = (it.title + ' ' + it.category + ' ' + (it.body||'') + ' ' + it.mediaLabel + ' ' + (it.ver||'')).toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+  }
+  return items;
+}
+
 function rnUnifiedRender(){
   var listEl = document.getElementById('rn-unified-list');
   var pagerEl = document.getElementById('rn-unified-pager');
   if(!listEl) return;
-  var items = rnUnifiedItems();
+  var searchEl = document.getElementById('rn-unified-search');
+  var q = searchEl ? searchEl.value.trim() : '';
+  var items = rnUnifiedFilteredItems();
+
   if(!items.length){
-    listEl.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지가 없습니다.</div>';
+    listEl.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">' + (q ? '검색 결과가 없습니다.' : '표시할 공지가 없습니다.') + '</div>';
     if(pagerEl) pagerEl.innerHTML = '';
     return;
   }
@@ -2686,7 +2708,7 @@ function rnUnifiedGoPage(p){
 
 // 통합 뷰 항목 클릭 → 해당 매체 탭으로 이동
 function rnUnifiedGo(globalIdx){
-  var items = rnUnifiedItems();
+  var items = rnUnifiedFilteredItems();
   var it = items[globalIdx];
   if(!it) return;
   var btn = document.querySelector('.rn-media-btn[data-rnmedia="' + it.media + '"]');
