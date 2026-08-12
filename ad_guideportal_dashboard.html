@@ -533,8 +533,25 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <!-- 매체 버튼 -->
         <div class="rn-media-bar">
           <span class="cl-filter-label">매체</span>
-          <div class="rn-media-btn rn-media-on" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
+          <div class="rn-media-btn rn-media-on" data-rnmedia="all" onclick="rnSelectMedia(this)">통합</div>
+          <div class="rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
           <div class="rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
+        </div>
+
+        <!-- 통합 공지사항 (넷플릭스 + 티빙·웨이브, 최신순) -->
+        <div id="rn-unified-wrap">
+          <div class="section-bar" style="margin-bottom:14px;">
+            <div class="section-accent"></div>
+            <span class="section-label">전체 공지 · 최신순</span>
+          </div>
+          <div id="rn-unified-loading" style="text-align:center;padding:40px 0;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
+              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+              <span style="font-size:13px;color:var(--gray-low);">공지를 불러오는 중...</span>
+            </div>
+          </div>
+          <div id="rn-unified-list"></div>
+          <div id="rn-unified-pager" style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;"></div>
         </div>
 
         <!-- 티빙·웨이브 공지사항 (목록형) -->
@@ -571,7 +588,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         </div>
 
         <!-- 넷플릭스 공지사항 (기존) -->
-        <div id="rn-netflix-wrap">
+        <div id="rn-netflix-wrap" style="display:none;">
 
         <!-- 헤더 바 -->
         <div class="section-bar" style="margin-bottom:14px;">
@@ -2509,13 +2526,202 @@ function rnSelectMedia(el){
   });
   const nf = document.getElementById('rn-netflix-wrap');
   const tv = document.getElementById('rn-tving-wrap');
+  const un = document.getElementById('rn-unified-wrap');
   if(m === 'tving_wavve'){
     if(nf) nf.style.display = 'none';
     if(tv) tv.style.display = 'block';
+    if(un) un.style.display = 'none';
     rnTvingLoad();
-  } else {
+  } else if(m === 'netflix'){
     if(nf) nf.style.display = 'block';
     if(tv) tv.style.display = 'none';
+    if(un) un.style.display = 'none';
+  } else {
+    // 통합 뷰
+    if(nf) nf.style.display = 'none';
+    if(tv) tv.style.display = 'none';
+    if(un) un.style.display = 'block';
+    rnUnifiedLoad();
+  }
+}
+
+// ── 통합 공지 뷰 (넷플릭스 + 티빙·웨이브, 최신순) ──
+var rnNetflixNotes = [];   // 넷플릭스 개별 공지 (시트 로드 시 채워짐)
+var rnUnifiedPage  = 1;
+var RN_UNIFIED_PER = 20;
+
+// 날짜 문자열 → Date (두 형식 모두 처리: '2026. 6. 29' / '2026-08-09' / '2026.6.29')
+function rnParseFlexDate(s){
+  s = (s || '').trim();
+  var m = /(\d{4})\s*[.\-\/]\s*(\d{1,2})\s*[.\-\/]\s*(\d{1,2})/.exec(s);
+  if(!m) return null;
+  var d = new Date(parseInt(m[1],10), parseInt(m[2],10)-1, parseInt(m[3],10));
+  return isNaN(d.getTime()) ? null : d;
+}
+function rnFmtDateFromObj(d){
+  if(!d) return '';
+  return d.getFullYear() + '.' + ('0'+(d.getMonth()+1)).slice(-2) + '.' + ('0'+d.getDate()).slice(-2);
+}
+
+// 통합 뷰 진입: 두 데이터 확보 후 렌더
+async function rnUnifiedLoad(){
+  var loading = document.getElementById('rn-unified-loading');
+  if(loading) loading.style.display = 'block';
+  // 넷플릭스: 아직 안 불러왔으면 시트 로드
+  if(!rnNetflixNotes.length){
+    try { await sheetsLoadNotes(); } catch(e){}
+  }
+  // 티빙: 아직 안 불러왔으면 로드
+  if(!rnTvingData.length){
+    try { await rnTvingLoad(); } catch(e){}
+  }
+  if(loading) loading.style.display = 'none';
+  rnUnifiedPage = 1;
+  rnUnifiedRender();
+}
+
+// 두 매체 공지를 하나로 합쳐 최신순 정렬한 배열 반환
+function rnUnifiedItems(){
+  var items = [];
+  rnNetflixNotes.forEach(function(n){
+    items.push({
+      media: 'netflix', mediaLabel: '넷플릭스',
+      title: n.title, category: n.category || '기타',
+      ver: n.ver || '', date: rnParseFlexDate(n.date), rawDate: n.date
+    });
+  });
+  rnTvingData.forEach(function(n){
+    items.push({
+      media: 'tving_wavve', mediaLabel: '티빙·웨이브',
+      title: n.title, category: n.category || '기타',
+      ver: '', date: rnParseFlexDate(n.date), rawDate: n.date
+    });
+  });
+  // 날짜 있는 것 우선, 최신순. 날짜 없는 건 뒤로.
+  items.sort(function(a,b){
+    if(a.date && b.date) return b.date - a.date;
+    if(a.date) return -1;
+    if(b.date) return 1;
+    return 0;
+  });
+  return items;
+}
+
+function rnUnifiedRender(){
+  var listEl = document.getElementById('rn-unified-list');
+  var pagerEl = document.getElementById('rn-unified-pager');
+  if(!listEl) return;
+  var items = rnUnifiedItems();
+  if(!items.length){
+    listEl.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지가 없습니다.</div>';
+    if(pagerEl) pagerEl.innerHTML = '';
+    return;
+  }
+  var totalPages = Math.ceil(items.length / RN_UNIFIED_PER);
+  if(rnUnifiedPage > totalPages) rnUnifiedPage = totalPages;
+  var start = (rnUnifiedPage - 1) * RN_UNIFIED_PER;
+  var pageItems = items.slice(start, start + RN_UNIFIED_PER);
+
+  var catColor = { '정책':'accent', '상품':'warning', '리포트':'success', '요금':'accent', '운영':'success' };
+
+  var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
+  pageItems.forEach(function(it, idx){
+    var mediaBg = it.media === 'netflix' ? 'rgba(226,75,74,0.13)' : 'rgba(255,107,107,0.13)';
+    var mediaFg = it.media === 'netflix' ? '#A32D2D' : '#c0392b';
+    var globalIdx = start + idx;
+    var verHtml = it.ver ? ' <span style="font-size:11px;color:var(--gray-dim);">' + clEsc(it.ver) + '</span>' : '';
+    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" style="display:grid;grid-template-columns:76px 52px 1fr 82px 16px;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;" '
+      + 'onmouseover="this.style.borderColor=\'#6a6a6a\'" onmouseout="this.style.borderColor=\'\'">'
+      + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + mediaBg + ';color:' + mediaFg + ';text-align:center;white-space:nowrap;">' + it.mediaLabel + '</span>'
+      + '<span class="cat-badge" style="text-align:center;">' + clEsc(it.category) + '</span>'
+      + '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-size:14px;color:var(--white);">' + clEsc(it.title) + '</span>' + verHtml + '</span>'
+      + '<span style="font-size:12px;color:var(--gray-dim);text-align:right;white-space:nowrap;">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate||'미정')) + '</span>'
+      + '<span style="color:var(--gray-dim);font-size:14px;text-align:center;">›</span>'
+      + '</div>';
+  });
+  html += '</div>';
+  listEl.innerHTML = html;
+
+  // 페이지네이션
+  if(pagerEl){
+    if(totalPages <= 1){ pagerEl.innerHTML = ''; }
+    else {
+      var pg = '';
+      pg += '<span onclick="rnUnifiedGoPage(' + Math.max(1,rnUnifiedPage-1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">‹</span>';
+      var win = 7;
+      var s = Math.max(1, rnUnifiedPage - 3);
+      var e = Math.min(totalPages, s + win - 1);
+      s = Math.max(1, e - win + 1);
+      for(var p=s; p<=e; p++){
+        if(p === rnUnifiedPage){
+          pg += '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>';
+        } else {
+          pg += '<span onclick="rnUnifiedGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-low);cursor:pointer;">' + p + '</span>';
+        }
+      }
+      pg += '<span onclick="rnUnifiedGoPage(' + Math.min(totalPages,rnUnifiedPage+1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">›</span>';
+      pagerEl.innerHTML = pg;
+    }
+  }
+}
+
+function rnUnifiedGoPage(p){
+  rnUnifiedPage = p;
+  rnUnifiedRender();
+  var top = document.getElementById('rn-unified-wrap');
+  if(top) top.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// 통합 뷰 항목 클릭 → 해당 매체 탭으로 이동
+function rnUnifiedGo(globalIdx){
+  var items = rnUnifiedItems();
+  var it = items[globalIdx];
+  if(!it) return;
+  var btn = document.querySelector('.rn-media-btn[data-rnmedia="' + it.media + '"]');
+  if(btn) rnSelectMedia(btn);
+  // 해당 매체 탭에서 그 공지를 강조/펼침
+  setTimeout(function(){
+    if(it.media === 'tving_wavve'){
+      rnTvingHighlight(it.title);
+    } else {
+      rnNetflixHighlight(it.ver, it.title);
+    }
+  }, 300);
+}
+
+// 티빙 탭에서 특정 제목 공지로 스크롤·강조
+function rnTvingHighlight(title){
+  var list = document.getElementById('rn-tving-list');
+  if(!list) return;
+  var cards = list.children;
+  for(var i=0;i<cards.length;i++){
+    if(cards[i].textContent && cards[i].textContent.indexOf(title) !== -1){
+      cards[i].scrollIntoView({behavior:'smooth', block:'center'});
+      var el = cards[i];
+      el.style.transition = 'background 0.3s';
+      el.style.background = 'rgba(229,9,20,0.10)';
+      setTimeout(function(){ el.style.background=''; }, 1800);
+      break;
+    }
+  }
+}
+
+// 넷플릭스 탭에서 특정 버전으로 스크롤·강조
+function rnNetflixHighlight(ver, title){
+  var list = document.getElementById('rn-list');
+  if(!list) return;
+  var cards = list.querySelectorAll('.rn-card, [data-rnver]');
+  var target = null;
+  for(var i=0;i<cards.length;i++){
+    var dv = cards[i].getAttribute && cards[i].getAttribute('data-rnver');
+    if(dv && dv === ver){ target = cards[i]; break; }
+    if(!dv && cards[i].textContent && ver && cards[i].textContent.indexOf(ver) !== -1){ target = cards[i]; break; }
+  }
+  if(target){
+    target.scrollIntoView({behavior:'smooth', block:'center'});
+    target.style.transition = 'background 0.3s';
+    target.style.background = 'rgba(229,9,20,0.08)';
+    setTimeout(function(){ target.style.background=''; }, 1800);
   }
 }
 
@@ -2815,6 +3021,11 @@ async function sheetsLoadNotes() {
       }
     });
     const versions = versionOrder.map(function(v) { return versionMap[v]; });
+
+    // 통합 뷰용: 넷플릭스 개별 공지 저장 (제목행 제외, 실제 공지만)
+    rnNetflixNotes = allNotes.filter(function(n){
+      return !n.title.match(/넷플릭스\s*광고\s*공지사항\s*v/i);
+    });
 
     document.getElementById('rn-loading').style.display     = 'none';
 
@@ -3125,7 +3336,8 @@ async function sheetsLoadNotes() {
 
 // 릴리즈 노트 탭 진입 시 자동 로드
 function onReleaseNotesTabEnter() {
-  sheetsLoadNotes();
+  // 기본은 통합 뷰 (넷플릭스 + 티빙·웨이브 최신순)
+  rnUnifiedLoad();
 }
 
 // 초기 렌더 — URL 해시가 있으면 해당 탭, 없으면 공지사항
