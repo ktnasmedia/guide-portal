@@ -49,6 +49,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* Sidebar */
 .sidebar{width:242px;flex-shrink:0;background:var(--black-soft);border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;}
 .sidebar-section-label{font-size:9.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-dim);padding:20px 18px 8px;}
+
 .nav-hidden{display:none !important;}
 
 /* nav-item: 대분류 */
@@ -70,10 +71,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .sub-menu{overflow:hidden;transition:max-height 0.3s ease;}
 .sub-menu.collapsed{max-height:0;}
 .sub-menu.expanded{max-height:300px;}
-
-.sidebar-footer{margin-top:auto;padding:16px 18px;border-top:1px solid var(--border);}
-.sidebar-footer-label{font-size:10px;color:var(--gray-dim);margin-bottom:3px;}
-.sidebar-footer-val{font-size:11px;color:var(--gray-low);font-family:'Noto Sans KR',sans-serif;}
 
 /* Main */
 .main-wrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
@@ -542,10 +539,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
-  <div class="sidebar-footer">
-    <div class="sidebar-footer-label">마지막 업데이트</div>
-    <div class="sidebar-footer-val">2025.06.01</div>
-  </div>
 </aside>
 
 <!-- Main -->
