@@ -378,7 +378,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-section:last-child{border-bottom:none;}
 .rn-section-left{padding:18px 20px;border-right:1px solid var(--border);background:rgba(255,255,255,0.02);}
 .rn-section-right{padding:18px 20px;}
-.rn-section-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.5;}
+.rn-section-title{font-size:14px;font-weight:400;color:var(--white);margin-bottom:8px;line-height:1.5;}
 .rn-section-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:0.03em;}
 .rn-tag-update{background:rgba(245,158,11,0.15);color:#FCD34D;border:1px solid rgba(245,158,11,0.3);}
 .rn-tag-remind{background:rgba(251,146,60,0.15);color:#FB923C;border:1px solid rgba(251,146,60,0.3);}
@@ -543,6 +543,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="section-bar" style="margin-bottom:14px;">
             <div class="section-accent"></div>
             <span class="section-label">전체 공지 · 최신순</span>
+            <span style="margin-left:8px;font-size:11px;color:var(--gray-low);font-family:'Noto Sans KR',sans-serif;">· 클릭하면 해당 매체 공지로 이동</span>
           </div>
           <div id="rn-unified-loading" style="text-align:center;padding:40px 0;">
             <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
@@ -2622,20 +2623,32 @@ function rnUnifiedRender(){
   var start = (rnUnifiedPage - 1) * RN_UNIFIED_PER;
   var pageItems = items.slice(start, start + RN_UNIFIED_PER);
 
-  var catColor = { '정책':'accent', '상품':'warning', '리포트':'success', '요금':'accent', '운영':'success' };
+  // 카테고리별 배지 색 (배경, 글자) — 없는 카테고리는 회색 기본
+  var catColor = {
+    '정책':   {bg:'rgba(55,138,221,0.15)',  fg:'#7db4ec'},
+    '상품':   {bg:'rgba(239,159,39,0.15)',  fg:'#e0a94b'},
+    '솔루션': {bg:'rgba(239,159,39,0.15)',  fg:'#e0a94b'},
+    '리포트': {bg:'rgba(99,153,34,0.15)',   fg:'#8fc158'},
+    '요금':   {bg:'rgba(55,138,221,0.15)',  fg:'#7db4ec'},
+    '운영':   {bg:'rgba(99,153,34,0.15)',   fg:'#8fc158'},
+    '공지':   {bg:'rgba(127,119,221,0.15)', fg:'#a79ff0'},
+    '프로모션':{bg:'rgba(212,83,126,0.15)', fg:'#d47ba0'},
+    '가이드': {bg:'rgba(136,135,128,0.18)', fg:'#b4b2a9'}
+  };
 
   var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
   pageItems.forEach(function(it, idx){
     var mediaBg = it.media === 'netflix' ? 'rgba(226,75,74,0.13)' : 'rgba(255,107,107,0.13)';
-    var mediaFg = it.media === 'netflix' ? '#A32D2D' : '#c0392b';
+    var mediaFg = it.media === 'netflix' ? '#e06a6a' : '#e57a7a';
+    var cc = catColor[it.category] || {bg:'rgba(136,135,128,0.18)', fg:'#b4b2a9'};
     var globalIdx = start + idx;
     var verHtml = it.ver ? ' <span style="font-size:11px;color:var(--gray-dim);">' + clEsc(it.ver) + '</span>' : '';
-    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" style="display:grid;grid-template-columns:76px 52px 1fr 82px 16px;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;" '
-      + 'onmouseover="this.style.borderColor=\'#6a6a6a\'" onmouseout="this.style.borderColor=\'\'">'
+    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" style="display:grid;grid-template-columns:78px 64px 1fr 82px 16px;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color 0.15s;" '
+      + 'onmouseover="this.style.borderColor=\'rgba(255,255,255,0.22)\'" onmouseout="this.style.borderColor=\'var(--border)\'">'
       + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + mediaBg + ';color:' + mediaFg + ';text-align:center;white-space:nowrap;">' + it.mediaLabel + '</span>'
-      + '<span class="cat-badge" style="text-align:center;">' + clEsc(it.category) + '</span>'
+      + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + cc.bg + ';color:' + cc.fg + ';text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + clEsc(it.category) + '</span>'
       + '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-size:14px;color:var(--white);">' + clEsc(it.title) + '</span>' + verHtml + '</span>'
-      + '<span style="font-size:12px;color:var(--gray-dim);text-align:right;white-space:nowrap;">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate||'미정')) + '</span>'
+      + '<span style="font-size:12px;color:var(--gray-low);text-align:right;white-space:nowrap;">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate||'미정')) + '</span>'
       + '<span style="color:var(--gray-dim);font-size:14px;text-align:center;">›</span>'
       + '</div>';
   });
@@ -2832,7 +2845,7 @@ function rnTvingRender(){
     html += '<div style="border-bottom:1px solid var(--border);">'
       + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:14px;cursor:pointer;align-items:center;">'
       +   '<div><span class="cat-badge" style="background:' + color + '22;color:' + color + ';">' + clEsc(n.category||'기타') + '</span></div>'
-      +   '<div style="font-size:13px;color:var(--white);line-height:1.5;">' + safeTitle + newBadge + '</div>'
+      +   '<div style="font-size:14px;color:var(--white);line-height:1.5;">' + safeTitle + newBadge + '</div>'
       +   '<div style="text-align:right;font-size:12px;color:var(--gray-low);">' + dateDisp + '</div>'
       + '</div>';
     if(open){
@@ -3169,7 +3182,7 @@ async function sheetsLoadNotes() {
           const leftDiv = document.createElement('div');
           leftDiv.style.cssText = 'padding:16px 18px;border-right:1px solid var(--border);background:rgba(255,255,255,0.02);';
           const titleEl = document.createElement('div');
-          titleEl.style.cssText = 'font-size:13px;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.5;';
+          titleEl.style.cssText = 'font-size:14px;font-weight:400;color:var(--white);margin-bottom:8px;line-height:1.5;';
           titleEl.textContent = cleanTitle;
           const catEl = document.createElement('span');
           catEl.style.cssText = 'display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;' +
