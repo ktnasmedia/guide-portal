@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11T18:56:12.242661",
+  "generated_at": "2026-08-12T18:56:59.413783",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -285,7 +285,7 @@
       "content_id": "tvingads-tving-콩콩팜팜",
       "title": "콩콩팜팜",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
+      "poster_url": null,
       "cast": [
         "이광수",
         "김우빈",
@@ -311,7 +311,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -319,7 +319,7 @@
       "content_id": "tvingads-tving-스트릿레스토랑파이터",
       "title": "스트릿 레스토랑 파이터",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
+      "poster_url": null,
       "cast": [
         "이연복",
         "에드워드권",
@@ -346,7 +346,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-04",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -591,7 +591,7 @@
       "content_id": "tvingads-tving-오싹한연애",
       "title": "오싹한 연애",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/jWKCXBrrNFNm1BxxUXs2xik98Y.webp",
+      "poster_url": null,
       "cast": [
         "박은빈",
         "양세종",
@@ -617,7 +617,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -790,7 +790,7 @@
       "content_id": "tvingads-tving-우주떡집",
       "title": "우주떡집",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/32pHJ3u75tIrUFUM65U2ih6duxg.webp",
+      "poster_url": null,
       "cast": [
         "이은지",
         "이영지",
@@ -817,7 +817,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -936,7 +936,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -944,7 +944,7 @@
       "content_id": "tvingads-tving-로또1등도출근합니다",
       "title": "로또 1등도 출근합니다",
       "title_original": null,
-      "poster_url": null,
+      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
       "cast": [
         "이준혁",
         "서현우",
@@ -953,24 +953,24 @@
       "release_date": "2026-09-10",
       "release_year": 2026,
       "release_quarter": "2026 Q3",
-      "summary": null,
+      "summary": "위아래로 치이며 하루하루를 버티던 팀장 ‘공은태’가 로또 1등에 당첨된 후 사직서 대신 당첨금 13억을 품고 이전과는 다른 마음가짐으로 출근하는 K-직장인 오피스 드라마",
       "content_type": "드라마",
       "genres": [
         "드라마",
         "오피스 #웹툰원작"
       ],
-      "rating": null,
+      "rating": "15",
       "ott": "tving",
       "is_original": false,
       "availability_status": null,
       "source_badge": null,
-      "trailer_url": null,
+      "trailer_url": "https://youtu.be/UuhWr0shq88?si=iXrL6ncd-2mtbEmT",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1008,7 +1008,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1044,7 +1044,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1052,7 +1052,7 @@
       "content_id": "tvingads-tving-그대에게드림",
       "title": "그대에게 드림",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/MmDfOf1ti84QxPPT4KNOlqxeRoc.webp",
+      "poster_url": null,
       "cast": [
         "황인엽",
         "이혜리",
@@ -1079,7 +1079,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1120,7 +1120,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1154,7 +1154,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1162,7 +1162,7 @@
       "content_id": "tvingads-tving-언니네산지직송3",
       "title": "언니네 산지직송3",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/b6XsonvEO4eohiAopTbm5znlIuU.webp",
+      "poster_url": null,
       "cast": [
         "염정아",
         "김선영",
@@ -1189,7 +1189,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1225,7 +1225,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1233,7 +1233,7 @@
       "content_id": "tvingads-tving-야구여왕2",
       "title": "야구여왕2",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/fD3lRiX2b7tj7jJLxD1KDAURSM.webp",
+      "poster_url": null,
       "cast": [
         "추신수",
         "이대형",
@@ -1259,7 +1259,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1267,7 +1267,7 @@
       "content_id": "tvingads-tving-짐쌀라비움",
       "title": "짐쌀라비움",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/CO7I9SUtZgLsHkODRM6Zx5KiZyI.webp",
+      "poster_url": null,
       "cast": [
         "원지",
         "가비",
@@ -1294,7 +1294,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1330,7 +1330,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     },
@@ -1367,7 +1367,134 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-11",
+        "last_updated": "2026-08-12",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-그래,이혼하자",
+      "title": "그래, 이혼하자",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
+      "cast": [
+        "이민정",
+        "김지석",
+        "이현진",
+        "이진이",
+        "오연아",
+        "정의제",
+        "왕빛나",
+        "안내상",
+        "구성환",
+        "문희경",
+        "임연우"
+      ],
+      "release_date": "2026-08-20",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "지칠 대로 지친 결혼 생활에 종지부를 찍기 위한 웨딩드레스샵 대표 부부의 리얼 이혼 체험기",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": "https://youtu.be/nhi_usXk9hA?si=yvZ4Fc-OzQNG26i6",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-12",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-신병4:사보타주",
+      "title": "신병4 : 사보타주",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/ax8tILprmeTPLpO2J5ch5RF9RA.webp",
+      "cast": [
+        "김민호",
+        "김동준",
+        "오대환",
+        "이현균",
+        "이원정",
+        "남태우",
+        "이수지",
+        "김요한",
+        "이충구",
+        "..."
+      ],
+      "release_date": "2026-08-24",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "계급이 오르고 고민도 늘어버린 상병 박민석! 미스터리 신병과 돌풍을 일으킬 대대장의 등장으로 그의 군생활은 전투 태세에 돌입한다!",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "밀리터리 #블랙코미디"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": "https://youtu.be/cUYr3MedD9A?si=xEsY5PQveI-Ihbi2",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-12",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-더커뮤니티2:보이지않는손",
+      "title": "더 커뮤니티 2 : 보이지 않는 손",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/ZlebMjOwxvGPcd2wcHURuT9mVdU.webp",
+      "cast": [
+        "김건희",
+        "넉스",
+        "박세승",
+        "박철현",
+        "승우아빠",
+        "신혜원",
+        "이수민",
+        "이재용",
+        "이지나",
+        "이한",
+        "이현선",
+        "임지은",
+        "정재호"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "서바이벌 #두뇌게임"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-12",
         "needs_review": false
       }
     }
