@@ -1234,7 +1234,54 @@ function navigate(page, tab) {
       titleEl.textContent = pageNames[page];
     }
   }
+
+  // 9) URL 해시 갱신 (북마크·링크공유·새로고침 대응)
+  //    형식: #page 또는 #page/tab (첫번째 기본탭이면 tab 생략)
+  updateUrlHash(page, targetTab, tabs);
 }
+
+// URL 해시를 현재 페이지/탭에 맞게 갱신 (히스토리에 남겨 뒤로가기 지원)
+let _suppressHashChange = false;  // navigate가 바꾼 해시를 hashchange가 되받지 않도록
+function updateUrlHash(page, tab, tabs) {
+  let hash = '#' + page;
+  // 하위탭이 있고, 첫번째(기본) 탭이 아닐 때만 /tab 추가
+  if (tab && tabs && tabs.length && tab !== tabs[0]) {
+    hash += '/' + tab;
+  }
+  if (('#' + location.hash.slice(1)) === hash) return; // 동일하면 갱신 안 함
+  _suppressHashChange = true;
+  location.hash = hash;
+  // 다음 tick에 플래그 해제 (hashchange 이벤트가 처리된 뒤)
+  setTimeout(function(){ _suppressHashChange = false; }, 0);
+}
+
+// URL 해시를 읽어 {page, tab} 로 파싱. 유효하지 않으면 null.
+function parseUrlHash() {
+  const raw = location.hash.replace(/^#/, '').trim();
+  if (!raw) return null;
+  const parts = raw.split('/');
+  const page = parts[0];
+  const tab = parts[1] || '';
+  // 유효한 페이지인지 검증
+  if (!pageTabMap.hasOwnProperty(page)) return null;
+  return { page: page, tab: tab };
+}
+
+// 해시로부터 화면 복원 (초기 로드 / 뒤로가기)
+function applyHashRoute() {
+  const route = parseUrlHash();
+  if (route) {
+    navigate(route.page, route.tab);
+  } else {
+    navigate('updates', '');
+  }
+}
+
+// 뒤로/앞으로 가기 대응
+window.addEventListener('hashchange', function() {
+  if (_suppressHashChange) return; // navigate가 방금 바꾼 해시면 무시
+  applyHashRoute();
+});
 
 // ── switchTab: 페이지 내 탭 전환 (같은 페이지 내) ──
 function switchTab(page, tab) {
@@ -3081,8 +3128,8 @@ function onReleaseNotesTabEnter() {
   sheetsLoadNotes();
 }
 
-// 초기 렌더
-navigate('updates','');
+// 초기 렌더 — URL 해시가 있으면 해당 탭, 없으면 공지사항
+applyHashRoute();
 
 </script>
 </body>
