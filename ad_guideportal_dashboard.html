@@ -1626,7 +1626,7 @@ function clGetFilteredRows(){
     if(eb) return -1;
     const da=new Date(ra), db=new Date(rb);
     const fa=da>now, fb=db>now;
-    if(fa&&fb) return da-db;
+    if(fa&&fb) return db-da;
     if(fa&&!fb) return -1;
     if(!fa&&fb) return 1;
     return db-da;
