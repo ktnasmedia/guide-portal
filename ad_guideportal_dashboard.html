@@ -3173,10 +3173,12 @@ async function sheetsLoadNotes() {
         verCard.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
         verCard.innerHTML =
           '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
-            '<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;flex-wrap:wrap;">' +
+            '<div style="display:flex;align-items:center;gap:8px;width:240px;min-width:240px;flex-shrink:0;">' +
               (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">NEW</span>' : '') +
-              '<span style="font-size:14px;font-weight:400;color:var(--white);flex-shrink:0;">' +
+              '<span style="font-size:14px;font-weight:400;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' +
                 escapeHtmlJS(cardTitle) + '</span>' +
+            '</div>' +
+            '<div style="flex:1;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">' +
               catBadges +
             '</div>' +
             '<div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">' +
