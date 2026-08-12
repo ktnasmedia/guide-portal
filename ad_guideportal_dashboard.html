@@ -194,7 +194,29 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .calc-cal-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:11px;padding-top:10px;border-top:0.5px solid var(--border);font-size:10px;color:var(--gray-low);align-items:center;}
 .calc-dot{display:inline-block;width:8px;height:8px;border-radius:2px;vertical-align:middle;margin-right:3px;}
 .calc-notes{font-size:11px;color:var(--gray-low);line-height:1.8;background:rgba(255,255,255,0.03);border-radius:8px;padding:12px 14px;}
-@media(max-width:640px){.calc-media-grid{grid-template-columns:1fr;}}
+
+/* 모바일 네비 - 기본(데스크톱)은 숨김 */
+.mobile-hamburger{display:none;background:none;border:none;color:var(--gray-hi);cursor:pointer;padding:6px;margin-right:6px;align-items:center;justify-content:center;}
+.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:40;}
+
+@media(max-width:640px){
+  .calc-media-grid{grid-template-columns:1fr;}
+  /* 햄버거 버튼 노출 */
+  .mobile-hamburger{display:flex;}
+  /* 사이드바: 화면 밖으로 숨겼다가 .open 시 슬라이드 */
+  .sidebar{position:fixed;top:0;left:0;bottom:0;z-index:50;transform:translateX(-100%);transition:transform 0.25s ease;box-shadow:2px 0 16px rgba(0,0,0,0.5);width:260px;}
+  .sidebar.open{transform:translateX(0);}
+  .mobile-nav-overlay.open{display:block;}
+  /* 콘텐츠 영역 여백 축소 */
+  .main-content{padding:18px 14px;}
+  /* 콘텐츠 라인업 2열 */
+  .cl-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .cl-poster{max-height:none;}
+  .cl-card-body{padding:10px 11px;}
+  /* GNB 안쪽 여백 */
+  .gnb-inner{padding-left:10px;padding-right:10px;}
+}
+
 .cl-src-badge{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:6px;margin-right:5px;letter-spacing:0.03em;white-space:nowrap;}
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
@@ -390,6 +412,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 <!-- GNB -->
 <header class="gnb">
   <div class="gnb-inner">
+    <button class="mobile-hamburger" onclick="toggleMobileNav()" aria-label="메뉴">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
     <div class="logo-wrap" onclick="navigate('updates','')">
       <img src="ktnas_logo.png" alt="kt nasmedia" class="logo-img">
       <div class="logo-divider"></div>
@@ -417,6 +442,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 </header>
 
 <div class="layout">
+
+<!-- 모바일 사이드바 오버레이 -->
+<div class="mobile-nav-overlay" onclick="toggleMobileNav()"></div>
 
 <!-- Sidebar -->
 <aside class="sidebar">
@@ -1175,6 +1203,25 @@ const pageTabMap = {
 // 사이드바 아코디언 (하위메뉴가 있는 항목)
 const hasSubMenu = ['policy','products','targeting','subscription','casestudy'];
 
+// 모바일 사이드바 여닫기
+function toggleMobileNav(){
+  var sb = document.querySelector('.sidebar');
+  var ov = document.querySelector('.mobile-nav-overlay');
+  if(!sb) return;
+  var willOpen = !sb.classList.contains('open');
+  sb.classList.toggle('open', willOpen);
+  if(ov) ov.classList.toggle('open', willOpen);
+}
+// 모바일에서 메뉴 항목 클릭 시 자동으로 닫기 (navigate 후)
+function closeMobileNavIfOpen(){
+  var sb = document.querySelector('.sidebar');
+  var ov = document.querySelector('.mobile-nav-overlay');
+  if(sb && sb.classList.contains('open')){
+    sb.classList.remove('open');
+    if(ov) ov.classList.remove('open');
+  }
+}
+
 // ── navigate: 대분류 클릭 or 하위탭 클릭 ──
 function navigate(page, tab) {
   // 1) 이전 페이지 숨김
@@ -1258,6 +1305,9 @@ function navigate(page, tab) {
   // 9) URL 해시 갱신 (북마크·링크공유·새로고침 대응)
   //    형식: #page 또는 #page/tab (첫번째 기본탭이면 tab 생략)
   updateUrlHash(page, targetTab, tabs);
+
+  // 모바일: 메뉴에서 페이지 선택 시 사이드바 자동 닫기
+  closeMobileNavIfOpen();
 }
 
 // URL 해시를 현재 페이지/탭에 맞게 갱신 (히스토리에 남겨 뒤로가기 지원)
