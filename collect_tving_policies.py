@@ -89,7 +89,7 @@ def parse_prohibited(block):
             continue
         indent = len(ln) - len(ln.lstrip())
         t = ln.strip()
-        if not t.startswith('*'):
+        if not t.startswith('*') or SEP.match(t):
             continue
         body = t[1:].strip()
         if indent == 0:
@@ -142,6 +142,39 @@ def extract_subsections(block):
     return subs
 
 
+SEP = re.compile(r'^[*\-\s_]+$')
+
+
+def parse_qualification(block):
+    """광고 집행 자격 — 단순 불릿 목록."""
+    out = []
+    for ln in block.split('\n'):
+        t = ln.strip()
+        if t.startswith('*') and not SEP.match(t):
+            v = clean_inline(t[1:].strip())
+            if v:
+                out.append(v)
+    return out
+
+
+def parse_unacceptable(block):
+    """집행 불가 광고 — '#### **그룹명**' 단위로 묶고 하위 불릿을 담는다."""
+    heads = list(re.finditer(r'^####\s+\*\*(.+?)\*\*\s*$', block, re.M))
+    out = []
+    for i, h in enumerate(heads):
+        start = h.end()
+        end = heads[i + 1].start() if i + 1 < len(heads) else len(block)
+        items = []
+        for ln in block[start:end].split('\n'):
+            t = ln.strip()
+            if t.startswith('*') and not SEP.match(t):
+                v = clean_inline(t[1:].strip())
+                if v:
+                    items.append(v)
+        out.append({'title': clean_inline(h.group(1)), 'items': items})
+    return out
+
+
 def parse_restricted(block):
     """제한 업종 — '#### **1. 주류**' 단위로 분리."""
     heads = list(re.finditer(r'^####\s+\*\*(\d+)\.\s*(.+?)\*\*\s*$', block, re.M))
@@ -186,6 +219,13 @@ def merge(prev_doc, cur_doc):
     for v in (prev_doc or {}).get('restricted', []):
         prev_map[v['name']] = v
 
+    pb = (prev_doc or {}).get('basic') or {}
+    cb = cur_doc.get('basic') or {}
+    if not prev_doc or pb.get('hash') == cb.get('hash'):
+        cb['updated_at'] = pb.get('updated_at', '')
+    else:
+        cb['updated_at'] = today()
+
     for v in cur_doc['restricted']:
         p = prev_map.get(v['name'])
         v['manual_summary'] = (p or {}).get('manual_summary', '')
@@ -203,11 +243,20 @@ def merge(prev_doc, cur_doc):
 def build(md):
     proh = slice_between(md, 'prohibited-verticals', ['restricted-verticals'])
     rest = slice_between(md, 'restricted-verticals', [])
+    qual = slice_between(md, 'qualification', ['unacceptable-a-d'])
+    unac = slice_between(md, 'unacceptable-a-d', ['vertical-specific-guide'])
     if proh is None or rest is None:
         raise RuntimeError('구간 앵커를 찾지 못함 — 원문 구조 변경 의심')
+    basic = {
+        'qualification': parse_qualification(qual) if qual else [],
+        'unacceptable': parse_unacceptable(unac) if unac else [],
+    }
+    basic['hash'] = hashlib.sha256(
+        norm_for_hash(json.dumps(basic, ensure_ascii=False)).encode('utf-8')).hexdigest()[:16]
     doc = {
         'source_url': PAGE_URL,
         'collected_at': today(),
+        'basic': basic,
         'prohibited': parse_prohibited(proh),
         'restricted': parse_restricted(rest),
     }
@@ -243,8 +292,9 @@ def main():
 
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(doc, f, ensure_ascii=False, indent=2)
-    print('저장 %s — 금지 %d개 / 제한 %d개'
-          % (OUT, len(doc['prohibited']), len(doc['restricted'])))
+    print('저장 %s — 집행자격 %d개 / 집행불가 %d그룹 / 금지 %d개 / 제한 %d개'
+          % (OUT, len(doc['basic']['qualification']), len(doc['basic']['unacceptable']),
+             len(doc['prohibited']), len(doc['restricted'])))
     return 0
 
 
