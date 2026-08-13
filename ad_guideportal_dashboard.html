@@ -315,25 +315,33 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-date{font-size:11px;color:#FB923C;white-space:nowrap;}
 .tp-body{font-size:12px;color:var(--white);line-height:1.75;}
 .tp-none{font-size:12px;color:var(--gray-low);line-height:1.75;}
-.tp-sub{font-size:11px;color:var(--gray-dim);line-height:1.7;margin-top:6px;}
-.tp-toggle{margin-top:8px;background:none;border:none;padding:0;cursor:pointer;font-size:11px;color:var(--gray-mid);}
+.tp-sub{font-size:12px;color:var(--gray-mid);line-height:1.7;margin-top:8px;}
+.tp-toggle{margin-top:8px;background:none;border:none;padding:0;cursor:pointer;font-size:12px;color:var(--gray-mid);}
 .tp-toggle:hover{color:var(--white);}
 .tp-raw{margin-top:10px;padding:12px 14px;background:var(--black-ele);border-radius:6px;}
 .tp-l0{font-size:12px;color:var(--gray-hi);line-height:1.8;}
 .tp-l1{font-size:12px;color:var(--gray-mid);line-height:1.8;padding-left:14px;}
 .tp-l2{font-size:12px;color:var(--gray-low);line-height:1.8;padding-left:28px;}
 .tp-q{font-size:11px;color:var(--gray-low);line-height:1.8;padding-left:14px;font-style:italic;}
-.tp-src{margin-top:10px;font-size:11px;}
+.tp-src{margin-top:10px;font-size:12px;}
 .tp-src a{color:#FF6B6B;text-decoration:none;}
-.tb-row{display:grid;grid-template-columns:1fr 92px 92px;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--black-ele);}
+.tb-row{display:grid;grid-template-columns:150px 88px 92px minmax(0,1fr);gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--black-ele);}
 .tb-row:last-child{border-bottom:none;}
-.tb-head{font-size:11px;font-weight:700;color:var(--gray-low);padding-top:0;}
-.tb-name{font-size:12px;color:var(--white);line-height:1.6;}
-.tb-st{font-size:11px;text-align:center;}
+.tb-head{font-size:12px;font-weight:700;color:var(--gray-low);padding-top:0;}
+.tb-name{font-size:14px;font-weight:600;color:var(--white);line-height:1.45;}
+.tb-sub{font-size:12px;color:var(--gray-low);line-height:1.5;margin-top:3px;}
+.tb-st{font-size:13px;}
 .tb-no{color:#FF6B6B;}
 .tb-chk{color:var(--gray-low);}
-.tb-note{font-size:11px;color:var(--gray-low);line-height:1.7;padding:0 0 11px 12px;border-left:2px solid var(--black-ele);margin:-4px 0 0 2px;}
-.tb-xref{margin-top:6px;}
+.tb-note{font-size:13px;color:var(--gray-mid);line-height:1.65;}
+.tb-note-dim{font-size:13px;color:var(--gray-dim);}
+.tb-xref{margin-top:6px;font-size:13px;}
+.tp-xref{font-size:12px;}
+.tp-xref a{color:#FB923C;text-decoration:none;cursor:pointer;}
+.tp-xref a:hover{text-decoration:underline;}
+.tb-tag{display:inline-block;padding:1px 8px;border-radius:20px;font-size:11px;font-weight:600;margin-right:7px;vertical-align:1px;}
+.tb-tag-tv{background:rgba(255,23,113,0.12);color:#FF6BA3;border:1px solid rgba(255,23,113,0.25);}
+.tb-tag-nf{background:rgba(229,9,20,0.12);color:#FF6B6B;border:1px solid rgba(229,9,20,0.25);}
 .tb-xref a{color:#FB923C;text-decoration:none;cursor:pointer;}
 .tb-xref a:hover{text-decoration:underline;}
 .tp-group{display:flex;align-items:center;gap:8px;margin:0 0 12px;}
@@ -342,13 +350,29 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-vhead{display:flex;align-items:center;gap:9px;padding-bottom:11px;border-bottom:1px solid var(--black-ele);margin-bottom:2px;}
 .tp-vbar{width:3px;height:20px;background:var(--red);border-radius:2px;flex-shrink:0;}
 .tp-vname{font-size:17px;font-weight:600;color:var(--white);line-height:1.3;}
-.tp-nfname{font-size:11px;font-weight:600;color:var(--gray-mid);margin:10px 0 4px;}
+.tp-nfname{font-size:12px;font-weight:600;color:var(--gray-mid);margin:10px 0 4px;}
 .tp-nfname:first-child{margin-top:0;}
-.tp-sec{font-size:11px;font-weight:600;color:var(--gray-mid);margin:10px 0 5px;}
+.tp-sec{font-size:12px;font-weight:600;color:var(--gray-mid);margin:12px 0 5px;}
 .tp-li{font-size:12px;color:var(--gray-hi);line-height:1.75;padding-left:11px;text-indent:-11px;}
 .tp-li-no{color:#FF9C9C;}
 .tp-search{background:var(--black-soft);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;}
 .tp-empty{padding:28px;text-align:center;color:var(--gray-low);font-size:13px;}
+.tp-card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:start;}
+.tp-vcol{padding-top:2px;}
+.tp-vname2{font-size:15px;font-weight:600;color:var(--white);white-space:nowrap;line-height:1.4;}
+.tp-vdate{font-size:11px;color:#FB923C;margin-top:5px;white-space:nowrap;}
+.tp-mrow{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--black-ele);}
+.tp-mrow:first-child{padding-top:0;border-top:none;}
+.tp-mrow:last-child{padding-bottom:0;}
+.tab-search-wrap{margin-left:auto;align-self:center;padding-bottom:6px;}
+.tab-search{background:var(--black-soft);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--white);width:240px;max-width:100%;font-family:'Noto Sans KR',sans-serif;}
+@media(max-width:640px){
+  .tb-row{grid-template-columns:1fr 1fr;gap:8px;}
+  .tb-row > :nth-child(1), .tb-row > :nth-child(4){grid-column:1 / -1;}
+  .tp-card{grid-template-columns:1fr;gap:8px;}
+  .tp-vname2{white-space:normal;}
+  .tab-search{width:150px;}
+}
 .pen-io-row{display:grid;grid-template-columns:100px 1fr;gap:0;padding:8px 0;border-bottom:1px solid var(--black-ele);}
 .pen-io-row:first-child{padding-top:0;}
 .pen-io-row:last-child{padding-bottom:0;border-bottom:none;}
@@ -509,7 +533,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <svg id="arrow-policy" class="nav-arrow" width="13" height="13" fill="none" viewBox="0 0 14 14"><path d="M4 5.5L7 8.5L10 5.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
     </div>
     <div id="sub-policy" class="sub-menu collapsed">
-      <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본 업종</div>
+      <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본 (공통)</div>
       <div class="nav-sub-item" onclick="navigate('policy','limited')"><span class="nav-sub-dot"></span>제한 업종</div>
       <div class="nav-sub-item" onclick="navigate('policy','banned')"><span class="nav-sub-dot"></span>금지 업종</div>
       <div class="nav-sub-item" onclick="navigate('policy','penalty')"><span class="nav-sub-dot"></span>위약금 정책</div>
@@ -603,6 +627,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="sub-tab tab-active rn-media-btn rn-media-on" data-rnmedia="all" onclick="rnSelectMedia(this)">통합</div>
           <div class="sub-tab rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
           <div class="sub-tab rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
+          <div class="tab-search-wrap">
+            <input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
+          </div>
         </div>
 
         <!-- 통합 공지사항 (넷플릭스 + 티빙·웨이브, 최신순) -->
@@ -610,10 +637,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="section-bar" style="margin-bottom:14px;">
             <div class="section-accent"></div>
             <span class="section-label">최신순 · 클릭하면 해당 매체 공지로 이동</span>
-          </div>
-          <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-            <input id="rn-unified-search" type="text" placeholder="제목·내용 검색 (넷플릭스+티빙)" oninput="rnUnifiedPage=1; rnUnifiedRender()"
-              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
           </div>
           <div id="rn-unified-loading" style="text-align:center;padding:40px 0;">
             <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
@@ -650,8 +673,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <!-- 카테고리 필터 + 검색 -->
           <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
             <div id="rn-tving-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-            <input id="rn-tving-search" type="text" placeholder="제목·내용 검색" oninput="rnTvingPage=1; rnTvingRender()"
-              style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
           </div>
 
           <!-- 목록 -->
@@ -688,8 +709,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <!-- 카테고리 필터 바 + 검색 -->
         <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
           <div id="rn-filter-bar" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-          <input id="rn-search" type="text" placeholder="제목·내용 검색" oninput="rnNetflixSearch()"
-            style="background:var(--surface,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;">
         </div>
 
         <!-- 릴리즈 노트 카드 목록 -->
@@ -705,10 +724,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab" id="tab-policy-all" onclick="switchTab('policy','all')" style="display:none;">전체</div>
-        <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본 업종</div>
+        <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본 (공통)</div>
         <div class="sub-tab" id="tab-policy-limited" onclick="switchTab('policy','limited')">제한 업종</div>
         <div class="sub-tab" id="tab-policy-banned" onclick="switchTab('policy','banned')">금지 업종</div>
         <div class="sub-tab" id="tab-policy-penalty" onclick="switchTab('policy','penalty')">위약금 정책</div>
+        <div class="tab-search-wrap" id="policy-search-wrap" style="display:none;">
+          <input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="policySearch()">
+        </div>
       </div>
       <div id="tc-policy-all" style="display:none;">
         <div class="stat-grid">
@@ -726,29 +748,23 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         </div>
       </div>
       <div id="tc-policy-basic" style="display:none;">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">기본 업종 목록</span></div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">기본(공통) 가이드</span></div>
         <div class="info-card">
           <div style="font-size:13px;color:var(--gray-mid);line-height:1.8;">별도 심의 없이 광고 집행이 가능한 업종입니다. 단, 허위·과장 광고 표현은 공통 금지 사항이 적용됩니다.<br><br><strong style="color:var(--white);">포함 업종 예시</strong><br><br>• 식품 (가공식품, 음료, 과자류)<br>• 패션·의류·잡화<br>• 가전·디지털기기<br>• IT 서비스·앱·플랫폼<br>• 뷰티·화장품<br>• 자동차 (일반 승용차)<br>• 교육 (성인 대상 일반 교육)<br>• 유통·이커머스</div>
         </div>
       </div>
       <div id="tc-policy-limited" style="display:none;">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">제한 업종 심사 기준</span></div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">제한 업종 가이드</span></div>
         <div class="info-card" style="margin-bottom:14px;">
           <div style="font-size:12px;color:var(--gray-low);line-height:1.7;">아래 업종은 조건을 충족할 때만 집행이 가능합니다. 티빙·웨이브는 매체 가이드에서 자동으로 가져오며 정책이 바뀐 업종에는 업데이트 일자가 표시됩니다. 넷플릭스는 국내 집행에 필요한 기본 요건과 한국 조항만 정리했습니다.</div>
-        </div>
-        <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-          <input id="tp-search" type="text" class="tp-search" placeholder="업종·조건 검색" oninput="tpRender()">
         </div>
         <div id="tp-limited-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="tp-limited"></div>
       </div>
       <div id="tc-policy-banned" style="display:none;">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">금지 업종 안내</span></div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">금지 업종 가이드</span></div>
         <div class="info-card" style="margin-bottom:14px;border-color:rgba(229,9,20,0.3);">
           <div style="font-size:12px;color:var(--gray-low);line-height:1.7;">아래 업종은 광고 집행이 불가합니다. 예외 조건이 있는 업종은 항목 아래에 별도 표기했습니다. 티빙·웨이브 내용은 매체 가이드에서 자동으로 가져옵니다.</div>
-        </div>
-        <div style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-          <input id="tb-search" type="text" class="tp-search" placeholder="업종·조건 검색" oninput="tbRender()">
         </div>
         <div id="tb-banned-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="tb-banned"></div>
@@ -767,7 +783,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">KBO리그</div><div style="font-size:13px;color:#FF6B6B;">라이브 후 취소·환불 불가</div></div>
         </div>
 
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스</span></div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스 위약금 정책 가이드</span></div>
 
         <div class="info-card" style="margin-bottom:14px;">
           <div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:12px;">캠페인 유형별 기준</div>
@@ -792,7 +808,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div style="font-size:12px;color:var(--white);line-height:1.75;">취소가 아닌 일정 변경 또는 연기는 위약금이 발생하지 않습니다. 담당팀으로 협의 문의해 주세요.</div>
         </div>
 
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙 · 웨이브</span></div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙·웨이브 위약금 정책 가이드</span></div>
 
         <div class="info-card" style="margin-bottom:14px;">
           <div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;">일 독점 솔루션</div>
@@ -1391,7 +1407,14 @@ function navigate(page, tab) {
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
   // 광고 정책 - 제한 업종 탭 진입 시 티빙 정책 로드
-  if (page === 'policy' && (targetTab === 'limited' || targetTab === 'banned')) setTimeout(tpEnsureLoaded, 80);
+  // 광고 정책 - 제한/금지 업종 탭에서만 탭바 검색창 노출
+  var psw = document.getElementById('policy-search-wrap');
+  var psi = document.getElementById('policy-search');
+  var psOn = (page === 'policy' && (targetTab === 'limited' || targetTab === 'banned'));
+  if (psw) psw.style.display = psOn ? 'block' : 'none';
+  if (psi && !psOn) psi.value = '';
+  if (psOn) setTimeout(tpEnsureLoaded, 80);
+  if (psOn && tpLoaded) { tpRender(); tbRender(); }
   // 청약 방법 - 계산기 탭 진입 시 공휴일 로드 후 달력 렌더
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
@@ -1471,6 +1494,8 @@ function switchTab(page, tab) {
 // ══════ 제한·금지 업종 — 티빙·웨이브 자동 수집 + 넷플릭스 수동 ══════
 // 넷플릭스 금지 업종: 업종명별로 문구를 넣으면 표에 반영됨 (빈 값이면 '확인 필요')
 const TP_NETFLIX_BAN = {};
+// 넷플릭스 금지 업종 예외 조건: 업종명별로 문구를 넣으면 예외 조건 칸에 넷플릭스 태그로 표시됨
+const TP_NETFLIX_BAN_NOTE = {};
 // 금지 업종이지만 조건 충족 시 집행 가능한 업종 → 제한 업종 탭으로 안내
 const TP_BAN_XREF = {
   '주류': '조건 충족 시 집행 가능 — 제한 업종에서 조건 확인'
@@ -1538,18 +1563,28 @@ function tpToggle(id, openLabel, closeLabel){
 }
 
 // 티빙 업종 + 넷플릭스 카테고리를 업종 단위로 병합
+// 업종 열이 좁아 줄바꿈되는 긴 이름은 짧은 표기로 대체
+const TP_SHORT = {
+  '고지방·고당·고염 식음료': '고지방·고당·고염',
+  '로컬 서비스 (법률 포함)': '로컬 서비스',
+  '게임/엔터테인먼트': '게임·엔터',
+  '제약/의료': '제약·의료'
+};
+function tpShort(n){ return TP_SHORT[n] || n; }
 function tpBuildCards(){
   var tv = ((tpData || TP_FALLBACK).restricted) || [];
   var nf = ((nfData || NF_FALLBACK).restricted) || [];
-  var cards = [];
+  var common = [], solo = [];
   tv.forEach(function(t){
-    cards.push({ name: t.name, group: 'common', tving: t,
-                 netflix: nf.filter(function(n){ return n.tving_key === t.name; }) });
+    common.push({ name: t.name, label: tpShort(t.name), group: 'common', tving: t,
+                  netflix: nf.filter(function(n){ return n.tving_key === t.name; }) });
   });
   nf.forEach(function(n){
-    if(!n.tving_key) cards.push({ name: n.name, group: 'solo', tving: null, netflix: [n] });
+    if(!n.tving_key) solo.push({ name: n.name, label: tpShort(n.name), group: 'solo', tving: null, netflix: [n] });
   });
-  return cards;
+  var byName = function(a,b){ return a.label.localeCompare(b.label, 'ko'); };
+  common.sort(byName); solo.sort(byName);
+  return common.concat(solo);
 }
 // 띄어쓴 단어를 각각 찾아 모두 포함될 때만 매칭 (AND)
 function tpMatch(text, q){
@@ -1602,7 +1637,7 @@ function tpRender(){
   var ld  = document.getElementById('tp-limited-loading');
   if(ld) ld.style.display = 'none';
   if(!box) return;
-  var q = (document.getElementById('tp-search') || {}).value || '';
+  var q = (document.getElementById('policy-search') || {}).value || '';
   q = q.trim().toLowerCase();
   var d  = tpData || TP_FALLBACK;
   var nd = nfData || NF_FALLBACK;
@@ -1625,19 +1660,22 @@ function tpRender(){
       html += '<div class="tp-group-bar"></div><span class="tp-group-label">';
       html += (c.group === 'common' ? '두 매체 공통' : '넷플릭스만 해당') + '</span></div>';
     }
-    html += '<div class="info-card" style="margin-bottom:14px;">';
-    html += '<div class="tp-vhead"><div class="tp-vbar"></div><span class="tp-vname">' + tpEsc(c.name) + '</span>';
+    html += '<div class="info-card" style="margin-bottom:14px;"><div class="tp-card">';
+    html += '<div class="tp-vcol"><div class="tp-vname2">' + tpEsc(c.label) + '</div>';
     if(c.tving && c.tving.updated_at)
-      html += '<span class="tp-date" style="margin-left:auto;">' + tpEsc(c.tving.updated_at) + ' 업데이트</span>';
-    html += '</div>';
+      html += '<div class="tp-vdate">' + tpEsc(c.tving.updated_at) + ' 업데이트</div>';
+    html += '</div><div>';
 
-    html += '<div class="policy-row" style="grid-template-columns:110px 1fr;">';
+    html += '<div class="tp-mrow">';
     html += '<div><span class="pen-media pen-nf">넷플릭스</span></div><div>';
     html += c.netflix.length ? tpNetflixBlock(c.netflix, i)
                              : '<div class="tp-none">확인 필요 — 담당팀 확인 후 반영 예정</div>';
     html += '</div></div>';
 
-    html += '<div class="policy-row" style="grid-template-columns:110px 1fr;">';
+    // 넷플릭스만 해당하는 업종은 티빙·웨이브 행을 아예 노출하지 않음
+    // (단, 티빙·웨이브에서 금지 업종에 해당하는 경우는 표시)
+    if(c.tving || TP_TO_BAN[c.name]){
+    html += '<div class="tp-mrow">';
     html += '<div><span class="pen-media pen-tv">티빙·웨이브</span></div><div>';
     if(c.tving){
       var tv2 = (c.tving.manual_summary && c.tving.manual_summary.trim()) ? [c.tving.manual_summary]
@@ -1652,17 +1690,15 @@ function tpRender(){
         html += '<div class="tp-raw" id="tp-raw-' + rid + '" style="display:none;">' + tpRenderRaw(c.tving.raw_md);
         html += '<div class="tp-src"><a href="' + tpEsc(d.source_url) + '" target="_blank" rel="noopener">티빙 심사 가이드 원문 \u2197</a></div></div>';
       }
-    } else if(TP_TO_BAN[c.name]){
-      html += '<div class="tb-note" style="border:none;padding:0;margin:0;"><div class="tb-xref" style="margin:0;">';
-      html += '<a onclick="switchTab(\'policy\',\'banned\')">' + tpEsc(TP_TO_BAN[c.name]) + ' \u2197</a></div></div>';
     } else {
-      html += '<div class="tp-none">해당 업종 구분 없음</div>';
+      html += '<div class="tp-xref">';
+      html += '<a onclick="switchTab(\'policy\',\'banned\')">' + tpEsc(TP_TO_BAN[c.name]) + ' \u2197</a></div>';
     }
     html += '</div></div>';
-    html += '</div>';
+    }
+    html += '</div></div></div>';
   }
-  html += '<div class="tp-src" style="margin-top:16px;">넷플릭스 원문 최종 수정 ' + tpEsc(nd.source_updated_at || '') + ' · ';
-  html += '<a href="' + tpEsc(nd.source_url) + '" target="_blank" rel="noopener">넷플릭스 제한 카테고리 원문 \u2197</a></div>';
+  html += tpSourceLinks(nd.source_url, d.source_url);
   box.innerHTML = html;
 }
 
@@ -1671,7 +1707,7 @@ function tbRender(){
   var ld  = document.getElementById('tb-banned-loading');
   if(ld) ld.style.display = 'none';
   if(!box) return;
-  var q = (document.getElementById('tb-search') || {}).value || '';
+  var q = (document.getElementById('policy-search') || {}).value || '';
   q = q.trim().toLowerCase();
   var d = tpData || TP_FALLBACK;
   var list = (d && d.prohibited) || [];
@@ -1683,28 +1719,57 @@ function tbRender(){
     return tpMatch((v.name + ' ' + (v.notes || []).join(' ') + ' ' + (TP_BAN_XREF[v.name] || '')).toLowerCase(), q);
   });
   if(!list.length){ box.innerHTML = '<div class="tp-empty">검색 결과가 없습니다.</div>'; return; }
+  // 가나다순 정렬 (괄호 앞 이름 기준)
+  list = list.slice().sort(function(a,b){
+    var an = (a.name.match(/^([^(]+)/) || [,a.name])[1].trim();
+    var bn = (b.name.match(/^([^(]+)/) || [,b.name])[1].trim();
+    return an.localeCompare(bn, 'ko');
+  });
+
   var html = '<div class="info-card">';
-  html += '<div class="tb-row"><div class="tb-head">업종</div><div class="tb-head tb-st">넷플릭스</div><div class="tb-head tb-st">티빙·웨이브</div></div>';
+  html += '<div class="tb-row"><div class="tb-head">업종</div><div class="tb-head">넷플릭스</div>';
+  html += '<div class="tb-head">티빙·웨이브</div><div class="tb-head">예외 조건</div></div>';
   for(var i=0;i<list.length;i++){
     var v = list[i];
-    var nf2 = TP_NETFLIX_BAN[v.name] || '';
-    html += '<div class="tb-row"><div class="tb-name">' + tpEsc(v.name) + '</div>';
-    html += nf2 ? '<div class="tb-st tb-no">' + tpEsc(nf2) + '</div>'
-                : '<div class="tb-st tb-chk">확인 필요</div>';
-    html += '<div class="tb-st tb-no">불가</div></div>';
+    // 괄호 안 예시는 업종명 아래 작은 글씨로 분리
+    var m = v.name.match(/^([^(]+?)\s*\((.+)\)\s*$/);
+    var main = m ? m[1] : v.name, sub = m ? m[2] : '';
+    var nf = TP_NETFLIX_BAN[v.name] || '';
     var xref = TP_BAN_XREF[v.name] || '';
-    if((v.notes && v.notes.length) || xref){
-      html += '<div class="tb-note">';
-      if(v.notes && v.notes.length){
-        for(var k=0;k<v.notes.length;k++) html += '\u2022 ' + tpEsc(v.notes[k]) + (k<v.notes.length-1 ? '<br>' : '');
-      }
-      if(xref) html += '<div class="tb-xref"><a onclick="switchTab(\'policy\',\'limited\')">' + tpEsc(xref) + ' \u2197</a></div>';
-      html += '</div>';
+
+    html += '<div class="tb-row">';
+    html += '<div><div class="tb-name">' + tpEsc(main) + '</div>';
+    html += sub ? '<div class="tb-sub">' + tpEsc(sub) + '</div>' : '';
+    html += '</div>';
+    html += nf ? '<div class="tb-st tb-no">' + tpEsc(nf) + '</div>'
+               : '<div class="tb-st tb-chk">확인 필요</div>';
+    html += '<div class="tb-st tb-no">불가</div>';
+    html += '<div>';
+    if(v.notes && v.notes.length){
+      // 예외 조건 출처는 티빙 심사 가이드 → 매체 태그로 명시
+      for(var k=0;k<v.notes.length;k++)
+        html += '<div class="tb-note"><span class="tb-tag tb-tag-tv">티빙·웨이브</span>' + tpEsc(v.notes[k]) + '</div>';
     }
+    var nfNote = TP_NETFLIX_BAN_NOTE[v.name] || '';
+    if(nfNote) html += '<div class="tb-note"><span class="tb-tag tb-tag-nf">넷플릭스</span>' + tpEsc(nfNote) + '</div>';
+    if(xref){
+      html += '<div class="tb-xref"><a onclick="switchTab(\'policy\',\'limited\')">' + tpEsc(xref) + ' \u2197</a></div>';
+    }
+    if(!(v.notes && v.notes.length) && !xref && !nfNote) html += '<div class="tb-note-dim">\u2014</div>';
+    html += '</div></div>';
   }
   html += '</div>';
-  html += '<div class="tp-src" style="margin-top:14px;"><a href="' + tpEsc(d.source_url) + '" target="_blank" rel="noopener">티빙 심사 가이드 원문 \u2197</a></div>';
+  html += tpSourceLinks((nfData || NF_FALLBACK).source_url, d.source_url);
   box.innerHTML = html;
+}
+
+// 두 매체 원문 링크 (제한·금지 탭 공통)
+function tpSourceLinks(nfUrl, tvUrl){
+  var h = '<div class="tp-src" style="margin-top:16px;">';
+  h += '<a href="' + tpEsc(nfUrl) + '" target="_blank" rel="noopener">넷플릭스 제한 카테고리 원문 \u2197</a>';
+  h += '<span style="color:var(--gray-dim);margin:0 8px;">·</span>';
+  h += '<a href="' + tpEsc(tvUrl) + '" target="_blank" rel="noopener">티빙 심사 가이드 원문 \u2197</a></div>';
+  return h;
 }
 
 async function tpEnsureLoaded(){
@@ -2930,8 +2995,22 @@ function lib_searchClear(){
 }
 
 // 공지사항 매체 전환 (넷플릭스 / 티빙·웨이브)
+// 공지 사항 공용 검색 — 어느 매체 탭이든 같은 입력으로 검색
+function rnSearch(){
+  try { rnUnifiedPage = 1; } catch(e){}
+  try { rnTvingPage = 1; } catch(e){}
+  try { rnUnifiedRender(); } catch(e){}
+  try { rnTvingRender(); } catch(e){}
+  try { if (window.rnNetflixSearch) window.rnNetflixSearch(); } catch(e){}
+}
 function rnSelectMedia(el){
   const m = el.getAttribute('data-rnmedia');
+  // 매체 전환 시 검색어 초기화 + 안내 문구 교체
+  var si = document.getElementById('rn-search-shared');
+  if(si){
+    si.value = '';
+    si.placeholder = (m === 'all') ? '제목·내용 검색 (넷플릭스+티빙·웨이브)' : '제목·내용 검색';
+  }
   document.querySelectorAll('.rn-media-btn[data-rnmedia]').forEach(function(b){
     var on = (b === el);
     b.classList.toggle('rn-media-on', on);
@@ -2949,6 +3028,7 @@ function rnSelectMedia(el){
     if(nf) nf.style.display = 'block';
     if(tv) tv.style.display = 'none';
     if(un) un.style.display = 'none';
+    try { if (window.rnNetflixSearch) window.rnNetflixSearch(); } catch(e){}
   } else {
     // 통합 뷰
     if(nf) nf.style.display = 'none';
@@ -3023,7 +3103,7 @@ function rnUnifiedItems(){
 // 검색 필터까지 적용된 통합 목록 (렌더·클릭 이동 공용 — 인덱스 일치 보장)
 function rnUnifiedFilteredItems(){
   var items = rnUnifiedItems();
-  var searchEl = document.getElementById('rn-unified-search');
+  var searchEl = document.getElementById('rn-search-shared');
   var q = searchEl ? searchEl.value.trim().toLowerCase() : '';
   if(q){
     items = items.filter(function(it){
@@ -3038,7 +3118,7 @@ function rnUnifiedRender(){
   var listEl = document.getElementById('rn-unified-list');
   var pagerEl = document.getElementById('rn-unified-pager');
   if(!listEl) return;
-  var searchEl = document.getElementById('rn-unified-search');
+  var searchEl = document.getElementById('rn-search-shared');
   var q = searchEl ? searchEl.value.trim() : '';
   var items = rnUnifiedFilteredItems();
 
@@ -3249,7 +3329,7 @@ function rnTvingCatColor(cat){
 function rnTvingRender(){
   var list = document.getElementById('rn-tving-list');
   if(!list) return;
-  var kw = (document.getElementById('rn-tving-search') || {}).value || '';
+  var kw = (document.getElementById('rn-search-shared') || {}).value || '';
   kw = kw.trim().toLowerCase();
   var rows = rnTvingData.filter(function(n){
     if(rnTvingCat !== '전체' && (n.category || '기타') !== rnTvingCat) return false;
@@ -3537,7 +3617,7 @@ async function sheetsLoadNotes() {
       const list = document.getElementById('rn-list');
       list.innerHTML = '';
 
-      const kw = ((document.getElementById('rn-search') || {}).value || '').trim().toLowerCase();
+      const kw = ((document.getElementById('rn-search-shared') || {}).value || '').trim().toLowerCase();
 
       // 1) 표시할 버전 추리기 (필터·검색 통과한 것 + 걸러진 섹션 저장)
       const displayVersions = [];
