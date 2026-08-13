@@ -1,1 +1,41 @@
+name: tving policies collect
 
+on:
+  schedule:
+    # 매일 09:00 KST (UTC 00:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tving-policies
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 파이썬 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 티빙 심사 가이드 수집
+        run: python collect_tving_policies.py
+
+      - name: 변경분만 커밋
+        run: |
+          if [ -n "$(git status --porcelain tving_ad_policies.json)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add tving_ad_policies.json
+            git commit -m "chore: 티빙 심사 가이드 자동 수집 ($(date -u -d '+9 hours' +'%Y-%m-%d'))"
+            git push
+          else
+            echo "변경 없음 — 커밋 생략"
+          fi
