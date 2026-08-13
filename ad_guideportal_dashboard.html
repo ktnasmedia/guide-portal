@@ -90,8 +90,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .sub-tab.tab-active{color:var(--white);border-bottom:2px solid var(--red);}
 
 /* Page title */
-.page-title{font-size:21px;font-weight:700;color:var(--white);margin-bottom:3px;}
-.page-desc{font-size:13px;color:var(--gray-low);}
+.page-title{font-size:30px;font-weight:700;color:var(--white);margin-bottom:3px;line-height:1.25;}
+.page-desc{font-size:15px;color:var(--gray-low);line-height:1.5;}
 
 /* Section */
 .section-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
@@ -484,7 +484,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   <div id="nav-updates" class="nav-item active">
     <div class="nav-row" onclick="navigate('updates','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M8 1.5L10 6H14.5L11 9L12.5 13.5L8 11L3.5 13.5L5 9L1.5 6H6L8 1.5Z" stroke="#737373" stroke-width="1.3"/></svg>
-      <span class="nav-label">공지사항</span>
+      <span class="nav-label">공지 사항</span>
     </div>
   </div>
 
@@ -581,7 +581,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 업데이트 ══════ -->
     <div id="page-updates" class="page active">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지사항</h1><p class="page-desc">매체별 최신 공지와 업데이트를 확인하세요.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지 사항</h1><p class="page-desc">매체별 최신 공지와 업데이트를 확인하세요.</p></div>
       <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
       <div id="tc-updates-release-notes">
 
@@ -624,7 +624,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div id="rn-tving-loading" style="text-align:center;padding:40px 0;">
             <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
               <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-              <span style="font-size:13px;color:var(--gray-low);">공지사항을 불러오는 중...</span>
+              <span style="font-size:13px;color:var(--gray-low);">공지 사항을 불러오는 중...</span>
             </div>
           </div>
 
@@ -1377,7 +1377,7 @@ function navigate(page, tab) {
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
   // 8) 페이지 헤더(제목) 갱신 — 하위 탭이 있으면 "페이지 · 하위탭"으로, 설명은 페이지 고정
-  const pageNames = {updates:'공지사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'OTT 콘텐츠 라인업'};
+  const pageNames = {updates:'공지 사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'OTT 콘텐츠 라인업'};
   const titleEl = document.getElementById('ph-title-' + page);
   if (titleEl) {
     if (tab && tab !== tabs[0] && activeTabEl) {
@@ -3158,7 +3158,7 @@ function rnTvingRender(){
     return true;
   });
   if(rows.length === 0){
-    list.innerHTML = '<div style="padding:32px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지사항이 없습니다.</div>';
+    list.innerHTML = '<div style="padding:32px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지 사항이 없습니다.</div>';
     return;
   }
   // 페이지 계산
@@ -3454,7 +3454,7 @@ async function sheetsLoadNotes() {
       });
 
       if (displayVersions.length === 0) {
-        list.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지사항이 없습니다.</div>';
+        list.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지 사항이 없습니다.</div>';
         return;
       }
 
