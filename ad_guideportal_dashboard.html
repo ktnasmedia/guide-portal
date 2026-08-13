@@ -11,6 +11,8 @@
 <style>
 * { font-family: 'Noto Sans KR', sans-serif; box-sizing: border-box; }
 :root {
+  /* 광고 정책 전 탭 공통: 왼쪽 업종/항목 열 폭 */
+  --pol-col1:200px;
   --red:#E50914; --red-dark:#B20710; --black:#141414; --black-soft:#1A1A1A;
   --black-card:#1F1F1F; --black-ele:#2A2A2A; --black-brd:#333333;
   --white:#FFFFFF; --gray-hi:#E5E5E5; --gray-mid:#A3A3A3; --gray-low:#737373; --gray-dim:#404040;
@@ -325,11 +327,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-q{font-size:11px;color:var(--gray-low);line-height:1.8;padding-left:14px;font-style:italic;}
 .tp-src{margin-top:10px;font-size:12px;}
 .tp-src a{color:#FF6B6B;text-decoration:none;}
-.tb-row{display:grid;grid-template-columns:150px 88px 92px minmax(0,1fr);gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--black-ele);}
+.tb-row{display:grid;grid-template-columns:var(--pol-col1) 88px 92px minmax(0,1fr);gap:14px;align-items:start;padding:13px 0;border-bottom:1px solid var(--black-ele);}
 .tb-row:last-child{border-bottom:none;}
 .tb-head{font-size:12px;font-weight:700;color:var(--gray-low);padding-top:0;}
-.tb-name{font-size:14px;font-weight:600;color:var(--white);line-height:1.45;}
-.tb-sub{font-size:12px;color:var(--gray-low);line-height:1.5;margin-top:3px;}
+.tb-name{font-size:14px;font-weight:600;color:var(--white);line-height:1.45;word-break:keep-all;overflow-wrap:break-word;}
+.tb-sub{font-size:12px;color:var(--gray-low);line-height:1.5;margin-top:3px;word-break:keep-all;}
 .tb-st{font-size:13px;}
 .tb-no{color:#FF6B6B;}
 .tb-chk{color:var(--gray-low);}
@@ -358,15 +360,15 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-li-no{color:#FF9C9C;}
 .tp-search{background:var(--black-soft);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--white);width:320px;max-width:100%;font-family:'Noto Sans KR',sans-serif;}
 .tp-empty{padding:28px;text-align:center;color:var(--gray-low);font-size:13px;}
-.bg-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--black-ele);}
+.bg-row{display:grid;grid-template-columns:var(--pol-col1) minmax(0,1fr);gap:16px;padding:12px 0;border-top:1px solid var(--black-ele);}
 .bg-row:first-child{padding-top:0;border-top:none;}
 .bg-row:last-child{padding-bottom:0;}
-.bg-t{font-size:14px;font-weight:600;color:var(--white);line-height:1.4;}
+.bg-t{font-size:14px;font-weight:600;color:var(--white);line-height:1.4;word-break:keep-all;}
 .bg-d{font-size:12px;color:var(--gray-hi);line-height:1.75;}
 .bg-sub{font-size:12px;font-weight:600;color:var(--gray-mid);margin:10px 0 5px;}
-.tp-card{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:start;}
+.tp-card{display:grid;grid-template-columns:var(--pol-col1) minmax(0,1fr);gap:16px;align-items:start;}
 .tp-vcol{padding-top:2px;}
-.tp-vname2{font-size:15px;font-weight:600;color:var(--white);white-space:nowrap;line-height:1.4;}
+.tp-vname2{font-size:15px;font-weight:600;color:var(--white);white-space:nowrap;line-height:1.4;word-break:keep-all;}
 .tp-vdate{font-size:11px;color:#FB923C;margin-top:5px;white-space:nowrap;}
 .tp-mrow{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--black-ele);}
 .tp-mrow:first-child{padding-top:0;border-top:none;}
@@ -374,6 +376,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tab-search-wrap{margin-left:auto;align-self:center;padding-bottom:6px;}
 .tab-search{background:var(--black-soft);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--white);width:240px;max-width:100%;font-family:'Noto Sans KR',sans-serif;}
 @media(max-width:640px){
+  :root{--pol-col1:1fr;}
   .tb-row{grid-template-columns:1fr 1fr;gap:8px;}
   .tb-row > :nth-child(1), .tb-row > :nth-child(4){grid-column:1 / -1;}
   .tp-card{grid-template-columns:1fr;gap:8px;}
@@ -773,7 +776,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div id="tc-policy-banned" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">금지 업종 가이드</span></div>
         <div class="info-card" style="margin-bottom:14px;border-color:rgba(229,9,20,0.3);">
-          <div style="font-size:12px;color:var(--gray-low);line-height:1.7;">아래 업종은 광고 집행이 불가합니다. 예외 조건이 있는 업종은 항목 아래에 별도 표기했습니다. 티빙·웨이브 내용은 매체 가이드에서 자동으로 가져옵니다.</div>
+          <div style="font-size:12px;color:var(--gray-low);line-height:1.7;">아래 업종은 광고 집행이 불가합니다. 참고 사항에는 금지 근거와 예외적으로 집행 가능한 조건을 함께 표기했습니다. 티빙·웨이브 내용은 매체 가이드에서 자동으로 가져옵니다.</div>
         </div>
         <div id="tb-banned-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="tb-banned"></div>
@@ -1520,7 +1523,7 @@ const TP_NETFLIX_BAN = {
   '유료 인력소개소'                             : '제한 업종',
   '기타 위법 및 부적절한 서비스'                   : '불가'
 };
-// 넷플릭스 금지 업종 예외 조건: 업종명별로 문구를 넣으면 예외 조건 칸에 넷플릭스 태그로 표시됨
+// 넷플릭스 금지 업종 참고 사항: 업종명별로 문구를 넣으면 참고 사항 칸에 넷플릭스 태그로 표시됨
 const TP_NETFLIX_BAN_NOTE = {
   '티빙 경쟁 서비스'                          : '타 스트리밍 서비스와 그 콘텐츠 광고 불가 (넷플릭스가 예외를 허용할 수 있음)',
   '성인 (성인방송, 성인용품, 성인 커뮤니티 등)'      : '성적으로 노골적인 상품·서비스, 유상 데이팅, 성인용품 불가',
@@ -1859,7 +1862,7 @@ function tbRender(){
 
   var html = '<div class="info-card">';
   html += '<div class="tb-row"><div class="tb-head">업종</div><div class="tb-head">넷플릭스</div>';
-  html += '<div class="tb-head">티빙·웨이브</div><div class="tb-head">예외 조건</div></div>';
+  html += '<div class="tb-head">티빙·웨이브</div><div class="tb-head">참고 사항</div></div>';
   for(var i=0;i<list.length;i++){
     var v = list[i];
     // 괄호 안 예시는 업종명 아래 작은 글씨로 분리
@@ -1877,7 +1880,7 @@ function tbRender(){
     html += '<div class="tb-st tb-no">불가</div>';
     html += '<div>';
     if(v.notes && v.notes.length){
-      // 예외 조건 출처는 티빙 심사 가이드 → 매체 태그로 명시
+      // 참고 사항 출처는 티빙 심사 가이드 → 매체 태그로 명시
       for(var k=0;k<v.notes.length;k++)
         html += '<div class="tb-note"><span class="tb-tag tb-tag-tv">티빙·웨이브</span>' + tpEsc(v.notes[k]) + '</div>';
     }
