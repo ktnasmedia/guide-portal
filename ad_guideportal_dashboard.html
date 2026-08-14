@@ -32,13 +32,15 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* GNB */
 .gnb{background:rgba(20,20,20,0.97);border-bottom:1px solid var(--border);height:62px;flex-shrink:0;backdrop-filter:blur(8px);width:100%;max-width:var(--app-max);align-self:center;}
 .gnb-inner{display:flex;align-items:center;height:100%;padding:0 28px;gap:16px;}
-.logo-wrap{display:flex;align-items:center;gap:12px;flex-shrink:0;cursor:pointer;}
+.logo-wrap{display:flex;align-items:center;gap:0;flex-shrink:0;cursor:pointer;}
+/* 로고 열 폭 = 사이드바 242px + 경계선 1px - GNB 왼쪽 여백 28px */
+.logo-brand{display:flex;align-items:center;gap:12px;width:215px;flex-shrink:0;}
 .logo-img{height:22px;width:auto;display:block;}
-.logo-divider{width:1px;height:20px;background:rgba(255,255,255,0.25);flex-shrink:0;}
+.logo-divider{width:1px;height:20px;background:rgba(255,255,255,0.25);flex-shrink:0;margin-left:auto;}
 .logo-icon{width:34px;height:34px;background:var(--red);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo-text-main{font-size:13px;font-weight:700;color:var(--white);line-height:1.2;}
-.logo-text-sub{display:flex;align-items:center;line-height:1;font-size:12px;font-weight:500;color:var(--gray-hi);letter-spacing:0.02em;white-space:nowrap;}
-.logo-text-en{line-height:1;font-size:10px;font-weight:500;color:var(--gray-low);letter-spacing:0.06em;text-transform:uppercase;margin-left:9px;}
+.logo-text-sub{display:flex;align-items:center;line-height:1;margin-left:clamp(14px,2.6vw,32px);font-size:14px;font-weight:500;color:var(--gray-hi);letter-spacing:0.02em;white-space:nowrap;}
+.logo-text-en{line-height:1;font-size:11px;font-weight:500;color:var(--gray-low);letter-spacing:0.06em;text-transform:uppercase;margin-left:9px;}
 .search-wrap{position:relative;flex:1;max-width:360px;}
 .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;}
 .search-input{width:100%;background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 14px 8px 38px;font-size:13px;color:var(--white);outline:none;transition:all 0.2s;}
@@ -212,6 +214,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
 /* ── 태블릿·좁은 노트북 (1024px 이하): 사이드바를 햄버거로 전환 ── */
 @media(max-width:1024px){
+  /* 사이드바가 숨겨지므로 로고 열 정렬 해제 */
+  .logo-brand{width:auto;}
+  .logo-text-sub{margin-left:12px;}
   .mobile-hamburger{display:flex;}
   .sidebar{position:fixed;top:0;left:0;bottom:0;z-index:50;transform:translateX(-100%);transition:transform 0.25s ease;box-shadow:2px 0 16px rgba(0,0,0,0.5);width:260px;}
   .sidebar.open{transform:translateX(0);}
@@ -546,8 +551,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <div class="logo-wrap" onclick="navigate('updates','')">
-      <img src="ktnas_logo.png" alt="kt nasmedia" class="logo-img">
-      <div class="logo-divider"></div>
+      <div class="logo-brand">
+        <img src="ktnas_logo.png" alt="kt nasmedia" class="logo-img">
+        <div class="logo-divider"></div>
+      </div>
       <div class="logo-text-sub">OTT 통합 가이드 포털<span class="logo-text-en">(OTT All-in-One Guide Portal)</span></div>
     </div>
     <div class="search-wrap nav-hidden">
