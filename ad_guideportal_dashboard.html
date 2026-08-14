@@ -25,7 +25,7 @@
   --border:#2E2E2E;
 }
 html,body{height:100%;margin:0;}
-body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:column;height:100vh;overflow:hidden;word-break:keep-all;overflow-wrap:break-word;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:#3a3a3a;border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:var(--red);}
 
@@ -405,7 +405,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* 공지 사항 카드 레이아웃 — 좁은 화면에서 세로로 풀리도록 클래스로 분리 */
 .rn-uni-row{display:grid;grid-template-columns:88px 72px minmax(0,1fr) 90px 16px;align-items:center;gap:12px;}
 .rn-tv-row{display:grid;grid-template-columns:96px minmax(0,1fr) 116px;gap:12px;align-items:center;}
-.rn-nf-title{display:flex;align-items:center;gap:8px;width:clamp(180px,22vw,290px);flex-shrink:0;}
+.rn-nf-title{display:flex;align-items:center;gap:8px;width:calc(var(--pol-col1) - 14px);flex-shrink:0;}
 .rn-sec-row{display:grid;grid-template-columns:var(--pol-col1) minmax(0,1fr);}
 @media(max-width:900px){
   .rn-nf-title{width:auto;flex:1;min-width:0;}
@@ -680,15 +680,15 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 업데이트 ══════ -->
     <div id="page-updates" class="page active">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지 사항</h1><p class="page-desc">매체별 최신 공지와 업데이트를 확인하세요.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지 사항</h1><p class="page-desc">최신 공지와 업데이트를 한눈에 확인하세요!</p></div>
       <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
       <div id="tc-updates-release-notes">
 
         <!-- 매체 탭 (밑줄형, 포털 전체 통일) -->
         <div class="sub-tab-bar">
-          <div class="sub-tab tab-active rn-media-btn rn-media-on" data-rnmedia="all" onclick="rnSelectMedia(this)">통합</div>
-          <div class="sub-tab rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
-          <div class="sub-tab rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
+          <div class="sub-tab tab-active rn-media-btn rn-media-on" id="tab-updates-all" data-rnmedia="all" onclick="switchTab('updates','all')">통합</div>
+          <div class="sub-tab rn-media-btn" id="tab-updates-netflix" data-rnmedia="netflix" onclick="switchTab('updates','netflix')">넷플릭스</div>
+          <div class="sub-tab rn-media-btn" id="tab-updates-tving" data-rnmedia="tving_wavve" onclick="switchTab('updates','tving')">티빙·웨이브</div>
           <div class="tab-search-wrap">
             <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
           </div>
@@ -1286,7 +1286,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 콘텐츠 라인업 ══════ -->
     <div id="page-content" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">매체별 공개 예정작과 공개중인 작품을 한눈에 확인하세요!</p></div>
+      <div class="notice-card">
+        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+        <div class="notice-text">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다. 최종 확인은 매체 공식 공지를 기준으로 해주세요.</div>
+      </div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
         <span class="section-label">실시간 자동업데이트 (업데이트 주기 : 일)</span>
@@ -1381,7 +1385,7 @@ let currentTab  = 'all';
 
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
-  updates:      [],
+  updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
   policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
   products:     ['all','video','image','sts','qr'],
   targeting:    ['all','basic','premium','dsp'],
@@ -1476,7 +1480,7 @@ function navigate(page, tab) {
   // 콘텐츠 라인업 페이지 진입 시 자동 로드
   if (page === 'content') onContentTabEnter();
   // 공지사항 페이지 진입 시 릴리즈 노트(넷플릭스 업데이트) 자동 로드
-  if (page === 'updates') setTimeout(onReleaseNotesTabEnter, 80);
+  if (page === 'updates') setTimeout(function(){ rnApplyMediaTab(targetTab); }, 80);
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
   // 광고 정책 - 제한 업종 탭 진입 시 티빙 정책 로드
@@ -1557,9 +1561,6 @@ window.addEventListener('hashchange', function() {
 // ── switchTab: 페이지 내 탭 전환 (같은 페이지 내) ──
 function switchTab(page, tab) {
   navigate(page, tab);
-  if (page === 'updates' && tab === 'release-notes') {
-    setTimeout(onReleaseNotesTabEnter, 80);
-  }
   if (page === 'subscription' && tab === 'calculator') {
     setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
   }
@@ -3214,6 +3215,15 @@ function rnSearch(){
   try { rnTvingRender(); } catch(e){}
   try { if (window.rnNetflixSearch) window.rnNetflixSearch(); } catch(e){}
 }
+// 탭값(URL) ↔ 매체값 매핑
+const RN_TAB2MEDIA = { 'all':'all', 'netflix':'netflix', 'tving':'tving_wavve' };
+const RN_MEDIA2TAB = { 'all':'all', 'netflix':'netflix', 'tving_wavve':'tving' };
+// 탭값으로 매체 전환 (라우팅에서 호출)
+function rnApplyMediaTab(tab){
+  var media = RN_TAB2MEDIA[tab] || 'all';
+  var btn = document.querySelector('.rn-media-btn[data-rnmedia="' + media + '"]');
+  if(btn) rnSelectMedia(btn);
+}
 function rnSelectMedia(el){
   const m = el.getAttribute('data-rnmedia');
   // 매체 전환 시 검색어 초기화 + 안내 문구 교체
@@ -3414,8 +3424,7 @@ function rnUnifiedGo(globalIdx){
   var items = rnUnifiedFilteredItems();
   var it = items[globalIdx];
   if(!it) return;
-  var btn = document.querySelector('.rn-media-btn[data-rnmedia="' + it.media + '"]');
-  if(btn) rnSelectMedia(btn);
+  switchTab('updates', RN_MEDIA2TAB[it.media] || 'all');
   // 해당 매체 탭에서 그 공지를 강조/펼침
   setTimeout(function(){
     if(it.media === 'tving_wavve'){
