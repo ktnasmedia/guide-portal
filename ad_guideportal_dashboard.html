@@ -41,7 +41,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .logo-text-en{line-height:1;font-size:10px;font-weight:500;color:var(--gray-low);letter-spacing:0.06em;text-transform:uppercase;margin-left:9px;}
 .search-wrap{position:relative;flex:1;max-width:360px;}
 .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;}
-.search-input{width:100%;background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 14px 8px 38px;font-size:13px;color:var(--gray-hi);outline:none;transition:all 0.2s;}
+.search-input{width:100%;background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 14px 8px 38px;font-size:13px;color:var(--white);outline:none;transition:all 0.2s;}
 .search-input::placeholder{color:var(--gray-low);}
 .search-input:focus{border-color:var(--red);background:#252525;box-shadow:0 0 0 3px rgba(229,9,20,0.15);}
 .update-chip{background:rgba(229,9,20,0.15);color:var(--red);border:1px solid rgba(229,9,20,0.3);border-radius:8px;padding:5px 13px;font-size:12px;font-weight:600;}
@@ -93,8 +93,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .breadcrumb-link:hover{color:var(--red);}
 
 /* Sub-tab bar (페이지 내 탭) */
-.sub-tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:28px;}
-.sub-tab{padding:10px 20px;font-size:13px;font-weight:500;color:var(--gray-low);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.18s;margin-bottom:-1px;}
+.sub-tab-bar{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;min-height:47px;border-bottom:1px solid var(--border);margin-bottom:28px;}
+.sub-tab{display:flex;align-items:center;padding:0 20px;font-size:13px;font-weight:500;color:var(--gray-low);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.18s;margin-bottom:-1px;}
 .sub-tab:hover{color:var(--gray-hi);}
 .sub-tab.tab-active{color:var(--white);border-bottom:2px solid var(--red);}
 
@@ -122,6 +122,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .prod-card:hover{border-color:#6a6a6a;}
 
 .info-card{background:var(--black-card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s;}
+.notice-card{display:flex;gap:11px;align-items:flex-start;background:var(--black-card);border:1px solid var(--border);border-left:3px solid var(--gray-mid);border-radius:12px;padding:15px 18px;margin-bottom:14px;}
+.notice-card.notice-danger{border-color:rgba(229,9,20,0.3);border-left-color:var(--red);}
+.notice-icon{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--gray-mid);}
+.notice-card.notice-danger .notice-icon{color:#FF6B6B;}
+.notice-text{font-size:13px;color:var(--gray-hi);line-height:1.75;}
 .info-card:hover{border-color:#6a6a6a;}
 
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
@@ -230,10 +235,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-src-tving{background:rgba(255,21,60,0.18);color:#ff5c78;}
 .cl-src-wavve{background:rgba(19,81,249,0.2);color:#6b97ff;}
 .cl-src-netflix{background:rgba(229,9,20,0.16);color:#ff6b6b;}
-.cl-search-icon{position:absolute;left:14px;font-size:18px;color:var(--gray-low);pointer-events:none;}
-.cl-search-input{width:100%;box-sizing:border-box;padding:11px 40px 11px 40px;background:#1a1a1a;border:1px solid #333;border-radius:10px;color:var(--white);font-size:14px;outline:none;transition:border-color 0.15s;}
+
+.cl-search-input{width:100%;box-sizing:border-box;padding:10px 40px 10px 38px;line-height:1.4;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;color:var(--white);font-size:13px;outline:none;transition:border-color 0.15s;}
 .cl-search-input:focus{border-color:var(--red);}
-.cl-search-input::placeholder{color:var(--gray-low);}
+.cl-search-input::placeholder,.tab-search::placeholder{color:var(--gray-low);}
 .cl-search-clear{position:absolute;right:10px;width:24px;height:24px;border:none;background:#333;color:var(--gray-hi);border-radius:50%;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;}
 .cl-search-clear:hover{background:#444;}
 .cl-download-bar{display:flex;align-items:center;gap:8px;margin:0 0 20px;padding-top:16px;border-top:0.5px solid var(--border);flex-wrap:wrap;}
@@ -355,6 +360,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-xref a{color:#FB923C;text-decoration:none;cursor:pointer;}
 .tp-xref a:hover{text-decoration:underline;}
 .tb-tag{display:inline-flex;align-items:center;justify-content:center;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;justify-self:start;margin-top:1px;white-space:nowrap;}
+.tb-stat{display:grid;grid-template-columns:96px 116px 100px minmax(0,1fr);gap:12px;align-items:center;padding-bottom:11px;border-bottom:1px solid var(--black-ele);}
+.tb-state{font-size:13px;font-weight:600;line-height:1.5;}
+.tb-cites{padding-top:11px;}
+.tb-cite{font-size:13px;color:var(--gray-mid);line-height:1.7;margin-top:7px;}
+.tb-cite:first-child{margin-top:0;}
+.tb-cite-m{color:var(--gray-low);}
+.tb-cite-sep{border-top:1px solid var(--black-ele);padding-top:11px;margin-top:11px;}
 .tb-tag-tv{background:rgba(255,23,113,0.12);color:#FF6BA3;border:1px solid rgba(255,23,113,0.25);}
 .tb-tag-nf{background:rgba(229,9,20,0.12);color:#FF6B6B;border:1px solid rgba(229,9,20,0.25);}
 .tb-xref a{color:#FB923C;text-decoration:none;cursor:pointer;}
@@ -385,19 +397,40 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tp-mrow{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--black-ele);}
 .tp-mrow:first-child{padding-top:0;border-top:none;}
 .tp-mrow:last-child{padding-bottom:0;}
-.tab-search-wrap{margin-left:auto;align-self:center;padding-bottom:6px;}
-.tab-search{background:var(--black-soft);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--white);width:240px;max-width:100%;font-family:'Noto Sans KR',sans-serif;}
+.tab-search-wrap{position:relative;display:flex;align-items:center;margin-left:auto;align-self:center;margin-bottom:6px;}
+.tab-search-icon,.cl-search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);display:flex;color:var(--gray-low);pointer-events:none;}
+.tab-search-icon svg,.cl-search-icon svg{width:18px;height:18px;display:block;}
+.tab-search{background:var(--black-soft);border:1px solid var(--border);border-radius:10px;padding:10px 14px 10px 38px;line-height:1.4;font-size:13px;color:var(--white);width:clamp(240px,26vw,420px);max-width:100%;outline:none;transition:border-color 0.15s;font-family:'Noto Sans KR',sans-serif;}
+.tab-search:focus,.cl-search-input:focus{border-color:var(--gray-dim);}
+/* 공지 사항 카드 레이아웃 — 좁은 화면에서 세로로 풀리도록 클래스로 분리 */
+.rn-uni-row{display:grid;grid-template-columns:88px 72px minmax(0,1fr) 90px 16px;align-items:center;gap:12px;}
+.rn-tv-row{display:grid;grid-template-columns:96px minmax(0,1fr) 116px;gap:12px;align-items:center;}
+.rn-nf-title{display:flex;align-items:center;gap:8px;width:clamp(180px,22vw,290px);flex-shrink:0;}
+.rn-sec-row{display:grid;grid-template-columns:var(--pol-col1) minmax(0,1fr);}
+@media(max-width:900px){
+  .rn-nf-title{width:auto;flex:1;min-width:0;}
+  .tab-search{width:clamp(200px,34vw,320px);}
+}
+@media(max-width:640px){
+  .rn-uni-row{grid-template-columns:1fr auto;gap:6px 10px;}
+  .rn-uni-row > :nth-child(3){grid-column:1 / -1;}
+  .rn-tv-row{grid-template-columns:1fr;gap:6px;}
+  .rn-tv-head{display:none;}
+  .rn-sec-row{grid-template-columns:1fr;}
+}
 @media(max-width:640px){
   :root{--pol-col1:1fr;}
   .tb-row{grid-template-columns:1fr 1fr;gap:8px;}
   .tb-note{grid-template-columns:1fr;gap:4px;}
+  .tb-stat{grid-template-columns:96px minmax(0,1fr);gap:8px 12px;}
   .policy-row{grid-template-columns:1fr;gap:6px;}
   .pen-row{grid-template-columns:1fr;gap:5px;}
   .tb-xref{padding-left:0;}
   .tb-row > :nth-child(1), .tb-row > :nth-child(4){grid-column:1 / -1;}
   .tp-card{grid-template-columns:1fr;gap:8px;}
   .tp-vname2{white-space:normal;}
-  .tab-search{width:150px;}
+  .tab-search{width:100%;}
+  .tab-search-wrap{width:100%;margin-left:0;margin-bottom:10px;}
 }
 .pen-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--black-ele);}
 .pen-row:first-child{padding-top:0;border-top:none;}
@@ -562,7 +595,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <svg id="arrow-policy" class="nav-arrow" width="13" height="13" fill="none" viewBox="0 0 14 14"><path d="M4 5.5L7 8.5L10 5.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
     </div>
     <div id="sub-policy" class="sub-menu collapsed">
-      <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본 (공통)</div>
+      <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본(공통)</div>
       <div class="nav-sub-item" onclick="navigate('policy','limited')"><span class="nav-sub-dot"></span>제한 업종</div>
       <div class="nav-sub-item" onclick="navigate('policy','banned')"><span class="nav-sub-dot"></span>금지 업종</div>
       <div class="nav-sub-item" onclick="navigate('policy','penalty')"><span class="nav-sub-dot"></span>위약금 정책</div>
@@ -657,7 +690,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="sub-tab rn-media-btn" data-rnmedia="netflix" onclick="rnSelectMedia(this)">넷플릭스</div>
           <div class="sub-tab rn-media-btn" data-rnmedia="tving_wavve" onclick="rnSelectMedia(this)">티빙·웨이브</div>
           <div class="tab-search-wrap">
-            <input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
+            <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
           </div>
         </div>
 
@@ -753,12 +786,12 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab" id="tab-policy-all" onclick="switchTab('policy','all')" style="display:none;">전체</div>
-        <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본 (공통)</div>
+        <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본(공통)</div>
         <div class="sub-tab" id="tab-policy-limited" onclick="switchTab('policy','limited')">제한 업종</div>
         <div class="sub-tab" id="tab-policy-banned" onclick="switchTab('policy','banned')">금지 업종</div>
         <div class="sub-tab" id="tab-policy-penalty" onclick="switchTab('policy','penalty')">위약금 정책</div>
         <div class="tab-search-wrap" id="policy-search-wrap" style="display:none;">
-          <input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="policySearch()">
+          <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="policySearch()">
         </div>
       </div>
       <div id="tc-policy-all" style="display:none;">
@@ -778,24 +811,27 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
       <div id="tc-policy-basic" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">기본(공통) 가이드</span></div>
-        <div class="info-card" style="margin-bottom:14px;">
-          <div style="font-size:13px;color:var(--gray-low);line-height:1.7;">업종과 무관하게 모든 광고에 적용되는 기준입니다. 위쪽 공통 원칙은 두 매체 기준에서 겹치는 내용을 묶은 것이며, 최종 확인은 아래 매체별 상세를 기준으로 해주세요.</div>
+        <div class="notice-card">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+          <div class="notice-text">OTT 매체 정책을 통합 요약한 기준입니다. 매체별 정책 변경에 따라 차이가 있을 수 있으므로, 최종 진행 시에는 반드시 하단의 매체별 상세 가이드를 확인해 주시기 바랍니다.</div>
         </div>
         <div id="bg-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="bg-basic"></div>
       </div>
       <div id="tc-policy-limited" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">제한 업종 가이드</span></div>
-        <div class="info-card" style="margin-bottom:14px;">
-          <div style="font-size:13px;color:var(--gray-low);line-height:1.7;">아래 업종은 조건을 충족할 때만 집행이 가능합니다. 티빙·웨이브는 매체 가이드에서 자동으로 가져오며 정책이 바뀐 업종에는 업데이트 일자가 표시됩니다. 넷플릭스는 국내 집행에 필요한 기본 요건과 한국 조항만 정리했습니다.</div>
+        <div class="notice-card">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+          <div class="notice-text">세부 조건을 충족할 경우 집행이 가능한 업종입니다. 매체 정책 업데이트에 따라 기준이 변경될 수 있습니다. (정책 변경 시 업데이트 일자 표기)</div>
         </div>
         <div id="tp-limited-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="tp-limited"></div>
       </div>
       <div id="tc-policy-banned" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">금지 업종 가이드</span></div>
-        <div class="info-card" style="margin-bottom:14px;border-color:rgba(229,9,20,0.3);">
-          <div style="font-size:13px;color:var(--gray-low);line-height:1.7;">아래 업종은 광고 집행이 불가합니다. 참고 사항에는 금지 근거와 예외적으로 집행 가능한 조건을 함께 표기했습니다. 티빙·웨이브 내용은 매체 가이드에서 자동으로 가져옵니다.</div>
+        <div class="notice-card notice-danger">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.6 21.2 19.4H2.8z"></path><path d="M12 10.2v4"></path><path d="M12 17.2h.01"></path></svg>
+          <div class="notice-text">광고 집행이 불가능한 업종입니다. 매체 정책 업데이트에 따라 기준이 변경될 수 있습니다. (정책 변경 시 업데이트 일자 표기)</div>
         </div>
         <div id="tb-banned-loading" style="padding:20px;text-align:center;color:var(--gray-low);font-size:12px;">불러오는 중…</div>
         <div id="tb-banned"></div>
@@ -805,9 +841,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">위약금 한눈에 보기</span></div>
         <div class="info-card" style="margin-bottom:28px;">
           <div class="policy-row" style="padding-top:0;"><div style="font-size:13px;font-weight:700;color:var(--gray-low);">매체</div><div style="font-size:13px;font-weight:700;color:var(--gray-low);">상품 · 유형</div><div style="font-size:13px;font-weight:700;color:var(--gray-low);">위약금</div></div>
-          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">PG · PMP 캠페인</div><div style="font-size:13px;color:#4ADE80;">없음</div></div>
-          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">IO 캠페인</div><div style="font-size:13px;color:#FB923C;">라이브 14일 이내 취소 시 부과</div></div>
-          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">STS</div><div style="font-size:13px;color:#FF6B6B;">IO 서명 이후 취소 불가</div></div>
+          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">PMP</div><div style="font-size:13px;color:#4ADE80;">없음</div></div>
+          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">DIO · PG</div><div style="font-size:13px;color:#FB923C;">라이브 14일 이내 취소 시 부과</div></div>
+          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">STS</div><div style="font-size:13px;color:#FF6B6B;">DIO 서명 이후 취소 불가</div></div>
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">일 독점 솔루션<br><span style="font-size:11px;color:var(--gray-dim);">아웃스트림 · 스플래시 배너 · 퍼스트뷰 등</span></div><div style="font-size:13px;color:#FB923C;">D-14 이내 50% / D-7 이내 100%</div></div>
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">그 외 보장형</div><div style="font-size:13px;color:#4ADE80;">없음 (소진분 정산)</div></div>
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">비보장형</div><div style="font-size:13px;color:#4ADE80;">없음</div></div>
@@ -819,20 +855,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="info-card" style="margin-bottom:14px;"><div class="tp-card">
           <div class="tp-vcol"><div class="tp-vname2">캠페인 유형별 기준</div></div>
           <div>
-            <div class="pen-row"><div><span class="policy-tag tag-basic">PG · PMP</span></div><div class="pen-txt">별도 위약금 없음</div></div>
+            <div class="pen-row"><div><span class="policy-tag tag-basic">PMP</span></div><div class="pen-txt">별도 위약금 없음</div></div>
             <div class="pen-row">
-              <div><span class="policy-tag tag-limit">IO</span></div>
+              <div><span class="policy-tag tag-limit">DIO · PG</span></div>
               <div>
-                <div class="pen-txt">캠페인 라이브 14일 이내 취소 시 위약금 부과</div>
-                <div style="margin-top:12px;border-left:2px solid var(--black-ele);padding-left:16px;">
-                  <div class="pen-io-row"><div style="font-size:13px;color:#4ADE80;font-weight:600;">D-14 이전</div><div class="pen-txt">최소 14일 전 서면 통지 시 위약금 없이 취소 가능</div></div>
-                  <div class="pen-io-row"><div style="font-size:13px;color:#FB923C;font-weight:600;">D-14 이내</div><div class="pen-txt">위약금 부과 대상</div></div>
-                  <div class="pen-io-row"><div style="font-size:13px;color:#FF6B6B;font-weight:600;">D-8</div><div class="pen-txt">캠페인 시작일 8일 전 취소 시, 시작 후 6일분에 해당하는 금액 청구</div></div>
-                </div>
-                <div style="margin-top:12px;font-size:12px;color:var(--gray-low);line-height:1.7;">※ 서면 통지 기준. 구체적인 금액 산정 문의는 미디어기획팀(netflix@nasmedia.co.kr) 확인 필요</div>
+                <div class="pen-io-row"><div style="font-size:13px;color:#4ADE80;font-weight:600;">D-14 이전</div><div class="pen-txt">캠페인 라이브 14일 전 취소 통지 시(서면 통지), 위약금 없이 취소 가능</div></div>
+                <div class="pen-io-row"><div style="font-size:13px;color:#FB923C;font-weight:600;">D-14 이내</div><div class="pen-txt">캠페인 라이브 14일 이내 취소 시, 위약금 부과</div></div>
+                <div style="margin-top:12px;font-size:12px;color:var(--gray-low);line-height:1.7;">※ 서면 통지 기준. 금액 산정 문의는 미디어기획팀(netflix@nasmedia.co.kr) 확인 필요</div>
               </div>
             </div>
-            <div class="pen-row"><div><span class="policy-tag tag-ban">STS</span></div><div class="pen-txt">IO 서명 이후 취소 불가. 청약 전 집행 확정 여부를 반드시 확인해 주세요.</div></div>
+            <div class="pen-row"><div><span class="policy-tag tag-ban">STS</span></div><div class="pen-txt">DIO 서명 이후 취소 불가. 청약 전 집행 확정 여부를 반드시 확인해 주세요.</div></div>
           </div>
         </div></div>
 
@@ -985,8 +1017,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
       <div id="tc-subscription-calculator" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">청약 일자 계산기</span></div>
+        <div class="notice-card">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+          <div class="notice-text">집행 시작 희망일을 입력하면 매체별 청약·소재 제출 마감일을 자동으로 계산합니다. (주말·공휴일 제외 영업일 기준)</div>
+        </div>
         <div class="info-card">
-          <div style="font-size:13px;color:var(--gray-low);margin-bottom:18px;">집행 시작 희망일을 입력하면 매체별 청약·소재 제출 마감일을 자동으로 계산합니다. (주말·공휴일 제외 영업일 기준)</div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap;">
             <label style="font-size:13px;color:var(--gray-mid);white-space:nowrap;">집행 시작일</label>
             <input type="date" id="calc-date" style="background:var(--black-ele);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--gray-hi);font-size:13px;outline:none;cursor:pointer;" oninput="calcOnInput()">
@@ -1223,7 +1258,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
 
       <div class="cl-search-wrap">
-        <span class="cl-search-icon">⌕</span>
+        <span class="cl-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span>
         <input type="text" id="lib-search" class="cl-search-input" placeholder="자료명 검색" oninput="lib_search(this.value)" autocomplete="off">
         <button class="cl-search-clear" id="lib-search-clear" onclick="lib_searchClear()" style="display:none;">✕</button>
       </div>
@@ -1259,7 +1294,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
 
       <div class="cl-search-wrap">
-        <span class="cl-search-icon">⌕</span>
+        <span class="cl-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span>
         <input type="text" id="cl-search" class="cl-search-input" placeholder="작품명·출연진 검색" oninput="clSearch(this.value)" autocomplete="off">
         <button class="cl-search-clear" id="cl-search-clear" onclick="clSearchClear()" style="display:none;">✕</button>
       </div>
@@ -1730,7 +1765,7 @@ function tpRender(){
       lastGroup = c.group;
       html += '<div class="tp-group"' + (i ? ' style="margin-top:26px;"' : '') + '>';
       html += '<div class="tp-group-bar"></div><span class="tp-group-label">';
-      html += (c.group === 'common' ? '두 매체 공통' : '넷플릭스만 해당') + '</span></div>';
+      html += (c.group === 'common' ? '매체 통합' : '넷플릭스만 해당') + '</span></div>';
     }
     html += '<div class="info-card" style="margin-bottom:14px;"><div class="tp-card">';
     html += '<div class="tp-vcol"><div class="tp-vname2">' + tpEsc(c.label) + '</div>';
@@ -1807,7 +1842,7 @@ function bgRender(){
 
   var html = '';
   // ── 공통 원칙 ──
-  html += '<div class="tp-group"><div class="tp-group-bar"></div><span class="tp-group-label">두 매체 공통 원칙</span></div>';
+  html += '<div class="tp-group"><div class="tp-group-bar"></div><span class="tp-group-label">매체 공통 정책 요약</span></div>';
   html += '<div class="info-card" style="margin-bottom:22px;">';
   for(var i=0;i<BASIC_COMMON.length;i++){
     html += '<div class="bg-row"><div class="bg-t">' + tpEsc(BASIC_COMMON[i].t) + '</div>';
@@ -1884,7 +1919,6 @@ function tbRender(){
     return tpMatch((v.name + ' ' + (TP_BAN_LABEL[v.name] || '') + ' ' + (v.notes || []).join(' ') + ' ' + (TP_BAN_XREF[v.name] || '')).toLowerCase(), q);
   });
   if(!list.length){ box.innerHTML = '<div class="tp-empty">검색 결과가 없습니다.</div>'; return; }
-  // 가나다순 정렬 (괄호 앞 이름 기준)
   list = list.slice().sort(function(a,b){
     var ad = TP_BAN_LABEL[a.name] || a.name, bd = TP_BAN_LABEL[b.name] || b.name;
     var an = (ad.match(/^([^(]+)/) || [,ad])[1].trim();
@@ -1892,44 +1926,49 @@ function tbRender(){
     return an.localeCompare(bn, 'ko');
   });
 
-  var html = '<div class="info-card">';
-  html += '<div class="tb-row"><div class="tb-head">업종</div><div class="tb-head">넷플릭스</div>';
-  html += '<div class="tb-head">티빙·웨이브</div><div class="tb-head">참고 사항</div></div>';
+  var html = '';
   for(var i=0;i<list.length;i++){
     var v = list[i];
-    // 괄호 안 예시는 업종명 아래 작은 글씨로 분리
     var disp = TP_BAN_LABEL[v.name] || v.name;
     var m = disp.match(/^([^(]+?)\s*\((.+)\)\s*$/);
     var main = m ? m[1] : disp, sub = m ? m[2] : '';
     var nf = TP_NETFLIX_BAN[v.name] || '';
-    var xref = TP_BAN_XREF[v.name] || '';
-
-    html += '<div class="tb-row">';
-    html += '<div><div class="tb-name">' + tpEsc(main) + '</div>';
-    html += sub ? '<div class="tb-sub">' + tpEsc(sub) + '</div>' : '';
-    html += '</div>';
-    html += nf ? '<div class="tb-st ' + tbStCls(nf) + '">' + tpEsc(nf) + '</div>'
-               : '<div class="tb-st tb-chk">확인 필요</div>';
-    html += '<div class="tb-st tb-no">불가</div>';
-    html += '<div>';
-    if(v.notes && v.notes.length){
-      // 참고 사항 출처는 티빙 심사 가이드 → 매체 태그로 명시
-      for(var k=0;k<v.notes.length;k++)
-        html += '<div class="tb-note"><span class="tb-tag tb-tag-tv">티빙·웨이브</span>' + tpEsc(v.notes[k]) + '</div>';
-    }
     var nfNote = TP_NETFLIX_BAN_NOTE[v.name] || '';
-    if(nfNote){
-      // 앞에 티빙·웨이브 근거가 있으면 매체가 바뀌는 지점에 구분선
-      var sep = (v.notes && v.notes.length) ? ' tb-note-sep' : '';
-      html += '<div class="tb-note' + sep + '"><span class="tb-tag tb-tag-nf">넷플릭스</span>' + tpEsc(nfNote) + '</div>';
+    var xref = TP_BAN_XREF[v.name] || '';
+    var tvNotes = (v.notes && v.notes.length) ? v.notes : [];
+
+    html += '<div class="info-card" style="margin-bottom:14px;"><div class="tp-card">';
+    html += '<div class="tp-vcol"><div class="tp-vname2">' + tpEsc(main) + '</div>';
+    html += sub ? '<div class="tb-sub">' + tpEsc(sub) + '</div>' : '';
+    html += '</div><div>';
+
+    // 상태 한 줄 — 두 매체 위치를 카드마다 동일하게 고정
+    html += '<div class="tb-stat">';
+    html += '<div><span class="pen-media pen-nf">넷플릭스</span></div>';
+    html += nf ? '<div class="tb-state ' + tbStCls(nf) + '">' + tpEsc(nf) + '</div>'
+               : '<div class="tb-state tb-chk">확인 필요</div>';
+    html += '<div><span class="pen-media pen-tv">티빙·웨이브</span></div>';
+    html += '<div class="tb-state tb-no">불가</div>';
+    html += '</div>';
+
+    // 참고 사항 — 매체별로 묶고 매체가 바뀌는 지점에 구분선
+    if(nfNote || tvNotes.length || xref){
+      html += '<div class="tb-cites">';
+      if(nfNote) html += '<div class="tb-cite"><span class="tb-cite-m">넷플릭스</span> · ' + tpEsc(nfNote) + '</div>';
+      for(var k=0;k<tvNotes.length;k++){
+        var sep = (k === 0 && nfNote) ? ' tb-cite-sep' : '';
+        html += '<div class="tb-cite' + sep + '"><span class="tb-cite-m">티빙·웨이브</span> · ' + tpEsc(tvNotes[k]) + '</div>';
+      }
+      if(xref){
+        html += '<div class="tp-xref" style="margin-top:9px;"><a onclick="switchTab(\'policy\',\'limited\')">' + tpEsc(xref) + ' \u2197</a></div>';
+      }
+      html += '</div>';
+    } else {
+      html += '<div class="tb-cites"><div class="tb-cite" style="color:var(--gray-low);">참고 사항 없음</div></div>';
     }
-    if(xref){
-      html += '<div class="tb-xref"><a onclick="switchTab(\'policy\',\'limited\')">' + tpEsc(xref) + ' \u2197</a></div>';
-    }
-    if(!(v.notes && v.notes.length) && !xref && !nfNote) html += '<div class="tb-note-dim">\u2014</div>';
-    html += '</div></div>';
+
+    html += '</div></div></div>';
   }
-  html += '</div>';
   html += tpSourceLinks((nfData || NF_FALLBACK).source_url, d.source_url);
   box.innerHTML = html;
 }
@@ -3327,7 +3366,7 @@ function rnUnifiedRender(){
     var cc = catColor[it.category] || {bg:'rgba(136,135,128,0.18)', fg:'#b4b2a9'};
     var globalIdx = start + idx;
     var verHtml = it.ver ? ' <span style="font-size:11px;color:var(--gray-dim);">' + clEsc(it.ver) + '</span>' : '';
-    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" style="display:grid;grid-template-columns:78px 64px 1fr 82px 16px;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color 0.15s;" '
+    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" class="rn-uni-row" style="padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color 0.15s;" '
       + 'onmouseover="this.style.borderColor=\'rgba(255,255,255,0.22)\'" onmouseout="this.style.borderColor=\'var(--border)\'">'
       + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + mediaBg + ';color:' + mediaFg + ';text-align:center;white-space:nowrap;">' + it.mediaLabel + '</span>'
       + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + cc.bg + ';color:' + cc.fg + ';text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + clEsc(it.category) + '</span>'
@@ -3522,7 +3561,7 @@ function rnTvingRender(){
   var startIdx = (rnTvingPage - 1) * rnTvingPer;
   var pageRows = rows.slice(startIdx, startIdx + rnTvingPer);
   // 헤더 행 + 목록
-  var html = '<div style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:11px;color:var(--gray-dim);font-weight:600;">'
+  var html = '<div class="rn-tv-row rn-tv-head" style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--gray-low);font-weight:700;">'
     + '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
   pageRows.forEach(function(n){
     var color = rnTvingCatColor(n.category);
@@ -3533,7 +3572,7 @@ function rnTvingRender(){
       ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>'
       : '';
     html += '<div style="border-bottom:1px solid var(--border);">'
-      + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" style="display:grid;grid-template-columns:90px 1fr 110px;gap:12px;padding:14px;cursor:pointer;align-items:center;">'
+      + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="rn-tv-row" style="padding:14px;cursor:pointer;">'
       +   '<div><span class="cat-badge" style="background:' + color + '22;color:' + color + ';">' + clEsc(n.category||'기타') + '</span></div>'
       +   '<div style="font-size:14px;color:var(--white);line-height:1.5;">' + safeTitle + newBadge + '</div>'
       +   '<div style="text-align:right;font-size:12px;color:var(--gray-low);">' + dateDisp + '</div>'
@@ -3846,7 +3885,7 @@ async function sheetsLoadNotes() {
         verCard.className = 'rn-card' + (isLatest ? ' rn-latest' : '');
         verCard.innerHTML =
           '<div class="rn-card-header" onclick="toggleRnCard(this)">' +
-            '<div style="display:flex;align-items:center;gap:8px;width:270px;min-width:270px;flex-shrink:0;">' +
+            '<div class="rn-nf-title">' +
               '<span style="font-size:14px;font-weight:400;color:var(--white);white-space:nowrap;">' +
                 escapeHtmlJS(cardTitle) + '</span>' +
               (isLatest ? '<span class="badge badge-new" style="flex-shrink:0;">NEW</span>' : '') +
@@ -3875,7 +3914,8 @@ async function sheetsLoadNotes() {
 
           // 섹션 그리드
           const secDiv = document.createElement('div');
-          secDiv.style.cssText = 'display:grid;grid-template-columns:220px 1fr;border-top:1px solid var(--border);';
+          secDiv.className = 'rn-sec-row';
+          secDiv.style.cssText = 'border-top:1px solid var(--border);';
 
           // 왼쪽
           const leftDiv = document.createElement('div');
