@@ -3344,13 +3344,14 @@ function rnUnifiedRender(){
   var pageItems = items.slice(start, start + RN_UNIFIED_PER);
 
   // 카테고리별 배지 색 (배경, 글자) — 성격별 그룹 색 (방법 B)
-  // 빨강:정책·공지 / 노랑:상품·솔루션 / 파랑:리포트·시스템 / 초록:가이드(제작)·가이드(운영) / 분홍:프로모션 / 회색:기타·콘텐츠
+  // 빨강:정책·공지 / 노랑:상품·솔루션 / 파랑:리포트·시스템 / 청록:인사이트 / 초록:가이드(제작)·가이드(운영) / 분홍:프로모션 / 회색:기타·콘텐츠
   var catColor = {
     '정책':        {bg:'rgba(229,9,20,0.15)',   fg:'#FF6B6B'},
     '공지':        {bg:'rgba(229,9,20,0.15)',   fg:'#FF6B6B'},
     '상품':        {bg:'rgba(245,158,11,0.15)', fg:'#FCD34D'},
     '솔루션':      {bg:'rgba(245,158,11,0.15)', fg:'#FCD34D'},
     '리포트':      {bg:'rgba(59,130,246,0.15)', fg:'#60A5FA'},
+    '인사이트':     {bg:'rgba(45,212,191,0.15)', fg:'#2DD4BF'},
     '시스템':      {bg:'rgba(59,130,246,0.15)', fg:'#60A5FA'},
     '가이드(제작)': {bg:'rgba(34,197,94,0.15)',  fg:'#4ADE80'},
     '가이드(운영)': {bg:'rgba(34,197,94,0.15)',  fg:'#4ADE80'},
@@ -3530,6 +3531,7 @@ function rnTvingCatColor(cat){
     '공지':   '#FF6B6B',
     '솔루션': '#FCD34D',
     '시스템': '#60A5FA',
+    '인사이트':'#2DD4BF',
     '콘텐츠': '#A3A3A3',
     '프로모션':'#F472B6',
     '기타':   '#A3A3A3'
@@ -3778,6 +3780,7 @@ async function sheetsLoadNotes() {
     // 카테고리 색상
     const catColors = {
       '리포트'      : {bg:'rgba(59,130,246,0.15)',  color:'#60A5FA', border:'rgba(59,130,246,0.3)'},
+      '인사이트'     : {bg:'rgba(45,212,191,0.15)',  color:'#2DD4BF', border:'rgba(45,212,191,0.3)'},
       '정책'        : {bg:'rgba(229,9,20,0.15)',    color:'#FF6B6B', border:'rgba(229,9,20,0.3)'},
       '프로모션'     : {bg:'rgba(236,72,153,0.15)', color:'#F472B6', border:'rgba(236,72,153,0.3)'},
       '상품'        : {bg:'rgba(245,158,11,0.15)',  color:'#FCD34D', border:'rgba(245,158,11,0.3)'},
@@ -3789,7 +3792,7 @@ async function sheetsLoadNotes() {
     // 필터 바 생성
     const filterBar = document.getElementById('rn-filter-bar');
     // 카테고리 표시 순서 (지정 순서)
-    const catOrder = ['정책', '가이드(제작)', '가이드(운영)', '상품', '프로모션', '리포트', '기타'];
+    const catOrder = ['정책', '가이드(제작)', '가이드(운영)', '상품', '프로모션', '리포트', '인사이트', '기타'];
     if (filterBar) {
       // 실제 데이터에 있는 카테고리만, 지정된 순서대로 표시
       const present = {};
@@ -4047,12 +4050,16 @@ async function sheetsLoadNotes() {
     window.filterNotes = function(cat) {
       window._currentCat = cat;
       window._rnPage = 1;
-      allCats.concat(['전체']).forEach(function(c) {
-        const btn = document.getElementById('rn-filter-' + c);
-        if (!btn) return;
+      // 필터 바에 실제로 그려진 버튼을 직접 순회 (카테고리 목록 변수에 의존하지 않음)
+      var _bar  = document.getElementById('rn-filter-bar');
+      var _btns = _bar ? _bar.querySelectorAll('button') : [];
+      var _cmap = (typeof catColors !== 'undefined') ? catColors : (window._catColors || {});
+      Array.prototype.forEach.call(_btns, function(btn) {
+        const c = (btn.id || '').replace('rn-filter-', '');
+        if (!c) return;
         const cc = c === '전체'
           ? {bg:'rgba(229,9,20,0.15)',color:'#FF6B6B',border:'rgba(229,9,20,0.3)'}
-          : (catColors[c] || catColors['기타']);
+          : (_cmap[c] || _cmap['기타'] || {bg:'rgba(163,163,163,0.15)',color:'#A3A3A3',border:'rgba(163,163,163,0.3)'});
         if (c === cat) {
           btn.style.background = cc.bg;
           btn.style.color      = cc.color;
