@@ -129,6 +129,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .notice-icon{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--gray-mid);}
 .notice-card.notice-danger .notice-icon{color:#FF6B6B;}
 .notice-text{font-size:13px;color:var(--gray-hi);line-height:1.75;}
+.notice-text > div + div{margin-top:7px;}
 .info-card:hover{border-color:#6a6a6a;}
 
 .cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
@@ -1296,7 +1297,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">매체별 공개 예정작과 공개중인 작품을 한눈에 확인하세요!</p></div>
       <div class="notice-card">
         <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
-        <div class="notice-text">실제 공개일은 매체사 사정에 따라 변경될 수 있습니다. 최종 확인은 매체 공식 공지를 기준으로 해주세요.</div>
+        <div class="notice-text"><div>콘텐츠 정보는 다양한 채널을 통해 업데이트됩니다. 특히 실제 공개일은 매체사 사정에 따라 변경될 수 있습니다.</div><div>정확한 내용은 매체사의 공식 발표를 기준으로 확인해 주시기 바랍니다.</div></div>
       </div>
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
