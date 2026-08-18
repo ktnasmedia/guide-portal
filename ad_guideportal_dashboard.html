@@ -398,8 +398,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .bg-sub{font-size:12px;font-weight:600;color:var(--gray-mid);margin:10px 0 5px;}
 .ap-plat{font-size:12px;color:var(--gray-mid);margin-top:6px;line-height:1.5;}
 .ap-plat-only{color:#FB923C;}
+.ap-plats{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+
 .ap-medianame{font-size:12px;color:var(--gray-dim);margin-top:4px;line-height:1.5;}
-.ap-status{display:inline-block;margin-top:6px;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(251,146,60,0.12);color:#FB923C;border:1px solid rgba(251,146,60,0.25);}
+.ap-beta{font-size:12px;font-weight:600;color:#FB923C;margin-left:7px;white-space:nowrap;}
 .ap-summary{font-size:13px;color:var(--white);line-height:1.75;}
 .ap-spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:13px;padding-top:13px;border-top:1px solid var(--black-ele);}
 .ap-spec-label{font-size:12px;color:var(--gray-mid);}
@@ -413,7 +415,47 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .ap-tbl td.ap-num{text-align:right;font-variant-numeric:tabular-nums;}
 .ap-tbl tr:last-child th,.ap-tbl tr:last-child td{border-bottom:none;}
 .ap-tbl-wrap{overflow-x:auto;}
-.ap-empty{font-size:13px;color:var(--gray-low);padding:14px 0;}
+.ap-empty{font-size:13px;color:var(--gray-low);padding:14px 0;line-height:1.75;}
+.mail-link{color:var(--gray-hi);text-decoration:none;border-bottom:1px solid var(--gray-dim);}
+.mail-link:hover{color:#FB923C;border-bottom-color:#FB923C;}
+.ap-all-tbl{display:block;}
+.ap-all-row{display:grid;grid-template-columns:110px 118px minmax(160px,1.3fr) minmax(140px,1fr) minmax(150px,1fr) 110px;gap:16px;align-items:start;padding:13px 0;border-top:1px solid var(--black-ele);cursor:pointer;transition:background 0.15s;}
+.ap-all-row:first-child{padding-top:0;border-top:none;cursor:default;}
+.ap-all-row:not(.ap-all-head):hover{background:rgba(255,255,255,0.03);}
+.ap-all-head > div{font-size:13px;font-weight:700;color:var(--gray-low);}
+.ap-all-row > div{font-size:13px;color:var(--gray-hi);line-height:1.6;}
+.ap-all-name{color:var(--white)!important;font-weight:600;}
+.ap-all-dim{color:var(--gray-mid)!important;}
+.section-hint{font-size:12px;color:var(--gray-dim);}
+.ap-mx{display:grid;}
+.ap-mx > div{padding:14px;font-size:13px;border-top:1px solid var(--black-ele);}
+
+.ap-mx-head{font-size:13px!important;font-weight:700;color:var(--gray-low);border-top:none!important;}
+.ap-mx-item{display:block;color:var(--gray-hi);text-decoration:none;cursor:pointer;line-height:1.95;}
+.ap-mx-item:hover{color:#FF6B6B;}
+.ap-mx-tag{color:#FB923C;font-size:12px;}
+.ap-mx-none{color:var(--gray-dim);}
+.ap-mx-plan{color:var(--gray-low);}
+.ap-mb-line{white-space:nowrap;}
+.ap-mb-line + .ap-mb-line{margin-top:3px;}
+.spec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.spec-tabs{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.spec-tab{font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid var(--border);color:var(--gray-mid);background:var(--black-ele);cursor:pointer;transition:all 0.18s;}
+.spec-tab:hover{color:var(--gray-hi);}
+.spec-tab-on{background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.4);color:#FF6B6B;}
+.spec-name{font-size:13px;color:var(--gray-mid);}
+.spec-tbl{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.spec-row{display:grid;grid-template-columns:190px minmax(0,1fr);border-top:1px solid var(--border);}
+.spec-row:first-child{border-top:none;}
+.spec-th{padding:13px 16px;background:rgba(255,255,255,0.025);font-size:13px;font-weight:600;color:var(--white);border-right:1px solid var(--border);line-height:1.5;}
+.spec-td{padding:13px 16px;font-size:13px;color:var(--gray-hi);line-height:1.8;}
+.nfs-p{margin-top:2px;}
+.nfs-l1{padding-left:12px;text-indent:-12px;}
+.nfs-l1::before{content:"\2022  ";color:var(--gray-dim);}
+.nfs-l2{padding-left:26px;text-indent:-12px;color:var(--gray-mid);}
+.nfs-l2::before{content:"\2013  ";color:var(--gray-dim);}
+.nfs-p + .nfs-l1,.nfs-l2 + .nfs-p{margin-top:7px;}
+@media(max-width:640px){ .spec-row{grid-template-columns:1fr;} .spec-th{border-right:none;border-bottom:1px solid var(--border);} }
 .kbo-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
 .kbo-time{font-size:12px;color:var(--gray-low);}
 .kbo-sched{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;}
@@ -472,6 +514,9 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   .tb-row{grid-template-columns:1fr 1fr;gap:8px;}
   .tb-note{grid-template-columns:1fr;gap:4px;}
   .tb-stat{grid-template-columns:96px minmax(0,1fr);gap:8px 12px;}
+  .ap-all-row{grid-template-columns:1fr 1fr;gap:6px 12px;}
+  .ap-all-row > :nth-child(3){grid-column:1 / -1;}
+  .ap-all-head{display:none;}
   .policy-row{grid-template-columns:1fr;gap:6px;}
   .pen-row{grid-template-columns:1fr;gap:5px;}
   .tb-xref{padding-left:0;}
@@ -661,10 +706,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <svg id="arrow-products" class="nav-arrow" width="13" height="13" fill="none" viewBox="0 0 14 14"><path d="M4 5.5L7 8.5L10 5.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
     </div>
     <div id="sub-products" class="sub-menu collapsed">
-      <div class="nav-sub-item" onclick="navigate('products','video')"><span class="nav-sub-dot"></span>영상광고</div>
-      <div class="nav-sub-item" onclick="navigate('products','image')"><span class="nav-sub-dot"></span>이미지광고</div>
-      <div class="nav-sub-item" onclick="navigate('products','sts')"><span class="nav-sub-dot"></span>STS</div>
-      <div class="nav-sub-item" onclick="navigate('products','qr')"><span class="nav-sub-dot"></span>QR 활용 가이드</div>
+      <div class="nav-sub-item" onclick="navigate('products','video')"><span class="nav-sub-dot"></span>동영상 광고</div>
+      <div class="nav-sub-item" onclick="navigate('products','image')"><span class="nav-sub-dot"></span>이미지 광고</div>
+      <div class="nav-sub-item" onclick="navigate('products','exclusive')"><span class="nav-sub-dot"></span>익스클루시브 광고</div>
+      <div class="nav-sub-item" onclick="navigate('products','qr')"><span class="nav-sub-dot"></span>기타</div>
     </div>
   </div>
 
@@ -956,34 +1001,67 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <div id="page-products" class="page">
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-products">광고 상품</h1><p class="page-desc" id="ph-desc-products">매체별 광고 상품을 확인하세요.</p></div>
       <div class="sub-tab-bar">
-        <div class="sub-tab" id="tab-products-all" onclick="switchTab('products','all')" style="display:none;">전체</div>
+        <div class="sub-tab tab-active" id="tab-products-all" onclick="switchTab('products','all')">전체</div>
         <div class="sub-tab" id="tab-products-video" onclick="switchTab('products','video')">동영상 광고</div>
         <div class="sub-tab" id="tab-products-image" onclick="switchTab('products','image')">이미지 광고</div><div class="sub-tab" id="tab-products-exclusive" onclick="switchTab('products','exclusive')">익스클루시브 광고</div>
         <div class="sub-tab" id="tab-products-sts" onclick="switchTab('products','sts')" style="display:none;">STS</div>
-        <div class="sub-tab" id="tab-products-qr" onclick="switchTab('products','qr')">QR 활용 가이드</div>
+        <div class="sub-tab" id="tab-products-qr" onclick="switchTab('products','qr')">기타</div>
       </div>
       <div id="tc-products-all">
+        <div class="notice-card">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+          <div class="notice-text">매체별 광고 상품을 한눈에 비교할 수 있습니다. 상품을 누르면 해당 구분 탭으로 이동합니다.</div>
+        </div>
+
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">상품 한눈에 보기</span><span class="section-hint">*표 내 매체 및 상품 정보를 누르면 해당 구분 탭으로 이동합니다.</span></div>
+        <div id="ap-all"></div>
+
+        <div class="section-bar" style="margin-top:28px;"><div class="section-accent"></div><span class="section-label">가이드 · 소재 스펙</span></div>
         <div class="card-grid">
           <div class="prod-card" onclick="switchTab('products','video')">
-            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;"><div class="icon-bg ib-red"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="2" y="4" width="14" height="14" rx="2" stroke="#E50914" stroke-width="1.5"/><path d="M16 8.5L20 6.5V15.5L16 13.5V8.5Z" stroke="#E50914" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div><div style="font-size:14px;font-weight:700;color:var(--white);">영상광고</div><div style="font-size:11px;color:var(--gray-low);">Pre-roll / Mid-roll</div></div><span class="badge badge-type" style="margin-left:auto;">노출형</span></div>
-            <div class="card-desc">스트리밍 환경에 최적화된 영상 광고 상품. 소재 규격 및 집행 기준을 확인하세요.</div>
-            <div style="display:flex;gap:8px;"><button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','video')">가이드 보기</button><button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','video')">소재 스펙</button></div>
-          </div>
-          <div class="prod-card" style="position:relative;" onclick="switchTab('products','image')">
-            <div style="position:absolute;top:14px;right:14px;"><span class="badge badge-pause">⏸ 일시정지</span></div>
-            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;"><div class="icon-bg ib-orange"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="2" y="4" width="18" height="14" rx="2" stroke="#FB923C" stroke-width="1.5"/><circle cx="8" cy="9" r="2" stroke="#FB923C" stroke-width="1.3"/><path d="M2 14.5L7 10L11 13.5L14.5 10.5L20 15" stroke="#FB923C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="font-size:14px;font-weight:700;color:var(--white);">이미지광고</div><div style="font-size:11px;color:var(--gray-low);">디스플레이 배너</div></div></div>
-            <div class="card-desc">브라우즈·홈 화면 배너 기반 정적 이미지 광고. 현재 운영 일시 중단 상태.</div>
-            <div style="display:flex;gap:8px;"><button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','image')">가이드 보기</button><button class="btn-disabled" style="flex:1;">운영 중단</button></div>
-          </div>
-          <div class="prod-card" onclick="switchTab('products','sts')">
-            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;"><div class="icon-bg ib-purple"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><path d="M11 3L13.5 8.5H19L14.5 12L16.5 18L11 14.5L5.5 18L7.5 12L3 8.5H8.5L11 3Z" stroke="#C084FC" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div><div style="font-size:14px;font-weight:700;color:var(--white);">STS</div><div style="font-size:11px;color:var(--gray-low);">Sponsorship & Takeover</div></div><span class="badge badge-prem" style="margin-left:auto;">프리미엄</span></div>
-            <div class="card-desc">넷플릭스 메인 화면 브랜딩으로 최대 노출을 달성하는 최상위 프리미엄 상품.</div>
-            <div style="display:flex;gap:8px;"><button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','sts')">가이드 보기</button><button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','sts')">단가 확인</button></div>
-          </div>
-          <div class="prod-card" onclick="switchTab('products','qr')">
-            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;"><div class="icon-bg ib-white"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="12" y="12" width="3" height="3" fill="#A3A3A3"/><path d="M17 12H19M15 17H19M12 15H14M14 19H17" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round"/></svg></div><div><div style="font-size:14px;font-weight:700;color:var(--white);">QR 활용 가이드</div><div style="font-size:11px;color:var(--gray-low);">TV-모바일 연결</div></div></div>
-            <div class="card-desc">TV 광고에 QR 코드를 삽입해 시청자를 모바일로 유도하는 연동 가이드.</div>
-            <div style="display:flex;gap:8px;"><button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','qr')">가이드 보기</button><button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','qr')">샘플 보기</button></div>
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;">
+              <div class="icon-bg ib-red"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="2" y="4" width="14" height="14" rx="2" stroke="#E50914" stroke-width="1.5"/><path d="M16 8.5L20 6.5V15.5L16 13.5V8.5Z" stroke="#E50914" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+              <div><div style="font-size:15px;font-weight:600;color:var(--white);">동영상 광고</div>
+              <div style="font-size:12px;color:var(--gray-low);">인스트림 · 아웃스트림</div></div>
+            </div>
+            <div class="card-desc">콘텐츠 재생 전·중 노출되는 동영상 상품. 매체별 상품과 단가를 확인하세요.</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','video')">가이드 보기</button>
+              <button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','video')">소재 스펙</button>
+            </div>
+          </div><div class="prod-card" onclick="switchTab('products','image')">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;">
+              <div class="icon-bg ib-orange"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="2" y="4" width="18" height="14" rx="2" stroke="#FB923C" stroke-width="1.5"/><circle cx="8" cy="9" r="2" stroke="#FB923C" stroke-width="1.3"/><path d="M2 14.5L7 10L11 13.5L14.5 10.5L20 15" stroke="#FB923C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div><div style="font-size:15px;font-weight:600;color:var(--white);">이미지 광고</div>
+              <div style="font-size:12px;color:var(--gray-low);">일시정지 · 배너</div></div>
+            </div>
+            <div class="card-desc">일시정지 화면과 배너 지면에 노출되는 이미지 상품.</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','image')">가이드 보기</button>
+              <button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','image')">소재 스펙</button>
+            </div>
+          </div><div class="prod-card" onclick="switchTab('products','exclusive')">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;">
+              <div class="icon-bg ib-purple"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><path d="M11 3L13.5 8.5H19L14.5 12L16.5 18L11 14.5L5.5 18L7.5 12L3 8.5H8.5L11 3Z" stroke="#C084FC" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+              <div><div style="font-size:15px;font-weight:600;color:var(--white);">익스클루시브 광고</div>
+              <div style="font-size:12px;color:var(--gray-low);">STS · 브랜디드 콘텐츠</div></div>
+            </div>
+            <div class="card-desc">콘텐츠·타이틀과 브랜드를 연계하는 독점형 상품. 단가는 별도 문의.</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','exclusive')">가이드 보기</button>
+              <button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','exclusive')">단가 확인</button>
+            </div>
+          </div><div class="prod-card" onclick="switchTab('products','qr')">
+            <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;">
+              <div class="icon-bg ib-white"><svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1" stroke="#A3A3A3" stroke-width="1.5"/><rect x="12" y="12" width="3" height="3" fill="#A3A3A3"/><path d="M17 12H19M15 17H19M12 15H14M14 19H17" stroke="#A3A3A3" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              <div><div style="font-size:15px;font-weight:600;color:var(--white);">기타</div>
+              <div style="font-size:12px;color:var(--gray-low);">업데이트 예정</div></div>
+            </div>
+            <div class="card-desc">QR 활용 가이드 등 추가 자료가 준비되면 이곳에 안내됩니다.</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-outline" style="flex:1;" onclick="event.stopPropagation();switchTab('products','qr')">가이드 보기</button>
+              <button class="btn-red" style="flex:1;" onclick="event.stopPropagation();switchTab('products','qr')">바로 가기</button>
+            </div>
           </div>
         </div>
       </div>
@@ -994,6 +1072,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="notice-text">매체별 동영상 광고 상품입니다. 단가와 조건은 매체 정책에 따라 변경될 수 있으므로 집행 전 담당자 확인을 권장합니다.</div>
         </div>
         <div id="ap-video"></div>
+        <div id="nfspec-video"></div>
       </div>
       <div id="tc-products-image" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">이미지 광고</span></div>
@@ -1002,6 +1081,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="notice-text">매체별 이미지 광고 상품입니다. 단가와 조건은 매체 정책에 따라 변경될 수 있으므로 집행 전 담당자 확인을 권장합니다.</div>
         </div>
         <div id="ap-image"></div>
+        <div id="nfspec-image"></div>
       </div>
       <div id="tc-products-exclusive" style="display:none;">
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">익스클루시브 광고</span></div>
@@ -1010,13 +1090,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="notice-text">콘텐츠·타이틀과 브랜드를 연계하는 독점형 상품입니다. 단가는 콘텐츠별로 상이하므로 별도 문의주시기 바랍니다.</div>
         </div>
         <div id="ap-exclusive"></div>
+        <div id="nfspec-exclusive"></div>
       </div>
       <div id="tc-products-qr" style="display:none;">
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">QR 활용 가이드</span></div>
-        <div class="card-grid-2">
-          <div class="info-card"><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:12px;">QR 코드 배치 기준</div><div style="font-size:13px;color:var(--gray-low);line-height:1.75;">• 화면 하단 우측 권장<br>• 최소 크기: 영상 세로 기준 12% 이상<br>• 표시 시간: 5초 이상 유지</div></div>
-          <div class="info-card"><div style="font-size:13px;font-weight:600;color:var(--white);margin-bottom:12px;">UTM 파라미터 구조</div><div style="font-size:13px;color:var(--gray-low);line-height:1.75;">• utm_source=netflix<br>• utm_medium=qr<br>• utm_campaign=캠페인명<br>• utm_content=소재ID</div></div>
-        </div>
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">기타</span></div>
+        <div id="nfspec-etc"></div>
       </div>
     </div>
 
@@ -1507,7 +1585,7 @@ let currentTab  = 'all';
 const pageTabMap = {
   updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
   policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
-  products:     ['video','image','exclusive','qr'],   // '전체'·'STS' 탭은 숨김 (STS는 익스클루시브로 흡수)
+  products:     ['all','video','image','exclusive','qr'],   // 'STS' 탭은 숨김 (익스클루시브로 흡수)
   targeting:    ['all','basic','premium','dsp'],
   subscription: ['all','calculator','process'],
   casestudy:    ['all','clients'],
@@ -1602,6 +1680,7 @@ function navigate(page, tab) {
   // 공지사항 페이지 진입 시 릴리즈 노트(넷플릭스 업데이트) 자동 로드
   if (page === 'updates') setTimeout(function(){ rnApplyMediaTab(targetTab); }, 80);
   if (page === 'products') setTimeout(apRender, 60);
+  if (page === 'products') setTimeout(nfSpecLoad, 80);
   if (page === 'subscription') setTimeout(kboEnsureLoaded, 60);
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
@@ -1873,7 +1952,7 @@ function tpRender(){
   var nd = nfData || NF_FALLBACK;
   var cards = tpBuildCards();
   if(!cards.length){
-    box.innerHTML = '<div class="info-card"><div class="tp-none">제한 업종 정보를 불러오지 못했습니다.</div></div>';
+    box.innerHTML = '<div class="info-card"><div class="tp-none">' + LOAD_FAIL_MSG + '</div></div>';
     return;
   }
   if(q) cards = cards.filter(function(c){ return tpMatch(tpCardText(c), q); });
@@ -2015,7 +2094,7 @@ function kboRender(){
   if(ld) ld.style.display = 'none';
   if(!box) return;
   var d = kboData || KBO_FALLBACK;
-  if(!d){ box.innerHTML = '<div class="ap-empty">청약 정보를 불러오지 못했습니다.</div>'; return; }
+  if(!d){ box.innerHTML = '<div class="ap-empty">' + LOAD_FAIL_MSG + '</div>'; return; }
 
   var html = '<div class="kbo-head"><div></div><div class="kbo-time">수집 ' + tpEsc(d.collected_at || '') + '</div></div>';
 
@@ -2057,10 +2136,175 @@ async function kboEnsureLoaded(){
   kboRender();
 }
 
+// ══════ 넷플릭스 소재 제작 가이드 (구글 시트 직접 로드) ══════
+// 시트 탭 하나가 버튼 하나가 됩니다. 탭을 추가하려면 아래에 한 줄만 넣으면 됩니다.
+// 시트는 1행 제목 / 3행 열 이름(항목·내용) / 4행부터 내용 구조입니다.
+// 열 이름 행을 못 찾으면 A열=항목, B열=내용으로 읽습니다.
+// 평문이 필요한 곳(alert, textContent)용
+const LOAD_FAIL_TEXT = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.\n'
+  + '문제가 지속되면 미디어기획팀(netflix@nasmedia.co.kr)으로 문의 바랍니다.';
+const NF_SPEC_TABS = [
+  { gid: '1038607535', slot: 'video',     label: '일반영상' },
+  { gid: '1141063407', slot: 'image',     label: '일시정지' },
+  { gid: '1613554560', slot: 'exclusive', label: 'STS' },
+  { gid: '1269166265', slot: 'etc',       label: 'QR 코드' }
+];
+// 데이터 로드 실패 시 화면에 보여줄 공용 문구 — 내부 구조·기술 용어는 노출하지 않는다
+const LOAD_FAIL_MSG = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.<br>'
+  + '문제가 지속되면 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의 바랍니다.';
+const NF_SPEC_COLS = { name: ['항목', '구분', '항목명'], body: ['내용', '가이드', '상세'] };
+let nfSpecLoaded = false;
+const nfSpecData = {};   // slot → { label, items, error }
+
+// 열 이름 행을 찾아 몇 번째 열인지 알아낸다 (없으면 A·B열)
+function nfSpecCols(rows){
+  for(var r = 0; r < Math.min(rows.length, 8); r++){
+    var row = rows[r] || [];
+    var ni = -1, bi = -1;
+    for(var ccc = 0; ccc < row.length; ccc++){
+      var v = String(row[ccc] || '').replace(/\s+/g, '');
+      if(ni < 0 && NF_SPEC_COLS.name.indexOf(v) >= 0) ni = ccc;
+      if(bi < 0 && NF_SPEC_COLS.body.indexOf(v) >= 0) bi = ccc;
+    }
+    if(ni >= 0 && bi >= 0) return { name: ni, body: bi, from: r + 1 };
+  }
+  return { name: 0, body: 1, from: 1, fallback: true };
+}
+function nfSpecParse(rows){
+  var col = nfSpecCols(rows);
+  var items = [];
+  for(var i = col.from; i < rows.length; i++){
+    var row = rows[i] || [];
+    var name = String(row[col.name] || '').trim();
+    var body = String(row[col.body] || '').trim();
+    if(name && body) items.push({ name: name, body: body });
+  }
+  return { items: items, fallback: !!col.fallback };
+}
+// 셀 안 줄바꿈을 계층 목록으로
+function nfSpecBody(text){
+  var lines = String(text).split(/\r?\n/).filter(function(x){ return x.trim() !== ''; });
+  return lines.map(function(ln){
+    var t = ln.trim();
+    var depth = /^[o‧∘]\s/.test(t) ? 2 : (/^[·•*]\s/.test(t) ? 1 : 0);
+    t = t.replace(/^[·•*o‧∘]\s*/, '');
+    return '<div class="nfs-' + (depth ? 'l' + depth : 'p') + '">' + tpEsc(t) + '</div>';
+  }).join('');
+}
+// 현재 선택된 탭을 그린다
+function nfSpecShow(slot, gid){
+  var host = document.getElementById('nfspec-' + slot);
+  if(!host) return;
+  var tabs = NF_SPEC_TABS.filter(function(t){ return t.slot === slot; });
+  var cur  = gid || (tabs[0] && tabs[0].gid);
+  var d    = nfSpecData[cur];
+
+  var h = '<div class="section-bar" style="margin-top:34px;"><div class="section-accent"></div>';
+  h += '<span class="section-label">소재 제작 가이드</span></div>';
+  h += '<div class="info-card">';
+
+  // 상단 — 매체 배지 + 가이드 이름 + 엑셀 버튼
+  // 구분 탭마다 가이드가 하나씩이라 전환 버튼은 두지 않는다 (여러 개면 자동으로 버튼이 생김)
+  h += '<div class="spec-head"><div class="spec-tabs">';
+  h += '<span class="pen-media pen-nf">넷플릭스</span>';
+  if(tabs.length > 1){
+    tabs.forEach(function(t){
+      h += '<div class="spec-tab' + (t.gid === cur ? ' spec-tab-on' : '') + '" onclick="nfSpecShow(\'' + slot + '\',\'' + t.gid + '\')">' + tpEsc(t.label) + '</div>';
+    });
+  } else if(tabs.length === 1){
+    h += '<span class="spec-name">' + tpEsc(tabs[0].label) + '</span>';
+  }
+  h += '</div>';
+  h += '<button class="btn-outline" onclick="nfSpecExcel()">\u2913 엑셀 받기</button>';
+  h += '</div>';
+
+  if(!d){
+    h += '<div class="ap-empty">불러오는 중…</div>';
+  } else if(d.error){
+    h += '<div class="ap-empty">' + LOAD_FAIL_MSG + '</div>';
+  } else if(!d.items.length){
+    h += '<div class="ap-empty">등록된 내용이 없습니다.</div>';
+  } else {
+    h += '<div class="spec-tbl">';
+    d.items.forEach(function(x){
+      h += '<div class="spec-row"><div class="spec-th">' + tpEsc(x.name) + '</div>';
+      h += '<div class="spec-td">' + nfSpecBody(x.body) + '</div></div>';
+    });
+    h += '</div>';
+    if(d.fallback) h += '<div class="ap-note">\u2022 시트에서 열 이름(항목·내용)을 찾지 못해 첫 두 열로 읽었습니다.</div>';
+  }
+  h += '</div>';
+  host.innerHTML = h;
+}
+// 네 탭을 한 파일로 — 브라우저에서 직접 엑셀 생성
+function nfSpecExcel(){
+  var rows = [['구분', '항목', '내용']];
+  NF_SPEC_TABS.forEach(function(t){
+    var d = nfSpecData[t.gid];
+    if(!d || d.error || !d.items) return;
+    d.items.forEach(function(x){ rows.push([t.label, x.name, x.body]); });
+  });
+  if(rows.length < 2){ alert(LOAD_FAIL_TEXT); return; }
+  // 엑셀이 인식하는 UTF-8 CSV (셀 안 줄바꿈은 따옴표로 보존)
+  var csv = rows.map(function(r){
+    return r.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(',');
+  }).join('\r\n');
+  var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '넷플릭스_소재제작가이드_' + new Date().toISOString().slice(0, 10) + '.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+function nfSpecLoad(){
+  if(nfSpecLoaded) return;
+  nfSpecLoaded = true;
+  ['video', 'image', 'exclusive', 'etc'].forEach(function(sl){ nfSpecShow(sl); });
+  NF_SPEC_TABS.forEach(function(cfg){
+    var url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
+              '/export?format=csv&gid=' + cfg.gid + '&_=' + Date.now();
+    fetch(url)
+      .then(function(r){ if(!r.ok) throw new Error('응답 ' + r.status); return r.text(); })
+      .then(function(txt){
+        var p = nfSpecParse(parseCSV(txt));
+        nfSpecData[cfg.gid] = { label: cfg.label, items: p.items, fallback: p.fallback };
+        nfSpecShow(cfg.slot, NF_SPEC_TABS.filter(function(t){ return t.slot === cfg.slot; })[0].gid);
+      })
+      .catch(function(e){
+        console.warn('[소재 제작 가이드] ' + cfg.label + ' 로드 실패:', e);   // 원인은 콘솔에만
+        nfSpecData[cfg.gid] = { label: cfg.label, items: [], error: true };
+        nfSpecShow(cfg.slot, cfg.gid);
+      });
+  });
+}
+
 // ══════ 광고 상품 ══════
 // 아래 데이터는 스키마 확인용 샘플입니다. 확정되면 ad_products.json 으로 분리해 자동 수집분과 병합합니다.
-const AD_PRODUCTS = {"generated_at": "2026-08-14", "categories": [{"key": "video", "label": "동영상 광고", "order": 1}, {"key": "image", "label": "이미지 광고", "order": 2}, {"key": "exclusive", "label": "익스클루시브 광고", "order": 3}], "media": [{"key": "netflix", "label": "넷플릭스", "badge": "pen-nf", "order": 1, "status": "live", "min_budget": [{"mode": "예약형 (PG · DIO)", "value": 50000000, "basis": "30일 기준", "note": "VAT 별도"}, {"mode": "경매형 (PMP)", "value": 23000000, "basis": "30일 기준", "note": "수수료 미포함, VAT 별도"}], "notes": ["최소 집행 금액은 상품이 아닌 캠페인 단위로 적용됩니다."]}, {"key": "tving_wavve", "label": "티빙·웨이브", "badge": "pen-tv", "order": 2, "status": "live", "min_budget": [], "notes": []}, {"key": "coupangplay", "label": "쿠팡플레이", "badge": "pen-cp", "order": 3, "status": "planned", "min_budget": [], "notes": []}], "products": [{"id": "netflix-nonskip-video", "media": "netflix", "category": "video", "order": 1, "name": "논스킵 비디오", "media_name": "논스킵 비디오", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "콘텐츠 프리롤·미드롤에 노출되는 스킵 불가 동영상 광고", "operation": "예약형 (PG · DIO) / 경매형 (PMP)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["구매 방식", "소재 길이"], "rows": [{"구매 방식": "예약형 (PG · DIO)", "소재 길이": "10초", "value": 18000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "15초", "value": 23000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "20초", "value": 26000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "30초", "value": 31000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "45초", "value": 47000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "60초", "value": 62000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "75초", "value": 78000}, {"구매 방식": "경매형 (PMP)", "소재 길이": "10초", "value": 13200}, {"구매 방식": "경매형 (PMP)", "소재 길이": "15초", "value": 16900}, {"구매 방식": "경매형 (PMP)", "소재 길이": "20초", "value": 19100}, {"구매 방식": "경매형 (PMP)", "소재 길이": "30초", "value": 22800}, {"구매 방식": "경매형 (PMP)", "소재 길이": "45초", "value": 34600}, {"구매 방식": "경매형 (PMP)", "소재 길이": "60초", "value": 45700}, {"구매 방식": "경매형 (PMP)", "소재 길이": "75초", "value": 57400}], "headline": {"label": "예약형 15초 기준", "value": 23000}, "notes": ["45 · 60 · 75초는 미드롤에만 노출", "PMP는 최소 입찰가 기준 — 최종 제안 CPM은 이보다 높게 산정"]}, "min_budget": null, "options": [{"name": "QR 코드", "effect": "예약형 단가 10% 할증", "note": "DIO 방식으로만 구매 가능"}], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-pause", "media": "netflix", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고 (포즈애드)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "이용자가 콘텐츠를 일시정지한 화면에 노출되는 이미지 광고", "operation": "예약형 (DIO)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["소재 유형"], "rows": [{"소재 유형": "이미지", "value": 11000}, {"소재 유형": "이미지 + QR", "value": 12000}], "headline": {"label": "이미지", "value": 11000}, "notes": ["일시정지 및 QR 광고 상품은 DIO 방식으로만 구매 가능"]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-sts", "media": "netflix", "category": "exclusive", "order": 1, "name": "STS", "media_name": "STS — Sponsorship & Takeover", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "특정 오리지널 타이틀과 브랜드를 연계하는 독점 스폰서십 상품", "operation": "예약형 (DIO)", "pricing": {"type": "inquiry", "unit": "원", "basis": "", "axes": [], "rows": [], "headline": {"label": "콘텐츠별 상이", "value": null}, "notes": ["콘텐츠별로 상이하므로 별도 문의주시기 바랍니다."]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-interactive", "media": "netflix", "category": "exclusive", "order": 2, "name": "인터랙티브 광고", "media_name": "인터랙티브 광고", "status": "beta", "platforms": ["Netflix"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "tving-top20", "media": "tving_wavve", "category": "video", "order": 1, "name": "오늘의 TOP 20", "media_name": "오늘의 TOP 20", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "오늘 가장 시청이 많은 TOP 20 콘텐츠 집중 타겟팅", "operation": "노출 보장형", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 25000}, {"소재 유형": "스키퍼블", "value": 19000}], "headline": {"label": "논스킵 15초", "value": 25000}, "notes": []}, "min_budget": {"value": 30000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/top20"}], "source": "auto", "updated_at": ""}, {"id": "tving-interest", "media": "tving_wavve", "category": "video", "order": 6, "name": "관심사 타겟팅", "media_name": "관심사 타겟팅", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "시청 활동 기반으로 관심사 세그먼트를 타겟팅하는 베이직 인스트림 옵션", "operation": "노출 보장형 (베이직 인스트림 타겟팅 옵션)", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 21000}, {"소재 유형": "스키퍼블", "value": 18000}], "headline": {"label": "논스킵 15초", "value": 21000}, "notes": ["베이직 인스트림 단가에 5,000원 할증"]}, "min_budget": {"value": 10000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/interest"}], "source": "auto", "updated_at": ""}, {"id": "tving-outstream", "media": "tving_wavve", "category": "video", "order": 8, "name": "아웃스트림", "media_name": "아웃스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "홈 피드에 고정 노출되는 프리미엄 네이티브 동영상 광고", "operation": "기간 보장형 (일 독점)", "pricing": {"type": "daily", "unit": "원", "basis": "", "axes": [], "rows": [{"value": 15000000}], "headline": {"label": "1일", "value": 15000000}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/outstream"}, {"label": "청약 현황", "url": "https://tving-ad-calendar.pages.dev/"}], "source": "auto", "updated_at": ""}, {"id": "tving-branded", "media": "tving_wavve", "category": "exclusive", "order": 1, "name": "브랜디드 콘텐츠", "media_name": "브랜디드 콘텐츠", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "브랜드 스토리를 담은 콘텐츠를 VOD로 제공하는 솔루션", "operation": "콘텐츠 솔루션", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "별도 문의", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/sponsorship/branded"}], "source": "auto", "updated_at": ""}], "sources": [{"media": "tving_wavve", "mode": "auto", "url": "https://www.tvingads.com/solutions/general", "collected_at": "2026-08-14", "hash": ""}, {"media": "netflix", "mode": "manual", "url": "구글 시트 gid 456284518", "updated_at": "2026-08-14", "note": "위약금 항목은 구버전 — 시트 갱신 필요"}]};
+const AD_PRODUCTS = {"generated_at": "2026-08-14", "categories": [{"key": "video", "label": "동영상 광고", "order": 1}, {"key": "image", "label": "이미지 광고", "order": 2}, {"key": "exclusive", "label": "익스클루시브 광고", "order": 3}], "media": [{"key": "netflix", "label": "넷플릭스", "badge": "pen-nf", "order": 1, "status": "live", "min_budget": [{"mode": "예약형 (PG · DIO)", "value": 50000000, "basis": "30일 기준", "note": "VAT 별도"}, {"mode": "경매형 (PMP)", "value": 30000000, "basis": "30일 기준", "note": "수수료 미포함, VAT 별도"}], "notes": ["최소 집행 금액은 상품이 아닌 캠페인 단위로 적용됩니다."]}, {"key": "tving_wavve", "label": "티빙·웨이브", "badge": "pen-tv", "order": 2, "status": "live", "min_budget": [], "notes": []}, {"key": "coupangplay", "label": "쿠팡플레이", "badge": "pen-cp", "order": 3, "status": "planned", "min_budget": [], "notes": []}], "products": [{"id": "netflix-nonskip-video", "media": "netflix", "category": "video", "order": 1, "name": "논스킵 비디오", "media_name": "논스킵 비디오", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "콘텐츠 프리롤·미드롤에 노출되는 스킵 불가 동영상 광고", "operation": "예약형 (PG · DIO) / 경매형 (PMP)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["구매 방식", "소재 길이"], "rows": [{"구매 방식": "예약형 (PG · DIO)", "소재 길이": "10초", "value": 18000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "15초", "value": 23000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "20초", "value": 26000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "30초", "value": 31000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "45초", "value": 47000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "60초", "value": 62000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "75초", "value": 78000}, {"구매 방식": "경매형 (PMP)", "소재 길이": "10초", "value": 13200}, {"구매 방식": "경매형 (PMP)", "소재 길이": "15초", "value": 16900}, {"구매 방식": "경매형 (PMP)", "소재 길이": "20초", "value": 19100}, {"구매 방식": "경매형 (PMP)", "소재 길이": "30초", "value": 22800}, {"구매 방식": "경매형 (PMP)", "소재 길이": "45초", "value": 34600}, {"구매 방식": "경매형 (PMP)", "소재 길이": "60초", "value": 45700}, {"구매 방식": "경매형 (PMP)", "소재 길이": "75초", "value": 57400}], "headline": {"label": "예약형 15초 기준", "value": 23000}, "notes": ["45 · 60 · 75초는 미드롤에만 노출", "PMP는 최소 입찰가 기준 — 최종 제안 CPM은 이보다 높게 산정"]}, "min_budget": null, "options": [{"name": "QR 코드", "effect": "예약형 단가 10% 할증", "note": "DIO 방식으로만 구매 가능"}], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-pause", "media": "netflix", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고 (포즈애드)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "이용자가 콘텐츠를 일시정지한 화면에 노출되는 이미지 광고", "operation": "예약형 (DIO)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["소재 유형"], "rows": [{"소재 유형": "이미지", "value": 11000}, {"소재 유형": "이미지 + QR", "value": 12000}], "headline": {"label": "이미지", "value": 11000}, "notes": ["일시정지 및 QR 광고 상품은 DIO 방식으로만 구매 가능"]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-sts", "media": "netflix", "category": "exclusive", "order": 1, "name": "STS", "media_name": "싱글 타이틀 스폰서십 (Single Title Sponsorship)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "특정 오리지널 타이틀과 브랜드를 연계하는 독점 스폰서십 상품", "operation": "예약형 (DIO)", "pricing": {"type": "inquiry", "unit": "원", "basis": "", "axes": [], "rows": [], "headline": {"label": "콘텐츠별 상이", "value": null}, "notes": ["콘텐츠별로 상이하므로 별도 문의주시기 바랍니다."]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-interactive", "media": "netflix", "category": "exclusive", "order": 2, "name": "인터랙티브 광고", "media_name": "인터랙티브 광고", "status": "beta", "platforms": ["Netflix"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "tving-top20", "media": "tving_wavve", "category": "video", "order": 1, "name": "오늘의 TOP 20", "media_name": "오늘의 TOP 20", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "오늘 가장 시청이 많은 TOP 20 콘텐츠 집중 타겟팅", "operation": "노출 보장형", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 25000}, {"소재 유형": "스키퍼블", "value": 19000}], "headline": {"label": "논스킵 15초", "value": 25000}, "notes": []}, "min_budget": {"value": 30000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/top20"}], "source": "auto", "updated_at": ""}, {"id": "tving-interest", "media": "tving_wavve", "category": "video", "order": 6, "name": "관심사 타겟팅", "media_name": "관심사 타겟팅", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "시청 활동 기반으로 관심사 세그먼트를 타겟팅하는 베이직 인스트림 옵션", "operation": "노출 보장형 (베이직 인스트림 타겟팅 옵션)", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 21000}, {"소재 유형": "스키퍼블", "value": 18000}], "headline": {"label": "논스킵 15초", "value": 21000}, "notes": ["베이직 인스트림 단가에 5,000원 할증"]}, "min_budget": {"value": 10000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/interest"}], "source": "auto", "updated_at": ""}, {"id": "tving-outstream", "media": "tving_wavve", "category": "video", "order": 8, "name": "아웃스트림", "media_name": "아웃스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "홈 피드에 고정 노출되는 프리미엄 네이티브 동영상 광고", "operation": "기간 보장형 (일 독점)", "pricing": {"type": "daily", "unit": "원", "basis": "", "axes": [], "rows": [{"value": 15000000}], "headline": {"label": "1일", "value": 15000000}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/outstream"}, {"label": "청약 현황", "url": "https://tving-ad-calendar.pages.dev/"}], "source": "auto", "updated_at": ""}, {"id": "tving-branded", "media": "tving_wavve", "category": "exclusive", "order": 1, "name": "브랜디드 콘텐츠", "media_name": "브랜디드 콘텐츠", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "브랜드 스토리를 담은 콘텐츠를 VOD로 제공하는 솔루션", "operation": "콘텐츠 솔루션", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "별도 문의", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/sponsorship/branded"}], "source": "auto", "updated_at": ""}], "sources": [{"media": "tving_wavve", "mode": "auto", "url": "https://www.tvingads.com/solutions/general", "collected_at": "2026-08-14", "hash": ""}, {"media": "netflix", "mode": "manual", "url": "구글 시트 gid 456284518", "updated_at": "2026-08-14", "note": "위약금 항목은 구버전 — 시트 갱신 필요"}]};
 
+// 노출 플랫폼 표기 — 영문 원문을 한글로 바꾸고 플랫폼별 색을 지정
+const AP_PLAT = {
+  'Netflix': { label: '넷플릭스',  cls: 'pen-nf' },
+  'TVING'  : { label: '티빙',      cls: 'pen-tv' },
+  'Wavve'  : { label: '웨이브',    cls: 'pen-wv' }
+};
+function apPlatLabel(x){ return (AP_PLAT[x] && AP_PLAT[x].label) || x; }
+function apPlatBadges(p){
+  var out = [];
+  if(p.platform_note){
+    // 'TVING 단독' 처럼 플랫폼명 + 단독 형태 → 해당 플랫폼 색으로
+    var key = Object.keys(AP_PLAT).filter(function(k){ return p.platform_note.indexOf(k) === 0; })[0];
+    var lab = key ? apPlatLabel(key) + ' 단독' : p.platform_note;
+    var cls = key ? AP_PLAT[key].cls : 'pen-nf';
+    out.push('<span class="pen-media ' + cls + '">' + tpEsc(lab) + '</span>');
+  } else if(p.platforms && p.platforms.length){
+    p.platforms.forEach(function(x){
+      var d = AP_PLAT[x] || { label: x, cls: 'pen-nf' };
+      out.push('<span class="pen-media ' + d.cls + '">' + tpEsc(d.label) + '</span>');
+    });
+  }
+  return out.length ? '<div class="ap-plats">' + out.join('') + '</div>' : '';
+}
 function apMoney(v){
   return (typeof v === 'number') ? v.toLocaleString('ko-KR') + '원' : '';
 }
@@ -2130,14 +2374,13 @@ function apRenderCategory(catKey, boxId){
       html += '<div class="info-card" style="margin-bottom:14px;"><div class="tp-card">';
 
       // 왼쪽 — 항목명
-      html += '<div class="tp-vcol"><div class="tp-vname2" style="white-space:normal;">' + tpEsc(p.name) + '</div>';
+      html += '<div class="tp-vcol"><div class="tp-vname2" style="white-space:normal;">' + tpEsc(p.name)
+           + (p.status === 'beta' ? '<span class="ap-beta">베타</span>' : '') + '</div>';
       if(p.media_name && p.media_name !== p.name)
         html += '<div class="ap-medianame">' + tpEsc(p.media_name) + '</div>';
-      if(p.platform_note)
-        html += '<div class="ap-plat ap-plat-only">' + tpEsc(p.platform_note) + '</div>';
-      else if(p.platforms && p.platforms.length)
-        html += '<div class="ap-plat">' + tpEsc(p.platforms.join(' · ')) + '</div>';
-      if(p.status === 'beta') html += '<div><span class="ap-status">베타</span></div>';
+      // 노출 플랫폼 — 매체 배지와 같은 규격, 플랫폼별 색
+      html += apPlatBadges(p);
+
       html += '</div>';
 
       // 오른쪽 — 요약 + 스펙 + 표
@@ -2174,7 +2417,87 @@ function apRenderCategory(catKey, boxId){
   });
   box.innerHTML = html || '<div class="ap-empty">등록된 상품이 없습니다.</div>';
 }
+// 전체 탭 — 매체(행) × 구분(열) 매트릭스
+function apRenderAll(){
+  var box = document.getElementById('ap-all');
+  if(!box) return;
+  var cats  = (AD_PRODUCTS.categories || []).slice().sort(function(a,b){ return a.order - b.order; });
+  var media = (AD_PRODUCTS.media || []).slice().sort(function(a,b){ return a.order - b.order; });
+
+  var html = '<div class="info-card">';
+  html += '<div class="ap-mx" style="grid-template-columns:150px repeat(' + cats.length + ',minmax(0,1fr));">';
+  html += '<div class="ap-mx-head">매체</div>';
+  cats.forEach(function(c){ html += '<div class="ap-mx-head">' + tpEsc(c.label) + '</div>'; });
+
+  media.forEach(function(m){
+    html += '<div><span class="pen-media ' + (m.badge || 'pen-nf') + '">' + tpEsc(m.label) + '</span></div>';
+    cats.forEach(function(c){
+      if(m.status === 'planned'){ html += '<div class="ap-mx-plan">업데이트 예정</div>'; return; }
+      var ps = (AD_PRODUCTS.products || []).filter(function(p){ return p.category === c.key && p.media === m.key; })
+                .sort(function(a,b){ return (a.order||0) - (b.order||0); });
+      if(!ps.length){ html += '<div class="ap-mx-none">해당 상품 없음</div>'; return; }
+      html += '<div>' + ps.map(function(p){
+        var pn = p.platform_note ? p.platform_note.replace(/^(\w+)/, function(k){ return apPlatLabel(k); }) : '';
+        var tag = pn ? ' <span class="ap-mx-tag">' + tpEsc(pn) + '</span>'
+                : (p.status === 'beta' ? ' <span class="ap-mx-tag">베타</span>' : '');
+        return '<a class="ap-mx-item" onclick="switchTab(\'products\',\'' + c.key + '\')">' + tpEsc(p.name) + tag + '</a>';
+      }).join('') + '</div>';
+    });
+  });
+  html += '</div>';
+
+  // 단가·조건 상세 (접기)
+  html += '<button class="tp-toggle" id="ap-dt-btn" onclick="apFoldDetail()" style="margin-top:16px;">\u25be 단가 · 조건 자세히 보기</button>';
+  html += '<div id="ap-dt" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--black-ele);">';
+  html += '<div class="ap-all-row ap-all-head"><div>구분</div><div>매체</div><div>상품</div><div>운영 방식</div><div>대표 단가</div><div>최소 집행금액</div></div>';
+  cats.forEach(function(c){
+    media.forEach(function(m){
+      (AD_PRODUCTS.products || []).filter(function(p){ return p.category === c.key && p.media === m.key; })
+        .sort(function(a,b){ return (a.order||0) - (b.order||0); })
+        .forEach(function(p){
+          var head = (p.pricing && p.pricing.headline) || {};
+          var price = (head.value !== null && head.value !== undefined)
+            ? apMoney(head.value) + ' <span style="color:var(--gray-low);">' + tpEsc(head.label || '') + '</span>'
+            : '<span style="color:var(--gray-mid);">' + tpEsc(head.label || '별도 문의') + '</span>';
+          html += '<div class="ap-all-row" onclick="switchTab(\'products\',\'' + c.key + '\')">';
+          html += '<div class="ap-all-dim">' + tpEsc(c.label) + '</div>';
+          html += '<div><span class="pen-media ' + (m.badge || 'pen-nf') + '">' + tpEsc(m.label) + '</span></div>';
+          html += '<div class="ap-all-name">' + tpEsc(p.name)
+               + (p.status === 'beta' ? '<span class="ap-beta">베타</span>' : '')
+               + (p.platform_note ? '<div class="ap-plat ap-plat-only" style="margin-top:3px;">' + tpEsc(p.platform_note.replace(/^(\w+)/, function(k){ return apPlatLabel(k); })) + '</div>' : '')
+               + '</div>';
+          html += '<div class="ap-all-dim">' + tpEsc(p.operation || '-') + '</div>';
+          html += '<div>' + price + '</div>';
+          html += '<div class="ap-all-dim">' + apMinBudgetLines(p) + '</div>';
+          html += '</div>';
+        });
+    });
+  });
+  html += '</div></div>';
+  box.innerHTML = html;
+}
+function apFoldDetail(){
+  var el = document.getElementById('ap-dt');
+  var bt = document.getElementById('ap-dt-btn');
+  if(!el) return;
+  var open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'block';
+  if(bt) bt.textContent = open ? '\u25be 단가 · 조건 자세히 보기' : '\u25b4 단가 · 조건 접기';
+}
+// 최소 집행금액 — 매체 단위로 여러 개면 줄바꿈해 모두 표기
+function apMinBudgetLines(p){
+  if(p.min_budget && typeof p.min_budget.value === 'number') return apMoney(p.min_budget.value);
+  var md = (AD_PRODUCTS.media || []).filter(function(m){ return m.key === p.media; })[0];
+  if(md && md.min_budget && md.min_budget.length){
+    return md.min_budget.map(function(b){
+      return '<div class="ap-mb-line">' + tpEsc(b.mode) + ' ' + apMoney(b.value) + '</div>';
+    }).join('');
+  }
+  return '-';
+}
+
 function apRender(){
+  apRenderAll();
   apRenderCategory('video', 'ap-video');
   apRenderCategory('image', 'ap-image');
   apRenderCategory('exclusive', 'ap-exclusive');
@@ -2240,7 +2563,7 @@ function bgRender(){
     }
     html += bgSection('편집기준', eb);
   }
-  if(!nb.general || !nb.general.length) html += '<div class="tp-none">내용을 불러오지 못했습니다.</div>';
+  if(!nb.general || !nb.general.length) html += '<div class="tp-none">' + LOAD_FAIL_MSG + '</div>';
   html += '<div class="tp-src"><a href="' + tpEsc((nb.source_url) || 'https://help.netflix.com/legal/ads-policy') + '" target="_blank" rel="noopener">넷플릭스 광고 정책 원문 \u2197</a></div>';
   html += '</div></div></div>';
 
@@ -2260,7 +2583,7 @@ function bgRender(){
     }
     html += bgSection('집행 불가 광고', ub);
   }
-  if(!tb.qualification || !tb.qualification.length) html += '<div class="tp-none">내용을 불러오지 못했습니다.</div>';
+  if(!tb.qualification || !tb.qualification.length) html += '<div class="tp-none">' + LOAD_FAIL_MSG + '</div>';
   html += '<div class="tp-src"><a href="' + tpEsc(tv.source_url) + '" target="_blank" rel="noopener">티빙 심사 가이드 원문 \u2197</a></div>';
   html += '</div></div></div>';
 
@@ -2283,7 +2606,7 @@ function tbRender(){
   var d = tpData || TP_FALLBACK;
   var list = (d && d.prohibited) || [];
   if(!list.length){
-    box.innerHTML = '<div class="info-card"><div class="tp-none">금지 업종 정보를 불러오지 못했습니다.</div></div>';
+    box.innerHTML = '<div class="info-card"><div class="tp-none">' + LOAD_FAIL_MSG + '</div></div>';
     return;
   }
   if(q) list = list.filter(function(v){
@@ -2519,7 +2842,7 @@ async function clLoadManualTvingWavve(){
 function clDownloadExcel(scope){
   const hint = document.getElementById('cl-dl-hint');
   if(typeof XLSX === 'undefined'){
-    if(hint) hint.textContent = '다운로드 모듈을 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.';
+    if(hint) hint.textContent = LOAD_FAIL_TEXT;
     return;
   }
   let rows = (scope === 'all') ? clData.slice() : clGetFilteredRows();
@@ -3500,7 +3823,7 @@ async function lib_load(){
     lib_render();
   }catch(err){
     status.style.display='block';
-    status.innerHTML = '자료를 불러오지 못했습니다. (구글 시트 공개 설정 및 \'자료실\' 탭 확인) <button class="btn-outline" onclick="lib_load()" style="margin-left:8px;font-size:12px;">다시 시도</button>';
+    status.innerHTML = LOAD_FAIL_MSG + '<div style="margin-top:10px;"><button class="btn-outline" onclick="lib_load()" style="font-size:12px;">다시 시도</button></div>';
   }
 }
 
@@ -3871,7 +4194,8 @@ async function rnTvingLoad(force){
     if(errEl){
       errEl.style.display = 'block';
       var msg = document.getElementById('rn-tving-error-msg');
-      if(msg) msg.textContent = '공지 데이터를 불러오지 못했습니다. (' + e.message + ')';
+      console.warn('[공지 사항 티빙] 로드 실패:', e);   // 원인은 콘솔에만
+      if(msg) msg.innerHTML = LOAD_FAIL_MSG;
     }
   }
 }
@@ -4462,13 +4786,8 @@ async function sheetsLoadNotes() {
     window.renderNoteCards('전체');
 
   } catch(err) {
-    showRnError(
-      '릴리즈 노트를 불러오지 못했습니다.<br><br>' +
-      '<strong>확인 사항:</strong><br>' +
-      '• Google Sheets가 공개(링크 공유) 상태인지 확인<br>' +
-      '• 네트워크 연결 상태 확인<br><br>' +
-      '오류: ' + err.message
-    );
+    console.warn('[공지 사항 넷플릭스] 로드 실패:', err);   // 원인은 콘솔에만
+    showRnError(LOAD_FAIL_MSG);
   }
 }
 
