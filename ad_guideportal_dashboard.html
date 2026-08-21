@@ -444,6 +444,40 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .spec-tab:hover{color:var(--gray-hi);}
 .spec-tab-on{background:rgba(229,9,20,0.15);border-color:rgba(229,9,20,0.4);color:#FF6B6B;}
 .spec-name{font-size:13px;color:var(--gray-mid);}
+.pen-calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.pen-calc-label{font-size:12px;color:var(--gray-mid);margin-bottom:6px;}
+.pen-calc-hint{color:var(--gray-dim);}
+.pen-calc-input{width:100%;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;
+  padding:10px 14px;font-size:13px;color:var(--white);outline:none;transition:border-color 0.15s;
+  font-family:'Noto Sans KR',sans-serif;}
+.pen-calc-input:focus{border-color:var(--gray-dim);}
+.pen-calc-input::placeholder{color:var(--gray-low);}
+.pc-out{margin-top:22px;padding-top:20px;border-top:1px solid var(--black-ele);}
+.pc-amt{font-size:30px;font-weight:700;color:var(--white);line-height:1.3;}
+.pc-amt-zero{color:#4ADE80;}
+.pc-amt-sub{font-size:13px;color:var(--gray-mid);margin-top:6px;}
+.pc-rule{display:inline-block;margin-top:12px;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;}
+.pc-rule-none{background:rgba(34,197,94,0.12);color:#4ADE80;border:1px solid rgba(34,197,94,0.25);}
+.pc-rule-part{background:rgba(251,146,60,0.12);color:#FB923C;border:1px solid rgba(251,146,60,0.25);}
+.pc-rule-full{background:rgba(229,9,20,0.12);color:#FF6B6B;border:1px solid rgba(229,9,20,0.25);}
+.pc-steps{margin-top:16px;padding-top:16px;border-top:1px solid var(--black-ele);}
+.pc-step{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:7px 0;font-size:13px;}
+.pc-step-l{color:var(--gray-mid);}
+.pc-step-v{color:var(--gray-hi);}
+.pc-step-total{border-top:1px solid var(--black-ele);margin-top:6px;padding-top:11px;}
+.pc-step-total .pc-step-v{color:var(--white);font-weight:600;}
+.pc-guide{font-size:12px;color:var(--gray-low);line-height:1.75;margin-top:14px;padding-left:11px;text-indent:-11px;}
+.pc-need-top{display:none;font-size:13px;color:var(--gray-mid);background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);border-radius:10px;padding:11px 15px;margin-bottom:16px;line-height:1.6;}
+.pc-amt-no{color:#FF6B6B;}
+.pc-over{margin-bottom:18px;padding:11px 15px;border-radius:10px;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.3);font-size:13px;color:#FF6B6B;line-height:1.6;}
+.pc-need-err{background:rgba(229,9,20,0.08)!important;border-color:rgba(229,9,20,0.35)!important;color:#FF6B6B!important;}
+.pen-calc-err{border-color:rgba(229,9,20,0.55)!important;}
+/* 어두운 화면에서 기본 달력 아이콘이 거의 안 보여 밝게 조정 */
+.pen-calc-input[type="date"]{cursor:pointer;}
+.pen-calc-input[type="date"]::-webkit-calendar-picker-indicator{
+  filter:invert(1) opacity(0.55);cursor:pointer;}
+.pen-calc-input[type="date"]::-webkit-calendar-picker-indicator:hover{filter:invert(1) opacity(0.9);}
 .spec-tbl{border:1px solid var(--border);border-radius:10px;overflow:hidden;}
 .spec-row{display:grid;grid-template-columns:190px minmax(0,1fr);border-top:1px solid var(--border);}
 .spec-row:first-child{border-top:none;}
@@ -683,6 +717,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
+  <!-- 공지사항(테스트) -->
+  <div id="nav-updates2" class="nav-item">
+    <div class="nav-row" onclick="navigate('updates2','')">
+      <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M8 2L9.8 6H14L10.6 8.6L11.9 12.8L8 10.3L4.1 12.8L5.4 8.6L2 6H6.2L8 2Z" stroke="#737373" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      <span class="nav-label">공지사항(테스트)</span>
+    </div>
+  </div>
+
   <!-- 광고 정책 -->
   <div id="nav-policy" class="nav-item">
     <div class="nav-row" onclick="navigate('policy','')">
@@ -727,6 +769,14 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
+  <!-- 광고 상품&타기팅 -->
+  <div id="nav-prodtgt" class="nav-item">
+    <div class="nav-row" onclick="navigate('prodtgt','')">
+      <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><rect x="2" y="2.5" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><circle cx="11.5" cy="5" r="2.5" stroke="#737373" stroke-width="1.3"/><rect x="2" y="9" width="5" height="4.5" rx="1" stroke="#737373" stroke-width="1.3"/><path d="M9 11.3h5M11.5 9v4.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span class="nav-label">광고 상품&amp;타기팅</span>
+    </div>
+  </div>
+
   <!-- 청약 방법 -->
   <div id="nav-subscription" class="nav-item">
     <div class="nav-row" onclick="navigate('subscription','')">
@@ -737,6 +787,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     <div id="sub-subscription" class="sub-menu collapsed">
       <div class="nav-sub-item" onclick="navigate('subscription','calculator')"><span class="nav-sub-dot"></span>청약 일자 계산기</div>
       <div class="nav-sub-item" onclick="navigate('subscription','process')"><span class="nav-sub-dot"></span>청약 프로세스</div>
+          <div class="nav-sub-item" onclick="navigate('subscription','penalty')"><span class="nav-sub-dot"></span>위약금 계산기</div>
     </div>
   </div>
 
@@ -877,7 +928,112 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       </div>
     </div>
 
-    <!-- ══════ PAGE: 광고 정책 ══════ -->
+    
+    <!-- ══════ PAGE: 공지사항(테스트) ══════ -->
+    <div id="page-updates2" class="page">
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지사항(테스트)</h1><p class="page-desc">새로운 구성을 시험하는 화면입니다. 실제 공지는 공지 사항 메뉴를 이용해 주세요.</p></div>
+      <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
+      <div id="tc-updates2-release-notes">
+
+        <!-- 매체 탭 (밑줄형, 포털 전체 통일) -->
+        <div class="sub-tab-bar">
+          <div class="sub-tab tab-active rn-media-btn rn-media-on" id="tab-updates2-all" data-rnmedia="all" onclick="switchTab('updates2','all')">통합</div>
+          <div class="sub-tab rn-media-btn" id="tab-updates2-netflix" data-rnmedia="netflix" onclick="switchTab('updates2','netflix')">넷플릭스</div>
+          <div class="sub-tab rn-media-btn" id="tab-updates2-tving" data-rnmedia="tving_wavve" onclick="switchTab('updates2','tving')">티빙·웨이브</div>
+          <div class="tab-search-wrap">
+            <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared2" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
+          </div>
+        </div>
+
+        <!-- 통합 공지사항 (넷플릭스 + 티빙·웨이브, 최신순) -->
+        <div id="rn-unified-wrap2">
+          <div class="section-bar" style="margin-bottom:14px;">
+            <div class="section-accent"></div>
+            <span class="section-label">최신순 · 클릭하면 해당 매체 공지로 이동</span>
+          </div>
+          <div id="rn-unified-loading2" style="text-align:center;padding:40px 0;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
+              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+              <span style="font-size:13px;color:var(--gray-low);">공지를 불러오는 중...</span>
+            </div>
+          </div>
+          <div id="rn-unified-list2"></div>
+          <div id="rn-unified-pager2" style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;"></div>
+        </div>
+
+        <!-- 티빙·웨이브 공지사항 (목록형) -->
+        <div id="rn-tving-wrap2" style="display:none;">
+          <div class="section-bar" style="margin-bottom:14px;">
+            <div class="section-accent"></div>
+            <span class="section-label">티빙·웨이브 업데이트</span>
+            <span id="rn-tving-updated2" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
+          </div>
+
+          <!-- 로딩 -->
+          <div id="rn-tving-loading2" style="text-align:center;padding:40px 0;">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
+              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+              <span style="font-size:13px;color:var(--gray-low);">공지 사항을 불러오는 중...</span>
+            </div>
+          </div>
+
+          <!-- 에러 -->
+          <div id="rn-tving-error2" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
+            <div id="rn-tving-error-msg2" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
+          </div>
+
+          <!-- 카테고리 필터 + 검색 -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div id="rn-tving-filter-bar2" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+          </div>
+
+          <!-- 목록 -->
+          <div id="rn-tving-list2"></div>
+        </div>
+
+        <!-- 넷플릭스 공지사항 (기존) -->
+        <div id="rn-netflix-wrap2" style="display:none;">
+
+        <!-- 헤더 바 -->
+        <div class="section-bar" style="margin-bottom:14px;">
+          <div class="section-accent"></div>
+          <span class="section-label">넷플릭스 업데이트</span>
+          <span id="rn-last-updated2" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
+        </div>
+
+
+
+        <!-- 로딩 -->
+        <div id="rn-loading2" style="text-align:center;padding:40px 0;">
+          <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
+            <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+            <span style="font-size:13px;color:var(--gray-low);">릴리즈 노트를 불러오는 중...</span>
+          </div>
+        </div>
+
+        <!-- 에러 -->
+        <div id="rn-error2" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
+          <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
+          <div id="rn-error-msg2" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
+          <button class="btn-outline" onclick="sheetsLoadNotes()" style="margin-top:12px;font-size:12px;">다시 시도</button>
+        </div>
+
+        <!-- 카테고리 필터 바 + 검색 -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
+          <div id="rn-filter-bar2" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+        </div>
+
+        <!-- 릴리즈 노트 카드 목록 -->
+        <div id="rn-list2" style="display:flex;flex-direction:column;gap:10px;"></div>
+
+        </div><!-- /rn-netflix-wrap -->
+
+      </div>
+    </div>
+
+    
+<!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
       <div class="sub-tab-bar">
@@ -938,7 +1094,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="info-card" style="margin-bottom:28px;">
           <div class="policy-row" style="padding-top:0;"><div style="font-size:13px;font-weight:700;color:var(--gray-low);">매체</div><div style="font-size:13px;font-weight:700;color:var(--gray-low);">상품 · 유형</div><div style="font-size:13px;font-weight:700;color:var(--gray-low);">위약금</div></div>
           <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">PMP</div><div style="font-size:13px;color:#4ADE80;">없음</div></div>
-          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">DIO · PG</div><div style="font-size:13px;color:#FB923C;">라이브 14일 이내 취소 시 부과</div></div>
+          <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">DIO · PG</div><div style="font-size:13px;color:#FB923C;">라이브 14일 이내에 취소 시, 14일치 미디어 비용 위약금 부과</div></div>
           <div class="policy-row"><div><span class="pen-media pen-nf">넷플릭스</span></div><div style="font-size:13px;color:var(--gray-mid);">STS</div><div style="font-size:13px;color:#FF6B6B;">DIO 서명 이후 취소 불가</div></div>
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">일 독점 솔루션<br><span style="font-size:11px;color:var(--gray-dim);">아웃스트림 · 스플래시 배너 · 퍼스트뷰 등</span></div><div style="font-size:13px;color:#FB923C;">D-14 이내 50% / D-7 이내 100%</div></div>
           <div class="policy-row"><div><span class="pen-media pen-tv">티빙·웨이브</span></div><div style="font-size:13px;color:var(--gray-mid);">그 외 보장형</div><div style="font-size:13px;color:#4ADE80;">없음 (소진분 정산)</div></div>
@@ -956,7 +1112,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
               <div><span class="policy-tag tag-limit">DIO · PG</span></div>
               <div>
                 <div class="pen-io-row"><div style="font-size:13px;color:#4ADE80;font-weight:600;">D-14 이전</div><div class="pen-txt">캠페인 라이브 14일 전 취소 통지 시(서면 통지), 위약금 없이 취소 가능</div></div>
-                <div class="pen-io-row"><div style="font-size:13px;color:#FB923C;font-weight:600;">D-14 이내</div><div class="pen-txt">캠페인 라이브 14일 이내 취소 시, 위약금 부과</div></div>
+                <div class="pen-io-row"><div style="font-size:13px;color:#FB923C;font-weight:600;">D-14 이내</div><div class="pen-txt">캠페인 라이브 14일 이내에 취소 시, 14일치 미디어 비용 위약금 부과</div></div>
                 <div style="margin-top:12px;font-size:12px;color:var(--gray-low);line-height:1.7;">※ 서면 통지 기준. 금액 산정 문의는 미디어기획팀(netflix@nasmedia.co.kr) 확인 필요</div>
               </div>
             </div>
@@ -1130,14 +1286,26 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
 
     <!-- ══════ PAGE: 청약 방법 ══════ -->
+    <div id="page-prodtgt" class="page">
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">광고 상품&amp;타기팅</h1><p class="page-desc">상품과 타기팅을 함께 확인할 수 있도록 준비 중입니다.</p></div>
+      <div class="notice-card">
+        <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+        <div class="notice-text">현재는 광고 상품과 광고 타기팅 메뉴에서 각각 확인하실 수 있습니다.</div>
+      </div>
+      <div class="info-card" style="text-align:center;padding:44px 20px;">
+        <div style="font-size:15px;font-weight:600;color:var(--white);margin-bottom:6px;">업데이트 예정입니다.</div>
+        <div style="font-size:13px;color:var(--gray-low);">구성이 정해지면 이곳에 안내해 드리겠습니다.</div>
+      </div>
+    </div>
+
     <div id="page-subscription" class="page">
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-subscription">청약 방법</h1><p class="page-desc" id="ph-desc-subscription">청약 절차와 마감일을 확인하세요.</p></div>
       <div class="sub-tab-bar">
-        <div class="sub-tab tab-active" id="tab-subscription-all" onclick="switchTab('subscription','all')">전체</div>
+        <div class="sub-tab" id="tab-subscription-all" onclick="switchTab('subscription','all')" style="display:none;">전체</div>
         <div class="sub-tab" id="tab-subscription-calculator" onclick="switchTab('subscription','calculator')">청약 일자 계산기</div>
-        <div class="sub-tab" id="tab-subscription-process" onclick="switchTab('subscription','process')">청약 프로세스</div>
+        <div class="sub-tab" id="tab-subscription-process" onclick="switchTab('subscription','process')">청약 프로세스</div><div class="sub-tab" id="tab-subscription-penalty" onclick="switchTab('subscription','penalty')">위약금 계산기</div>
       </div>
-      <div id="tc-subscription-all">
+      <div id="tc-subscription-all" style="display:none;">
         <div class="card-grid-2">
           <div class="info-card" style="cursor:pointer;" onclick="switchTab('subscription','calculator')"><div style="font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;">청약 일자 계산기</div><div style="font-size:12px;color:var(--gray-low);">캠페인 시작일 기준 청약·소재 제출 마감일 자동 산출</div></div>
           <div class="info-card" style="cursor:pointer;" onclick="switchTab('subscription','process')"><div style="font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;">청약 프로세스</div><div style="font-size:12px;color:var(--gray-low);">매체별 청약 절차를 단계별로 안내</div></div>
@@ -1416,6 +1584,49 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           </div>
         </div>
       </div>
+      <div id="tc-subscription-penalty" style="display:none;">
+        <div class="section-bar"><div class="section-accent"></div><span class="section-label">위약금 계산기</span></div>
+        <div class="notice-card">
+          <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
+          <div class="notice-text">
+            <div>광고 정책 &gt; 위약금 정책의 매체별 기준에 따라 <strong>위약금 예상 금액</strong>을 산정합니다.</div>
+            <div>정확한 실소진 금액 확인은 2~3 영업일이 소요되며, 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의 바랍니다.</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div id="pc-need" class="pc-need-top"></div>
+          <div class="pen-calc-grid">
+            <div>
+              <div class="pen-calc-label">매체 · 상품</div>
+              <select id="pc-product" class="pen-calc-input" onchange="pcRender()"></select>
+            </div>
+            <div id="pc-budget-wrap">
+              <div class="pen-calc-label">청약(부킹) 금액</div>
+              <input id="pc-budget" class="pen-calc-input" type="text" inputmode="numeric"
+                     placeholder="예) 50,000,000" oninput="pcMoneyInput(this); pcRender();">
+            </div>
+            <div id="pc-start-wrap">
+              <div class="pen-calc-label">캠페인 시작일</div>
+              <input id="pc-start" class="pen-calc-input" type="date" onchange="pcRender()" onclick="pcOpenPicker(this)">
+            </div>
+            <div id="pc-end-wrap">
+              <div class="pen-calc-label">캠페인 종료일</div>
+              <input id="pc-end" class="pen-calc-input" type="date" onchange="pcRender()" onclick="pcOpenPicker(this)">
+            </div>
+            <div id="pc-cancel-wrap">
+              <div class="pen-calc-label">취소 통보일</div>
+              <input id="pc-cancel" class="pen-calc-input" type="date" onchange="pcRender()" onclick="pcOpenPicker(this)">
+            </div>
+            <div id="pc-spent-wrap" style="display:none;">
+              <div class="pen-calc-label">실소진 금액 <span class="pen-calc-hint">라이브 중 취소 시</span></div>
+              <input id="pc-spent" class="pen-calc-input" type="text" inputmode="numeric"
+                     placeholder="예) 15,000,000" oninput="pcMoneyInput(this); pcRender();">
+            </div>
+          </div>
+          <div id="pc-result"></div>
+        </div>
+      </div>
     </div>
 
     <!-- ══════ PAGE: 케이스스터디 ══════ -->
@@ -1584,11 +1795,13 @@ let currentTab  = 'all';
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
   updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
+  updates2:     ['all','netflix','tving'],   // 공지사항(테스트) — 같은 시트, 화면만 분리
   policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
   products:     ['all','video','image','exclusive','qr'],   // 'STS' 탭은 숨김 (익스클루시브로 흡수)
   targeting:    ['all','basic','premium','dsp'],
-  subscription: ['all','calculator','process'],
+  subscription: ['calculator','process','penalty'],   // '전체' 탭은 숨김 (하위 탭 소개만 있어 중복)
   casestudy:    ['all','clients'],
+  prodtgt:      [],
   media:        [],
   content:      [],
 };
@@ -1678,10 +1891,14 @@ function navigate(page, tab) {
   // 콘텐츠 라인업 페이지 진입 시 자동 로드
   if (page === 'content') onContentTabEnter();
   // 공지사항 페이지 진입 시 릴리즈 노트(넷플릭스 업데이트) 자동 로드
-  if (page === 'updates') setTimeout(function(){ rnApplyMediaTab(targetTab); }, 80);
+  if (page === 'updates' || page === 'updates2') {
+    RN_NS = (page === 'updates2') ? '2' : '';
+    setTimeout(function(){ rnApplyMediaTab(targetTab); }, 80);
+  }
   if (page === 'products') setTimeout(apRender, 60);
   if (page === 'products') setTimeout(nfSpecLoad, 80);
   if (page === 'subscription') setTimeout(kboEnsureLoaded, 60);
+  if (page === 'subscription') setTimeout(pcRender, 60);
   // 자료실 페이지 진입 시 시트에서 자료 로드
   if (page === 'media') setTimeout(lib_load, 80);
   // 광고 정책 - 제한 업종 탭 진입 시 티빙 정책 로드
@@ -2023,6 +2240,200 @@ function kboForm(kind){
   });
 }
 
+// ══════ 위약금 계산기 ══════
+// 광고 정책 > 위약금 정책의 기준을 그대로 계산식으로 옮긴 것입니다.
+// 기준이 바뀌면 아래 PC_PRODUCTS 배열만 고치면 됩니다.
+const PC_PRODUCTS = [
+  { id: 'nf-dio',     media: '넷플릭스',    label: 'DIO · PG',            rule: 'netflix', badge: 'pen-nf',
+    note: '캠페인 라이브 14일 이내에 취소 시, 14일치 미디어 비용이 위약금으로 부과됩니다. (일할 계산 기준)' },
+  { id: 'nf-pmp',     media: '넷플릭스',    label: 'PMP',                 rule: 'none',    badge: 'pen-nf',
+    note: '별도 위약금이 없습니다.' },
+  { id: 'nf-sts',     media: '넷플릭스',    label: 'STS',                 rule: 'nocancel', badge: 'pen-nf',
+    why: 'DIO 서명 이후 취소 불가',
+    notes: ['DIO 서명 이후에는 취소할 수 없습니다. 청약 전 집행 확정 여부를 반드시 확인해 주세요.'] },
+  { id: 'tv-exclusive', media: '티빙·웨이브', label: '일 독점 솔루션',        rule: 'tving',   badge: 'pen-tv',
+    note: '아웃스트림 · 스플래시 배너 · 퍼스트뷰 등. 라이브 기준 D-14 이내 50%, D-7 이내 100%.' },
+  { id: 'tv-guaranteed', media: '티빙·웨이브', label: '그 외 보장형',        rule: 'none',    badge: 'pen-tv',
+    note: '중도 취소 시 소진된 만큼만 정산되며 위약금은 없습니다.' },
+  { id: 'tv-nonguaranteed', media: '티빙·웨이브', label: '비보장형',        rule: 'none',    badge: 'pen-tv',
+    note: '언제든 중도 취소 가능하며 위약금이 없습니다.' },
+  { id: 'tv-kbo',     media: '티빙·웨이브', label: 'KBO리그',              rule: 'nocancel', badge: 'pen-tv',
+    why: '라이브 후 취소 · 환불 · 청구처 변경 불가',
+    notes: ['라이브 후에는 취소 · 환불 · 청구처 변경이 모두 불가합니다.',
+            '낙찰 후 ~ 라이브 전까지 광고주의 불가피한 사유에 대한 공문 제출 시 낙찰 취소 처리 가능합니다.'] }
+];
+
+// 날짜칸 어디를 눌러도 달력이 뜨게 (지원하지 않는 브라우저는 기본 동작)
+function pcOpenPicker(el){ try { if(el.showPicker) el.showPicker(); } catch(e){} }
+function pcNum(v){ return parseInt(String(v || '').replace(/[^0-9]/g, ''), 10) || 0; }
+function pcWon(v){ return Math.round(v).toLocaleString('ko-KR') + '원'; }
+function pcDate(v){ if(!v) return null; var d = new Date(v + 'T00:00:00'); return isNaN(d) ? null : d; }
+function pcDiff(a, b){ return Math.round((b - a) / 86400000); }   // 일 단위 차이
+// 금액 입력칸에 천 단위 구분 넣기
+function pcMoneyInput(el){
+  var n = pcNum(el.value);
+  el.value = n ? n.toLocaleString('ko-KR') : '';
+}
+// 상품 안내 문구 — note 한 줄 또는 notes 여러 줄
+function pcNotes(p){
+  var list = p.notes || (p.note ? [p.note] : []);
+  return list.map(function(t){ return '<div class="pc-guide">\u2022 ' + tpEsc(t) + '</div>'; }).join('');
+}
+function pcProduct(){
+  var id = (document.getElementById('pc-product') || {}).value;
+  return PC_PRODUCTS.filter(function(p){ return p.id === id; })[0] || PC_PRODUCTS[0];
+}
+// 계산 — 결과와 계산 과정을 함께 돌려준다
+function pcCalc(p, budget, start, end, cancel, spent){
+  if(p.rule === 'none')     return { amount: 0, level: 'none', why: '위약금 없는 상품' };
+  if(p.rule === 'nocancel') return { amount: null, level: 'full', why: p.why || '취소 불가' };
+
+  if(p.rule === 'tving'){
+    if(!start || !cancel) return { need: '라이브 시작일과 취소 통보일을 입력해 주세요.' };
+    var dday = pcDiff(cancel, start);
+    if(dday <= 7)  return { amount: budget, level: 'full', why: '라이브 D-7 이내 → 광고비의 100%',
+                            steps: [['취소 시점', 'D-' + Math.max(dday, 0)], ['적용 요율', '100%']] };
+    if(dday <= 14) return { amount: budget * 0.5, level: 'part', why: '라이브 D-14 이내 → 광고비의 50%',
+                            steps: [['취소 시점', 'D-' + dday], ['적용 요율', '50%']] };
+    return { amount: 0, level: 'none', why: '라이브 D-14 이전 → 위약금 없음',
+             steps: [['취소 시점', 'D-' + dday]] };
+  }
+
+  // 넷플릭스 DIO · PG
+  if(!start || !end || !cancel) return { need: '캠페인 기간과 취소 통보일을 입력해 주세요.' };
+  if(end < start)               return { need: '캠페인 종료일은 시작일보다 빠를 수 없습니다. 날짜를 다시 확인해 주세요.' };
+  var total = pcDiff(start, end) + 1;                 // 캠페인 전체 일수(양끝 포함)
+  var daily = budget / total;
+  var steps = [['캠페인 기간', total + '일'], ['일할 금액', pcWon(daily)]];
+
+  if(cancel < start){                                  // 라이브 전
+    var left = pcDiff(cancel, start);
+    steps.push(['취소 시점', '라이브 ' + left + '일 전']);
+    if(left >= 14) return { amount: 0, level: 'none', why: '라이브 14일 이전 통지 → 위약금 없음', steps: steps };
+    steps.push(['청구 일수', '14일']);
+    var amt14 = daily * 14;
+    // 캠페인이 14일보다 짧으면 산식상 금액이 광고비를 넘음 → 광고비를 상한으로 적용
+    var over14 = amt14 > budget;
+    if(over14) steps.push(['산식상 금액', pcWon(amt14) + ' → 광고비 상한 적용']);
+    return { amount: over14 ? budget : amt14, level: 'part',
+             why: '라이브 14일 이내 취소 → 14일분 청구',
+             steps: steps, over: over14 };
+  }
+  // 라이브 중
+  var rest = pcDiff(cancel, end) + 1;                  // 잔여일(취소일 포함)
+  steps.push(['취소 시점', '라이브 중 · 잔여 ' + rest + '일']);
+  var billDays = (rest <= 14) ? rest : 14;
+  steps.push(['청구 일수', billDays + '일']);
+  steps.push(['일할 청구액', pcWon(daily * billDays)]);
+  if(spent) steps.push(['실소진 금액', pcWon(spent)]);
+  var amtLive = daily * billDays + spent;
+  var overLive = amtLive > budget;
+  if(overLive) steps.push(['산식상 금액', pcWon(amtLive) + ' → 광고비 상한 적용']);
+  return {
+    amount: overLive ? budget : amtLive,
+    level: (rest <= 14) ? 'full' : 'part',
+    why: (rest <= 14) ? '라이브 중 · 잔여 14일 이하 → 잔여일분 + 실소진'
+                      : '라이브 중 · 잔여 14일 초과 → 14일분 + 실소진',
+    steps: steps, over: overLive
+  };
+}
+function pcRender(){
+  var sel = document.getElementById('pc-product');
+  if(!sel) return;
+  if(!sel.options.length){
+    sel.innerHTML = PC_PRODUCTS.map(function(p){
+      return '<option value="' + p.id + '">' + tpEsc(p.media + ' — ' + p.label) + '</option>';
+    }).join('');
+  }
+  var p = pcProduct();
+
+  // 상품에 따라 필요한 입력칸만 보이기
+  var noInput    = (p.rule === 'nocancel' || p.rule === 'none');   // 입력 없이 결론이 나오는 상품
+  var needPeriod = (p.rule === 'netflix');
+  ['pc-budget-wrap','pc-start-wrap','pc-end-wrap','pc-cancel-wrap'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = noInput ? 'none' : '';
+  });
+  var startWrap = document.getElementById('pc-start-wrap');
+  var endWrap   = document.getElementById('pc-end-wrap');
+  var spentWrap = document.getElementById('pc-spent-wrap');
+  if(startWrap) startWrap.querySelector('.pen-calc-label').innerHTML =
+    needPeriod ? '캠페인 시작일' : '라이브 시작일';
+  if(endWrap) endWrap.style.display = needPeriod ? '' : 'none';
+
+  // 달력에서 애초에 잘못된 날짜를 못 고르도록 min/max 지정
+  var sEl = document.getElementById('pc-start');
+  var eEl = document.getElementById('pc-end');
+  if(sEl && eEl){
+    eEl.min = sEl.value || '';          // 종료일은 시작일 이후만
+    sEl.max = eEl.value || '';          // 시작일은 종료일 이전만
+  }
+
+  var budget = pcNum((document.getElementById('pc-budget') || {}).value);
+  var start  = pcDate((document.getElementById('pc-start') || {}).value);
+  var end    = pcDate((document.getElementById('pc-end') || {}).value);
+  var cancel = pcDate((document.getElementById('pc-cancel') || {}).value);
+  var live   = !!(start && cancel && cancel >= start);
+  if(spentWrap) spentWrap.style.display = (needPeriod && live) ? '' : 'none';
+  var spent  = (needPeriod && live) ? pcNum((document.getElementById('pc-spent') || {}).value) : 0;
+
+  var box  = document.getElementById('pc-result');
+  var need = document.getElementById('pc-need');
+  if(!box) return;
+
+  var r = null, msg = '';
+  if(p.rule !== 'none' && p.rule !== 'nocancel' && !budget){
+    msg = '청약(부킹) 금액을 입력하면 예상 금액이 표시됩니다.';
+  } else {
+    r = pcCalc(p, budget, start, end, cancel, spent);
+    if(r.need){ msg = r.need; r = null; }
+  }
+  // 입력 안내는 입력칸 위에. 값이 잘못된 경우는 경고색으로 구분
+  var isErr = !!(msg && r === null && msg.indexOf('입력') === -1);
+  if(need){
+    need.innerHTML = msg ? tpEsc(msg) : '';
+    need.style.display = msg ? 'block' : 'none';
+    need.className = isErr ? 'pc-need-top pc-need-err' : 'pc-need-top';
+  }
+  // 문제가 된 칸에 표시
+  if(eEl) eEl.classList.toggle('pen-calc-err', isErr);
+
+  var h = '';
+  if(r){
+    h += '<div class="pc-out">';
+    // 산출 금액이 광고비를 넘는 경우는 금액을 보기 전에 먼저 알린다
+    if(r.over) h += '<div class="pc-over">산출 금액이 매체 광고비를 초과하여 광고비 기준으로 표시되었습니다. 정확한 금액은 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의해 주시기 바랍니다.</div>';
+    if(r.amount === null){                      // 취소 자체가 불가
+      h += '<div class="pc-amt pc-amt-no">취소 불가</div>';
+      h += '<div class="pc-amt-sub">' + tpEsc(r.why) + '</div>';
+    } else if(r.amount === 0){                  // 위약금 대상 아님
+      h += '<div class="pc-amt pc-amt-zero">위약금 없음</div>';
+      h += '<div class="pc-amt-sub">' + tpEsc(r.why) + '</div>';
+    } else {
+      h += '<div class="pc-amt">' + pcWon(r.amount) + '</div>';
+      h += '<div class="pc-amt-sub">위약금 예상 금액 (VAT 별도)</div>';
+      h += '<div class="pc-rule pc-rule-' + r.level + '">' + tpEsc(r.why) + '</div>';
+      if(r.steps && r.steps.length){
+        h += '<div class="pc-steps">';
+        r.steps.forEach(function(x){
+          h += '<div class="pc-step"><div class="pc-step-l">' + tpEsc(x[0]) + '</div>'
+             + '<div class="pc-step-v">' + tpEsc(x[1]) + '</div></div>';
+        });
+        h += '<div class="pc-step pc-step-total"><div class="pc-step-l">위약금 예상 금액</div>'
+           + '<div class="pc-step-v">' + pcWon(r.amount) + '</div></div>';
+        h += '</div>';
+      }
+    }
+    h += pcNotes(p);
+    // 실제 청구액 안내는 금액이 나올 때만 (위약금 없음·취소 불가에는 확인할 금액이 없음)
+    if(r.amount) h += '<div class="pc-guide">\u2022 실제 청구 금액은 매체 확인 후 확정됩니다. 위 금액은 참고용 예상치입니다.</div>';
+    h += '</div>';
+  } else {
+    h += '<div class="pc-out">' + pcNotes(p) + '</div>';
+  }
+  box.innerHTML = h;
+}
+
 // ══════ KBO 청약 일정 · 잔여 구좌 ══════
 // 렌더 순서 — 절차와 현황의 위아래를 바꾸려면 이 배열만 뒤집으면 됩니다.
 const KBO_ORDER = ['process', 'status'];
@@ -2236,25 +2647,78 @@ function nfSpecShow(slot, gid){
   h += '</div>';
   host.innerHTML = h;
 }
-// 네 탭을 한 파일로 — 브라우저에서 직접 엑셀 생성
+// 네 탭을 한 파일로 — 브라우저에서 직접 엑셀(xlsx) 생성
+// 시트 탭 하나가 엑셀 시트 하나가 됩니다. 콘텐츠 라인업 다운로드와 같은 라이브러리를 씁니다.
 function nfSpecExcel(){
-  var rows = [['구분', '항목', '내용']];
-  NF_SPEC_TABS.forEach(function(t){
+  if(typeof XLSX === 'undefined'){ alert(LOAD_FAIL_TEXT); return; }
+
+  var ready = NF_SPEC_TABS.filter(function(t){
     var d = nfSpecData[t.gid];
-    if(!d || d.error || !d.items) return;
-    d.items.forEach(function(x){ rows.push([t.label, x.name, x.body]); });
+    return d && !d.error && d.items && d.items.length;
   });
-  if(rows.length < 2){ alert(LOAD_FAIL_TEXT); return; }
-  // 엑셀이 인식하는 UTF-8 CSV (셀 안 줄바꿈은 따옴표로 보존)
-  var csv = rows.map(function(r){
-    return r.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(',');
-  }).join('\r\n');
-  var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = '넷플릭스_소재제작가이드_' + new Date().toISOString().slice(0, 10) + '.csv';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(a.href);
+  if(!ready.length){ alert(LOAD_FAIL_TEXT); return; }
+
+  var today = new Date().toISOString().slice(0, 10);
+  var wb = XLSX.utils.book_new();
+
+  ready.forEach(function(t){
+    var d = nfSpecData[t.gid];
+    var aoa = [
+      ['넷플릭스 소재 제작 가이드 — ' + t.label, ''],
+      ['기준일 ' + today + '  ·  케이티 나스미디어', ''],
+      ['', ''],
+      ['항목', '내용']
+    ];
+    d.items.forEach(function(x){
+      // 셀 안 줄바꿈은 그대로 살리고 기호만 정리
+      var body = String(x.body).split(/\r?\n/)
+        .map(function(ln){
+          var t = ln.trim();
+          if(/^[·•*]\s*/.test(t))  return '· ' + t.replace(/^[·•*]\s*/, '');    // 1단계
+          if(/^[o‧∘]\s+/.test(t))  return '    - ' + t.replace(/^[o‧∘]\s*/, ''); // 2단계 들여쓰기
+          return t;
+        })
+        .filter(function(ln){ return ln !== ''; }).join('\n');
+      aoa.push([x.name, body]);
+    });
+
+    var ws = XLSX.utils.aoa_to_sheet(aoa);
+    ws['!cols'] = [{ wch: 24 }, { wch: 96 }];
+    ws['!rows'] = [{ hpt: 24 }, { hpt: 16 }, { hpt: 6 }, { hpt: 20 }];
+    ws['!merges'] = [
+      { s: { r: 0, c: 0 }, e: { r: 0, c: 1 } },
+      { s: { r: 1, c: 0 }, e: { r: 1, c: 1 } }
+    ];
+    // 머리글(4행) 위는 스크롤해도 고정
+    ws['!freeze'] = { xSplit: 0, ySplit: 4, topLeftCell: 'A5', activePane: 'bottomLeft', state: 'frozen' };
+
+    // 서식 — 제목 / 부제 / 머리글 / 본문
+    var C = { title: 'E50914', head: '1F1F1F', headFg: 'FFFFFF', line: 'D0D0D0' };
+    function border(){
+      return { top:{style:'thin',color:{rgb:C.line}}, bottom:{style:'thin',color:{rgb:C.line}},
+               left:{style:'thin',color:{rgb:C.line}}, right:{style:'thin',color:{rgb:C.line}} };
+    }
+    if(ws['A1']) ws['A1'].s = { font:{ name:'맑은 고딕', sz:14, bold:true, color:{rgb:C.title} },
+                                alignment:{ vertical:'center' } };
+    if(ws['A2']) ws['A2'].s = { font:{ name:'맑은 고딕', sz:9, color:{rgb:'808080'} },
+                                alignment:{ vertical:'center' } };
+    ['A4','B4'].forEach(function(ref){
+      if(!ws[ref]) return;
+      ws[ref].s = { font:{ name:'맑은 고딕', sz:10, bold:true, color:{rgb:C.headFg} },
+                    fill:{ patternType:'solid', fgColor:{rgb:C.head} },
+                    alignment:{ horizontal:'center', vertical:'center' }, border: border() };
+    });
+    for(var r = 5; r <= aoa.length; r++){
+      var refA = 'A' + r, refB = 'B' + r;
+      if(ws[refA]) ws[refA].s = { font:{ name:'맑은 고딕', sz:10, bold:true },
+                                  alignment:{ vertical:'top', wrapText:true }, border: border() };
+      if(ws[refB]) ws[refB].s = { font:{ name:'맑은 고딕', sz:10 },
+                                  alignment:{ vertical:'top', wrapText:true }, border: border() };
+    }
+    XLSX.utils.book_append_sheet(wb, ws, t.label.slice(0, 28));
+  });
+
+  XLSX.writeFile(wb, '넷플릭스_소재제작가이드_' + today + '.xlsx');
 }
 function nfSpecLoad(){
   if(nfSpecLoaded) return;
@@ -3603,7 +4067,7 @@ function toggleRnCard(headerEl) {
   const isOpen = body.classList.contains('open');
   if (!isOpen) {
     // 아코디언: 다른 열린 카드 모두 닫기
-    document.querySelectorAll('#rn-list .rn-card-body.open').forEach(function(b){
+    rnPage().querySelectorAll('.rn-card-body.open').forEach(function(b){
       b.classList.remove('open');
       var h = b.previousElementSibling;
       if (h) { var a = h.querySelector('.rn-toggle-arrow'); if (a) a.style.transform = 'rotate(0deg)'; }
@@ -3614,10 +4078,23 @@ function toggleRnCard(headerEl) {
 }
 
 // 에러 표시
+// ══════ 공지 사항 — 화면 네임스페이스 ══════
+// 같은 코드로 두 화면(공지 사항 / 공지사항(테스트))을 그린다.
+// 데이터는 같은 시트를 읽고, 화면 요소와 페이지 상태만 분리한다.
+let RN_NS = '';                       // '' = 원본, '2' = 테스트 사본
+const _rnStates = { '': {}, '2': {} };
+function rnEl(id){ return document.getElementById(id + RN_NS); }
+function rnPage(){ return document.getElementById('page-updates' + RN_NS) || document; }
+function RN_STATE(){
+  var st = _rnStates[RN_NS] || (_rnStates[RN_NS] = {});
+  if(st.uniPage === undefined) st.uniPage = 1;
+  return st;
+}
+
 function showRnError(msg) {
-  document.getElementById('rn-loading').style.display = 'none';
-  document.getElementById('rn-error').style.display   = 'block';
-  document.getElementById('rn-error-msg').innerHTML   = msg;
+  rnEl('rn-loading').style.display = 'none';
+  rnEl('rn-error').style.display   = 'block';
+  rnEl('rn-error-msg').innerHTML   = msg;
 }
 
 // renderBody 결과를 DOM에 안전하게 삽입하는 헬퍼
@@ -3902,8 +4379,8 @@ function lib_searchClear(){
 // 공지사항 매체 전환 (넷플릭스 / 티빙·웨이브)
 // 공지 사항 공용 검색 — 어느 매체 탭이든 같은 입력으로 검색
 function rnSearch(){
-  try { rnUnifiedPage = 1; } catch(e){}
-  try { rnTvingPage = 1; } catch(e){}
+  try { RN_STATE().uniPage = 1; } catch(e){}
+  try { rnTvingState().page = 1; } catch(e){}
   try { rnUnifiedRender(); } catch(e){}
   try { rnTvingRender(); } catch(e){}
   try { if (window.rnNetflixSearch) window.rnNetflixSearch(); } catch(e){}
@@ -3914,13 +4391,13 @@ const RN_MEDIA2TAB = { 'all':'all', 'netflix':'netflix', 'tving_wavve':'tving' }
 // 탭값으로 매체 전환 (라우팅에서 호출)
 function rnApplyMediaTab(tab){
   var media = RN_TAB2MEDIA[tab] || 'all';
-  var btn = document.querySelector('.rn-media-btn[data-rnmedia="' + media + '"]');
+  var btn = rnPage().querySelector('.rn-media-btn[data-rnmedia="' + media + '"]');
   if(btn) rnSelectMedia(btn);
 }
 function rnSelectMedia(el){
   const m = el.getAttribute('data-rnmedia');
   // 매체 전환 시 검색어 초기화 + 안내 문구 교체
-  var si = document.getElementById('rn-search-shared');
+  var si = rnEl('rn-search-shared');
   if(si){
     si.value = '';
     si.placeholder = (m === 'all') ? '제목·내용 검색 (넷플릭스+티빙·웨이브)' : '제목·내용 검색';
@@ -3930,9 +4407,9 @@ function rnSelectMedia(el){
     b.classList.toggle('rn-media-on', on);
     b.classList.toggle('tab-active', on);
   });
-  const nf = document.getElementById('rn-netflix-wrap');
-  const tv = document.getElementById('rn-tving-wrap');
-  const un = document.getElementById('rn-unified-wrap');
+  const nf = rnEl('rn-netflix-wrap');
+  const tv = rnEl('rn-tving-wrap');
+  const un = rnEl('rn-unified-wrap');
   if(m === 'tving_wavve'){
     if(nf) nf.style.display = 'none';
     if(tv) tv.style.display = 'block';
@@ -3954,7 +4431,7 @@ function rnSelectMedia(el){
 
 // ── 통합 공지 뷰 (넷플릭스 + 티빙·웨이브, 최신순) ──
 var rnNetflixNotes = [];   // 넷플릭스 개별 공지 (시트 로드 시 채워짐)
-var rnUnifiedPage  = 1;
+// 통합 뷰 페이지 번호도 화면별로 분리
 var RN_UNIFIED_PER = 20;
 
 // 날짜 문자열 → Date (두 형식 모두 처리: '2026. 6. 29' / '2026-08-09' / '2026.6.29')
@@ -3972,7 +4449,7 @@ function rnFmtDateFromObj(d){
 
 // 통합 뷰 진입: 두 데이터 확보 후 렌더
 async function rnUnifiedLoad(){
-  var loading = document.getElementById('rn-unified-loading');
+  var loading = rnEl('rn-unified-loading');
   if(loading) loading.style.display = 'block';
   // 넷플릭스: 아직 안 불러왔으면 시트 로드
   if(!rnNetflixNotes.length){
@@ -3983,7 +4460,7 @@ async function rnUnifiedLoad(){
     try { await rnTvingLoad(); } catch(e){}
   }
   if(loading) loading.style.display = 'none';
-  rnUnifiedPage = 1;
+  RN_STATE().uniPage = 1;
   rnUnifiedRender();
 }
 
@@ -4017,7 +4494,7 @@ function rnUnifiedItems(){
 // 검색 필터까지 적용된 통합 목록 (렌더·클릭 이동 공용 — 인덱스 일치 보장)
 function rnUnifiedFilteredItems(){
   var items = rnUnifiedItems();
-  var searchEl = document.getElementById('rn-search-shared');
+  var searchEl = rnEl('rn-search-shared');
   var q = searchEl ? searchEl.value.trim().toLowerCase() : '';
   if(q){
     items = items.filter(function(it){
@@ -4029,10 +4506,10 @@ function rnUnifiedFilteredItems(){
 }
 
 function rnUnifiedRender(){
-  var listEl = document.getElementById('rn-unified-list');
-  var pagerEl = document.getElementById('rn-unified-pager');
+  var listEl = rnEl('rn-unified-list');
+  var pagerEl = rnEl('rn-unified-pager');
   if(!listEl) return;
-  var searchEl = document.getElementById('rn-search-shared');
+  var searchEl = rnEl('rn-search-shared');
   var q = searchEl ? searchEl.value.trim() : '';
   var items = rnUnifiedFilteredItems();
 
@@ -4042,8 +4519,8 @@ function rnUnifiedRender(){
     return;
   }
   var totalPages = Math.ceil(items.length / RN_UNIFIED_PER);
-  if(rnUnifiedPage > totalPages) rnUnifiedPage = totalPages;
-  var start = (rnUnifiedPage - 1) * RN_UNIFIED_PER;
+  if(RN_STATE().uniPage > totalPages) RN_STATE().uniPage = totalPages;
+  var start = (RN_STATE().uniPage - 1) * RN_UNIFIED_PER;
   var pageItems = items.slice(start, start + RN_UNIFIED_PER);
 
   // 카테고리별 배지 색 (배경, 글자) — 성격별 그룹 색 (방법 B)
@@ -4087,28 +4564,28 @@ function rnUnifiedRender(){
     if(totalPages <= 1){ pagerEl.innerHTML = ''; }
     else {
       var pg = '';
-      pg += '<span onclick="rnUnifiedGoPage(' + Math.max(1,rnUnifiedPage-1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">‹</span>';
+      pg += '<span onclick="rnUnifiedGoPage(' + Math.max(1,RN_STATE().uniPage-1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">‹</span>';
       var win = 7;
-      var s = Math.max(1, rnUnifiedPage - 3);
+      var s = Math.max(1, RN_STATE().uniPage - 3);
       var e = Math.min(totalPages, s + win - 1);
       s = Math.max(1, e - win + 1);
       for(var p=s; p<=e; p++){
-        if(p === rnUnifiedPage){
+        if(p === RN_STATE().uniPage){
           pg += '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>';
         } else {
           pg += '<span onclick="rnUnifiedGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-low);cursor:pointer;">' + p + '</span>';
         }
       }
-      pg += '<span onclick="rnUnifiedGoPage(' + Math.min(totalPages,rnUnifiedPage+1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">›</span>';
+      pg += '<span onclick="rnUnifiedGoPage(' + Math.min(totalPages,RN_STATE().uniPage+1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">›</span>';
       pagerEl.innerHTML = pg;
     }
   }
 }
 
 function rnUnifiedGoPage(p){
-  rnUnifiedPage = p;
+  RN_STATE().uniPage = p;
   rnUnifiedRender();
-  var top = document.getElementById('rn-unified-wrap');
+  var top = rnEl('rn-unified-wrap');
   if(top) top.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
@@ -4117,7 +4594,7 @@ function rnUnifiedGo(globalIdx){
   var items = rnUnifiedFilteredItems();
   var it = items[globalIdx];
   if(!it) return;
-  switchTab('updates', RN_MEDIA2TAB[it.media] || 'all');
+  switchTab('updates' + RN_NS, RN_MEDIA2TAB[it.media] || 'all');
   // 해당 매체 탭에서 그 공지를 강조/펼침
   setTimeout(function(){
     if(it.media === 'tving_wavve'){
@@ -4130,7 +4607,7 @@ function rnUnifiedGo(globalIdx){
 
 // 티빙 탭에서 특정 제목 공지로 스크롤·강조
 function rnTvingHighlight(title){
-  var list = document.getElementById('rn-tving-list');
+  var list = rnEl('rn-tving-list');
   if(!list) return;
   var cards = list.children;
   for(var i=0;i<cards.length;i++){
@@ -4147,7 +4624,7 @@ function rnTvingHighlight(title){
 
 // 넷플릭스 탭에서 특정 버전으로 스크롤·강조
 function rnNetflixHighlight(ver, title){
-  var list = document.getElementById('rn-list');
+  var list = rnEl('rn-list');
   if(!list) return;
   var cards = list.querySelectorAll('.rn-card, [data-rnver]');
   var target = null;
@@ -4165,17 +4642,19 @@ function rnNetflixHighlight(ver, title){
 }
 
 // ── 티빙·웨이브 공지사항 (JSON 목록형) ──
-var rnTvingData   = [];      // 전체 공지
-var rnTvingCat    = '전체';  // 현재 카테고리 필터
-var rnTvingLoaded = false;   // 1회 로드 플래그
-var rnTvingOpen   = {};      // notice_id → 펼침 여부
-var rnTvingPage   = 1;       // 현재 페이지
-var rnTvingPer    = 20;      // 페이지당 개수
+var rnTvingData   = [];      // 전체 공지 (데이터는 두 화면이 공유)
+var rnTvingLoaded = false;   // 1회 로드 플래그 (공유)
+// 아래 네 가지는 화면마다 따로 유지해야 원본과 테스트가 서로 간섭하지 않는다
+function rnTvingState(){
+  var st = RN_STATE();
+  if(st.tv === undefined) st.tv = { cat: '전체', open: {}, page: 1, per: 20 };
+  return st.tv;
+}
 
 async function rnTvingLoad(force){
   if(rnTvingLoaded && !force) { rnTvingRender(); return; }
-  var loading = document.getElementById('rn-tving-loading');
-  var errEl   = document.getElementById('rn-tving-error');
+  var loading = rnEl('rn-tving-loading');
+  var errEl   = rnEl('rn-tving-error');
   if(loading) loading.style.display = 'block';
   if(errEl)   errEl.style.display = 'none';
   try{
@@ -4185,7 +4664,7 @@ async function rnTvingLoad(force){
     rnTvingData = (data && data.notices) ? data.notices : [];
     rnTvingLoaded = true;
     if(loading) loading.style.display = 'none';
-    var upd = document.getElementById('rn-tving-updated');
+    var upd = rnEl('rn-tving-updated');
     if(upd && data.updated_at) upd.textContent = '마지막 업데이트 ' + data.updated_at;
     rnTvingBuildFilter();
     rnTvingRender();
@@ -4193,7 +4672,7 @@ async function rnTvingLoad(force){
     if(loading) loading.style.display = 'none';
     if(errEl){
       errEl.style.display = 'block';
-      var msg = document.getElementById('rn-tving-error-msg');
+      var msg = rnEl('rn-tving-error-msg');
       console.warn('[공지 사항 티빙] 로드 실패:', e);   // 원인은 콘솔에만
       if(msg) msg.innerHTML = LOAD_FAIL_MSG;
     }
@@ -4212,11 +4691,11 @@ function rnTvingBuildFilter(){
     var c = (n.category || '기타').trim();
     if(cats.indexOf(c) === -1) cats.push(c);
   });
-  var bar = document.getElementById('rn-tving-filter-bar');
+  var bar = rnEl('rn-tving-filter-bar');
   if(!bar) return;
   bar.innerHTML = '';
   cats.forEach(function(c){
-    var isSel = (c === rnTvingCat);
+    var isSel = (c === rnTvingState().cat);
     var b = document.createElement('button');
     // 넷플릭스 필터와 동일한 스타일: 선택 시 빨강, 미선택은 투명+회색
     b.style.cssText = 'padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;'
@@ -4224,7 +4703,7 @@ function rnTvingBuildFilter(){
           ? 'background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.3);'
           : 'background:transparent;color:var(--gray-low);border:1px solid var(--border);');
     b.textContent = c;
-    b.onclick = function(){ rnTvingCat = c; rnTvingPage = 1; rnTvingBuildFilter(); rnTvingRender(); };
+    b.onclick = function(){ rnTvingState().cat = c; rnTvingState().page = 1; rnTvingBuildFilter(); rnTvingRender(); };
     bar.appendChild(b);
   });
 }
@@ -4243,12 +4722,12 @@ function rnTvingCatColor(cat){
 }
 
 function rnTvingRender(){
-  var list = document.getElementById('rn-tving-list');
+  var list = rnEl('rn-tving-list');
   if(!list) return;
-  var kw = (document.getElementById('rn-search-shared') || {}).value || '';
+  var kw = (rnEl('rn-search-shared') || {}).value || '';
   kw = kw.trim().toLowerCase();
   var rows = rnTvingData.filter(function(n){
-    if(rnTvingCat !== '전체' && (n.category || '기타') !== rnTvingCat) return false;
+    if(rnTvingState().cat !== '전체' && (n.category || '기타') !== rnTvingState().cat) return false;
     if(kw){
       var hay = ((n.title || '') + ' ' + (n.body || '')).toLowerCase();
       if(hay.indexOf(kw) === -1) return false;
@@ -4260,17 +4739,17 @@ function rnTvingRender(){
     return;
   }
   // 페이지 계산
-  var totalPages = Math.max(1, Math.ceil(rows.length / rnTvingPer));
-  if(rnTvingPage > totalPages) rnTvingPage = totalPages;
-  if(rnTvingPage < 1) rnTvingPage = 1;
-  var startIdx = (rnTvingPage - 1) * rnTvingPer;
-  var pageRows = rows.slice(startIdx, startIdx + rnTvingPer);
+  var totalPages = Math.max(1, Math.ceil(rows.length / rnTvingState().per));
+  if(rnTvingState().page > totalPages) rnTvingState().page = totalPages;
+  if(rnTvingState().page < 1) rnTvingState().page = 1;
+  var startIdx = (rnTvingState().page - 1) * rnTvingState().per;
+  var pageRows = rows.slice(startIdx, startIdx + rnTvingState().per);
   // 헤더 행 + 목록
   var html = '<div class="rn-tv-row rn-tv-head" style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--gray-low);font-weight:700;">'
     + '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
   pageRows.forEach(function(n){
     var color = rnTvingCatColor(n.category);
-    var open  = !!rnTvingOpen[n.notice_id];
+    var open  = !!rnTvingState().open[n.notice_id];
     var safeTitle = clEsc(n.title || '');
     var dateDisp  = rnFmtDateDot(n.date);
     var newBadge = rnTvingIsNew(n.date)
@@ -4299,12 +4778,12 @@ function rnTvingRender(){
 // 페이지네이션 HTML 생성 (페이지당 선택 + 페이지 번호)
 function rnTvingPagerHtml(total, totalPages, startIdx, shown){
   var perOpts = [10,20,50].map(function(v){
-    return '<option value="'+v+'"'+(v===rnTvingPer?' selected':'')+'>'+v+'개</option>';
+    return '<option value="'+v+'"'+(v===rnTvingState().per?' selected':'')+'>'+v+'개</option>';
   }).join('');
   var nums = '';
   // 최대 7개 번호 창
   var win = 7, half = Math.floor(win/2);
-  var s = Math.max(1, rnTvingPage - half);
+  var s = Math.max(1, rnTvingState().page - half);
   var e = Math.min(totalPages, s + win - 1);
   s = Math.max(1, Math.min(s, e - win + 1));
   var btn = function(label, page, disabled, active){
@@ -4315,13 +4794,13 @@ function rnTvingPagerHtml(total, totalPages, startIdx, shown){
     var onclick = disabled ? '' : ' onclick="rnTvingGoPage('+page+')"';
     return '<button style="'+base+'"'+onclick+'>'+label+'</button>';
   };
-  nums += btn('‹', rnTvingPage-1, rnTvingPage<=1, false);
-  if(s > 1) nums += btn('1', 1, false, rnTvingPage===1);
+  nums += btn('‹', rnTvingState().page-1, rnTvingState().page<=1, false);
+  if(s > 1) nums += btn('1', 1, false, rnTvingState().page===1);
   if(s > 2) nums += '<span style="color:var(--gray-dim);font-size:12px;padding:0 2px;">…</span>';
-  for(var p=s; p<=e; p++){ nums += btn(String(p), p, false, p===rnTvingPage); }
+  for(var p=s; p<=e; p++){ nums += btn(String(p), p, false, p===rnTvingState().page); }
   if(e < totalPages-1) nums += '<span style="color:var(--gray-dim);font-size:12px;padding:0 2px;">…</span>';
-  if(e < totalPages) nums += btn(String(totalPages), totalPages, false, rnTvingPage===totalPages);
-  nums += btn('›', rnTvingPage+1, rnTvingPage>=totalPages, false);
+  if(e < totalPages) nums += btn(String(totalPages), totalPages, false, rnTvingState().page===totalPages);
+  nums += btn('›', rnTvingState().page+1, rnTvingState().page>=totalPages, false);
 
   var from = total === 0 ? 0 : startIdx + 1;
   var to = startIdx + shown;
@@ -4336,26 +4815,26 @@ function rnTvingPagerHtml(total, totalPages, startIdx, shown){
 }
 
 function rnTvingGoPage(p){
-  rnTvingPage = p;
+  rnTvingState().page = p;
   rnTvingRender();
   // 목록 상단으로 스크롤
-  var wrap = document.getElementById('rn-tving-wrap');
+  var wrap = rnEl('rn-tving-wrap');
   if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function rnTvingChangePer(v){
-  rnTvingPer = parseInt(v,10) || 20;
-  rnTvingPage = 1;
+  rnTvingState().per = parseInt(v,10) || 20;
+  rnTvingState().page = 1;
   rnTvingRender();
 }
 
 function rnTvingToggle(id){
   // 아코디언: 이미 열린 걸 다시 누르면 닫고, 아니면 그것만 열기
-  if(rnTvingOpen[id]){
-    rnTvingOpen = {};
+  if(rnTvingState().open[id]){
+    rnTvingState().open = {};
   } else {
-    rnTvingOpen = {};
-    rnTvingOpen[id] = true;
+    rnTvingState().open = {};
+    rnTvingState().open[id] = true;
   }
   rnTvingRender();
 }
@@ -4406,9 +4885,9 @@ function rnTvingBody(text){
 }
 
 async function sheetsLoadNotes() {
-  document.getElementById('rn-loading').style.display     = 'block';
-  document.getElementById('rn-error').style.display       = 'none';
-  document.getElementById('rn-list').innerHTML             = '';
+  rnEl('rn-loading').style.display     = 'block';
+  rnEl('rn-error').style.display       = 'none';
+  rnEl('rn-list').innerHTML             = '';
 
   try {
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID +
@@ -4422,8 +4901,8 @@ async function sheetsLoadNotes() {
     // 멀티라인 셀 완전 파싱
     const allRows = parseCSV(text);
     if (allRows.length <= 1) {
-      document.getElementById('rn-loading').style.display = 'none';
-      document.getElementById('rn-list').innerHTML =
+      rnEl('rn-loading').style.display = 'none';
+      rnEl('rn-list').innerHTML =
         '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
@@ -4446,8 +4925,8 @@ async function sheetsLoadNotes() {
     });
 
     if (allNotes.length === 0) {
-      document.getElementById('rn-loading').style.display = 'none';
-      document.getElementById('rn-list').innerHTML =
+      rnEl('rn-loading').style.display = 'none';
+      rnEl('rn-list').innerHTML =
         '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">아직 등록된 릴리즈 노트가 없습니다.</div>';
       return;
     }
@@ -4474,10 +4953,10 @@ async function sheetsLoadNotes() {
       return !n.title.match(/넷플릭스\s*광고\s*공지사항\s*v/i);
     });
 
-    document.getElementById('rn-loading').style.display     = 'none';
+    rnEl('rn-loading').style.display     = 'none';
 
     const now = new Date();
-    document.getElementById('rn-last-updated').textContent =
+    rnEl('rn-last-updated').textContent =
       '마지막 업데이트 ' + now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
 
     // 카테고리 색상
@@ -4493,7 +4972,7 @@ async function sheetsLoadNotes() {
     };
 
     // 필터 바 생성
-    const filterBar = document.getElementById('rn-filter-bar');
+    const filterBar = rnEl('rn-filter-bar');
     // 카테고리 표시 순서 (지정 순서)
     const catOrder = ['정책', '가이드(제작)', '가이드(운영)', '상품', '프로모션', '리포트', '인사이트', '기타'];
     if (filterBar) {
@@ -4526,15 +5005,15 @@ async function sheetsLoadNotes() {
     window._allNotes   = allNotes;
     window._catColors  = catColors;
     window._currentCat = '전체';
-    window._rnPage     = 1;    // 넷플릭스 현재 페이지
-    window._rnPer      = 20;   // 페이지당 버전 수
+    RN_STATE()._rnPage     = 1;    // 넷플릭스 현재 페이지
+    RN_STATE()._rnPer      = 20;   // 페이지당 버전 수
 
     // 버전 카드 렌더링 (다크 카드 + 접기/펼치기 + 페이지네이션)
     window.renderNoteCards = function(cat) {
-      const list = document.getElementById('rn-list');
+      const list = rnEl('rn-list');
       list.innerHTML = '';
 
-      const kw = ((document.getElementById('rn-search-shared') || {}).value || '').trim().toLowerCase();
+      const kw = ((rnEl('rn-search-shared') || {}).value || '').trim().toLowerCase();
 
       // 1) 표시할 버전 추리기 (필터·검색 통과한 것 + 걸러진 섹션 저장)
       const displayVersions = [];
@@ -4558,11 +5037,11 @@ async function sheetsLoadNotes() {
       }
 
       // 2) 페이지 계산 (버전 단위)
-      const per = window._rnPer || 20;
+      const per = RN_STATE()._rnPer || 20;
       const totalPages = Math.max(1, Math.ceil(displayVersions.length / per));
-      if (window._rnPage > totalPages) window._rnPage = totalPages;
-      if (window._rnPage < 1) window._rnPage = 1;
-      const startIdx = (window._rnPage - 1) * per;
+      if (RN_STATE()._rnPage > totalPages) RN_STATE()._rnPage = totalPages;
+      if (RN_STATE()._rnPage < 1) RN_STATE()._rnPage = 1;
+      const startIdx = (RN_STATE()._rnPage - 1) * per;
       const pageVersions = displayVersions.slice(startIdx, startIdx + per);
 
       // 3) 페이지 내 버전만 렌더
@@ -4688,7 +5167,7 @@ async function sheetsLoadNotes() {
     // 넷플릭스 페이지네이션 HTML
     window.rnNetflixPagerHtml = function(total, totalPages, startIdx, shown){
       const perOpts = [10,20,50].map(function(v){
-        return '<option value="'+v+'"'+(v===window._rnPer?' selected':'')+'>'+v+'개</option>';
+        return '<option value="'+v+'"'+(v===RN_STATE()._rnPer?' selected':'')+'>'+v+'개</option>';
       }).join('');
       const btn = function(label, page, disabled, active){
         var base = 'padding:6px 11px;border-radius:6px;font-size:12px;cursor:pointer;border:1px solid var(--border);margin:0 2px;';
@@ -4699,16 +5178,16 @@ async function sheetsLoadNotes() {
         return '<button style="'+base+'"'+onclick+'>'+label+'</button>';
       };
       var win = 7, half = Math.floor(win/2);
-      var s = Math.max(1, window._rnPage - half);
+      var s = Math.max(1, RN_STATE()._rnPage - half);
       var e = Math.min(totalPages, s + win - 1);
       s = Math.max(1, Math.min(s, e - win + 1));
-      var nums = btn('‹', window._rnPage-1, window._rnPage<=1, false);
-      if(s > 1) nums += btn('1', 1, false, window._rnPage===1);
+      var nums = btn('‹', RN_STATE()._rnPage-1, RN_STATE()._rnPage<=1, false);
+      if(s > 1) nums += btn('1', 1, false, RN_STATE()._rnPage===1);
       if(s > 2) nums += '<span style="color:var(--gray-dim);font-size:12px;padding:0 2px;">…</span>';
-      for(var p=s; p<=e; p++){ nums += btn(String(p), p, false, p===window._rnPage); }
+      for(var p=s; p<=e; p++){ nums += btn(String(p), p, false, p===RN_STATE()._rnPage); }
       if(e < totalPages-1) nums += '<span style="color:var(--gray-dim);font-size:12px;padding:0 2px;">…</span>';
-      if(e < totalPages) nums += btn(String(totalPages), totalPages, false, window._rnPage===totalPages);
-      nums += btn('›', window._rnPage+1, window._rnPage>=totalPages, false);
+      if(e < totalPages) nums += btn(String(totalPages), totalPages, false, RN_STATE()._rnPage===totalPages);
+      nums += btn('›', RN_STATE()._rnPage+1, RN_STATE()._rnPage>=totalPages, false);
       var from = total === 0 ? 0 : startIdx + 1;
       var to = startIdx + shown;
       return '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px 4px 4px;">'
@@ -4722,15 +5201,15 @@ async function sheetsLoadNotes() {
     };
 
     window.rnNetflixGoPage = function(p){
-      window._rnPage = p;
+      RN_STATE()._rnPage = p;
       window.renderNoteCards(window._currentCat || '전체');
-      var wrap = document.getElementById('rn-netflix-wrap');
+      var wrap = rnEl('rn-netflix-wrap');
       if(wrap) wrap.scrollIntoView({behavior:'smooth', block:'start'});
     };
 
     window.rnNetflixChangePer = function(v){
-      window._rnPer = parseInt(v,10) || 20;
-      window._rnPage = 1;
+      RN_STATE()._rnPer = parseInt(v,10) || 20;
+      RN_STATE()._rnPage = 1;
       window.renderNoteCards(window._currentCat || '전체');
     };
 
@@ -4752,9 +5231,9 @@ async function sheetsLoadNotes() {
     // 카테고리 필터
     window.filterNotes = function(cat) {
       window._currentCat = cat;
-      window._rnPage = 1;
+      RN_STATE()._rnPage = 1;
       // 필터 바에 실제로 그려진 버튼을 직접 순회 (카테고리 목록 변수에 의존하지 않음)
-      var _bar  = document.getElementById('rn-filter-bar');
+      var _bar  = rnEl('rn-filter-bar');
       var _btns = _bar ? _bar.querySelectorAll('button') : [];
       var _cmap = (typeof catColors !== 'undefined') ? catColors : (window._catColors || {});
       Array.prototype.forEach.call(_btns, function(btn) {
@@ -4778,7 +5257,7 @@ async function sheetsLoadNotes() {
 
     // 검색 입력 시: 현재 카테고리 유지하며 재렌더
     window.rnNetflixSearch = function() {
-      window._rnPage = 1;
+      RN_STATE()._rnPage = 1;
       window.renderNoteCards(window._currentCat || '전체');
     };
 
