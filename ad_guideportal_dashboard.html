@@ -346,8 +346,25 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-tbl-head{padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;
   color:var(--gray-low);font-weight:700;cursor:default;background:rgba(255,255,255,0.03);}
 .rn-tbl-head:hover{background:rgba(255,255,255,0.03);}
+.rn-tbl-head > div{text-align:center;}
+.rn-tbl-head .rn-tbl-date{text-align:center;}
 .rn-tbl-item{border-bottom:1px solid var(--border);}
 .rn-tbl-item:last-child{border-bottom:none;}
+/* 공지 줄 강조 */
+.rn-flash{position:relative;animation:rnFlashAnim 2.6s ease-out;}
+.rn-flash::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:#FACC15;border-radius:2px;animation:rnFlashBar 2.6s ease-out;}
+@keyframes rnFlashAnim{
+  0%{background:rgba(250,204,21,0.03);}
+  8%{background:rgba(250,204,21,0.22);}
+  22%{background:rgba(250,204,21,0.10);}
+  32%{background:rgba(250,204,21,0.20);}
+  70%{background:rgba(250,204,21,0.12);}
+  100%{background:transparent;}
+}
+@keyframes rnFlashBar{
+  0%{opacity:0;} 8%{opacity:1;} 70%{opacity:1;} 100%{opacity:0;}
+}
 .rn-tbl-uni{grid-template-columns:104px 96px minmax(0,1fr) 104px;}
 .rn-tbl-nf{grid-template-columns:96px minmax(0,1fr) 116px;}
 .rn-tbl-title{font-size:14px;color:var(--white);line-height:1.5;}
@@ -4767,17 +4784,29 @@ function rnUnifiedGo(globalIdx){
 }
 
 // 티빙 탭에서 특정 제목 공지로 스크롤·강조
+// 공지 줄 강조 — 앰버 배경 + 왼쪽 굵은 바, 번쩍인 뒤 서서히 사라짐
+// 색을 매체별로 나누지 않는 이유: 빨강은 '불가', 분홍은 '프로모션' 뜻이 이미 있어 오해를 부름
+// 티빙 updated_at과 같은 형식으로 현재 시각을 만든다
+function rnNowStamp(){
+  var d = new Date(), p = function(v){ return String(v).padStart(2,'0'); };
+  return d.getFullYear() + '-' + p(d.getMonth()+1) + '-' + p(d.getDate()) + ' '
+       + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+}
+function rnFlash(el){
+  if(!el) return;
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+  el.classList.remove('rn-flash');
+  void el.offsetWidth;              // 연속 클릭에도 다시 재생되도록
+  el.classList.add('rn-flash');
+  setTimeout(function(){ el.classList.remove('rn-flash'); }, 2600);
+}
 function rnTvingHighlight(title){
   var list = rnEl('rn-tving-list');
   if(!list) return;
   var cards = list.children;
   for(var i=0;i<cards.length;i++){
     if(cards[i].textContent && cards[i].textContent.indexOf(title) !== -1){
-      cards[i].scrollIntoView({behavior:'smooth', block:'center'});
-      var el = cards[i];
-      el.style.transition = 'background 0.3s';
-      el.style.background = 'rgba(229,9,20,0.10)';
-      setTimeout(function(){ el.style.background=''; }, 1800);
+      rnFlash(cards[i]);
       break;
     }
   }
@@ -4787,19 +4816,25 @@ function rnTvingHighlight(title){
 function rnNetflixHighlight(ver, title){
   var list = rnEl('rn-list');
   if(!list) return;
-  var cards = list.querySelectorAll('.rn-card, [data-rnver]');
+  // 표(공지사항 테스트)와 버전 카드(원본)를 모두 대상으로 삼는다
+  var cards = list.querySelectorAll('.rn-tbl-item, .rn-card, [data-rnver]');
+  if(!cards.length) cards = list.children;
   var target = null;
-  for(var i=0;i<cards.length;i++){
-    var dv = cards[i].getAttribute && cards[i].getAttribute('data-rnver');
-    if(dv && dv === ver){ target = cards[i]; break; }
-    if(!dv && cards[i].textContent && ver && cards[i].textContent.indexOf(ver) !== -1){ target = cards[i]; break; }
+  // 1순위: 제목이 일치하는 줄 (표는 항목 단위라 제목이 가장 정확)
+  if(title){
+    for(var i=0;i<cards.length;i++){
+      if(cards[i].textContent && cards[i].textContent.indexOf(title) !== -1){ target = cards[i]; break; }
+    }
   }
-  if(target){
-    target.scrollIntoView({behavior:'smooth', block:'center'});
-    target.style.transition = 'background 0.3s';
-    target.style.background = 'rgba(229,9,20,0.08)';
-    setTimeout(function(){ target.style.background=''; }, 1800);
+  // 2순위: 버전으로 찾기 (원본 카드용)
+  if(!target && ver){
+    for(var j=0;j<cards.length;j++){
+      var dv = cards[j].getAttribute && cards[j].getAttribute('data-rnver');
+      if(dv === ver){ target = cards[j]; break; }
+      if(!dv && cards[j].textContent && cards[j].textContent.indexOf(ver) !== -1){ target = cards[j]; break; }
+    }
   }
+  rnFlash(target);
 }
 
 // ── 티빙·웨이브 공지사항 (JSON 목록형) ──
@@ -4918,8 +4953,19 @@ function rnTvingRender(){
   var startIdx = (rnTvingState().page - 1) * rnTvingState().per;
   var pageRows = rows.slice(startIdx, startIdx + rnTvingState().per);
   // 헤더 행 + 목록
-  var html = '<div class="rn-tv-row rn-tv-head" style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--gray-low);font-weight:700;">'
-    + '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
+  // 공지사항(테스트)는 통합·넷플릭스와 같은 표 스타일(.rn-tbl)로 그린다
+  var useTbl = (RN_NS === '2');
+  var rowCls  = useTbl ? 'rn-tbl-row rn-tbl-nf' : 'rn-tv-row';
+  var headCls = useTbl ? 'rn-tbl-row rn-tbl-head rn-tbl-nf' : 'rn-tv-row rn-tv-head';
+  var dateCls = useTbl ? 'rn-tbl-date' : '';
+  var html = '';
+  if(useTbl){
+    html += '<div class="rn-tbl"><div class="' + headCls + '">'
+         +  '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
+  } else {
+    html += '<div class="' + headCls + '" style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--gray-low);font-weight:700;">'
+         +  '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
+  }
   pageRows.forEach(function(n){
     var color = rnTvingCatColor(n.category);
     var open  = !!rnTvingState().open[n.notice_id];
@@ -4928,20 +4974,26 @@ function rnTvingRender(){
     var newBadge = rnTvingIsNew(n.date)
       ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>'
       : '';
-    html += '<div style="border-bottom:1px solid var(--border);">'
-      + '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="rn-tv-row" style="padding:14px;cursor:pointer;">'
+    html += useTbl
+      ? '<div class="rn-tbl-item">'
+      : '<div style="border-bottom:1px solid var(--border);">';
+    html += '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="' + rowCls + '"'
+      +   (useTbl ? '' : ' style="padding:14px;cursor:pointer;"') + '>'
       +   '<div><span class="cat-badge" style="background:' + color + '22;color:' + color + ';">' + clEsc(n.category||'기타') + '</span></div>'
-      +   '<div style="font-size:14px;color:var(--white);line-height:1.5;">' + safeTitle + newBadge + '</div>'
-      +   '<div style="text-align:right;font-size:12px;color:var(--gray-low);">' + dateDisp + '</div>'
+      +   '<div' + (useTbl ? ' class="rn-tbl-title"' : ' style="font-size:14px;color:var(--white);line-height:1.5;"') + '>' + safeTitle + newBadge + '</div>'
+      +   '<div' + (useTbl ? ' class="rn-tbl-date"' : ' style="text-align:right;font-size:12px;color:var(--gray-low);"') + '>' + dateDisp + '</div>'
       + '</div>';
     if(open){
-      html += '<div style="padding:4px 14px 18px 14px;font-size:13px;color:var(--gray-mid);line-height:1.75;white-space:pre-wrap;border-top:1px dashed var(--border);">'
+      html += '<div' + (useTbl
+          ? ' class="rn-tbl-body"'
+          : ' style="padding:4px 14px 18px 14px;font-size:13px;color:var(--gray-mid);line-height:1.75;white-space:pre-wrap;border-top:1px dashed var(--border);"') + '>'
         + rnTvingBody(n.body || '')
         + '<div style="margin-top:12px;"><a href="' + (n.url||'#') + '" target="_blank" rel="noopener" style="font-size:12px;color:#ff6b6b;text-decoration:none;">원문 보기 ↗</a></div>'
         + '</div>';
     }
     html += '</div>';
   });
+  if(useTbl) html += '</div>';   // .rn-tbl 닫기
 
   // 페이지네이션 UI
   html += rnTvingPagerHtml(rows.length, totalPages, startIdx, pageRows.length);
@@ -5090,6 +5142,7 @@ async function sheetsLoadNotes() {
         category: (cols[4] || '').trim() || '기타',
         exclude : (cols[5] || '').trim(),
         date    : (cols[6] || '').trim(),
+        updated : (cols[7] || '').trim(),   // H열 마지막업데이트
       };
     }).filter(function(n) {
       if (!n.ver || n.ver === '버전' || n.ver === '') return false;
@@ -5128,9 +5181,13 @@ async function sheetsLoadNotes() {
 
     rnEl('rn-loading').style.display     = 'none';
 
-    const now = new Date();
-    rnEl('rn-last-updated').textContent =
-      '마지막 업데이트 ' + now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+    // 표기는 티빙과 같은 'YYYY-MM-DD HH:MM:SS'
+    // 시트 H열(마지막업데이트)이 있으면 그 값 중 가장 최근 것을, 없으면 읽은 시각을 쓴다
+    var sheetUpd = '';
+    allNotes.forEach(function(n){
+      if(n.updated && n.updated > sheetUpd) sheetUpd = n.updated;
+    });
+    rnEl('rn-last-updated').textContent = '마지막 업데이트 ' + (sheetUpd || rnNowStamp());
 
     // 카테고리 색상
     const catColors = {
