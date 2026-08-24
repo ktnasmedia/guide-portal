@@ -374,6 +374,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-body-li::before{content:"\2022";position:absolute;left:0;top:0;font-size:15px;line-height:1.75;color:#8E8E93;}
 .rn-body-li2{padding-left:32px;}
 .rn-body-li2::before{content:"\2013";left:16px;font-size:13px;color:#8E8E93;}
+/* 불릿 목록이 끝나고 문단이 시작될 때만 간격을 벌린다 (문단 → 불릿은 그대로) */
+.rn-body-li + .rn-body-p{margin-top:14px;}
+/* 목록과 문단이 만나는 지점은 간격을 넓혀 묶음 경계를 드러낸다 */
+.rn-body-li + .rn-body-p{margin-top:18px;}
+.rn-body-p + .rn-body-li{margin-top:18px;}
 .rn-body-p:last-child,.rn-body-li:last-child{margin-bottom:0;}
 .rn-body-img{max-width:100%;border-radius:8px;margin:8px 0;display:block;}
 .rn-body-link{display:inline-flex;align-items:center;gap:2px;color:#FF8A8A;text-decoration:none;
