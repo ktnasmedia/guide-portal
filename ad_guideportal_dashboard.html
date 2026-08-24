@@ -367,8 +367,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-tbl-nf{grid-template-columns:132px minmax(0,1fr) 130px;}
 .rn-tbl-title{font-size:14px;color:var(--white);line-height:1.5;}
 .rn-tbl-date{text-align:right;font-size:12px;color:var(--gray-low);white-space:nowrap;}
-.rn-tbl-body{padding:4px 14px 18px;font-size:13px;color:var(--gray-mid);line-height:1.75;
-  border-top:1px dashed var(--border);white-space:pre-wrap;}
+.rn-tbl-body{padding:12px 14px 18px;font-size:13px;color:#D1D5DB;line-height:1.75;
+  border-top:1px dashed var(--border);}
+.rn-body-p{margin-bottom:8px;}
+.rn-body-li{margin-bottom:8px;padding-left:15px;text-indent:-15px;}
+.rn-body-li::before{content:"\2022  ";color:var(--gray-dim);}
+.rn-body-p:last-child,.rn-body-li:last-child{margin-bottom:0;}
+.rn-body-img{max-width:100%;border-radius:8px;margin:8px 0;display:block;}
+.rn-body-link{display:inline-flex;align-items:center;gap:2px;color:#FF8A8A;text-decoration:none;
+  border-bottom:1px solid rgba(255,138,138,0.35);}
+.rn-body-link:hover{color:#FFB3B3;border-bottom-color:rgba(255,179,179,0.7);}
 /* 통합 탭 카테고리는 단색 (시선 피로 줄이기) */
 .cat-mono{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;
   background:rgba(255,255,255,0.07);color:var(--gray-mid);border:1px solid rgba(255,255,255,0.12);white-space:nowrap;}
@@ -4804,7 +4812,10 @@ function rnFlash(el){
 function rnTvingHighlight(title){
   var list = rnEl('rn-tving-list');
   if(!list) return;
-  var cards = list.children;
+  // 표 구조(공지사항 테스트)에서는 줄이 .rn-tbl 안에 들어 있어
+  // list.children 을 보면 표 전체가 잡힌다 → 줄 단위 요소를 직접 찾는다
+  var cards = list.querySelectorAll('.rn-tbl-item');
+  if(!cards.length) cards = list.children;
   for(var i=0;i<cards.length;i++){
     if(cards[i].textContent && cards[i].textContent.indexOf(title) !== -1){
       rnFlash(cards[i]);
@@ -4856,7 +4867,7 @@ function rnNfGoPage(p){
 }
 function rnTvingState(){
   var st = RN_STATE();
-  if(st.tv === undefined) st.tv = { cat: '전체', open: {}, page: 1, per: 20 };
+  if(st.tv === undefined) st.tv = { cat: '전체', open: {}, page: 1, per: 20 };   // 테스트 화면은 개수 선택 없이 20개 고정
   return st.tv;
 }
 
@@ -4988,7 +4999,7 @@ function rnTvingRender(){
       html += '<div' + (useTbl
           ? ' class="rn-tbl-body"'
           : ' style="padding:4px 14px 18px 14px;font-size:13px;color:var(--gray-mid);line-height:1.75;white-space:pre-wrap;border-top:1px dashed var(--border);"') + '>'
-        + rnTvingBody(n.body || '')
+        + (useTbl ? rnBodyHtml(n.body || '') : rnTvingBody(n.body || ''))
         + '<div style="margin-top:12px;"><a href="' + (n.url||'#') + '" target="_blank" rel="noopener" style="font-size:12px;color:#ff6b6b;text-decoration:none;">원문 보기 ↗</a></div>'
         + '</div>';
     }
@@ -4997,11 +5008,31 @@ function rnTvingRender(){
   if(useTbl) html += '</div>';   // .rn-tbl 닫기
 
   // 페이지네이션 UI
-  html += rnTvingPagerHtml(rows.length, totalPages, startIdx, pageRows.length);
+  html += (RN_NS === '2')
+    ? rnTvingPagerNums(totalPages)                                     // 통합 탭과 같은 번호 페이저
+    : rnTvingPagerHtml(rows.length, totalPages, startIdx, pageRows.length);
   list.innerHTML = html;
 }
 
 // 페이지네이션 HTML 생성 (페이지당 선택 + 페이지 번호)
+// 통합 탭과 동일한 번호 페이저 (페이지당 개수 선택 없이 번호만)
+function rnTvingPagerNums(totalPages){
+  if(totalPages <= 1) return '';
+  var cur = rnTvingState().page;
+  var pg = '<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;">';
+  pg += '<span onclick="rnTvingGoPage(' + Math.max(1, cur-1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">\u2039</span>';
+  var win = 7;
+  var st = Math.max(1, cur - 3);
+  var en = Math.min(totalPages, st + win - 1);
+  st = Math.max(1, en - win + 1);
+  for(var p = st; p <= en; p++){
+    pg += (p === cur)
+      ? '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>'
+      : '<span onclick="rnTvingGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-low);cursor:pointer;">' + p + '</span>';
+  }
+  pg += '<span onclick="rnTvingGoPage(' + Math.min(totalPages, cur+1) + ')" style="padding:5px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-dim);cursor:pointer;">\u203a</span>';
+  return pg + '</div>';
+}
 function rnTvingPagerHtml(total, totalPages, startIdx, shown){
   var perOpts = [10,20,50].map(function(v){
     return '<option value="'+v+'"'+(v===rnTvingState().per?' selected':'')+'>'+v+'개</option>';
@@ -5092,6 +5123,40 @@ function rnTvingIsNew(d){
   return diffDays >= 0 && diffDays <= 14;
 }
 
+// 공지 본문 공통 렌더 — 문단·불릿 분리, 링크는 하이퍼링크로, 쌩 URL 숨김
+// 티빙 표와 넷플릭스 표가 같은 함수를 쓴다
+function rnBodyHtml(text){
+  var t = clEsc(String(text || ''));
+  // CSV에서 넘어온 엔티티 되살리기
+  t = t.replace(/&amp;lt;/g,'&lt;').replace(/&amp;gt;/g,'&gt;').replace(/&amp;amp;/g,'&amp;');
+  // 상대경로 네비게이션 잔여 제거
+  t = t.replace(/\[[^\]]*\]\(\.\.[^)]*\)/g, '');
+  // 이미지 마커
+  t = t.replace(/\[\[IMG:(https?:\/\/[^\]]+)\]\]/g,
+    '<img src="$1" class="rn-body-img" loading="lazy" alt="">');
+  // 겹대괄호 정리
+  t = t.replace(/\[\[([^\]]+)\]\]\((https?:\/\/[^\s)]+)\)/g, '[$1]($2)');
+  // 마커 링크 [텍스트](주소)
+  t = t.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(_m, label, u){
+    label = label.replace(/[↗↘→]/g,'').trim() || '링크 바로가기';
+    return '<a class="rn-body-link" href="' + u + '" target="_blank" rel="noopener">' + label + ' \u2197</a>';
+  });
+  // 남은 쌩 URL → 짧은 링크로 (주소 원문은 감춤)
+  t = t.replace(/(^|[\s(])((?:https?:\/\/)[^\s<)]+)/g, function(_m, pre, u){
+    return pre + '<a class="rn-body-link" href="' + u + '" target="_blank" rel="noopener">링크 바로가기 \u2197</a>';
+  });
+
+  // 줄 단위로 문단·불릿 분리 (불릿 사이 간격 확보)
+  var out = t.split(/\r?\n/).map(function(ln){
+    var x = ln.trim();
+    if(x === '') return '';
+    if(/^<img /.test(x)) return x;
+    var m2 = x.match(/^([·•\-\*o]|\d+[.)])\s+(.*)$/);
+    if(m2) return '<div class="rn-body-li">' + m2[2] + '</div>';
+    return '<div class="rn-body-p">' + x + '</div>';
+  }).filter(function(x){ return x !== ''; }).join('');
+  return out || '<div class="rn-body-p">내용이 없습니다.</div>';
+}
 function rnTvingBody(text){
   // 줄바꿈 유지하며 안전하게 출력, 이미지 마커·링크 마커 변환
   var esc = clEsc(text);
@@ -5297,7 +5362,7 @@ async function sheetsLoadNotes() {
             +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
             +     '<div class="rn-tbl-date">' + clEsc(r.date || '') + '</div>'
             +   '</div>'
-            +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + clEsc(r.body || '내용이 없습니다.') + '</div>'
+            +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + rnBodyHtml(r.body) + '</div>'
             + '</div>';
         });
         h += '</div>';
