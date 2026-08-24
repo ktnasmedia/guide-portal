@@ -372,7 +372,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-tbl-body{padding:4px 14px 18px;font-size:13px;color:var(--gray-mid);line-height:1.75;
   border-top:1px dashed var(--border);white-space:pre-wrap;}
 /* 통합 탭 카테고리는 단색 (시선 피로 줄이기) */
-.cat-tbl{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap;}
 .cat-mono{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;
   background:rgba(255,255,255,0.07);color:var(--gray-mid);border:1px solid rgba(255,255,255,0.12);white-space:nowrap;}
 .badge-ver{display:inline-block;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600;
@@ -722,6 +721,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 /* ── 배지 표준 (앞으로 모든 배지는 이 클래스 사용, 색만 인라인으로 지정) ── */
 /* 카테고리·구분 배지: 옅은 배경 + 같은 계열 글자. 배경/글자색은 style="background:...;color:..."로 */
 .cat-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:500;flex-shrink:0;}
+/* 공지 표 안 카테고리 배지는 통합 탭 배지와 같은 규격 */
+.cat-badge.cat-tbl{display:inline-block;padding:3px 10px;font-size:12px;font-weight:600;white-space:nowrap;}
 /* 상태 배지(NEW 등): 알약형 강조. 색은 .badge-new 등 modifier로 */
 .badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.04em;flex-shrink:0;}
 .badge-new{background:rgba(229,9,20,0.15);color:#FF6B6B;border:1px solid rgba(229,9,20,0.35);}
