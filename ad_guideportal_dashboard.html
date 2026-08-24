@@ -370,8 +370,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .rn-tbl-body{padding:12px 14px 18px;font-size:13px;color:#D1D5DB;line-height:1.75;
   border-top:1px dashed var(--border);}
 .rn-body-p{margin-bottom:8px;}
-.rn-body-li{margin-bottom:8px;padding-left:15px;text-indent:-15px;}
-.rn-body-li::before{content:"\2022";display:inline-block;width:15px;font-size:15px;line-height:1;color:#8E8E93;}
+.rn-body-li{margin-bottom:8px;padding-left:16px;position:relative;}
+.rn-body-li::before{content:"\2022";position:absolute;left:0;top:0;font-size:15px;line-height:1.75;color:#8E8E93;}
+.rn-body-li2{padding-left:32px;}
+.rn-body-li2::before{content:"\2013";left:16px;font-size:13px;color:#8E8E93;}
 .rn-body-p:last-child,.rn-body-li:last-child{margin-bottom:0;}
 .rn-body-img{max-width:100%;border-radius:8px;margin:8px 0;display:block;}
 .rn-body-link{display:inline-flex;align-items:center;gap:2px;color:#FF8A8A;text-decoration:none;
@@ -5148,11 +5150,17 @@ function rnBodyHtml(text){
 
   // 줄 단위로 문단·불릿 분리 (불릿 사이 간격 확보)
   var out = t.split(/\r?\n/).map(function(ln){
+    if(ln.trim() === '') return '';
+    // 원문 들여쓰기(앞 공백)와 기호 종류로 단계를 판단한다
+    var lead = (ln.match(/^[ \t]*/) || [''])[0].replace(/\t/g, '  ').length;
     var x = ln.trim();
-    if(x === '') return '';
     if(/^<img /.test(x)) return x;
-    var m2 = x.match(/^([·•\-\*o]|\d+[.)])\s+(.*)$/);
-    if(m2) return '<div class="rn-body-li">' + m2[2] + '</div>';
+    var m2 = x.match(/^([·•*]|[-o‧∘]|\d+[.)])\s+(.*)$/);
+    if(m2){
+      // 공백 2칸 이상 들여썼거나 하위 기호(-, o)면 2단계
+      var deep = lead >= 2 || /^[-o‧∘]$/.test(m2[1]);
+      return '<div class="rn-body-li' + (deep ? ' rn-body-li2' : '') + '">' + m2[2] + '</div>';
+    }
     return '<div class="rn-body-p">' + x + '</div>';
   }).filter(function(x){ return x !== ''; }).join('');
   return out || '<div class="rn-body-p">내용이 없습니다.</div>';
