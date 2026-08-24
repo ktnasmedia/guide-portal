@@ -21,7 +21,7 @@
   --pol-col1:clamp(150px,19vw,230px);
   --red:#E50914; --red-dark:#B20710; --black:#141414; --black-soft:#1A1A1A;
   --black-card:#1F1F1F; --black-ele:#2A2A2A; --black-brd:#333333;
-  --white:#FFFFFF; --gray-hi:#E5E5E5; --gray-mid:#A3A3A3; --gray-low:#737373; --gray-dim:#404040;
+  --white:#FFFFFF; --gray-hi:#E5E5E5; --gray-mid:#A3A3A3; --gray-low:#8E8E93; --gray-dim:#404040;
   --border:#2E2E2E;
 }
 html,body{height:100%;margin:0;}
@@ -243,7 +243,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .cl-src-netflix{background:rgba(229,9,20,0.16);color:#ff6b6b;}
 
 .cl-search-input{width:100%;box-sizing:border-box;padding:10px 40px 10px 38px;line-height:1.4;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;color:var(--white);font-size:13px;outline:none;transition:border-color 0.15s;}
-.cl-search-input:focus{border-color:var(--red);}
+
 .cl-search-input::placeholder,.tab-search::placeholder{color:var(--gray-low);}
 .cl-search-clear{position:absolute;right:10px;width:24px;height:24px;border:none;background:#333;color:var(--gray-hi);border-radius:50%;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;}
 .cl-search-clear:hover{background:#444;}
@@ -334,6 +334,58 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .pen-tv{background:rgba(255,23,113,0.12);color:#FF6BA3;border:1px solid rgba(255,23,113,0.25);}
 .pen-wv{background:rgba(59,130,246,0.12);color:#7CB1FF;border:1px solid rgba(59,130,246,0.25);}
 .pen-cp{background:rgba(163,163,163,0.12);color:#BDBDBD;border:1px solid rgba(163,163,163,0.28);}
+
+/* ── 공지 표 (공지사항(테스트) 전용) ── */
+.rn-tbl{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.rn-tbl-row{display:grid;align-items:center;gap:0;padding:14px;cursor:pointer;transition:background 0.15s;}
+.rn-tbl-row:hover{background:rgba(255,255,255,0.03);}
+.rn-tbl-row > div{padding-left:7px;padding-right:7px;}
+.rn-tbl-row > div:first-child{padding-left:0;}
+.rn-tbl-row > div:last-child{padding-right:0;}
+.rn-tbl-row > div + div{border-left:1px solid rgba(255,255,255,0.07);}
+.rn-tbl-head{padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;
+  color:var(--gray-low);font-weight:700;cursor:default;background:rgba(255,255,255,0.03);}
+.rn-tbl-head:hover{background:rgba(255,255,255,0.03);}
+.rn-tbl-item{border-bottom:1px solid var(--border);}
+.rn-tbl-item:last-child{border-bottom:none;}
+.rn-tbl-uni{grid-template-columns:104px 96px minmax(0,1fr) 104px;}
+.rn-tbl-nf{grid-template-columns:96px minmax(0,1fr) 116px;}
+.rn-tbl-title{font-size:14px;color:var(--white);line-height:1.5;}
+.rn-tbl-date{text-align:right;font-size:12px;color:var(--gray-low);white-space:nowrap;}
+.rn-tbl-body{padding:4px 14px 18px;font-size:13px;color:var(--gray-mid);line-height:1.75;
+  border-top:1px dashed var(--border);white-space:pre-wrap;}
+/* 통합 탭 카테고리는 단색 (시선 피로 줄이기) */
+.cat-mono{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;
+  background:rgba(255,255,255,0.07);color:var(--gray-mid);border:1px solid rgba(255,255,255,0.12);white-space:nowrap;}
+.badge-ver{display:inline-block;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600;
+  background:rgba(255,255,255,0.08);color:var(--gray-mid);border:1px solid rgba(255,255,255,0.14);
+  margin-left:7px;vertical-align:1px;}
+@media(max-width:640px){
+  .rn-tbl-uni,.rn-tbl-nf{grid-template-columns:1fr;gap:6px;}
+  .rn-tbl-row > div + div{border-left:none;}
+  .rn-tbl-row > div{padding-left:0;padding-right:0;}
+  .rn-tbl-head{display:none;}
+  .rn-tbl-date{text-align:left;}
+}
+
+/* ── 검색창 시인성 ── */
+/* 평소: 반투명 흰 테두리 / 포커스: 선명한 선 + 미세한 포커스 링 */
+.tab-search,.cl-search-input{
+  border:1px solid rgba(255,255,255,0.22)!important;
+  color:#EEEEEE!important;
+  transition:border-color 0.16s,box-shadow 0.16s!important;
+}
+.tab-search:hover,.cl-search-input:hover{border-color:rgba(255,255,255,0.34)!important;}
+.tab-search:focus,.cl-search-input:focus{
+  border-color:rgba(255,255,255,0.72)!important;
+  box-shadow:0 0 0 3px rgba(255,255,255,0.07)!important;
+}
+/* 안내 문구·돋보기 아이콘도 함께 밝힘 (테두리만 밝히면 효과가 반감됨) */
+.tab-search::placeholder,.cl-search-input::placeholder{color:#CCCCCC!important;opacity:1;}
+.tab-search-icon,.cl-search-icon,.search-icon{color:#CCCCCC!important;}
+/* 포커스 상태에서는 아이콘을 한 단계 더 밝게 */
+.tab-search-wrap:focus-within .tab-search-icon,
+.cl-search-wrap:focus-within .cl-search-icon{color:#FFFFFF!important;}
 .tp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
 .tp-title{font-size:13px;font-weight:600;color:var(--white);}
 .tp-date{font-size:11px;color:#FB923C;white-space:nowrap;}
@@ -601,7 +653,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .tab-search-icon,.cl-search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);display:flex;color:var(--gray-low);pointer-events:none;}
 .tab-search-icon svg,.cl-search-icon svg{width:18px;height:18px;display:block;}
 .tab-search{background:var(--black-soft);border:1px solid var(--border);border-radius:10px;padding:10px 14px 10px 38px;line-height:1.4;font-size:13px;color:var(--white);width:clamp(240px,26vw,420px);max-width:100%;outline:none;transition:border-color 0.15s;font-family:'Noto Sans KR',sans-serif;}
-.tab-search:focus,.cl-search-input:focus{border-color:var(--gray-dim);}
+
 /* 공지 사항 카드 레이아웃 — 좁은 화면에서 세로로 풀리도록 클래스로 분리 */
 .rn-uni-row{display:grid;grid-template-columns:88px 72px minmax(0,1fr) 90px 16px;align-items:center;gap:12px;}
 .rn-tv-row{display:grid;grid-template-columns:96px minmax(0,1fr) 116px;gap:12px;align-items:center;}
@@ -821,7 +873,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 광고 상품 -->
-  <div id="nav-products" class="nav-item">
+  <div id="nav-products" class="nav-item" style="display:none;">
     <div class="nav-row" onclick="navigate('products','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><rect x="2" y="2" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="#737373" stroke-width="1.3"/></svg>
       <span class="nav-label">광고 상품</span>
@@ -836,7 +888,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 광고 타기팅 -->
-  <div id="nav-targeting" class="nav-item">
+  <div id="nav-targeting" class="nav-item" style="display:none;">
     <div class="nav-row" onclick="navigate('targeting','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" stroke="#737373" stroke-width="1.3"/><circle cx="8" cy="8" r="3" stroke="#737373" stroke-width="1.3"/><circle cx="8" cy="8" r="1" fill="#737373"/></svg>
       <span class="nav-label">광고 타기팅</span>
@@ -884,8 +936,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   </div>
 
   <!-- 자료실 -->
-  <div id="nav-media" class="nav-item">
-    <div class="nav-row" style="display:none;" onclick="navigate('media','')">
+  <div id="nav-media" class="nav-item" style="display:none;">
+    <div class="nav-row" onclick="navigate('media','')">
       <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M3 4H10M3 8H13M3 12H8" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
       <span class="nav-label">자료실</span>
     </div>
@@ -2810,7 +2862,7 @@ function nfSpecLoad(){
 
 // ══════ 광고 상품 ══════
 // 아래 데이터는 스키마 확인용 샘플입니다. 확정되면 ad_products.json 으로 분리해 자동 수집분과 병합합니다.
-const AD_PRODUCTS = {"generated_at": "2026-08-14", "categories": [{"key": "video", "label": "동영상 광고", "order": 1}, {"key": "image", "label": "이미지 광고", "order": 2}, {"key": "exclusive", "label": "익스클루시브 광고", "order": 3}], "media": [{"key": "netflix", "label": "넷플릭스", "badge": "pen-nf", "order": 1, "status": "live", "min_budget": [{"mode": "예약형 (PG · DIO)", "value": 50000000, "basis": "30일 기준", "note": "VAT 별도"}, {"mode": "경매형 (PMP)", "value": 30000000, "basis": "30일 기준", "note": "수수료 미포함, VAT 별도"}], "notes": ["최소 집행 금액은 상품이 아닌 캠페인 단위로 적용됩니다."], "site": "https://docs.google.com/spreadsheets/d/1fOaFgz4OCKmX2xTNUlGI7_47nc3VQFlI7-mEen0IZKs/edit?usp=sharing"}, {"key": "tving_wavve", "label": "티빙·웨이브", "badge": "pen-tv", "order": 2, "status": "live", "min_budget": [], "notes": [], "site": "https://tvingads.gitbook.io/guide/solution/video"}, {"key": "coupangplay", "label": "쿠팡플레이", "badge": "pen-cp", "order": 3, "status": "planned", "min_budget": [], "notes": []}], "products": [{"id": "netflix-nonskip-video", "media": "netflix", "category": "video", "order": 1, "name": "논스킵 비디오", "media_name": "논스킵 비디오", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "콘텐츠 프리롤·미드롤에 노출되는 스킵 불가 동영상 광고", "operation": "예약형 (PG · DIO) / 경매형 (PMP)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["구매 방식", "소재 길이"], "rows": [{"구매 방식": "예약형 (PG · DIO)", "소재 길이": "10초", "value": 18000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "15초", "value": 23000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "20초", "value": 26000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "30초", "value": 31000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "45초", "value": 47000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "60초", "value": 62000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "75초", "value": 78000}, {"구매 방식": "경매형 (PMP)", "소재 길이": "10초", "value": 13200}, {"구매 방식": "경매형 (PMP)", "소재 길이": "15초", "value": 16900}, {"구매 방식": "경매형 (PMP)", "소재 길이": "20초", "value": 19100}, {"구매 방식": "경매형 (PMP)", "소재 길이": "30초", "value": 22800}, {"구매 방식": "경매형 (PMP)", "소재 길이": "45초", "value": 34600}, {"구매 방식": "경매형 (PMP)", "소재 길이": "60초", "value": 45700}, {"구매 방식": "경매형 (PMP)", "소재 길이": "75초", "value": 57400}], "headline": {"label": "예약형 15초 기준", "value": 23000}, "notes": ["45 · 60 · 75초는 미드롤에만 노출", "PMP는 최소 입찰가 기준 — 최종 제안 CPM은 이보다 높게 산정"]}, "min_budget": null, "options": [{"name": "QR 코드", "effect": "예약형 단가 10% 할증", "note": "DIO 방식으로만 구매 가능"}], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-pause", "media": "netflix", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고 (포즈애드)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "이용자가 콘텐츠를 일시정지한 화면에 노출되는 이미지 광고", "operation": "예약형 (DIO)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["소재 유형"], "rows": [{"소재 유형": "이미지", "value": 11000}, {"소재 유형": "이미지 + QR", "value": 12000}], "headline": {"label": "이미지", "value": 11000}, "notes": ["일시정지 및 QR 광고 상품은 DIO 방식으로만 구매 가능"]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-sts", "media": "netflix", "category": "exclusive", "order": 1, "name": "STS", "media_name": "싱글 타이틀 스폰서십 (Single Title Sponsorship)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "특정 오리지널 타이틀과 브랜드를 연계하는 독점 스폰서십 상품", "operation": "예약형 (DIO)", "pricing": {"type": "inquiry", "unit": "원", "basis": "", "axes": [], "rows": [], "headline": {"label": "콘텐츠별 상이", "value": null}, "notes": ["콘텐츠별로 상이하므로 별도 문의주시기 바랍니다."]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-interactive", "media": "netflix", "category": "exclusive", "order": 2, "name": "인터랙티브 광고", "media_name": "인터랙티브 광고", "status": "beta", "platforms": ["Netflix"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "tving-top20", "media": "tving_wavve", "category": "video", "order": 1, "name": "오늘의 TOP 20", "media_name": "오늘의 TOP 20", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "오늘 가장 시청이 많은 TOP 20 콘텐츠 집중 타겟팅", "operation": "노출 보장형", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 25000}, {"소재 유형": "스키퍼블", "value": 19000}], "headline": {"label": "논스킵 15초", "value": 25000}, "notes": []}, "min_budget": {"value": 30000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/top20"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 2, "name": "프라임 타임 타겟팅", "media_name": "프라임 타임 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-ctv", "media": "tving_wavve", "category": "video", "order": 3, "name": "CTV 타겟팅", "media_name": "CTV 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 4, "name": "시청데모 타겟팅", "media_name": "시청데모 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 5, "name": "뉴스채널 타겟팅", "media_name": "뉴스채널 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-interest", "media": "tving_wavve", "category": "video", "order": 6, "name": "관심사 타겟팅", "media_name": "관심사 타겟팅", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "시청 활동 기반으로 관심사 세그먼트를 타겟팅하는 베이직 인스트림 옵션", "operation": "노출 보장형 (베이직 인스트림 타겟팅 옵션)", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 21000}, {"소재 유형": "스키퍼블", "value": 18000}], "headline": {"label": "논스킵 15초", "value": 21000}, "notes": ["베이직 인스트림 단가에 5,000원 할증"]}, "min_budget": {"value": 10000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/interest"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 7, "name": "베이직 인스트림", "media_name": "베이직 인스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-outstream", "media": "tving_wavve", "category": "video", "order": 8, "name": "아웃스트림", "media_name": "아웃스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "홈 피드에 고정 노출되는 프리미엄 네이티브 동영상 광고", "operation": "기간 보장형 (일 독점)", "pricing": {"type": "daily", "unit": "원", "basis": "", "axes": [], "rows": [{"value": 15000000}], "headline": {"label": "1일", "value": 15000000}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/outstream"}, {"label": "청약 현황", "url": "https://tving-ad-calendar.pages.dev/"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 2, "name": "배너 광고", "media_name": "배너 광고", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 3, "name": "스플래시 배너", "media_name": "스플래시 배너", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-branded", "media": "tving_wavve", "category": "exclusive", "order": 1, "name": "브랜디드 콘텐츠", "media_name": "브랜디드 콘텐츠", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "브랜드 스토리를 담은 콘텐츠를 VOD로 제공하는 솔루션", "operation": "콘텐츠 솔루션", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "별도 문의", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/sponsorship/branded"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "exclusive", "order": 2, "name": "오리지널 콘텐츠 협찬", "media_name": "오리지널 콘텐츠 협찬", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-kbo", "media": "tving_wavve", "category": "exclusive", "order": 3, "name": "KBO 리그 광고", "media_name": "KBO 리그 광고", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}], "sources": [{"media": "tving_wavve", "mode": "auto", "url": "https://www.tvingads.com/solutions/general", "collected_at": "2026-08-14", "hash": ""}, {"media": "netflix", "mode": "manual", "url": "구글 시트 gid 456284518", "updated_at": "2026-08-14", "note": "위약금 항목은 구버전 — 시트 갱신 필요"}]};
+const AD_PRODUCTS = {"generated_at": "2026-08-14", "categories": [{"key": "video", "label": "동영상 광고", "order": 1}, {"key": "image", "label": "이미지 광고", "order": 2}, {"key": "exclusive", "label": "익스클루시브 광고", "order": 3}], "media": [{"key": "netflix", "label": "넷플릭스", "badge": "pen-nf", "order": 1, "status": "live", "min_budget": [{"mode": "예약형 (PG · DIO)", "value": 50000000, "basis": "30일 기준", "note": "VAT 별도"}, {"mode": "경매형 (PMP)", "value": 30000000, "basis": "30일 기준", "note": "수수료 미포함, VAT 별도"}], "notes": ["최소 집행 금액은 상품이 아닌 캠페인 단위로 적용됩니다."], "site": "https://docs.google.com/spreadsheets/d/1fOaFgz4OCKmX2xTNUlGI7_47nc3VQFlI7-mEen0IZKs/edit?usp=sharing"}, {"key": "tving_wavve", "label": "티빙·웨이브", "badge": "pen-tv", "order": 2, "status": "live", "min_budget": [], "notes": [], "site": "https://tvingads.gitbook.io/guide/solution/video"}, {"key": "coupangplay", "label": "쿠팡플레이", "badge": "pen-cp", "order": 3, "status": "planned", "min_budget": [], "notes": [], "site": "https://cheddar-november-847.notion.site/SMR-2ccdf56d0dae809794b0c40c893d3ba7"}], "products": [{"id": "netflix-nonskip-video", "media": "netflix", "category": "video", "order": 1, "name": "논스킵 비디오", "media_name": "논스킵 비디오", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "콘텐츠 프리롤·미드롤에 노출되는 스킵 불가 동영상 광고", "operation": "예약형 (PG · DIO) / 경매형 (PMP)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["구매 방식", "소재 길이"], "rows": [{"구매 방식": "예약형 (PG · DIO)", "소재 길이": "10초", "value": 18000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "15초", "value": 23000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "20초", "value": 26000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "30초", "value": 31000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "45초", "value": 47000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "60초", "value": 62000}, {"구매 방식": "예약형 (PG · DIO)", "소재 길이": "75초", "value": 78000}, {"구매 방식": "경매형 (PMP)", "소재 길이": "10초", "value": 13200}, {"구매 방식": "경매형 (PMP)", "소재 길이": "15초", "value": 16900}, {"구매 방식": "경매형 (PMP)", "소재 길이": "20초", "value": 19100}, {"구매 방식": "경매형 (PMP)", "소재 길이": "30초", "value": 22800}, {"구매 방식": "경매형 (PMP)", "소재 길이": "45초", "value": 34600}, {"구매 방식": "경매형 (PMP)", "소재 길이": "60초", "value": 45700}, {"구매 방식": "경매형 (PMP)", "소재 길이": "75초", "value": 57400}], "headline": {"label": "예약형 15초 기준", "value": 23000}, "notes": ["45 · 60 · 75초는 미드롤에만 노출", "PMP는 최소 입찰가 기준 — 최종 제안 CPM은 이보다 높게 산정"]}, "min_budget": null, "options": [{"name": "QR 코드", "effect": "예약형 단가 10% 할증", "note": "DIO 방식으로만 구매 가능"}], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-pause", "media": "netflix", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고 (포즈애드)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "이용자가 콘텐츠를 일시정지한 화면에 노출되는 이미지 광고", "operation": "예약형 (DIO)", "pricing": {"type": "cpm", "unit": "원", "basis": "Gross", "axes": ["소재 유형"], "rows": [{"소재 유형": "이미지", "value": 11000}, {"소재 유형": "이미지 + QR", "value": 12000}], "headline": {"label": "이미지", "value": 11000}, "notes": ["일시정지 및 QR 광고 상품은 DIO 방식으로만 구매 가능"]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-sts", "media": "netflix", "category": "exclusive", "order": 1, "name": "STS", "media_name": "싱글 타이틀 스폰서십 (Single Title Sponsorship)", "status": "live", "platforms": ["Netflix"], "platform_note": "", "summary": "특정 오리지널 타이틀과 브랜드를 연계하는 독점 스폰서십 상품", "operation": "예약형 (DIO)", "pricing": {"type": "inquiry", "unit": "원", "basis": "", "axes": [], "rows": [], "headline": {"label": "콘텐츠별 상이", "value": null}, "notes": ["콘텐츠별로 상이하므로 별도 문의주시기 바랍니다."]}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "netflix-interactive", "media": "netflix", "category": "exclusive", "order": 2, "name": "인터랙티브 광고", "media_name": "인터랙티브 광고", "status": "beta", "platforms": ["Netflix"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "manual", "updated_at": ""}, {"id": "tving-top20", "media": "tving_wavve", "category": "video", "order": 1, "name": "오늘의 TOP 20", "media_name": "오늘의 TOP 20", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "오늘 가장 시청이 많은 TOP 20 콘텐츠 집중 타겟팅", "operation": "노출 보장형", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 25000}, {"소재 유형": "스키퍼블", "value": 19000}], "headline": {"label": "논스킵 15초", "value": 25000}, "notes": []}, "min_budget": {"value": 30000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/top20"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 2, "name": "프라임 타임 타겟팅", "media_name": "프라임 타임 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-ctv", "media": "tving_wavve", "category": "video", "order": 3, "name": "CTV 타겟팅", "media_name": "CTV 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 4, "name": "시청데모 타겟팅", "media_name": "시청데모 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 5, "name": "뉴스채널 타겟팅", "media_name": "뉴스채널 타겟팅", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-interest", "media": "tving_wavve", "category": "video", "order": 6, "name": "관심사 타겟팅", "media_name": "관심사 타겟팅", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "시청 활동 기반으로 관심사 세그먼트를 타겟팅하는 베이직 인스트림 옵션", "operation": "노출 보장형 (베이직 인스트림 타겟팅 옵션)", "pricing": {"type": "cpm", "unit": "원", "basis": "", "axes": ["소재 유형"], "rows": [{"소재 유형": "논스킵 15초", "value": 21000}, {"소재 유형": "스키퍼블", "value": 18000}], "headline": {"label": "논스킵 15초", "value": 21000}, "notes": ["베이직 인스트림 단가에 5,000원 할증"]}, "min_budget": {"value": 10000000, "unit": "원", "basis": "캠페인", "note": "VAT 별도"}, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/interest"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "video", "order": 7, "name": "베이직 인스트림", "media_name": "베이직 인스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-outstream", "media": "tving_wavve", "category": "video", "order": 8, "name": "아웃스트림", "media_name": "아웃스트림", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "홈 피드에 고정 노출되는 프리미엄 네이티브 동영상 광고", "operation": "기간 보장형 (일 독점)", "pricing": {"type": "daily", "unit": "원", "basis": "", "axes": [], "rows": [{"value": 15000000}], "headline": {"label": "1일", "value": 15000000}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/video/outstream"}, {"label": "청약 현황", "url": "https://tving-ad-calendar.pages.dev/"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 1, "name": "일시정지 광고", "media_name": "일시정지 광고", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 2, "name": "배너 광고", "media_name": "배너 광고", "status": "live", "platforms": ["TVING"], "platform_note": "TVING 단독", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "image", "order": 3, "name": "스플래시 배너", "media_name": "스플래시 배너", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-branded", "media": "tving_wavve", "category": "exclusive", "order": 1, "name": "브랜디드 콘텐츠", "media_name": "브랜디드 콘텐츠", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "브랜드 스토리를 담은 콘텐츠를 VOD로 제공하는 솔루션", "operation": "콘텐츠 솔루션", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "별도 문의", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [{"label": "상세 가이드", "url": "https://tvingads.gitbook.io/guide/solution/sponsorship/branded"}], "source": "auto", "updated_at": ""}, {"id": "tving-", "media": "tving_wavve", "category": "exclusive", "order": 2, "name": "오리지널 콘텐츠 협찬", "media_name": "오리지널 콘텐츠 협찬", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}, {"id": "tving-kbo", "media": "tving_wavve", "category": "exclusive", "order": 3, "name": "KBO 리그 광고", "media_name": "KBO 리그 광고", "status": "live", "platforms": ["TVING", "Wavve"], "platform_note": "", "summary": "", "operation": "", "pricing": {"type": "inquiry", "axes": [], "rows": [], "headline": {"label": "정보 준비 중", "value": null}, "notes": []}, "min_budget": null, "options": [], "links": [], "source": "auto", "updated_at": ""}], "sources": [{"media": "tving_wavve", "mode": "auto", "url": "https://www.tvingads.com/solutions/general", "collected_at": "2026-08-14", "hash": ""}, {"media": "netflix", "mode": "manual", "url": "구글 시트 gid 456284518", "updated_at": "2026-08-14", "note": "위약금 항목은 구버전 — 시트 갱신 필요"}]};
 
 // 노출 플랫폼 표기 — 영문 원문을 한글로 바꾸고 플랫폼별 색을 지정
 const AP_PLAT = {
@@ -4625,6 +4677,27 @@ function rnUnifiedRender(){
     '콘텐츠':      {bg:'rgba(163,163,163,0.15)', fg:'#A3A3A3'}
   };
 
+  // 공지사항(테스트)는 티빙·웨이브와 같은 표 구조로 그린다 (원본은 기존 카드 유지)
+  if(RN_NS === '2'){
+    var th = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-uni">'
+      + '<div>매체</div><div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
+    pageItems.forEach(function(it, idx){
+      var gi = start + idx;
+      var badge = (it.media === 'netflix') ? 'pen-nf' : 'pen-tv';
+      var ver = it.ver ? '<span class="badge-ver">' + clEsc(it.ver) + '</span>' : '';
+      th += '<div class="rn-tbl-item"><div class="rn-tbl-row rn-tbl-uni" onclick="rnUnifiedGo(' + gi + ')">'
+        +   '<div><span class="pen-media ' + badge + '">' + clEsc(it.mediaLabel) + '</span></div>'
+        +   '<div><span class="cat-mono">' + clEsc(it.category || '기타') + '</span></div>'
+        +   '<div class="rn-tbl-title">' + clEsc(it.title) + ver + '</div>'
+        +   '<div class="rn-tbl-date">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate || '미정')) + '</div>'
+        + '</div></div>';
+    });
+    th += '</div>';
+    listEl.innerHTML = th;
+    rnUnifiedPager(pagerEl, totalPages);
+    return;
+  }
+
   var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
   pageItems.forEach(function(it, idx){
     var mediaBg = it.media === 'netflix' ? 'rgba(226,75,74,0.13)' : 'rgba(255,107,107,0.13)';
@@ -4645,6 +4718,9 @@ function rnUnifiedRender(){
   listEl.innerHTML = html;
 
   // 페이지네이션
+  rnUnifiedPager(pagerEl, totalPages);
+}
+function rnUnifiedPager(pagerEl, totalPages){
   if(pagerEl){
     if(totalPages <= 1){ pagerEl.innerHTML = ''; }
     else {
@@ -4730,6 +4806,18 @@ function rnNetflixHighlight(ver, title){
 var rnTvingData   = [];      // 전체 공지 (데이터는 두 화면이 공유)
 var rnTvingLoaded = false;   // 1회 로드 플래그 (공유)
 // 아래 네 가지는 화면마다 따로 유지해야 원본과 테스트가 서로 간섭하지 않는다
+// 공지사항(테스트) 넷플릭스 표 — 줄 펼치기 / 페이지 이동
+function rnNfRowToggle(id){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+}
+function rnNfGoPage(p){
+  RN_STATE()._nfPage = p;
+  if(window.renderNoteCards) window.renderNoteCards(RN_STATE()._nfCat || '전체');
+  var w = rnEl('rn-netflix-wrap');
+  if(w) w.scrollIntoView({ behavior:'smooth', block:'start' });
+}
 function rnTvingState(){
   var st = RN_STATE();
   if(st.tv === undefined) st.tv = { cat: '전체', open: {}, page: 1, per: 20 };
@@ -5118,6 +5206,54 @@ async function sheetsLoadNotes() {
 
       if (displayVersions.length === 0) {
         list.innerHTML = '<div style="padding:24px;text-align:center;color:var(--gray-low);font-size:13px;">표시할 공지 사항이 없습니다.</div>';
+        return;
+      }
+
+      // 공지사항(테스트)는 항목 하나가 한 줄인 표로 그린다 (원본은 기존 버전 카드 유지)
+      if (RN_NS === '2') {
+        var rows = [];
+        displayVersions.forEach(function(dv){
+          dv.sections.forEach(function(sec){
+            rows.push({ ver: dv.ver.ver, date: dv.ver.date, title: sec.title,
+                        body: sec.body, category: sec.category || '기타' });
+          });
+        });
+        var nfPer = 20;
+        var tp    = Math.max(1, Math.ceil(rows.length / nfPer));
+        if(RN_STATE()._nfPage === undefined) RN_STATE()._nfPage = 1;
+        if(RN_STATE()._nfPage > tp) RN_STATE()._nfPage = tp;
+        if(RN_STATE()._nfPage < 1) RN_STATE()._nfPage = 1;
+        var st = (RN_STATE()._nfPage - 1) * nfPer;
+        var pageRows = rows.slice(st, st + nfPer);
+
+        var h = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-nf">'
+          + '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
+        pageRows.forEach(function(r, i){
+          var cc  = catColors[r.category] || catColors['기타'];
+          var uid = 'nfrow-' + (st + i);
+          var isNew = rnTvingIsNew(r.date) ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>' : '';
+          var ver = r.ver ? '<span class="badge-ver">' + clEsc(r.ver) + '</span>' : '';
+          h += '<div class="rn-tbl-item">'
+            +   '<div class="rn-tbl-row rn-tbl-nf" onclick="rnNfRowToggle(\'' + uid + '\')">'
+            +     '<div><span class="cat-badge" style="background:' + cc.bg + ';color:' + cc.color + ';border:1px solid ' + cc.border + ';">' + clEsc(r.category) + '</span></div>'
+            +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
+            +     '<div class="rn-tbl-date">' + clEsc(r.date || '') + '</div>'
+            +   '</div>'
+            +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + clEsc(r.body || '내용이 없습니다.') + '</div>'
+            + '</div>';
+        });
+        h += '</div>';
+        // 페이지 이동
+        if(tp > 1){
+          h += '<div style="display:flex;justify-content:center;gap:6px;margin-top:16px;">';
+          for(var p = 1; p <= tp; p++){
+            h += (p === RN_STATE()._nfPage)
+              ? '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>'
+              : '<span onclick="rnNfGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-mid);cursor:pointer;">' + p + '</span>';
+          }
+          h += '</div>';
+        }
+        list.innerHTML = h;
         return;
       }
 
