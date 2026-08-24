@@ -337,13 +337,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
 /* ── 공지 표 (공지사항(테스트) 전용) ── */
 .rn-tbl{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.rn-tbl-row{display:grid;align-items:center;gap:0;padding:14px;cursor:pointer;transition:background 0.15s;}
+.rn-tbl-row{display:grid;align-items:center;gap:0;padding:14px 0;cursor:pointer;transition:background 0.15s;}
 .rn-tbl-row:hover{background:rgba(255,255,255,0.03);}
-.rn-tbl-row > div{padding-left:7px;padding-right:7px;}
-.rn-tbl-row > div:first-child{padding-left:0;}
-.rn-tbl-row > div:last-child{padding-right:0;}
+.rn-tbl-row > div{padding-left:14px;padding-right:14px;}
 .rn-tbl-row > div + div{border-left:1px solid rgba(255,255,255,0.07);}
-.rn-tbl-head{padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;
+.rn-tbl-head{padding:10px 0;border-bottom:1px solid var(--border);font-size:12px;
   color:var(--gray-low);font-weight:700;cursor:default;background:rgba(255,255,255,0.03);}
 .rn-tbl-head:hover{background:rgba(255,255,255,0.03);}
 .rn-tbl-head > div{text-align:center;}
@@ -365,8 +363,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 @keyframes rnFlashBar{
   0%{opacity:0;} 8%{opacity:1;} 70%{opacity:1;} 100%{opacity:0;}
 }
-.rn-tbl-uni{grid-template-columns:104px 96px minmax(0,1fr) 104px;}
-.rn-tbl-nf{grid-template-columns:96px minmax(0,1fr) 116px;}
+.rn-tbl-uni{grid-template-columns:118px 132px minmax(0,1fr) 118px;}
+.rn-tbl-nf{grid-template-columns:132px minmax(0,1fr) 130px;}
 .rn-tbl-title{font-size:14px;color:var(--white);line-height:1.5;}
 .rn-tbl-date{text-align:right;font-size:12px;color:var(--gray-low);white-space:nowrap;}
 .rn-tbl-body{padding:4px 14px 18px;font-size:13px;color:var(--gray-mid);line-height:1.75;
@@ -380,6 +378,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 @media(max-width:640px){
   .rn-tbl-uni,.rn-tbl-nf{grid-template-columns:1fr;gap:6px;}
   .rn-tbl-row > div + div{border-left:none;}
+  .rn-tbl-row{padding:14px;}
   .rn-tbl-row > div{padding-left:0;padding-right:0;}
   .rn-tbl-head{display:none;}
   .rn-tbl-date{text-align:left;}
@@ -3034,13 +3033,13 @@ function apDrawAll(box, link){
   // 매체 · 바로보기 · 구분 열을 모두 같은 너비로
   html += '<div class="ap-mx" style="grid-template-columns:repeat(' + (cats.length + 2) + ',minmax(0,1fr));">';
   html += '<div class="ap-mx-head ap-mx-first">매체</div>';
-  html += '<div class="ap-mx-head">바로보기</div>';
+  html += '<div class="ap-mx-head">상품&amp;타기팅</div>';
   cats.forEach(function(c){ html += '<div class="ap-mx-head">' + tpEsc(c.label) + '</div>'; });
 
   media.forEach(function(m){
     html += '<div class="ap-mx-first"><span class="pen-media ' + (m.badge || 'pen-nf') + '">' + tpEsc(m.label) + '</span></div>';
     html += '<div>' + (m.site
-      ? '<a class="ap-mx-site" href="' + tpEsc(m.site) + '" target="_blank" rel="noopener">상품&amp;타기팅 바로보기 \u2197</a>'
+      ? '<a class="ap-mx-site" href="' + tpEsc(m.site) + '" target="_blank" rel="noopener">바로보기 \u2197</a>'
       : '<span class="ap-mx-none">-</span>') + '</div>';
     cats.forEach(function(c){
       if(m.status === 'planned'){ html += '<div class="ap-mx-plan">업데이트 예정</div>'; return; }
