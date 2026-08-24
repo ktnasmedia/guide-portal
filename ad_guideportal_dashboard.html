@@ -4981,7 +4981,7 @@ function rnTvingRender(){
       : '<div style="border-bottom:1px solid var(--border);">';
     html += '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="' + rowCls + '"'
       +   (useTbl ? '' : ' style="padding:14px;cursor:pointer;"') + '>'
-      +   '<div><span class="cat-badge' + (useTbl ? ' cat-tbl' : '') + '" style="background:' + color + '22;color:' + color + ';">' + clEsc(n.category||'기타') + '</span></div>'
+      +   '<div><span class="cat-badge' + (useTbl ? ' cat-tbl' : '') + '" style="background:' + color + '22;color:' + color + (useTbl ? ';border:1px solid ' + color + '40' : '') + ';">' + clEsc(n.category||'기타') + '</span></div>'
       +   '<div' + (useTbl ? ' class="rn-tbl-title"' : ' style="font-size:14px;color:var(--white);line-height:1.5;"') + '>' + safeTitle + newBadge + '</div>'
       +   '<div' + (useTbl ? ' class="rn-tbl-date"' : ' style="text-align:right;font-size:12px;color:var(--gray-low);"') + '>' + dateDisp + '</div>'
       + '</div>';
