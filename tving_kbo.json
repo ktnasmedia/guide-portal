@@ -1,6 +1,6 @@
 {
   "source_url": "https://tvingads.gitbook.io/guide/solution/kbo/overview",
-  "collected_at": "2026-08-25 10:37",
+  "collected_at": "2026-08-25 14:36",
   "schedule": [
     {
       "month": "5월",
@@ -17,14 +17,6 @@
     {
       "month": "8월",
       "open_date": "7/15(수)"
-    },
-    {
-      "month": "9월",
-      "open_date": "8/19(수)"
-    },
-    {
-      "month": "10월",
-      "open_date": "9/16(수)"
     }
   ],
   "schedule_note": "매월 오전 10시부터 가능합니다.",
@@ -213,7 +205,7 @@
       }
     ]
   },
-  "hash": "9110e5f2da552856",
+  "hash": "8b1113ea45342974",
   "updated_at": "2026-08-25",
   "changed": true
 }
