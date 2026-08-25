@@ -39,10 +39,14 @@ MEDIA_ICON_IDS = {
 NON_MEDIA_ICON_IDS = {
     "svg-1575766977_1186": "Sponsored",
     "svg1767110964_1186":  "Special",
+    "svg-1272718827_400":  "Icon",      # 일반 아이콘
+    "svg1698067022_413":   "Video",     # 예고편 재생
 }
 # 작품이 아닌 섹션 제목 — 배지 판독에서 제외
 SECTION_TITLES = ("신작 및 주목할 콘텐츠", "향후 3개월 오픈 예정 콘텐츠",
                   "지금 주목해야 할 인기작과 공개 예정작", "성·연령별 시청 상위")
+# 제목 자리에 있지만 작품이 아닌 라벨
+NON_TITLE_LABELS = ("예고편미리보기", "더보기", "PDF다운로드", "다운로드하기")
 # 매체를 뜻하는 이름(사람이 붙인 값이라 id보다 덜 바뀐다) — 보조 판독용
 MEDIA_NAME_RE = re.compile(
     r'data-framer-name="((?:T|W)(?:&amp;W)?(?:\s*(?:Only|Original))?)\s*-\s*(?:sm|lg)"',
@@ -54,16 +58,27 @@ def media_by_icons(raw_html):
     """제목(h3) 사이 구간을 한 카드로 보고, 그 안의 아이콘에서 매체를 읽는다.
     돌려주는 값: {제목: [매체, ...]} / 처음 보는 아이콘 id 목록"""
     result, unknown = {}, set()
-    heads = [(m.start(), m.end(), re.sub(r"<[^>]+>", "", m.group(1)).strip())
-             for m in re.finditer(r"<h3[^>]*>(.*?)</h3>", raw_html, re.S)]
+    # 작품 제목은 섹션마다 태그가 다르다.
+    #  - 아래쪽 카드형 섹션: <h3>
+    #  - 위쪽 가로 목록 섹션: <p class="... framer-styles-preset-1h4d2v7 ...">
+    # 둘 다 잡지 않으면 위쪽 섹션 작품이 통째로 누락된다(T ONLY 8건이 그랬음).
+    heads = []
+    for m in re.finditer(r"<h3[^>]*>(.*?)</h3>", raw_html, re.S):
+        heads.append((m.start(), m.end(), re.sub(r"<[^>]+>", "", m.group(1)).strip()))
+    for m in re.finditer(
+            r'<p[^>]*framer-styles-preset-1h4d2v7[^>]*>(.*?)</p>', raw_html, re.S):
+        heads.append((m.start(), m.end(), re.sub(r"<[^>]+>", "", m.group(1)).strip()))
+    heads.sort()
     prev = 0
     for start, end, title in heads:
         seg = raw_html[prev:start]      # 이전 제목 끝 ~ 이번 제목 = 이 카드의 배지 영역
         prev = end
         if not title:
             continue
-        # 섹션 제목은 카드가 아니므로 건너뛴다 (앞 구간 아이콘이 통째로 섞임)
+        # 섹션 제목·작품이 아닌 라벨은 건너뛴다 (앞 구간 아이콘이 통째로 섞임)
         if any(title.startswith(x) for x in SECTION_TITLES):
+            continue
+        if title.replace(" ", "") in NON_TITLE_LABELS:
             continue
         found = []
         for m in ICON_USE_RE.finditer(seg):
@@ -171,8 +186,18 @@ def extract_posters(html):
 
 
 def extract_headings(soup):
+    """작품 제목 후보 모음.
+    섹션마다 제목 태그가 달라서(<h3> 또는 <p class="...preset-1h4d2v7...">)
+    둘 다 봐야 위쪽 가로 목록 섹션의 작품이 누락되지 않는다."""
     heads = set()
     for tag in soup.find_all(["h1", "h2", "h3", "h4"]):
+        t = tag.get_text(strip=True)
+        if t and len(t) <= 40:
+            heads.add(t)
+    for tag in soup.find_all("p"):
+        cls = " ".join(tag.get("class") or [])
+        if "framer-styles-preset-1h4d2v7" not in cls:
+            continue
         t = tag.get_text(strip=True)
         if t and len(t) <= 40:
             heads.add(t)
@@ -229,7 +254,8 @@ def parse_blocks(text, heads):
              "PDF Document", "더보기", "인기 콘텐츠", "DEMO RANKING",
              "성·연령별", "광고 문의", "캠페인 시작", "콘텐츠 라인업",
              "지금 주목해야", "향후 3개월", "오픈 예정",
-             "신작 및 주목할", "주목할 콘텐츠", "PDF 다운로드", "다운로드하기")
+             "신작 및 주목할", "주목할 콘텐츠", "PDF 다운로드", "다운로드하기",
+             "예고편 미리보기", "예고편미리보기")
     BAD = ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양", "다큐멘터리", "공개일")
 
     def valid(w):
