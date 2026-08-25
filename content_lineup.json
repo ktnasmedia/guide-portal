@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T02:32:24.568002",
+  "generated_at": "2026-08-25T18:34:28.003412",
   "source": "TMDB",
   "range_years": [
     2025,
@@ -11,7 +11,7 @@
       "content_id": "tvingads-tving-냉장고를부탁해since2014",
       "title": "냉장고를 부탁해 since 2014",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-냉장고를부탁해since2014_9b86bac9.webp",
+      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
       "cast": [
         "김성주",
         "안정환",
@@ -46,7 +46,7 @@
       "content_id": "tvingads-wavve-냉장고를부탁해since2014",
       "title": "냉장고를 부탁해 since 2014",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-냉장고를부탁해since2014_9b86bac9.webp",
+      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
       "cast": [
         "김성주",
         "안정환",
@@ -9506,7 +9506,7 @@
       "content_id": "tvingads-tving-2026신한SOL뱅크KBO리그",
       "title": "2026 신한 SOL뱅크 KBO 리그",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-2026신한SOL뱅크KBO리그_d6d7118e.jpg",
+      "poster_url": "https://framerusercontent.com/images/UQGa261UGTG8KAy5szDJ8XKhtU.jpg",
       "cast": [],
       "release_date": "2026-03-28",
       "release_year": 2026,
@@ -9663,10 +9663,41 @@
       }
     },
     {
+      "content_id": "tmdb-netflix-tv-319744",
+      "title": "연애기숙학교 돌싱N모솔",
+      "title_original": "연애기숙학교 돌싱N모솔",
+      "poster_url": "https://image.tmdb.org/t/p/w500/f31OoLXzH4Sw1IyRir32vTYbmiG.jpg",
+      "cast": [
+        "넉살",
+        "김풍",
+        "채정안"
+      ],
+      "release_date": "2026-04-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q2",
+      "summary": "연애의 끝을 씁쓸하게 경험해 본 돌싱 여성들과 연애의 시작조차 해보지 못한 모태솔로 남성들이 연애기숙학교에 동반 입학해 짝을 찾는 파격적인 포맷의 예능 프로그램",
+      "content_type": "예능",
+      "genres": [
+        "Reality"
+      ],
+      "rating": "15",
+      "ott": "netflix",
+      "is_original": false,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-tving-하트시그널5",
       "title": "하트시그널5",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-하트시그널5_9352fee9.webp",
+      "poster_url": "https://framerusercontent.com/images/PIGMm3Cpso5gizHmaxNZm9YAnI.webp",
       "cast": [
         "윤종신",
         "이상민",
@@ -10088,7 +10119,7 @@
       "content_id": "tvingads-tving-취사병전설이되다",
       "title": "취사병 전설이 되다",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-취사병전설이되다_fcb65bbd.webp",
+      "poster_url": "https://framerusercontent.com/images/mLjRrNiQelf5ZY9zoTTEW520OI.webp",
       "cast": [
         "박지훈",
         "윤경호",
@@ -10122,7 +10153,7 @@
       "content_id": "tvingads-tving-킬잇",
       "title": "킬잇",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-킬잇_60b89313.webp",
+      "poster_url": "https://framerusercontent.com/images/VlJpZUyvGc7KyXD87hcDVr0caPE.webp",
       "cast": [
         "장윤주",
         "이종원",
@@ -10254,7 +10285,7 @@
       "content_id": "tvingads-tving-언더커버셰프",
       "title": "언더커버 셰프",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-언더커버셰프_733aff19.webp",
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
       "cast": [
         "김풍",
         "샘킴",
@@ -10289,7 +10320,7 @@
       "content_id": "tvingads-wavve-언더커버셰프",
       "title": "언더커버 셰프",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-언더커버셰프_733aff19.webp",
+      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
       "cast": [
         "김풍",
         "샘킴",
@@ -10324,7 +10355,7 @@
       "content_id": "tvingads-tving-오십프로",
       "title": "오십프로",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-오십프로_f303c768.webp",
+      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
       "cast": [
         "신하균",
         "오정세",
@@ -10541,7 +10572,7 @@
       "content_id": "tvingads-tving-신입사원강회장",
       "title": "신입사원 강회장",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-신입사원강회장_2c723a08.webp",
+      "poster_url": "https://framerusercontent.com/images/OJmojPRRoMcdL96z05RKA8S6fOc.webp",
       "cast": [
         "이준영",
         "손현주",
@@ -10928,7 +10959,7 @@
       "content_id": "tvingads-tving-콩콩팜팜",
       "title": "콩콩팜팜",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-콩콩팜팜_cb2ccd8e.webp",
+      "poster_url": null,
       "cast": [
         "이광수",
         "김우빈",
@@ -10962,7 +10993,7 @@
       "content_id": "tvingads-tving-스트릿레스토랑파이터",
       "title": "스트릿 레스토랑 파이터",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-스트릿레스토랑파이터_b2ad0d52.webp",
+      "poster_url": null,
       "cast": [
         "이연복",
         "에드워드권",
@@ -10997,7 +11028,7 @@
       "content_id": "tvingads-tving-내일도출근",
       "title": "내일도 출근",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-내일도출근_2d593e49.webp",
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
       "cast": [
         "서인국",
         "박지현"
@@ -11030,7 +11061,7 @@
       "content_id": "tvingads-wavve-내일도출근",
       "title": "내일도 출근",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-내일도출근_2d593e49.webp",
+      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
       "cast": [
         "서인국",
         "박지현"
@@ -11100,7 +11131,7 @@
       "content_id": "tvingads-tving-코미디숏리그",
       "title": "코미디숏리그",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-코미디숏리그_25506f86.webp",
+      "poster_url": "https://framerusercontent.com/images/1wZeSJ2hxs3EeuUaR6kYOcmfwA.webp",
       "cast": [
         "이용진",
         "남호연",
@@ -11278,7 +11309,7 @@
       "content_id": "tvingads-tving-2026윔블던챔피언십",
       "title": "2026 윔블던 챔피언십",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-2026윔블던챔피언십_fbcfe48a.webp",
+      "poster_url": "https://framerusercontent.com/images/suCj8NRmUJHfIMdvNSKJfjdi40o.webp",
       "cast": [],
       "release_date": "2026-06-29",
       "release_year": 2026,
@@ -11342,7 +11373,7 @@
       "content_id": "tvingads-tving-야구여왕2",
       "title": "야구여왕2",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-야구여왕2_c23bdc29.webp",
+      "poster_url": null,
       "cast": [
         "추신수",
         "이대형",
@@ -11442,7 +11473,7 @@
       "content_id": "tvingads-tving-도깨비10주년여행",
       "title": "도깨비 10주년 여행",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-도깨비10주년여행_59797a26.webp",
+      "poster_url": "https://framerusercontent.com/images/2Jc33vl2hp7yfDS6mBTdfBTmRws.webp",
       "cast": [
         "공유",
         "김고은",
@@ -11477,7 +11508,7 @@
       "content_id": "tvingads-tving-샤먼:미신전",
       "title": "샤먼 : 미신전",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-샤먼_미신전_2ef243a3.webp",
+      "poster_url": "https://framerusercontent.com/images/XEfp3v4jUKUaGVPpnAXf4E6ruvc.webp",
       "cast": [
         "신하균",
         "한예리"
@@ -11645,7 +11676,7 @@
       "content_id": "tvingads-tving-그대에게드림",
       "title": "그대에게 드림",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-그대에게드림_2201079e.webp",
+      "poster_url": null,
       "cast": [
         "황인엽",
         "이혜리",
@@ -11753,7 +11784,7 @@
       "content_id": "tvingads-tving-오싹한연애",
       "title": "오싹한 연애",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-오싹한연애_c3e0a33d.webp",
+      "poster_url": null,
       "cast": [
         "박은빈",
         "양세종",
@@ -11814,7 +11845,7 @@
       "content_id": "tvingads-tving-언니네산지직송3",
       "title": "언니네 산지직송3",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-언니네산지직송3_f391df12.webp",
+      "poster_url": null,
       "cast": [
         "염정아",
         "김선영",
@@ -11880,7 +11911,7 @@
       "content_id": "tvingads-tving-우주떡집",
       "title": "우주떡집",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-우주떡집_1c018550.webp",
+      "poster_url": null,
       "cast": [
         "이은지",
         "이영지",
@@ -11947,7 +11978,7 @@
       "content_id": "tvingads-tving-짐쌀라비움",
       "title": "짐쌀라비움",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-짐쌀라비움_5b5cea9e.webp",
+      "poster_url": null,
       "cast": [
         "원지",
         "가비",
@@ -11982,7 +12013,7 @@
       "content_id": "tvingads-wavve-짐쌀라비움",
       "title": "짐쌀라비움",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-짐쌀라비움_5b5cea9e.webp",
+      "poster_url": null,
       "cast": [
         "원지",
         "가비",
@@ -12017,7 +12048,7 @@
       "content_id": "tvingads-tving-최애의사원",
       "title": "최애의 사원",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-최애의사원_14169748.webp",
+      "poster_url": "https://framerusercontent.com/images/Z3fcutMEEffmJ4Mngx9MyBTcnM.webp",
       "cast": [
         "강훈",
         "김혜준",
@@ -12112,7 +12143,7 @@
       "content_id": "tvingads-tving-센터전쟁가왕쇼",
       "title": "센터전쟁 가왕쇼",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-센터전쟁가왕쇼_0eac4192.webp",
+      "poster_url": "https://framerusercontent.com/images/Ys77kuy2i1dznWmNKZALIA72fg.webp",
       "cast": [
         "전유진",
         "박서진",
@@ -12146,7 +12177,7 @@
       "content_id": "tvingads-tving-나노리스트",
       "title": "나노리스트",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-나노리스트_836668d6.webp",
+      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
       "cast": [
         "장예나",
         "심규혁",
@@ -12216,11 +12247,7 @@
       "title_original": "스트릿 월드 파이터: 디렉터스 워",
       "poster_url": "https://image.tmdb.org/t/p/w500/ihciyUa2BwS5I26pkOA7rwt6i1X.jpg",
       "cast": [
-        "리아킴",
-        "모니카",
-        "허니제이",
-        "바다",
-        "시미즈"
+        "성한빈"
       ],
       "release_date": "2026-08-18",
       "release_year": 2026,
@@ -12248,7 +12275,7 @@
       "content_id": "tvingads-tving-그래,이혼하자",
       "title": "그래, 이혼하자",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-그래_이혼하자_28f04a3b.webp",
+      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
       "cast": [
         "이민정",
         "김지석",
@@ -12290,7 +12317,7 @@
       "content_id": "tvingads-wavve-그래,이혼하자",
       "title": "그래, 이혼하자",
       "title_original": null,
-      "poster_url": "posters/tvingads-wavve-그래_이혼하자_28f04a3b.webp",
+      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
       "cast": [
         "이민정",
         "김지석",
@@ -12370,6 +12397,39 @@
       }
     },
     {
+      "content_id": "tmdb-wavve-tv-321984",
+      "title": "하절기",
+      "title_original": "하절기",
+      "poster_url": "https://image.tmdb.org/t/p/w500/5b1cq90S2ZuwQvXUS5bBynspojq.jpg",
+      "cast": [
+        "김도민",
+        "성인호",
+        "임영민",
+        "박현지",
+        "한종규"
+      ],
+      "release_date": "2026-08-27",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "어린 시절부터 함께 자라온 두 남자는 친구라는 관계를 유지해 왔지만, 시간이 흐르면서 한 사람은 오래전부터 품어온 감정을 숨긴 채 살아가고, 다른 한 사람은 그 마음을 뒤늦게 알아가기 시작한다. 익숙한 일상과 계절의 변화 속에서 두 사람은 오해와 엇갈림, 질투와 첫사랑의 감정을 겪으며 서로에게 가장 소중한 존재가 되어 가는 청춘 로맨스를 그린 작품이다.",
+      "content_type": "시리즈",
+      "genres": [
+        "드라마"
+      ],
+      "rating": "19",
+      "ott": "wavve",
+      "is_original": true,
+      "availability_status": null,
+      "_meta": {
+        "sources": {
+          "_all": "tmdb"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tmdb-netflix-tv-290193",
       "title": "들쥐",
       "title_original": "들쥐",
@@ -12377,6 +12437,7 @@
       "cast": [
         "류준열",
         "설경구",
+        "김성오",
         "이규형"
       ],
       "release_date": "2026-08-28",
@@ -12403,43 +12464,10 @@
       }
     },
     {
-      "content_id": "tmdb-wavve-tv-321984",
-      "title": "하절기",
-      "title_original": "하절기",
-      "poster_url": "https://image.tmdb.org/t/p/w500/5b1cq90S2ZuwQvXUS5bBynspojq.jpg",
-      "cast": [
-        "김도민",
-        "성인호",
-        "임영민",
-        "박현지",
-        "한종규"
-      ],
-      "release_date": "2026-08-28",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "어린 시절부터 함께 자라온 두 남자는 친구라는 관계를 유지해 왔지만, 시간이 흐르면서 한 사람은 오래전부터 품어온 감정을 숨긴 채 살아가고, 다른 한 사람은 그 마음을 뒤늦게 알아가기 시작한다. 익숙한 일상과 계절의 변화 속에서 두 사람은 오해와 엇갈림, 질투와 첫사랑의 감정을 겪으며 서로에게 가장 소중한 존재가 되어 가는 청춘 로맨스를 그린 작품이다.",
-      "content_type": "시리즈",
-      "genres": [
-        "드라마"
-      ],
-      "rating": "19",
-      "ott": "wavve",
-      "is_original": true,
-      "availability_status": null,
-      "_meta": {
-        "sources": {
-          "_all": "tmdb"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-unknown-포핸즈",
       "title": "포핸즈",
       "title_original": null,
-      "poster_url": "posters/tvingads-unknown-포핸즈_3356f1ad.webp",
+      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
       "cast": [
         "송강",
         "이준영",
@@ -12474,7 +12502,7 @@
       "content_id": "tvingads-tving-로또1등도출근합니다",
       "title": "로또 1등도 출근합니다",
       "title_original": null,
-      "poster_url": "posters/tvingads-tving-로또1등도출근합니다_603cb151.webp",
+      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
       "cast": [
         "이준혁",
         "서현우",
