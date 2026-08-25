@@ -3814,6 +3814,9 @@ function clMergeByTitle(rows){
     const key = (d.title||'').replace(/\s+/g,'').toLowerCase();
     // 이 작품이 가진 OTT 목록 (수동: _otts_manual, 자동: ott 하나)
     const dotts = (d._otts_manual && d._otts_manual.length) ? d._otts_manual : [d.ott];
+    // 티빙 광고페이지에서 온 항목인지 (같은 출처끼리는 독점 판정을 적용하지 않는다.
+    // 티빙 페이지가 티빙·웨이브 둘 다로 표시한 작품은 실제로 둘 다 방영하는 것이므로)
+    const fromTvingAds = String(d.content_id||'').indexOf('tvingads-') === 0;
     // 티빙·웨이브 광고페이지에서 '독점(ONLY)'으로 온 항목인지
     const isExclusive = /ONLY/i.test(d.source_badge || '')
       || String(d.content_id||'').indexOf('tvingads-') === 0 && (d.is_original === true);
@@ -3834,7 +3837,7 @@ function clMergeByTitle(rows){
         if(d.source_badge) cur.source_badge = d.source_badge;
         if(d.is_original !== undefined) cur.is_original = d.is_original;
         if(d.rating) cur.rating = d.rating;
-      } else if(cur._exclusiveOtts){
+      } else if(cur._exclusiveOtts && !fromTvingAds){
         // 기존이 독점작 → 독점 매체 외에는 추가하지 않음 (TMDB의 netflix 등 무시)
         dotts.forEach(function(o){
           if(cur._exclusiveOtts.indexOf(o) !== -1 && cur._otts.indexOf(o) === -1) cur._otts.push(o);

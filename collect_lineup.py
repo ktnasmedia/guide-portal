@@ -389,9 +389,22 @@ def collect_and_accumulate_tving_ads():
         print(f"WARN: 티빙 광고페이지 수집 실패: {e}", file=sys.stderr)
         new_items = []
 
-    # 병합: 새 정보로 갱신, 기존에만 있는 건 유지
+    # 병합: 이번에 다시 본 작품은 옛 항목을 모두 지우고 새 것만 남긴다.
+    # (매체가 바뀌면 content_id도 바뀌어, 예전 잘못된 항목이 계속 남는 문제가 있었다.
+    #  예: '100일의 거짓말'이 웨이브로 잘못 수집된 뒤 티빙으로 정정돼도 둘 다 남음)
+    # 이번 수집에 없는 작품은 지금처럼 보존한다.
+    def _title_key(item):
+        return (item.get("title") or "").replace(" ", "").lower()
+
+    fresh_titles = {_title_key(it) for it in new_items}
+    if fresh_titles:
+        removed = [cid for cid, it in accum.items() if _title_key(it) in fresh_titles]
+        for cid in removed:
+            del accum[cid]
+        if removed:
+            print(f"  → 다시 수집된 작품의 옛 항목 {len(removed)}건 정리")
     for it in new_items:
-        accum[it["content_id"]] = it  # 같은 ID면 최신 정보로 갱신
+        accum[it["content_id"]] = it
 
     merged = list(accum.values())
 
