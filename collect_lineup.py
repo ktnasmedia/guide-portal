@@ -325,7 +325,10 @@ def tving_ads_to_schema(works):
                     targets.append(_BADGE_MAP[x])
                     break
             if not targets:
-                targets = [("tving", False)]  # 기본값
+                # 매체를 읽지 못한 경우. 예전에는 조용히 'tving'으로 채웠는데,
+                # 그러면 틀린 값이 맞는 값처럼 보여 문제를 발견할 수 없었다.
+                # 'unknown'으로 남겨 CSV에 '확인필요'로 드러나게 한다.
+                targets = [("unknown", False)]
 
         rd = _parse_ads_date(w.get("release_date"))
         year, quarter = derive_quarter(rd)
@@ -790,10 +793,17 @@ def main():
     # 티빙·웨이브 작품 목록을 CSV로 별도 저장 (구글 시트로 가져와 확인용)
     # → TMDB가 뭘 수집했는지 보고, 빠진 작품만 수동 시트에 추가하는 용도
     try:
-        tw_items = [it for it in items if it.get("ott") in ("tving", "wavve")]
-        # 공개일 최신순 정렬
-        tw_items.sort(key=lambda it: it.get("release_date") or "", reverse=True)
-        ott_name = {"tving": "티빙", "wavve": "웨이브"}
+        # 매체를 못 읽은 건(unknown)도 함께 담는다 → CSV에서 '확인필요'로 드러남
+        tw_items = [it for it in items if it.get("ott") in ("tving", "wavve", "unknown")]
+        # 확인 필요한 건을 맨 위로, 그다음 공개일 최신순
+        tw_items.sort(key=lambda it: (it.get("ott") != "unknown",
+                                      "" if it.get("ott") == "unknown"
+                                      else (it.get("release_date") or "")),
+                      reverse=False)
+        tw_items = ([it for it in tw_items if it.get("ott") == "unknown"]
+                    + sorted([it for it in tw_items if it.get("ott") != "unknown"],
+                             key=lambda it: it.get("release_date") or "", reverse=True))
+        ott_name = {"tving": "티빙", "wavve": "웨이브", "unknown": "확인필요"}
         with open("tving_wavve_list.csv", "w", encoding="utf-8-sig", newline="") as cf:
             w = csv.writer(cf)
             w.writerow(["OTT", "오리지널", "제목", "유형", "공개일", "출연진", "장르", "content_id"])
@@ -808,7 +818,9 @@ def main():
                     ", ".join(it.get("genres", []) or []),
                     it.get("content_id", ""),
                 ])
-        print(f"  → tving_wavve_list.csv 생성: 티빙·웨이브 {len(tw_items)}건")
+        unknown_n = sum(1 for it in tw_items if it.get("ott") == "unknown")
+        print(f"  → tving_wavve_list.csv 생성: {len(tw_items)}건"
+              + (f" (매체 확인 필요 {unknown_n}건 — CSV 상단)" if unknown_n else ""))
     except Exception as e:
         print(f"  WARN: 티빙·웨이브 CSV 생성 실패: {e}", file=sys.stderr)
 

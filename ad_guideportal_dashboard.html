@@ -3433,10 +3433,11 @@ async function clLoadManualTvingWavve(){
     if(!res.ok) return;
     const rows = parseCSV(await res.text());
     if(rows.length <= 1) return;
-    // 기존 제목 집합 (띄어쓰기 무시) — 중복 제거용
+    // 기존 제목 → 항목들 (띄어쓰기 무시). 시트 값이 자동 수집을 덮어쓴다.
     const existing = {};
     clData.forEach(function(d){
-      existing[(d.title||'').replace(/\s+/g,'').toLowerCase()] = true;
+      const k = (d.title||'').replace(/\s+/g,'').toLowerCase();
+      (existing[k] = existing[k] || []).push(d);
     });
     // 헤더 제외. 열: A제목 B OTT C유형 D공개일 E등급 F출연 G장르 H줄거리 I오리지널
     rows.slice(1).forEach(function(c){
@@ -3446,10 +3447,22 @@ async function clLoadManualTvingWavve(){
       const _tn = title.replace(/\s+/g,' ').trim();
       if(['신작 및 주목할 콘텐츠','지금 주목해야 할 인기작과 공개 예정작'].indexOf(_tn) !== -1) return;
       const key = title.replace(/\s+/g,'').toLowerCase();
-      if(existing[key]) return;  // TMDB에 이미 있으면 건너뜀
       const ottRaw = (c[1]||'').trim().toLowerCase();
       const otts = ottRaw.split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean);
       const primaryOtt = otts[0] || 'tving';
+
+      // 이미 있는 작품이면 새로 넣지 않고 매체 정보만 시트 값으로 바로잡는다
+      // (자동 수집이 매체를 못 읽었거나 틀렸을 때 시트로 고칠 수 있게)
+      if(existing[key]){
+        if(otts.length){
+          existing[key].forEach(function(d){
+            d.ott = primaryOtt;
+            d._otts_manual = otts;
+            d._ott_fixed_by_sheet = true;
+          });
+        }
+        return;
+      }
       const rd = (c[3]||'').trim();
       const yr = rd ? parseInt(rd.slice(0,4),10) : null;
       clData.push({
@@ -3467,7 +3480,7 @@ async function clLoadManualTvingWavve(){
         _otts_manual: otts,           // 티빙·웨이브 둘 다인 경우 대비
         is_original: (c[8]||'').trim().toUpperCase() === 'O'
       });
-      existing[key] = true;
+      existing[key] = [clData[clData.length-1]];
     });
   }catch(e){ /* 시트 못 읽어도 TMDB 데이터는 그대로 표시 */ }
 }
@@ -3606,11 +3619,13 @@ function clDownloadExcel(scope){
 function clGetFilteredRows(){
   let rows = clData.filter(d => {
     // OTT 선택: 전체 / 넷플릭스 / 티빙·웨이브
+    // 매체를 못 읽은 건(unknown)은 티빙 광고페이지 수집분이므로
+    // 넷플릭스로 새지 않게 하고 티빙·웨이브 쪽에 포함시킨다
     const dott = d.ott || 'netflix';
     if(clOttSel === 'netflix'){
       if(dott !== 'netflix') return false;
     } else if(clOttSel === 'tving_wavve'){
-      if(dott !== 'tving' && dott !== 'wavve') return false;
+      if(dott !== 'tving' && dott !== 'wavve' && dott !== 'unknown') return false;
     }
     // clOttSel === 'all' 이면 OTT 조건 없이 통과
     if(clOrigOnly && !d.is_original) return false;
