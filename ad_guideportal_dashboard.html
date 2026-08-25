@@ -3807,6 +3807,16 @@ function clRemoveNetflixDupOfExclusive(rows){
   });
 }
 
+// 같은 작품을 합칠 때, 앞 항목에 비어 있는 값은 뒤 항목에서 채운다.
+// (티빙 항목엔 줄거리가 있고 웨이브 항목엔 없는 식으로 갈리는 경우가 있어
+//  포스터만 채우던 것을 줄거리·출연진·예고편까지 확대)
+function clFillEmpty(cur, d){
+  ['poster_url','summary','cast','trailer_url','rating','content_type','release_date']
+    .forEach(function(k){
+      if(clIsEmpty(cur[k]) && !clIsEmpty(d[k])) cur[k] = d[k];
+    });
+  if((!cur.genres || !cur.genres.length) && d.genres && d.genres.length) cur.genres = d.genres;
+}
 function clMergeByTitle(rows){
   const map = {};
   const order = [];
@@ -3842,13 +3852,13 @@ function clMergeByTitle(rows){
         dotts.forEach(function(o){
           if(cur._exclusiveOtts.indexOf(o) !== -1 && cur._otts.indexOf(o) === -1) cur._otts.push(o);
         });
-        if(clIsEmpty(cur.poster_url) && !clIsEmpty(d.poster_url)) cur.poster_url = d.poster_url;
+        clFillEmpty(cur, d);
       } else {
         // 둘 다 비독점 → 기존대로 OTT 합침
         dotts.forEach(function(o){
           if(cur._otts.indexOf(o) === -1) cur._otts.push(o);
         });
-        if(clIsEmpty(cur.poster_url) && !clIsEmpty(d.poster_url)) cur.poster_url = d.poster_url;
+        clFillEmpty(cur, d);
       }
     }
   });
