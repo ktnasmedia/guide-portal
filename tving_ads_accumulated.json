@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T01:52:22.488244",
+  "generated_at": "2026-08-25T02:16:16.490520",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -282,75 +282,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-콩콩팜팜",
-      "title": "콩콩팜팜",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/tQC86XBRX6PnTdQkNQaos1F47w.webp",
-      "cast": [
-        "이광수",
-        "김우빈",
-        "도경수"
-      ],
-      "release_date": "2026-06-19",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "이번엔 목장이다! 제주도에서 펼쳐지는 찐친 삼인방 이광수X김우빈X도경수의 팜타스틱한 팜스테이",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/tjH__a6ooAw?si=V6nfVHog62X2FHCJ",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-스트릿레스토랑파이터",
-      "title": "스트릿 레스토랑 파이터",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/w2I6isSoW0zeA9spG57B5QZ8xOk.webp",
-      "cast": [
-        "이연복",
-        "에드워드권",
-        "정호영",
-        "홍석천"
-      ],
-      "release_date": "2026-06-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "세트장 속 심사 위원이 아닌, 실전에서 진짜 손님들을 대상으로 겨룬다. '요리'가 아닌 '장사'를 증명하기 위해 스트릿으로 소환된 대한민국 요식업계 대표주자들!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/aCEuqH13jk4?si=AsjgDMn32RN3GmHC",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-내일도출근",
       "title": "내일도 출근",
       "title_original": null,
@@ -588,40 +519,6 @@
       }
     },
     {
-      "content_id": "tvingads-tving-오싹한연애",
-      "title": "오싹한 연애",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/jWKCXBrrNFNm1BxxUXs2xik98Y.webp",
-      "cast": [
-        "박은빈",
-        "양세종",
-        "옹성우"
-      ],
-      "release_date": "2026-07-18",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "귀신을 보는 호텔 재벌 상속녀와 수사 킹 열혈갬성 검사의 오컬트 좌충우돌 공조 수사 로맨스",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/y-rEMzscDBQ?si=IVHG4S_zlrKXz8PW",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-샤먼:미신전",
       "title": "샤먼 : 미신전",
       "title_original": null,
@@ -718,42 +615,6 @@
       }
     },
     {
-      "content_id": "tvingads-wavve-피의게임X",
-      "title": "피의게임 X",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/d5SGds9q56tGtglIUCQV4gYhBg.webp",
-      "cast": [
-        "홍진호",
-        "이상민",
-        "현성주",
-        "신승용",
-        "윤비"
-      ],
-      "release_date": "2026-07-03",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌 #두뇌게임"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "W ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-16",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-연지곤지:YZKZ",
       "title": "연지곤지 : YZKZ",
       "title_original": null,
@@ -783,41 +644,6 @@
         },
         "confidence": "confirmed",
         "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-우주떡집",
-      "title": "우주떡집",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/32pHJ3u75tIrUFUM65U2ih6duxg.webp",
-      "cast": [
-        "이은지",
-        "이영지",
-        "미미",
-        "안유진"
-      ],
-      "release_date": "2026-07-31",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "떡에서 요리까지! 토롱이의 계략으로 우주떡집 알바생이 된 지락이들?! 본격 강제취업 식당 노동 어드벤처!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/PJNuA4Sg4iY?si=-h9NQYVclik_nfq0",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
         "needs_review": false
       }
     },
@@ -902,599 +728,6 @@
         },
         "confidence": "confirmed",
         "last_updated": "2026-08-11",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-포핸즈",
-      "title": "포핸즈",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
-      "cast": [
-        "송강",
-        "이준영",
-        "장규리",
-        "김주헌"
-      ],
-      "release_date": "2026-08-29",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스 #청춘 #성장"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-로또1등도출근합니다",
-      "title": "로또 1등도 출근합니다",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
-      "cast": [
-        "이준혁",
-        "서현우",
-        "오대환"
-      ],
-      "release_date": "2026-09-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "오피스 #웹툰원작"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-대탈출:더스토리시즌2(가제)",
-      "title": "대탈출 : 더 스토리 시즌2 (가제)",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "김종민",
-        "김동현",
-        "신동",
-        "유병재",
-        "고경표",
-        "승관"
-      ],
-      "release_date": null,
-      "release_year": null,
-      "release_quarter": null,
-      "summary": null,
-      "content_type": "협찬",
-      "genres": [
-        "협찬",
-        "예능",
-        "추리 #서스펜스"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-100일의거짓말",
-      "title": "100일의 거짓말",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "김유정",
-        "박진영",
-        "김현주",
-        "이무생",
-        "진선규"
-      ],
-      "release_date": "2026-10-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "시대극 #첩보 #로맨스"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "W ORIGINAL/T",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-그대에게드림",
-      "title": "그대에게 드림",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/MmDfOf1ti84QxPPT4KNOlqxeRoc.webp",
-      "cast": [
-        "황인엽",
-        "이혜리",
-        "백성철",
-        "이열음"
-      ],
-      "release_date": "2026-07-13",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "꿈을 이루고 돌아온 천재 영화감독 우수빈과 꿈을 잊은 채 사는 생계형 리포터 주이재의 재회 후일담을 그린 로맨틱 코미디",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/R_6htsZ4US0?si=nCIrrBs2xIgttUFf",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-스트릿월드파이터:디렉터스워",
-      "title": "스트릿 월드 파이터 : 디렉터스 워",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "나인",
-        "레난",
-        "바다",
-        "백구영",
-        "베이비주",
-        "시미즈",
-        "인규",
-        "정민준",
-        "캐스퍼",
-        "해쉬"
-      ],
-      "release_date": "2026-08-18",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-센터전쟁가왕쇼",
-      "title": "센터전쟁 가왕쇼",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/Ys77kuy2i1dznWmNKZALIA72fg.webp",
-      "cast": [
-        "전유진",
-        "박서진",
-        "홍지윤"
-      ],
-      "release_date": "2026-08-11",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "세 명의 가왕, 단 하나의 센터!👑 당신의 한 표가 결정합니다",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "전체",
-      "trailer_url": "https://youtu.be/U51bGU3AYkc?si=zL40AMO_niBYMBvw",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-언니네산지직송3",
-      "title": "언니네 산지직송3",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/b6XsonvEO4eohiAopTbm5znlIuU.webp",
-      "cast": [
-        "염정아",
-        "김선영",
-        "강유석",
-        "노윤서"
-      ],
-      "release_date": "2026-07-30",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "NEW 사 남매 염정아, 김선영, 강유석, 노윤서! 대한민국 각지의 직송 작물로 차려지는 제철 밥상과 찐가족 사남매의 극강 케미!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/rCAAexV1Hcc?si=YcyU2YZVIBBJtYK-",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-피의게임X",
-      "title": "피의게임 X",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/d5SGds9q56tGtglIUCQV4gYhBg.webp",
-      "cast": [
-        "홍진호",
-        "이상민",
-        "현성주",
-        "신승용",
-        "윤비"
-      ],
-      "release_date": "2026-07-03",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌 #두뇌게임"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-야구여왕2",
-      "title": "야구여왕2",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/fD3lRiX2b7tj7jJLxD1KDAURSM.webp",
-      "cast": [
-        "추신수",
-        "이대형",
-        "윤석민"
-      ],
-      "release_date": "2026-07-02",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "국내를 넘어서 세계로 간다! 과연 블랙퀸즈는 모든 시련을 이겨내고 진정한 '야구여왕'으로 거듭날 수 있을까? 더 강해진 여왕들의 본격 야구 생존기!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/Im7BcuwPrCs?si=bPHITz3PTCmteZhc",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-짐쌀라비움",
-      "title": "짐쌀라비움",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/CO7I9SUtZgLsHkODRM6Zx5KiZyI.webp",
-      "cast": [
-        "원지",
-        "가비",
-        "이시안",
-        "하리무"
-      ],
-      "release_date": "2026-08-01",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-나노리스트",
-      "title": "나노리스트",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
-      "cast": [
-        "장예나",
-        "심규혁",
-        "사문영",
-        "정유정",
-        "방성준"
-      ],
-      "release_date": "2026-08-17",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "애니메이션",
-      "genres": [
-        "애니메이션",
-        "액션"
-      ],
-      "rating": "청불",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-협찬",
-      "title": "협찬",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "이용진",
-        "남호연",
-        "황제성",
-        "곽범",
-        "이창호"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "오직 웃음으로 승부한다! 베테랑 메이저팀과 패기의 마이너팀이 시청자 투표를 통해 최후의 승자를 가리는 계급장 탈피 숏폼 코미디 서바이벌",
-      "content_type": "코미디숏리그",
-      "genres": [
-        "코미디숏리그",
-        "예능",
-        "코미디"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtube.com/shorts/lKlWrBEHCFM?si=2IGGc5UNCpts2zBj",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-24",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-그래,이혼하자",
-      "title": "그래, 이혼하자",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
-      "cast": [
-        "이민정",
-        "김지석",
-        "이현진",
-        "이진이",
-        "오연아",
-        "정의제",
-        "왕빛나",
-        "안내상",
-        "구성환",
-        "문희경",
-        "임연우"
-      ],
-      "release_date": "2026-08-20",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T ONLY/T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-신병4:사보타주",
-      "title": "신병4 : 사보타주",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "김민호",
-        "김동준",
-        "오대환",
-        "이현균",
-        "이원정",
-        "남태우",
-        "이수지",
-        "김요한",
-        "이충구",
-        "..."
-      ],
-      "release_date": "2026-08-24",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "밀리터리 #블랙코미디"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-더커뮤니티2:보이지않는손",
-      "title": "더 커뮤니티 2 : 보이지 않는 손",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "김건희",
-        "넉스",
-        "박세승",
-        "박철현",
-        "승우아빠",
-        "신혜원",
-        "이수민",
-        "이재용",
-        "이지나",
-        "이한",
-        "이현선",
-        "임지은",
-        "정재호"
-      ],
-      "release_date": "2026-10-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌 #두뇌게임"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL/W ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
         "needs_review": false
       }
     },
@@ -1883,6 +1116,125 @@
       }
     },
     {
+      "content_id": "tvingads-tving-나노리스트",
+      "title": "나노리스트",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
+      "cast": [
+        "장예나",
+        "심규혁",
+        "사문영",
+        "정유정",
+        "방성준"
+      ],
+      "release_date": "2026-08-17",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "애니메이션",
+      "genres": [
+        "애니메이션",
+        "액션"
+      ],
+      "rating": "청불",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-스트릿월드파이터:디렉터스워",
+      "title": "스트릿 월드 파이터 : 디렉터스 워",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "나인",
+        "레난",
+        "바다",
+        "백구영",
+        "베이비주",
+        "시미즈",
+        "인규",
+        "정민준",
+        "캐스퍼",
+        "해쉬"
+      ],
+      "release_date": "2026-08-18",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "서바이벌"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL/T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-그래,이혼하자",
+      "title": "그래, 이혼하자",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
+      "cast": [
+        "이민정",
+        "김지석",
+        "이현진",
+        "이진이",
+        "오연아",
+        "정의제",
+        "왕빛나",
+        "안내상",
+        "구성환",
+        "문희경",
+        "임연우"
+      ],
+      "release_date": "2026-08-20",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T ONLY/T/W",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-wavve-그래,이혼하자",
       "title": "그래, 이혼하자",
       "title_original": null,
@@ -1925,6 +1277,47 @@
       }
     },
     {
+      "content_id": "tvingads-tving-신병4:사보타주",
+      "title": "신병4 : 사보타주",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "김민호",
+        "김동준",
+        "오대환",
+        "이현균",
+        "이원정",
+        "남태우",
+        "이수지",
+        "김요한",
+        "이충구",
+        "..."
+      ],
+      "release_date": "2026-08-24",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "밀리터리 #블랙코미디"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W/T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-wavve-신병4:사보타주",
       "title": "신병4 : 사보타주",
       "title_original": null,
@@ -1955,6 +1348,119 @@
       "is_original": false,
       "availability_status": null,
       "source_badge": "T/W/T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-포핸즈",
+      "title": "포핸즈",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
+      "cast": [
+        "송강",
+        "이준영",
+        "장규리",
+        "김주헌"
+      ],
+      "release_date": "2026-08-29",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스 #청춘 #성장"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-로또1등도출근합니다",
+      "title": "로또 1등도 출근합니다",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
+      "cast": [
+        "이준혁",
+        "서현우",
+        "오대환"
+      ],
+      "release_date": "2026-09-10",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "오피스 #웹툰원작"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-더커뮤니티2:보이지않는손",
+      "title": "더 커뮤니티 2 : 보이지 않는 손",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "김건희",
+        "넉스",
+        "박세승",
+        "박철현",
+        "승우아빠",
+        "신혜원",
+        "이수민",
+        "이재용",
+        "이지나",
+        "이한",
+        "이현선",
+        "임지은",
+        "정재호"
+      ],
+      "release_date": "2026-10-10",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "서바이벌 #두뇌게임"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL/W ORIGINAL",
       "trailer_url": null,
       "_meta": {
         "sources": {
@@ -2010,6 +1516,42 @@
       }
     },
     {
+      "content_id": "tvingads-tving-100일의거짓말",
+      "title": "100일의 거짓말",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "김유정",
+        "박진영",
+        "김현주",
+        "이무생",
+        "진선규"
+      ],
+      "release_date": "2026-10-10",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #첩보 #로맨스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "W ORIGINAL/T",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-wavve-100일의거짓말",
       "title": "100일의 거짓말",
       "title_original": null,
@@ -2035,6 +1577,44 @@
       "is_original": false,
       "availability_status": null,
       "source_badge": "W ORIGINAL/T",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-25",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-대탈출:더스토리시즌2(가제)",
+      "title": "대탈출 : 더 스토리 시즌2 (가제)",
+      "title_original": null,
+      "poster_url": null,
+      "cast": [
+        "김종민",
+        "김동현",
+        "신동",
+        "유병재",
+        "고경표",
+        "승관"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "협찬",
+      "genres": [
+        "협찬",
+        "예능",
+        "추리 #서스펜스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/T ORIGINAL",
       "trailer_url": null,
       "_meta": {
         "sources": {
