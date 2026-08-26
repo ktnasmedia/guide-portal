@@ -1,6 +1,6 @@
 {
   "source_url": "https://tvingads.gitbook.io/guide/solution/kbo/overview",
-  "collected_at": "2026-08-26 10:42",
+  "collected_at": "2026-08-26 14:38",
   "schedule": [
     {
       "month": "5월",
@@ -30,7 +30,7 @@
     ],
     "rows": [
       {
-        "name": "9월 (9/1~9/30)",
+        "name": "9~~10월 (9/1~~10/7)",
         "status": {
           "노출 보장": "청약 가능",
           "노출 보장 제한 업종": "청약 가능",
@@ -49,8 +49,8 @@
   },
   "weekly": [
     {
-      "label": "9월",
-      "first_col": "9월",
+      "label": "9~10월",
+      "first_col": "9~10월",
       "columns": [
         "퍼스트뷰",
         "임팩트"
@@ -79,6 +79,13 @@
         },
         {
           "name": "4주차(9/21~9/27)",
+          "status": {
+            "퍼스트뷰": "청약 가능",
+            "임팩트": "청약 가능"
+          }
+        },
+        {
+          "name": "5주차(9/28~10/7)",
           "status": {
             "퍼스트뷰": "청약 가능",
             "임팩트": "청약 가능"
@@ -205,7 +212,7 @@
       }
     ]
   },
-  "hash": "8b1113ea45342974",
-  "updated_at": "2026-08-25",
-  "changed": false
+  "hash": "d6515c7a4e830d05",
+  "updated_at": "2026-08-26",
+  "changed": true
 }
