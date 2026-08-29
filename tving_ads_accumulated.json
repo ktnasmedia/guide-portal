@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T02:01:33.823323",
+  "generated_at": "2026-08-29T01:25:12.606600",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -938,6 +938,42 @@
       }
     },
     {
+      "content_id": "tvingads-tving-나노리스트",
+      "title": "나노리스트",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
+      "cast": [
+        "장예나",
+        "심규혁",
+        "사문영",
+        "정유정",
+        "방성준"
+      ],
+      "release_date": "2026-08-17",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "애니메이션",
+      "genres": [
+        "애니메이션",
+        "액션"
+      ],
+      "rating": "청불",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-28",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-tving-우주떡집",
       "title": "우주떡집",
       "title_original": null,
@@ -968,7 +1004,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1009,7 +1045,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1050,7 +1086,42 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-포핸즈",
+      "title": "포핸즈",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
+      "cast": [
+        "송강",
+        "이준영",
+        "장규리",
+        "김주헌"
+      ],
+      "release_date": "2026-08-29",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스 #청춘 #성장"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1085,7 +1156,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1119,7 +1190,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1153,7 +1224,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1187,7 +1258,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1222,7 +1293,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1256,7 +1327,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1291,7 +1362,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1326,7 +1397,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1361,43 +1432,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-나노리스트",
-      "title": "나노리스트",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
-      "cast": [
-        "장예나",
-        "심규혁",
-        "사문영",
-        "정유정",
-        "방성준"
-      ],
-      "release_date": "2026-08-17",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "애니메이션",
-      "genres": [
-        "애니메이션",
-        "액션"
-      ],
-      "rating": "청불",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1428,42 +1463,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-unknown-포핸즈",
-      "title": "포핸즈",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
-      "cast": [
-        "송강",
-        "이준영",
-        "장규리",
-        "김주헌"
-      ],
-      "release_date": "2026-08-29",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스 #청춘 #성장"
-      ],
-      "rating": "15",
-      "ott": "unknown",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1497,7 +1497,41 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-원수는외야석에서♥",
+      "title": "원수는 외야석에서♥",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/j2uYOSrZNLsBG3brCqLcKjzUgJ4.webp",
+      "cast": [
+        "이용진",
+        "황재균",
+        "정예인"
+      ],
+      "release_date": "2026-09-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "연애 #리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1532,7 +1566,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1568,7 +1602,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     },
@@ -1606,7 +1640,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-08-28",
+        "last_updated": "2026-08-29",
         "needs_review": false
       }
     }
