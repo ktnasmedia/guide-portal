@@ -1,6 +1,6 @@
 {
   "source_url": "https://tvingads.gitbook.io/guide/solution/kbo/overview",
-  "collected_at": "2026-08-30 19:24",
+  "collected_at": "2026-08-31 13:56",
   "schedule": [
     {
       "month": "5월",
@@ -125,8 +125,8 @@
         {
           "name": "4주차(8/24~8/30)",
           "status": {
-            "퍼스트뷰": "판매 완료",
-            "임팩트": "청약 가능"
+            "퍼스트뷰": "판매 종료",
+            "임팩트": "판매 종료"
           }
         }
       ]
@@ -212,7 +212,7 @@
       }
     ]
   },
-  "hash": "d6515c7a4e830d05",
-  "updated_at": "2026-08-26",
-  "changed": false
+  "hash": "62e416a4535ea7e6",
+  "updated_at": "2026-08-31",
+  "changed": true
 }
