@@ -241,6 +241,21 @@ def parse_one(block, heads):
         if DATE_RE.search(b) and len(b) <= 16:
             date = b
             break
+    if not date:
+        # 공개일이 '9월'·'미정'처럼 날짜 형식이 아닌 경우 라벨 다음 값을 그대로 담는다
+        try:
+            gi0 = body.index("공개일")
+            for off in (1, 2):           # 라벨 다음, 구분자가 있으면 그 다음
+                if gi0 + off >= len(body):
+                    break
+                cand = body[gi0 + off].strip()
+                if cand in ("|", "·", "-"):
+                    continue
+                if cand and len(cand) <= 16:
+                    date = cand
+                break
+        except ValueError:
+            pass
     try:
         gi = body.index("공개일")
     except ValueError:
@@ -284,7 +299,8 @@ def parse_blocks(text, heads):
              "성·연령별", "광고 문의", "캠페인 시작", "콘텐츠 라인업",
              "지금 주목해야", "향후 3개월", "오픈 예정",
              "신작 및 주목할", "주목할 콘텐츠", "PDF 다운로드", "다운로드하기",
-             "예고편 미리보기", "예고편미리보기")
+             "예고편 미리보기", "예고편미리보기", "최근 업데이트", "Excel 다운로드",
+             "Available in browser", "PDF Document", "tving-wavve-contents")
     # 배지·분류 라벨은 작품 제목이 아니다.
     # ('협찬' 배지가 제목으로 잡혀 코미디숏리그 줄거리를 가져가는 문제가 있었다)
     BAD = ("드라마", "예능", "전체", "특판", "더보기", "스포츠", "교양", "다큐멘터리", "공개일",
@@ -303,8 +319,25 @@ def parse_blocks(text, heads):
 
     lines = [l.strip() for l in text.split("\n") if l.strip()]
     works, cur = [], []
+    # 작품 경계는 '공개일' 라벨 바로 다음 줄에서 끊는다.
+    # 날짜 형식으로만 끊으면 공개일이 '9월'·'미정'인 작품에서 경계를 못 잡아
+    # 그 작품이 통째로 누락된다('더 커뮤니티 2' 등이 그랬음).
+    after_label = False
     for ln in lines:
         cur.append(ln)
+        if after_label:
+            if ln in ("|", "·", "-"):     # 라벨과 값 사이 구분자는 건너뜀
+                continue
+            after_label = False
+            w = parse_one(cur[:], heads)
+            if valid(w):
+                works.append(w)
+            cur = []
+            continue
+        if ln == "공개일":
+            after_label = True
+            continue
+        # 라벨 없이 날짜만 있는 형태도 기존처럼 처리
         if bool(DATE_RE.search(ln)) and len(ln) <= 16:
             w = parse_one(cur[:], heads)
             if valid(w):
