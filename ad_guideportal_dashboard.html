@@ -335,7 +335,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .pen-wv{background:rgba(59,130,246,0.12);color:#7CB1FF;border:1px solid rgba(59,130,246,0.25);}
 .pen-cp{background:rgba(163,163,163,0.12);color:#BDBDBD;border:1px solid rgba(163,163,163,0.28);}
 
-/* ── 공지 표 (공지사항(테스트) 전용) ── */
+/* ── 공지 표 ── */
 .rn-tbl{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
 .rn-tbl-row{display:grid;align-items:center;gap:0;padding:14px 0;cursor:pointer;transition:background 0.15s;}
 .rn-tbl-row:hover{background:rgba(255,255,255,0.03);}
@@ -882,14 +882,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
-  <!-- 공지사항(테스트) -->
-  <div id="nav-updates2" class="nav-item">
-    <div class="nav-row" onclick="navigate('updates2','')">
-      <svg width="15" height="15" fill="none" viewBox="0 0 16 16"><path d="M8 2L9.8 6H14L10.6 8.6L11.9 12.8L8 10.3L4.1 12.8L5.4 8.6L2 6H6.2L8 2Z" stroke="#737373" stroke-width="1.3" stroke-linejoin="round"/></svg>
-      <span class="nav-label">공지사항(테스트)</span>
-    </div>
-  </div>
-
   <!-- 광고 정책 -->
   <div id="nav-policy" class="nav-item">
     <div class="nav-row" onclick="navigate('policy','')">
@@ -1094,111 +1086,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
 
     
-    <!-- ══════ PAGE: 공지사항(테스트) ══════ -->
-    <div id="page-updates2" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">공지사항(테스트)</h1><p class="page-desc">새로운 구성을 시험하는 화면입니다. 실제 공지는 공지 사항 메뉴를 이용해 주세요.</p></div>
-      <!-- ── 릴리즈 노트 탭: Google Sheets 연동 (로그인 불필요) ── -->
-      <div id="tc-updates2-release-notes">
-
-        <!-- 매체 탭 (밑줄형, 포털 전체 통일) -->
-        <div class="sub-tab-bar">
-          <div class="sub-tab tab-active rn-media-btn rn-media-on" id="tab-updates2-all" data-rnmedia="all" onclick="switchTab('updates2','all')">통합</div>
-          <div class="sub-tab rn-media-btn" id="tab-updates2-netflix" data-rnmedia="netflix" onclick="switchTab('updates2','netflix')">넷플릭스</div>
-          <div class="sub-tab rn-media-btn" id="tab-updates2-tving" data-rnmedia="tving_wavve" onclick="switchTab('updates2','tving')">티빙·웨이브</div>
-          <div class="tab-search-wrap">
-            <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared2" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
-          </div>
-        </div>
-
-        <!-- 통합 공지사항 (넷플릭스 + 티빙·웨이브, 최신순) -->
-        <div id="rn-unified-wrap2">
-          <div class="section-bar" style="margin-bottom:14px;">
-            <div class="section-accent"></div>
-            <span class="section-label">최신순 · 클릭하면 해당 매체 공지로 이동</span>
-          </div>
-          <div id="rn-unified-loading2" style="text-align:center;padding:40px 0;">
-            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
-              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-              <span style="font-size:13px;color:var(--gray-low);">공지를 불러오는 중...</span>
-            </div>
-          </div>
-          <div id="rn-unified-list2"></div>
-          <div id="rn-unified-pager2" style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;"></div>
-        </div>
-
-        <!-- 티빙·웨이브 공지사항 (목록형) -->
-        <div id="rn-tving-wrap2" style="display:none;">
-          <div class="section-bar" style="margin-bottom:14px;">
-            <div class="section-accent"></div>
-            <span class="section-label">티빙·웨이브 업데이트</span>
-            <span id="rn-tving-updated2" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
-          </div>
-
-          <!-- 로딩 -->
-          <div id="rn-tving-loading2" style="text-align:center;padding:40px 0;">
-            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
-              <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-              <span style="font-size:13px;color:var(--gray-low);">공지 사항을 불러오는 중...</span>
-            </div>
-          </div>
-
-          <!-- 에러 -->
-          <div id="rn-tving-error2" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-            <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
-            <div id="rn-tving-error-msg2" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
-          </div>
-
-          <!-- 카테고리 필터 + 검색 -->
-          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
-            <div id="rn-tving-filter-bar2" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-          </div>
-
-          <!-- 목록 -->
-          <div id="rn-tving-list2"></div>
-        </div>
-
-        <!-- 넷플릭스 공지사항 (기존) -->
-        <div id="rn-netflix-wrap2" style="display:none;">
-
-        <!-- 헤더 바 -->
-        <div class="section-bar" style="margin-bottom:14px;">
-          <div class="section-accent"></div>
-          <span class="section-label">넷플릭스 업데이트</span>
-          <span id="rn-last-updated2" style="margin-left:8px;font-size:11px;color:var(--gray-dim);font-family:'Noto Sans KR',sans-serif;"></span>
-        </div>
-
-
-
-        <!-- 로딩 -->
-        <div id="rn-loading2" style="text-align:center;padding:40px 0;">
-          <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px;">
-            <div style="width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
-            <span style="font-size:13px;color:var(--gray-low);">릴리즈 노트를 불러오는 중...</span>
-          </div>
-        </div>
-
-        <!-- 에러 -->
-        <div id="rn-error2" style="display:none;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.25);border-radius:10px;padding:16px 20px;margin-bottom:16px;">
-          <div style="font-size:13px;font-weight:600;color:#FF6B6B;margin-bottom:6px;">불러오기 실패</div>
-          <div id="rn-error-msg2" style="font-size:12px;color:var(--gray-low);line-height:1.6;"></div>
-          <button class="btn-outline" onclick="sheetsLoadNotes()" style="margin-top:12px;font-size:12px;">다시 시도</button>
-        </div>
-
-        <!-- 카테고리 필터 바 + 검색 -->
-        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px;">
-          <div id="rn-filter-bar2" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-        </div>
-
-        <!-- 릴리즈 노트 카드 목록 -->
-        <div id="rn-list2" style="display:flex;flex-direction:column;gap:10px;"></div>
-
-        </div><!-- /rn-netflix-wrap -->
-
-      </div>
-    </div>
-
-    
-<!-- ══════ PAGE: 광고 정책 ══════ -->
+    <!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
       <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
       <div class="sub-tab-bar">
@@ -1944,9 +1832,7 @@ let currentTab  = 'all';
 
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
-  updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
-  updates2:     ['all','netflix','tving'],   // 공지사항(테스트) — 같은 시트, 화면만 분리
-  policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
+  updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)   policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
   products:     ['all','video','image','exclusive','qr'],   // 'STS' 탭은 숨김 (익스클루시브로 흡수)
   targeting:    ['all','basic','premium','dsp'],
   subscription: ['calculator','process','penalty'],   // '전체' 탭은 숨김 (하위 탭 소개만 있어 중복)
@@ -2041,8 +1927,8 @@ function navigate(page, tab) {
   // 콘텐츠 라인업 페이지 진입 시 자동 로드
   if (page === 'content') onContentTabEnter();
   // 공지사항 페이지 진입 시 릴리즈 노트(넷플릭스 업데이트) 자동 로드
-  if (page === 'updates' || page === 'updates2') {
-    RN_NS = (page === 'updates2') ? '2' : '';
+  if (page === 'updates') {
+    RN_NS = '';
     setTimeout(function(){ rnApplyMediaTab(targetTab); }, 80);
   }
   if (page === 'products') setTimeout(apRender, 60);
@@ -4281,8 +4167,7 @@ function toggleRnCard(headerEl) {
 
 // 에러 표시
 // ══════ 공지 사항 — 화면 네임스페이스 ══════
-// 같은 코드로 두 화면(공지 사항 / 공지사항(테스트))을 그린다.
-// 데이터는 같은 시트를 읽고, 화면 요소와 페이지 상태만 분리한다.
+// 화면 요소 id에 네임스페이스를 붙여 접근한다(현재는 공지 사항 하나뿐).
 let RN_NS = '';                       // '' = 원본, '2' = 테스트 사본
 const _rnStates = { '': {}, '2': {} };
 function rnEl(id){ return document.getElementById(id + RN_NS); }
@@ -4742,47 +4627,22 @@ function rnUnifiedRender(){
     '콘텐츠':      {bg:'rgba(163,163,163,0.15)', fg:'#A3A3A3'}
   };
 
-  // 공지사항(테스트)는 티빙·웨이브와 같은 표 구조로 그린다 (원본은 기존 카드 유지)
-  if(RN_NS === '2'){
-    var th = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-uni">'
-      + '<div>매체</div><div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
-    pageItems.forEach(function(it, idx){
-      var gi = start + idx;
-      var badge = (it.media === 'netflix') ? 'pen-nf' : 'pen-tv';
-      var ver = it.ver ? '<span class="badge-ver">' + clEsc(it.ver) + '</span>' : '';
-      th += '<div class="rn-tbl-item"><div class="rn-tbl-row rn-tbl-uni" onclick="rnUnifiedGo(' + gi + ')">'
-        +   '<div><span class="pen-media ' + badge + '">' + clEsc(it.mediaLabel) + '</span></div>'
-        +   '<div><span class="cat-mono">' + clEsc(it.category || '기타') + '</span></div>'
-        +   '<div class="rn-tbl-title">' + clEsc(it.title) + ver + '</div>'
-        +   '<div class="rn-tbl-date">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate || '미정')) + '</div>'
-        + '</div></div>';
-    });
-    th += '</div>';
-    listEl.innerHTML = th;
-    rnUnifiedPager(pagerEl, totalPages);
-    return;
-  }
-
-  var html = '<div style="display:flex;flex-direction:column;gap:8px;">';
+  // 매체·구분·제목·게시일 4열 표
+  var th = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-uni">'
+    + '<div>매체</div><div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
   pageItems.forEach(function(it, idx){
-    var mediaBg = it.media === 'netflix' ? 'rgba(226,75,74,0.13)' : 'rgba(255,107,107,0.13)';
-    var mediaFg = it.media === 'netflix' ? '#e06a6a' : '#e57a7a';
-    var cc = catColor[it.category] || {bg:'rgba(136,135,128,0.18)', fg:'#b4b2a9'};
-    var globalIdx = start + idx;
-    var verHtml = it.ver ? ' <span style="font-size:11px;color:var(--gray-dim);">' + clEsc(it.ver) + '</span>' : '';
-    html += '<div onclick="rnUnifiedGo(' + globalIdx + ')" class="rn-uni-row" style="padding:13px 14px;border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:border-color 0.15s;" '
-      + 'onmouseover="this.style.borderColor=\'rgba(255,255,255,0.22)\'" onmouseout="this.style.borderColor=\'var(--border)\'">'
-      + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + mediaBg + ';color:' + mediaFg + ';text-align:center;white-space:nowrap;">' + it.mediaLabel + '</span>'
-      + '<span style="font-size:11px;padding:3px 0;border-radius:6px;background:' + cc.bg + ';color:' + cc.fg + ';text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + clEsc(it.category) + '</span>'
-      + '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"><span style="font-size:14px;color:var(--white);">' + clEsc(it.title) + '</span>' + verHtml + '</span>'
-      + '<span style="font-size:12px;color:var(--gray-low);text-align:right;white-space:nowrap;">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate||'미정')) + '</span>'
-      + '<span style="color:var(--gray-dim);font-size:14px;text-align:center;">›</span>'
-      + '</div>';
+    var gi = start + idx;
+    var badge = (it.media === 'netflix') ? 'pen-nf' : 'pen-tv';
+    var ver = it.ver ? '<span class="badge-ver">' + clEsc(it.ver) + '</span>' : '';
+    th += '<div class="rn-tbl-item"><div class="rn-tbl-row rn-tbl-uni" onclick="rnUnifiedGo(' + gi + ')">'
+      +   '<div><span class="pen-media ' + badge + '">' + clEsc(it.mediaLabel) + '</span></div>'
+      +   '<div><span class="cat-mono">' + clEsc(it.category || '기타') + '</span></div>'
+      +   '<div class="rn-tbl-title">' + clEsc(it.title) + ver + '</div>'
+      +   '<div class="rn-tbl-date">' + (it.date ? rnFmtDateFromObj(it.date) : (it.rawDate || '미정')) + '</div>'
+      + '</div></div>';
   });
-  html += '</div>';
-  listEl.innerHTML = html;
-
-  // 페이지네이션
+  th += '</div>';
+  listEl.innerHTML = th;
   rnUnifiedPager(pagerEl, totalPages);
 }
 function rnUnifiedPager(pagerEl, totalPages){
@@ -4892,7 +4752,7 @@ function rnNetflixHighlight(ver, title){
 var rnTvingData   = [];      // 전체 공지 (데이터는 두 화면이 공유)
 var rnTvingLoaded = false;   // 1회 로드 플래그 (공유)
 // 아래 네 가지는 화면마다 따로 유지해야 원본과 테스트가 서로 간섭하지 않는다
-// 공지사항(테스트) 넷플릭스 표 — 줄 펼치기 / 페이지 이동
+// 넷플릭스 표 — 줄 펼치기 / 페이지 이동
 function rnNfRowToggle(id){
   var el = document.getElementById(id);
   if(!el) return;
@@ -5004,19 +4864,9 @@ function rnTvingRender(){
   var startIdx = (rnTvingState().page - 1) * rnTvingState().per;
   var pageRows = rows.slice(startIdx, startIdx + rnTvingState().per);
   // 헤더 행 + 목록
-  // 공지사항(테스트)는 통합·넷플릭스와 같은 표 스타일(.rn-tbl)로 그린다
-  var useTbl = (RN_NS === '2');
-  var rowCls  = useTbl ? 'rn-tbl-row rn-tbl-nf' : 'rn-tv-row';
-  var headCls = useTbl ? 'rn-tbl-row rn-tbl-head rn-tbl-nf' : 'rn-tv-row rn-tv-head';
-  var dateCls = useTbl ? 'rn-tbl-date' : '';
-  var html = '';
-  if(useTbl){
-    html += '<div class="rn-tbl"><div class="' + headCls + '">'
-         +  '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
-  } else {
-    html += '<div class="' + headCls + '" style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:12px;color:var(--gray-low);font-weight:700;">'
-         +  '<div>구분</div><div>제목</div><div style="text-align:right;">게시일</div></div>';
-  }
+  // 구분·제목·게시일 3열 표
+  var html = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-nf">'
+    + '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
   pageRows.forEach(function(n){
     var color = rnTvingCatColor(n.category);
     var open  = !!rnTvingState().open[n.notice_id];
@@ -5025,31 +4875,24 @@ function rnTvingRender(){
     var newBadge = rnTvingIsNew(n.date)
       ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>'
       : '';
-    html += useTbl
-      ? '<div class="rn-tbl-item">'
-      : '<div style="border-bottom:1px solid var(--border);">';
-    html += '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="' + rowCls + '"'
-      +   (useTbl ? '' : ' style="padding:14px;cursor:pointer;"') + '>'
-      +   '<div><span class="cat-badge' + (useTbl ? ' cat-tbl' : '') + '" style="background:' + color + '22;color:' + color + (useTbl ? ';border:1px solid ' + color + '40' : '') + ';">' + clEsc(n.category||'기타') + '</span></div>'
-      +   '<div' + (useTbl ? ' class="rn-tbl-title"' : ' style="font-size:14px;color:var(--white);line-height:1.5;"') + '>' + safeTitle + newBadge + '</div>'
-      +   '<div' + (useTbl ? ' class="rn-tbl-date"' : ' style="text-align:right;font-size:12px;color:var(--gray-low);"') + '>' + dateDisp + '</div>'
+    html += '<div class="rn-tbl-item">';
+    html += '<div onclick="rnTvingToggle(\'' + n.notice_id + '\')" class="rn-tbl-row rn-tbl-nf">'
+      +   '<div><span class="cat-badge cat-tbl" style="background:' + color + '22;color:' + color + ';border:1px solid ' + color + '40;">' + clEsc(n.category||'기타') + '</span></div>'
+      +   '<div class="rn-tbl-title">' + safeTitle + newBadge + '</div>'
+      +   '<div class="rn-tbl-date">' + dateDisp + '</div>'
       + '</div>';
     if(open){
-      html += '<div' + (useTbl
-          ? ' class="rn-tbl-body"'
-          : ' style="padding:4px 14px 18px 14px;font-size:13px;color:var(--gray-mid);line-height:1.75;white-space:pre-wrap;border-top:1px dashed var(--border);"') + '>'
-        + (useTbl ? rnBodyHtml(n.body || '') : rnTvingBody(n.body || ''))
+      html += '<div class="rn-tbl-body">'
+        + rnBodyHtml(n.body || '')
         + '<div style="margin-top:12px;"><a href="' + (n.url||'#') + '" target="_blank" rel="noopener" style="font-size:12px;color:#ff6b6b;text-decoration:none;">원문 보기 ↗</a></div>'
         + '</div>';
     }
     html += '</div>';
   });
-  if(useTbl) html += '</div>';   // .rn-tbl 닫기
+  html += '</div>';   // .rn-tbl 닫기
 
   // 페이지네이션 UI
-  html += (RN_NS === '2')
-    ? rnTvingPagerNums(totalPages)                                     // 통합 탭과 같은 번호 페이저
-    : rnTvingPagerHtml(rows.length, totalPages, startIdx, pageRows.length);
+  html += rnTvingPagerNums(totalPages);
   list.innerHTML = html;
 }
 
@@ -5377,53 +5220,51 @@ async function sheetsLoadNotes() {
         return;
       }
 
-      // 공지사항(테스트)는 항목 하나가 한 줄인 표로 그린다 (원본은 기존 버전 카드 유지)
-      if (RN_NS === '2') {
-        var rows = [];
-        displayVersions.forEach(function(dv){
-          dv.sections.forEach(function(sec){
-            rows.push({ ver: dv.ver.ver, date: dv.ver.date, title: sec.title,
-                        body: sec.body, category: sec.category || '기타' });
-          });
+      // 항목 하나가 한 줄인 표 (같은 버전이 여러 줄로 풀림)
+      var rows = [];
+      displayVersions.forEach(function(dv){
+        dv.sections.forEach(function(sec){
+          rows.push({ ver: dv.ver.ver, date: dv.ver.date, title: sec.title,
+                      body: sec.body, category: sec.category || '기타' });
         });
-        var nfPer = 20;
-        var tp    = Math.max(1, Math.ceil(rows.length / nfPer));
-        if(RN_STATE()._nfPage === undefined) RN_STATE()._nfPage = 1;
-        if(RN_STATE()._nfPage > tp) RN_STATE()._nfPage = tp;
-        if(RN_STATE()._nfPage < 1) RN_STATE()._nfPage = 1;
-        var st = (RN_STATE()._nfPage - 1) * nfPer;
-        var pageRows = rows.slice(st, st + nfPer);
+      });
+      var nfPer = 20;
+      var tp    = Math.max(1, Math.ceil(rows.length / nfPer));
+      if(RN_STATE()._nfPage === undefined) RN_STATE()._nfPage = 1;
+      if(RN_STATE()._nfPage > tp) RN_STATE()._nfPage = tp;
+      if(RN_STATE()._nfPage < 1) RN_STATE()._nfPage = 1;
+      var st = (RN_STATE()._nfPage - 1) * nfPer;
+      var pageRows = rows.slice(st, st + nfPer);
 
-        var h = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-nf">'
-          + '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
-        pageRows.forEach(function(r, i){
-          var cc  = catColors[r.category] || catColors['기타'];
-          var uid = 'nfrow-' + (st + i);
-          var isNew = rnTvingIsNew(r.date) ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>' : '';
-          var ver = r.ver ? '<span class="badge-ver">' + clEsc(r.ver) + '</span>' : '';
-          h += '<div class="rn-tbl-item">'
-            +   '<div class="rn-tbl-row rn-tbl-nf" onclick="rnNfRowToggle(\'' + uid + '\')">'
-            +     '<div><span class="cat-badge cat-tbl" style="background:' + cc.bg + ';color:' + cc.color + ';border:1px solid ' + cc.border + ';">' + clEsc(r.category) + '</span></div>'
-            +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
-            +     '<div class="rn-tbl-date">' + clEsc(r.date || '') + '</div>'
-            +   '</div>'
-            +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + rnBodyHtml(r.body) + '</div>'
-            + '</div>';
-        });
-        h += '</div>';
-        // 페이지 이동
-        if(tp > 1){
-          h += '<div style="display:flex;justify-content:center;gap:6px;margin-top:16px;">';
-          for(var p = 1; p <= tp; p++){
-            h += (p === RN_STATE()._nfPage)
-              ? '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>'
-              : '<span onclick="rnNfGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-mid);cursor:pointer;">' + p + '</span>';
-          }
-          h += '</div>';
+      var h = '<div class="rn-tbl"><div class="rn-tbl-row rn-tbl-head rn-tbl-nf">'
+        + '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
+      pageRows.forEach(function(r, i){
+        var cc  = catColors[r.category] || catColors['기타'];
+        var uid = 'nfrow-' + (st + i);
+        var isNew = rnTvingIsNew(r.date) ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>' : '';
+        var ver = r.ver ? '<span class="badge-ver">' + clEsc(r.ver) + '</span>' : '';
+        h += '<div class="rn-tbl-item">'
+          +   '<div class="rn-tbl-row rn-tbl-nf" onclick="rnNfRowToggle(\'' + uid + '\')">'
+          +     '<div><span class="cat-badge cat-tbl" style="background:' + cc.bg + ';color:' + cc.color + ';border:1px solid ' + cc.border + ';">' + clEsc(r.category) + '</span></div>'
+          +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
+          +     '<div class="rn-tbl-date">' + clEsc(r.date || '') + '</div>'
+          +   '</div>'
+          +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + rnBodyHtml(r.body) + '</div>'
+          + '</div>';
+      });
+      h += '</div>';
+      // 페이지 이동
+      if(tp > 1){
+        h += '<div style="display:flex;justify-content:center;gap:6px;margin-top:16px;">';
+        for(var p = 1; p <= tp; p++){
+          h += (p === RN_STATE()._nfPage)
+            ? '<span style="padding:5px 11px;border-radius:6px;background:var(--red);color:#fff;font-size:13px;">' + p + '</span>'
+            : '<span onclick="rnNfGoPage(' + p + ')" style="padding:5px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px;color:var(--gray-mid);cursor:pointer;">' + p + '</span>';
         }
-        list.innerHTML = h;
-        return;
+        h += '</div>';
       }
+      list.innerHTML = h;
+      return;
 
       // 2) 페이지 계산 (버전 단위)
       const per = RN_STATE()._rnPer || 20;
