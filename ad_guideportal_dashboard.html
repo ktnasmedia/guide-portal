@@ -3621,6 +3621,10 @@ function clGetFilteredRows(){
     // OTT 선택: 전체 / 넷플릭스 / 티빙·웨이브
     // 매체를 못 읽은 건(unknown)은 티빙 광고페이지 수집분이므로
     // 넷플릭스로 새지 않게 하고 티빙·웨이브 쪽에 포함시킨다
+    // 매체를 못 읽은 건(unknown)은 티빙 광고페이지 수집분이므로
+    // 넷플릭스로 새지 않게 하고 티빙·웨이브 쪽에 포함시킨다.
+    // 화면에서 숨기지 않는다 — 진짜 작품인데 매체만 못 읽은 경우를
+    // 드러내기 위한 표시이므로, 숨기면 확인할 방법이 없어진다.
     const dott = d.ott || 'netflix';
     if(clOttSel === 'netflix'){
       if(dott !== 'netflix') return false;

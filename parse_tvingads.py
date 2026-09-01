@@ -431,6 +431,21 @@ def collect_tving_ads():
                 w["trailer"] = it["trailer"]
                 used[idx] = True
                 break
+        if w["synopsis"]:
+            continue
+        # 완전히 같지 않아도 앞쪽 출연진이 겹치면 같은 작품으로 본다.
+        # (handover 데이터의 출연진 목록이 카드보다 짧게 잘려 있는 경우가 있다)
+        head = [x for x in ck.split(",") if x][:3]
+        if len(head) >= 2:
+            for idx, it in enumerate(syn_items):
+                if used[idx] or not it["cast_key"]:
+                    continue
+                other = [x for x in it["cast_key"].split(",") if x][:3]
+                if len(set(head) & set(other)) >= 2:
+                    w["synopsis"] = it["synopsis"]
+                    w["trailer"] = it["trailer"]
+                    used[idx] = True
+                    break
     for w in uniq:
         if w["synopsis"]:
             continue
