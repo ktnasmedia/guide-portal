@@ -123,6 +123,35 @@ def extract_images(soup):
     return imgs
 
 
+def extract_posters_dom(html):
+    """본문 <img> 태그에서 제목→포스터 URL 매핑.
+
+    티빙이 프레이머를 새 버전으로 올리면서 포스터 주소가 script 데이터에서
+    사라지고 본문 img 태그로 옮겨갔다. 제목(h3 또는 preset-1h4d2v7 p) 앞 구간의
+    마지막 이미지가 그 카드의 포스터다.
+    """
+    heads = []
+    for m in re.finditer(r"<h3[^>]*>(.*?)</h3>", html, re.S):
+        heads.append((m.start(), m.end(), re.sub(r"<[^>]+>", "", m.group(1)).strip()))
+    for m in re.finditer(
+            r'<p[^>]*framer-styles-preset-1h4d2v7[^>]*>(.*?)</p>', html, re.S):
+        heads.append((m.start(), m.end(), re.sub(r"<[^>]+>", "", m.group(1)).strip()))
+    heads.sort()
+
+    img_re = re.compile(
+        r'src="(https://framerusercontent\.com/images/[A-Za-z0-9]+\.(?:webp|jpg|png))')
+    posters, prev = {}, 0
+    for start, end, title in heads:
+        seg = html[prev:start]
+        prev = end
+        if not title or len(title) > 40:
+            continue
+        urls = img_re.findall(seg)
+        if urls:
+            posters[title.replace(" ", "")] = urls[-1]
+    return posters
+
+
 def extract_posters(html):
     """
     Framer 데이터 script에서 제목→포스터 URL 매핑.
@@ -388,7 +417,12 @@ def collect_tving_ads():
     text = soup.get_text("\n")
     heads = extract_headings(soup)
     works = parse_blocks(text, heads)
-    posters = extract_posters(html)
+    # 새 구조(본문 img) 먼저 시도하고, 없으면 예전 구조(script 데이터)로
+    posters = extract_posters_dom(html)
+    if not posters:
+        posters = extract_posters(html)
+    if not posters:
+        print("  [경고] 포스터를 찾지 못했습니다. 티빙 페이지 구조가 또 바뀌었을 수 있습니다.")
     icon_media, unknown_icons = media_by_icons(html)
     if unknown_icons:
         print(f"  [경고] 처음 보는 매체 아이콘 {len(unknown_icons)}종: {', '.join(unknown_icons[:5])}")
