@@ -438,6 +438,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .pen-dash{color:var(--gray-hi);font-weight:600;}
 .pen-val{font-size:13px;color:var(--gray-hi);line-height:1.7;}
 .pen-val .risk{margin-bottom:6px;}
+.pen-inline-note{font-size:12px;color:var(--gray-low);margin-top:7px;line-height:1.7;}
 .pen-foot{padding:12px 14px;border-top:1px dashed var(--border);
   font-size:12px;color:var(--gray-low);line-height:1.7;}
 .pen-sum > div + div,.pen-tbl > div + div{border-left:none;}
@@ -1880,7 +1881,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div id="tc-policy-penalty" style="display:none;">
 
         <div class="section-bar"><div class="section-accent"></div><span class="section-label">위약금 한눈에 보기</span></div>
-        <div class="info-card">
+        <div class="info-card" style="margin-bottom:4px;">
     <div class="pen-sum pen-sum-head"><div>매체</div><div>상품 · 유형</div><div>구분</div><div>위약금</div></div>
 
     <div class="pen-grp-row">
@@ -1931,8 +1932,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     </div>
   </div>
 
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">넷플릭스 위약금 정책 가이드</span></div>
-        <div class="info-card">
+        <div class="section-bar" style="margin-top:34px;"><div class="section-accent"></div><span class="section-label">넷플릭스 위약금 정책 가이드</span></div>
+        <div class="info-card" style="margin-bottom:4px;">
     <div class="pen-tbl pen-tbl-head"><div>상품 · 유형</div><div>시점 · 조건</div><div>위약금 기준</div></div>
 
     <div class="pen-item pen-tbl">
@@ -1945,13 +1946,13 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="pen-grp">DIO · PG</div>
       <div class="pen-when">D-14 이전</div>
       <div class="pen-val"><span class="risk risk-safe">위약금 없음</span>
-        <div>캠페인 라이브 14일 전 취소 통지 시(서면 통지), 위약금 없이 취소 가능</div></div>
+        <div>캠페인 라이브 14일 전 취소 통지 시(서면 통지), 위약금 없이 취소 가능</div><div class="pen-inline-note">※ 서면 통지 기준. 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" style="color:inherit;">netflix@nasmedia.co.kr</a>) 메일 발송 필수.</div></div>
     </div>
     <div class="pen-item pen-tbl">
       <div class="pen-grp"></div>
       <div class="pen-when">D-14 이내</div>
       <div class="pen-val"><span class="risk risk-warn">14일치 부과</span>
-        <div>캠페인 라이브 14일 이내에 취소 시, 14일치 미디어 비용 위약금 부과</div></div>
+        <div>캠페인 라이브 14일 이내에 취소 시, 14일치 미디어 비용 위약금 부과</div><div class="pen-inline-note">※ 서면 통지 기준. 금액 산정 문의는 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" style="color:inherit;">netflix@nasmedia.co.kr</a>) 확인 필요.</div></div>
     </div>
 
     <div class="pen-item pen-tbl">
@@ -1967,12 +1968,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="pen-val"><span class="risk risk-safe">위약금 없음</span>
         <div>취소가 아닌 일정 변경 또는 연기는 위약금이 발생하지 않습니다. 담당팀으로 협의 문의해 주세요.</div></div>
     </div>
-
-    <div class="pen-foot">※ 서면 통지 기준. 금액 산정 문의는 미디어기획팀(netflix@nasmedia.co.kr) 확인 필요</div>
   </div>
-        <div class="section-bar"><div class="section-accent"></div><span class="section-label">티빙·웨이브 위약금 정책 가이드</span></div>
+        <div class="section-bar" style="margin-top:34px;"><div class="section-accent"></div><span class="section-label">티빙·웨이브 위약금 정책 가이드</span></div>
 
-        <div class="info-card">
+        <div class="info-card" style="margin-bottom:4px;">
     <div class="pen-tbl pen-tbl-head"><div>상품 · 유형</div><div>시점 · 조건</div><div>위약금 기준</div></div>
 
     <div class="pen-item pen-tbl">
