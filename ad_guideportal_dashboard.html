@@ -1832,7 +1832,8 @@ let currentTab  = 'all';
 
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
-  updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)   policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
+  updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
+  policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
   products:     ['all','video','image','exclusive','qr'],   // 'STS' 탭은 숨김 (익스클루시브로 흡수)
   targeting:    ['all','basic','premium','dsp'],
   subscription: ['calculator','process','penalty'],   // '전체' 탭은 숨김 (하위 탭 소개만 있어 중복)
