@@ -397,14 +397,40 @@ def collect_and_accumulate_tving_ads():
         return (item.get("title") or "").replace(" ", "").lower()
 
     fresh_titles = {_title_key(it) for it in new_items}
+
+    # 옛 항목을 지우기 전에, 이번에 못 읽은 값을 물려받을 수 있게 보관해 둔다.
+    # (티빙이 페이지 구조를 바꿔 줄거리·예고편이 안 들어오는 일이 있었다.
+    #  새로 못 읽었다고 이미 확보한 값을 버리면 화면에서 정보가 사라진다.)
+    KEEP_FIELDS = ("synopsis", "trailer", "poster", "cast", "genres", "rating")
+    inherit = {}
+    for it in accum.values():
+        k = _title_key(it)
+        if k not in fresh_titles:
+            continue
+        keep = inherit.setdefault(k, {})
+        for f in KEEP_FIELDS:
+            if not keep.get(f) and it.get(f):
+                keep[f] = it[f]
+
     if fresh_titles:
         removed = [cid for cid, it in accum.items() if _title_key(it) in fresh_titles]
         for cid in removed:
             del accum[cid]
         if removed:
             print(f"  → 다시 수집된 작품의 옛 항목 {len(removed)}건 정리")
+
+    inherited = 0
     for it in new_items:
+        keep = inherit.get(_title_key(it))
+        if keep:
+            for f, v in keep.items():
+                if not it.get(f):
+                    it[f] = v
+                    if f == "synopsis":
+                        inherited += 1
         accum[it["content_id"]] = it
+    if inherited:
+        print(f"  → 이번에 못 읽은 줄거리 {inherited}건은 기존 값 유지")
 
     merged = list(accum.values())
 
