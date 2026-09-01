@@ -295,6 +295,47 @@ def decode_unicode(s):
         return s.replace("\\u003C", "<").replace("\\u003E", ">").replace("\\u0026", "&")
 
 
+def extract_synopsis_handover(html):
+    """framer handover 데이터에서 줄거리·예고편을 등장 순서대로 추출.
+
+    티빙이 프레이머를 새 버전으로 올리면서 데이터 모양이 바뀌었다.
+    이제 줄거리 앞뒤에 {"type":9,"value":숫자} 표시가 붙는다.
+      예: {"type":9,"value":479},"줄거리 문장",{"type":9,"value":481}
+    예전 방식(script[11])이 통하는 페이지도 있으므로 그쪽은 그대로 두고
+    이 함수를 먼저 시도한다.
+    """
+    # handover 태그가 있으면 그 안만, 없으면 전체에서 찾는다
+    m = re.search(r'<script[^>]*id="__framer__handoverData"[^>]*>(.*?)</script>',
+                  html, re.DOTALL)
+    data = m.group(1) if m else html
+
+    items = []
+    # 앞에 type:9 표시가 붙은 한글 문장 = 줄거리 후보
+    pat = re.compile(r'\{"type":9,"value":\d+\},"([^"]{20,400})"')
+    for mm in pat.finditer(data):
+        syn = decode_unicode(mm.group(1))
+        # 출연진 나열·날짜·저작권 문구는 줄거리가 아니다
+        if len(re.findall(r"[가-힣]{2,4},", syn)) >= 3:
+            continue
+        if re.match(r"^[\d\s.년월일]+$", syn) or "All rights reserved" in syn:
+            continue
+        # 주소·파일명·영문만 있는 값은 줄거리가 아니다
+        if re.match(r"^https?://", syn) or "/" in syn[:12]:
+            continue
+        if not re.search(r"[가-힣]", syn):
+            continue
+        # 뒤쪽 가까이에 예고편 주소가 있으면 함께
+        tail = data[mm.end():mm.end() + 600]
+        tm = re.search(r'"(https?://(?:youtu\.be|www\.youtube\.com)/[^"]+)"', tail)
+        trailer = tm.group(1) if tm else ""
+        # 앞쪽에서 출연진 후보 확보 (제목 매칭에 쓰임)
+        before = data[max(0, mm.start() - 600):mm.start()]
+        casts = re.findall(r'"([가-힣A-Za-z0-9]+(?:,\s*[가-힣A-Za-z0-9]+)+)"', before)
+        cast_key = decode_unicode(casts[-1]).replace(" ", "") if casts else ""
+        items.append({"cast_key": cast_key, "synopsis": syn, "trailer": trailer})
+    return items
+
+
 def extract_synopsis(html):
     """
     script[11] 데이터에서 줄거리·예고편을 '등장 순서대로' 추출.
@@ -367,7 +408,12 @@ def collect_tving_ads():
         uniq.append(w)
 
     # 줄거리·예고편 매칭 (출연진 → 제목 핵심단어)
-    syn_items = extract_synopsis(html)
+    # 새 구조(handover) 먼저 시도하고, 없으면 예전 구조(script[11])로
+    syn_items = extract_synopsis_handover(html)
+    if not syn_items:
+        syn_items = extract_synopsis(html)
+    if not syn_items:
+        print("  [경고] 줄거리 데이터를 찾지 못했습니다. 티빙 페이지 구조가 또 바뀌었을 수 있습니다.")
     used = [False] * len(syn_items)
     for w in uniq:
         ck = (w.get("cast") or "").replace(" ", "")
