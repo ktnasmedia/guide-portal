@@ -401,7 +401,9 @@ def collect_and_accumulate_tving_ads():
     # 옛 항목을 지우기 전에, 이번에 못 읽은 값을 물려받을 수 있게 보관해 둔다.
     # (티빙이 페이지 구조를 바꿔 줄거리·예고편이 안 들어오는 일이 있었다.
     #  새로 못 읽었다고 이미 확보한 값을 버리면 화면에서 정보가 사라진다.)
-    KEEP_FIELDS = ("synopsis", "trailer", "poster", "cast", "genres", "rating")
+    # 누적 파일은 스키마 변환 뒤 형태라 필드 이름이 다르다.
+    # (works: synopsis/trailer/poster  →  누적: summary/trailer_url/poster_url)
+    KEEP_FIELDS = ("summary", "trailer_url", "poster_url", "cast", "genres", "rating")
     inherit = {}
     for it in accum.values():
         k = _title_key(it)
@@ -426,7 +428,7 @@ def collect_and_accumulate_tving_ads():
             for f, v in keep.items():
                 if not it.get(f):
                     it[f] = v
-                    if f == "synopsis":
+                    if f == "summary":
                         inherited += 1
         accum[it["content_id"]] = it
     if inherited:
