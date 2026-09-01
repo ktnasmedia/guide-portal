@@ -335,6 +335,67 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .pen-wv{background:rgba(59,130,246,0.12);color:#7CB1FF;border:1px solid rgba(59,130,246,0.25);}
 .pen-cp{background:rgba(163,163,163,0.12);color:#BDBDBD;border:1px solid rgba(163,163,163,0.28);}
 
+/* ── 광고 정책 · 업종 페이지 (개편) ── */
+.page-disclaimer { font-size: 11px; color: var(--gray-hi); margin-top: 8px; }
+.page-disclaimer .pd-icon { color: #FB923C; }
+.policy-toolbar { margin-left: auto; display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+/* --- 업종 카드 그리드 + 아코디언 --- */
+.policy-tag.tag-chk { background: rgba(255,255,255,0.06); color: var(--gray-low); border: 1px solid var(--border); }
+.policy-tag.tag-limit-blue { background: rgba(113,162,221,0.12); color: rgb(113,162,221); border: 1px solid rgba(113,162,221,0.28); }
+.ind-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
+.ind-card { padding: 0; overflow: hidden; container-type: inline-size; background: var(--black-soft); }
+.ind-head { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px; cursor: pointer; user-select: none; }
+.ind-head:hover { background: rgba(255,255,255,0.025); }
+.ind-head-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ind-name { font-size: 15px; font-weight: 600; color: var(--white); flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ind-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.ind-pills .policy-tag { white-space: nowrap; transition: background .18s, color .18s, border-color .18s; }
+/* 필터가 없을 때만 헤더 칩을 흑백 처리 (본문에 컬러 칩이 둘 다 남아있어 중복 방지용) — 매체 필터 중엔 본문 칩을 숨기므로 헤더 칩 색을 그대로 살림 */
+#industry-grid:not(.focus-nf):not(.focus-tv) .ind-card.open .ind-head .ind-pills .policy-tag { background: rgba(255,255,255,0.06); color: var(--gray-low); border: 1px solid var(--border); }
+.ind-chev { color: var(--gray-dim); font-size: 15px; transition: transform .18s ease; flex: 0 0 auto; }
+.ind-card.open .ind-chev { transform: rotate(90deg); color: var(--red); }
+.ind-body { display: none; grid-template-columns: 1fr 1fr; gap: 16px; padding: 4px 16px 18px; border-top: 1px solid var(--black-ele); margin-top: 2px; padding-top: 14px; }
+.ind-card.open .ind-body { display: grid; }
+.ind-col-head { display: flex; align-items: center; margin-bottom: 8px; }
+.ind-col .tb-cite { font-size: 12.5px; color: var(--gray-mid); line-height: 1.65; margin: 0 0 8px; }
+.ind-link { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 500; color: var(--gray-mid); border: 1px solid var(--border); border-radius: 7px; padding: 6px 11px; text-decoration: none; transition: .18s; margin-top: 2px; }
+.ind-link:hover { border-color: var(--red); color: #ff8080; background: rgba(229,9,20,0.08); }
+.ind-filter-note { font-size: 12px; color: var(--gray-low); margin: 2px 0 0; }
+.ind-reset-btn { background: transparent; color: var(--gray-mid); border: 1px solid var(--border); border-radius: 7px; padding: 6px 13px; font-size: 12px; font-weight: 500; cursor: pointer; transition: .18s; font-family: "Noto Sans KR", sans-serif; white-space: nowrap; }
+.ind-reset-btn:hover { border-color: var(--gray-dim); color: var(--white); background: rgba(255,255,255,0.05); }
+.ind-card[data-tier="2"] { order: 0; }
+.ind-card[data-tier="1"] { order: 1; }
+.ind-card[data-tier="0"] { order: 2; }
+#industry-grid.focus-nf .ind-pills .policy-tag:nth-child(2) { display: none; }
+#industry-grid.focus-nf .ind-body .ind-col:nth-child(2) { display: none; }
+#industry-grid.focus-tv .ind-pills .policy-tag:nth-child(1) { display: none; }
+#industry-grid.focus-tv .ind-body .ind-col:nth-child(1) { display: none; }
+#industry-grid.focus-nf .ind-card.open .ind-body,
+#industry-grid.focus-tv .ind-card.open .ind-body { grid-template-columns: 1fr; }
+/* 매체 필터 상태에서 펼침 상세 안의 상태 칩은 중복이라 숨김 (헤더의 회색 칩은 그대로 유지) */
+#industry-grid.focus-nf .ind-card.open .ind-col-head,
+#industry-grid.focus-tv .ind-card.open .ind-col-head { display: none; }
+/* --- 기본(공통) 탭 --- */
+.bc-summary .info-card { background: transparent; border-color: var(--black-ele); padding: 16px 18px; }
+.bc-summary .bg-t { font-size: 12.5px; font-weight: 500; color: var(--gray-hi); }
+.bc-summary .bg-d { font-size: 11.5px; color: var(--gray-mid); }
+.bc-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.bc-col-box { padding: 18px 20px; }
+.bc-col-head { margin-bottom: 6px; }
+.bc-item { border-top: 1px solid var(--black-ele); }
+.bc-item:first-child { border-top: none; }
+.bc-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: none; border: none; padding: 13px 2px; cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--gray-hi); font-family: "Noto Sans KR", sans-serif; text-align: left; }
+.bc-toggle:hover { color: var(--white); }
+.bc-arrow { color: var(--gray-dim); font-size: 13px; transition: transform .18s ease; flex: 0 0 auto; }
+.bc-item.open .bc-arrow { transform: rotate(180deg); color: var(--red); }
+.bc-panel { display: none; padding: 0 2px 16px; }
+.bc-item.open .bc-panel { display: block; }
+.bc-summary-flag { font-size: 10.5px; color: var(--gray-dim); background: rgba(255,255,255,0.04); border: 1px dashed var(--border); border-radius: 6px; padding: 5px 9px; margin: 8px 0; display: inline-block; }
+.bc-panel .bg-sub { margin-top: 12px; }
+.bc-panel .bg-sub:first-child { margin-top: 0; }
+.bc-panel .tp-li-no { color: var(--gray-hi); }
+@media (max-width: 760px) { .bc-columns { grid-template-columns: 1fr; } }
+
 /* ── 공지 표 ── */
 .rn-tbl{background:var(--black-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
 .rn-tbl-row{display:grid;align-items:center;gap:0;padding:14px 0;cursor:pointer;transition:background 0.15s;}
@@ -890,11 +951,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <svg id="arrow-policy" class="nav-arrow" width="13" height="13" fill="none" viewBox="0 0 14 14"><path d="M4 5.5L7 8.5L10 5.5" stroke="#737373" stroke-width="1.3" stroke-linecap="round"/></svg>
     </div>
     <div id="sub-policy" class="sub-menu collapsed">
-      <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본(공통)</div>
-      <div class="nav-sub-item" onclick="navigate('policy','limited')"><span class="nav-sub-dot"></span>제한 업종</div>
-      <div class="nav-sub-item" onclick="navigate('policy','banned')"><span class="nav-sub-dot"></span>금지 업종</div>
-      <div class="nav-sub-item" onclick="navigate('policy','penalty')"><span class="nav-sub-dot"></span>위약금 정책</div>
-    </div>
+          <div class="nav-sub-item" onclick="navigate('policy','industry')"><span class="nav-sub-dot"></span>업종</div>
+          <div class="nav-sub-item" onclick="navigate('policy','basic')"><span class="nav-sub-dot"></span>기본(공통)</div>
+          <div class="nav-sub-item" onclick="navigate('policy','penalty')"><span class="nav-sub-dot"></span>위약금 정책</div>
+        </div>
   </div>
 
   <!-- 광고 상품 -->
@@ -1088,15 +1148,16 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     
     <!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> AI 기반 자동 요약으로 인해 오류가 있을 수 있으니, 최종 진행 시에는 매체별 상세 가이드 참고 및 담당팀으로 문의 바랍니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab" id="tab-policy-all" onclick="switchTab('policy','all')" style="display:none;">전체</div>
+        <div class="sub-tab" id="tab-policy-industry" onclick="switchTab('policy','industry')">업종</div>
         <div class="sub-tab" id="tab-policy-basic" onclick="switchTab('policy','basic')">기본(공통)</div>
-        <div class="sub-tab" id="tab-policy-limited" onclick="switchTab('policy','limited')">제한 업종</div>
-        <div class="sub-tab" id="tab-policy-banned" onclick="switchTab('policy','banned')">금지 업종</div>
         <div class="sub-tab" id="tab-policy-penalty" onclick="switchTab('policy','penalty')">위약금 정책</div>
+        <div class="sub-tab" id="tab-policy-limited" onclick="switchTab('policy','limited')" style="display:none;">제한 업종</div>
+        <div class="sub-tab" id="tab-policy-banned" onclick="switchTab('policy','banned')" style="display:none;">금지 업종</div>
         <div class="tab-search-wrap" id="policy-search-wrap" style="display:none;">
-          <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="policySearch()">
+          <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="indApplyFilter()">
         </div>
       </div>
       <div id="tc-policy-all" style="display:none;">
@@ -1114,7 +1175,633 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="policy-row"><div><span class="policy-tag tag-ban">금지 업종</span></div><div style="font-size:13px;color:var(--gray-mid);">도박, 성인 콘텐츠, 정치, 위험물</div><div style="font-size:13px;color:var(--gray-low);">집행 불가</div></div>
         </div>
       </div>
+      <div id="tc-policy-industry">
+        <div class="cl-filters" style="margin:4px 0 4px;align-items:center;">
+          <div class="cl-chip cl-on" data-indf="all">전체</div>
+          <div class="cl-chip" data-indf="nf">넷플릭스</div>
+          <div class="cl-chip" data-indf="tv">티빙·웨이브</div>
+          <div class="policy-toolbar">
+            <button class="ind-reset-btn" id="expand-all-ind">모두 펼침</button>
+            <button class="ind-reset-btn" id="collapse-all-ind">모두 접기</button>
+          </div>
+        </div>
+        <p class="ind-filter-note">※ '확인 필요'로 표시된 업종은 매체사 개별 확인이 필요합니다.</p>
+
+        <div class="section-bar" style="margin-top:18px;"><div class="section-accent"></div><span class="section-label">업종별 기준 · 23개</span></div>
+        <div class="ind-grid" id="industry-grid">
+        <div class="info-card ind-card" data-ind="game" data-status="limit" data-tier="2" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">게임·엔터</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-limit-blue">TVING 제한 업종</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">개별 영화·시리즈·게임에 대한 광고는 제한적으로 허용되며, 넷플릭스의 사전 승인이 필요합니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">TVING 제한 업종</span></div>
+              <div class="tb-cite">[게임산업진흥에 관한 법률]에 따른 등급분류를 받지 않은 게임물, 제한상영가 등급을 받은 영화는 광고 집행이 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="finance" data-status="limit" data-tier="2" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">금융·보험</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-limit-blue">TVING 제한 업종</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">광고주는 필수 라이선스를 보유해야 하며 국가별 규정을 준수해야 합니다. (보험은 별도 섹션으로 규정)</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">TVING 제한 업종</span></div>
+              <div class="tb-cite">[은행법] 등 관련 법령에 따른 자격이 있는 금융기관 외에는 광고 집행이 불가합니다. (대출·투자·보험·암호화폐 포함)</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="medical" data-status="limit" data-tier="2" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">제약·의료</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-limit-blue">TVING 제한 업종</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">특정 헬스케어 광고주, 제품 및 서비스는 넷플릭스의 사전 승인을 받아야 합니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">TVING 제한 업종</span></div>
+              <div class="tb-cite">[의료법]에 따라 의료기관 개설 신고서 또는 개설 허가증 제출 후 광고 집행이 가능합니다. 시력보정용 안경·콘텍트 렌즈(비시력보정용 포함)는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="alcohol" data-status="limit" data-tier="2" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">주류</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-limit-blue">TVING 제한 업종</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">해당 시장에서 주류 제조·수입·유통·판매 라이선스를 보유해야 하며, 광고 집행 기간 내내 유효해야 합니다.</div><div class="tb-cite">법정 음주 및 구매 연령 고지를 포함해야 합니다.</div><div class="tb-cite">금지 — 과음·폭음·경쟁적 음주 조장, 금주·절주에 대한 부정적 묘사</div><div class="tb-cite">금지 — 미성년자의 음주 묘사, 또는 유명인 기용 등으로 미성년자에게 소구</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">TVING 제한 업종</span></div>
+              <div class="tb-cite">연령(성인) 타겟팅을 반드시 적용해야 합니다.</div><div class="tb-cite">주류 광고는 소재 내 국민건강증진법에 따른 과음 경고 문구 중 하나를 반드시 표기해야 합니다.</div><div class="tb-cite">주류를 인터넷으로 판매하는 형태의 광고는 집행 불가합니다.</div><div class="tb-cite">고도수(17도 이상) — 판매촉진 페이지 랜딩 불가 / 브랜드 공식 홈페이지 랜딩 가능</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="gambling" data-status="limit" data-tier="1" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">도박·사행성 산업</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">모든 도박 광고주는 넷플릭스의 사전 승인을 받아야 합니다.</div><div class="tb-cite">한국: 넷플릭스는 한국을 타겟팅하는 도박 광고를 금지합니다. (경품·콘테스트만 예외적으로 허용)</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">사행성 산업(도박, 카지노, 경마, 복권 등)은 원칙적으로 불가합니다.</div><div class="tb-cite">한국마사회, 국민체육진흥공단, 동행복권, 나눔lotto 등 수익금 기부와 같은 공익성 광고의 경우 티빙 내부 검수 담당자 검토 후 집행 가능합니다.</div><div class="tb-cite">예외로 집행하는 경우 소재 구성에 따라 성인 타겟팅이 필요할 수 있습니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="competitor" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">경쟁 서비스</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">타 스트리밍 서비스나 그 콘텐츠 광고는 불가합니다. (넷플릭스가 예외를 허용할 수 있음)</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">티빙 경쟁 서비스 광고는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="tobacco" data-status="limit" data-tier="1" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">담배</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-limit-blue">TVING 제한 업종</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">담배·전자담배·베이핑 제품 및 관련 서비스는 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">TVING 제한 업종</span></div>
+              <div class="tb-cite">담배 제품 광고는 원칙적으로 불가합니다.</div><div class="tb-cite">정부단체 및 이에 준하는 기관/단체의 공익 목적의 금연광고는 집행 가능합니다.</div><div class="tb-cite">전자담배 기기장치류는 판매 목적이 아닌 브랜드 홍보 목적 광고에 대해서는 제한적으로 집행 가능합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="mlm" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">방문판매·다단계</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">다단계 마케팅은 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">방문판매, 다단계 홍보/모집은 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="adult" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">성인</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">성적으로 노골적인 상품·서비스, 유상 데이팅, 성인용품은 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">성인(성인방송, 성인용품, 성인 커뮤니티 등)은 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="agency" data-status="limit" data-tier="1" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">유료 인력소개소</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">고용 관련 광고는 제한 카테고리로, 타겟팅 옵션이 제한됩니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">유료 인력소개소는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="opinion" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">정치/의견 광고</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">정치·선거·의견 광고 및 해당 광고주는 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">의견 광고(특정인/특정집단 반대, 사회적 이슈 및 분쟁 가능성 있는 주장 등)는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="hfss" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">고지방·고당·고염</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">관련 법률·규정 준수가 필요하며 국가별 기준이 다릅니다. (HFSS: High Fat, Sugar, Salt)</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="dating" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">데이팅</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">모든 데이팅 광고주는 사전 승인이 필요하며, 관계 기반 데이팅·만남·중매 서비스만 홍보할 수 있습니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="nonprofit" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">비영리</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">정치·종교 활동을 홍보하거나 주로 관여하는 비영리 단체의 광고는 금지됩니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="gov" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">정부</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">사전 승인된 공식 정부 기관 광고만 허용되며, 정치·종교적 콘텐츠는 금지됩니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="housing" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">주택·대출·고용</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">콘텐츠 제한이 아닌 타겟팅 옵션 제한 정책입니다 — 공정한 접근을 위해 상세 타겟팅 기능 사용이 제한됩니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="illegal" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">기타 위법·부적절 서비스</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">위조품·불법 복제·위조 서비스, 부정직한 행위를 조장하는 상품·서비스는 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">살아있는 생명 판매·분양, 사생활 침해 서비스, 논문·시험 대리, 커뮤니티 매매, 팔로워·좋아요 판매 등 7개 항목이 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="ponzi" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">유사수신행위</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">투기성 금융상품, 한탕주의·피라미드·금융 사기는 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">유사수신행위(투자 시 원금 및 고수익 보장, 고리 이자 지급 보장 등)는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="religion" data-status="ban" data-tier="0" data-media="nf tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">종교·미신</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-ban">Netflix 집행 불가</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">Netflix 집행 불가</span></div>
+              <div class="tb-cite">종교 광고 및 종교 광고주는 불가합니다.</div>
+              <a class="ind-link" href="https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">종교 및 미신/사주팔자/토속신앙 광고는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="contest" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">경품·콘테스트</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">추첨·콘테스트 광고는 제한됩니다. 참가에 결제가 필요한 경우 도박 광고 정책 기준으로 심사됩니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="local" data-status="limit" data-tier="1" data-media="nf">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">로컬 서비스</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-limit-blue">Netflix 제한 업종</span>
+              <span class="policy-tag tag-chk">TVING 확인 필요</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-limit-blue">Netflix 제한 업종</span></div>
+              <div class="tb-cite">사전 승인 시 집 수리업체, 법무법인 등 지역 서비스 제공업체 광고를 허용합니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ad-restrictions" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">TVING 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="ent" data-status="ban" data-tier="0" data-media="tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">유흥업</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-chk">Netflix 확인 필요</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">Netflix 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">유흥업 광고는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card ind-card" data-ind="massage" data-status="ban" data-tier="0" data-media="tv">
+          <div class="ind-head">
+            <div class="ind-head-top">
+              <span class="ind-name">출장 마사지·출장 뷰티/미용</span>
+              <span class="ind-chev">›</span>
+            </div>
+            <div class="ind-pills">
+              <span class="policy-tag tag-chk">Netflix 확인 필요</span>
+              <span class="policy-tag tag-ban">TVING 집행 불가</span>
+            </div>
+          </div>
+          <div class="ind-body">
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-chk">Netflix 확인 필요</span></div>
+              <div class="tb-cite" style="color:var(--gray-dim);">참고 원문 없음 — 매체사 개별 확인이 필요합니다.</div>
+              <a class="ind-link" href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 원문 보기 ↗</a>
+            </div>
+            <div class="ind-col">
+              <div class="ind-col-head"><span class="policy-tag tag-ban">TVING 집행 불가</span></div>
+              <div class="tb-cite">출장 마사지, 출장 뷰티/미용 광고는 불가합니다.</div>
+              <a class="ind-link" href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals" target="_blank" rel="noopener">TVING 원문 보기 ↗</a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
       <div id="tc-policy-basic" style="display:none;">
+        <div class="bc-summary">
+        <div class="tp-group"><div class="tp-group-bar"></div><span class="tp-group-label">매체 공통 정책 요약</span></div><div class="info-card" style="margin-bottom:22px;"><div class="bg-row"><div class="bg-t">법규 준수</div><div class="bg-d">현행법·자율규제·업계 기준을 지켜야 하며, 인허가나 신고가 필요한 업종은 자격을 갖춰야 합니다.</div></div><div class="bg-row"><div class="bg-t">허위·과장 금지</div><div class="bg-d">사실과 다르거나 소비자를 오인하게 하는 표현은 집행할 수 없고, 광고 내 주장은 입증할 수 있어야 합니다.</div></div><div class="bg-row"><div class="bg-t">청소년 보호</div><div class="bg-d">미성년자를 대상으로 하거나 소구하는 광고는 불가하며, 청소년 유해 요소가 있으면 별도 보호조치가 필요합니다.</div></div><div class="bg-row"><div class="bg-t">선정·폭력·혐오</div><div class="bg-d">과도한 노출과 성적 표현, 지나친 폭력, 특정 집단을 향한 차별·혐오 표현이 포함된 소재는 집행할 수 없습니다.</div></div><div class="bg-row"><div class="bg-t">타인 권리 침해</div><div class="bg-d">저작권·상표권 등 제3자의 권리를 침해하거나 타인의 명의를 도용하는 광고는 불가합니다.</div></div><div class="bg-row"><div class="bg-t">랜딩 페이지</div><div class="bg-d">검수받은 사이트와 다른 곳으로 연결하거나, 접속되지 않거나 소재와 관련성이 낮은 랜딩은 불가합니다.</div></div><div class="bg-row"><div class="bg-t">매체 재량 심사</div><div class="bg-d">조건을 모두 충족하더라도 매체 판단에 따라 집행이 제한되거나 소재 교체를 요청받을 수 있습니다.</div></div></div>
+        </div>
+        <div class="tp-group" style="margin-top:26px;">
+          <div class="tp-group-bar"></div><span class="tp-group-label">매체별 상세</span>
+          <div class="policy-toolbar" id="common-toolbar">
+            <button class="ind-reset-btn" id="expand-all-common">모두 펼침</button>
+            <button class="ind-reset-btn" id="collapse-all-common">모두 접기</button>
+          </div>
+        </div>
+        <div class="bc-columns">
+        <div class="bc-col-box info-card">
+        <div class="bc-col-head"><span class="pen-media pen-nf">Netflix</span></div>
+        <div class="bc-item" data-bc="nf-0">
+          <button class="bc-toggle"><span>일반 가이드라인</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-0"><div class="tp-li">• 관련 법령·규정·업계 자율규제 지침을 모두 준수해야 합니다.</div><div class="tp-li">• 저작권·상표권 등 타인의 지식재산권이나 인격권을 침해하거나 명예를 훼손해서는 안 됩니다.</div><div class="tp-li">• 광고는 정확하고 진실해야 하며 오인을 유발해서는 안 됩니다. 넷플릭스가 요청하면 광고 내 모든 명시적·묵시적 주장에 대한 입증 자료를 제출해야 합니다.</div><div class="tp-li">• 광고임을 명확히 알 수 있어야 합니다. 허위 보증, 딥페이크 등 기만적 수법은 금지되며 기사·뉴스·긴급 알림처럼 보이게 해서는 안 됩니다.</div><div class="tp-li">• 인종·종교·국적·민족·장애·성적 지향·성별·연령 등 법이 보호하는 속성에 근거한 차별을 하거나 조장해서는 안 됩니다.</div><div class="tp-li">• 품위를 해쳐서는 안 됩니다 — 범죄·위험·부적절한 행동 미화, 과도한 폭력, 성적으로 노골적이거나 과도하게 선정적인 표현과 노출, 외설·비속어, 무력 충돌·재난·참사 등 민감한 사안 언급, 낚시성·과장·강압적이거나 감정을 조종하는 메시지, 위협·괴롭힘·선동적 표현이 금지됩니다.</div><div class="tp-li">• 승인되지 않은 제휴 관계를 암시하거나 넷플릭스의 이름·브랜드·서비스, 넷플릭스 콘텐츠와 그 창작 요소(출연자·캐릭터·작품명·로고·서체·음악 등)를 사용해서는 안 됩니다. 소재뿐 아니라 URL·프로모션 코드·랜딩 페이지 등 캠페인의 모든 요소에 적용됩니다.</div><div class="tp-li">• 넷플릭스는 제작 방식과 무관하게 모든 광고를 검토·승인·거부하거나 수정을 요구하고 집행을 철회할 권리를 갖습니다.</div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-1">
+          <button class="bc-toggle"><span>편집기준</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-1"><div class="bg-sub">지켜야 할 것</div><div class="tp-li">• 광고주와의 직접적인 연관성이 드러나야 하며, 명확한 제품·서비스·브랜드를 제시해야 합니다.</div><div class="tp-li">• 넷플릭스 광고의 기술·미디어 요건을 준수해 시청자가 기대하는 수준의 품질을 유지해야 합니다.</div><div class="tp-li">• 문법과 표기가 정확해야 하고 타겟 오디언스에 맞는 언어를 사용해야 합니다.</div><div class="tp-li">• 모든 약관·문구·고지 사항은 크기·노출 시간·서체·색상 면에서 읽을 수 있어야 합니다.</div><div class="bg-sub">불가한 것</div><div class="tp-li tp-li-no">• 음성 더빙이 눈에 띄게 어긋나거나 번역 품질이 낮은 경우</div><div class="tp-li tp-li-no">• 여러 광고를 하나로 이어 붙인 소재</div><div class="tp-li tp-li-no">• 과도한 점멸·스트로브·반복 등 불쾌감을 주는 시각 효과</div><div class="tp-li tp-li-no">• 시청자의 개인적 특성을 알고 있는 것처럼 암시하는 표현</div><div class="tp-li tp-li-no">• 미성년자를 주 대상으로 하거나 소구하는 내용 (시각·언어·문구 요소 모두 해당)</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">넷플릭스 광고 정책 원문 ↗</a></div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-2">
+          <button class="bc-toggle"><span>금지된 광고 콘텐츠</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-2"><div class="bg-sub">위험한 제품 또는 서비스</div><div class="tp-li tp-li-no">• 총기·화기·폭발물·탄약·무기(칼·수집품·장난감 포함)·불꽃놀이 및 관련 제품/서비스</div><div class="tp-li tp-li-no">• 레크리에이션 또는 불법 약물 및 관련 제품/서비스</div><div class="tp-li tp-li-no">• 반(反)약물 캠페인 (사전 승인된 적격 광고주 제외)</div><div class="tp-li tp-li-no">• 대마초·마리화나·CBD·THC 및 관련 제품/서비스</div><div class="bg-sub">불법 제품·서비스·활동</div><div class="tp-li tp-li-no">• 위조품, 불법복제, 위조 서비스</div><div class="tp-li tp-li-no">• 미국/EU/UK/UN 제재 대상 당사자가 소유·통제하는 제품</div><div class="bg-sub">담배 관련 제품</div><div class="tp-li tp-li-no">• 담배·시가·파이프·씹는담배·전자담배·베이퍼·베이핑 제품 및 관련 제품/서비스</div><div class="bg-sub">정치·선거·옹호 광고</div><div class="tp-li tp-li-no">• 정치·선거·옹호 광고주</div><div class="bg-sub">종교 광고</div><div class="tp-li tp-li-no">• 종교 광고 또는 광고주</div><div class="bg-sub">명시적 성인 제품·서비스</div><div class="tp-li tp-li-no">• 명시적 데이트·유료 데이트·포르노·성인용품 또는 사이트</div><div class="tp-li tp-li-no">• '900' 번호 또는 전화 서비스</div><div class="tp-li tp-li-no">• 투기적 금융 상품</div><div class="tp-li tp-li-no">• 부정직한 행동을 촉진·조장하는 제품 및 서비스</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 광고 정책 원문 ↗</a></div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-3">
+          <button class="bc-toggle"><span>제한된 카테고리</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-3"><div class="tp-li">• 알코올</div><div class="tp-li">• 데이트</div><div class="tp-li">• 엔터테인먼트(TV·영화·게임 예고편)</div><div class="tp-li">• 금융 서비스(은행 / 신용·대출 / 암호화폐 / 보험)</div><div class="tp-li">• 도박</div><div class="tp-li">• 정부</div><div class="tp-li">• 헬스케어</div><div class="tp-li">• 고지방·고당·고염 식품 및 음료</div><div class="tp-li">• 주택·대출·고용</div><div class="tp-li">• 지역 서비스(법률 서비스 포함)</div><div class="tp-li">• 비영리 단체</div><div class="tp-li">• 경품 및 경진대회</div><div class="bc-summary-flag" style="margin-top:10px;">각 카테고리의 상세 집행 조건은 이 페이지의 '업종' 탭을 참고하세요.</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 광고 정책 원문 ↗</a></div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-4">
+          <button class="bc-toggle"><span>타겟팅 및 개인화 광고</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-4"><div class="bg-sub">민감한 개인정보 기반 타겟팅 금지 — 정체성·신념·소속</div><div class="tp-li">• 인종 또는 민족</div><div class="tp-li">• 시민권 또는 이민 상태</div><div class="tp-li">• 종교적 신념</div><div class="tp-li">• 성적 지향</div><div class="tp-li">• 정치적 소속</div><div class="tp-li">• 노동조합 가입</div><div class="bg-sub">민감한 개인정보 기반 타겟팅 금지 — 신체·정신 건강</div><div class="tp-li">• 장애</div><div class="tp-li">• 유전학 및 생체인식 데이터</div><div class="tp-li">• 만성질환 또는 장기 관리·치료가 필요한 상태</div><div class="tp-li">• 정신 또는 심리 치료·중재</div><div class="tp-li">• 성 및 생식 건강, 친밀한 개인위생</div><div class="tp-li">• 비건강 데이터로 추론한 건강 상태</div><div class="bg-sub">민감한 개인정보 기반 타겟팅 금지 — 개인적 어려움 및 기타</div><div class="tp-li">• 부채·파산 등 부정적 재정 상태</div><div class="tp-li">• 학대·트라우마·가정폭력·범죄 피해자 상태</div><div class="tp-li">• 이혼·별거·상실 등 관계 어려움</div><div class="tp-li">• 전과 기록</div><div class="tp-li">• 미성년자</div><div class="tp-li">• 명시적 동의 없이 수집한 정확한 위치 데이터</div><div class="bg-sub">업종별 타겟팅 도구 제한</div><div class="tp-li">• 신용·대출 광고주: 연령·성별·가구구성·가구소득·가구규모·혼인상태·우편번호 금지</div><div class="tp-li">• 주택 광고주: 연령·성별·교육·가구구성·가구소득·가구규모·혼인상태·우편번호 금지</div><div class="tp-li">• 고용 광고주: 성별·교육·가구구성·가구소득·가구규모·혼인상태·우편번호 금지 (연령은 미국·캐나다만 제한)</div><div class="tp-li">• 암호화폐 광고주: 연령·성별·우편번호·가구소득 금지</div><div class="tp-li">• 은행 광고주: 가구구성·가구소득·가구규모·혼인상태 금지</div><div class="tp-li">• 보험 광고주: 성별·우편번호 금지</div><div class="tp-li">• 고지방·고당·고염 식품(영국): 가구구성·가구규모 금지</div><div class="bg-sub">'Family Time' 장르 타겟팅 금지</div><div class="tp-li">• 알코올·데이트·도박</div><div class="tp-li">• 성인 영화·TV·게임 예고편</div><div class="tp-li">• 성인 헬스케어 제품·서비스</div><div class="tp-li">• 폭력적·성적 암시 크리에이티브를 포함한 성인 콘텐츠</div><div class="bg-sub">오디언스 데이터 사용 정책</div><div class="tp-li">• 보호 속성·민감 관심사를 타겟팅/제외의 대체 수단으로 사용 금지</div><div class="tp-li">• 개인 식별이 쉬워질 만큼 좁은 오디언스 세분화 금지</div><div class="tp-li">• Netflix 제공 데이터를 개인과 재결합 시도 금지</div><div class="tp-li">• 해시 데이터를 이름·이메일 등 직접 식별 정보와 결합 금지</div><div class="tp-li">• 알코올·데이트·암호화폐·도박은 직접 업로드한 오디언스로 타겟팅 금지</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 광고 정책 원문 ↗</a></div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-5">
+          <button class="bc-toggle"><span>랜딩 페이지·인터랙티브 요소 요구사항</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-5"><div class="bg-sub">일반 요구사항</div><div class="tp-li">• 모든 관련 법률 및 업계 표준(면책조항·크리에이티브 요건 포함) 준수</div><div class="tp-li">• URL·리다이렉트·QR코드 등 인터랙티브 요소는 랜딩페이지 이동 용도로만 사용</div><div class="tp-li">• 사용자 명시적 동의 없이 즉시 구매·결제·가입·정보수집 등 추가 행동 금지</div><div class="tp-li">• 인터랙티브 요소가 면책조항·공시 요건을 가리지 않도록 함</div><div class="tp-li">• 미성년자 대상 사이트·앱·서비스로의 홍보·연결 금지</div><div class="bg-sub">랜딩페이지 — 필수 사항</div><div class="tp-li">• 광고 소재(카피·제품·광고주)와 실제 랜딩페이지 내용 일치</div><div class="tp-li">• 광고주가 소유·운영하거나 직접 관련된 페이지로 연결</div><div class="tp-li">• 정상 작동하는 웹페이지 또는 공식 앱스토어로 연결</div><div class="tp-li">• 개인정보 보호정책 링크를 명확히 표시</div><div class="bg-sub">랜딩페이지 — 금지 사항</div><div class="tp-li">• 제휴사·클릭베이트·기사형 광고 등으로 연결</div><div class="tp-li">• 링크 단축기 사용</div><div class="tp-li">• 오류가 있거나 작동하지 않는 페이지로 연결</div><div class="tp-li">• 링크 모음, 소셜 프로필, 다운로드/PDF 등 대체 목적지 사용</div><div class="tp-li">• UTM 등 추가 추적·리다이렉트 도구 임의 삽입</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 광고 정책 원문 ↗</a></div></div>
+        </div>
+        <div class="bc-item" data-bc="nf-6">
+          <button class="bc-toggle"><span>보충 조건</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-nf-6"><div class="tp-li">• ① 광고 자료 — 광고주가 자료 전체에 책임지며, Netflix에 사용·수정·복제에 대한 비독점 라이선스를 부여함</div><div class="tp-li">• ② 베타 기능 — Netflix 소유이며 '현재 상태 그대로' 제공, 사전 통지 없이 변경·중단될 수 있음</div><div class="tp-li">• ③ 커스터마이징 가능 기능 — 링크·QR코드 등 사용에 대한 책임은 광고주에게 있음</div><div class="tp-li">• ④ 제3자 플랫폼 광고 — Netflix가 소셜 미디어 등 제3자 플랫폼에도 광고를 게재할 수 있음</div><div class="tp-li">• ⑤ Netflix 데이터 — 광고 참여로 발생한 사용자 데이터는 Netflix가 소유</div><div class="tp-li">• ⑥ Netflix IP — 로고·상표 등은 사전 서면 승인 하에만 제한적으로 사용 가능</div><div class="tp-li">• ⑦ 라이브 프로그래밍 광고 — 별도의 라이브 광고 약관이 추가로 적용됨</div><div class="tp-li">• ⑧ 수정 — Netflix는 고지 후 본 약관을 수정할 수 있으며, 계속 광고 시 동의로 간주</div><div class="tp-src"><a href="https://help.netflix.com/legal/ads-policy" target="_blank" rel="noopener">Netflix 광고 정책 원문 ↗</a></div></div>
+        </div>
+      </div>
+        <div class="bc-col-box info-card">
+        <div class="bc-col-head"><span class="pen-media pen-tv">TVING</span></div>
+        <div class="bc-item" data-bc="tv-0">
+          <button class="bc-toggle"><span>광고 집행 자격</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-tv-0"><div class="tp-li">• 현행법 및 티빙 내부 광고 검수 가이드를 준수한 경우에만 광고 집행이 가능합니다.</div><div class="tp-li">• 티빙 광고 검수 가이드에 따라 특정 광고주의 광고 집행이 제한될 수 있습니다.</div><div class="tp-li">• 해당 광고가 사회적 이슈가 될 가능성이 있다고 판단될 경우, 또는 이용자의 항의가 있거나 이용자 경험이나 티빙 서비스의 안정성에 부정적인 영향을 미칠 우려가 있는 광고는 집행이 제한될 수 있습니다.</div></div>
+        </div>
+        <div class="bc-item" data-bc="tv-1">
+          <button class="bc-toggle"><span>집행 불가 광고</span><span class="bc-arrow">⌄</span></button>
+          <div class="bc-panel" id="bc-tv-1"><div class="bg-sub">관련 법령 위반 광고</div><div class="tp-li tp-li-no">• 통신판매업신고, 의료기관 개설신고 등 업종별 인/허가를 받지 않거나 또는 등록/신고 되지 않은 광고</div><div class="tp-li tp-li-no">• 담배, 주류, 콘텍트렌즈 등 온라인 판매가 제한되는 상품 또는 서비스를 제공하는 광고</div><div class="tp-li tp-li-no">• 국내에서 허가받지 않은 의료기기, 의약품, 건강기능식품, 화장품 광고</div><div class="tp-li tp-li-no">• 불법 금융 상품 (무등록 대부업, 유사수신행위 등) 광고</div><div class="tp-li tp-li-no">• 미허가된 온라인 도박 및 사행성 게임 광고</div><div class="tp-li tp-li-no">• 제 3자의 권리(저작권, 초상권, 상표권, 지적재산권 등) 침해가 확인되는 광고</div><div class="bg-sub">청소년 보호법 위반 광고</div><div class="tp-li tp-li-no">• 청소년 유해 매체물, 청소년 접근 제한이 필요한 담배·성인용품 광고</div><div class="tp-li tp-li-no">• 사이트 내 성인 콘텐츠(주류 사이트 등)를 포함하였음에도 성인인증 등의 법령에 따른 청소년 보호조치를 취하지 않은 광고</div><div class="tp-li tp-li-no">• 선정적인 콘텐츠 또는 청소년에게 유해한 표현이 포함된 광고</div><div class="bg-sub">허위·과장·기만 광고</div><div class="tp-li tp-li-no">• 사실과 다른 정보로 소비자를 오인하게 만드는 광고</div><div class="tp-li tp-li-no">• “세계 최초”, “100% 효과”, “완전 치료” 등 검증되지 않은 표현 사용 광고</div><div class="bg-sub">폭력적·혐오적 콘텐츠 광고</div><div class="tp-li tp-li-no">• 극단적 정치·이념·사회적 논란을 조장하는 광고</div><div class="tp-li tp-li-no">• 차별·혐오 표현(성별, 인종, 국적, 장애, 종교 등 특정 집단을 비하하는 내용)을 포함하는 광고</div><div class="tp-li tp-li-no">• 지나치게 폭력적이거나 잔인한 영상·이미지를 포함하는 광고</div><div class="tp-li tp-li-no">• 욕설, 비속어 및 저속한 언어를 사용하여 불쾌감을 주는 광고</div><div class="bg-sub">사기·피싱·개인정보 유출 위험 광고</div><div class="tp-li tp-li-no">• 개인정보를 부정하게 수집하거나 불법으로 활용할 가능성이 있는 광고</div><div class="tp-li tp-li-no">• 피싱, 파밍, 랜섬웨어 등의 위험이 있는 사이트로 연결되는 광고</div><div class="bg-sub">음란·선정적 콘텐츠 광고</div><div class="tp-li tp-li-no">• 과도한 신체의 노출이나 성적 수치심을 불러일으킬 수 있는 내용 포함 광고</div><div class="tp-li tp-li-no">• 성적 표현을 통한 성적 유희 요소나 강간 등 성폭력 행위 묘사를 포함하는 광고</div><div class="tp-li tp-li-no">• 음란 정보나 퇴폐업소, 매춘 등 성매매를 권유, 유도, 조장 방조하는 광고</div><div class="bg-sub">이용자 피해 유발 광고</div><div class="tp-li tp-li-no">• 이용자의 지속적인 항의가 접수되는 사례에 해당하는 광고</div><div class="tp-li tp-li-no">• 이용자의 의도와 상관없이 이용자의 환경을 변화시키는 광고</div><div class="tp-li tp-li-no">• 이용자의 개인정보를 동의 없이 강제로 수집하는 광고</div><div class="tp-li tp-li-no">• 시스템 또는 네트워크 문제나 오류가 있는 것처럼 표현한 광고</div><div class="tp-li tp-li-no">• 타인의 명의을 도용하는 등 이용자의 오인/혼동을 유발하는 광고</div><div class="tp-li tp-li-no">• 검증되지 않은 자에 의한 보증, 추천, 후기 등을 통해 이용자의 오인/혼란을 유발하는 광고</div><div class="tp-li tp-li-no">• 난해한 전문용어 등을 사용하여 인터넷 이용자를 현혹하는 표현이 포함된 광고</div><div class="tp-li tp-li-no">• 이벤트에 대한 중요 정보를 생략하고 부분적인 사실을 강조하여 클릭을 유도하는 광고</div><div class="tp-li tp-li-no">• 영업망, 지점 등에서 진행하면서 본사에서 직접 진행하는 것으로 오인되는 표현이 포함된 광고</div><div class="tp-li tp-li-no">• 국가 또는 공공기관이나 기관 관련 단체가 직접 진행하거나 연관된 내용이 아님에도 이용자를 오인시킬 우려가 있거나, 정부의 서비스 및 정책 등을 활용하여 유인하는 내용을 포함하는 광고</div><div class="bg-sub">보편적 사회정서 침해 광고</div><div class="tp-li tp-li-no">• 인간의 생명 및 존엄성을 경시하는 내용, 공중도덕과 사회 윤리에 위배되는 내용을 포함하는 광고</div><div class="tp-li tp-li-no">• 국가, 국기 또는 문화유적과 같은 공적 상징물을 부적절하게 사용하거나 모독하는 표현을 포함하는 광고</div><div class="tp-li tp-li-no">• 역사적 사실을 왜곡하거나 국가/사회 존립의 기본체제를 훼손할 우려가 있는 내용의 광고</div><div class="tp-li tp-li-no">• 도박 또는 지나친 사행심을 조장하는 광고</div><div class="tp-li tp-li-no">• 미신 숭배 등 비과학적인 생활태도를 조장하거나 정당화하는 내용의 광고</div><div class="tp-li tp-li-no">• 의학 또는 과학적으로 검증되지 않은 건강비법 또는 심령술 광고</div><div class="tp-li tp-li-no">• 자살을 목적으로 하거나 이를 미화, 방조하여 자살 충동을 일으킬 우려가 있는 내용의 광고</div><div class="tp-li tp-li-no">• 범죄, 범죄인 또는 범죄 단체 등을 미화하는 내용의 광고</div><div class="tp-li tp-li-no">• 법정계량단위를 사용하지 않고 비법정계량단위가 포함된 광고</div><div class="tp-li tp-li-no">• 기타 보편적 사회정서를 침해하거나 사회적 혼란을 야기할 우려가 있는 내용의 광고</div><div class="bg-sub">매체 서비스 신뢰도를 저해하는 광고</div><div class="tp-li tp-li-no">• 외부 랜딩 사이트가 접속되지 않거나 완성되지 않은 경우</div><div class="tp-li tp-li-no">• 외부 랜딩 사이트와 관련성이 낮은 키워드/광고소재로 광고하는 경우</div><div class="tp-li tp-li-no">• 검수를 받은 사이트와 다른 외부 랜딩 사이트로 광고를 연결하는 경우</div><div class="tp-li tp-li-no">• 자체 심사를 통해 매체 신뢰도를 저하한다고 판단되는 경우</div><div class="tp-src"><a href="https://tvingads.gitbook.io/guide/operations-guide/ad-policies" target="_blank" rel="noopener">티빙 심사 가이드 원문 ↗</a></div></div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <div id="tc-policy-basic-old" style="display:none;">
                 <div class="notice-card">
           <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
           <div class="notice-text">OTT 매체 정책을 통합 요약한 기준입니다. 매체별 정책 변경에 따라 차이가 있을 수 있으므로, 최종 진행 시에는 반드시 하단의 매체별 상세 가이드를 확인해 주시기 바랍니다.</div>
@@ -1833,7 +2520,7 @@ let currentTab  = 'all';
 // 각 페이지의 탭 목록 (순서대로: [첫번째탭, ...하위탭])
 const pageTabMap = {
   updates:      ['all','netflix','tving'],   // 공지 매체 탭 (#updates, #updates/netflix, #updates/tving)
-  policy:       ['basic','limited','banned','penalty'],   // '전체' 탭 숨김 (되살리려면 맨 앞에 'all' 추가)
+  policy:       ['industry','basic','penalty'],   // 업종 통합 개편 (옛 limited·banned 는 industry 로 합쳐짐, 마크업은 숨겨서 보존)
   products:     ['all','video','image','exclusive','qr'],   // 'STS' 탭은 숨김 (익스클루시브로 흡수)
   targeting:    ['all','basic','premium','dsp'],
   subscription: ['calculator','process','penalty'],   // '전체' 탭은 숨김 (하위 탭 소개만 있어 중복)
@@ -1950,9 +2637,12 @@ function navigate(page, tab) {
   if (page === 'policy') {
     setTimeout(tpEnsureLoaded, 80);
     if (tpLoaded) { tpRender(); tbRender(); bgRender(); }
+    setTimeout(indInit, 60);
   }
-  if (psw) psw.style.display = psOn ? 'block' : 'none';
-  if (psi && !psOn) psi.value = '';
+  // 검색창은 '업종' 탭에서만 (검색 로직이 .ind-card 만 대상으로 함)
+  var indOn = (page === 'policy' && targetTab === 'industry');
+  if (psw) psw.style.display = indOn ? 'flex' : 'none';
+  if (psi && !indOn) { psi.value = ''; setTimeout(indApplyFilter, 60); }
   // 청약 방법 - 계산기 탭 진입 시 공휴일 로드 후 달력 렌더
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
@@ -1996,9 +2686,13 @@ function parseUrlHash() {
   if (!raw) return null;
   const parts = raw.split('/');
   const page = parts[0];
-  const tab = parts[1] || '';
+  let tab = parts[1] || '';
   // 유효한 페이지인지 검증
   if (!pageTabMap.hasOwnProperty(page)) return null;
+  // 광고 정책 개편으로 사라진 옛 탭 주소를 새 탭으로 넘겨준다
+  if (page === 'policy' && (tab === 'limited' || tab === 'banned' || tab === 'all')) {
+    tab = 'industry';
+  }
   return { page: page, tab: tab };
 }
 
@@ -3227,6 +3921,82 @@ async function tpEnsureLoaded(){
   tpRender();
   tbRender();
   bgRender();
+}
+
+
+// ══════ 광고 정책 · 업종 페이지 ══════
+// 탭 전환은 포털의 switchTab 이 맡으므로 여기서는 카드 동작만 담당한다.
+function indInit(){
+  if(window._indReady) return;
+  window._indReady = true;
+
+  // 카드 펼치기
+  document.querySelectorAll('.ind-head').forEach(function(head){
+    head.addEventListener('click', function(){
+      var card = head.closest('.ind-card');
+      var wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      if(!wasOpen){
+        setTimeout(function(){ card.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 60);
+      }
+    });
+  });
+
+  // 모두 펼침 / 접기 — 업종
+  var eq = document.getElementById('expand-all-ind');
+  var cq = document.getElementById('collapse-all-ind');
+  if(eq) eq.addEventListener('click', function(){
+    document.querySelectorAll('.ind-card:not(.open)').forEach(function(c){ c.classList.add('open'); });
+  });
+  if(cq) cq.addEventListener('click', function(){
+    document.querySelectorAll('.ind-card.open').forEach(function(c){ c.classList.remove('open'); });
+  });
+
+  // 모두 펼침 / 접기 — 기본(공통)
+  var ec = document.getElementById('expand-all-common');
+  var cc = document.getElementById('collapse-all-common');
+  if(ec) ec.addEventListener('click', function(){
+    document.querySelectorAll('.bc-item:not(.open)').forEach(function(c){ c.classList.add('open'); });
+  });
+  if(cc) cc.addEventListener('click', function(){
+    document.querySelectorAll('.bc-item.open').forEach(function(c){ c.classList.remove('open'); });
+  });
+
+  // 기본(공통) 아코디언
+  document.querySelectorAll('.bc-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){ this.closest('.bc-item').classList.toggle('open'); });
+  });
+
+  // 매체 필터 칩
+  document.querySelectorAll('.cl-chip[data-indf]').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      document.querySelectorAll('.cl-chip[data-indf]').forEach(function(c){ c.classList.remove('cl-on'); });
+      this.classList.add('cl-on');
+      indApplyFilter();
+    });
+  });
+}
+
+function indApplyFilter(){
+  var activeChip = document.querySelector('.cl-chip[data-indf].cl-on');
+  var f = activeChip ? activeChip.dataset.indf : 'all';
+  var si = document.getElementById('policy-search');
+  var q = (si && si.value.trim().toLowerCase()) || '';
+  document.querySelectorAll('.ind-card').forEach(function(card){
+    var media = card.dataset.media || '';
+    var nameEl = card.querySelector('.ind-name');
+    var name = nameEl ? nameEl.textContent.toLowerCase() : '';
+    var passChip = (f === 'all')
+      || (f === 'nf' && media.indexOf('nf') > -1)
+      || (f === 'tv' && media.indexOf('tv') > -1);
+    var passSearch = !q || name.indexOf(q) > -1;
+    card.style.display = (passChip && passSearch) ? '' : 'none';
+  });
+  var grid = document.getElementById('industry-grid');
+  if(grid){
+    grid.classList.toggle('focus-nf', f === 'nf');
+    grid.classList.toggle('focus-tv', f === 'tv');
+  }
 }
 
 // ══════ 콘텐츠 라인업 (자동 업데이트) ══════
