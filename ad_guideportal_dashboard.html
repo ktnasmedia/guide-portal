@@ -1943,11 +1943,15 @@ function navigate(page, tab) {
   var psw = document.getElementById('policy-search-wrap');
   var psi = document.getElementById('policy-search');
   var psOn = (page === 'policy' && (targetTab === 'limited' || targetTab === 'banned'));
-  if (page === 'policy' && targetTab === 'basic') { setTimeout(tpEnsureLoaded, 80); if (tpLoaded) bgRender(); }
+  // 광고 정책에 들어오면 탭과 무관하게 데이터를 불러온다.
+  // 전에는 targetTab 이 'basic'/'limited'/'banned' 일 때만 불렀는데,
+  // 사이드바로 들어오면 targetTab 이 비어 있어 아무것도 로드되지 않았다.
+  if (page === 'policy') {
+    setTimeout(tpEnsureLoaded, 80);
+    if (tpLoaded) { tpRender(); tbRender(); bgRender(); }
+  }
   if (psw) psw.style.display = psOn ? 'block' : 'none';
   if (psi && !psOn) psi.value = '';
-  if (psOn) setTimeout(tpEnsureLoaded, 80);
-  if (psOn && tpLoaded) { tpRender(); tbRender(); }
   // 청약 방법 - 계산기 탭 진입 시 공휴일 로드 후 달력 렌더
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
@@ -2070,7 +2074,7 @@ const TP_TO_BAN = {
 // JSON 로드 실패 시 사용할 내장 폴백 (상세 조건과 원문 보기는 이때 숨겨짐)
 const TP_FALLBACK = {"source_url": "https://tvingads.gitbook.io/guide/operations-guide/ad-policies", "restricted": [{"no": 1, "name": "주류", "highlight": ["연령(성인) 타겟팅을 반드시 적용해야 합니다."], "subsections": [], "manual_summary": "", "updated_at": "", "raw_md": ""}, {"no": 2, "name": "금융", "highlight": ["광고 사전심의를 받아야 하며, 광고 사전심의에 대한 증빙자료를 요청할 수 있습니다."], "subsections": ["금융 공통", "대출 및 대출성 금융상품", "금융투자 / 온라인투자연계금융", "보험", "암호화폐 거래소 / 하드웨어 지갑 / 암호화폐 소프트웨어 지갑"], "manual_summary": "", "updated_at": "", "raw_md": ""}, {"no": 3, "name": "제약/의료", "highlight": ["의료 광고 시 의료광고심의위원회에 사전심의를 받은 후, 심의받은 내용과 동일한 내용으로 광고해야 하며, 사전심의 통과 증빙자료 제출 및 광고물에 심의필번호를 삽입해야 합니다."], "subsections": ["병의원", "의약품/의약외품", "의료기기/건강보조기", "시력보정용 안경 및 콘텍트 렌즈"], "manual_summary": "", "updated_at": "", "raw_md": ""}, {"no": 4, "name": "게임/엔터테인먼트", "highlight": ["등급분류를 받아야 합니다.", "사전심의를 받아야 합니다.", "영화등급이 확정된 모든 광고 소재에 등급을 표시해야 합니다."], "subsections": ["게임", "영화/비디오"], "manual_summary": "", "updated_at": "", "raw_md": ""}], "prohibited": [{"name": "티빙 경쟁 서비스", "notes": []}, {"name": "성인 (성인방송, 성인용품, 성인 커뮤니티 등)", "notes": []}, {"name": "유흥업", "notes": []}, {"name": "출장 마사지, 출장 뷰티/미용", "notes": []}, {"name": "사행성 산업 (도박, 카지노, 경마, 복권 등)", "notes": ["한국마사회, 국민체육진행공단, 동행복권, 나눔lotto 등 수익금 기부와 같은 공익성 광고의 경우 티빙 내부 검수 담당자 검토 후 집행 가능하며, 소재 구성에 따라 성인 타겟팅이 필요할 수 있습니다."]}, {"name": "주류", "notes": ["주류를 인터넷으로 판매하는 형태의 광고는 집행 불가합니다."]}, {"name": "담배", "notes": ["정부단체 및 이에 준하는 기관/단체의 공익 목적의 금연광고는 집행 가능합니다.", "전자담배 기기장치류는 판매 목적이 아닌 브랜드 홍보 목적 광고에 대해서는 제한적으로 집행 가능합니다."]}, {"name": "유사수신행위 (투자 시 원금 및 고수익 보장, 고리 이자 지급 보장 등)", "notes": []}, {"name": "방문판매, 다단계 홍보/모집", "notes": []}, {"name": "종교 및 미신/사주팔자/토속신앙", "notes": []}, {"name": "의견 광고 (특정인/특정집단 반대, 사회적 이슈 및 분쟁 가능성 있는 주장 등)", "notes": []}, {"name": "유료 인력소개소", "notes": []}, {"name": "기타 위법 및 부적절한 서비스", "notes": ["살아있는 생명 판매 및 분양", "사생활 침해 가능 서비스 (도청, 위치추적, 몰래카메라 등)", "논문 작성, 시험 응시 대리 서비스"]}], "basic": {"qualification": ["현행법 및 티빙 내부 광고 검수 가이드를 준수한 경우에만 광고 집행이 가능합니다.", "티빙 광고 검수 가이드에 따라 특정 광고주의 광고 집행이 제한될 수 있습니다.", "해당 광고가 사회적 이슈가 될 가능성이 있다고 판단될 경우, 또는 이용자의 항의가 있거나 이용자 경험이나 티빙 서비스의 안정성에 부정적인 영향을 미칠 우려가 있는 광고는 집행이 제한될 수 있습니다."], "unacceptable": [{"title": "관련 법령 위반 광고", "items": ["통신판매업신고, 의료기관 개설신고 등 업종별 인/허가를 받지 않거나 또는 등록/신고 되지 않은 광고", "담배, 주류, 콘텍트렌즈 등 온라인 판매가 제한되는 상품 또는 서비스를 제공하는 광고", "국내에서 허가받지 않은 의료기기, 의약품, 건강기능식품, 화장품 광고", "불법 금융 상품 (무등록 대부업, 유사수신행위 등) 광고", "미허가된 온라인 도박 및 사행성 게임 광고", "제 3자의 권리(저작권, 초상권, 상표권, 지적재산권 등) 침해가 확인되는 광고"]}, {"title": "청소년 보호법 위반 광고", "items": ["청소년 유해 매체물, 청소년 접근 제한이 필요한 담배·성인용품 광고", "사이트 내 성인 콘텐츠(주류 사이트 등)를 포함하였음에도 성인인증 등의 법령에 따른 청소년 보호조치를 취하지 않은 광고", "선정적인 콘텐츠 또는 청소년에게 유해한 표현이 포함된 광고"]}, {"title": "허위·과장·기만 광고", "items": ["사실과 다른 정보로 소비자를 오인하게 만드는 광고", "“세계 최초”, “100% 효과”, “완전 치료” 등 검증되지 않은 표현 사용 광고"]}, {"title": "폭력적·혐오적 콘텐츠 광고", "items": ["극단적 정치·이념·사회적 논란을 조장하는 광고", "차별·혐오 표현(성별, 인종, 국적, 장애, 종교 등 특정 집단을 비하하는 내용)을 포함하는 광고", "지나치게 폭력적이거나 잔인한 영상·이미지를 포함하는 광고", "욕설, 비속어 및 저속한 언어를 사용하여 불쾌감을 주는 광고"]}, {"title": "사기·피싱·개인정보 유출 위험 광고", "items": ["개인정보를 부정하게 수집하거나 불법으로 활용할 가능성이 있는 광고", "피싱, 파밍, 랜섬웨어 등의 위험이 있는 사이트로 연결되는 광고"]}, {"title": "음란·선정적 콘텐츠 광고", "items": ["과도한 신체의 노출이나 성적 수치심을 불러일으킬 수 있는 내용 포함 광고", "성적 표현을 통한 성적 유희 요소나 강간 등 성폭력 행위 묘사를 포함하는 광고", "음란 정보나 퇴폐업소, 매춘 등 성매매를 권유, 유도, 조장 방조하는 광고"]}, {"title": "이용자 피해 유발 광고", "items": ["이용자의 지속적인 항의가 접수되는 사례에 해당하는 광고", "이용자의 의도와 상관없이 이용자의 환경을 변화시키는 광고", "이용자의 개인정보를 동의 없이 강제로 수집하는 광고", "시스템 또는 네트워크 문제나 오류가 있는 것처럼 표현한 광고", "타인의 명의을 도용하는 등 이용자의 오인/혼동을 유발하는 광고", "검증되지 않은 자에 의한 보증, 추천, 후기 등을 통해 이용자의 오인/혼란을 유발하는 광고", "난해한 전문용어 등을 사용하여 인터넷 이용자를 현혹하는 표현이 포함된 광고", "이벤트에 대한 중요 정보를 생략하고 부분적인 사실을 강조하여 클릭을 유도하는 광고", "영업망, 지점 등에서 진행하면서 본사에서 직접 진행하는 것으로 오인되는 표현이 포함된 광고", "국가 또는 공공기관이나 기관 관련 단체가 직접 진행하거나 연관된 내용이 아님에도 이용자를 오인시킬 우려가 있거나, 정부의 서비스 및 정책 등을 활용하여 유인하는 내용을 포함하는 광고"]}, {"title": "보편적 사회정서 침해 광고", "items": ["인간의 생명 및 존엄성을 경시하는 내용, 공중도덕과 사회 윤리에 위배되는 내용을 포함하는 광고", "국가, 국기 또는 문화유적과 같은 공적 상징물을 부적절하게 사용하거나 모독하는 표현을 포함하는 광고", "역사적 사실을 왜곡하거나 국가/사회 존립의 기본체제를 훼손할 우려가 있는 내용의 광고", "도박 또는 지나친 사행심을 조장하는 광고", "미신 숭배 등 비과학적인 생활태도를 조장하거나 정당화하는 내용의 광고", "의학 또는 과학적으로 검증되지 않은 건강비법 또는 심령술 광고", "자살을 목적으로 하거나 이를 미화, 방조하여 자살 충동을 일으킬 우려가 있는 내용의 광고", "범죄, 범죄인 또는 범죄 단체 등을 미화하는 내용의 광고", "법정계량단위를 사용하지 않고 비법정계량단위가 포함된 광고", "기타 보편적 사회정서를 침해하거나 사회적 혼란을 야기할 우려가 있는 내용의 광고"]}, {"title": "매체 서비스 신뢰도를 저해하는 광고", "items": ["외부 랜딩 사이트가 접속되지 않거나 완성되지 않은 경우", "외부 랜딩 사이트와 관련성이 낮은 키워드/광고소재로 광고하는 경우", "검수를 받은 사이트와 다른 외부 랜딩 사이트로 광고를 연결하는 경우", "자체 심사를 통해 매체 신뢰도를 저하한다고 판단되는 경우"]}], "updated_at": ""}};
 const NF_FALLBACK = {"source_url": "https://help.netflix.com/legal/ad-restrictions", "source_updated_at": "2026-03-17", "restricted": [{"no": 1, "name": "주류", "tving_key": "주류", "preapproval": false, "summary": "연령 적합 오디언스·콘텐츠로만 제한되며, 법정 음주 연령과 책임 음주 고지를 반드시 포함해야 합니다.", "common": [], "korea": []}, {"no": 2, "name": "데이팅", "tving_key": "", "preapproval": true, "summary": "넷플릭스 사전 승인과 전 이용자 연령 게이팅이 필수이며, 관계 기반 서비스만 허용됩니다.", "common": [], "korea": []}, {"no": 3, "name": "엔터테인먼트 (TV·영화·게임·예고편)", "tving_key": "게임/엔터테인먼트", "preapproval": true, "summary": "개별 작품 광고는 넷플릭스 승인 하에 가능하며, 연령등급을 정확하고 가리지 않게 표시해야 합니다.", "common": [], "korea": []}, {"no": 4, "name": "금융 서비스", "tving_key": "금융", "preapproval": true, "summary": "한국은 사전 승인이 필수이며, 금융감독원 라이선스와 금융소비자보호법 준수가 요구됩니다.", "common": [], "korea": []}, {"no": 5, "name": "갬블링", "tving_key": "", "preapproval": true, "summary": "넷플릭스는 한국을 타겟으로 하는 갬블링 광고를 금지하며, 경품·콘테스트만 허용합니다.", "common": [], "korea": []}, {"no": 6, "name": "정부", "tving_key": "", "preapproval": true, "summary": "공식 정부 기관과 계약 사업자만 사전 승인 하에 가능하며, 관할 지역 밖 타겟팅은 불가합니다.", "common": [], "korea": []}, {"no": 7, "name": "헬스케어", "tving_key": "제약/의료", "preapproval": true, "summary": "한국은 사전 승인이 필수이며, 제품군별로 KPBMA 라이선스·의료광고심의필·HIRA 등록 등이 요구됩니다.", "common": [], "korea": []}, {"no": 8, "name": "고지방·고당·고염 식음료", "tving_key": "", "preapproval": false, "summary": "미성년자 소구가 금지되며, 건강·영양 관련 주장은 모두 입증되어야 합니다.", "common": [], "korea": []}, {"no": 9, "name": "주택·대출·고용", "tving_key": "", "preapproval": false, "summary": "차별 방지를 위해 타겟팅 기능 사용이 제한되는 카테고리입니다.", "common": [], "korea": []}, {"no": 10, "name": "보험", "tving_key": "금융", "preapproval": true, "summary": "한국은 사전 승인이 필수이며, 보험업 자격을 갖춘 주체만 내부 준법감시인 심의를 거쳐 집행할 수 있습니다.", "common": [], "korea": []}, {"no": 11, "name": "로컬 서비스 (법률 포함)", "tving_key": "", "preapproval": true, "summary": "미국·캐나다 한정 카테고리로, 한국에서는 집행할 수 없습니다.", "common": [], "korea": []}, {"no": 12, "name": "비영리", "tving_key": "", "preapproval": true, "summary": "사전 승인 하에 가능하지만 정치·종교 활동을 하는 단체는 금지됩니다.", "common": [], "korea": []}, {"no": 13, "name": "경품·콘테스트", "tving_key": "", "preapproval": false, "summary": "참가가 무료여야 하며, 넷플릭스와 무관하다는 문구를 약관에 포함해야 합니다.", "common": [], "korea": []}], "basic": {"source_url": "https://help.netflix.com/legal/ads-policy", "source_updated_at": "2026-03-17", "updated_at": "", "general": ["관련 법령·규정·업계 자율규제 지침을 모두 준수해야 합니다.", "저작권·상표권 등 타인의 지식재산권이나 인격권을 침해하거나 명예를 훼손해서는 안 됩니다.", "광고는 정확하고 진실해야 하며 오인을 유발해서는 안 됩니다. 넷플릭스가 요청하면 광고 내 모든 명시적·묵시적 주장에 대한 입증 자료를 제출해야 합니다.", "광고임을 명확히 알 수 있어야 합니다. 허위 보증, 딥페이크 등 기만적 수법은 금지되며 기사·뉴스·긴급 알림처럼 보이게 해서는 안 됩니다.", "인종·종교·국적·민족·장애·성적 지향·성별·연령 등 법이 보호하는 속성에 근거한 차별을 하거나 조장해서는 안 됩니다.", "품위를 해쳐서는 안 됩니다 — 범죄·위험·부적절한 행동 미화, 과도한 폭력, 성적으로 노골적이거나 과도하게 선정적인 표현과 노출, 외설·비속어, 무력 충돌·재난·참사 등 민감한 사안 언급, 낚시성·과장·강압적이거나 감정을 조종하는 메시지, 위협·괴롭힘·선동적 표현이 금지됩니다.", "승인되지 않은 제휴 관계를 암시하거나 넷플릭스의 이름·브랜드·서비스, 넷플릭스 콘텐츠와 그 창작 요소(출연자·캐릭터·작품명·로고·서체·음악 등)를 사용해서는 안 됩니다. 소재뿐 아니라 URL·프로모션 코드·랜딩 페이지 등 캠페인의 모든 요소에 적용됩니다.", "넷플릭스는 제작 방식과 무관하게 모든 광고를 검토·승인·거부하거나 수정을 요구하고 집행을 철회할 권리를 갖습니다."], "editorial_must": ["광고주와의 직접적인 연관성이 드러나야 하며, 명확한 제품·서비스·브랜드를 제시해야 합니다.", "넷플릭스 광고의 기술·미디어 요건을 준수해 시청자가 기대하는 수준의 품질을 유지해야 합니다.", "문법과 표기가 정확해야 하고 타겟 오디언스에 맞는 언어를 사용해야 합니다.", "모든 약관·문구·고지 사항은 크기·노출 시간·서체·색상 면에서 읽을 수 있어야 합니다."], "editorial_must_not": ["음성 더빙이 눈에 띄게 어긋나거나 번역 품질이 낮은 경우", "여러 광고를 하나로 이어 붙인 소재", "과도한 점멸·스트로브·반복 등 불쾌감을 주는 시각 효과", "시청자의 개인적 특성을 알고 있는 것처럼 암시하는 표현", "미성년자를 주 대상으로 하거나 소구하는 내용 (시각·언어·문구 요소 모두 해당)"]}};
-let tpData = null, nfData = null, tpLoaded = false;
+let tpData = null, nfData = null, tpLoaded = false, tpLoading = false;
 
 function tpEsc(t){
   return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -3197,16 +3201,28 @@ function tpSourceLinks(nfUrl, tvUrl){
 }
 
 async function tpEnsureLoaded(){
-  if(tpLoaded) return;
-  tpLoaded = true;
+  if(tpLoaded || tpLoading) return;
+  tpLoading = true;
+  var ok1 = false, ok2 = false;
   try {
     const r1 = await fetch('tving_ad_policies.json?_=' + Date.now(), {cache:'no-store'});
-    if(r1.ok) tpData = await r1.json();
-  } catch(e){}
+    if(r1.ok){ tpData = await r1.json(); ok1 = true; }
+  } catch(e){ console.warn('티빙 정책 로드 실패', e); }
   try {
     const r2 = await fetch('netflix_ad_policies.json?_=' + Date.now(), {cache:'no-store'});
-    if(r2.ok) nfData = await r2.json();
-  } catch(e){}
+    if(r2.ok){ nfData = await r2.json(); ok2 = true; }
+  } catch(e){ console.warn('넷플릭스 정책 로드 실패', e); }
+  tpLoading = false;
+  // 한 번 실패했다고 영영 못 불러오면 화면이 '불러오는 중…'에서 멈춘다.
+  // 성공했을 때만 완료로 표시해 다음 진입 때 다시 시도한다.
+  tpLoaded = (ok1 || ok2);
+  if(!tpLoaded){
+    ['tp-limited-loading','tb-banned-loading','bg-loading'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.innerHTML = LOAD_FAIL_MSG;
+    });
+    return;
+  }
   tpRender();
   tbRender();
   bgRender();
