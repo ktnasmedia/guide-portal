@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T06:06:45.972236",
+  "generated_at": "2026-09-01T20:27:56.484367",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -894,50 +894,6 @@
       }
     },
     {
-      "content_id": "tvingads-wavve-더커뮤니티2:보이지않는손",
-      "title": "더 커뮤니티 2 : 보이지 않는 손",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "김건희",
-        "넉스",
-        "박세승",
-        "박철현",
-        "승우아빠",
-        "신혜원",
-        "이수민",
-        "이재용",
-        "이지나",
-        "이한",
-        "이현선",
-        "임지은",
-        "정재호"
-      ],
-      "release_date": "2026-10-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌 #두뇌게임"
-      ],
-      "rating": null,
-      "ott": "wavve",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "W ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
       "content_id": "tvingads-tving-나노리스트",
       "title": "나노리스트",
       "title_original": null,
@@ -1546,9 +1502,9 @@
         "고경표",
         "비비"
       ],
-      "release_date": "2026-10-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
       "summary": "더 치밀해진 가짜 찾기! 정답은 언제나 그 뒷면에 숨어 있다. 반전에 반전을 거듭하는 추리의 끝!",
       "content_type": "예능",
       "genres": [
@@ -1635,6 +1591,50 @@
       "availability_status": null,
       "source_badge": "T ORIGINAL",
       "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-01",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-더커뮤니티2:보이지않는손",
+      "title": "더 커뮤니티 2 : 보이지 않는 손",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/ZlebMjOwxvGPcd2wcHURuT9mVdU.webp",
+      "cast": [
+        "김건희",
+        "넉스",
+        "박세승",
+        "박철현",
+        "승우아빠",
+        "신혜원",
+        "이수민",
+        "이재용",
+        "이지나",
+        "이한",
+        "이현선",
+        "임지은",
+        "정재호"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": "서로 다른 가치 기준을 가진 젊은 남녀가 거래와 협상을 통해 끝까지 살아남아 상금을 획득하기 위해 치열하게 경쟁하는 경제•정치 서바이벌",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "서바이벌 #두뇌게임"
+      ],
+      "rating": null,
+      "ott": "wavve",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "W ORIGINAL",
+      "trailer_url": "https://youtu.be/P73Hf_Z-uCU?si=vrW3TnD-uEBJLMec",
       "_meta": {
         "sources": {
           "_all": "tvingads"
