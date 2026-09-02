@@ -19,6 +19,7 @@ from datetime import datetime, timezone, timedelta
 SRC_URL = 'https://tvingads.gitbook.io/guide/operations-guide/ad-policies.md'
 PAGE_URL = 'https://tvingads.gitbook.io/guide/operations-guide/ad-policies'
 OUT = 'tving_ad_policies.json'
+CHANGELOG = 'policy_changes.md'
 
 # 미세 변경 판정: 정규화 후 유사도가 이 값 이상이고 항목 수가 같으면 '변경 없음'
 SIM_THRESHOLD = 0.98
@@ -213,11 +214,62 @@ def changed(prev, cur):
     return ratio < SIM_THRESHOLD
 
 
+def diff_lines(prev_lines, cur_lines):
+    """바뀐 줄만 골라낸다. (없어진 줄, 새로 생긴 줄)"""
+    a = [norm_for_hash(x) for x in prev_lines]
+    b = [norm_for_hash(x) for x in cur_lines]
+    sm = difflib.SequenceMatcher(None, a, b)
+    removed, added = [], []
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag in ('replace', 'delete'):
+            removed += prev_lines[i1:i2]
+        if tag in ('replace', 'insert'):
+            added += cur_lines[j1:j2]
+    return removed, added
+
+
+def write_changelog(changes):
+    """policy_changes.md 에 변경 내역을 남긴다.
+    넷플릭스 수집기와 같은 파일·같은 형식을 쓰며, 최신이 맨 위에 온다."""
+    if not changes:
+        return
+    head = '# 정책 원문 변경 기록\n'
+    block = ['## %s · 티빙\n' % today()]
+    for c in changes:
+        if c.get('new'):
+            block.append('- **[%s] %s** — 새 항목' % (c['section'], c['name']))
+        elif c.get('removed'):
+            block.append('- **[%s] %s** — 원문에서 사라짐' % (c['section'], c['name']))
+        else:
+            block.append('- **[%s] %s** — 문구 변경' % (c['section'], c['name']))
+        if c.get('before'):
+            block.append('  <details><summary>이전</summary>\n')
+            block += ['  > ' + x for x in c['before']]
+            block.append('\n  </details>')
+        if c.get('after'):
+            block.append('  <details><summary>이후</summary>\n')
+            block += ['  > ' + x for x in c['after']]
+            block.append('\n  </details>')
+        block.append('')
+    new_block = '\n'.join(block) + '\n'
+
+    old = ''
+    if os.path.exists(CHANGELOG):
+        old = open(CHANGELOG, encoding='utf-8').read()
+        if old.startswith(head):
+            old = old[len(head):]
+    with open(CHANGELOG, 'w', encoding='utf-8') as f:
+        f.write(head + '\n' + new_block + old.lstrip('\n'))
+    print('  \u2192 %s 에 변경 %d건 기록' % (CHANGELOG, len(changes)))
+
+
 def merge(prev_doc, cur_doc):
     """이전 수집분의 updated_at / 수동 요약을 이어받고, 변경분만 일자 갱신."""
     prev_map = {}
     for v in (prev_doc or {}).get('restricted', []):
         prev_map[v['name']] = v
+
+    changes = []
 
     pb = (prev_doc or {}).get('basic') or {}
     cb = cur_doc.get('basic') or {}
@@ -225,6 +277,15 @@ def merge(prev_doc, cur_doc):
         cb['updated_at'] = pb.get('updated_at', '')
     else:
         cb['updated_at'] = today()
+        # 집행 자격 / 집행 불가 목록을 줄 단위로 비교
+        for fld, label in (('qualification', '광고 집행 자격'),
+                           ('unacceptable', '집행 불가 광고')):
+            before = [str(x) for x in pb.get(fld, [])]
+            after = [str(x) for x in cb.get(fld, [])]
+            rm, ad = diff_lines(before, after)
+            if rm or ad:
+                changes.append({'section': '기본(공통)', 'name': label,
+                                'before': rm, 'after': ad})
 
     for v in cur_doc['restricted']:
         p = prev_map.get(v['name'])
@@ -232,10 +293,37 @@ def merge(prev_doc, cur_doc):
         if changed(p, v):
             v['updated_at'] = today()
             v['review_needed'] = True     # 발췌가 바뀌었을 수 있음 → 확인 표시
+            rm, ad = diff_lines((p or {}).get('raw_md', '').split('\n'),
+                                v.get('raw_md', '').split('\n'))
+            changes.append({'section': '제한 업종', 'name': v['name'],
+                            'before': [x for x in rm if x.strip()],
+                            'after': [x for x in ad if x.strip()]})
         else:
             v['updated_at'] = (p or {}).get('updated_at', '')
             v['review_needed'] = (p or {}).get('review_needed', False)
-    return cur_doc
+        if p is None and prev_doc is not None:
+            changes.append({'section': '제한 업종', 'name': v['name'],
+                            'before': [], 'after': [], 'new': True})
+
+    # 사라진 제한 업종
+    cur_names = {v['name'] for v in cur_doc['restricted']}
+    for name in prev_map:
+        if name not in cur_names:
+            changes.append({'section': '제한 업종', 'name': name,
+                            'before': [], 'after': [], 'removed': True})
+
+    # 금지 업종 목록 증감
+    prev_pro = {x['name'] for x in (prev_doc or {}).get('prohibited', [])}
+    cur_pro = {x['name'] for x in cur_doc.get('prohibited', [])}
+    if prev_doc is not None:
+        for nm in sorted(cur_pro - prev_pro):
+            changes.append({'section': '금지 업종', 'name': nm,
+                            'before': [], 'after': [], 'new': True})
+        for nm in sorted(prev_pro - cur_pro):
+            changes.append({'section': '금지 업종', 'name': nm,
+                            'before': [], 'after': [], 'removed': True})
+
+    return cur_doc, changes
 
 
 # ────────────────────────────── 메인 ──────────────────────────────
@@ -284,7 +372,7 @@ def main():
             prev = None
 
     try:
-        doc = merge(prev, build(md))
+        doc, changes = merge(prev, build(md))
     except Exception as e:
         # 실패 시 기존 파일 유지 — 화면이 비지 않게
         print('수집 실패:', e, file=sys.stderr)
@@ -295,6 +383,7 @@ def main():
     print('저장 %s — 집행자격 %d개 / 집행불가 %d그룹 / 금지 %d개 / 제한 %d개'
           % (OUT, len(doc['basic']['qualification']), len(doc['basic']['unacceptable']),
              len(doc['prohibited']), len(doc['restricted'])))
+    write_changelog(changes)
     return 0
 
 
