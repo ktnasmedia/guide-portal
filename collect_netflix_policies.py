@@ -122,8 +122,8 @@ def changed(prev, cur):
     (넷플릭스 제한 업종은 100줄이 넘는 항목이 많아 유사도가 0.99를 넘김)
     그래서 '바뀐 줄이 있는가'로 판단하고, 공백·기호 차이만 있는 줄은 무시한다.
     """
-    if prev is None:
-        return False                       # 최초 수집 → 일자 비움
+    if prev is None or 'lines' not in prev:
+        return False                       # 최초 수집·형식 불일치 → 일자 비움
     if prev.get('hash') == cur.get('hash'):
         return False
     if prev.get('items') != cur.get('items'):
@@ -136,7 +136,17 @@ def merge(prev_doc, cur_doc):
     """이전 수집분의 updated_at / 수동 요약을 이어받고, 변경분만 일자 갱신."""
     changes = []
     for key in ('basic', 'restricted'):
-        prev_map = {v['name']: v for v in (prev_doc or {}).get(key, [])}
+        # 이전 파일이 이 수집기가 만든 형식이 아닐 수 있다.
+        # (손으로 정리해 둔 옛 netflix_ad_policies.json 은 구조가 달랐다)
+        # 형식이 다르면 비교를 포기하고 최초 수집처럼 다룬다.
+        prev_list = (prev_doc or {}).get(key)
+        if not isinstance(prev_list, list):
+            prev_list = []
+        prev_map = {v['name']: v for v in prev_list
+                    if isinstance(v, dict) and 'name' in v}
+        # 이전 파일이 이 수집기 형식인지 (아니면 최초 수집처럼 다룬다)
+        same_format = bool(prev_map) and any(
+            'lines' in v for v in prev_map.values())
         for v in cur_doc[key]:
             p = prev_map.get(v['name'])
             v['manual_summary'] = (p or {}).get('manual_summary', '')
@@ -151,8 +161,9 @@ def merge(prev_doc, cur_doc):
             else:
                 v['updated_at'] = (p or {}).get('updated_at', '')
                 v['review_needed'] = (p or {}).get('review_needed', False)
-            # 새로 생긴 항목
-            if p is None and prev_doc is not None:
+            # 새로 생긴 항목 — 이전 파일에 같은 구획(basic/restricted)이
+            # 이 수집기 형식으로 들어 있을 때만 '새 항목'으로 본다.
+            if p is None and same_format:
                 changes.append({
                     'section': key, 'name': v['name'],
                     'before': [], 'after': v['lines'], 'new': True,
