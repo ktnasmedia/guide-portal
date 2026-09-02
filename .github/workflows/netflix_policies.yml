@@ -1,16 +1,16 @@
-name: tving policies collect
+name: 넷플릭스 광고 정책 수집
 
 on:
   schedule:
-    # 매일 09:00 KST (UTC 00:00)
-    - cron: '0 0 * * *'
+    # 매일 09:10 KST (UTC 00:10) — 티빙 수집(09:00) 직후
+    - cron: '10 0 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: tving-policies
+  group: netflix-policies
   cancel-in-progress: false
 
 jobs:
@@ -25,16 +25,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 티빙 심사 가이드 수집
-        run: python collect_tving_policies.py
+      - name: 넷플릭스 광고 정책 수집
+        run: python3 collect_netflix_policies.py
 
       - name: 변경분만 커밋
         run: |
-          if [ -n "$(git status --porcelain tving_ad_policies.json policy_changes.md)" ]; then
+          if [ -n "$(git status --porcelain netflix_ad_policies.json policy_changes.md)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add tving_ad_policies.json policy_changes.md
-            git commit -m "chore: 티빙 심사 가이드 자동 수집 ($(date -u -d '+9 hours' +'%Y-%m-%d'))"
+            git add netflix_ad_policies.json policy_changes.md
+            git commit -m "chore: 넷플릭스 광고 정책 자동 수집 ($(date -u -d '+9 hours' +'%Y-%m-%d'))"
             for i in 1 2 3; do
               git pull --rebase --autostash origin main && git push && break
               echo "푸시 재시도 $i..."
