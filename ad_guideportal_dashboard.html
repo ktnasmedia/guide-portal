@@ -378,8 +378,8 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 #industry-grid.focus-tv .ind-card.open .ind-col-head { display: none; }
 /* --- 기본(공통) 탭 --- */
 .bc-summary .info-card { background: transparent; border-color: var(--black-ele); padding: 16px 18px; }
-.bc-summary .bg-t { font-size: 12.5px; font-weight: 500; color: var(--gray-hi); }
-.bc-summary .bg-d { font-size: 11.5px; color: var(--gray-mid); }
+/* .bc-summary .bg-t / .bg-d 덮어쓰기 제거 — 포털 기본값(15px/13px) 사용 */
+
 .bc-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .bc-col-box { padding: 18px 20px; }
 .bc-col-head { margin-bottom: 6px; }
