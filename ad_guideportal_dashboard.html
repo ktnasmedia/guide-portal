@@ -4213,6 +4213,91 @@ function indColIndex(header, names){
   return -1;
 }
 
+
+// 매체·상태에 따른 원문 링크. 업종마다 다르지 않고 매체별로 고정이라
+// 시트에 링크 열을 두지 않고 여기서 정한다.
+const IND_SRC = {
+  nf: {
+    limit: 'https://help.netflix.com/legal/ad-restrictions',
+    ban:   'https://docs.superhuman.com/d/_dpE0EsZkW5F/_suoKTQET#_tu7ZYYIT',
+    check: ''
+  },
+  tv: {
+    limit: 'https://tvingads.gitbook.io/guide/operations-guide/ad-policies#restricted-verticals',
+    ban:   'https://tvingads.gitbook.io/guide/operations-guide/ad-policies#prohibited-verticals',
+    check: ''
+  }
+};
+
+// 시트에만 있는 업종의 카드를 만들어 붙인다.
+// (업종을 쪼개는 일이 있어 — 예: '게임·엔터' → '게임' / '엔터' —
+//  시트에 행만 추가해도 화면에 나오도록 한다)
+function indBuildCard(name, v){
+  const grid = document.getElementById('industry-grid');
+  if(!grid) return null;
+
+  const mk = function(media, statLabel, desc){
+    const st = IND_STATUS[statLabel];
+    const key = st ? st.key : 'check';
+    const cls = st ? st.cls : 'tag-chk';
+    const text = media.label + ' ' + (st ? st.label : '확인 필요');
+    const src = IND_SRC[media.k][key] || '';
+    let h = '<div class="ind-col">'
+          + '<div class="ind-col-head"><span class="policy-tag ' + cls + '">' + text + '</span></div>'
+          + '<div class="tb-cite">' + clEsc(desc || '') + '</div>';
+    if(src){
+      h += '<a class="ind-link" href="' + src + '" target="_blank" rel="noopener">'
+         + media.label + ' 원문 보기 ↗</a>';
+    }
+    return h + '</div>';
+  };
+
+  const NF = { k: 'nf', label: 'Netflix' };
+  const TV = { k: 'tv', label: 'TVING' };
+  const nfSt = IND_STATUS[v.nfStat], tvSt = IND_STATUS[v.tvStat];
+  const media = [];
+  if(v.nfStat && v.nfStat !== '확인 필요') media.push('nf');
+  if(v.tvStat && v.tvStat !== '확인 필요') media.push('tv');
+  const limits = [nfSt, tvSt].filter(function(x){ return x && x.key === 'limit'; }).length;
+
+  const card = document.createElement('div');
+  card.className = 'info-card ind-card';
+  card.dataset.ind = 'sheet-' + name.replace(/\s/g, '');
+  card.dataset.status = nfSt ? nfSt.key : 'check';
+  card.dataset.tier = String(limits);
+  card.dataset.media = media.join(' ');
+  card.style.order = String(limits === 2 ? 0 : (limits === 1 ? 1 : 2));
+  card.innerHTML =
+      '<div class="ind-head">'
+    +   '<div class="ind-head-top"><span class="ind-name">' + clEsc(name) + '</span>'
+    +   '<span class="ind-chev">›</span></div>'
+    +   '<div class="ind-pills">'
+    +     '<span class="policy-tag ' + (nfSt ? nfSt.cls : 'tag-chk') + '">Netflix '
+    +       (nfSt ? nfSt.label : '확인 필요') + '</span>'
+    +     '<span class="policy-tag ' + (tvSt ? tvSt.cls : 'tag-chk') + '">TVING '
+    +       (tvSt ? tvSt.label : '확인 필요') + '</span>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="ind-body">'
+    +   mk(NF, v.nfStat, v.nfDesc)
+    +   mk(TV, v.tvStat, v.tvDesc)
+    + '</div>';
+
+  // 카드 펼치기 (기존 카드와 같은 동작)
+  const head = card.querySelector('.ind-head');
+  if(head){
+    head.addEventListener('click', function(){
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      if(!wasOpen){
+        setTimeout(function(){ card.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 60);
+      }
+    });
+  }
+  grid.appendChild(card);
+  return card;
+}
+
 function indApplySheet(rows){
   const hd = indFindHeader(rows);
   if(!hd){ console.warn('업종 매핑표에서 열 이름 행을 찾지 못했습니다.'); return; }
@@ -4234,21 +4319,28 @@ function indApplySheet(rows){
     if(el) byName[el.textContent.replace(/\s/g, '')] = card;
   });
 
-  let hit = 0;
+  let hit = 0, made = 0;
   for(let i = hd.row + 1; i < rows.length; i++){
     const r = rows[i] || [];
     const name = String(r[C.name] || '').trim();
     if(!name) continue;
-    const card = byName[name.replace(/\s/g, '')];
-    if(!card) continue;   // 시트에만 있는 업종은 건너뜀 (카드 추가는 별도 작업)
-    hit++;
-    indApplyCard(card, {
+    const vals = {
       nfStat: (r[C.nfStat] || '').trim(), tvStat: (r[C.tvStat] || '').trim(),
       nfDesc: (r[C.nfDesc] || '').trim(), tvDesc: (r[C.tvDesc] || '').trim(),
       nfDate: (r[C.nfDate] || '').trim(), tvDate: (r[C.tvDate] || '').trim()
-    });
+    };
+    let card = byName[name.replace(/\s/g, '')];
+    if(!card){
+      // 시트에만 있는 업종 → 카드를 새로 만든다
+      card = indBuildCard(name, vals);
+      if(!card) continue;
+      byName[name.replace(/\s/g, '')] = card;
+      made++;
+    }
+    hit++;
+    indApplyCard(card, vals);
   }
-  console.info('업종 매핑표 반영: ' + hit + '건');
+  console.info('업종 매핑표 반영: ' + hit + '건' + (made ? ' (시트에서 새로 만든 카드 ' + made + '장)' : ''));
   indUpdateCount(document.querySelector('.cl-chip[data-indf].cl-on')?.dataset.indf || 'all');
 }
 
@@ -4282,10 +4374,10 @@ function indApplyCard(card, v){
     if(x.desc && cols[x.idx]){
       const cites = cols[x.idx].querySelectorAll('.tb-cite');
       if(cites.length){
-        // 문단 구분: ' / ' · 줄바꿈 · 불릿 기호(▪ · •)
-        // 시트에서 여러 항목을 한 칸에 적어 오므로 이 기준으로 나눠 각 줄로 떨군다.
+        // 문단 구분: 줄바꿈 또는 불릿 기호(▪ ·)만 쓴다.
+        // '/' 는 '기관/단체'처럼 문장 안에서 쓰이므로 구분자로 삼으면 안 된다.
         const parts = x.desc
-          .split(/\s*\/\s*|[\r\n]+|\s*[▪•]\s*/)
+          .split(/[\r\n]+|\s*[▪•]\s*/)
           .map(function(t){ return t.trim(); })
           .filter(function(t){ return t; });
         const first = cites[0];
@@ -4309,6 +4401,10 @@ function indApplyCard(card, v){
           cites[k].textContent = '';
           cites[k].style.display = 'none';
         }
+        // '원문 보기' 버튼은 항상 맨 아래에 둔다.
+        // 문단을 새로 넣으면 버튼이 글 중간에 끼어 흐름이 끊긴다.
+        const link = cols[x.idx].querySelector('.ind-link');
+        if(link && link.parentNode) link.parentNode.appendChild(link);
       }
     }
     // 갱신일 — 있으면 요약 아래 작은 글씨로
