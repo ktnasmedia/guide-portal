@@ -4399,6 +4399,60 @@ async function loadContentLineup(){
 }
 
 // 티빙·웨이브 수동 시트 로드 → TMDB에 없는 작품만 clData에 추가
+// 수동 시트의 열 이름 행과 각 항목 위치를 찾는다.
+// 여러 사람이 시트를 만지므로 열이 추가·삭제되거나 순서가 바뀔 수 있어,
+// 위치(c[0]…)로 읽으면 값이 한 칸씩 밀려 조용히 깨진다.
+// 이름이 정확히 같은 열을 먼저 찾고, 없으면 이름이 '포함된' 열로 한 번 더 찾는다.
+// ('출연진(쉼표로 구분)'처럼 설명이 덧붙는 경우 대비)
+function shFindCols(rows, spec, required, maxHeadRow) {
+  const keys = Object.keys(spec);
+  const limit = Math.min(rows.length, maxHeadRow || 6);
+  for (let r = 0; r < limit; r++) {
+    const norm = (rows[r] || []).map(rnNormHead);
+    const idx = {}, taken = {};
+    keys.forEach(function(k) { idx[k] = -1; });
+    // ① 정확히 일치
+    keys.forEach(function(k) {
+      spec[k].forEach(function(name) {
+        if (idx[k] >= 0) return;
+        const p = norm.indexOf(rnNormHead(name));
+        if (p >= 0 && !taken[p]) { idx[k] = p; taken[p] = true; }
+      });
+    });
+    // ② 포함
+    keys.forEach(function(k) {
+      if (idx[k] >= 0) return;
+      spec[k].forEach(function(name) {
+        if (idx[k] >= 0) return;
+        const want = rnNormHead(name);
+        for (let c = 0; c < norm.length; c++) {
+          if (!taken[c] && norm[c] && norm[c].indexOf(want) >= 0) {
+            idx[k] = c; taken[c] = true; return;
+          }
+        }
+      });
+    });
+    if (required.every(function(k) { return idx[k] >= 0; })) {
+      return { headRow: r, idx: idx };
+    }
+  }
+  return null;
+}
+
+// 콘텐츠 라인업 수동 시트의 열 이름 후보
+const CL_SHEET_COLS = {
+  title:    ['제목', 'title'],
+  ott:      ['OTT', '매체'],
+  type:     ['유형', '장르구분', 'type'],
+  date:     ['공개일', '날짜', 'date'],
+  rating:   ['등급', 'rating'],
+  cast:     ['출연진', '출연', 'cast'],
+  genres:   ['장르', 'genre'],
+  summary:  ['줄거리', '시놉시스', 'summary'],
+  original: ['오리지널', 'original'],
+  poster:   ['포스터URL', '포스터', 'poster']
+};
+
 async function clLoadManualTvingWavve(){
   try{
     const url = 'https://docs.google.com/spreadsheets/d/' + SHEETS_ID + '/export?format=csv&gid=3887785&_=' + Date.now();
@@ -4406,21 +4460,28 @@ async function clLoadManualTvingWavve(){
     if(!res.ok) return;
     const rows = parseCSV(await res.text());
     if(rows.length <= 1) return;
+    // 열 이름으로 위치를 찾는다(순서가 바뀌거나 열이 늘어도 따라감)
+    const CC = shFindCols(rows, CL_SHEET_COLS, ['title', 'ott'], 6);
+    if(!CC){ console.warn('콘텐츠 라인업 수동 시트에서 열 이름 행을 찾지 못했습니다.'); return; }
+    const g = function(c, key){
+      const k = CC.idx[key];
+      return (k >= 0 && c[k] != null) ? String(c[k]).trim() : '';
+    };
     // 기존 제목 → 항목들 (띄어쓰기 무시). 시트 값이 자동 수집을 덮어쓴다.
     const existing = {};
     clData.forEach(function(d){
       const k = (d.title||'').replace(/\s+/g,'').toLowerCase();
       (existing[k] = existing[k] || []).push(d);
     });
-    // 헤더 제외. 열: A제목 B OTT C유형 D공개일 E등급 F출연 G장르 H줄거리 I오리지널
-    rows.slice(1).forEach(function(c){
-      const title = (c[0]||'').trim();
+    // 열은 이름으로 찾는다(제목·OTT·유형·공개일·등급·출연진·장르·줄거리·오리지널·포스터URL)
+    rows.slice(CC.headRow + 1).forEach(function(c){
+      const title = g(c, 'title');
       if(!title || title === '제목') return;
       // 섹션 제목·비콘텐츠 제외
       const _tn = title.replace(/\s+/g,' ').trim();
       if(['신작 및 주목할 콘텐츠','지금 주목해야 할 인기작과 공개 예정작'].indexOf(_tn) !== -1) return;
       const key = title.replace(/\s+/g,'').toLowerCase();
-      const ottRaw = (c[1]||'').trim().toLowerCase();
+      const ottRaw = g(c, 'ott').toLowerCase();
       const otts = ottRaw.split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean);
       const primaryOtt = otts[0] || 'tving';
 
@@ -4440,9 +4501,9 @@ async function clLoadManualTvingWavve(){
         //  가져올 방법이 없어 시트로 채워야 한다)
         // 열: A제목 B OTT C유형 D공개일 E등급 F출연 G장르 H줄거리 I오리지널
         var sheetVals = {
-          content_type: (c[2]||'').trim(),
-          rating:       (c[4]||'').trim(),
-          summary:      (c[7]||'').trim()
+          content_type: g(c, 'type'),
+          rating:       g(c, 'rating'),
+          summary:      g(c, 'summary')
         };
         existing[key].forEach(function(d){
           Object.keys(sheetVals).forEach(function(f){
@@ -4451,22 +4512,22 @@ async function clLoadManualTvingWavve(){
         });
         return;
       }
-      const rd = (c[3]||'').trim();
+      const rd = g(c, 'date');
       const yr = rd ? parseInt(rd.slice(0,4),10) : null;
       clData.push({
         content_id: 'manual-tw-' + key,
         title: title,
-        poster_url: (c[9]||'').trim() || null,
-        cast: (c[5]||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
+        poster_url: g(c, 'poster') || null,
+        cast: g(c, 'cast').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
         release_date: rd || null,
         release_year: yr,
-        summary: (c[7]||'').trim() || null,
-        content_type: (c[2]||'').trim() || null,
-        genres: (c[6]||'').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
-        rating: (c[4]||'').trim() || null,
+        summary: g(c, 'summary') || null,
+        content_type: g(c, 'type') || null,
+        genres: g(c, 'genres').split(/[,，]/).map(function(s){return s.trim();}).filter(Boolean),
+        rating: g(c, 'rating') || null,
         ott: primaryOtt,
         _otts_manual: otts,           // 티빙·웨이브 둘 다인 경우 대비
-        is_original: (c[8]||'').trim().toUpperCase() === 'O'
+        is_original: g(c, 'original').toUpperCase() === 'O'
       });
       existing[key] = [clData[clData.length-1]];
     });
