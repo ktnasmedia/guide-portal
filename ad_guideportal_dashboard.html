@@ -355,8 +355,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 #industry-grid:not(.focus-nf):not(.focus-tv) .ind-card.open .ind-head .ind-pills .policy-tag { background: rgba(255,255,255,0.06); color: var(--gray-low); border: 1px solid var(--border); }
 .ind-chev { color: var(--gray-dim); font-size: 15px; transition: transform .18s ease; flex: 0 0 auto; }
 .ind-card.open .ind-chev { transform: rotate(90deg); color: var(--red); }
-.ind-body { display: none; grid-template-columns: 1fr 1fr; gap: 16px; padding: 4px 16px 18px; border-top: 1px solid var(--black-ele); margin-top: 2px; padding-top: 14px; }
-.ind-card.open .ind-body { display: grid; }
+/* 매체 영역은 세로 1열로 쌓는다. 가로 2열이면 매체가 늘 때마다 폭을 다시 잡아야 한다 */
+.ind-body { display: none; flex-direction: column; gap: 14px; padding: 4px 16px 18px;
+  border-top: 1px solid var(--black-ele); margin-top: 2px; padding-top: 14px; }
+.ind-card.open .ind-body { display: flex; }
 .ind-col-head { display: flex; align-items: center; margin-bottom: 8px; }
 .ind-col .tb-cite { font-size: 12.5px; color: var(--gray-mid); line-height: 1.65; margin: 0 0 8px; }
 .ind-link { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 500; color: var(--gray-mid); border: 1px solid var(--border); border-radius: 7px; padding: 6px 11px; text-decoration: none; transition: .18s; margin-top: 2px; }
@@ -371,8 +373,6 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 #industry-grid.focus-nf .ind-body .ind-col:nth-child(2) { display: none; }
 #industry-grid.focus-tv .ind-pills .policy-tag:nth-child(1) { display: none; }
 #industry-grid.focus-tv .ind-body .ind-col:nth-child(1) { display: none; }
-#industry-grid.focus-nf .ind-card.open .ind-body,
-#industry-grid.focus-tv .ind-card.open .ind-body { grid-template-columns: 1fr; }
 /* 매체 필터 상태에서 펼침 상세 안의 상태 칩은 중복이라 숨김 (헤더의 회색 칩은 그대로 유지) */
 #industry-grid.focus-nf .ind-card.open .ind-col-head,
 #industry-grid.focus-tv .ind-card.open .ind-col-head { display: none; }
@@ -1249,7 +1249,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="policy-row"><div><span class="policy-tag tag-ban">금지 업종</span></div><div style="font-size:13px;color:var(--gray-mid);">도박, 성인 콘텐츠, 정치, 위험물</div><div style="font-size:13px;color:var(--gray-low);">집행 불가</div></div>
         </div>
       </div>
-      <div id="tc-policy-industry">
+      <div id="tc-policy-industry" style="display:none;">
         <div class="cl-filters" style="margin:4px 0 4px;align-items:center;">
           <div class="cl-chip cl-on" data-indf="all">전체</div>
           <div class="cl-chip" data-indf="nf">넷플릭스</div>
@@ -4406,7 +4406,7 @@ async function loadContentLineup(){
 // ('출연진(쉼표로 구분)'처럼 설명이 덧붙는 경우 대비)
 function shFindCols(rows, spec, required, maxHeadRow) {
   const keys = Object.keys(spec);
-  const limit = Math.min(rows.length, maxHeadRow || 6);
+  const limit = Math.min(rows.length, maxHeadRow || 30);
   for (let r = 0; r < limit; r++) {
     const norm = (rows[r] || []).map(rnNormHead);
     const idx = {}, taken = {};
@@ -4461,7 +4461,7 @@ async function clLoadManualTvingWavve(){
     const rows = parseCSV(await res.text());
     if(rows.length <= 1) return;
     // 열 이름으로 위치를 찾는다(순서가 바뀌거나 열이 늘어도 따라감)
-    const CC = shFindCols(rows, CL_SHEET_COLS, ['title', 'ott'], 6);
+    const CC = shFindCols(rows, CL_SHEET_COLS, ['title', 'ott'], 30);
     if(!CC){ console.warn('콘텐츠 라인업 수동 시트에서 열 이름 행을 찾지 못했습니다.'); return; }
     const g = function(c, key){
       const k = CC.idx[key];
@@ -6245,8 +6245,9 @@ function rnNormHead(v) {
 }
 function rnFindNoteCols(rows) {
   const order = ['ver', 'title', 'tag', 'body', 'category', 'exclude', 'date', 'updated'];
-  // 위쪽 5줄 안에서 '제목' 또는 '버전'이 있는 행을 이름 행으로 본다
-  for (let r = 0; r < Math.min(rows.length, 5); r++) {
+  // 표 위에 안내 문구가 여러 줄 있을 수 있어 넉넉히(30줄) 훑는다.
+  // (실제 시트는 안내가 길어 이름 행이 13행에 있었다)
+  for (let r = 0; r < Math.min(rows.length, 30); r++) {
     const norm = (rows[r] || []).map(rnNormHead);
     const looksHead = norm.some(function(h) {
       return h === '제목' || h === '버전' || h === 'title';
