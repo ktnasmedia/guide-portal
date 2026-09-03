@@ -360,6 +360,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
   border-top: 1px solid var(--black-ele); margin-top: 2px; padding-top: 14px; }
 .ind-card.open .ind-body { display: flex; }
 .ind-col-head { display: flex; align-items: center; margin-bottom: 8px; }
+/* 시트 값이 여러 항목으로 나뉜 경우 목록처럼 보이게 */
+.ind-col .tb-cite-item { padding-left: 12px; position: relative; }
+.ind-col .tb-cite-item::before { content: "\2022"; position: absolute; left: 0;
+  color: var(--gray-low); }
 .ind-col .tb-cite { font-size: 12.5px; color: var(--gray-mid); line-height: 1.65; margin: 0 0 8px; }
 .ind-link { display: inline-flex; align-items: center; font-size: 11.5px; font-weight: 500; color: var(--gray-mid); border: 1px solid var(--border); border-radius: 7px; padding: 6px 11px; text-decoration: none; transition: .18s; margin-top: 2px; }
 .ind-link:hover { border-color: var(--red); color: #ff8080; background: rgba(229,9,20,0.08); }
@@ -4272,10 +4276,40 @@ function indApplyCard(card, v){
     } else if(x.stat){
       keys.push('check');
     }
-    // 요약
+    // 요약 — 카드에 문단이 여러 개인 업종이 있어(도박·사행성 등)
+    // 첫 문단만 바꾸면 나머지가 남아 내용이 두 번 나온 것처럼 보인다.
+    // 시트 값은 ' / ' 로 여러 문단을 이어 적으므로 그 기준으로 나눠 다시 그린다.
     if(x.desc && cols[x.idx]){
-      const cite = cols[x.idx].querySelector('.tb-cite');
-      if(cite) cite.textContent = x.desc;
+      const cites = cols[x.idx].querySelectorAll('.tb-cite');
+      if(cites.length){
+        // 문단 구분: ' / ' · 줄바꿈 · 불릿 기호(▪ · •)
+        // 시트에서 여러 항목을 한 칸에 적어 오므로 이 기준으로 나눠 각 줄로 떨군다.
+        const parts = x.desc
+          .split(/\s*\/\s*|[\r\n]+|\s*[▪•]\s*/)
+          .map(function(t){ return t.trim(); })
+          .filter(function(t){ return t; });
+        const first = cites[0];
+        // 첫 문단 자리에 첫 항목을 그린다.
+        // 여러 항목으로 나뉜 경우에만 목록 표시를 붙여 줄이 어긋나지 않게 한다.
+        first.textContent = parts[0] || x.desc;
+        first.classList.toggle('tb-cite-item', parts.length > 1);
+        // 둘째 문단부터는 첫 문단을 본떠 새로 만든다
+        for(let k = 1; k < parts.length; k++){
+          let el = cites[k];
+          if(!el){
+            el = first.cloneNode(false);
+            first.parentNode.insertBefore(el, cites[k - 1] ? cites[k - 1].nextSibling : null);
+          }
+          el.textContent = parts[k];
+          el.style.display = '';
+          el.classList.add('tb-cite-item');
+        }
+        // 시트 문단 수보다 원래 문단이 많으면 남는 것은 숨긴다
+        for(let k = parts.length; k < cites.length; k++){
+          cites[k].textContent = '';
+          cites[k].style.display = 'none';
+        }
+      }
     }
     // 갱신일 — 있으면 요약 아래 작은 글씨로
     if(cols[x.idx]){
