@@ -4427,6 +4427,7 @@ async function clLoadManualTvingWavve(){
       // 이미 있는 작품이면 새로 넣지 않고 매체 정보만 시트 값으로 바로잡는다
       // (자동 수집이 매체를 못 읽었거나 틀렸을 때 시트로 고칠 수 있게)
       if(existing[key]){
+        // 매체 정보 보정
         if(otts.length){
           existing[key].forEach(function(d){
             d.ott = primaryOtt;
@@ -4434,6 +4435,20 @@ async function clLoadManualTvingWavve(){
             d._ott_fixed_by_sheet = true;
           });
         }
+        // 시트에 적힌 값이 있으면 그 칸만 덮어쓴다.
+        // (티빙 페이지에서 카드가 내려간 작품은 줄거리·포스터를 자동으로
+        //  가져올 방법이 없어 시트로 채워야 한다)
+        // 열: A제목 B OTT C유형 D공개일 E등급 F출연 G장르 H줄거리 I오리지널
+        var sheetVals = {
+          content_type: (c[2]||'').trim(),
+          rating:       (c[4]||'').trim(),
+          summary:      (c[7]||'').trim()
+        };
+        existing[key].forEach(function(d){
+          Object.keys(sheetVals).forEach(function(f){
+            if(sheetVals[f]) d[f] = sheetVals[f];
+          });
+        });
         return;
       }
       const rd = (c[3]||'').trim();
@@ -6150,6 +6165,66 @@ function rnTvingBody(text){
   return esc.trim();
 }
 
+// 공지 시트의 열 이름 행과 각 항목의 열 위치를 찾는다.
+// 이름이 조금 달라도(띄어쓰기·표기 차이) 찾도록 후보를 여러 개 둔다.
+// 이름 행을 못 찾으면 기존처럼 순서(A~H)로 읽어 최소한 화면은 뜨게 한다.
+const RN_NOTE_COLS = {
+  ver:      ['버전', 'version', 'ver'],
+  title:    ['제목', 'title'],
+  tag:      ['태그', 'tag'],
+  body:     ['본문', '내용', 'body'],
+  category: ['카테고리', '분류', 'category'],
+  exclude:  ['가이드포탈 대시보드 표기여부', '표기여부', '표기', '노출여부', '제외여부'],
+  date:     ['날짜', '게시일', 'date'],
+  updated:  ['마지막업데이트', '최종수정', '마지막수정', 'updated'],
+  // '수정업데이트' 같은 여분 열은 쓰지 않는다(있어도 무시)
+};
+function rnNormHead(v) {
+  return String(v == null ? '' : v).replace(/\s/g, '').toLowerCase();
+}
+function rnFindNoteCols(rows) {
+  const order = ['ver', 'title', 'tag', 'body', 'category', 'exclude', 'date', 'updated'];
+  // 위쪽 5줄 안에서 '제목' 또는 '버전'이 있는 행을 이름 행으로 본다
+  for (let r = 0; r < Math.min(rows.length, 5); r++) {
+    const norm = (rows[r] || []).map(rnNormHead);
+    const looksHead = norm.some(function(h) {
+      return h === '제목' || h === '버전' || h === 'title';
+    });
+    if (!looksHead) continue;
+    const idx = {};
+    const taken = {};
+    // ① 이름이 정확히 같은 열을 먼저 찾는다
+    order.forEach(function(key) {
+      idx[key] = -1;
+      RN_NOTE_COLS[key].forEach(function(name) {
+        if (idx[key] >= 0) return;
+        const p = norm.indexOf(rnNormHead(name));
+        if (p >= 0 && !taken[p]) { idx[key] = p; taken[p] = true; }
+      });
+    });
+    // ② 못 찾은 항목은 이름이 '포함된' 열로 한 번 더 찾는다.
+    //    ('가이드포탈 대시보드 표기여부'처럼 앞에 수식어가 붙는 경우 대비)
+    order.forEach(function(key) {
+      if (idx[key] >= 0) return;
+      RN_NOTE_COLS[key].forEach(function(name) {
+        if (idx[key] >= 0) return;
+        const want = rnNormHead(name);
+        for (let c = 0; c < norm.length; c++) {
+          if (!taken[c] && norm[c] && norm[c].indexOf(want) >= 0) {
+            idx[key] = c; taken[c] = true; return;
+          }
+        }
+      });
+    });
+    // 제목·본문을 못 찾으면 이름 행이 아니라고 본다
+    if (idx.title >= 0 && idx.body >= 0) return { headRow: r, idx: idx };
+  }
+  console.warn('공지 시트에서 열 이름 행을 찾지 못해 열 순서대로 읽습니다.');
+  const idx = {};
+  order.forEach(function(key, i) { idx[key] = i; });
+  return { headRow: 0, idx: idx };
+}
+
 async function sheetsLoadNotes() {
   rnEl('rn-loading').style.display     = 'block';
   rnEl('rn-error').style.display       = 'none';
@@ -6173,17 +6248,24 @@ async function sheetsLoadNotes() {
       return;
     }
 
-    // 시트 열 순서: A버전 B제목 C태그 D본문 E카테고리 F표기여부 G날짜 H마지막업데이트
-    const allNotes = allRows.slice(1).map(function(cols) {
+    // 열 이름으로 위치를 찾는다.
+    // 여러 사람이 시트를 만지므로 열이 추가·삭제되거나 순서가 바뀔 수 있는데,
+    // 위치(cols[0]…)로 읽으면 값이 한 칸씩 밀려 조용히 깨진다.
+    const NCOL = rnFindNoteCols(allRows);
+    const pick = function(cols, key) {
+      const i = NCOL.idx[key];
+      return (i >= 0 && cols[i] != null) ? String(cols[i]).trim() : '';
+    };
+    const allNotes = allRows.slice(NCOL.headRow + 1).map(function(cols) {
       return {
-        ver     : (cols[0] || '').trim(),
-        title   : (cols[1] || '').trim(),
-        tag     : (cols[2] || '').trim(),
-        body    : (cols[3] || '').trim(),
-        category: (cols[4] || '').trim() || '기타',
-        exclude : (cols[5] || '').trim(),
-        date    : (cols[6] || '').trim(),
-        updated : (cols[7] || '').trim(),   // H열 마지막업데이트
+        ver     : pick(cols, 'ver'),
+        title   : pick(cols, 'title'),
+        tag     : pick(cols, 'tag'),
+        body    : pick(cols, 'body'),
+        category: pick(cols, 'category') || '기타',
+        exclude : pick(cols, 'exclude'),
+        date    : pick(cols, 'date'),
+        updated : pick(cols, 'updated'),
       };
     }).filter(function(n) {
       if (!n.ver || n.ver === '버전' || n.ver === '') return false;
