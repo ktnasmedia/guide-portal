@@ -1,934 +1,7 @@
 {
-  "generated_at": "2026-09-02T20:29:09.122267",
+  "generated_at": "2026-09-03T01:35:02.623489",
   "source": "tvingads.com/content",
   "items": [
-    {
-      "content_id": "tvingads-tving-취사병전설이되다",
-      "title": "취사병 전설이 되다",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/mLjRrNiQelf5ZY9zoTTEW520OI.webp",
-      "cast": [
-        "박지훈",
-        "윤경호",
-        "이상이"
-      ],
-      "release_date": "2026-05-11",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "총 대신 식칼, 탄띠 대신 앞치마! 이등병 강성재가 '전설의 취사병'으로 거듭나는 과정을 그린 밀리터리 쿡방 판타지",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "코미디 #웹툰원작"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/RQedfbdnNYs?si=3uNCJYqNsuueInuI",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-21",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-신입사원강회장",
-      "title": "신입사원 강회장",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/OJmojPRRoMcdL96z05RKA8S6fOc.webp",
-      "cast": [
-        "이준영",
-        "손현주",
-        "이주명",
-        "전혜진"
-      ],
-      "release_date": "2026-05-30",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "사업의 신이라 불리는 굴지의 대기업 회장이 사고를 당하면서 원치 않는 2회차 인생을 살게 되는 리마인드 라이프 스토리 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "오피스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/C1Dipc12CtY?si=HwfuQ-Plw-rR4Wba",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-21",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-킬잇",
-      "title": "킬잇",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/VlJpZUyvGc7KyXD87hcDVr0caPE.webp",
-      "cast": [
-        "장윤주",
-        "이종원",
-        "연준",
-        "신현지",
-        "차정원"
-      ],
-      "release_date": "2026-05-12",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "스타일 크리에이터 100인의 패션 서바이벌이 시작된다!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": "https://youtu.be/4DrsB5gljgY?si=u2mf2weswPa2JC2a",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-오십프로",
-      "title": "오십프로",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/qUfBxRDiD8r2bxcQXnlOnIWU5A.webp",
-      "cast": [
-        "신하균",
-        "오정세",
-        "허성태"
-      ],
-      "release_date": "2026-05-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "국정원 최고 블랙요원, 북한 특수공작원, 화산파 2인자. 평범해 보여도 끗발 좀 날리던 세 남자가, 뒤바뀐 운명을 되돌리고, 저마다의 정의를 되찾기 위해 다시 뛰기 시작한다.",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "액션"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/TZOqa19YRCg?si=uf7VRmdNF8DUk2vL",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-21",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-오십프로",
-      "title": "오십프로",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "신하균",
-        "오정세",
-        "허성태"
-      ],
-      "release_date": "2026-05-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "국정원 최고 블랙요원, 북한 특수공작원, 화산파 2인자. 평범해 보여도 끗발 좀 날리던 세 남자가, 뒤바뀐 운명을 되돌리고, 저마다의 정의를 되찾기 위해 다시 뛰기 시작한다.",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "액션"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/TZOqa19YRCg?si=uf7VRmdNF8DUk2vL",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-16",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-하트시그널5",
-      "title": "하트시그널5",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/PIGMm3Cpso5gizHmaxNZm9YAnI.webp",
-      "cast": [
-        "윤종신",
-        "이상민",
-        "김이나",
-        "로이킴",
-        "츠키"
-      ],
-      "release_date": "2026-04-14",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "사랑에 빠질 때 살아나는 모든 욕망과 감정들, '하트시그널'. 시그널하우스에 모인 청춘남녀들이 당신을 설렘과 질투, 눈물과 도파민 가득한 <하트시그널>로 초대합니다. 사랑에 빠질 준비 되셨나요?",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "연애"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": "https://youtu.be/TDD5XTSZnXg?si=ZwAvZJX0PPBszgUw",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-언더커버셰프",
-      "title": "언더커버 셰프",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
-      "cast": [
-        "김풍",
-        "샘킴",
-        "정지선",
-        "권성준"
-      ],
-      "release_date": "2026-05-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "대한민국 대표 스타 셰프들의 '주방 막내' 위장 취업기! 본인 요리의 기반이 된 본토 식당에 주방 막내부터 시작한다면 과연 어디까지 올라갈 수 있을까?",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/A8G0Z-Mc6Dc?si=TM4QSCCsrC1u4NcR",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-04",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-언더커버셰프",
-      "title": "언더커버 셰프",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/R8Ja6Y4KCt93daKs7b3lHFYPuM.webp",
-      "cast": [
-        "김풍",
-        "샘킴",
-        "정지선",
-        "권성준"
-      ],
-      "release_date": "2026-05-21",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "대한민국 대표 스타 셰프들의 '주방 막내' 위장 취업기! 본인 요리의 기반이 된 본토 식당에 주방 막내부터 시작한다면 과연 어디까지 올라갈 수 있을까?",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/A8G0Z-Mc6Dc?si=TM4QSCCsrC1u4NcR",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-07",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-내일도출근",
-      "title": "내일도 출근",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
-      "cast": [
-        "서인국",
-        "박지현"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "일상적 권태기에 시달리던 7년 차 직장인 차지윤이 까칠한 직장 상사 강시우와 함께 서로의 대체 불가능한 최선이 되어 일도 사랑도 다시 '설렘 ON 오피스 로맨스'",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/mPVJrHWKGNo?si=K7us1I2MFlLMcusF",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-11",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-내일도출근",
-      "title": "내일도 출근",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/QlV0rC2Wo4mVNSclJprkbmXfEKo.webp",
-      "cast": [
-        "서인국",
-        "박지현"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "일상적 권태기에 시달리던 7년 차 직장인 차지윤이 까칠한 직장 상사 강시우와 함께 서로의 대체 불가능한 최선이 되어 일도 사랑도 다시 '설렘 ON 오피스 로맨스'",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/mPVJrHWKGNo?si=K7us1I2MFlLMcusF",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-16",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-냉장고를부탁해since2014",
-      "title": "냉장고를 부탁해 since 2014",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
-      "cast": [
-        "김성주",
-        "안정환",
-        "최현석",
-        "김풍"
-      ],
-      "release_date": "2024-12-15",
-      "release_year": 2024,
-      "release_quarter": "2024 Q4",
-      "summary": "최고의 셰프들이 스타들의 냉장고 속 재료를 활용해 요리 대결을 펼치는 요리 토크쇼",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "푸드 #토크"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/nUhKLKzIX8I?si=j-aMZ6jnWpjdPuoP",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-냉장고를부탁해since2014",
-      "title": "냉장고를 부탁해 since 2014",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/P8a31NRw9XqI011qp4icMdl5UuQ.webp",
-      "cast": [
-        "김성주",
-        "안정환",
-        "최현석",
-        "김풍"
-      ],
-      "release_date": "2024-12-15",
-      "release_year": 2024,
-      "release_quarter": "2024 Q4",
-      "summary": "최고의 셰프들이 스타들의 냉장고 속 재료를 활용해 요리 대결을 펼치는 요리 토크쇼",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "푸드 #토크"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/nUhKLKzIX8I?si=j-aMZ6jnWpjdPuoP",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-도깨비10주년여행",
-      "title": "도깨비 10주년 여행",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/2Jc33vl2hp7yfDS6mBTdfBTmRws.webp",
-      "cast": [
-        "공유",
-        "김고은",
-        "이동욱",
-        "유인나"
-      ],
-      "release_date": "2026-07-04",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "함께여서 찬란하神. 드라마보다 더 리얼한 '찐' 케미, 도깨비 주역들의 특별한 추억 소환 여행",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/Kfjz4B8ylNk?si=ACTauqVVem6Kbp8Y",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-04",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-샤먼:미신전",
-      "title": "샤먼 : 미신전",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/XEfp3v4jUKUaGVPpnAXf4E6ruvc.webp",
-      "cast": [
-        "신하균",
-        "한예리"
-      ],
-      "release_date": "2026-07-06",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "귀鬼일까, 신神일까. 그 경계에 있는 존재들로 인해 삶을 잃어버린 사람들이 그 미혹에서 벗어나고자 간절한 싸움을 시작한다.",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "다큐멘터리"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": "https://youtu.be/yPWJO8zhdPU?si=RoCPz9bnsF2dwxHD",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-04",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-검사실의제안",
-      "title": "검사실의 제안",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/lWp0njPn4557bbuWnjVTOf6Oi0.webp",
-      "cast": [
-        "김윤식",
-        "박시우"
-      ],
-      "release_date": "2026-06-26",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스 #수사"
-      ],
-      "rating": "청불",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-2026윔블던챔피언십",
-      "title": "2026 윔블던 챔피언십",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/suCj8NRmUJHfIMdvNSKJfjdi40o.webp",
-      "cast": [],
-      "release_date": "2026-06-29",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": "푸른 잔디 위에 뜨거운 승부, 2026 윔블던 챔피언십",
-      "content_type": "스포츠",
-      "genres": [
-        "스포츠",
-        "테니스"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "전체",
-      "trailer_url": "https://youtu.be/L21dd0mOTLo?si=tB1U1G8T8K6BFUDe",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-21",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-연지곤지:YZKZ",
-      "title": "연지곤지 : YZKZ",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "전소미",
-        "조나단"
-      ],
-      "release_date": "2026-07-09",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "뷰티 #토크"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-02",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-신작및주목할콘텐츠",
-      "title": "신작 및 주목할 콘텐츠",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [],
-      "release_date": "2026-03-28",
-      "release_year": 2026,
-      "release_quarter": "2026 Q1",
-      "summary": null,
-      "content_type": "HOT",
-      "genres": [
-        "HOT",
-        "📄",
-        "PDF Document",
-        "tving-wavve-contents",
-        ".pdf",
-        "Available in browser",
-        "PDF 다운로드하기",
-        "📄",
-        "PDF Document",
-        "tving-wavve-contents",
-        ".pdf",
-        "Available in browser",
-        "PDF 다운로드하기",
-        "📄",
-        "PDF Document",
-        "tving-wavve-contents",
-        ".pdf",
-        "Available in browser",
-        "PDF 다운로드하기",
-        "2026 신한 SOL뱅크 KBO 리그",
-        "스포츠",
-        "야구"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "전체/T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-07-01",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-unknown-협찬",
-      "title": "협찬",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "이용진",
-        "남호연",
-        "황제성",
-        "곽범",
-        "이창호"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "코미디숏리그",
-      "genres": [
-        "코미디숏리그",
-        "예능",
-        "코미디"
-      ],
-      "rating": "15",
-      "ott": "unknown",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": null,
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-콩콩팜팜",
-      "title": "콩콩팜팜",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "이광수",
-        "김우빈",
-        "도경수"
-      ],
-      "release_date": "2026-06-19",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-코미디숏리그",
-      "title": "코미디숏리그",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/1wZeSJ2hxs3EeuUaR6kYOcmfwA.webp",
-      "cast": [
-        "이용진",
-        "남호연",
-        "황제성",
-        "곽범",
-        "이창호"
-      ],
-      "release_date": "2026-06-22",
-      "release_year": 2026,
-      "release_quarter": "2026 Q2",
-      "summary": null,
-      "content_type": "협찬",
-      "genres": [
-        "협찬",
-        "예능",
-        "코미디"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-야구여왕2",
-      "title": "야구여왕2",
-      "title_original": null,
-      "poster_url": null,
-      "cast": [
-        "추신수",
-        "이대형",
-        "윤석민"
-      ],
-      "release_date": "2026-07-02",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "국내를 넘어서 세계로 간다! 과연 블랙퀸즈는 모든 시련을 이겨내고 진정한 '야구여왕'으로 거듭날 수 있을까? 더 강해진 여왕들의 본격 야구 생존기",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "리얼리티"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-피의게임X",
-      "title": "피의게임 X",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/d5SGds9q56tGtglIUCQV4gYhBg.webp",
-      "cast": [
-        "홍진호",
-        "이상민",
-        "현성주",
-        "신승용",
-        "윤비"
-      ],
-      "release_date": "2026-07-03",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": null,
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "서바이벌 #두뇌게임"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "W ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-그래,이혼하자",
-      "title": "그래, 이혼하자",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
-      "cast": [
-        "이민정",
-        "김지석",
-        "이현진",
-        "이진이",
-        "오연아",
-        "정의제",
-        "왕빛나",
-        "안내상",
-        "구성환",
-        "문희경",
-        "임연우"
-      ],
-      "release_date": "2026-08-20",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "지칠 대로 지친 결혼 생활에 종지부를 찍기 위한 웨딩드레스샵 대표 부부의 리얼 이혼 체험기",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-그래,이혼하자",
-      "title": "그래, 이혼하자",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/6du7TeD4iFwPL9n37lvwYTntcbo.webp",
-      "cast": [
-        "이민정",
-        "김지석",
-        "이현진",
-        "이진이",
-        "오연아",
-        "정의제",
-        "왕빛나",
-        "안내상",
-        "구성환",
-        "문희경",
-        "임연우"
-      ],
-      "release_date": "2026-08-20",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "지칠 대로 지친 결혼 생활에 종지부를 찍기 위한 웨딩드레스샵 대표 부부의 리얼 이혼 체험기",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-25",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-나노리스트",
-      "title": "나노리스트",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/jaLo5TS3cbscurkidQKcT0PaDI8.webp",
-      "cast": [
-        "장예나",
-        "심규혁",
-        "사문영",
-        "정유정",
-        "방성준"
-      ],
-      "release_date": "2026-08-17",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "최강의 살인 병기 안드로이드, 그녀의 이름은 나노",
-      "content_type": "애니메이션",
-      "genres": [
-        "애니메이션",
-        "액션"
-      ],
-      "rating": "청불",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ORIGINAL",
-      "trailer_url": null,
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-08-28",
-        "needs_review": false
-      }
-    },
     {
       "content_id": "tvingads-tving-우주떡집",
       "title": "우주떡집",
@@ -960,7 +33,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1001,7 +74,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1042,7 +115,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1077,7 +150,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1112,7 +185,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1146,7 +219,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1180,7 +253,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1214,7 +287,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1232,7 +305,7 @@
       "release_date": "2026-07-30",
       "release_year": 2026,
       "release_quarter": "2026 Q3",
-      "summary": "NEW 사 남매 염정아, 김선영, 강유석, 노윤서! 대한민국 각지의 직송 작물로 차려지는 제철 밥상과 찐가족 사남매의 극강 케미!",
+      "summary": null,
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1249,7 +322,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1283,7 +356,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1318,7 +391,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1336,7 +409,7 @@
       "release_date": "2026-08-01",
       "release_year": 2026,
       "release_quarter": "2026 Q3",
-      "summary": ""네 명이서 캐리어 하나로 떠날 수 있을까?" 상상을 현실로 만드는 여행 주문, <짐쌀라비움>!",
+      "summary": null,
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1353,7 +426,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1371,7 +444,7 @@
       "release_date": "2026-08-01",
       "release_year": 2026,
       "release_quarter": "2026 Q3",
-      "summary": ""네 명이서 캐리어 하나로 떠날 수 있을까?" 상상을 현실로 만드는 여행 주문, <짐쌀라비움>!",
+      "summary": null,
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1388,7 +461,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1419,7 +492,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1453,7 +526,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1487,7 +560,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1522,7 +595,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1558,7 +631,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1596,7 +669,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     },
@@ -1640,7 +713,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-02",
+        "last_updated": "2026-09-03",
         "needs_review": false
       }
     }
