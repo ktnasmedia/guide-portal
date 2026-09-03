@@ -669,6 +669,11 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 .spec-name{font-size:13px;color:var(--gray-mid);}
 .pen-calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
 .pen-calc-label{font-size:12px;color:var(--gray-mid);margin-bottom:6px;}
+/* 실소진 금액이 필요한데 비어 있을 때 강조 */
+.pen-calc-input.pc-need-input{border-color:#FB923C;box-shadow:0 0 0 2px rgba(251,146,60,0.12);}
+.pc-req{display:inline-flex;align-items:center;margin-left:6px;padding:1px 6px;border-radius:5px;font-size:10.5px;font-weight:700;background:rgba(251,146,60,0.14);color:#FB923C;border:1px solid rgba(251,146,60,0.3);}
+.pc-warn{margin-top:7px;font-size:11.5px;color:#FB923C;line-height:1.6;}
+.pc-miss{color:#FB923C;}
 .pen-calc-hint{color:var(--gray-dim);}
 .pen-calc-input{width:100%;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;
   padding:10px 14px;font-size:13px;color:var(--white);outline:none;transition:border-color 0.15s;
@@ -2494,9 +2499,10 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
               <input id="pc-cancel" class="pen-calc-input" type="date" onchange="pcRender()" onclick="pcOpenPicker(this)">
             </div>
             <div id="pc-spent-wrap" style="display:none;">
-              <div class="pen-calc-label">실소진 금액 <span class="pen-calc-hint">라이브 중 취소 시</span></div>
+              <div class="pen-calc-label">실소진 금액 <span class="pen-calc-hint">라이브 중 취소 시</span><span class="pc-req" id="pc-spent-req" style="display:none;">필수</span></div>
               <input id="pc-spent" class="pen-calc-input" type="text" inputmode="numeric"
                      placeholder="예) 15,000,000" oninput="pcMoneyInput(this); pcRender();">
+              <div class="pc-warn" id="pc-spent-warn" style="display:none;">⚠ 실소진 금액 미입력 — 0원으로 계산 중입니다.</div>
             </div>
           </div>
           <div id="pc-result"></div>
@@ -3208,7 +3214,7 @@ function pcCalc(p, budget, start, end, cancel, spent){
   var billDays = (rest <= 14) ? rest : 14;
   steps.push(['청구 일수', billDays + '일']);
   steps.push(['일할 청구액', pcWon(daily * billDays)]);
-  if(spent) steps.push(['실소진 금액', pcWon(spent)]);
+  steps.push(['실소진 금액', spent ? pcWon(spent) : '0원 (미입력)']);
   var amtLive = daily * billDays + spent;
   var overLive = amtLive > budget;
   if(overLive) steps.push(['산식상 금액', pcWon(amtLive) + ' → 광고비 상한 적용']);
@@ -3220,6 +3226,21 @@ function pcCalc(p, budget, start, end, cancel, spent){
     steps: steps, over: overLive
   };
 }
+// 실소진 금액이 필요한 조건인지 알리고, 비어 있으면 강조한다.
+// (입력하지 않아도 계산이 되어 누락을 알아채기 어려웠다)
+function pcSpentNeeded(){
+  var wrap = document.getElementById('pc-spent-wrap');
+  var on = wrap && wrap.style.display !== 'none';
+  var input = document.getElementById('pc-spent');
+  var req = document.getElementById('pc-spent-req');
+  var warn = document.getElementById('pc-spent-warn');
+  var empty = on && input && !pcNum(input.value);
+  if(input) input.classList.toggle('pc-need-input', !!empty);
+  if(req) req.style.display = on ? 'inline-flex' : 'none';
+  if(warn) warn.style.display = empty ? 'block' : 'none';
+  return empty;
+}
+
 function pcRender(){
   var sel = document.getElementById('pc-product');
   if(!sel) return;
@@ -3259,6 +3280,8 @@ function pcRender(){
   var live   = !!(start && cancel && cancel >= start);
   if(spentWrap) spentWrap.style.display = (needPeriod && live) ? '' : 'none';
   var spent  = (needPeriod && live) ? pcNum((document.getElementById('pc-spent') || {}).value) : 0;
+  // 실소진이 필요한 조건인지 표시하고, 비어 있으면 강조한다
+  pcSpentNeeded();
 
   var box  = document.getElementById('pc-result');
   var need = document.getElementById('pc-need');
@@ -3299,8 +3322,9 @@ function pcRender(){
       if(r.steps && r.steps.length){
         h += '<div class="pc-steps">';
         r.steps.forEach(function(x){
-          h += '<div class="pc-step"><div class="pc-step-l">' + tpEsc(x[0]) + '</div>'
-             + '<div class="pc-step-v">' + tpEsc(x[1]) + '</div></div>';
+          var _miss = String(x[1]).indexOf('(미입력)') >= 0;   // 미입력은 눈에 띄게
+        h += '<div class="pc-step"><div class="pc-step-l">' + tpEsc(x[0]) + '</div>'
+           + '<div class="pc-step-v' + (_miss ? ' pc-miss' : '') + '">' + tpEsc(x[1]) + '</div></div>';
         });
         h += '<div class="pc-step pc-step-total"><div class="pc-step-l">위약금 예상 금액</div>'
            + '<div class="pc-step-v">' + pcWon(r.amount) + '</div></div>';
