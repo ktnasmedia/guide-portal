@@ -1222,7 +1222,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     
     <!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> AI 기반 자동 요약으로 인해 오류가 있을 수 있으니, 최종 진행 시에는 매체별 상세 가이드 참고 및 담당팀으로 문의 바랍니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> AI 기반 자동 요약 특성상 오류가 있을 수 있으므로, 최종 진행 시 매체별 상세 가이드 확인 및 미디어기획팀 문의 바랍니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab" id="tab-policy-all" onclick="switchTab('policy','all')" style="display:none;">전체</div>
         <div class="sub-tab" id="tab-policy-industry" onclick="switchTab('policy','industry')">업종</div>
@@ -1987,7 +1987,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
       <div class="pen-grp">일정 변경 · 연기</div>
       <div class="pen-when pen-dash">—</div>
       <div class="pen-val"><span class="risk risk-safe">위약금 없음</span>
-        <div>취소가 아닌 일정 변경 또는 연기는 위약금이 발생하지 않습니다. 담당팀으로 협의 문의해 주세요.</div></div>
+        <div>취소가 아닌 일정 변경 또는 연기는 위약금이 발생하지 않습니다. 미디어기획팀으로 협의 문의해 주세요.</div></div>
     </div>
   </div>
         <div class="section-bar" style="margin-top:34px;"><div class="section-accent"></div><span class="section-label">티빙·웨이브 위약금 정책 가이드</span></div>
@@ -2461,7 +2461,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <svg class="notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11.2v5"></path><path d="M12 7.6h.01"></path></svg>
           <div class="notice-text">
             <div>광고 정책 &gt; 위약금 정책의 매체별 기준에 따라 <strong>위약금 예상 금액</strong>을 산정합니다.</div>
-            <div>정확한 실소진 금액 확인은 2~3 영업일이 소요되며, 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의 바랍니다.</div>
+            <div>정확한 실소진 금액 확인은 2~3 영업일이 소요되며, 미디어기획팀(<a href="mailto:mbiz@nasmedia.co.kr" class="mail-link">mbiz@nasmedia.co.kr</a>)으로 문의 바랍니다.</div>
           </div>
         </div>
 
@@ -2565,7 +2565,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
     <!-- ══════ PAGE: 콘텐츠 라인업 ══════ -->
     <div id="page-content" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">매체별 공개 예정작과 공개중인 작품을 한눈에 확인하세요!</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> 콘텐츠 정보는 다양한 채널을 통해 수시 업데이트되며 매체사 사정에 따라 변경될 수 있으니, 정확한 일정은 매체사 공식 발표를 기준으로 확인 바랍니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title">OTT 콘텐츠 라인업</h1><p class="page-desc">매체별 공개 예정작과 공개중인 작품을 한눈에 확인하세요!</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> 콘텐츠 정보는 다양한 채널을 통해 수시로 업데이트되며, 매체사 사정에 따라 변경될 수 있습니다. 정확한 일정은 매체사 공식 발표를 기준으로 확인해 주시기 바랍니다.</p></div>
       
       <div class="section-bar" style="margin-bottom:18px;">
         <div class="section-accent"></div>
@@ -3281,7 +3281,7 @@ function pcRender(){
   if(r){
     h += '<div class="pc-out">';
     // 산출 금액이 광고비를 넘는 경우는 금액을 보기 전에 먼저 알린다
-    if(r.over) h += '<div class="pc-over">산출 금액이 매체 광고비를 초과하여 광고비 기준으로 표시되었습니다. 정확한 금액은 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의해 주시기 바랍니다.</div>';
+    if(r.over) h += '<div class="pc-over">산출 금액이 매체 광고비를 초과하여 광고비 기준으로 표시되었습니다. 정확한 금액은 미디어기획팀(<a href="mailto:mbiz@nasmedia.co.kr" class="mail-link">mbiz@nasmedia.co.kr</a>)으로 문의해 주시기 바랍니다.</div>';
     if(r.amount === null){                      // 취소 자체가 불가
       h += '<div class="pc-amt pc-amt-no">취소 불가</div>';
       h += '<div class="pc-amt-sub">' + tpEsc(r.why) + '</div>';
@@ -3432,7 +3432,7 @@ async function kboEnsureLoaded(){
 // 열 이름 행을 못 찾으면 A열=항목, B열=내용으로 읽습니다.
 // 평문이 필요한 곳(alert, textContent)용
 const LOAD_FAIL_TEXT = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.\n'
-  + '문제가 지속되면 미디어기획팀(netflix@nasmedia.co.kr)으로 문의 바랍니다.';
+  + '문제가 지속되면 미디어기획팀(mbiz@nasmedia.co.kr)으로 문의 바랍니다.';
 const NF_SPEC_TABS = [
   { gid: '1038607535', slot: 'video',     label: '일반영상' },
   { gid: '1141063407', slot: 'image',     label: '일시정지' },
@@ -3441,7 +3441,7 @@ const NF_SPEC_TABS = [
 ];
 // 데이터 로드 실패 시 화면에 보여줄 공용 문구 — 내부 구조·기술 용어는 노출하지 않는다
 const LOAD_FAIL_MSG = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.<br>'
-  + '문제가 지속되면 미디어기획팀(<a href="mailto:netflix@nasmedia.co.kr" class="mail-link">netflix@nasmedia.co.kr</a>)으로 문의 바랍니다.';
+  + '문제가 지속되면 미디어기획팀(<a href="mailto:mbiz@nasmedia.co.kr" class="mail-link">mbiz@nasmedia.co.kr</a>)으로 문의 바랍니다.';
 const NF_SPEC_COLS = { name: ['항목', '구분', '항목명'], body: ['내용', '가이드', '상세'] };
 let nfSpecLoaded = false;
 const nfSpecData = {};   // slot → { label, items, error }
