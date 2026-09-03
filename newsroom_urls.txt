@@ -17,9 +17,6 @@
 # 페이퍼맨
 https://about.netflix.com/ko/news/paper-man-wt-announcement
 
-# 동궁 (가제)
-https://about.netflix.com/ko/news/east-palace-wt-production
-
 # 크로스 2
 https://about.netflix.com/ko/news/mission-cross-2-sequel-announcement
 
@@ -44,23 +41,14 @@ https://about.netflix.com/ko/news/beauty-in-the-beast-wt-production
 # 나 혼자만 레벨업
 https://about.netflix.com/ko/news/solo-leveling-announcement
 
-# 작품명 확인 필요
-https://about.netflix.com/ko/news/show-business-wt-production
-
 # 러브 어페어
 https://about.netflix.com/ko/news/the-facade-of-love-start-of-production
 
 # 로드
 https://about.netflix.com/ko/news/crime-thriller-series-road-wt-now-in-production
 
-# 작품명 확인 필요
+# 나를 충전해줘
 https://about.netflix.com/ko/news/take-charge-of-my-heart-production
-
-# 작품명 확인 필요
-https://about.netflix.com/ko/news/korean-mystery-horror-series-perfect-job-in-production
-
-# 스캔들(가제)
-https://about.netflix.com/ko/news/scandals-wt-production
 
 # 퍼스트 닥터
 https://about.netflix.com/ko/news/first-doctor-wt-production-announcement
@@ -76,3 +64,10 @@ https://about.netflix.com/ko/news/dochabi-wt-production
 
 # 담을 넘지 마시오
 https://about.netflix.com/ko/news/no-crushing-allowed-production-and-casting-announcement
+
+# 할매
+https://about.netflix.com/ko/news/the-shooter-wt-production
+
+# 마데레사
+https://about.netflix.com/ko/news/materesa-wt-production
+
