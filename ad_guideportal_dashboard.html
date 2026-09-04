@@ -1235,7 +1235,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
     
     <!-- ══════ PAGE: 광고 정책 ══════ -->
     <div id="page-policy" class="page">
-      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p><p class="page-disclaimer"><span class="pd-icon">⚠</span> AI 기반 자동 요약 특성상 오류가 있을 수 있으므로, 최종 진행 시 매체별 상세 가이드 확인 및 미디어기획팀 문의 바랍니다.</p></div>
+      <div class="page-header" style="margin-bottom:24px;"><h1 class="page-title" id="ph-title-policy">광고 정책</h1><p class="page-desc" id="ph-desc-policy">업종별 광고 집행 기준을 안내합니다.</p><p class="page-disclaimer" id="policy-disclaimer"><span class="pd-icon">⚠</span> 본 내용은 AI 기반 자동 요약 정보로 일부 오류가 발생할 수 있습니다. 매체별 상세 가이드를 확인하시거나 미디어기획팀으로 문의해 주시기 바랍니다.</p></div>
       <div class="sub-tab-bar">
         <div class="sub-tab" id="tab-policy-all" onclick="switchTab('policy','all')" style="display:none;">전체</div>
         <div class="sub-tab" id="tab-policy-industry" onclick="switchTab('policy','industry')">업종</div>
@@ -2796,6 +2796,9 @@ function navigate(page, tab) {
     setTimeout(indInit, 60);
     setTimeout(indLoadSheet, 80);
   }
+  // AI 요약 주의 문구는 위약금 정책 탭에서 뺀다 (자동 요약이 아니라 해당 없음)
+  var pdc = document.getElementById('policy-disclaimer');
+  if (pdc) pdc.style.display = (page === 'policy' && targetTab === 'penalty') ? 'none' : '';
   // 검색창은 '업종' 탭에서만 (검색 로직이 .ind-card 만 대상으로 함)
   var indOn = (page === 'policy' && targetTab === 'industry');
   if (psw) psw.style.display = indOn ? 'flex' : 'none';
