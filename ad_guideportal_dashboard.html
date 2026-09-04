@@ -2861,6 +2861,15 @@ function gaEvent(name, params){
   gtag('event', name, params || {});
 }
 
+// 화면에 어떻게 도달했는지.
+// 이 포털은 메인 페이지가 없어 첫 진입이 늘 공지 사항이다.
+// 그대로 세면 공지 사항이 부풀려지므로 '첫 진입'과 '직접 이동'을 나눠 기록한다.
+//   landing  = 주소로 처음 들어와 자동으로 열린 화면
+//   nav      = 사용자가 메뉴·탭·버튼을 눌러 이동한 화면
+//   history  = 뒤로/앞으로 가기
+var _gaEntry = 'landing';
+function gaMarkEntry(kind){ _gaEntry = kind; }
+
 function gaScreenView(page, tab, pageLabel, tabEl){
   if (typeof gtag !== 'function') return;
   var tabLabel = (tabEl && tabEl.textContent || '').trim();
@@ -2870,8 +2879,11 @@ function gaScreenView(page, tab, pageLabel, tabEl){
   gtag('event', 'page_view', {
     page_title: title,
     page_location: location.origin + location.pathname + '#' + path.slice(1),
-    page_path: path
+    page_path: path,
+    entry_type: _gaEntry
   });
+  // 한 번 쓰고 나면 기본값(직접 이동)으로 되돌린다
+  _gaEntry = 'nav';
 }
 
 // URL 해시를 현재 페이지/탭에 맞게 갱신 (히스토리에 남겨 뒤로가기 지원)
@@ -2918,6 +2930,7 @@ function applyHashRoute() {
 // 뒤로/앞으로 가기 대응
 window.addEventListener('hashchange', function() {
   if (_suppressHashChange) return; // navigate가 방금 바꾼 해시면 무시
+  gaMarkEntry('history');
   applyHashRoute();
 });
 
