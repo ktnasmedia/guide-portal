@@ -7,6 +7,17 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZCD7ZB2L61"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    // 이 포털은 한 파일 안에서 화면이 바뀌므로 자동 조회 기록을 끄고,
+    // navigate() 에서 페이지·탭마다 직접 보낸다(그래야 화면별로 나뉘어 보인다).
+    gtag('config', 'G-ZCD7ZB2L61', { send_page_view: false });
+  </script>
+
   <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="favicon/favicon-16.png" sizes="16x16" type="image/png">
@@ -1141,7 +1152,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
           <div class="sub-tab rn-media-btn" id="tab-updates-netflix" data-rnmedia="netflix" onclick="switchTab('updates','netflix')">넷플릭스</div>
           <div class="sub-tab rn-media-btn" id="tab-updates-tving" data-rnmedia="tving_wavve" onclick="switchTab('updates','tving')">티빙·웨이브</div>
           <div class="tab-search-wrap">
-            <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch()">
+            <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="rn-search-shared" type="text" class="tab-search" placeholder="제목·내용 검색 (넷플릭스+티빙·웨이브)" oninput="rnSearch(); gaSearch('공지 사항', this.value);">
           </div>
         </div>
 
@@ -1244,7 +1255,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="sub-tab" id="tab-policy-limited" onclick="switchTab('policy','limited')" style="display:none;">제한 업종</div>
         <div class="sub-tab" id="tab-policy-banned" onclick="switchTab('policy','banned')" style="display:none;">금지 업종</div>
         <div class="tab-search-wrap" id="policy-search-wrap" style="display:none;">
-          <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="indApplyFilter()">
+          <span class="tab-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span><input id="policy-search" type="text" class="tab-search" placeholder="업종·조건 검색" oninput="indApplyFilter(); gaSearch('광고 정책', this.value);">
         </div>
       </div>
       <div id="tc-policy-all" style="display:none;">
@@ -2552,7 +2563,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
       <div class="cl-search-wrap">
         <span class="cl-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span>
-        <input type="text" id="lib-search" class="cl-search-input" placeholder="자료명 검색" oninput="lib_search(this.value)" autocomplete="off">
+        <input type="text" id="lib-search" class="cl-search-input" placeholder="자료명 검색" oninput="lib_search(this.value); gaSearch('자료실', this.value);" autocomplete="off">
         <button class="cl-search-clear" id="lib-search-clear" onclick="lib_searchClear()" style="display:none;">✕</button>
       </div>
 
@@ -2589,7 +2600,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
 
       <div class="cl-search-wrap">
         <span class="cl-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5 L16.2 16.2"></path></svg></span>
-        <input type="text" id="cl-search" class="cl-search-input" placeholder="작품명·출연진 검색" oninput="clSearch(this.value)" autocomplete="off">
+        <input type="text" id="cl-search" class="cl-search-input" placeholder="작품명·출연진 검색" oninput="clSearch(this.value); gaSearch('콘텐츠 라인업', this.value);" autocomplete="off">
         <button class="cl-search-clear" id="cl-search-clear" onclick="clSearchClear()" style="display:none;">✕</button>
       </div>
 
@@ -2807,7 +2818,7 @@ function navigate(page, tab) {
   if (page === 'subscription' && targetTab === 'calculator') setTimeout(function(){ calcLoadHolidays().then(calcRenderCal); }, 80);
 
   // 8) 페이지 헤더(제목) 갱신 — 하위 탭이 있으면 "페이지 · 하위탭"으로, 설명은 페이지 고정
-  const pageNames = {updates:'공지 사항',policy:'광고 정책',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'OTT 콘텐츠 라인업'};
+  const pageNames = {updates:'공지 사항',policy:'광고 정책',prodtgt:'광고 상품 & 타기팅',products:'광고 상품',targeting:'광고 타기팅',subscription:'청약 방법',casestudy:'케이스스터디',media:'자료실',content:'OTT 콘텐츠 라인업'};
   const titleEl = document.getElementById('ph-title-' + page);
   if (titleEl) {
     if (tab && tab !== tabs[0] && activeTabEl) {
@@ -2821,8 +2832,46 @@ function navigate(page, tab) {
   //    형식: #page 또는 #page/tab (첫번째 기본탭이면 tab 생략)
   updateUrlHash(page, targetTab, tabs);
 
+  // 10) 사용 기록 (GA4) — 화면이 바뀔 때마다 한 건씩
+  gaScreenView(page, targetTab, pageNames[page], activeTabEl);
+
   // 모바일: 메뉴에서 페이지 선택 시 사이드바 자동 닫기
   closeMobileNavIfOpen();
+}
+
+// 화면 전환을 GA4 에 보낸다.
+// 이 포털은 한 파일이라 그냥 두면 모든 화면이 한 건으로 뭉친다.
+// 페이지·탭 이름을 붙여 어느 화면을 얼마나 보는지 나뉘어 보이게 한다.
+// 검색어 기록 (GA4) — 어느 화면에서 무엇을 찾는지
+// 글자를 칠 때마다 보내면 한 단어가 수십 건으로 쌓이므로,
+// 입력이 멈추고 0.8초 뒤 한 번만 보낸다. 두 글자 미만은 건너뛴다.
+var _gaSearchTimer = {};
+function gaSearch(where, term){
+  var t = String(term || '').trim();
+  if (t.length < 2) return;
+  clearTimeout(_gaSearchTimer[where]);
+  _gaSearchTimer[where] = setTimeout(function(){
+    gaEvent('search', { search_term: t, search_location: where });
+  }, 800);
+}
+
+// 주요 동작 기록 (다운로드·원문 링크·계산 등)
+function gaEvent(name, params){
+  if (typeof gtag !== 'function') return;
+  gtag('event', name, params || {});
+}
+
+function gaScreenView(page, tab, pageLabel, tabEl){
+  if (typeof gtag !== 'function') return;
+  var tabLabel = (tabEl && tabEl.textContent || '').trim();
+  var title = pageLabel || page;
+  if (tabLabel) title += ' · ' + tabLabel;
+  var path = '/' + page + (tab ? '/' + tab : '');
+  gtag('event', 'page_view', {
+    page_title: title,
+    page_location: location.origin + location.pathname + '#' + path.slice(1),
+    page_path: path
+  });
 }
 
 // URL 해시를 현재 페이지/탭에 맞게 갱신 (히스토리에 남겨 뒤로가기 지원)
@@ -3315,6 +3364,8 @@ function pcRender(){
   if(r){
     h += '<div class="pc-out">';
     // 산출 금액이 광고비를 넘는 경우는 금액을 보기 전에 먼저 알린다
+  // 위약금 계산 실행 기록
+  gaEvent('penalty_calc', { product: (p && p.label) || '', level: r.level || '' });
     if(r.over) h += '<div class="pc-over">산출된 위약금이 총 광고비를 초과하여, 최대 위약금(광고비 100%) 기준으로 표시됩니다.</div>';
     if(r.amount === null){                      // 취소 자체가 불가
       h += '<div class="pc-amt pc-amt-no">취소 불가</div>';
@@ -4109,6 +4160,18 @@ function indInit(){
   window._indReady = true;
 
   // 카드 펼치기
+  // 원문 보기 클릭 기록
+  document.querySelectorAll('.ind-link').forEach(function(a){
+    a.addEventListener('click', function(){
+      var card = a.closest('.ind-card');
+      var nm = card && card.querySelector('.ind-name');
+      gaEvent('outbound_click', {
+        link_url: a.getAttribute('href') || '',
+        item_name: (nm && nm.textContent || '').trim()
+      });
+    });
+  });
+
   document.querySelectorAll('.ind-head').forEach(function(head){
     head.addEventListener('click', function(){
       var card = head.closest('.ind-card');
@@ -4696,6 +4759,7 @@ async function clLoadManualTvingWavve(){
 
 // 엑셀 다운로드: scope='filtered'(현재 화면) 또는 'all'(전체)
 function clDownloadExcel(scope){
+  gaEvent('file_download', { file_name: '콘텐츠 라인업', scope: scope || 'filtered' });
   const hint = document.getElementById('cl-dl-hint');
   if(typeof XLSX === 'undefined'){
     if(hint) hint.textContent = LOAD_FAIL_TEXT;
