@@ -6299,10 +6299,11 @@ function rnTvingToggle(id){
 }
 
 function rnTvingFmtDate(d){
-  // '2026-06-11' → '26. 6. 11.'
-  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || '');
-  if(!m) return clEsc(d || '');
-  return m[1].slice(2) + '. ' + parseInt(m[2],10) + '. ' + parseInt(m[3],10) + '.';
+  // '2026-06-11' 또는 '2026. 6. 11' → '26. 6. 11.'
+  // 시트가 표시 형식을 바꿔 넘기므로 rnParseDate 로 함께 처리한다
+  var p = rnParseDate(d);
+  if(!p) return clEsc(d || '');
+  return String(p.getFullYear()).slice(2) + '. ' + (p.getMonth() + 1) + '. ' + p.getDate() + '.';
 }
 
 // 다양한 날짜 표기를 넷플릭스 형식('YYYY.MM.DD')으로 통일
@@ -6315,12 +6316,27 @@ function rnFmtDateDot(d){
   return m[1] + '.' + mm + '.' + dd;
 }
 
+// 시트의 날짜 값을 읽는다.
+// 구글 시트가 표시 형식을 자동으로 바꾸므로 '2026-09-01' 외에
+// '2026. 9. 1', '2026.9.1', '2026/9/1' 같은 형태로도 넘어온다.
+function rnParseDate(d){
+  var t = String(d || '').trim();
+  if(!t) return null;
+  var m = /^(\d{4})\s*[-.\/]\s*(\d{1,2})\s*[-.\/]\s*(\d{1,2})\.?$/.exec(t);
+  if(!m) return null;
+  var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), dd = parseInt(m[3], 10);
+  if(mo < 1 || mo > 12 || dd < 1 || dd > 31) return null;
+  var posted = new Date(y, mo - 1, dd);
+  if(isNaN(posted.getTime())) return null;
+  // 존재하지 않는 날짜(2월 30일 등)를 걸러낸다
+  if(posted.getFullYear() !== y || posted.getMonth() !== mo - 1 || posted.getDate() !== dd) return null;
+  return posted;
+}
+
 // 게시일이 최근 14일 이내면 NEW
 function rnTvingIsNew(d){
-  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d || '');
-  if(!m) return false;
-  var posted = new Date(parseInt(m[1],10), parseInt(m[2],10)-1, parseInt(m[3],10));
-  if(isNaN(posted.getTime())) return false;
+  var posted = rnParseDate(d);
+  if(!posted) return false;
   var diffDays = (Date.now() - posted.getTime()) / 86400000;
   return diffDays >= 0 && diffDays <= 14;
 }
@@ -6635,7 +6651,7 @@ async function sheetsLoadNotes() {
           +   '<div class="rn-tbl-row rn-tbl-nf" onclick="rnNfRowToggle(\'' + uid + '\')">'
           +     '<div><span class="cat-badge cat-tbl" style="background:' + cc.bg + ';color:' + cc.color + ';border:1px solid ' + cc.border + ';">' + clEsc(r.category) + '</span></div>'
           +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
-          +     '<div class="rn-tbl-date">' + clEsc(r.date || '') + '</div>'
+          +     '<div class="rn-tbl-date">' + rnFmtDateDot(r.date) + '</div>'
           +   '</div>'
           +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + rnBodyHtml(r.body) + '</div>'
           + '</div>';
