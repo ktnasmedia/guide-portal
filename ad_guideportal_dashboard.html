@@ -6665,8 +6665,11 @@ async function sheetsLoadNotes() {
       const i = NCOL.idx[key];
       return (i >= 0 && cols[i] != null) ? String(cols[i]).trim() : '';
     };
-    const allNotes = allRows.slice(NCOL.headRow + 1).map(function(cols) {
+    const allNotes = allRows.slice(NCOL.headRow + 1).map(function(cols, _i) {
       return {
+        // 필터·페이지가 바뀌어도 변하지 않는 고유 id.
+        // 순번으로 만들면 카테고리를 바꿀 때 엉뚱한 글이 열린 것처럼 보인다.
+        uid     : 'nf-' + _i,
         ver     : pick(cols, 'ver'),
         title   : pick(cols, 'title'),
         tag     : pick(cols, 'tag'),
@@ -6818,7 +6821,7 @@ async function sheetsLoadNotes() {
         + '<div>구분</div><div>제목</div><div class="rn-tbl-date">게시일</div></div>';
       pageRows.forEach(function(r, i){
         var cc  = catColors[r.category] || catColors['기타'];
-        var uid = 'nfrow-' + (st + i);
+        var uid = 'nfrow-' + (r.uid || (st + i));
         var isNew = rnTvingIsNew(r.date) ? '<span class="badge badge-new" style="margin-left:6px;vertical-align:middle;">NEW</span>' : '';
         var ver = r.ver ? '<span class="badge-ver">' + clEsc(r.ver) + '</span>' : '';
         h += '<div class="rn-tbl-item">'
