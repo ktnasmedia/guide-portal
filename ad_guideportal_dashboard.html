@@ -2616,7 +2616,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <span class="cl-filter-sub">연도</span>
         <div id="cl-year-buttons" class="cl-chip-inline"></div>
         <span class="cl-filter-divider"></span>
-        <span class="cl-filter-sub">분기</span>
+        <span class="cl-filter-sub">분기(복수선택 가능)</span>
         <div class="cl-chip" data-grp="q" data-val="all" onclick="clFilter(this)">전체</div>
         <div class="cl-chip" data-grp="q" data-val="Q1" onclick="clFilter(this)">Q1</div>
         <div class="cl-chip" data-grp="q" data-val="Q2" onclick="clFilter(this)">Q2</div>
@@ -2632,7 +2632,7 @@ body{background:var(--black);color:var(--gray-hi);display:flex;flex-direction:co
         <div class="cl-chip" data-grp="type" data-val="예능" onclick="clFilter(this)">예능</div>
         <div class="cl-chip" data-grp="type" data-val="다큐" onclick="clFilter(this)">다큐</div>
         <span class="cl-filter-divider"></span>
-        <span class="cl-filter-sub">공개</span>
+        <span class="cl-filter-sub">공개(복수선택 가능)</span>
         <div class="cl-chip cl-on" data-grp="status" data-val="all" onclick="clFilter(this)">전체</div>
         <div class="cl-chip" data-grp="status" data-val="공개중" onclick="clFilter(this)">공개중</div>
         <div class="cl-chip" data-grp="status" data-val="공개예정" onclick="clFilter(this)">공개예정</div>
@@ -4552,7 +4552,7 @@ let clData = [];
 const _today = new Date();
 const _curYear = String(_today.getFullYear());
 const _curQ = 'Q' + (Math.floor(_today.getMonth()/3) + 1);
-let clSel = {type:"all", year:_curYear, q:"all", status:"all"};
+let clSel = {type:"all", year:_curYear, q:["all"], status:["all"]}   // 분기·공개는 복수 선택;
 let clOrigOnly = false;
 let clTvOrigOnly = false;   // 티빙·웨이브 '오리지널만'
 let clTvOnlyOnly = false;   // 티빙·웨이브 '독점만'
@@ -4889,9 +4889,11 @@ function clDownloadExcel(scope){
   } else {
     const parts = [ottName];
     if(clSel.year && clSel.year !== 'all') parts.push(clSel.year);   // 기간(연도)
-    if(clSel.q && clSel.q !== 'all') parts.push(clSel.q);            // 분기
+    const _qs = (Array.isArray(clSel.q) ? clSel.q : [clSel.q]).filter(v => v && v !== 'all');
+    if(_qs.length) parts.push(_qs.join('-'));                      // 분기 (여러 개면 Q3-Q4)
     if(clSel.type && clSel.type !== 'all') parts.push(clSel.type);   // 유형
-    if(clSel.status && clSel.status !== 'all') parts.push(clSel.status); // 공개
+    const _sts = (Array.isArray(clSel.status) ? clSel.status : [clSel.status]).filter(v => v && v !== 'all');
+    if(_sts.length) parts.push(_sts.join('-'));                   // 공개 (여러 개면 공개중-공개예정)
     if(clOrigOnly) parts.push('오리지널');                            // 넷플릭스 오리지널 토글 켜진 경우
     parts.push(today);
     fname = parts.join('_') + '.xlsx';
@@ -4939,13 +4941,18 @@ function clGetFilteredRows(){
       const y = clYear(d.release_date);
       if(String(y) !== clSel.year) return false;
     }
-    if(clSel.q!=="all"){
-      const q = clQuarter(d.release_date);
-      if(q !== clSel.q) return false;
-    }
-    if(clSel.status!=="all"){
-      if(clFilterStatus(d.release_date) !== clSel.status) return false;
-    }
+    // 분기는 복수 선택 — 고른 것 중 하나에만 해당해도 통과
+        if(!(Array.isArray(clSel.q) ? clSel.q.indexOf("all") >= 0 : clSel.q === "all")){
+          const q = clQuarter(d.release_date);
+          const qs = Array.isArray(clSel.q) ? clSel.q : [clSel.q];
+          if(qs.indexOf(q) < 0) return false;
+        }
+    // 공개 여부도 복수 선택 — 고른 것 중 하나에만 해당해도 통과
+        if(!(Array.isArray(clSel.status) ? clSel.status.indexOf("all") >= 0 : clSel.status === "all")){
+          const st = clFilterStatus(d.release_date);
+          const sts = Array.isArray(clSel.status) ? clSel.status : [clSel.status];
+          if(sts.indexOf(st) < 0) return false;
+        }
     return true;
   });
   const now = new Date();
@@ -5252,29 +5259,53 @@ function clSearchClear(){
 
 // 특정 필터 그룹을 '전체(all)'로 되돌리고 버튼 표시도 갱신
 function clResetGroup(grp){
-  clSel[grp] = "all";
+  clSel[grp] = (grp === "q" || grp === "status") ? ["all"] : "all";
   document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>{
     c.classList.toggle('cl-on', c.getAttribute('data-val') === "all");
   });
 }
 
+// 공개 여부에 특정 값이 골라져 있는지 (배열/문자열 양쪽 대응)
+function clStatusHas(v){
+  return Array.isArray(clSel.status) ? clSel.status.indexOf(v) >= 0 : clSel.status === v;
+}
+
 function clFilter(el){
   const grp = el.getAttribute('data-grp');
   const val = el.getAttribute('data-val');
-  document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>c.classList.remove('cl-on'));
-  el.classList.add('cl-on');
-  clSel[grp] = val;
+  if(grp === "q" || grp === "status"){
+    // 분기·공개는 여러 개를 함께 볼 수 있다(Q3+Q4, 공개중+공개예정 등).
+    // '전체'를 누르면 나머지를 모두 끄고, 마지막 하나를 끄면 '전체'로 돌아간다.
+    let sel = Array.isArray(clSel[grp]) ? clSel[grp].slice() : [clSel[grp]];
+    if(val === "all"){
+      sel = ["all"];
+    } else {
+      sel = sel.filter(v => v !== "all");
+      const i = sel.indexOf(val);
+      if(i >= 0) sel.splice(i, 1); else sel.push(val);
+      if(!sel.length) sel = ["all"];
+    }
+    clSel[grp] = sel;
+    document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>{
+      c.classList.toggle('cl-on', sel.indexOf(c.getAttribute('data-val')) >= 0);
+    });
+  } else {
+    document.querySelectorAll(`.cl-chip[data-grp="${grp}"]`).forEach(c=>c.classList.remove('cl-on'));
+    el.classList.add('cl-on');
+    clSel[grp] = val;
+  }
 
   // 공개여부 '미정'은 공개일이 없는 작품 → 연도·분기 필터와 양립 불가.
   // 사용자가 미정을 누르면 연도·분기를 자동으로 '전체'로 풀고 이유를 안내.
-  if(grp === "status" && val === "미정" && (clSel.year !== "all" || clSel.q !== "all")){
+  const qAll = Array.isArray(clSel.q) ? clSel.q.indexOf("all") >= 0 : clSel.q === "all";
+  if(grp === "status" && val === "미정" && (clSel.year !== "all" || !qAll)){
     clResetGroup("year");
     clResetGroup("q");
     clShowNotice("‘미정’은 공개일이 정해지지 않은 작품이라, 연도·분기 필터를 자동으로 해제했어요.");
-  } else if(grp === "year" && val !== "all" && clSel.status === "미정"){
+  } else if(grp === "year" && val !== "all" && clStatusHas("미정")){
     // 반대 상황: 미정 상태에서 연도를 고르면 공개여부를 전체로 풀어줌
     clResetGroup("status");
-  } else if(grp === "q" && val !== "all" && clSel.status === "미정"){
+  } else if(grp === "q" && val !== "all" && clStatusHas("미정")){
     clResetGroup("status");
   }
   clRender();
@@ -5300,8 +5331,9 @@ function clShowNotice(msg){
 // 콘텐츠 라인업 탭 진입 시 1회 로드
 // 분기 버튼 디폴트 선택을 현재 분기로 설정
 function clSetDefaultQuarter(){
+  const sel = Array.isArray(clSel.q) ? clSel.q : [clSel.q];
   document.querySelectorAll('.cl-chip[data-grp="q"]').forEach(b=>{
-    b.classList.toggle('cl-on', b.getAttribute('data-val') === clSel.q);
+    b.classList.toggle('cl-on', sel.indexOf(b.getAttribute('data-val')) >= 0);
   });
 }
 
