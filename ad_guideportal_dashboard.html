@@ -6081,14 +6081,63 @@ function rnUnifiedGo(globalIdx){
   var it = items[globalIdx];
   if(!it) return;
   switchTab('updates' + RN_NS, RN_MEDIA2TAB[it.media] || 'all');
+  // 옮겨간 탭에 이전에 걸어둔 검색어·카테고리·페이지가 남아 있으면
+  // 찾는 공지가 걸러지거나 다른 페이지에 있어 강조가 안 된다. 먼저 초기화한다.
+  rnResetTabView(it.media);
   // 해당 매체 탭에서 그 공지를 강조/펼침
   setTimeout(function(){
     if(it.media === 'tving_wavve'){
-      rnTvingHighlight(it.title);
+      rnTvingGoToItem(it.title);
     } else {
-      rnNetflixHighlight(it.ver, it.title);
+      rnNetflixGoToItem(it.ver, it.title);
     }
   }, 300);
+}
+
+// 매체 탭의 검색어·카테고리·페이지를 처음 상태로 되돌린다
+function rnResetTabView(media){
+  // 검색창은 세 탭이 함께 쓴다(rn-search-shared)
+  var q = rnEl('rn-search-shared');
+  if(q) q.value = '';
+  if(media === 'tving_wavve'){
+    var st = rnTvingState();
+    st.page = 1;
+    st.cat = '전체';
+    st.open = {};
+    // 카테고리 버튼도 '전체'가 켜진 모습으로 다시 그린다
+    if(typeof rnTvingBuildFilter === 'function') rnTvingBuildFilter();
+  } else {
+    RN_STATE()._rnPage = 1;
+    window._currentCat = '전체';
+    // 목록만 바꾸면 버튼은 이전 카테고리가 켜진 채로 남는다
+    if(typeof window.filterNotes === 'function') window.filterNotes('전체');
+  }
+}
+
+// 대상 공지가 몇 페이지에 있는지 찾아 그 페이지로 옮긴 뒤 강조한다
+function rnNetflixGoToItem(ver, title){
+  var rows = (window._allNotes || []);
+  var idx = -1;
+  for(var i = 0; i < rows.length; i++){
+    if(title && rows[i].title === title){ idx = i; break; }
+  }
+  if(idx >= 0){
+    RN_STATE()._rnPage = Math.floor(idx / (RN_STATE()._rnPer || 20)) + 1;
+  }
+  if(typeof window.renderNoteCards === 'function') window.renderNoteCards('전체');
+  rnNetflixHighlight(ver, title);
+}
+
+function rnTvingGoToItem(title){
+  // 초기화 뒤라 필터가 없으므로 전체 목록 순서 = 화면 순서
+  var idx = -1;
+  for(var i = 0; i < rnTvingData.length; i++){
+    if(rnTvingData[i] && rnTvingData[i].title === title){ idx = i; break; }
+  }
+  var st = rnTvingState();
+  if(idx >= 0) st.page = Math.floor(idx / (st.per || 20)) + 1;
+  rnTvingRender();
+  rnTvingHighlight(title);
 }
 
 // 티빙 탭에서 특정 제목 공지로 스크롤·강조
@@ -6156,7 +6205,16 @@ var rnTvingLoaded = false;   // 1회 로드 플래그 (공유)
 function rnNfRowToggle(id){
   var el = document.getElementById(id);
   if(!el) return;
-  el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+  var willOpen = (el.style.display === 'none' || !el.style.display);
+  // 티빙·웨이브 탭과 같은 아코디언 방식으로 — 하나를 열면 나머지는 닫는다
+  var list = rnEl('rn-list');
+  if(list){
+    var others = list.querySelectorAll('[id^="nfrow-"]');
+    for(var i = 0; i < others.length; i++){
+      if(others[i] !== el) others[i].style.display = 'none';
+    }
+  }
+  el.style.display = willOpen ? 'block' : 'none';
 }
 function rnNfGoPage(p){
   RN_STATE()._nfPage = p;
