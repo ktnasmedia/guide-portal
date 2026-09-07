@@ -6113,17 +6113,18 @@ function rnUnifiedGo(globalIdx){
   var it = items[globalIdx];
   if(!it) return;
   switchTab('updates' + RN_NS, RN_MEDIA2TAB[it.media] || 'all');
-  // 옮겨간 탭에 이전에 걸어둔 검색어·카테고리·페이지가 남아 있으면
-  // 찾는 공지가 걸러지거나 다른 페이지에 있어 강조가 안 된다. 먼저 초기화한다.
-  rnResetTabView(it.media);
-  // 해당 매체 탭에서 그 공지를 강조/펼침
+  // switchTab 은 80ms 뒤에 매체 탭을 켜고(rnSelectMedia) 그 안에서 목록을 다시 그린다.
+  // 그보다 먼저 초기화·이동을 하면 나중 렌더에 덮여 페이지가 1로 돌아간다.
+  // 그래서 그 뒤에 실행되도록 순서를 잡는다.
   setTimeout(function(){
+    // 옮겨간 탭에 남아 있던 검색어·카테고리·페이지를 먼저 푼다
+    rnResetTabView(it.media);
     if(it.media === 'tving_wavve'){
       rnTvingGoToItem(it.title);
     } else {
       rnNetflixGoToItem(it.ver, it.title);
     }
-  }, 300);
+  }, 200);
 }
 
 // 매체 탭의 검색어·카테고리·페이지를 처음 상태로 되돌린다
@@ -6166,11 +6167,9 @@ function rnNetflixGoToItem(ver, title){
   if(idx >= 0){
     // 화면 표가 보는 값은 _nfPage 다(_rnPage 는 옛 카드형 화면용)
     RN_STATE()._nfPage = Math.floor(idx / 20) + 1;   // 넷플릭스 표는 20개 고정
-    // 찾은 글을 펼친 상태로 그린다(강조만 하면 본문이 접혀 있어 못 찾은 것처럼 보인다)
-    RN_STATE()._nfOpen = 'nfrow-' + rnSafeKey((rows[idx].ver || '') + '|' + (rows[idx].title || ''));
   }
   if(typeof window.renderNoteCards === 'function') window.renderNoteCards('전체');
-  rnNetflixHighlight(ver, title);
+  rnRetryHighlight(function(){ return rnNetflixHighlight(ver, title); });
 }
 
 function rnTvingGoToItem(title){
@@ -6182,12 +6181,9 @@ function rnTvingGoToItem(title){
   var st = rnTvingState();
   if(idx >= 0){
     st.page = Math.floor(idx / (st.per || 20)) + 1;
-    // 찾은 글을 펼친 상태로 그린다
-    st.open = {};
-    if(rnTvingData[idx] && rnTvingData[idx].notice_id) st.open[rnTvingData[idx].notice_id] = true;
   }
   rnTvingRender();
-  rnTvingHighlight(title);
+  rnRetryHighlight(function(){ return rnTvingHighlight(title); });
 }
 
 // 티빙 탭에서 특정 제목 공지로 스크롤·강조
@@ -6209,7 +6205,7 @@ function rnFlash(el){
 }
 function rnTvingHighlight(title){
   var list = rnEl('rn-tving-list');
-  if(!list) return;
+  if(!list) return false;
   // 표 구조(공지사항 테스트)에서는 줄이 .rn-tbl 안에 들어 있어
   // list.children 을 보면 표 전체가 잡힌다 → 줄 단위 요소를 직접 찾는다
   var cards = list.querySelectorAll('.rn-tbl-item');
@@ -6217,12 +6213,21 @@ function rnTvingHighlight(title){
   for(var i=0;i<cards.length;i++){
     if(cards[i].textContent && cards[i].textContent.indexOf(title) !== -1){
       rnFlash(cards[i]);
-      break;
+      return true;
     }
   }
+  return false;
 }
 
 // 넷플릭스 탭에서 특정 버전으로 스크롤·강조
+// 목록이 아직 안 그려졌을 수 있어 잠깐 기다렸다 다시 시도한다.
+// 시간(setTimeout)에만 기대면 기기·데이터 양에 따라 놓친다.
+function rnRetryHighlight(fn, tries){
+  tries = tries || 0;
+  if(fn() || tries >= 10) return;
+  setTimeout(function(){ rnRetryHighlight(fn, tries + 1); }, 80);
+}
+
 function rnNetflixHighlight(ver, title){
   var list = rnEl('rn-list');
   if(!list) return;
@@ -6245,6 +6250,7 @@ function rnNetflixHighlight(ver, title){
     }
   }
   rnFlash(target);
+  return !!target;
 }
 
 // ── 티빙·웨이브 공지사항 (JSON 목록형) ──
