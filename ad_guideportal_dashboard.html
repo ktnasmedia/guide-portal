@@ -6140,6 +6140,7 @@ function rnResetTabView(media){
     if(typeof rnTvingBuildFilter === 'function') rnTvingBuildFilter();
   } else {
     RN_STATE()._rnPage = 1;
+    RN_STATE()._nfOpen = null;   // 펼쳐둔 글도 접는다(티빙과 같게)
     window._currentCat = '전체';
     // 목록만 바꾸면 버튼은 이전 카테고리가 켜진 채로 남는다
     if(typeof window.filterNotes === 'function') window.filterNotes('전체');
@@ -6247,6 +6248,9 @@ function rnNfRowToggle(id){
     }
   }
   el.style.display = willOpen ? 'block' : 'none';
+  // 펼침 상태를 기억해 둔다.
+  // 화면 요소에만 두면 탭을 옮겼다 돌아올 때 목록을 다시 그리면서 닫혀버린다.
+  RN_STATE()._nfOpen = willOpen ? id : null;
 }
 function rnNfGoPage(p){
   RN_STATE()._nfPage = p;
@@ -6823,7 +6827,7 @@ async function sheetsLoadNotes() {
           +     '<div class="rn-tbl-title">' + clEsc(r.title) + ver + isNew + '</div>'
           +     '<div class="rn-tbl-date">' + rnFmtDateDot(r.date) + '</div>'
           +   '</div>'
-          +   '<div class="rn-tbl-body" id="' + uid + '" style="display:none;">' + rnBodyHtml(r.body) + '</div>'
+          +   '<div class="rn-tbl-body" id="' + uid + '" style="display:' + (RN_STATE()._nfOpen === uid ? 'block' : 'none') + ';">' + rnBodyHtml(r.body) + '</div>'
           + '</div>';
       });
       h += '</div>';
