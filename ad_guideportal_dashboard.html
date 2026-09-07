@@ -6149,13 +6149,21 @@ function rnResetTabView(media){
 
 // 대상 공지가 몇 페이지에 있는지 찾아 그 페이지로 옮긴 뒤 강조한다
 function rnNetflixGoToItem(ver, title){
-  var rows = (window._allNotes || []);
+  // 화면 목록은 버전별로 묶은 뒤 풀어서 만들기 때문에
+  // 시트에서 읽은 순서(_allNotes)와 다르다. 화면과 같은 순서로 위치를 찾는다.
+  var rows = [];
+  (window._versions || []).forEach(function(v){
+    (v.sections || []).forEach(function(sec){
+      rows.push({ ver: v.ver, title: sec.title });
+    });
+  });
+  if(!rows.length) rows = (window._allNotes || []);
   var idx = -1;
   for(var i = 0; i < rows.length; i++){
     if(title && rows[i].title === title){ idx = i; break; }
   }
   if(idx >= 0){
-    RN_STATE()._rnPage = Math.floor(idx / (RN_STATE()._rnPer || 20)) + 1;
+    RN_STATE()._rnPage = Math.floor(idx / 20) + 1;   // 넷플릭스 표는 20개 고정
   }
   if(typeof window.renderNoteCards === 'function') window.renderNoteCards('전체');
   rnNetflixHighlight(ver, title);
@@ -6665,11 +6673,8 @@ async function sheetsLoadNotes() {
       const i = NCOL.idx[key];
       return (i >= 0 && cols[i] != null) ? String(cols[i]).trim() : '';
     };
-    const allNotes = allRows.slice(NCOL.headRow + 1).map(function(cols, _i) {
+    const allNotes = allRows.slice(NCOL.headRow + 1).map(function(cols) {
       return {
-        // 필터·페이지가 바뀌어도 변하지 않는 고유 id.
-        // 순번으로 만들면 카테고리를 바꿀 때 엉뚱한 글이 열린 것처럼 보인다.
-        uid     : 'nf-' + _i,
         ver     : pick(cols, 'ver'),
         title   : pick(cols, 'title'),
         tag     : pick(cols, 'tag'),
@@ -6774,7 +6779,15 @@ async function sheetsLoadNotes() {
     RN_STATE()._rnPer      = 20;   // 페이지당 버전 수
 
     // 버전 카드 렌더링 (다크 카드 + 접기/펼치기 + 페이지네이션)
-    window.renderNoteCards = function(cat) {
+    // 제목을 그대로 id 로 쓰면 따옴표·공백 때문에 onclick 이 깨진다.
+// 글자를 지우지 않고 숫자 지문으로 바꿔 항상 같은 값이 나오게 한다.
+function rnSafeKey(str){
+  var h = 5381;
+  for(var i = 0; i < str.length; i++) h = ((h * 33) ^ str.charCodeAt(i)) >>> 0;
+  return 'k' + h.toString(36);
+}
+
+window.renderNoteCards = function(cat) {
       const list = rnEl('rn-list');
       list.innerHTML = '';
 
@@ -6805,8 +6818,11 @@ async function sheetsLoadNotes() {
       var rows = [];
       displayVersions.forEach(function(dv){
         dv.sections.forEach(function(sec){
+          // 필터·페이지가 바뀌어도 변하지 않는 고유 id.
+          // 순번으로 만들면 카테고리를 바꿀 때 다른 글이 열린 것처럼 보인다.
           rows.push({ ver: dv.ver.ver, date: dv.ver.date, title: sec.title,
-                      body: sec.body, category: sec.category || '기타' });
+                      body: sec.body, category: sec.category || '기타',
+                      uid: rnSafeKey((dv.ver.ver || '') + '|' + (sec.title || '')) });
         });
       });
       var nfPer = 20;
