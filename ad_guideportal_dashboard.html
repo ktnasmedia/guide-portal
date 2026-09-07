@@ -6160,9 +6160,16 @@ function rnNetflixGoToItem(ver, title){
     });
   });
   if(!rows.length) rows = (window._allNotes || []);
+  // 같은 제목이라도 버전이 다르면 다른 글이므로 버전까지 맞춰 찾는다
   var idx = -1;
   for(var i = 0; i < rows.length; i++){
-    if(title && rows[i].title === title){ idx = i; break; }
+    if(title && rows[i].title === title && (!ver || rows[i].ver === ver)){ idx = i; break; }
+  }
+  // 버전을 못 맞추면 제목만으로 한 번 더
+  if(idx < 0 && title){
+    for(var i2 = 0; i2 < rows.length; i2++){
+      if(rows[i2].title === title){ idx = i2; break; }
+    }
   }
   if(idx >= 0){
     // 화면 표가 보는 값은 _nfPage 다(_rnPage 는 옛 카드형 화면용)
@@ -6245,17 +6252,33 @@ function rnNetflixHighlight(ver, title){
   var cards = list.querySelectorAll('.rn-tbl-item, .rn-card, [data-rnver]');
   if(!cards.length) cards = list.children;
   var target = null;
-  // 1순위: 제목 칸 글자가 정확히 같은 줄 (티빙과 같은 방식)
-  //        'SLA 변경'이 'SLA 변경 리마인드'에 걸리지 않도록.
+  // 넷플릭스는 같은 제목이라도 버전이 다르면 다른 글이다
+  // (예: '영상 세이프존 가이드 v0.9' / 'v0.8'). 제목만 보면 첫 줄이 잡힌다.
+  var pickTitle = function(el){
+    var tt = el.querySelector && el.querySelector('.rn-tbl-title');
+    if(!tt) return null;
+    return tt.textContent.replace(/\s*NEW\s*$/,'').replace(/\s*v[\d.]+\s*/g,' ').trim();
+  };
+  var hasVer = function(el, v){
+    if(!v) return true;
+    var tt = el.querySelector && el.querySelector('.rn-tbl-title');
+    var txt = (tt ? tt.textContent : el.textContent) || '';
+    // 'v0.8'이 'v0.85'에 걸리지 않게 뒤에 숫자·점이 없어야 한다
+    return new RegExp(v.replace(/[.]/g,'\\.') + '(?![\\d.])').test(txt);
+  };
+  // 1순위: 제목이 같고 버전도 같은 줄
   if(title){
     for(var i=0;i<cards.length;i++){
-      var tt = cards[i].querySelector && cards[i].querySelector('.rn-tbl-title');
-      if(!tt) continue;
-      var only = tt.textContent.replace(/\s*NEW\s*$/,'').replace(/\s*v[\d.]+\s*/g,' ').trim();
-      if(only === title){ target = cards[i]; break; }
+      if(pickTitle(cards[i]) === title && hasVer(cards[i], ver)){ target = cards[i]; break; }
     }
   }
-  // 2순위: 못 찾으면 예전처럼 글자 포함으로
+  // 2순위: 버전을 못 맞추면 제목만 같은 줄
+  if(!target && title){
+    for(var i2=0;i2<cards.length;i2++){
+      if(pickTitle(cards[i2]) === title){ target = cards[i2]; break; }
+    }
+  }
+  // 3순위: 못 찾으면 예전처럼 글자 포함으로
   if(!target && title){
     for(var k=0;k<cards.length;k++){
       if(cards[k].textContent && cards[k].textContent.indexOf(title) !== -1){ target = cards[k]; break; }
