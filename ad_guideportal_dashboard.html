@@ -6140,6 +6140,7 @@ function rnResetTabView(media){
     if(typeof rnTvingBuildFilter === 'function') rnTvingBuildFilter();
   } else {
     RN_STATE()._rnPage = 1;
+    RN_STATE()._nfPage = 1;      // 화면 표가 보는 페이지
     RN_STATE()._nfOpen = null;   // 펼쳐둔 글도 접는다(티빙과 같게)
     window._currentCat = '전체';
     // 목록만 바꾸면 버튼은 이전 카테고리가 켜진 채로 남는다
@@ -6163,7 +6164,10 @@ function rnNetflixGoToItem(ver, title){
     if(title && rows[i].title === title){ idx = i; break; }
   }
   if(idx >= 0){
-    RN_STATE()._rnPage = Math.floor(idx / 20) + 1;   // 넷플릭스 표는 20개 고정
+    // 화면 표가 보는 값은 _nfPage 다(_rnPage 는 옛 카드형 화면용)
+    RN_STATE()._nfPage = Math.floor(idx / 20) + 1;   // 넷플릭스 표는 20개 고정
+    // 찾은 글을 펼친 상태로 그린다(강조만 하면 본문이 접혀 있어 못 찾은 것처럼 보인다)
+    RN_STATE()._nfOpen = 'nfrow-' + rnSafeKey((rows[idx].ver || '') + '|' + (rows[idx].title || ''));
   }
   if(typeof window.renderNoteCards === 'function') window.renderNoteCards('전체');
   rnNetflixHighlight(ver, title);
@@ -6176,7 +6180,12 @@ function rnTvingGoToItem(title){
     if(rnTvingData[i] && rnTvingData[i].title === title){ idx = i; break; }
   }
   var st = rnTvingState();
-  if(idx >= 0) st.page = Math.floor(idx / (st.per || 20)) + 1;
+  if(idx >= 0){
+    st.page = Math.floor(idx / (st.per || 20)) + 1;
+    // 찾은 글을 펼친 상태로 그린다
+    st.open = {};
+    if(rnTvingData[idx] && rnTvingData[idx].notice_id) st.open[rnTvingData[idx].notice_id] = true;
+  }
   rnTvingRender();
   rnTvingHighlight(title);
 }
@@ -7037,6 +7046,7 @@ window.renderNoteCards = function(cat) {
     window.rnNetflixChangePer = function(v){
       RN_STATE()._rnPer = parseInt(v,10) || 20;
       RN_STATE()._rnPage = 1;
+      RN_STATE()._nfPage = 1;
       window.renderNoteCards(window._currentCat || '전체');
     };
 
@@ -7059,6 +7069,7 @@ window.renderNoteCards = function(cat) {
     window.filterNotes = function(cat) {
       window._currentCat = cat;
       RN_STATE()._rnPage = 1;
+      RN_STATE()._nfPage = 1;   // 화면 표가 보는 페이지
       // 필터 바에 실제로 그려진 버튼을 직접 순회 (카테고리 목록 변수에 의존하지 않음)
       var _bar  = rnEl('rn-filter-bar');
       var _btns = _bar ? _bar.querySelectorAll('button') : [];
@@ -7085,6 +7096,7 @@ window.renderNoteCards = function(cat) {
     // 검색 입력 시: 현재 카테고리 유지하며 재렌더
     window.rnNetflixSearch = function() {
       RN_STATE()._rnPage = 1;
+      RN_STATE()._nfPage = 1;   // 화면 표가 보는 페이지
       window.renderNoteCards(window._currentCat || '전체');
     };
 
