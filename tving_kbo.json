@@ -1,6 +1,6 @@
 {
   "source_url": "https://tvingads.gitbook.io/guide/solution/kbo/overview",
-  "collected_at": "2026-09-10 18:29",
+  "collected_at": "2026-09-11 13:05",
   "schedule": [
     {
       "month": "5월",
@@ -40,9 +40,9 @@
       {
         "name": "8월 (8/1~8/31)",
         "status": {
-          "노출 보장": "청약 가능",
-          "노출 보장 제한 업종": "청약 가능",
-          "7이닝 독점": "판매 완료"
+          "노출 보장": "판매 종료",
+          "노출 보장 제한 업종": "판매 종료",
+          "7이닝 독점": "판매 종료"
         }
       }
     ]
@@ -212,7 +212,7 @@
       }
     ]
   },
-  "hash": "d272cf407b8366b4",
-  "updated_at": "2026-09-07",
-  "changed": false
+  "hash": "d9da001f1562d428",
+  "updated_at": "2026-09-11",
+  "changed": true
 }
