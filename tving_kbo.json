@@ -1,25 +1,8 @@
 {
   "source_url": "https://tvingads.gitbook.io/guide/solution/kbo/overview",
-  "collected_at": "2026-09-16 13:20",
-  "schedule": [
-    {
-      "month": "5월",
-      "open_date": "4/15(수)"
-    },
-    {
-      "month": "6월",
-      "open_date": "5/20(수)"
-    },
-    {
-      "month": "7월",
-      "open_date": "6/17(수)"
-    },
-    {
-      "month": "8월",
-      "open_date": "7/15(수)"
-    }
-  ],
-  "schedule_note": "매월 오전 10시부터 가능합니다.",
+  "collected_at": "2026-09-16 18:47",
+  "schedule": [],
+  "schedule_note": "",
   "monthly": {
     "label": "월 단위 상품",
     "first_col": "청약월",
@@ -89,44 +72,6 @@
           "status": {
             "퍼스트뷰": "청약 가능",
             "임팩트": "청약 가능"
-          }
-        }
-      ]
-    },
-    {
-      "label": "8월",
-      "first_col": "8월",
-      "columns": [
-        "퍼스트뷰",
-        "임팩트"
-      ],
-      "rows": [
-        {
-          "name": "1주차(8/3~8/9)",
-          "status": {
-            "퍼스트뷰": "판매 종료",
-            "임팩트": "판매 종료"
-          }
-        },
-        {
-          "name": "2주차(8/10~8/16)",
-          "status": {
-            "퍼스트뷰": "판매 종료",
-            "임팩트": "판매 종료"
-          }
-        },
-        {
-          "name": "3주차(8/17~8/23)",
-          "status": {
-            "퍼스트뷰": "판매 종료",
-            "임팩트": "판매 종료"
-          }
-        },
-        {
-          "name": "4주차(8/24~8/30)",
-          "status": {
-            "퍼스트뷰": "판매 종료",
-            "임팩트": "판매 종료"
           }
         }
       ]
@@ -212,7 +157,7 @@
       }
     ]
   },
-  "hash": "94e2a673b21eee02",
-  "updated_at": "2026-09-15",
-  "changed": false
+  "hash": "b7388803b9427023",
+  "updated_at": "2026-09-16",
+  "changed": true
 }
