@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-16T20:49:00.619855",
+  "generated_at": "2026-09-17T20:54:54.157067",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -1142,7 +1142,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1176,7 +1176,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1211,7 +1211,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1252,7 +1252,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1293,7 +1293,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1328,7 +1328,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1363,7 +1363,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1398,7 +1398,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1432,7 +1432,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1466,7 +1466,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1500,7 +1500,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1535,7 +1535,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1566,7 +1566,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1602,7 +1602,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1635,7 +1635,76 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-unknown-나의유죄인간",
+      "title": "나의 유죄인간",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/BphSISETy89U2FJjynOJHfPemOk.webp",
+      "cast": [
+        "임시완",
+        "설인아",
+        "김정현",
+        "연우"
+      ],
+      "release_date": "2026-10-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "살인 용의자로 지목된 안하무인 재벌 3세와 그의 수행비서로 잠입한 특수부대 출신 형사의 밀착 스릴 로맨스를 담은 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "unknown",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": "https://youtu.be/AyoJXxzlKHI?si=q4tPnJ81s8fNeE9_",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-17",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-unknown-보검매직컬2",
+      "title": "보검 매직컬2",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/BphSISETy89U2FJjynOJHfPemOk.webp",
+      "cast": [
+        "박보검",
+        "이상이",
+        "고경표"
+      ],
+      "release_date": null,
+      "release_year": null,
+      "release_quarter": null,
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "unknown",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": null,
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1678,7 +1747,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     },
@@ -1716,7 +1785,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-16",
+        "last_updated": "2026-09-17",
         "needs_review": false
       }
     }
