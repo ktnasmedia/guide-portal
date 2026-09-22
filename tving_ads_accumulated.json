@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T21:37:54.726124",
+  "generated_at": "2026-09-22T20:48:24.908366",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -1142,7 +1142,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1176,7 +1176,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1211,7 +1211,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1252,7 +1252,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1293,7 +1293,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1328,7 +1328,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1363,7 +1363,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1398,7 +1398,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1432,7 +1432,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1466,7 +1466,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1500,7 +1500,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1535,7 +1535,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1566,7 +1566,153 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-맡겨만주십숏",
+      "title": "맡겨만 주십숏",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/fCVZ6K7YmUaZO5uta2BzFsEJgvg.webp",
+      "cast": [
+        "붐",
+        "양세형",
+        "신동",
+        "곽범"
+      ],
+      "release_date": "2026-09-25",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "추억의 흔적만 남은 골목을 되살릴 단 하나의 영상, 인간의 감성과 AI의 기술이 맞붙는 2시간의 타임 어택!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/gCj417rW4mM?si=ANd0OE5atoa-APnP",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-맡겨만주십숏",
+      "title": "맡겨만 주십숏",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/fCVZ6K7YmUaZO5uta2BzFsEJgvg.webp",
+      "cast": [
+        "붐",
+        "양세형",
+        "신동",
+        "곽범"
+      ],
+      "release_date": "2026-09-25",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "추억의 흔적만 남은 골목을 되살릴 단 하나의 영상, 인간의 감성과 AI의 기술이 맞붙는 2시간의 타임 어택!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/gCj417rW4mM?si=ANd0OE5atoa-APnP",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-니돈내산",
+      "title": "니돈내산",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/hCSTJEyNFaHtzPBUk188DoKCzU.webp",
+      "cast": [
+        "김숙",
+        "이준",
+        "윤은혜",
+        "최미나수",
+        "박준면",
+        "현봉식",
+        "조나단"
+      ],
+      "release_date": "2026-09-27",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "24시간 타인의 소비만으로 살아야 한다! 과연 스타들은 누군가의 '소비'만으로 그 정체를 맞힐 수 있을까?",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/MAohxh3uzXU?si=pMAgmNLC5iRle6Kt",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-22",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-니돈내산",
+      "title": "니돈내산",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/hCSTJEyNFaHtzPBUk188DoKCzU.webp",
+      "cast": [
+        "김숙",
+        "이준",
+        "윤은혜",
+        "최미나수",
+        "박준면",
+        "현봉식",
+        "조나단"
+      ],
+      "release_date": "2026-09-27",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "24시간 타인의 소비만으로 살아야 한다! 과연 스타들은 누군가의 '소비'만으로 그 정체를 맞힐 수 있을까?",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/MAohxh3uzXU?si=pMAgmNLC5iRle6Kt",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1602,7 +1748,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1635,7 +1781,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1664,13 +1810,13 @@
       "is_original": false,
       "availability_status": null,
       "source_badge": null,
-      "trailer_url": "https://youtu.be/AyoJXxzlKHI?si=q4tPnJ81s8fNeE9_",
+      "trailer_url": "https://youtu.be/S_GQmGiD93E?si=O3rKsHt8AQXFb63D",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1704,7 +1850,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1747,7 +1893,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     },
@@ -1785,7 +1931,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-09-21",
+        "last_updated": "2026-09-22",
         "needs_review": false
       }
     }
