@@ -1,5 +1,21 @@
 # 정책 원문 변경 기록
 
+## 2026-10-08 · 티빙
+
+- **[제한 업종] 게임/엔터테인먼트** — 문구 변경
+  <details><summary>이전</summary>
+
+  > Perform an HTTP GET request on the current page URL with the `ask` query parameter, and the optional `goal` query parameter:
+  > `goal` is optional and describes the broader end goal you are ultimately trying to accomplish on behalf of the user. GitBook uses it to tailor the answer towards what is most useful for that goal.
+
+  </details>
+  <details><summary>이후</summary>
+
+  > Perform an HTTP GET request on the following URL with the `ask` and `goal` query parameters:
+  > `goal` is what the user is ultimately trying to achieve, the reason they need the answer. Sharing it helps GitBook give you a better, more relevant answer. A goal is most helpful when it describes the outcome the user wants rather than restating the question. For example, with `ask=how do I create an API token`, a goal like `build a script that syncs our docs to a CMS` lets GitBook tailor the answer to that use case.
+
+  </details>
+
 ## 2026-09-11 · 티빙
 
 - **[기본(공통)] 광고 집행 자격** — 문구 변경
