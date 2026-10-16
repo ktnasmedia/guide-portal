@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T20:54:24.943101",
+  "generated_at": "2026-10-16T20:26:17.412521",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -1505,7 +1505,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1539,7 +1539,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1573,7 +1573,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1608,7 +1608,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1641,7 +1641,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1682,7 +1682,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1717,7 +1717,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1758,7 +1758,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1771,7 +1771,7 @@
       "release_date": "2026-10-11",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
+      "summary": "신인감독 김연경2 프리퀄: 원더독스의 시작",
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1789,7 +1789,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1802,7 +1802,7 @@
       "release_date": "2026-10-11",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
+      "summary": "신인감독 김연경2 프리퀄: 원더독스의 시작",
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1820,7 +1820,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1853,7 +1853,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1888,7 +1888,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1919,7 +1919,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1954,7 +1954,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -1988,7 +1988,41 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-언더커버셰프:멀리서찾아온벗",
+      "title": "언더커버셰프 : 멀리서 찾아온 벗",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/DomK2UxaNzfFvoUxCk3Wu8IdOY.webp",
+      "cast": [
+        "샘 킴",
+        "정지선",
+        "권성준"
+      ],
+      "release_date": "2026-10-29",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": null,
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2023,7 +2057,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2057,7 +2091,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2094,7 +2128,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2131,7 +2165,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2166,7 +2200,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2199,6 +2233,12 @@
         "드라마",
         "공포 # 스릴러",
         "M:리부트",
+        "예능",
+        "코미디 #시트콤",
+        "궁전랜드",
+        "예능",
+        "코미디 #시트콤",
+        "궁전랜드",
         "협찬",
         "예능",
         "추리 #서스펜스",
@@ -2215,7 +2255,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     },
@@ -2253,7 +2293,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-15",
+        "last_updated": "2026-10-16",
         "needs_review": false
       }
     }
