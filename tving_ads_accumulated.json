@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T21:11:27.660747",
+  "generated_at": "2026-10-21T21:11:14.166575",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -1474,6 +1474,41 @@
       }
     },
     {
+      "content_id": "tvingads-tving-포핸즈",
+      "title": "포핸즈",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
+      "cast": [
+        "송강",
+        "이준영",
+        "장규리",
+        "김주헌"
+      ],
+      "release_date": "2026-08-29",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "예술고등학교에서 만난 청춘들의 우정과 사랑, 경쟁과 성장을 그린 이야기",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스 #청춘 #성장"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T",
+      "trailer_url": "https://youtu.be/9i6vVh9KpS8?si=OmWLLwcvzcFN3lH1",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-20",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-tving-100일의거짓말",
       "title": "100일의 거짓말",
       "title_original": null,
@@ -1505,41 +1540,75 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
     {
-      "content_id": "tvingads-tving-로또1등도출근합니다",
-      "title": "로또 1등도 출근합니다",
+      "content_id": "tvingads-tving-내가떨릴수있게",
+      "title": "내가 떨릴 수 있게",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
+      "poster_url": "https://framerusercontent.com/images/xKBJ3XQhEFXeGhBXgwi9n0F8Q.webp",
       "cast": [
-        "이준혁",
-        "서현우",
-        "오대환"
+        "남지현",
+        "김재영"
       ],
-      "release_date": "2026-09-10",
+      "release_date": "2026-10-15",
       "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "위아래로 치이며 하루하루를 버티던 팀장 ‘공은태’가 로또 1등에 당첨된 후 사직서 대신 당첨금 13억을 품고 이전과는 다른 마음가짐으로 출근하는 K-직장인 오피스 드라마",
+      "release_quarter": "2026 Q4",
+      "summary": "사랑 없인 안 하는 여자와, 사랑 없이도 잘 하는 남자의 대환장 성장 로맨스 코미디 드라마",
       "content_type": "드라마",
       "genres": [
         "드라마",
-        "오피스 #웹툰원작"
+        "로맨스 #코미디"
       ],
       "rating": "15",
       "ott": "tving",
       "is_original": true,
       "availability_status": null,
       "source_badge": "T ORIGINAL",
-      "trailer_url": "https://youtu.be/UuhWr0shq88?si=iXrL6ncd-2mtbEmT",
+      "trailer_url": "https://youtu.be/bwE3rmtJGf8?si=xl__1WzPoh4bmora",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-나의유죄인간",
+      "title": "나의 유죄인간",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/qr24IYQ9Ow1TtI0vaNvuPnjNg.webp",
+      "cast": [
+        "임시완",
+        "설인아",
+        "김정현",
+        "연우"
+      ],
+      "release_date": "2026-10-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "살인 용의자로 지목된 안하무인 재벌 3세와 그의 수행비서로 잠입한 특수부대 출신 형사의 밀착 스릴 로맨스를 담은 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": "https://youtu.be/S_GQmGiD93E?si=O3rKsHt8AQXFb63D",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1573,7 +1642,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1608,40 +1677,41 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
     {
-      "content_id": "tvingads-tving-내가떨릴수있게",
-      "title": "내가 떨릴 수 있게",
+      "content_id": "tvingads-tving-로또1등도출근합니다",
+      "title": "로또 1등도 출근합니다",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/xKBJ3XQhEFXeGhBXgwi9n0F8Q.webp",
+      "poster_url": "https://framerusercontent.com/images/18Jnd9qXk2CTYkJFp2zptTbn8Mo.webp",
       "cast": [
-        "남지현",
-        "김재영"
+        "이준혁",
+        "서현우",
+        "오대환"
       ],
-      "release_date": "2026-10-15",
+      "release_date": "2026-09-10",
       "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "사랑 없인 안 하는 여자와, 사랑 없이도 잘 하는 남자의 대환장 성장 로맨스 코미디 드라마",
+      "release_quarter": "2026 Q3",
+      "summary": "위아래로 치이며 하루하루를 버티던 팀장 ‘공은태’가 로또 1등에 당첨된 후 사직서 대신 당첨금 13억을 품고 이전과는 다른 마음가짐으로 출근하는 K-직장인 오피스 드라마",
       "content_type": "드라마",
       "genres": [
         "드라마",
-        "로맨스 #코미디"
+        "오피스 #웹툰원작"
       ],
       "rating": "15",
       "ott": "tving",
       "is_original": true,
       "availability_status": null,
       "source_badge": "T ORIGINAL",
-      "trailer_url": "https://youtu.be/bwE3rmtJGf8?si=xl__1WzPoh4bmora",
+      "trailer_url": "https://youtu.be/UuhWr0shq88?si=iXrL6ncd-2mtbEmT",
       "_meta": {
         "sources": {
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1682,7 +1752,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1717,7 +1787,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1758,7 +1828,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1771,7 +1841,7 @@
       "release_date": "2026-10-11",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "신인감독 김연경2 프리퀄: 원더독스의 시작",
+      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1789,7 +1859,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1802,7 +1872,7 @@
       "release_date": "2026-10-11",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "신인감독 김연경2 프리퀄: 원더독스의 시작",
+      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
       "content_type": "예능",
       "genres": [
         "예능",
@@ -1820,7 +1890,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1853,42 +1923,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-포핸즈",
-      "title": "포핸즈",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/CcJMbqBPJ9t0g3DKbCQKysVM5o.webp",
-      "cast": [
-        "송강",
-        "이준영",
-        "장규리",
-        "김주헌"
-      ],
-      "release_date": "2026-08-29",
-      "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "예술고등학교에서 만난 청춘들의 우정과 사랑, 경쟁과 성장을 그린 이야기",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스 #청춘 #성장"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T",
-      "trailer_url": "https://youtu.be/9i6vVh9KpS8?si=OmWLLwcvzcFN3lH1",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1919,42 +1954,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-나의유죄인간",
-      "title": "나의 유죄인간",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/qr24IYQ9Ow1TtI0vaNvuPnjNg.webp",
-      "cast": [
-        "임시완",
-        "설인아",
-        "김정현",
-        "연우"
-      ],
-      "release_date": "2026-10-19",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "살인 용의자로 지목된 안하무인 재벌 3세와 그의 수행비서로 잠입한 특수부대 출신 형사의 밀착 스릴 로맨스를 담은 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": true,
-      "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": "https://youtu.be/S_GQmGiD93E?si=O3rKsHt8AQXFb63D",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -1988,7 +1988,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2022,7 +2022,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2057,7 +2057,118 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-문무",
+      "title": "문무",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/VfR1xuVcuA1w8WQV60oNLuGCYc.webp",
+      "cast": [
+        "이현욱",
+        "장혁",
+        "김강우",
+        "박성웅",
+        "정웅인",
+        "조성하"
+      ],
+      "release_date": "2026-11-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #역사"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-21",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-문무",
+      "title": "문무",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/VfR1xuVcuA1w8WQV60oNLuGCYc.webp",
+      "cast": [
+        "이현욱",
+        "장혁",
+        "김강우",
+        "박성웅",
+        "정웅인",
+        "조성하"
+      ],
+      "release_date": "2026-11-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #역사"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-21",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-대리수능",
+      "title": "대리수능",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/BphSISETy89U2FJjynOJHfPemOk.webp",
+      "cast": [
+        "배현성",
+        "차강윤",
+        "박윤호",
+        "엄지원",
+        "박혁권",
+        "백지원"
+      ],
+      "release_date": "2026-11-23",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "유명 자사고의 전교 1등 저소득층 특별 장학생이 자신의 약점을 쥔 협박범의 대리수능을 보며 벌어지는 조작 범죄 스릴러",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "학원 #스릴러"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ORIGINAL",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2091,81 +2202,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-문무",
-      "title": "문무",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/VfR1xuVcuA1w8WQV60oNLuGCYc.webp",
-      "cast": [
-        "이현욱",
-        "장혁",
-        "김강우",
-        "박성웅",
-        "정웅인",
-        "조성하"
-      ],
-      "release_date": null,
-      "release_year": null,
-      "release_quarter": null,
-      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "시대극 #역사"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-10-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-문무",
-      "title": "문무",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/VfR1xuVcuA1w8WQV60oNLuGCYc.webp",
-      "cast": [
-        "이현욱",
-        "장혁",
-        "김강우",
-        "박성웅",
-        "정웅인",
-        "조성하"
-      ],
-      "release_date": null,
-      "release_year": null,
-      "release_quarter": null,
-      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "시대극 #역사"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2200,7 +2237,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2227,6 +2264,18 @@
         "서바이벌",
         "예능",
         "서바이벌",
+        "드라마",
+        "학원 #판타지 #로맨스",
+        "여고생왕후",
+        "드라마",
+        "학원 #판타지 #로맨스",
+        "여고생왕후",
+        "드라마",
+        "로맨스 #코미디",
+        "러브 바이러스",
+        "드라마",
+        "로맨스 #코미디",
+        "러브 바이러스",
         "드라마",
         "공포 # 스릴러",
         "M:리부트",
@@ -2255,7 +2304,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     },
@@ -2293,7 +2342,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-10-20",
+        "last_updated": "2026-10-21",
         "needs_review": false
       }
     }
