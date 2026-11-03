@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T21:38:08.866041",
+  "generated_at": "2026-11-03T00:25:27.400159",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -1652,7 +1652,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1685,7 +1685,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1719,7 +1719,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1754,7 +1754,69 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-신인감독김연경2",
+      "title": "신인감독 김연경2",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/xUGrbkTzq2mrpjdtoJ4DQb7Ccfo.webp",
+      "cast": [],
+      "release_date": "2026-10-11",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "스포츠 #서바이벌",
+        "김연경"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "전체/T/W",
+      "trailer_url": "https://youtu.be/rZG6EjRwHXc?si=rKXCwEZRAr2JMtEq",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-신인감독김연경2",
+      "title": "신인감독 김연경2",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/xUGrbkTzq2mrpjdtoJ4DQb7Ccfo.webp",
+      "cast": [],
+      "release_date": "2026-10-11",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "스포츠 #서바이벌",
+        "김연경"
+      ],
+      "rating": null,
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "전체/T/W",
+      "trailer_url": "https://youtu.be/rZG6EjRwHXc?si=rKXCwEZRAr2JMtEq",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1788,69 +1850,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-신인감독김연경2",
-      "title": "신인감독 김연경2",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/xUGrbkTzq2mrpjdtoJ4DQb7Ccfo.webp",
-      "cast": [],
-      "release_date": "2026-10-11",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "스포츠 #서바이벌",
-        "김연경"
-      ],
-      "rating": null,
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "전체/T/W",
-      "trailer_url": "https://youtu.be/rZG6EjRwHXc?si=rKXCwEZRAr2JMtEq",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-11-01",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-신인감독김연경2",
-      "title": "신인감독 김연경2",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/xUGrbkTzq2mrpjdtoJ4DQb7Ccfo.webp",
-      "cast": [],
-      "release_date": "2026-10-11",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "신인감독' 김연경이 이제는 '경력감독'이 되어 돌아왔다! 더 막강해진 상대와 치열하게 맞서 원더독스의 가치를 세상에 증명하라!",
-      "content_type": "예능",
-      "genres": [
-        "예능",
-        "스포츠 #서바이벌",
-        "김연경"
-      ],
-      "rating": null,
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "전체/T/W",
-      "trailer_url": "https://youtu.be/rZG6EjRwHXc?si=rKXCwEZRAr2JMtEq",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1885,7 +1885,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1919,7 +1919,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1953,7 +1953,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -1994,7 +1994,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2029,7 +2029,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2060,7 +2060,41 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-연애기숙학교2기돌싱N모솔",
+      "title": "연애기숙학교 2기 돌싱N모솔",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/tUJu0kLrSbSgyN1Z9UQoVHAzaN4.webp",
+      "cast": [
+        "채정안",
+        "김풍",
+        "넉살"
+      ],
+      "release_date": "2026-11-03",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "연애의 '끝'을 씁쓸하게 경험해 본 돌싱 여성들과 '시작'조차 해보지 못한 모태솔로 남성들이 '연애기숙학교'에 동반 입학해 짝을 찾는 파격적인 포맷의 예능 프로그램",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티 #로맨스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T",
+      "trailer_url": "https://youtu.be/LheWY1zGav4?si=KcNePIt8CKV70ovB",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2095,7 +2129,74 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-뜨거운안녕",
+      "title": "뜨거운 안녕",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/5p63uZXPKxdMN2yoaoTtj7f0OmY.webp",
+      "cast": [
+        "강훈",
+        "조현철",
+        "김정진",
+        "이이담",
+        "문희",
+        "윤가이"
+      ],
+      "release_date": "2026-11-11",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "꿈을 향해 질주하던 '무명 개그만 삼인방'이 '정체불명 수상녀'를 만나 저마다의 내일을 찾아가는 뜨겁고도 아름다운 실패 청산 성장기",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "성장 #청춘"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": "https://youtu.be/ngmiue3WlcU?si=qtx8VF4Ucx5hZDyF",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-03",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-내새끼의연애3",
+      "title": "내 새끼의 연애3",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/gaU6hgquybGdkigZZ6Z9vycSuYM.webp",
+      "cast": [],
+      "release_date": "2026-11-11",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "서로가 첫 연애 상대인 9년차 커플이 결혼을 앞두고 다른 이성에 대한 미련을 남기지 않기 위해 각자 새로운 사람을 만나보는 '브레이크 타임'을 선언하며 벌어지는 이야기",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티 #로맨스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2103,7 +2204,7 @@
       "content_id": "tvingads-tving-문무",
       "title": "문무",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/BphSISETy89U2FJjynOJHfPemOk.webp",
+      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
       "cast": [
         "이현욱",
         "장혁",
@@ -2132,7 +2233,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2140,7 +2241,7 @@
       "content_id": "tvingads-wavve-문무",
       "title": "문무",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/BphSISETy89U2FJjynOJHfPemOk.webp",
+      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
       "cast": [
         "이현욱",
         "장혁",
@@ -2169,7 +2270,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2206,7 +2307,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2240,7 +2341,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2274,7 +2375,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2312,7 +2413,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2347,7 +2448,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     },
@@ -2454,43 +2555,42 @@
         "4",
         "냉장고를 부탁해 since 2014",
         "5",
-        "로또 1등도 출근합니다",
-        "6",
         "나 혼자 산다",
-        "놀면 뭐하니?",
-        "8",
+        "6",
         "나의 유죄인간",
+        "언더커버 셰프 : 멀리서 찾아온 벗",
+        "8",
+        "놀면 뭐하니?",
         "9",
-        "신병4 : 사보타주",
+        "로또 1등도 출근합니다",
         "10",
         "식스센스: B사이드",
         "11",
-        "언니네 산지직송3",
-        "맛따라 길따라 대명이따라",
-        "13",
-        "우주떡집",
-        "14",
-        "이혼숙려캠프",
-        "스트릿 월드 파이터 : 디렉터스 워",
-        "16",
         "전지적 참견 시점",
-        "17",
+        "신병4 : 사보타주",
+        "13",
+        "맛따라 길따라 대명이따라",
+        "14",
         "벌거벗은 세계사",
-        "18",
-        "천재여우: 천재 여자친구",
-        "닥터 X 시즌1",
-        "20",
+        "이혼숙려캠프",
+        "16",
+        "놀라운 토요일",
+        "17",
         "응답하라 1994",
-        "21",
-        "막리 : 그대와 영원히",
-        "22",
-        "우림령",
-        "23",
-        "백화살",
-        "24",
-        "신인감독 김연경",
-        "25",
+        "18",
+        "우주떡집",
         "이제 만나러 갑니다",
+        "20",
+        "천재여우: 천재 여자친구",
+        "21",
+        "백화살",
+        "22",
+        "23",
+        "용감한 형사들 5",
+        "24",
+        "막리 : 그대와 영원히",
+        "25",
+        "티처스3: 재수전쟁",
         "1",
         "100일의 거짓말",
         "2",
@@ -2500,145 +2600,144 @@
         "4",
         "냉장고를 부탁해 since 2014",
         "5",
-        "로또 1등도 출근합니다",
-        "6",
         "나 혼자 산다",
-        "놀면 뭐하니?",
-        "8",
+        "6",
         "나의 유죄인간",
+        "언더커버 셰프 : 멀리서 찾아온 벗",
+        "8",
+        "놀면 뭐하니?",
         "9",
-        "신병4 : 사보타주",
+        "로또 1등도 출근합니다",
         "10",
         "식스센스: B사이드",
         "11",
-        "언니네 산지직송3",
-        "맛따라 길따라 대명이따라",
-        "13",
-        "우주떡집",
-        "14",
-        "이혼숙려캠프",
-        "스트릿 월드 파이터 : 디렉터스 워",
-        "16",
         "전지적 참견 시점",
-        "17",
+        "신병4 : 사보타주",
+        "13",
+        "맛따라 길따라 대명이따라",
+        "14",
         "벌거벗은 세계사",
-        "18",
-        "천재여우: 천재 여자친구",
-        "닥터 X 시즌1",
-        "20",
+        "이혼숙려캠프",
+        "16",
+        "놀라운 토요일",
+        "17",
         "응답하라 1994",
-        "21",
-        "막리 : 그대와 영원히",
-        "22",
-        "우림령",
-        "23",
-        "백화살",
-        "24",
-        "신인감독 김연경",
-        "25",
+        "18",
+        "우주떡집",
         "이제 만나러 갑니다",
+        "20",
+        "천재여우: 천재 여자친구",
+        "21",
+        "백화살",
+        "22",
+        "23",
+        "용감한 형사들 5",
+        "24",
+        "막리 : 그대와 영원히",
+        "25",
+        "티처스3: 재수전쟁",
         "26",
-        "놀라운 토요일",
+        "신인감독 김연경",
         "27",
-        "신병3",
-        "28",
         "유 퀴즈 온 더 블럭",
+        "28",
+        "언니네 산지직송3",
         "29",
-        "작골",
+        "응답하라 1988",
         "30",
+        "심야괴담회 시즌6",
+        "31",
+        "소양공주",
+        "32",
         "호프",
         "SF",
-        "31",
-        "심야괴담회 시즌6",
-        "32",
-        "닥터 X 시즌2",
         "33",
-        "용감한 형사들 5",
-        "34",
         "슬기로운 의사생활 시즌2",
-        "35",
-        "닥터 X 시즌3",
-        "36",
-        "지붕 뚫고 하이킥",
-        "37",
-        "강연배틀쇼 사기꾼들",
-        "38",
-        "개와 늑대의 시간 2",
-        "39",
-        "신입사원 강회장",
-        "40",
-        "응답하라 1988",
-        "41",
-        "가족관계증명서",
-        "42",
-        "취사병 전설이 되다",
-        "43",
-        "야구여왕2",
-        "44",
-        "신병2",
-        "45",
-        "닥터 X 시즌4",
-        "46",
-        "친애하는 X",
-        "47",
-        "애니 : 널 사랑해",
-        "48",
-        "슬기로운 의사생활",
-        "49",
-        "이호선 상담소",
-        "50",
-        "아는 형님",
-        "26",
-        "놀라운 토요일",
-        "27",
+        "34",
         "신병3",
-        "28",
-        "유 퀴즈 온 더 블럭",
-        "29",
+        "35",
+        "스트릿 월드 파이터 : 디렉터스 워",
+        "36",
+        "가족관계증명서",
+        "37",
+        "우림령",
+        "38",
+        "지붕 뚫고 하이킥",
+        "39",
+        "친애하는 X",
+        "40",
+        "언더커버셰프",
+        "41",
+        "개와 늑대의 시간 2",
+        "42",
         "작골",
+        "43",
+        "슬기로운 의사생활",
+        "44",
+        "취사병 전설이 되다",
+        "45",
+        "애니 : 널 사랑해",
+        "46",
+        "눈물의 여왕",
+        "47",
+        "아는 형님",
+        "48",
+        "이호선 상담소",
+        "49",
+        "유미의 세포들 시즌2",
+        "50",
+        "쌍궤",
+        "26",
+        "신인감독 김연경",
+        "27",
+        "유 퀴즈 온 더 블럭",
+        "28",
+        "언니네 산지직송3",
+        "29",
+        "응답하라 1988",
         "30",
+        "심야괴담회 시즌6",
+        "31",
+        "소양공주",
+        "32",
         "호프",
         "SF",
-        "31",
-        "심야괴담회 시즌6",
-        "32",
-        "닥터 X 시즌2",
         "33",
-        "용감한 형사들 5",
-        "34",
         "슬기로운 의사생활 시즌2",
+        "34",
+        "신병3",
         "35",
-        "닥터 X 시즌3",
+        "스트릿 월드 파이터 : 디렉터스 워",
         "36",
-        "지붕 뚫고 하이킥",
-        "37",
-        "강연배틀쇼 사기꾼들",
-        "38",
-        "개와 늑대의 시간 2",
-        "39",
-        "신입사원 강회장",
-        "40",
-        "응답하라 1988",
-        "41",
         "가족관계증명서",
-        "42",
-        "취사병 전설이 되다",
-        "43",
-        "야구여왕2",
-        "44",
-        "신병2",
-        "45",
-        "닥터 X 시즌4",
-        "46",
+        "37",
+        "우림령",
+        "38",
+        "지붕 뚫고 하이킥",
+        "39",
         "친애하는 X",
-        "47",
-        "애니 : 널 사랑해",
-        "48",
+        "40",
+        "언더커버셰프",
+        "41",
+        "개와 늑대의 시간 2",
+        "42",
+        "작골",
+        "43",
         "슬기로운 의사생활",
-        "49",
-        "이호선 상담소",
-        "50",
+        "44",
+        "취사병 전설이 되다",
+        "45",
+        "애니 : 널 사랑해",
+        "46",
+        "눈물의 여왕",
+        "47",
         "아는 형님",
+        "48",
+        "이호선 상담소",
+        "49",
+        "유미의 세포들 시즌2",
+        "50",
+        "쌍궤",
         "광고 문의",
         "솔루션 소개서",
         "뉴스레터",
@@ -2714,7 +2813,7 @@
           "_all": "tvingads"
         },
         "confidence": "confirmed",
-        "last_updated": "2026-11-01",
+        "last_updated": "2026-11-03",
         "needs_review": false
       }
     }
