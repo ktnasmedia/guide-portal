@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T00:13:54.920237",
+  "generated_at": "2026-11-20T23:37:01.779800",
   "source": "tvingads.com/content",
   "items": [
     {
@@ -2161,6 +2161,141 @@
       }
     },
     {
+      "content_id": "tvingads-tving-내새끼의연애3",
+      "title": "내 새끼의 연애3",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/gaU6hgquybGdkigZZ6Z9vycSuYM.webp",
+      "cast": [],
+      "release_date": "2026-11-11",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "서로가 첫 연애 상대인 9년차 커플이 결혼을 앞두고 다른 이성에 대한 미련을 남기지 않기 위해 각자 새로운 사람을 만나보는 '브레이크 타임'을 선언하며 벌어지는 이야기",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티 #로맨스"
+      ],
+      "rating": null,
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": null,
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-20",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-식스센스B사이드",
+      "title": "식스센스 B사이드",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/0hxHUgfsWMidAhp6JPU7m1svaU.webp",
+      "cast": [
+        "유재석",
+        "송은이",
+        "비비"
+      ],
+      "release_date": "2026-09-13",
+      "release_year": 2026,
+      "release_quarter": "2026 Q3",
+      "summary": "더 치밀해진 가짜 찾기! 정답은 언제나 그 뒷면에 숨어 있다. 반전에 반전을 거듭하는 추리의 끝!",
+      "content_type": "예능",
+      "genres": [
+        "예능",
+        "리얼리티 #추리"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": "https://youtu.be/vTBWNPZqwLo?si=zBc8IflY4vNKbgzF",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-20",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-100일의거짓말",
+      "title": "100일의 거짓말",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/gfC3lSY4eto0L0nvJ8VeiRiIDj8.webp",
+      "cast": [
+        "김유정",
+        "박진영",
+        "김현주",
+        "이무생",
+        "진선규"
+      ],
+      "release_date": "2026-10-10",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "경성 최고의 소매치기가 독립군과의 거래를 통해 조선총독부에 위장취업해 밀정이 되는 이야기를 그린 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #첩보 #로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T",
+      "trailer_url": "https://youtu.be/eT51REexsZU?si=29DuknPNUAQxocJv",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-20",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-tving-나의유죄인간",
+      "title": "나의 유죄인간",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/qr24IYQ9Ow1TtI0vaNvuPnjNg.webp",
+      "cast": [
+        "임시완",
+        "설인아",
+        "김정현",
+        "연우"
+      ],
+      "release_date": "2026-10-19",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "살인 용의자로 지목된 안하무인 재벌 3세와 그의 수행비서로 잠입한 특수부대 출신 형사의 밀착 스릴 로맨스를 담은 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "로맨스"
+      ],
+      "rating": "15",
+      "ott": "tving",
+      "is_original": true,
+      "availability_status": null,
+      "source_badge": "T ONLY",
+      "trailer_url": "https://youtu.be/S_GQmGiD93E?si=O3rKsHt8AQXFb63D",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-20",
+        "needs_review": false
+      }
+    },
+    {
       "content_id": "tvingads-tving-내가떨릴수있게",
       "title": "내가 떨릴 수 있게",
       "title_original": null,
@@ -2228,31 +2363,70 @@
       }
     },
     {
-      "content_id": "tvingads-tving-나의유죄인간",
-      "title": "나의 유죄인간",
+      "content_id": "tvingads-tving-문무",
+      "title": "문무",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/qr24IYQ9Ow1TtI0vaNvuPnjNg.webp",
+      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
       "cast": [
-        "임시완",
-        "설인아",
-        "김정현",
-        "연우"
+        "이현욱",
+        "장혁",
+        "김강우",
+        "박성웅",
+        "정웅인",
+        "조성하"
       ],
-      "release_date": "2026-10-19",
+      "release_date": "2026-11-14",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "살인 용의자로 지목된 안하무인 재벌 3세와 그의 수행비서로 잠입한 특수부대 출신 형사의 밀착 스릴 로맨스를 담은 드라마",
+      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
       "content_type": "드라마",
       "genres": [
         "드라마",
-        "로맨스"
+        "시대극 #역사"
       ],
       "rating": "15",
       "ott": "tving",
-      "is_original": true,
+      "is_original": false,
       "availability_status": null,
-      "source_badge": "T ONLY",
-      "trailer_url": "https://youtu.be/S_GQmGiD93E?si=O3rKsHt8AQXFb63D",
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
+      "_meta": {
+        "sources": {
+          "_all": "tvingads"
+        },
+        "confidence": "confirmed",
+        "last_updated": "2026-11-20",
+        "needs_review": false
+      }
+    },
+    {
+      "content_id": "tvingads-wavve-문무",
+      "title": "문무",
+      "title_original": null,
+      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
+      "cast": [
+        "이현욱",
+        "장혁",
+        "김강우",
+        "박성웅",
+        "정웅인",
+        "조성하"
+      ],
+      "release_date": "2026-11-14",
+      "release_year": 2026,
+      "release_quarter": "2026 Q4",
+      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
+      "content_type": "드라마",
+      "genres": [
+        "드라마",
+        "시대극 #역사"
+      ],
+      "rating": "15",
+      "ott": "wavve",
+      "is_original": false,
+      "availability_status": null,
+      "source_badge": "T/W",
+      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
       "_meta": {
         "sources": {
           "_all": "tvingads"
@@ -2499,21 +2673,21 @@
       }
     },
     {
-      "content_id": "tvingads-tving-내새끼의연애3",
-      "title": "내 새끼의 연애3",
+      "content_id": "tvingads-tving-2026MAMAAWARDS",
+      "title": "2026 MAMA AWARDS",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/gaU6hgquybGdkigZZ6Z9vycSuYM.webp",
+      "poster_url": "https://framerusercontent.com/images/JVXZLcqUmGuDcNb9X5JdkWz7OU.webp",
       "cast": [],
-      "release_date": "2026-11-11",
+      "release_date": "2026-11-20",
       "release_year": 2026,
       "release_quarter": "2026 Q4",
-      "summary": "서로가 첫 연애 상대인 9년차 커플이 결혼을 앞두고 다른 이성에 대한 미련을 남기지 않기 위해 각자 새로운 사람을 만나보는 '브레이크 타임'을 선언하며 벌어지는 이야기",
-      "content_type": "예능",
+      "summary": null,
+      "content_type": "더보기",
       "genres": [
-        "예능",
-        "리얼리티 #로맨스"
+        "더보기",
+        "예능"
       ],
-      "rating": null,
+      "rating": "15",
       "ott": "tving",
       "is_original": true,
       "availability_status": null,
@@ -2529,141 +2703,32 @@
       }
     },
     {
-      "content_id": "tvingads-tving-식스센스B사이드",
-      "title": "식스센스 B사이드",
+      "content_id": "tvingads-tving-아불시대사:꾼들의전쟁",
+      "title": "아불시대사 : 꾼들의 전쟁",
       "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/0hxHUgfsWMidAhp6JPU7m1svaU.webp",
+      "poster_url": "https://framerusercontent.com/images/MK1qjHjdaLLstSGc2Vwic4jw.webp",
       "cast": [
-        "유재석",
-        "송은이",
-        "비비"
+        "리셴",
+        "리이통",
+        "류관린",
+        "우강",
+        "궈징린"
       ],
-      "release_date": "2026-09-13",
+      "release_date": "2026-11-21",
       "release_year": 2026,
-      "release_quarter": "2026 Q3",
-      "summary": "더 치밀해진 가짜 찾기! 정답은 언제나 그 뒷면에 숨어 있다. 반전에 반전을 거듭하는 추리의 끝!",
-      "content_type": "예능",
+      "release_quarter": "2026 Q4",
+      "summary": "친향파에 의해 가족을 모두 잃은 상관성명은 복수를 위해 신분을 숨기고 잠입한다. 그는 강비연의 도움을 받아 교묘한 계략을 펼치며 부패한 세력의 실체를 폭로하고 정의를 실현하기 위해 싸운다.",
+      "content_type": "드라마",
       "genres": [
-        "예능",
-        "리얼리티 #추리"
+        "드라마",
+        "중국드라마"
       ],
       "rating": "15",
       "ott": "tving",
       "is_original": true,
       "availability_status": null,
       "source_badge": "T ONLY",
-      "trailer_url": "https://youtu.be/vTBWNPZqwLo?si=zBc8IflY4vNKbgzF",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-11-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-100일의거짓말",
-      "title": "100일의 거짓말",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/gfC3lSY4eto0L0nvJ8VeiRiIDj8.webp",
-      "cast": [
-        "김유정",
-        "박진영",
-        "김현주",
-        "이무생",
-        "진선규"
-      ],
-      "release_date": "2026-10-10",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "경성 최고의 소매치기가 독립군과의 거래를 통해 조선총독부에 위장취업해 밀정이 되는 이야기를 그린 드라마",
-      "content_type": "더보기",
-      "genres": [
-        "더보기",
-        "드라마",
-        "시대극 #첩보 #로맨스"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T",
-      "trailer_url": "https://youtu.be/eT51REexsZU?si=29DuknPNUAQxocJv",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-11-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-tving-문무",
-      "title": "문무",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
-      "cast": [
-        "이현욱",
-        "장혁",
-        "김강우",
-        "박성웅",
-        "정웅인",
-        "조성하"
-      ],
-      "release_date": "2026-11-14",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "시대극 #역사"
-      ],
-      "rating": "15",
-      "ott": "tving",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
-      "_meta": {
-        "sources": {
-          "_all": "tvingads"
-        },
-        "confidence": "confirmed",
-        "last_updated": "2026-11-20",
-        "needs_review": false
-      }
-    },
-    {
-      "content_id": "tvingads-wavve-문무",
-      "title": "문무",
-      "title_original": null,
-      "poster_url": "https://framerusercontent.com/images/HM90TbXtonQmb08rKdJLEXLnk.webp",
-      "cast": [
-        "이현욱",
-        "장혁",
-        "김강우",
-        "박성웅",
-        "정웅인",
-        "조성하"
-      ],
-      "release_date": "2026-11-14",
-      "release_year": 2026,
-      "release_quarter": "2026 Q4",
-      "summary": "600년간 이어진 전쟁과 삼국 내부의 격변 속에서 승리를 위해 모든 것을 건 지도자들의 이야기를 그린 드라마",
-      "content_type": "드라마",
-      "genres": [
-        "드라마",
-        "시대극 #역사"
-      ],
-      "rating": "15",
-      "ott": "wavve",
-      "is_original": false,
-      "availability_status": null,
-      "source_badge": "T/W",
-      "trailer_url": "https://youtu.be/QjRZooK6nRg?si=_B3I5pQcbyrZxQp1",
+      "trailer_url": null,
       "_meta": {
         "sources": {
           "_all": "tvingads"
